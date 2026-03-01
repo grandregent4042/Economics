@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inflation Indices — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f5f0;--ink:#1a1610;--paper:#fffefa;--border:#e0d8c8;
+  --gold:#c47a15;--gold-lt:#f8e9c0;--amber:#e06b10;
+  --blue:#1a3d7c;--blue-lt:#e8eef8;
+  --green:#1a6640;--green-lt:#e0f0e8;
+  --red:#b01818;--red-lt:#fce8e8;
+  --purple:#5a1a8a;--purple-lt:#f0e4fa;
+  --teal:#0a5868;--teal-lt:#e0f2f6;
+  --muted:#8a7a60;--card:#fffef9;
+}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(ellipse 800px 600px at 10% 15%,rgba(196,122,21,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 600px 700px at 90% 85%,rgba(26,61,124,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 28px 100px;}
+
+/* ── HEADER ── */
+.hdr{text-align:center;padding:48px 16px 28px;}
+.hdr-sup{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Lora',serif;font-size:clamp(28px,5vw,52px);font-weight:700;line-height:1.1;color:var(--ink);}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr-sub{margin-top:10px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1px;}
+.hdr-bar{width:100px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:18px auto 0;border-radius:4px;}
+
+/* ── SECTION LABELS ── */
+.sec{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g31{display:grid;grid-template-columns:3fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g31{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g31{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 8px 32px rgba(196,122,21,0.12);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.red::before{background:var(--red);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Lora',serif;font-size:16px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;line-height:1.3;}
+
+/* ── SVG CARDS ── */
+.scard{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.scard.c1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.scard.c2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.scard.c3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.scard.c4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.scard svg{display:block;width:100%;}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(196,122,21,0.12);color:var(--gold);}
+.pill.blue{background:rgba(26,61,124,0.12);color:var(--blue);}
+.pill.green{background:rgba(26,102,64,0.12);color:var(--green);}
+.pill.red{background:rgba(176,24,24,0.12);color:var(--red);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,88,104,0.12);color:var(--teal);}
+
+/* ── CHIPS ── */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:rgba(26,102,64,0.07);border-color:rgba(26,102,64,0.22);color:var(--green);}
+.chip.no{background:rgba(176,24,24,0.07);border-color:rgba(176,24,24,0.22);color:var(--red);}
+.chip.neu{background:rgba(196,122,21,0.07);border-color:rgba(196,122,21,0.22);color:var(--gold);}
+
+/* ── STAT BOX ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--bg);}
+.stat-n{font-family:'Lora',serif;font-size:24px;font-weight:700;line-height:1;}
+.stat-l{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-s{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:9px 12px;border-radius:9px;background:var(--bg);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:800;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── TABLE ── */
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctbl th:first-child{border-radius:0 0 0 0;}
+.ctbl td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(196,122,21,0.025);}
+.ctbl td:first-child{font-weight:800;color:var(--ink);font-size:12px;}
+.ctbl td:nth-child(2){color:var(--blue);font-weight:700;}
+.ctbl td:nth-child(3){color:var(--amber);font-weight:700;}
+.ctbl td:nth-child(4){color:var(--green);font-weight:700;}
+.yes{background:#d4f0e0;color:#155731;padding:3px 9px;border-radius:5px;font-weight:800;font-size:10px;}
+.no2{background:#fce0e0;color:#721c24;padding:3px 9px;border-radius:5px;font-weight:800;font-size:10px;}
+.var{background:#fef0d4;color:#7a4010;padding:3px 9px;border-radius:5px;font-weight:800;font-size:10px;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:20px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.ks-icon{font-size:38px;flex:0 0 auto;}
+.ks-title{font-family:'Lora',serif;font-size:21px;font-style:italic;margin-bottom:6px;}
+.ks-sub{font-size:11px;color:#c8b880;line-height:1.65;}
+.ks-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 13px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'JetBrains Mono',monospace;}
+
+/* ── IMPACT CHAIN ── */
+.ichain{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.ic-n{padding:6px 13px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.ic-a{font-size:18px;color:var(--muted);}
+
+/* ── FEAT GRID ── */
+.feat-g{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--bg);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:3px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* ── MEMORY BOX ── */
+.mem{border-radius:14px;padding:20px 24px;background:linear-gradient(135deg,rgba(90,26,138,0.06),rgba(26,61,124,0.06));border:2px solid rgba(90,26,138,0.15);}
+.mem-title{font-family:'Lora',serif;font-size:14px;font-weight:700;color:var(--purple);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.mem-row{display:flex;gap:16px;flex-wrap:wrap;}
+.mem-card{flex:1;min-width:140px;padding:14px;border-radius:10px;text-align:center;}
+.mem-card .mc-e{font-size:24px;margin-bottom:6px;}
+.mem-card .mc-w{font-family:'Lora',serif;font-size:18px;font-weight:700;}
+.mem-card .mc-d{font-size:10px;font-weight:800;margin-top:2px;}
+.mem-card .mc-s{font-size:9px;font-family:'JetBrains Mono',monospace;margin-top:3px;opacity:0.7;}
+
+/* ── BAR ── */
+.bar-wrap{display:flex;flex-direction:column;gap:10px;margin:10px 0;}
+.bar-item{display:flex;align-items:center;gap:10px;}
+.bar-lbl{font-size:10px;font-weight:700;width:120px;flex:0 0 120px;text-align:right;font-family:'JetBrains Mono',monospace;}
+.bar-track{flex:1;background:var(--bg);border-radius:6px;height:24px;overflow:hidden;border:1px solid var(--border);}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:10px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#fff;}
+.bar-val{font-size:12px;font-weight:800;width:45px;flex:0 0 45px;font-family:'JetBrains Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══ HEADER ══ -->
+<div class="hdr">
+  <div class="hdr-sup">Indian Economy · Inflation Indices · UPSC Prelims</div>
+  <h1>CPI · WPI · GDP Deflator — <em>Mind Map</em></h1>
+  <div class="hdr-sub">What they measure → How they differ → Why it matters for RBI & Prelims</div>
+  <div class="hdr-bar"></div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec">① Master Flow</div>
+<div class="scard c1">
+  <svg id="svgFlow" viewBox="0 0 1340 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ WHAT IS AN INDEX ══ -->
+<div class="sec">② What Is an Inflation Index?</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-lbl">Concept</div>
+    <h3>📊 Index = Change Over Time</h3>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n" style="color:var(--blue);">100</div>
+        <div class="stat-s">Base Year</div>
+        <div class="stat-l">STARTING POINT</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--green);">110</div>
+        <div class="stat-s">After +10%</div>
+        <div class="stat-l">PRICE RISE</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--amber);">115.5</div>
+        <div class="stat-s">After +5% more</div>
+        <div class="stat-l">COMPOUNDING</div>
+      </div>
+    </div>
+    <div class="ichain" style="margin-top:10px;">
+      <div class="ic-n" style="border-color:var(--blue);background:var(--blue-lt);color:var(--blue);">Base = 100</div>
+      <div class="ic-a">→</div>
+      <div class="ic-n" style="border-color:var(--green);background:var(--green-lt);color:var(--green);">Prices Rise</div>
+      <div class="ic-a">→</div>
+      <div class="ic-n" style="border-color:var(--amber);background:var(--gold-lt);color:var(--amber);">Index > 100</div>
+      <div class="ic-a">→</div>
+      <div class="ic-n" style="border-color:var(--red);background:var(--red-lt);color:var(--red);">Inflation %</div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-lbl">India's 3 Key Indices</div>
+    <h3>🇮🇳 Inflation Measures in India</h3>
+    <div class="scard c2" style="margin-bottom:0;border-radius:12px;">
+      <svg id="svgThree" viewBox="0 0 600 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+    </div>
+  </div>
+</div>
+
+<!-- ══ THE 3 INDICES DETAILED ══ -->
+<div class="sec">③ The 3 Inflation Indices — Detailed</div>
+<div class="scard c2" style="margin-bottom:20px;">
+  <svg id="svgThreeDetail" viewBox="0 0 1340 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <!-- CPI -->
+  <div class="pc blue">
+    <div class="pc-lbl">Consumer Price Index</div>
+    <h3>🛒 CPI</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vt">Measures retail-level prices</div>
+        <div class="vs">Final consumer price changes</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Published by NSO (Monthly)</div>
+        <div class="vs">National Statistical Office</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Base Year: 2011–12</div>
+        <div class="vs">Food weight ≈ 46% (very high)</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="pill blue">Retail Level</span>
+      <span class="pill green">Includes Services</span>
+      <span class="pill green">Includes Imports</span>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(26,61,124,0.07);border-radius:8px;border:1.5px dashed rgba(26,61,124,0.3);">
+      <span style="font-size:10px;font-weight:800;color:var(--blue);">⭐ RBI uses CPI (Combined) for inflation targeting</span>
+    </div>
+    <div style="margin-top:10px;"><div class="pc-lbl" style="margin-bottom:5px;">Types of CPI</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">
+        <span class="pill blue">IW · Industrial Workers</span>
+        <span class="pill blue">AL · Agri Labourers</span>
+        <span class="pill blue">RL · Rural Labourers</span>
+        <span class="pill blue">Rural</span>
+        <span class="pill blue">Urban</span>
+        <span class="pill blue">Combined ⭐</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WPI -->
+  <div class="pc gold">
+    <div class="pc-lbl">Wholesale Price Index</div>
+    <h3>🏭 WPI</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vt">Measures wholesale/bulk prices</div>
+        <div class="vs">Producer/factory gate level</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Published by OEA (Monthly)</div>
+        <div class="vs">Under Ministry of Commerce & Industry</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Base Year: 2011–12</div>
+        <div class="vs">Excludes retail margin & transport</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="pill gold">Wholesale Level</span>
+      <span class="chip no">No Services</span>
+      <span class="pill green">Includes Imports</span>
+    </div>
+    <div style="margin-top:10px;"><div class="pc-lbl" style="margin-bottom:5px;">Major Groups (WPI)</div>
+      <div class="bar-wrap">
+        <div class="bar-item">
+          <div class="bar-lbl">Manufactured</div>
+          <div class="bar-track"><div class="bar-fill" style="width:64%;background:linear-gradient(90deg,var(--amber),var(--gold));">64%</div></div>
+          <div class="bar-val" style="color:var(--amber);">64%</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-lbl">Primary Articles</div>
+          <div class="bar-track"><div class="bar-fill" style="width:22%;background:var(--green);">22%</div></div>
+          <div class="bar-val" style="color:var(--green);">22%</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-lbl">Fuel & Power</div>
+          <div class="bar-track"><div class="bar-fill" style="width:14%;background:var(--red);">13%</div></div>
+          <div class="bar-val" style="color:var(--red);">13%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GDP Deflator -->
+  <div class="pc green">
+    <div class="pc-lbl">GDP Deflator</div>
+    <h3>📐 GDP Deflator</h3>
+    <div style="padding:14px;border-radius:11px;background:rgba(26,102,64,0.07);border:2px dashed rgba(26,102,64,0.25);text-align:center;margin-bottom:12px;">
+      <div style="font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--green);">Nominal GDP</div>
+      <div style="font-size:18px;color:var(--muted);margin:2px 0;">────────────</div>
+      <div style="font-family:'Lora',serif;font-size:20px;font-weight:700;color:var(--teal);">Real GDP</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:5px;">= GDP DEFLATOR</div>
+    </div>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vt">Economy-wide price change</div>
+        <div class="vs">All goods & services produced</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Published by NSO (Quarterly)</div>
+        <div class="vs">Derived from GDP data</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Weights change automatically</div>
+        <div class="vs">Not fixed like CPI/WPI</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="pill green">Entire Economy</span>
+      <span class="pill green">Includes Services</span>
+      <span class="chip no">Excludes Imports</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ KEY DIFFERENCES ══ -->
+<div class="sec">④ Key Differences (Very Important for Prelims)</div>
+
+<div class="scard c3" style="margin-bottom:16px;">
+  <svg id="svgDiff" viewBox="0 0 1340 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc red" style="margin-bottom:20px;">
+  <div class="pc-lbl">⚖️ Feature Comparison Table — UPSC Must-Know</div>
+  <h3>📋 CPI vs WPI vs GDP Deflator</h3>
+  <div style="overflow-x:auto;">
+    <table class="ctbl">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>🛒 CPI</th>
+          <th>🏭 WPI</th>
+          <th>📐 GDP Deflator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Level</td>
+          <td>Retail</td>
+          <td>Wholesale</td>
+          <td>Entire Economy</td>
+        </tr>
+        <tr>
+          <td>Includes Services?</td>
+          <td><span class="yes">YES</span></td>
+          <td><span class="no2">NO</span></td>
+          <td><span class="yes">YES</span></td>
+        </tr>
+        <tr>
+          <td>Includes Imports?</td>
+          <td><span class="yes">YES</span></td>
+          <td><span class="yes">YES</span></td>
+          <td><span class="no2">NO</span></td>
+        </tr>
+        <tr>
+          <td>Weights</td>
+          <td><span class="var">FIXED</span></td>
+          <td><span class="var">FIXED</span></td>
+          <td><span class="var">VARIABLE</span></td>
+        </tr>
+        <tr>
+          <td>Published by</td>
+          <td>NSO (Monthly)</td>
+          <td>OEA, MoCI (Monthly)</td>
+          <td>NSO (Quarterly)</td>
+        </tr>
+        <tr>
+          <td>Base Year</td>
+          <td>2011–12</td>
+          <td>2011–12</td>
+          <td>Derived from GDP</td>
+        </tr>
+        <tr>
+          <td>Used by RBI?</td>
+          <td><span class="yes">⭐ YES</span></td>
+          <td><span class="no2">NO</span></td>
+          <td><span class="no2">NO</span></td>
+        </tr>
+        <tr>
+          <td>Measures</td>
+          <td>Consumer inflation</td>
+          <td>Producer inflation</td>
+          <td>Economy-wide inflation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ HOW THEY CONNECT ══ -->
+<div class="sec">⑤ How They Connect</div>
+
+<div class="scard c4" style="margin-bottom:16px;">
+  <svg id="svgConnect" viewBox="0 0 1340 170" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-lbl">CPI → Consumer</div>
+    <h3>🛒 Consumer Inflation</h3>
+    <div class="ichain">
+      <div class="ic-n" style="border-color:var(--blue);background:var(--blue-lt);color:var(--blue);">Retail Price</div>
+      <div class="ic-a">→</div>
+      <div class="ic-n" style="border-color:var(--blue);background:var(--blue-lt);color:var(--blue);">CPI Rises</div>
+      <div class="ic-a">→</div>
+      <div class="ic-n" style="border-color:var(--red);background:var(--red-lt);color:var(--red);">RBI Reacts</div>
+    </div>
+    <div style="padding:9px 12px;border-radius:8px;background:var(--blue-lt);border:1px solid rgba(26,61,124,0.2);font-size:11px;margin-top:8px;">
+      <strong>RBI inflation target:</strong> 4% ± 2 (CPI-based)
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-lbl">WPI → Producer</div>
+    <h3>🏭 Producer Inflation</h3>
+    <div class="ichain">
+      <div class="ic-n" style="border-color:var(--amber);background:var(--gold-lt);color:var(--amber);">Factory Gate</div>
+      <div class="ic-a">→</div>
+      <div class="ic-n" style="border-color:var(--amber);background:var(--gold-lt);color:var(--amber);">WPI Rises</div>
+      <div class="ic-a">→</div>
+      <div class="ic-n" style="border-color:var(--gold);background:var(--gold-lt);color:var(--gold);">Future CPI ↑</div>
+    </div>
+    <div style="padding:9px 12px;border-radius:8px;background:var(--gold-lt);border:1px solid rgba(196,122,21,0.2);font-size:11px;margin-top:8px;">
+      <strong>Leading indicator</strong> for future CPI movement
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-lbl">GDP Deflator → Economy</div>
+    <h3>📐 Economy-wide Inflation</h3>
+    <div class="ichain">
+      <div class="ic-n" style="border-color:var(--green);background:var(--green-lt);color:var(--green);">Nominal GDP</div>
+      <div class="ic-a">÷</div>
+      <div class="ic-n" style="border-color:var(--teal);background:var(--teal-lt);color:var(--teal);">Real GDP</div>
+      <div class="ic-a">=</div>
+      <div class="ic-n" style="border-color:var(--green);background:var(--green-lt);color:var(--green);">Deflator</div>
+    </div>
+    <div style="padding:9px 12px;border-radius:8px;background:var(--green-lt);border:1px solid rgba(26,102,64,0.2);font-size:11px;margin-top:8px;">
+      <strong>Broadest measure</strong> — covers entire production
+    </div>
+  </div>
+</div>
+
+<!-- ══ HIGH PROBABILITY PRELIMS ══ -->
+<div class="sec">⑥ High Probability Prelims Points</div>
+
+<div class="scard c3" style="margin-bottom:16px;">
+  <svg id="svgPrelims" viewBox="0 0 1340 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc purple">
+    <div class="pc-lbl">Must Know Facts</div>
+    <h3>🎯 Prelims Quick Facts</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">⭐ RBI targets CPI, not WPI</div><div class="vs">Monetary Policy Framework (2016)</div></div>
+      <div class="vi"><div class="vt">⭐ WPI excludes services</div><div class="vs">Only goods — no retail, no transport</div></div>
+      <div class="vi"><div class="vt">⭐ GDP Deflator excludes imports</div><div class="vs">Only domestically produced goods counted</div></div>
+      <div class="vi"><div class="vt">⭐ CPI food weight ≈ 46%</div><div class="vs">Food & beverages dominate basket</div></div>
+      <div class="vi"><div class="vt">⭐ Both CPI & WPI base year = 2011–12</div><div class="vs">Revised from 2004–05</div></div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-lbl">Publisher Quick Reference</div>
+    <h3>🏛️ Who Publishes What</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span style="font-size:20px;">🛒</span>
+          <div><div class="vt">CPI → NSO (Monthly)</div><div class="vs">National Statistical Office</div></div>
+        </div>
+      </div>
+      <div class="vi">
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span style="font-size:20px;">🏭</span>
+          <div><div class="vt">WPI → OEA / MoCI (Monthly)</div><div class="vs">Office of Econ. Adviser, Ministry of Commerce</div></div>
+        </div>
+      </div>
+      <div class="vi">
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span style="font-size:20px;">📐</span>
+          <div><div class="vt">GDP Deflator → NSO (Quarterly)</div><div class="vs">Derived during GDP release</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:rgba(10,88,104,0.07);border-radius:8px;border:1.5px dashed rgba(10,88,104,0.3);">
+      <span style="font-size:10px;font-weight:800;color:var(--teal);">Formula: GDP Deflator = Nominal GDP ÷ Real GDP</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MEMORY TRICK ══ -->
+<div class="sec">⑦ Quick Memory Trick</div>
+
+<div class="mem">
+  <div class="mem-title">🧠 CWD — Consumer · Wholesale · Deflator</div>
+  <div class="mem-row">
+    <div class="mem-card" style="background:var(--blue-lt);border:2px solid rgba(26,61,124,0.2);">
+      <div class="mc-e">🛒</div>
+      <div class="mc-w" style="color:var(--blue);">C</div>
+      <div class="mc-d" style="color:var(--blue);">Customer / Consumer</div>
+      <div class="mc-s">Retail level · RBI's tool</div>
+    </div>
+    <div class="mem-card" style="background:var(--gold-lt);border:2px solid rgba(196,122,21,0.2);">
+      <div class="mc-e">🏭</div>
+      <div class="mc-w" style="color:var(--amber);">W</div>
+      <div class="mc-d" style="color:var(--amber);">Wholesale / Factory</div>
+      <div class="mc-s">Bulk level · No services</div>
+    </div>
+    <div class="mem-card" style="background:var(--green-lt);border:2px solid rgba(26,102,64,0.2);">
+      <div class="mc-e">📐</div>
+      <div class="mc-w" style="color:var(--green);">D</div>
+      <div class="mc-d" style="color:var(--green);">Deflates Nominal → Real</div>
+      <div class="mc-s">Entire economy · Variable weights</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ KEYSTONE ══ -->
+<div class="keystone" style="margin-top:24px;">
+  <div class="ks-icon">🎯</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea</div>
+    <div class="ks-sub">All three indices measure inflation — but at <strong style="color:#f5d78a;">different points in the supply chain</strong>. CPI = what consumers pay. WPI = what producers receive. GDP Deflator = how the entire economy's prices moved. RBI uses CPI because it directly impacts <strong style="color:#f5d78a;">people's cost of living</strong>.</div>
+    <div class="ks-pills">
+      <span class="kp">🛒 CPI = Retail</span>
+      <span class="kp">🏭 WPI = Wholesale</span>
+      <span class="kp">📐 Deflator = Economy</span>
+      <span class="kp">⭐ RBI → CPI</span>
+      <span class="kp">📅 Both Base = 2011-12</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#ccc','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?9:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14+1,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.52)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+function infoNode(svg,x,y,w,h,fillBg,borderColor,lines,sub,textInk,rx){
+  rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill:fillBg,stroke:borderColor,'stroke-width':'1.8'}));
+  let ty=y-((lines.length-1)*7)-(sub?5:0);
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:textInk||'#1a1610'});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14+1,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'JetBrains Mono,monospace',fill:'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgFlow');
+  svg.setAttribute('viewBox','0 0 1340 110');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:110,fill:'rgba(247,245,240,0.4)'}));
+  const steps=[
+    {x:80,  fill:'#1a3d7c', label:['What is', 'Inflation Index?'], sub:'Base year = 100', emoji:'📊'},
+    {x:255, fill:'#c47a15', label:['CPI', 'Consumer'], sub:'Retail · NSO · RBI Target', emoji:'🛒'},
+    {x:430, fill:'#e06b10', label:['WPI', 'Wholesale'], sub:'Factory gate · MoCI', emoji:'🏭'},
+    {x:605, fill:'#1a6640', label:['GDP Deflator', 'Economy-wide'], sub:'Nominal÷Real · NSO', emoji:'📐'},
+    {x:780, fill:'#5a1a8a', label:['Key', 'Differences'], sub:'Level · Services · Imports', emoji:'⚖️'},
+    {x:955, fill:'#0a5868', label:['How They', 'Connect'], sub:'Supply chain levels', emoji:'🔁'},
+    {x:1130,fill:'#b01818', label:['Prelims', 'High Points'], sub:'RBI·Weights·Publisher', emoji:'🎯'},
+    {x:1280,fill:'#1a3d7c', label:['Memory', 'Trick'], sub:'C·W·D', emoji:'🧠'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1)edge(svg,s.x+68,55,steps[i+1].x-68,55,'#c47a1566',false,2);
+  });
+  steps.forEach(s=>node(svg,s.x,55,128,70,s.fill,s.label,s.sub,s.emoji));
+  const t=se('text',{x:670,y:14,'text-anchor':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace','letter-spacing':'3',fill:'rgba(100,80,50,0.4)'});
+  t.textContent='MASTER FLOW: INFLATION INDICES · INDIA · UPSC PRELIMS';
+  svg.appendChild(t);
+})();
+
+// ─── THREE INDICES small ───
+(function(){
+  const svg=document.getElementById('svgThree');
+  svg.setAttribute('viewBox','0 0 600 140');
+  node(svg,300,70,140,50,'#12100e',['India\'s 3','Inflation Indices'],'CPI · WPI · Deflator','🇮🇳','#f5e8c0');
+  const items=[
+    {x:80,y:45,fill:'#1a3d7c',label:['CPI'],sub:'Consumer',emoji:'🛒'},
+    {x:80,y:100,fill:'#e06b10',label:['WPI'],sub:'Wholesale',emoji:'🏭'},
+    {x:520,y:70,fill:'#1a6640',label:['GDP','Deflator'],sub:'Economy',emoji:'📐'},
+  ];
+  items.forEach(n=>{
+    const fx=n.x<300?230:370, fy=n.y;
+    edge(svg,fx,70,n.x+(n.x<300?55:-55),fy,'#c47a1555',true,1.8);
+    node(svg,n.x,n.y,100,44,n.fill,[n.label[0],n.label[1]||''],n.sub,n.emoji);
+  });
+})();
+
+// ─── THREE INDICES DETAIL (Radial) ───
+(function(){
+  const svg=document.getElementById('svgThreeDetail');
+  svg.setAttribute('viewBox','0 0 1340 300');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:300,fill:'rgba(247,245,240,0.3)'}));
+
+  node(svg,670,150,180,60,'#12100e',['CPI vs WPI','vs GDP Deflator'],'3 Levels of Price Measurement','📊','#f5e8c0');
+
+  // CPI cluster (left)
+  const cpiRoot={x:220,y:80,fill:'#1a3d7c',label:['CPI'],sub:'Retail Level'};
+  edge(svg,580,150,cpiRoot.x+65,cpiRoot.y,'#1a3d7c55',true,2);
+  node(svg,cpiRoot.x,cpiRoot.y,120,50,cpiRoot.fill,[cpiRoot.label[0]],cpiRoot.sub,'🛒');
+  const cpiChildren=[
+    {x:80,y:50,label:'Retail prices',sub:'Final consumer'},
+    {x:80,y:110,label:'NSO · Monthly',sub:'Publisher'},
+    {x:80,y:170,label:'Base 2011–12',sub:'Food wt 46%'},
+    {x:220,y:230,label:'RBI Target ⭐',sub:'CPI-Combined'},
+    {x:360,y:240,label:'6 Types (IW,AL,RL…)',sub:'Various series'},
+  ];
+  cpiChildren.forEach(c=>{
+    const fx=c.x<220?cpiRoot.x-55:cpiRoot.x+(c.x>250?55:0), fy=c.y<150?cpiRoot.y+25:cpiRoot.y+(c.y>220?25:0);
+    edge(svg,fx,fy,c.x+(c.x<200?72:c.x>300?-72:0),c.y,'#1a3d7c44',true,1.5);
+    infoNode(svg,c.x,c.y,130,36,`rgba(26,61,124,0.07)`,'rgba(26,61,124,0.2)',[c.label],c.sub,'#1a3d7c');
+  });
+
+  // WPI cluster (right)
+  const wpiRoot={x:1120,y:80,fill:'#e06b10',label:['WPI'],sub:'Wholesale Level'};
+  edge(svg,760,150,wpiRoot.x-65,wpiRoot.y,'#e06b1055',true,2);
+  node(svg,wpiRoot.x,wpiRoot.y,120,50,wpiRoot.fill,[wpiRoot.label[0]],wpiRoot.sub,'🏭');
+  const wpiChildren=[
+    {x:1260,y:50,label:'Wholesale prices',sub:'Factory gate'},
+    {x:1260,y:110,label:'MoCI · Monthly',sub:'OEA publishes'},
+    {x:1260,y:170,label:'No services',sub:'Goods only'},
+    {x:1120,y:230,label:'64% Mfg · 22% Prim',sub:'Major groups'},
+    {x:980,y:240,label:'Includes imports',sub:'Not retail margin'},
+  ];
+  wpiChildren.forEach(c=>{
+    const fx=c.x>1120?wpiRoot.x+55:wpiRoot.x-(c.x<1050?55:0), fy=c.y<150?wpiRoot.y+25:wpiRoot.y+(c.y>220?25:0);
+    edge(svg,fx,fy,c.x+(c.x>1200?-72:c.x<1050?72:0),c.y,'#e06b1044',true,1.5);
+    infoNode(svg,c.x,c.y,134,36,`rgba(224,107,16,0.07)`,'rgba(224,107,16,0.2)',[c.label],c.sub,'#b05010');
+  });
+
+  // GDP Deflator (bottom center)
+  const defRoot={x:670,y:255,fill:'#1a6640',label:['GDP Deflator'],sub:'Economy-wide'};
+  edge(svg,670,180,670,defRoot.y-25,'#1a664055',true,2);
+  node(svg,defRoot.x,defRoot.y,155,50,defRoot.fill,[defRoot.label[0]],defRoot.sub,'📐');
+
+  const t=se('text',{x:670,y:16,'text-anchor':'middle','font-size':'9','font-family':'JetBrains Mono,monospace','letter-spacing':'3',fill:'rgba(100,80,50,0.4)'});
+  t.textContent='DETAILED ANATOMY OF ALL 3 INFLATION INDICES';
+  svg.appendChild(t);
+})();
+
+// ─── DIFF: Visual comparison bars ───
+(function(){
+  const svg=document.getElementById('svgDiff');
+  svg.setAttribute('viewBox','0 0 1340 190');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:190,fill:'rgba(247,245,240,0.3)'}));
+
+  const categories=[
+    {label:'Level',     cpi:'Retail',     wpi:'Wholesale', def:'Entire Econ.'},
+    {label:'Services?', cpi:'✓ YES',       wpi:'✗ NO',       def:'✓ YES'},
+    {label:'Imports?',  cpi:'✓ YES',       wpi:'✓ YES',       def:'✗ NO'},
+    {label:'Weights',   cpi:'Fixed',       wpi:'Fixed',       def:'Variable'},
+    {label:'RBI Use?',  cpi:'⭐ YES',       wpi:'✗ NO',       def:'✗ NO'},
+  ];
+
+  // Headers
+  const hdrs=[{x:330,label:'🛒 CPI',col:'#1a3d7c'},{x:660,label:'🏭 WPI',col:'#e06b10'},{x:990,label:'📐 GDP Deflator',col:'#1a6640'}];
+  hdrs.forEach(h=>{
+    svg.appendChild(se('rect',{x:h.x-155,y:15,width:310,height:28,rx:7,fill:h.col}));
+    const t=se('text',{x:h.x,y:29,'text-anchor':'middle','dominant-baseline':'middle','font-size':'12','font-weight':'800','font-family':'Nunito,sans-serif',fill:'#fff'});
+    t.textContent=h.label;svg.appendChild(t);
+  });
+
+  categories.forEach((cat,ri)=>{
+    const y=60+ri*26;
+    const rowBg=ri%2===0?'rgba(196,122,21,0.03)':'transparent';
+    svg.appendChild(se('rect',{x:0,y:y-11,width:1340,height:26,fill:rowBg}));
+    const lt=se('text',{x:110,y,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'800','font-family':'Nunito,sans-serif',fill:'#1a1610'});
+    lt.textContent=cat.label;svg.appendChild(lt);
+    const vals=[{x:330,v:cat.cpi,ok:cat.cpi.includes('YES')||cat.cpi.includes('⭐'),bad:cat.cpi.includes('NO')},
+                {x:660,v:cat.wpi,ok:cat.wpi.includes('YES')||cat.wpi.includes('⭐'),bad:cat.wpi.includes('NO')},
+                {x:990,v:cat.def,ok:cat.def.includes('YES')||cat.def.includes('⭐'),bad:cat.def.includes('NO')}];
+    vals.forEach(v=>{
+      const bg=v.ok?'rgba(26,102,64,0.1)':v.bad?'rgba(176,24,24,0.1)':'rgba(196,122,21,0.09)';
+      const tc=v.ok?'#1a6640':v.bad?'#b01818':'#7a4010';
+      svg.appendChild(se('rect',{x:v.x-145,y:y-11,width:290,height:24,rx:5,fill:bg}));
+      const vt=se('text',{x:v.x,y,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:tc});
+      vt.textContent=v.v;svg.appendChild(vt);
+    });
+  });
+
+  // category label
+  svg.appendChild(se('rect',{x:0,y:15,width:220,height:160,fill:'rgba(247,245,240,0.0)'}));
+  const lt=se('text',{x:110,y:29,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'800','font-family':'JetBrains Mono,monospace',fill:'#8a7a60','letter-spacing':'1'});
+  lt.textContent='FEATURE'; svg.appendChild(lt);
+})();
+
+// ─── CONNECT ───
+(function(){
+  const svg=document.getElementById('svgConnect');
+  svg.setAttribute('viewBox','0 0 1340 170');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:170,fill:'rgba(247,245,240,0.3)'}));
+
+  // Three separate chains
+  const chains=[
+    {y:40, label:'CPI → Consumer Inflation', color:'#1a3d7c', nodes:['Retail Market','Price Change','CPI Computed','NSO Reports','RBI Reacts','Policy Rate ±']},
+    {y:85, label:'WPI → Producer Inflation', color:'#e06b10', nodes:['Factory Gate','Price Change','WPI Computed','MoCI Reports','Leading Signal','Future CPI ↑']},
+    {y:130,label:'Nominal÷Real → GDP Deflator',color:'#1a6640', nodes:['Nominal GDP','Real GDP','Divide Both','Deflator = Ratio','Economy-wide','NSO Quarterly']},
+  ];
+
+  chains.forEach(ch=>{
+    const lt=se('text',{x:10,y:ch.y,'text-anchor':'start','dominant-baseline':'middle','font-size':'9','font-weight':'700','font-family':'JetBrains Mono,monospace',fill:ch.color,'letter-spacing':'1'});
+    lt.textContent=ch.label; svg.appendChild(lt);
+    const startX=270;
+    ch.nodes.forEach((n,i)=>{
+      const nx=startX+i*176;
+      if(i<ch.nodes.length-1){
+        const arr=se('path',{d:`M${nx+68},${ch.y} L${nx+78},${ch.y}`,stroke:ch.color,'stroke-width':'2',fill:'none'});
+        svg.appendChild(arr);
+        const atip=se('text',{x:nx+80,y:ch.y,'text-anchor':'start','dominant-baseline':'middle','font-size':'12',fill:ch.color});
+        atip.textContent='→'; svg.appendChild(atip);
+      }
+      svg.appendChild(se('rect',{x:nx,y:ch.y-16,width:136,height:32,rx:7,fill:`rgba(${ch.color==='#1a3d7c'?'26,61,124':ch.color==='#e06b10'?'224,107,16':'26,102,64'},0.1)`,stroke:ch.color,'stroke-width':'1.5'}));
+      const nt=se('text',{x:nx+68,y:ch.y,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'700','font-family':'Nunito,sans-serif',fill:ch.color});
+      nt.textContent=n; svg.appendChild(nt);
+    });
+  });
+})();
+
+// ─── PRELIMS MAP ───
+(function(){
+  const svg=document.getElementById('svgPrelims');
+  svg.setAttribute('viewBox','0 0 1340 160');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:160,fill:'rgba(247,245,240,0.3)'}));
+
+  node(svg,670,80,200,56,'#5a1a8a',['🎯 Prelims','High-Prob Points'],'UPSC Tricky Areas','','#fff');
+
+  const pts=[
+    {x:80,  y:50, fill:'#1a3d7c', label:['RBI uses CPI'], sub:'NOT WPI', emoji:'⭐'},
+    {x:250, y:30, fill:'#b01818', label:['WPI: No Services'], sub:'Goods only', emoji:'❌'},
+    {x:430, y:50, fill:'#1a6640', label:['Deflator: No Imports'], sub:'Domestic only', emoji:'🚫'},
+    {x:80,  y:125,fill:'#e06b10', label:['CPI Food Wt 46%'], sub:'Very high weight', emoji:'🍎'},
+    {x:250, y:140,fill:'#c47a15', label:['Base = 2011–12'], sub:'Both CPI & WPI', emoji:'📅'},
+    {x:910, y:50, fill:'#1a3d7c', label:['NSO→CPI & Deflator'], sub:'Publisher', emoji:'🏛️'},
+    {x:1090,y:30, fill:'#e06b10', label:['MoCI / OEA → WPI'], sub:'Publisher', emoji:'🏭'},
+    {x:1260,y:50, fill:'#1a6640', label:['Deflator=Nom÷Real'], sub:'Formula', emoji:'📐'},
+    {x:1090,y:140,fill:'#5a1a8a', label:['GDP Deflator Qtrly'], sub:'Not monthly', emoji:'📆'},
+    {x:910, y:125,fill:'#0a5868', label:['WPI: Fixed Weights'], sub:'Like CPI', emoji:'⚖️'},
+  ];
+
+  pts.forEach(n=>{
+    const fx=n.x<670?582:758;
+    edge(svg,fx,80,n.x+(n.x<670?78:-78),n.y,'#c47a1544',true,1.6);
+    node(svg,n.x,n.y,148,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+})();
+</script>
+</body>
+</html>

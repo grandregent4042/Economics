@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GDP Concepts — Mind Map for UPSC</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0d0b; --paper:#f7f4ee; --gold:#b87c10; --gold-lt:#f5d78a;
+  --amber:#d46a10; --green:#1a6a3a; --blue:#1a3a8a; --purple:#5a1a8a;
+  --teal:#0a6070; --red:#b01a1a; --muted:#7a6a50; --border:#ddd0b0;
+  --card:#fffdf5; --card2:#f2ede0; --sky:#1a5878; --olive:#5a6a10;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 10% 5%, rgba(184,124,16,0.07) 0%, transparent 60%),
+  radial-gradient(ellipse 700px 700px at 90% 95%, rgba(26,58,138,0.05) 0%, transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,52px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.olive::before{background:var(--olive);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+.pill.olive{background:rgba(90,106,16,0.12);color:var(--olive);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.ps-chip.info{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+
+/* FEAT BOXES */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* VERTICAL LIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:18px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* FORMULA BOX */
+.formula{background:rgba(26,58,138,0.05);border:2px solid rgba(26,58,138,0.2);border-radius:12px;padding:14px 18px;margin:10px 0;text-align:center;}
+.formula-eq{font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--blue);line-height:1.8;}
+.formula-label{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;margin-top:4px;}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+.callout.warn{background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.2);}
+.callout.warn .callout-title{color:var(--red);}
+.callout.info{background:rgba(26,58,138,0.06);border-color:rgba(26,58,138,0.2);}
+.callout.info .callout-title{color:var(--blue);}
+.callout.gold{background:rgba(184,124,16,0.06);border-color:rgba(184,124,16,0.2);}
+.callout.gold .callout-title{color:var(--gold);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.4px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Economy · Macroeconomics · UPSC Prelims</div>
+  <h1>GDP Concepts — <em>Mind Map</em></h1>
+  <div class="header-sub">GDP · GNP · NNP · Real vs Nominal · Potential GDP · Business Cycle</div>
+</div>
+
+<!-- ══════════ MASTER FLOW ══════════ -->
+<div class="sec-label">Master Flow — Three Layers of Adjustment</div>
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1360 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══════════ SECTION 1: GDP vs GNP ══════════ -->
+<div class="sec-label">① GDP vs GNP — Domestic Territory vs National Residents</div>
+
+<div class="map-card mc2">
+  <svg id="svgGDPGNP" viewBox="0 0 1360 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">GDP — Domestic Territory</div>
+    <h3>🏭 Gross Domestic Product</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">✅ Includes — Foreigners working in India</div><div class="vs">e.g. American working in Delhi → in GDP</div></div>
+      <div class="vitem"><div class="vt">❌ Excludes — Indians working abroad</div><div class="vs">e.g. Indian engineer in USA → NOT in GDP</div></div>
+    </div>
+    <div class="callout info" style="margin-top:10px;">
+      <div class="callout-title">📌 Key Rule</div>
+      <div class="callout-body">GDP = Production WITHIN India's borders regardless of who produces</div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill blue">Territorial basis</span>
+      <span class="pill blue">All producers on soil</span>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-label">GNP — National Residents</div>
+    <h3>🌍 Gross National Product</h3>
+    <div class="formula">
+      <div class="formula-eq">GNP = GDP + NFIA</div>
+      <div class="formula-label">NET FACTOR INCOME FROM ABROAD</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">✅ Includes — Indians working abroad</div><div class="vs">e.g. Indian in USA salary → in GNP</div></div>
+      <div class="vitem"><div class="vt">❌ Excludes — Foreigners working in India</div><div class="vs">Their income leaves country</div></div>
+    </div>
+    <div class="callout gold" style="margin-top:10px;">
+      <div class="callout-title">GNP = GNI (Gross National Income)</div>
+      <div class="callout-body">Both terms mean the same — used interchangeably in UPSC</div>
+    </div>
+  </div>
+</div>
+
+<div class="pc teal" style="margin-bottom:20px;">
+  <div class="pc-label">NFIA — Net Factor Income from Abroad (Very Important)</div>
+  <h3>🔄 What is NFIA?</h3>
+  <div class="g2" style="margin-bottom:0;">
+    <div>
+      <div class="formula">
+        <div class="formula-eq">NFIA = Income by Indians Abroad<br>− Income by Foreigners in India</div>
+        <div class="formula-label">ONLY FACTOR INCOME COUNTED</div>
+      </div>
+      <div class="vlist">
+        <div class="vitem" style="border-color:rgba(26,106,58,0.3)"><div class="vt" style="color:var(--green);">✅ Factor Income — INCLUDED</div><div class="vs">Wages, Rent, Interest, Profit</div></div>
+        <div class="vitem" style="border-color:rgba(176,26,26,0.3)"><div class="vt" style="color:var(--red);">❌ Transfer Payments — NOT INCLUDED</div><div class="vs">Remittances, gifts, pensions</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="callout warn">
+        <div class="callout-title">⚠️ Classic UPSC Trap — Remittances</div>
+        <div class="callout-body">NRI sends ₹1 lakh home to family → This is NOT factor income → NOT counted in NFIA<br><br>NRI's <strong>salary</strong> earned in USA → This IS factor income → Counted in NFIA</div>
+      </div>
+      <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+        <span class="pill teal">Wages ✅</span>
+        <span class="pill teal">Rent ✅</span>
+        <span class="pill teal">Interest ✅</span>
+        <span class="pill teal">Profit ✅</span>
+        <span class="pill red">Remittance ❌</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 2: GROSS vs NET ══════════ -->
+<div class="sec-label">② Gross vs Net — The Depreciation Adjustment</div>
+
+<div class="map-card mc3">
+  <svg id="svgDepreciation" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc amber">
+    <div class="pc-label">Depreciation Concept</div>
+    <h3>⚙️ Gross → Net via Depreciation</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">What is Depreciation?</div><div class="vs">Wear & tear of capital — machines, equipment, buildings over time</div></div>
+      <div class="vitem"><div class="vt">Why subtract it?</div><div class="vs">Gross figures count capital that is wearing out; Net = actual addition to economy</div></div>
+    </div>
+    <div class="formula" style="border-color:rgba(212,106,16,0.3);background:rgba(212,106,16,0.05);">
+      <div class="formula-eq" style="color:var(--amber);">NDP = GDP − Depreciation<br>NNP = GNP − Depreciation</div>
+    </div>
+    <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;">
+      <span class="pill amber">GNP = GNI</span>
+      <span class="pill amber">NNP = NNI</span>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">National Income — Key Definition</div>
+    <h3>🇮🇳 What is "National Income"?</h3>
+    <div class="callout warn">
+      <div class="callout-title">⚠️ UPSC Specific — Must Remember</div>
+      <div class="callout-body">"National Income" officially refers to <strong>NNP at Factor Cost</strong><br>Not GDP. Not GNP. Specifically NNP at FC.</div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Step 1: Start with GNP</div><div class="vs">Total national income gross</div></div>
+      <div class="vitem"><div class="vt">Step 2: Subtract Depreciation → NNP</div><div class="vs">Remove worn-out capital</div></div>
+      <div class="vitem"><div class="vt">Step 3: Adjust to Factor Cost → NI</div><div class="vs">Remove indirect taxes, add subsidies</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 3: MARKET PRICE vs FACTOR COST ══════════ -->
+<div class="sec-label">③ Market Price vs Factor Cost — Tax & Subsidy Adjustment</div>
+
+<div class="map-card mc4">
+  <svg id="svgMPFC" viewBox="0 0 1360 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Factor Cost</div>
+    <h3>🏭 What Producers Actually Earn</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Definition</div><div class="vs">Income received by factors of production — wages, rent, interest, profit</div></div>
+      <div class="vitem"><div class="vt">Example</div><div class="vs">Producer wants ₹100 for effort → Factor Cost = ₹100</div></div>
+    </div>
+    <div class="formula" style="border-color:rgba(26,106,58,0.3);background:rgba(26,106,58,0.04);">
+      <div class="formula-eq" style="color:var(--green);">FC = MP − (Indirect Taxes − Subsidies)</div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Market Price</div>
+    <h3>🏪 What Consumers Pay</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Definition</div><div class="vs">Price paid in market — includes taxes, reflects subsidies</div></div>
+      <div class="vitem"><div class="vt">Example</div><div class="vs">FC=₹100 + Tax=₹10 → Market Price = ₹110</div></div>
+    </div>
+    <div class="formula" style="border-color:rgba(90,26,138,0.3);background:rgba(90,26,138,0.04);">
+      <div class="formula-eq" style="color:var(--purple);">MP = FC + Indirect Taxes − Subsidies</div>
+    </div>
+    <div class="callout info" style="margin-top:8px;">
+      <div class="callout-title">🇮🇳 India uses GDP at Market Price</div>
+      <div class="callout-body">Since <strong>January 2015</strong>, India measures GDP at Market Price (not Factor Cost). Base year = 2011–12</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 4: FULL MACRO CHAIN ══════════ -->
+<div class="sec-label">④ Full Macro Chain — The Complete Conversion Map</div>
+
+<div class="map-card mc1">
+  <svg id="svgChain" viewBox="0 0 1360 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="pc blue" style="margin-bottom:20px;">
+  <div class="pc-label">Step-by-Step Conversion Chain</div>
+  <h3>🔗 From GDP to National Income</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:10px;">
+    <div style="text-align:center;padding:12px;background:rgba(26,58,138,0.07);border-radius:10px;border:1.5px solid rgba(26,58,138,0.2);">
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:var(--blue);">GDP<sub>MP</sub></div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;">START HERE</div>
+    </div>
+    <div style="text-align:center;padding:12px;background:rgba(212,106,16,0.07);border-radius:10px;border:1.5px solid rgba(212,106,16,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--amber);">− Depreciation</div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:var(--amber);">NDP<sub>MP</sub></div>
+    </div>
+    <div style="text-align:center;padding:12px;background:rgba(10,96,112,0.07);border-radius:10px;border:1.5px solid rgba(10,96,112,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--teal);">+ NFIA</div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:var(--teal);">GNP<sub>MP</sub></div>
+    </div>
+    <div style="text-align:center;padding:12px;background:rgba(90,26,138,0.07);border-radius:10px;border:1.5px solid rgba(90,26,138,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--purple);">− Depreciation</div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:var(--purple);">NNP<sub>MP</sub></div>
+    </div>
+    <div style="text-align:center;padding:12px;background:rgba(26,106,58,0.07);border-radius:10px;border:1.5px solid rgba(26,106,58,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--green);">− (T − S)</div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:var(--green);">NNP<sub>FC</sub></div>
+      <div style="font-size:8px;font-family:'DM Mono',monospace;color:var(--green);font-weight:700;margin-top:2px;">= NATIONAL INCOME</div>
+    </div>
+  </div>
+  <div style="margin-top:8px;font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;">T = Indirect Taxes &nbsp;|&nbsp; S = Subsidies &nbsp;|&nbsp; NFIA = Net Factor Income from Abroad</div>
+</div>
+
+<!-- ══════════ SECTION 5: NOMINAL vs REAL GDP ══════════ -->
+<div class="sec-label">⑤ Nominal vs Real GDP — Price Adjustment</div>
+
+<div class="map-card mc2">
+  <svg id="svgRealNominal" viewBox="0 0 1360 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc amber">
+    <div class="pc-label">Nominal GDP</div>
+    <h3>📊 Current Year Prices</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Measures at current market prices</div><div class="vs">Includes BOTH price + quantity changes</div></div>
+      <div class="vitem"><div class="vt">Problem: Inflation inflates it</div><div class="vs">GDP rises even if production stays same — just prices rose</div></div>
+    </div>
+    <div style="margin-top:8px;padding:10px;background:rgba(212,106,16,0.06);border-radius:8px;border:1px dashed rgba(212,106,16,0.3);">
+      <div style="font-size:10px;font-weight:800;color:var(--amber);">📌 Nominal GDP growth = Real growth + Inflation</div>
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">Real GDP</div>
+    <h3>📈 Constant Base Year Prices</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Measures at base year (2011–12) prices</div><div class="vs">Removes price effect — only quantity matters</div></div>
+      <div class="vitem"><div class="vt">Used for growth rate measurement</div><div class="vs">Inflation should not be counted as growth</div></div>
+    </div>
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-title">🇮🇳 India's Base Year = 2011–12</div>
+      <div class="callout-body">Adopted since January 2015. Real GDP = true economic growth.</div>
+    </div>
+  </div>
+</div>
+
+<div class="pc sky" style="margin-bottom:20px;">
+  <div class="pc-label">GVA vs GDP — Very Important for UPSC</div>
+  <h3>🏗️ Gross Value Added Relationship</h3>
+  <div class="g2" style="margin-bottom:0;">
+    <div>
+      <div class="formula" style="border-color:rgba(26,88,120,0.3);background:rgba(26,88,120,0.05);">
+        <div class="formula-eq" style="color:var(--sky);">GDP = GVA + Product Taxes − Product Subsidies</div>
+      </div>
+      <div class="vlist" style="margin-top:8px;">
+        <div class="vitem"><div class="vt">GVA = Value created at each production stage</div><div class="vs">Farmer + Mill + Restaurant → each adds value</div></div>
+        <div class="vitem"><div class="vt">GDP at MP = GVA + Taxes on products</div><div class="vs">GST and other product taxes added at top</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="callout info">
+        <div class="callout-title">🍔 GVA Chain Example</div>
+        <div class="callout-body">
+          Farmer sells wheat = ₹100<br>
+          ITC (flour) sells = ₹500 (adds ₹400)<br>
+          Restaurant (chapati) sells = ₹1000 (adds ₹500)<br>
+          <strong>Total GVA = ₹1000</strong><br>
+          + Indirect Tax ₹100 → <strong>GDP<sub>MP</sub> = ₹1100</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 6: PER CAPITA GDP ══════════ -->
+<div class="sec-label">⑥ Per Capita GDP — Living Standards Measure</div>
+
+<div class="g2">
+  <div class="pc olive">
+    <div class="pc-label">Per Capita GDP Formula</div>
+    <h3>👤 Per Capita GDP</h3>
+    <div class="formula" style="border-color:rgba(90,106,16,0.3);background:rgba(90,106,16,0.05);">
+      <div class="formula-eq" style="color:var(--olive);">Per Capita GDP = GDP ÷ Population</div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">If GDP grows 8%, Population grows 1%</div><div class="vs">Approx: Per Capita growth ≈ 8% − 1% = 7%</div></div>
+      <div class="vitem"><div class="vt">More accurately:</div><div class="vs">1.08 / 1.01 ≈ 6.9% (UPSC may test this)</div></div>
+    </div>
+    <div class="callout warn" style="margin-top:8px;">
+      <div class="callout-title">⚠️ UPSC Tests the Approximation Logic</div>
+      <div class="callout-body">Per capita growth ≈ GDP growth − Population growth<br>Exact = (1+g)/(1+p) − 1</div>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">GDP Deflator</div>
+    <h3>📉 Nominal vs Real Relationship</h3>
+    <div class="formula" style="border-color:rgba(176,26,26,0.3);background:rgba(176,26,26,0.04);">
+      <div class="formula-eq" style="color:var(--red);">GDP Deflator = Nominal GDP / Real GDP × 100</div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Inflation ≈ Nominal growth − Real growth</div><div class="vs">If Nominal=16%, Real=11% → Inflation ≈ 5%</div></div>
+      <div class="vitem"><div class="vt">GDP Deflator = measure of economy-wide inflation</div><div class="vs">Unlike CPI which is consumer basket only</div></div>
+    </div>
+    <div class="callout gold" style="margin-top:8px;">
+      <div class="callout-title">📊 India's GDP Growth Data</div>
+      <div class="callout-body">2014–19: 6–8% range<br>2020–21: −6.6% (Covid Recession)<br>2021–22: +9.1% (Rebound)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 7: POTENTIAL GDP ══════════ -->
+<div class="sec-label">⑦ Potential GDP & Business Cycle</div>
+
+<div class="map-card mc5">
+  <svg id="svgBizCycle" viewBox="0 0 1360 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Potential GDP</div>
+    <h3>📈 Maximum Sustainable Output</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">All resources fully utilized</div><div class="vs">Labour + Capital + Tech at full use</div></div>
+      <div class="vitem"><div class="vt">Also called: Trend GDP</div><div class="vs">Long-run smooth growth path</div></div>
+      <div class="vitem"><div class="vt">Grows slowly</div><div class="vs">Capital & tech change gradually</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill blue">Labour Supply</span>
+      <span class="pill blue">Capital Stock</span>
+      <span class="pill blue">Technology</span>
+    </div>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">Output Gap</div>
+    <h3>🔄 Actual vs Potential</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-color:rgba(176,26,26,0.3)"><div class="vt" style="color:var(--red);">Actual < Potential → Recessionary Gap</div><div class="vs">Unused capacity, high unemployment</div></div>
+      <div class="vitem" style="border-color:rgba(212,106,16,0.3)"><div class="vt" style="color:var(--amber);">Actual > Potential → Inflationary Pressure</div><div class="vs">Economy overheating, demand > supply</div></div>
+      <div class="vitem" style="border-color:rgba(26,106,58,0.3)"><div class="vt" style="color:var(--green);">Actual = Potential → Equilibrium</div><div class="vs">Full employment, stable growth</div></div>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">Recession vs Slowdown</div>
+    <h3>📉 Critical Distinction</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-color:rgba(176,26,26,0.3)"><div class="vt" style="color:var(--red);">Recession = 2 Quarters Negative Growth</div><div class="vs">GDP falls → Output, Jobs, Income falling</div></div>
+      <div class="vitem" style="border-color:rgba(212,106,16,0.3)"><div class="vt" style="color:var(--amber);">Slowdown = Growth Rate Falls (Stays Positive)</div><div class="vs">8%→4%→2% → Still growing, just slower</div></div>
+      <div class="vitem" style="border-color:rgba(90,26,138,0.3)"><div class="vt" style="color:var(--purple);">Depression = Severe Long Recession</div><div class="vs">Like Great Depression 1930s</div></div>
+    </div>
+    <div class="callout warn" style="margin-top:8px;">
+      <div class="callout-title">⚠️ India Recession Years</div>
+      <div class="callout-body">1957-58, 1965-66, 1972-73, 1979-80<br><strong>2020-21: −6.6% (Covid)</strong> ← UPSC favourite</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 8: COMPARISON TABLE ══════════ -->
+<div class="sec-label">⑧ Quick Comparison Table — All Variables</div>
+
+<div class="pc dark" style="background:rgba(18,16,14,0.02);border-color:rgba(18,16,14,0.12);margin-bottom:20px;">
+  <h3 style="font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;">📊 GDP Family — At a Glance</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Full Form</th>
+        <th>Domestic or National</th>
+        <th>Gross or Net</th>
+        <th>Price Basis</th>
+        <th>Formula</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>GDP<sub>MP</sub></td><td>Gross Domestic Product at Market Price</td><td>Domestic</td><td>Gross</td><td>Market Price</td><td>Base measure</td></tr>
+      <tr><td>NDP<sub>MP</sub></td><td>Net Domestic Product at Market Price</td><td>Domestic</td><td>Net</td><td>Market Price</td><td>GDP − Dep.</td></tr>
+      <tr><td>GNP<sub>MP</sub></td><td>Gross National Product at Market Price</td><td>National</td><td>Gross</td><td>Market Price</td><td>GDP + NFIA</td></tr>
+      <tr><td>NNP<sub>MP</sub></td><td>Net National Product at Market Price</td><td>National</td><td>Net</td><td>Market Price</td><td>GNP − Dep.</td></tr>
+      <tr><td style="color:var(--green);font-weight:900;">NNP<sub>FC</sub></td><td>Net National Product at Factor Cost</td><td>National</td><td>Net</td><td>Factor Cost</td><td style="font-weight:800;color:var(--green);">= National Income ⭐</td></tr>
+      <tr><td>GVA</td><td>Gross Value Added</td><td>Domestic</td><td>Gross</td><td>Basic/FC</td><td>GDP − Taxes + Sub.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════ SECTION 9: HIGH PROBABILITY PRELIMS POINTS ══════════ -->
+<div class="sec-label">⑨ High Probability UPSC Prelims Points</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Must Remember — GDP / GNP / NNP</div>
+    <h3>✅ Core Facts</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;">
+      <span class="ps-chip sol">✅ GDP includes foreigners in India</span>
+      <span class="ps-chip sol">✅ GNP includes Indians abroad</span>
+      <span class="ps-chip sol">✅ NFIA = factor income only</span>
+      <span class="ps-chip sol">✅ Remittances ≠ Factor income</span>
+      <span class="ps-chip sol">✅ National Income = NNP at FC</span>
+      <span class="ps-chip sol">✅ GNP = GNI (same thing)</span>
+      <span class="ps-chip sol">✅ Depreciation: Gross → Net</span>
+      <span class="ps-chip sol">✅ MP = FC + Indirect Tax − Sub.</span>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Must Remember — Real / Nominal / Business Cycle</div>
+    <h3>✅ Advanced Facts</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;">
+      <span class="ps-chip info">✅ Real GDP = quantity only</span>
+      <span class="ps-chip info">✅ Nominal = price + quantity</span>
+      <span class="ps-chip info">✅ India base year = 2011–12</span>
+      <span class="ps-chip info">✅ India uses GDP at MP since 2015</span>
+      <span class="ps-chip info">✅ GDP = GVA + Product taxes − Sub.</span>
+      <span class="ps-chip info">✅ Recession = 2 quarters −ve growth</span>
+      <span class="ps-chip info">✅ Slowdown ≠ Recession</span>
+      <span class="ps-chip info">✅ 2020-21 = Recession year India</span>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🧮</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Master Memory Trick — Three Adjustment Layers</div>
+    <div class="keystone-sub">
+      Every macro variable is just a combination of <strong style="color:#f5d78a;">three adjustments</strong> applied to GDP:<br>
+      <strong style="color:#f5d78a;">① Domestic vs National</strong> — add/subtract NFIA<br>
+      <strong style="color:#f5d78a;">② Gross vs Net</strong> — subtract Depreciation<br>
+      <strong style="color:#f5d78a;">③ Market Price vs Factor Cost</strong> — adjust for Taxes & Subsidies
+    </div>
+    <div class="keystone-pills">
+      <span class="kpill">GDP → GNP (+NFIA)</span>
+      <span class="kpill">Gross → Net (−Dep.)</span>
+      <span class="kpill">MP → FC (−Tax+Sub)</span>
+      <span class="kpill">NNP<sub>FC</sub> = National Income</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const steps=[
+    {x:80, label:'Production\nWithin Border', sub:'→ GDP', fill:'#1a3a8a', emoji:'🏭'},
+    {x:260, label:'±NFIA', sub:'Domestic→National', fill:'#0a6070', emoji:'🌍'},
+    {x:440, label:'−Depreciation', sub:'Gross→Net', fill:'#b87c10', emoji:'⚙️'},
+    {x:620, label:'±(Tax−Sub)', sub:'MP→Factor Cost', fill:'#5a1a8a', emoji:'💰'},
+    {x:830, label:'Price\nAdjustment', sub:'Nominal→Real', fill:'#d46a10', emoji:'📊'},
+    {x:1020, label:'÷Population', sub:'→Per Capita', fill:'#1a6a3a', emoji:'👤'},
+    {x:1200, label:'Potential\nvs Actual', sub:'Output Gap', fill:'#b01a1a', emoji:'📈'},
+    {x:1340, label:'Business\nCycle', sub:'Recession/Boom', fill:'#1a5878', emoji:'🔄'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) edge(svg,s.x+70,60,steps[i+1].x-70,60,'#b87c10',false,2);
+  });
+  steps.forEach(s=>{
+    const lines=s.label.split('\n');
+    node(svg,s.x,60,130,66,s.fill,lines,s.sub,s.emoji);
+  });
+})();
+
+// ── GDP vs GNP DIAGRAM ──
+(function(){
+  const svg=document.getElementById('svgGDPGNP');
+
+  // Center node
+  node(svg,680,130,200,56,'#0f0d0b',['GDP vs GNP'],'Core Distinction','🌐');
+
+  // Left: GDP aspects
+  const leftNodes=[
+    {x:160, y:55, fill:'#1a3a8a', label:['India Territory'], sub:'All production here', emoji:'🏭'},
+    {x:160, y:130, fill:'#2a4a9a', label:['Foreigners Included'], sub:'If working in India', emoji:'👤'},
+    {x:160, y:205, fill:'#0a2870', label:['Indians Abroad Excluded'], sub:'NOT in GDP', emoji:'✈️'},
+  ];
+  // Right: GNP aspects
+  const rightNodes=[
+    {x:1200, y:55, fill:'#b87c10', label:['Indian Residents'], sub:'Wherever they work', emoji:'🌍'},
+    {x:1200, y:130, fill:'#c88a20', label:['+ NFIA'], sub:'Factor income abroad', emoji:'💹'},
+    {x:1200, y:205, fill:'#a06010', label:['Foreigners Excluded'], sub:'From GNP count', emoji:'🚫'},
+  ];
+
+  // NFIA node center-bottom
+  node(svg,680,230,220,44,'#0a6070',['NFIA = Indian abroad − Foreigners here'],'Factor income only','🔄');
+
+  leftNodes.forEach(n=>{
+    edge(svg,n.x+80,n.y,596,130,'#1a3a8a44',true,1.8);
+    node(svg,n.x,n.y,150,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  rightNodes.forEach(n=>{
+    edge(svg,n.x-80,n.y,764,130,'#b87c1044',true,1.8);
+    node(svg,n.x,n.y,150,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  edge(svg,680,158,680,207,'#0a607055',true,1.8);
+
+  // Labels
+  const lt=se('text',{x:160,y:18,'text-anchor':'middle','font-size':'10','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.6)','letter-spacing':'2','font-weight':'700'});
+  lt.textContent='GDP — DOMESTIC'; svg.appendChild(lt);
+  const rt=se('text',{x:1200,y:18,'text-anchor':'middle','font-size':'10','font-family':'DM Mono,monospace',fill:'rgba(184,124,16,0.6)','letter-spacing':'2','font-weight':'700'});
+  rt.textContent='GNP — NATIONAL'; svg.appendChild(rt);
+})();
+
+// ── DEPRECIATION DIAGRAM ──
+(function(){
+  const svg=document.getElementById('svgDepreciation');
+  svg.setAttribute('viewBox','0 0 1360 200');
+
+  // Horizontal chain
+  const chain=[
+    {x:150, fill:'#1a3a8a', label:['GDP MP'], sub:'Gross Domestic', emoji:'🏭'},
+    {x:380, fill:'#0a6070', label:['NDP MP'], sub:'−Depreciation', emoji:'⬇️'},
+    {x:610, fill:'#b87c10', label:['GNP MP'], sub:'+NFIA added', emoji:'🌍'},
+    {x:840, fill:'#5a1a8a', label:['NNP MP'], sub:'−Depreciation', emoji:'⬇️'},
+    {x:1100, fill:'#1a6a3a', label:['NNP FC'], sub:'= National Income', emoji:'⭐'},
+  ];
+
+  chain.forEach((c,i)=>{
+    if(i<chain.length-1){
+      const arr=se('path',{d:`M${c.x+85},100 L${chain[i+1].x-85},100`,stroke:'#b87c10','stroke-width':'2.5',fill:'none'});
+      svg.appendChild(arr);
+      // Arrow head
+      const ax=chain[i+1].x-85;
+      svg.appendChild(se('polygon',{points:`${ax},95 ${ax+10},100 ${ax},105`,fill:'#b87c10'}));
+
+      // Operation label above arrow
+      const ops=['−Dep.','','+NFIA','−Dep.','−(T−S)'];
+      if(ops[i]){
+        const ot=se('text',{x:(c.x+85+chain[i+1].x-85)/2,y:85,'text-anchor':'middle','font-size':'11','font-weight':'800','font-family':'DM Mono,monospace',fill:'#b87c10'});
+        ot.textContent=ops[i];svg.appendChild(ot);
+      }
+    }
+    node(svg,c.x,100,155,58,c.fill,[c.label[0]],c.sub,c.emoji);
+  });
+
+  // Depreciation note
+  const d1=se('text',{x:680,y:175,'text-anchor':'middle','font-size':'10','font-family':'DM Mono,monospace',fill:'rgba(90,26,138,0.55)','letter-spacing':'1.5'});
+  d1.textContent='DEPRECIATION = WEAR & TEAR OF CAPITAL | GROSS − NET = DEPRECIATION'; svg.appendChild(d1);
+})();
+
+// ── MP vs FC DIAGRAM ──
+(function(){
+  const svg=document.getElementById('svgMPFC');
+  svg.setAttribute('viewBox','0 0 1360 220');
+
+  // Center: formula
+  node(svg,680,110,270,60,'#0f0d0b',['MP = FC + Indirect Tax − Subsidies'],'Price Relationship','💰');
+
+  // Left: Factor Cost breakdown
+  const leftN=[
+    {x:160,y:55, fill:'#1a6a3a', label:['Wages (Labour)'], sub:'Factor payment', emoji:'👷'},
+    {x:160,y:120, fill:'#2a7a4a', label:['Rent (Land)'], sub:'Factor payment', emoji:'🏠'},
+    {x:160,y:185, fill:'#0a5a2a', label:['Interest + Profit'], sub:'Capital + Enterprise', emoji:'💼'},
+  ];
+  // Right: Market Price additions
+  const rightN=[
+    {x:1200,y:55, fill:'#d46a10', label:['+ Indirect Taxes'], sub:'GST, Excise etc.', emoji:'📋'},
+    {x:1200,y:120, fill:'#b04010', label:['− Subsidies'], sub:'Govt support given', emoji:'🏛️'},
+    {x:1200,y:185, fill:'#e88020', label:['= Market Price'], sub:'What consumer pays', emoji:'🏪'},
+  ];
+
+  leftN.forEach(n=>{
+    edge(svg,n.x+80,n.y,544,110,'#1a6a3a44',true,1.8);
+    node(svg,n.x,n.y,150,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  rightN.forEach(n=>{
+    edge(svg,n.x-80,n.y,816,110,'#d46a1044',true,1.8);
+    node(svg,n.x,n.y,150,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // Labels
+  const lt=se('text',{x:160,y:16,'text-anchor':'middle','font-size':'10','font-family':'DM Mono,monospace',fill:'rgba(26,106,58,0.6)','letter-spacing':'2','font-weight':'700'});
+  lt.textContent='FACTOR COST'; svg.appendChild(lt);
+  const rt=se('text',{x:1200,y:16,'text-anchor':'middle','font-size':'10','font-family':'DM Mono,monospace',fill:'rgba(212,106,16,0.6)','letter-spacing':'2','font-weight':'700'});
+  rt.textContent='MARKET PRICE ADJUSTMENTS'; svg.appendChild(rt);
+
+  // India note
+  const ind=se('text',{x:680,y:208,'text-anchor':'middle','font-size':'9.5','font-family':'DM Mono,monospace',fill:'rgba(176,26,26,0.7)','font-weight':'700'});
+  ind.textContent='⭐ INDIA MEASURES GDP AT MARKET PRICE SINCE JANUARY 2015 | BASE YEAR = 2011–12'; svg.appendChild(ind);
+})();
+
+// ── CHAIN: Full Macro Chain Horizontal ──
+(function(){
+  const svg=document.getElementById('svgChain');
+  svg.setAttribute('viewBox','0 0 1360 300');
+
+  // Three rows of nodes with adjustments
+  const col1=180, col2=540, col3=900, col4=1220;
+  const row1=80, row2=165, row3=245;
+
+  // GDP MP (top left)
+  node(svg,col1,row1,200,58,'#1a3a8a',['GDP','at Market Price'],'Domestic territory basis','🏭');
+
+  // NDP MP
+  node(svg,col2,row1,200,58,'#0a6070',['NDP','at Market Price'],'GDP − Depreciation','⬇️');
+
+  // GNP MP
+  node(svg,col3,row1,200,58,'#b87c10',['GNP','at Market Price'],'NDP + NFIA','🌍');
+
+  // NNP MP
+  node(svg,col4,row1,200,58,'#5a1a8a',['NNP','at Market Price'],'GNP − Depreciation','⬇️');
+
+  // NNP FC — National Income
+  node(svg,680,row3,280,64,'#1a6a3a',['NNP at Factor Cost','= National Income ⭐'],'NNP MP − (Indirect Tax − Subsidies)','🇮🇳');
+
+  // Arrows row 1
+  const arr1=[[col1+100,row1,col2-100,row1,'−Dep.'],[col2+100,row1,col3-100,row1,'+NFIA'],[col3+100,row1,col4-100,row1,'−Dep.']];
+  arr1.forEach(([x1,y1,x2,y2,label])=>{
+    edge(svg,x1,y1,x2,y2,'#b87c10',false,2);
+    svg.appendChild(se('polygon',{points:`${x2},${y2-5} ${x2+10},${y2} ${x2},${y2+5}`,fill:'#b87c10'}));
+    const t=se('text',{x:(x1+x2)/2,y:y1-10,'text-anchor':'middle','font-size':'11','font-weight':'800','font-family':'DM Mono,monospace',fill:'#b87c10'});
+    t.textContent=label;svg.appendChild(t);
+  });
+
+  // Arrow from NNP MP down to NNP FC
+  const midX=(col4+680)/2;
+  const p=se('path',{d:`M${col4},${row1+30} C${col4},${row3} ${680+140},${row3} ${680+140},${row3-32}`,stroke:'#1a6a3a','stroke-width':'2',fill:'none'});
+  svg.appendChild(p);
+  svg.appendChild(se('polygon',{points:`${680+140},${row3-32} ${680+135},${row3-22} ${680+145},${row3-22}`,fill:'#1a6a3a'}));
+  const ta=se('text',{x:1080,y:row3-30,'text-anchor':'middle','font-size':'10','font-weight':'800','font-family':'DM Mono,monospace',fill:'#1a6a3a'});
+  ta.textContent='− Indirect Tax + Subsidies';svg.appendChild(ta);
+
+  // NDP MP arrow down from GDP
+  // Also connect NDP to National income path via NNP
+  const r2lbl=se('text',{x:680,y:row2,'text-anchor':'middle','font-size':'10','font-family':'DM Mono,monospace',fill:'rgba(90,26,138,0.55)','letter-spacing':'2'});
+  r2lbl.textContent='↑ EVERY VARIABLE IS A COMBINATION OF: Domestic/National · Gross/Net · Market Price/Factor Cost ↑';
+  svg.appendChild(r2lbl);
+})();
+
+// ── NOMINAL vs REAL ──
+(function(){
+  const svg=document.getElementById('svgRealNominal');
+
+  node(svg,680,120,230,58,'#0f0d0b',['Nominal vs Real GDP'],'Price Adjustment Layer','📊');
+
+  const leftN=[
+    {x:155,y:60, fill:'#d46a10', label:['Current Prices'], sub:'Nominal = MP×Q (both change)', emoji:'📈'},
+    {x:155,y:135, fill:'#a04010', label:['Inflation Included'], sub:'Not true growth', emoji:'⚠️'},
+    {x:155,y:210, fill:'#c05020', label:['GDP Deflator'], sub:'Nominal/Real×100', emoji:'🔢'},
+  ];
+  const rightN=[
+    {x:1205,y:60, fill:'#1a6a3a', label:['Base Year Prices'], sub:'Real = 2011-12 prices', emoji:'📌'},
+    {x:1205,y:135, fill:'#0a5a2a', label:['Quantity Only'], sub:'True output growth', emoji:'✅'},
+    {x:1205,y:210, fill:'#2a7a3a', label:['Growth Rate Basis'], sub:'India uses Real GDP', emoji:'🇮🇳'},
+  ];
+
+  leftN.forEach(n=>{
+    edge(svg,n.x+90,n.y,564,120,'#d46a1044',true,1.8);
+    node(svg,n.x,n.y,165,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  rightN.forEach(n=>{
+    edge(svg,n.x-90,n.y,796,120,'#1a6a3a44',true,1.8);
+    node(svg,n.x,n.y,165,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  const lt=se('text',{x:155,y:16,'text-anchor':'middle','font-size':'10','font-family':'DM Mono,monospace',fill:'rgba(212,106,16,0.65)','letter-spacing':'2','font-weight':'700'});
+  lt.textContent='NOMINAL GDP'; svg.appendChild(lt);
+  const rt=se('text',{x:1205,y:16,'text-anchor':'middle','font-size':'10','font-family':'DM Mono,monospace',fill:'rgba(26,106,58,0.65)','letter-spacing':'2','font-weight':'700'});
+  rt.textContent='REAL GDP'; svg.appendChild(rt);
+})();
+
+// ── BUSINESS CYCLE ──
+(function(){
+  const svg=document.getElementById('svgBizCycle');
+  svg.setAttribute('viewBox','0 0 1360 280');
+
+  // Draw potential GDP line
+  const potLine=se('path',{d:'M60,140 L1300,140',stroke:'#b87c10','stroke-width':'2.5','stroke-dasharray':'10 5',opacity:'0.6'});
+  svg.appendChild(potLine);
+  const ptLabel=se('text',{x:1310,y:144,'font-size':'10','font-family':'DM Mono,monospace',fill:'#b87c10','font-weight':'700'});
+  ptLabel.textContent='Potential GDP'; svg.appendChild(ptLabel);
+
+  // Draw actual GDP wave (smooth sine-like)
+  const wavePath=se('path',{
+    d:'M60,140 C120,130 160,50 240,45 C320,40 380,100 460,140 C540,180 580,240 660,245 C740,250 800,200 880,140 C960,80 1000,40 1080,38 C1160,36 1200,90 1280,140',
+    stroke:'#1a3a8a','stroke-width':'3',fill:'none'
+  });
+  svg.appendChild(wavePath);
+  const wLabel=se('text',{x:80,y:128,'font-size':'10','font-family':'DM Mono,monospace',fill:'#1a3a8a','font-weight':'700'});
+  wLabel.textContent='Actual GDP'; svg.appendChild(wLabel);
+
+  // Shade areas
+  // Boom (above potential)
+  const boom1=se('path',{d:'M60,140 C120,130 160,50 240,45 C320,40 380,100 460,140 L60,140',fill:'rgba(176,26,26,0.08)'});
+  svg.appendChild(boom1);
+  const boom2=se('path',{d:'M880,140 C960,80 1000,40 1080,38 C1160,36 1200,90 1280,140 L880,140',fill:'rgba(176,26,26,0.08)'});
+  svg.appendChild(boom2);
+  // Recession (below potential)
+  const rec=se('path',{d:'M460,140 C540,180 580,240 660,245 C740,250 800,200 880,140 L460,140',fill:'rgba(26,58,138,0.08)'});
+  svg.appendChild(rec);
+
+  // Phase labels
+  const phases=[
+    {x:240,y:26,label:'BOOM / EXPANSION',color:'#b01a1a',sub:'Actual > Potential\nInflation Risk'},
+    {x:660,y:264,label:'RECESSION / CONTRACTION',color:'#1a3a8a',sub:'Actual < Potential\n2 quarters negative'},
+    {x:1080,y:20,label:'RECOVERY / BOOM',color:'#b01a1a',sub:'Actual > Potential\nOverheating'},
+  ];
+  phases.forEach(p=>{
+    const t=se('text',{x:p.x,y:p.y,'text-anchor':'middle','font-size':'10','font-weight':'800','font-family':'Nunito,sans-serif',fill:p.color});
+    t.textContent=p.label;svg.appendChild(t);
+    const lines=p.sub.split('\n');
+    lines.forEach((l,i)=>{
+      const ts=se('text',{x:p.x,y:p.y+12+i*11,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:p.color,opacity:'0.75'});
+      ts.textContent=l;svg.appendChild(ts);
+    });
+  });
+
+  // Peaks & Troughs markers
+  [[240,45,'Peak 1'],[660,245,'Trough'],[1080,38,'Peak 2']].forEach(([x,y,lbl])=>{
+    svg.appendChild(se('circle',{cx:x,cy:y,r:'6',fill:'#fff',stroke:'#b87c10','stroke-width':'2'}));
+    const tl=se('text',{x,y:y-12,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'#b87c10','font-weight':'700'});
+    tl.textContent=lbl;svg.appendChild(tl);
+  });
+
+  // Vertical grid lines with year markers
+  const yr=se('text',{x:680,y:268,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.5)','letter-spacing':'1.5'});
+  yr.textContent='SLOWDOWN ≠ RECESSION | RECESSION = 2 CONSECUTIVE QUARTERS OF NEGATIVE REAL GDP GROWTH'; svg.appendChild(yr);
+
+  // Output gap label in recessionary zone
+  const og=se('text',{x:660,y:200,'text-anchor':'middle','font-size':'9.5','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.6)','font-weight':'700'});
+  og.textContent='Output Gap (Recessionary)'; svg.appendChild(og);
+
+  // 2020-21 marker
+  svg.appendChild(se('line',{x1:600,y1:50,x2:720,y2:245,stroke:'#b01a1a','stroke-width':'1','stroke-dasharray':'4 3',opacity:'0.5'}));
+  const ind=se('text',{x:740,y:220,'font-size':'9','font-family':'DM Mono,monospace',fill:'#b01a1a','font-weight':'700'});
+  ind.textContent='2020-21: −6.6%'; svg.appendChild(ind);
+})();
+</script>
+</body>
+</html>

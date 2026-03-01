@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economics & ULB — UPSC Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ee;
+  --paper:#fffefb;
+  --ink:#1a1410;
+  --muted:#7a6a50;
+  --border:#e0d5c0;
+  --card:#ffffff;
+  --gold:#c09020;
+  --gold-lt:#f9e8a0;
+  --amber:#d46010;
+  --green:#1a6a38;
+  --blue:#1a3a8a;
+  --purple:#5a1a8a;
+  --teal:#0a6070;
+  --red:#b01a1a;
+  --sky:#1a5878;
+  --orange:#c05010;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(ellipse 800px 600px at 20% 10%,rgba(192,144,32,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 600px 800px at 80% 80%,rgba(26,58,138,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.page{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.hdr{text-align:center;padding:48px 20px 16px;border-bottom:2px solid var(--border);margin-bottom:0;}
+.hdr-sup{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Libre Baskerville',serif;font-size:clamp(28px,5vw,52px);line-height:1.1;color:var(--ink);}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr-bar{display:flex;justify-content:center;gap:24px;margin-top:14px;flex-wrap:wrap;}
+.hdr-chip{padding:4px 14px;border-radius:20px;font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:600;letter-spacing:0.5px;}
+.hdr-chip.a{background:rgba(192,144,32,0.12);color:var(--gold);}
+.hdr-chip.b{background:rgba(26,58,138,0.1);color:var(--blue);}
+.hdr-chip.c{background:rgba(26,106,56,0.1);color:var(--green);}
+.hdr-chip.d{background:rgba(176,26,26,0.1);color:var(--red);}
+.hdr::after{content:'';display:block;width:80px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:16px auto 0;border-radius:3px;}
+
+/* ── SECTION ── */
+.sec-lbl{display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 18px;padding:0 4px;}
+.sec-lbl::before,.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-lbl .sn{background:var(--ink);color:#fff;padding:3px 9px;border-radius:4px;font-size:8px;margin-right:4px;}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g32{display:grid;grid-template-columns:3fr 2fr;gap:20px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g32{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g32{grid-template-columns:1fr;}}
+
+/* ── PANEL CARD ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:20px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 8px 32px rgba(192,144,32,0.12);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.red::before{background:var(--red);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.sky::before{background:var(--sky);}
+.pc.amber::before{background:var(--amber);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Libre Baskerville',serif;font-size:15px;margin-bottom:13px;display:flex;align-items:center;gap:6px;line-height:1.3;}
+
+/* ── MAP CARD ── */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:22px;position:relative;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.mc.a1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc.a2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc.a3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.a4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc svg{display:block;width:100%;}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:600;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.g{background:rgba(26,106,56,0.1);color:var(--green);}
+.pill.b{background:rgba(26,58,138,0.1);color:var(--blue);}
+.pill.r{background:rgba(176,26,26,0.1);color:var(--red);}
+.pill.go{background:rgba(192,144,32,0.12);color:var(--gold);}
+.pill.a{background:rgba(212,96,16,0.1);color:var(--amber);}
+.pill.p{background:rgba(90,26,138,0.1);color:var(--purple);}
+.pill.t{background:rgba(10,96,112,0.1);color:var(--teal);}
+
+/* ── STAT BOX ── */
+.srow{display:flex;gap:10px;margin:10px 0;}
+.sb{flex:1;padding:12px 8px;border-radius:10px;background:#f7f4ee;border:1.5px solid var(--border);text-align:center;}
+.sn2{font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;line-height:1;}
+.sl{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+.sm{font-size:10px;font-weight:600;margin-top:1px;}
+
+/* ── VLIST ── */
+.vl{display:flex;flex-direction:column;gap:6px;}
+.vi{padding:9px 12px;border-radius:9px;background:#f7f4ee;border:1px solid var(--border);font-size:11px;}
+.vt{font-weight:700;margin-bottom:1px;}
+.vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── CHIPS ── */
+.chip{display:inline-block;padding:3px 9px;border-radius:7px;font-size:9px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:rgba(26,106,56,0.07);border-color:rgba(26,106,56,0.2);color:var(--green);}
+.chip.no{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.chip.ne{background:rgba(192,144,32,0.08);border-color:rgba(192,144,32,0.25);color:var(--gold);}
+
+/* ── FLOW ── */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.fn{padding:5px 11px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;}
+.fa{font-size:16px;color:var(--muted);}
+
+/* ── TABLE ── */
+.ct{width:100%;border-collapse:collapse;font-size:11px;}
+.ct th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ct td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ct tr:last-child td{border-bottom:none;}
+.ct tr:nth-child(even) td{background:rgba(192,144,32,0.03);}
+.ct td:first-child{font-weight:700;color:var(--amber);}
+
+/* ── FEATURE GRID ── */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.fi-box{padding:10px;border-radius:8px;background:#f7f4ee;border:1px solid var(--border);}
+.fi-icon{font-size:16px;margin-bottom:4px;}
+.fi-t{font-size:11px;font-weight:700;}
+.fi-s{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* ── IMPACT CHAIN ── */
+.ic{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.icn{padding:6px 11px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;}
+.ica{font-size:14px;color:var(--muted);}
+
+/* ── KEYSTONE ── */
+.ks{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.ks-icon{font-size:38px;flex:0 0 auto;}
+.ks-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.ks-body{font-size:11px;color:#c8b880;line-height:1.7;}
+.ks-pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:8px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;}
+
+/* ── PHASE ── */
+.ph-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:14px 0;}
+@media(max-width:640px){.ph-row{grid-template-columns:1fr;}}
+.ph{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.ph-num{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;}
+.ph-title{font-size:12px;font-weight:700;margin:4px 0;}
+.ph-sub{font-size:9px;font-family:'JetBrains Mono',monospace;margin-bottom:8px;}
+
+/* ── BAR ── */
+.bar-wrap{display:flex;flex-direction:column;gap:9px;margin:10px 0;}
+.bar-item{display:flex;align-items:center;gap:10px;}
+.bar-lbl{font-size:10px;font-weight:700;width:100px;flex:0 0 100px;text-align:right;font-family:'JetBrains Mono',monospace;}
+.bar-track{flex:1;background:#f0ebe0;border-radius:6px;height:22px;overflow:hidden;border:1px solid var(--border);}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;color:#fff;}
+.bar-val{font-size:11px;font-weight:700;width:44px;font-family:'JetBrains Mono',monospace;}
+
+/* ── CALLOUT ── */
+.callout{padding:11px 13px;border-radius:9px;background:rgba(26,106,56,0.06);border:1.5px solid rgba(26,106,56,0.2);margin:8px 0;}
+.callout-t{font-size:11px;font-weight:700;color:var(--green);margin-bottom:2px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ── DIVIDER ── */
+.div{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0;}
+
+/* ── COLUMN BAR CHART ── */
+.col-chart{display:flex;align-items:flex-end;gap:28px;height:170px;padding:0 20px;margin:16px 0 8px;}
+.col-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;}
+.col-val{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;}
+.col-bar{flex:1;width:100%;display:flex;align-items:flex-end;}
+.col-bar-inner{width:100%;border-radius:8px 8px 0 0;box-shadow:0 2px 14px rgba(0,0,0,0.15);}
+.col-nm{font-size:11px;font-weight:700;text-align:center;}
+.col-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* ── ECONOMIC CIRCLE ── */
+.eco-wrap{position:relative;margin:16px 0;}
+
+/* SVG helpers */
+svg{font-family:'DM Sans',sans-serif;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-sup">UPSC Civil Services · Economics & Polity · Complete Reference</div>
+  <h1>Macro<em>economics</em> & Urban Governance</h1>
+  <div class="hdr-bar">
+    <span class="hdr-chip a">Economics Fundamentals</span>
+    <span class="hdr-chip b">Circular Flow & GDP</span>
+    <span class="hdr-chip c">Urban Local Bodies</span>
+    <span class="hdr-chip d">74th Amendment</span>
+  </div>
+</div>
+
+<!-- ══════ PART 1: ECONOMICS BASICS ══════ -->
+
+<div class="sec-lbl"><span class="sn">PART 1</span> Economics — The Big Picture</div>
+
+<!-- Master Economics Flow -->
+<div class="mc a1">
+<svg viewBox="0 0 1380 110" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arr1" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#c09020" opacity="0.7"/></marker>
+</defs>
+<rect width="1380" height="110" fill="#fffefb"/>
+<!-- connecting lines -->
+<line x1="175" y1="55" x2="225" y2="55" stroke="#c09020" stroke-width="1.8" opacity="0.5" marker-end="url(#arr1)"/>
+<line x1="380" y1="55" x2="430" y2="55" stroke="#c09020" stroke-width="1.8" opacity="0.5" marker-end="url(#arr1)"/>
+<line x1="590" y1="55" x2="640" y2="55" stroke="#c09020" stroke-width="1.8" opacity="0.5" marker-end="url(#arr1)"/>
+<line x1="805" y1="55" x2="855" y2="55" stroke="#c09020" stroke-width="1.8" opacity="0.5" marker-end="url(#arr1)"/>
+<line x1="1015" y1="55" x2="1065" y2="55" stroke="#c09020" stroke-width="1.8" opacity="0.5" marker-end="url(#arr1)"/>
+<line x1="1225" y1="55" x2="1265" y2="55" stroke="#c09020" stroke-width="1.8" opacity="0.5" marker-end="url(#arr1)"/>
+
+<!-- Node 1 -->
+<rect x="15" y="18" width="160" height="74" rx="10" fill="#1a1410" opacity="0.06"/>
+<rect x="12" y="15" width="160" height="74" rx="10" fill="#c09020"/>
+<text x="92" y="40" text-anchor="middle" font-size="17" fill="#fff">🌍</text>
+<text x="92" y="57" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Scarce Resources</text>
+<text x="92" y="70" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Land · Labour · Capital</text>
+
+<!-- Node 2 -->
+<rect x="232" y="18" width="148" height="74" rx="10" fill="#1a3a8a" opacity="0.9"/>
+<text x="306" y="40" text-anchor="middle" font-size="17" fill="#fff">❓</text>
+<text x="306" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">3 Basic Questions</text>
+<text x="306" y="69" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">What · How · For Whom</text>
+
+<!-- Node 3 -->
+<rect x="438" y="18" width="152" height="74" rx="10" fill="#5a1a8a" opacity="0.9"/>
+<text x="514" y="40" text-anchor="middle" font-size="17" fill="#fff">🏛️</text>
+<text x="514" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Economic System</text>
+<text x="514" y="69" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Market · Command · Mixed</text>
+
+<!-- Node 4 -->
+<rect x="648" y="18" width="157" height="74" rx="10" fill="#1a6a38" opacity="0.9"/>
+<text x="726" y="40" text-anchor="middle" font-size="17" fill="#fff">🏭</text>
+<text x="726" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">4 Sectors</text>
+<text x="726" y="69" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Private·Govt·HH·External</text>
+
+<!-- Node 5 -->
+<rect x="863" y="18" width="152" height="74" rx="10" fill="#d46010" opacity="0.9"/>
+<text x="939" y="40" text-anchor="middle" font-size="17" fill="#fff">⚙️</text>
+<text x="939" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Factors of Prod.</text>
+<text x="939" y="69" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Entrepreneur·Capital·Land·Labour</text>
+
+<!-- Node 6 -->
+<rect x="1073" y="18" width="152" height="74" rx="10" fill="#0a6070" opacity="0.9"/>
+<text x="1149" y="40" text-anchor="middle" font-size="17" fill="#fff">📦</text>
+<text x="1149" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Types of Goods</text>
+<text x="1149" y="69" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Intermediate · Final</text>
+
+<!-- Node 7 -->
+<rect x="1273" y="18" width="97" height="74" rx="10" fill="#b01a1a" opacity="0.9"/>
+<text x="1322" y="40" text-anchor="middle" font-size="17" fill="#fff">📈</text>
+<text x="1322" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">GDP</text>
+<text x="1322" y="69" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Growth</text>
+</svg>
+</div>
+
+<!-- Economics Breakdown Grid -->
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">Three Basic Questions</div>
+    <h3>❓ Every Economy Must Answer</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">1️⃣ What to Produce?</div><div class="vs">Pizza or machines? Consumer vs Capital goods?</div></div>
+      <div class="vi"><div class="vt">2️⃣ How to Produce?</div><div class="vs">Labour-intensive or machine-based? Coal or solar?</div></div>
+      <div class="vi"><div class="vt">3️⃣ For Whom to Produce?</div><div class="vs">Rich or poor? Equal or unequal distribution?</div></div>
+    </div>
+    <div style="margin-top:10px;padding:8px 11px;background:rgba(192,144,32,0.08);border-radius:8px;font-size:10px;color:var(--amber);font-weight:600;border:1px solid rgba(192,144,32,0.2);">
+      ⚡ Arise because: Resources are Limited, Wants are Unlimited
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Economic Systems</div>
+    <h3>🏛️ How Countries Decide</h3>
+    <table class="ct">
+      <tr><th>TYPE</th><th>FEATURE</th><th>EXAMPLE</th></tr>
+      <tr><td>Market 🔵</td><td>Demand & Supply decide; Private ownership; Profit motive</td><td>USA</td></tr>
+      <tr><td>Command 🔴</td><td>Government decides everything; State owns capital</td><td>USSR</td></tr>
+      <tr><td>Mixed 🟢</td><td>Market + Government regulation; Best of both</td><td>India</td></tr>
+    </table>
+    <div style="margin-top:9px;font-size:10px;color:var(--muted);">
+      <span class="pill go">Laissez-faire</span> = Extreme Market (Zero govt interference)
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">Factors of Production</div>
+    <h3>⚙️ Inputs → Income Earned</h3>
+    <table class="ct">
+      <tr><th>FACTOR</th><th>MEANING</th><th>INCOME</th></tr>
+      <tr><td>Entrepreneur 👔</td><td>Risk-taker, organiser</td><td>Profit</td></tr>
+      <tr><td>Capital 🏗️</td><td>Machines, buildings</td><td>Interest</td></tr>
+      <tr><td>Land 🌱</td><td>Natural resources</td><td>Rent</td></tr>
+      <tr><td>Labour 💪</td><td>Human effort</td><td>Wages</td></tr>
+    </table>
+    <div style="margin-top:9px;"><span class="chip ne">⚠ Entrepreneur & Labour → Household Sector</span></div>
+  </div>
+</div>
+
+<!-- 4 Sectors diagram -->
+<div class="sec-lbl"><span class="sn">§1.1</span> The 4 Sectors of Economy</div>
+<div class="mc a2">
+<svg viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arr2" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#5a1a8a" opacity="0.6"/></marker>
+  <marker id="arr3" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#1a6a38" opacity="0.6"/></marker>
+</defs>
+<rect width="1380" height="200" fill="#f9f7f2"/>
+
+<!-- Central: India Mixed Economy -->
+<rect x="570" y="72" width="238" height="58" rx="14" fill="#1a1410"/>
+<text x="689" y="96" text-anchor="middle" font-size="13" font-weight="700" fill="#f5e8c0">🇮🇳 India — Mixed Economy</text>
+<text x="689" y="113" text-anchor="middle" font-size="9" fill="rgba(245,232,192,0.6)" font-family="'JetBrains Mono'">4 Sectors Interplay</text>
+
+<!-- Private Sector (top left) -->
+<rect x="60" y="22" width="240" height="72" rx="12" fill="#1a3a8a"/>
+<text x="180" y="48" text-anchor="middle" font-size="15" fill="#fff">🏢</text>
+<text x="180" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Private Sector</text>
+<text x="180" y="79" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Reliance Industries · TATA</text>
+
+<!-- Govt Sector (top right) -->
+<rect x="1082" y="22" width="240" height="72" rx="12" fill="#0a6070"/>
+<text x="1202" y="48" text-anchor="middle" font-size="15" fill="#fff">🏦</text>
+<text x="1202" y="64" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Govt / Public Sector</text>
+<text x="1202" y="79" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Coal India · NTPC · PSUs</text>
+
+<!-- Household Sector (bottom left) -->
+<rect x="60" y="114" width="240" height="72" rx="12" fill="#5a1a8a"/>
+<text x="180" y="140" text-anchor="middle" font-size="15" fill="#fff">👨‍👩‍👧</text>
+<text x="180" y="156" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Household Sector</text>
+<text x="180" y="171" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">ALL human beings belong here</text>
+
+<!-- External Sector (bottom right) -->
+<rect x="1082" y="114" width="240" height="72" rx="12" fill="#c05010"/>
+<text x="1202" y="140" text-anchor="middle" font-size="15" fill="#fff">🌐</text>
+<text x="1202" y="156" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">External Sector</text>
+<text x="1202" y="171" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Exports · Imports · Forex</text>
+
+<!-- Arrows -->
+<path d="M302,58 Q440,30 568,88" stroke="#1a3a8a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#arr2)"/>
+<path d="M1080,58 Q940,30 810,88" stroke="#0a6070" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#arr3)"/>
+<path d="M302,150 Q440,175 568,115" stroke="#5a1a8a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#arr2)"/>
+<path d="M1080,150 Q940,175 810,115" stroke="#c05010" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5"/>
+
+<!-- Key insight box -->
+<rect x="490" y="152" width="402" height="38" rx="8" fill="rgba(192,144,32,0.08)" stroke="rgba(192,144,32,0.3)" stroke-width="1.2"/>
+<text x="691" y="167" text-anchor="middle" font-size="10" font-weight="700" fill="#c09020">⚠ KEY: Mukesh Ambani → Household Sector | Reliance Industries → Private Sector</text>
+<text x="691" y="182" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono'">John works in CIL → John = Household · CIL = Govt Sector</text>
+</svg>
+</div>
+
+<!-- Types of Goods -->
+<div class="sec-lbl"><span class="sn">§1.2</span> Types of Goods</div>
+<div class="mc a3">
+<svg viewBox="0 0 1380 230" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arr4" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#b01a1a" opacity="0.6"/></marker>
+  <marker id="arr5" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#1a6a38" opacity="0.6"/></marker>
+</defs>
+<rect width="1380" height="230" fill="#fffefb"/>
+
+<!-- Root -->
+<rect x="560" y="16" width="258" height="54" rx="12" fill="#1a1410"/>
+<text x="689" y="39" text-anchor="middle" font-size="14" font-weight="700" fill="#f5e8c0">📦 Output (GDP)</text>
+<text x="689" y="57" text-anchor="middle" font-size="9" fill="rgba(245,232,192,0.6)" font-family="'JetBrains Mono'">Total Production</text>
+
+<!-- Intermediate -->
+<path d="M689,71 L689,108" stroke="#7a6a50" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+<rect x="232" y="108" width="214" height="54" rx="11" fill="#7a6a50"/>
+<text x="339" y="130" text-anchor="middle" font-size="14" fill="#fff">🔩</text>
+<text x="339" y="147" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Intermediate Goods</text>
+<path d="M689,71 L689,90 L446,135" stroke="#7a6a50" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.4" marker-end="url(#arr4)"/>
+<text x="339" y="177" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono'">Used in production · NOT in GDP · e.g. Steel</text>
+
+<!-- Final Goods branch -->
+<rect x="940" y="108" width="214" height="54" rx="11" fill="#b01a1a"/>
+<text x="1047" y="130" text-anchor="middle" font-size="14" fill="#fff">✅</text>
+<text x="1047" y="147" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Final Goods</text>
+<path d="M689,71 L689,90 L940,135" stroke="#b01a1a" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.5" marker-end="url(#arr4)"/>
+
+<!-- Final → Consumption -->
+<path d="M1047,162 Q900,185 720,195" stroke="#1a6a38" stroke-width="1.5" fill="none" opacity="0.5" marker-end="url(#arr5)"/>
+<rect x="530" y="186" width="184" height="38" rx="9" fill="#1a6a38"/>
+<text x="622" y="200" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">🍔 Consumption Goods</text>
+<text x="622" y="215" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Durable(&gt;3yr) · Non-dur · Services</text>
+
+<!-- Final → Capital -->
+<path d="M1047,162 Q1100,185 1150,192" stroke="#d46010" stroke-width="1.5" fill="none" opacity="0.5"/>
+<rect x="1080" y="186" width="184" height="38" rx="9" fill="#d46010"/>
+<text x="1172" y="200" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">🏭 Capital Goods</text>
+<text x="1172" y="215" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Tractor · Machinery · Produce more</text>
+
+<!-- Labels -->
+<text x="339" y="96" text-anchor="middle" font-size="9" fill="#7a6a50" font-family="'JetBrains Mono'" opacity="0.7">NOT counted in GDP</text>
+<text x="1047" y="96" text-anchor="middle" font-size="9" fill="#b01a1a" font-family="'JetBrains Mono'" opacity="0.7">Counted in GDP</text>
+</svg>
+</div>
+
+<!-- ══════ PART 2: INVESTMENT & CIRCULAR FLOW ══════ -->
+<div class="sec-lbl"><span class="sn">PART 2</span> Investment, Depreciation & Circular Flow</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">What is Investment?</div>
+    <h3>🏗️ Macroeconomics Definition</h3>
+    <div style="padding:14px;background:rgba(192,144,32,0.07);border-radius:10px;border:1.5px solid rgba(192,144,32,0.2);margin-bottom:12px;text-align:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:14px;font-style:italic;color:var(--gold);">"Investment = Part of final output<br>consisting of Capital Goods"</div>
+    </div>
+    <div style="font-size:11px;background:#f0ebe0;border-radius:9px;padding:11px;border:1px solid var(--border);">
+      <div style="font-weight:700;margin-bottom:6px;">Example: GDP = ₹1000</div>
+      <div class="flow">
+        <div class="fn" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);">Consumption ₹700</div>
+        <div class="fa">+</div>
+        <div class="fn" style="border-color:var(--amber);background:rgba(212,96,16,0.07);color:var(--amber);">Capital ₹300</div>
+        <div class="fa">=</div>
+        <div class="fn" style="border-color:var(--green);background:rgba(26,106,56,0.1);color:var(--green);">GDP ₹1000</div>
+      </div>
+      <div style="margin-top:8px;font-weight:700;color:var(--amber);">∴ Investment = ₹300 → Rate = 30%</div>
+    </div>
+    <div style="margin-top:10px;font-size:10px;color:var(--muted);">
+      <strong>Open Economy Adjustment:</strong> + Imported Capital − Exported Capital = Net Investment
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">Depreciation</div>
+    <h3>⚠️ Gross vs Net Investment</h3>
+    <div style="font-size:11px;margin-bottom:10px;color:var(--muted);">Depreciation = Consumption of Fixed Capital (machines wear out)</div>
+    <div style="background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);border-radius:10px;padding:13px;text-align:center;margin-bottom:10px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:var(--red);">Net = Gross − Depreciation</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:6px;color:var(--ink);">₹250 = ₹300 − ₹50</div>
+    </div>
+    <table class="ct">
+      <tr><th>TYPE</th><th>MEANING</th></tr>
+      <tr><td>Gross Investment</td><td>Total capital produced (ignores wear)</td></tr>
+      <tr><td>Net Investment</td><td>Actual increase in productive capacity</td></tr>
+      <tr><td>Depreciation</td><td>Value lost = CCA (Capital Consumption Allowance)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Circular Flow Diagram — REDESIGNED: clean 2-lane layout -->
+<div class="sec-lbl"><span class="sn">§2.1</span> Circular Flow of Income</div>
+<div class="mc a4">
+<svg viewBox="0 0 1380 480" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <!-- Arrow markers for each flow colour -->
+  <marker id="arr-purple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#5a1a8a"/>
+  </marker>
+  <marker id="arr-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#1a3a8a"/>
+  </marker>
+  <marker id="arr-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#1a6a38"/>
+  </marker>
+  <marker id="arr-orange" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+    <path d="M0,0 L10,4 L0,8 Z" fill="#d46010"/>
+  </marker>
+  <!-- Lane labels background -->
+  <filter id="lbl-shadow" x="-10%" y="-30%" width="120%" height="160%">
+    <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="rgba(0,0,0,0.12)"/>
+  </filter>
+</defs>
+
+<!-- Background -->
+<rect width="1380" height="480" fill="#f9f7f2"/>
+
+<!-- ══ LANE BACKGROUNDS ══ -->
+<!-- Real Flow lane (top) - goods & factors -->
+<rect x="20" y="28" width="1340" height="178" rx="14" fill="rgba(26,58,138,0.04)" stroke="rgba(26,58,138,0.12)" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="36" y="48" font-size="9" font-family="'JetBrains Mono'" fill="rgba(26,58,138,0.4)" letter-spacing="2" font-weight="700">REAL FLOW (GOODS &amp; FACTORS)</text>
+
+<!-- Money Flow lane (bottom) - income & expenditure -->
+<rect x="20" y="272" width="1340" height="178" rx="14" fill="rgba(212,96,16,0.04)" stroke="rgba(212,96,16,0.12)" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="36" y="292" font-size="9" font-family="'JetBrains Mono'" fill="rgba(212,96,16,0.4)" letter-spacing="2" font-weight="700">MONEY FLOW (INCOME &amp; EXPENDITURE)</text>
+
+<!-- ══ MAIN ACTOR BOXES ══ -->
+<!-- Household (left centre, spans both lanes) -->
+<rect x="38" y="168" width="230" height="148" rx="16" fill="#5a1a8a" filter="url(#lbl-shadow)"/>
+<text x="153" y="205" text-anchor="middle" font-size="22" fill="#fff">👨‍👩‍👧</text>
+<text x="153" y="228" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Household Sector</text>
+<line x1="68" y1="238" x2="238" y2="238" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+<text x="153" y="254" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="'JetBrains Mono'">SUPPLIES → Factors</text>
+<text x="153" y="269" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="'JetBrains Mono'">RECEIVES ← Income</text>
+<text x="153" y="285" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="'JetBrains Mono'">SPENDS → Buy Goods</text>
+<text x="153" y="300" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="'JetBrains Mono'">SAVES → Bank / Capital</text>
+
+<!-- Firm (right centre, spans both lanes) -->
+<rect x="1112" y="168" width="230" height="148" rx="16" fill="#1a6a38" filter="url(#lbl-shadow)"/>
+<text x="1227" y="205" text-anchor="middle" font-size="22" fill="#fff">🏭</text>
+<text x="1227" y="228" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Enterprise / Firm</text>
+<line x1="1142" y1="238" x2="1312" y2="238" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+<text x="1227" y="254" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="'JetBrains Mono'">HIRES ← Factors</text>
+<text x="1227" y="269" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="'JetBrains Mono'">PAYS → Wages/Rent/etc.</text>
+<text x="1227" y="285" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="'JetBrains Mono'">PRODUCES → Goods</text>
+<text x="1227" y="300" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)" font-family="'JetBrains Mono'">RECEIVES ← Payment</text>
+
+<!-- ══ MARKET BOXES (top & bottom centre) ══ -->
+<!-- Factor Market -->
+<rect x="490" y="68" width="400" height="64" rx="13" fill="#1a3a8a" filter="url(#lbl-shadow)"/>
+<text x="690" y="96" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">🏪  FACTOR MARKET</text>
+<text x="690" y="116" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Labour · Capital · Land · Entrepreneurship traded here</text>
+
+<!-- Goods Market -->
+<rect x="490" y="352" width="400" height="64" rx="13" fill="#d46010" filter="url(#lbl-shadow)"/>
+<text x="690" y="380" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">🛒  GOODS MARKET</text>
+<text x="690" y="400" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Consumption goods · Capital goods traded here</text>
+
+<!-- ══ KEY IDENTITY BOX (centre) ══ -->
+<rect x="540" y="200" width="300" height="84" rx="13" fill="#ffffff" stroke="rgba(192,144,32,0.5)" stroke-width="2" filter="url(#lbl-shadow)"/>
+<text x="690" y="224" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1410" letter-spacing="1">💡  KEY IDENTITY</text>
+<text x="690" y="248" text-anchor="middle" font-size="16" font-weight="700" fill="#c09020" font-family="'JetBrains Mono'">Savings = Investment</text>
+<text x="690" y="266" text-anchor="middle" font-size="9" fill="#7a6a50">(2-Sector Economy · No Govt · No Foreign)</text>
+<text x="690" y="279" text-anchor="middle" font-size="8.5" fill="#7a6a50">Saved ₹30 → Bank → Firm borrows → Buys Machines</text>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- REAL FLOW ARROWS (top lane) — straight horizontal lines with clear labels -->
+<!-- ══════════════════════════════════════════ -->
+
+<!-- 1. HH → Factor Market: Factors of Production (top, going RIGHT) -->
+<line x1="270" y1="100" x2="488" y2="100" stroke="#5a1a8a" stroke-width="2.8" marker-end="url(#arr-purple)"/>
+<!-- label box -->
+<rect x="285" y="82" width="186" height="20" rx="5" fill="rgba(90,26,138,0.1)"/>
+<text x="378" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#5a1a8a">Factors of Production</text>
+
+<!-- 2. Factor Market → Firm: Factors used (top, going RIGHT) -->
+<line x1="892" y1="100" x2="1110" y2="100" stroke="#1a3a8a" stroke-width="2.8" marker-end="url(#arr-blue)"/>
+<rect x="909" y="82" width="186" height="20" rx="5" fill="rgba(26,58,138,0.1)"/>
+<text x="1002" y="96" text-anchor="middle" font-size="10" font-weight="700" fill="#1a3a8a">Factors Hired by Firm</text>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- MONEY FLOW ARROWS (bottom lane) — straight horizontal lines with clear labels -->
+<!-- ══════════════════════════════════════════ -->
+
+<!-- 3. Firm → Goods Market: Produces goods (bottom, going LEFT) -->
+<line x1="1110" y1="384" x2="892" y2="384" stroke="#1a6a38" stroke-width="2.8" marker-end="url(#arr-green)"/>
+<rect x="909" y="390" width="186" height="20" rx="5" fill="rgba(26,106,56,0.1)"/>
+<text x="1002" y="404" text-anchor="middle" font-size="10" font-weight="700" fill="#1a6a38">Goods Produced / Supplied</text>
+
+<!-- 4. Goods Market → HH: Buys goods (bottom, going LEFT) -->
+<line x1="488" y1="384" x2="270" y2="384" stroke="#d46010" stroke-width="2.8" marker-end="url(#arr-orange)"/>
+<rect x="285" y="390" width="186" height="20" rx="5" fill="rgba(212,96,16,0.1)"/>
+<text x="378" y="404" text-anchor="middle" font-size="10" font-weight="700" fill="#d46010">Goods Purchased</text>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- VERTICAL CONNECTORS at HH side (left wall) -->
+<!-- ══════════════════════════════════════════ -->
+
+<!-- HH top-left → top lane: supply factors (going UP from HH to real flow level) -->
+<line x1="110" y1="168" x2="110" y2="102" stroke="#5a1a8a" stroke-width="2.8" marker-end="url(#arr-purple)"/>
+<rect x="56" y="128" width="48" height="34" rx="6" fill="#5a1a8a"/>
+<text x="80" y="141" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Labour</text>
+<text x="80" y="153" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Capital</text>
+
+<!-- HH bottom-left → bottom lane: spend (going DOWN from HH to money flow level) -->
+<line x1="110" y1="316" x2="110" y2="382" stroke="#d46010" stroke-width="2.8" marker-end="url(#arr-orange)"/>
+<rect x="56" y="326" width="48" height="34" rx="6" fill="#d46010"/>
+<text x="80" y="339" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Spend</text>
+<text x="80" y="351" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">₹</text>
+
+<!-- Income flow: bottom lane → HH (income comes back) -->
+<line x1="196" y1="384" x2="196" y2="318" stroke="#c09020" stroke-width="2.8" stroke-dasharray="none" marker-end="url(#arr-purple)"/>
+<rect x="142" y="326" width="48" height="34" rx="6" fill="#c09020"/>
+<text x="166" y="339" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Wages</text>
+<text x="166" y="351" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Profit</text>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- VERTICAL CONNECTORS at Firm side (right wall) -->
+<!-- ══════════════════════════════════════════ -->
+
+<!-- Firm top-right → real flow: receives factors -->
+<line x1="1270" y1="168" x2="1270" y2="102" stroke="#1a3a8a" stroke-width="2.8"/>
+<rect x="1244" y="120" width="52" height="42" rx="6" fill="#1a3a8a"/>
+<text x="1270" y="136" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Hires</text>
+<text x="1270" y="149" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Factors</text>
+<text x="1270" y="162" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.7)">↑</text>
+
+<!-- Firm bottom-right → goods market: sends goods -->
+<line x1="1270" y1="316" x2="1270" y2="384" stroke="#1a6a38" stroke-width="2.8" marker-end="url(#arr-green)"/>
+<rect x="1244" y="326" width="52" height="34" rx="6" fill="#1a6a38"/>
+<text x="1270" y="339" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Makes</text>
+<text x="1270" y="351" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Goods</text>
+
+<!-- Firm pays income: from firm towards money lane -->
+<line x1="1184" y1="316" x2="1184" y2="382" stroke="#c09020" stroke-width="2.8" marker-end="url(#arr-orange)"/>
+<rect x="1158" y="326" width="52" height="34" rx="6" fill="#c09020"/>
+<text x="1184" y="339" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Pays</text>
+<text x="1184" y="351" text-anchor="middle" font-size="8" font-weight="700" fill="#fff">Income</text>
+
+<!-- ══ INCOME FLOW: Firm → HH via money lane (bottom, going LEFT clearly) ══ -->
+<!-- This is the factor income payment path, separate from goods -->
+<line x1="1158" y1="346" x2="246" y2="346" stroke="#c09020" stroke-width="2.2" stroke-dasharray="8 4" marker-end="url(#arr-purple)"/>
+<rect x="540" y="330" width="300" height="22" rx="6" fill="rgba(192,144,32,0.1)" stroke="rgba(192,144,32,0.3)" stroke-width="1"/>
+<text x="690" y="345" text-anchor="middle" font-size="9" font-weight="700" fill="#c09020" font-family="'JetBrains Mono'">← INCOME: Wages + Rent + Interest + Profit</text>
+
+<!-- ══ FLOW DIRECTION LEGEND ══ -->
+<rect x="490" y="446" width="400" height="26" rx="8" fill="rgba(26,26,16,0.04)" stroke="rgba(26,26,16,0.08)" stroke-width="1"/>
+<circle cx="514" cy="459" r="5" fill="#5a1a8a"/>
+<text x="524" y="463" font-size="9" fill="#5a1a8a" font-weight="700">Factor Supply</text>
+<circle cx="614" cy="459" r="5" fill="#1a3a8a"/>
+<text x="624" y="463" font-size="9" fill="#1a3a8a" font-weight="700">Factor Use</text>
+<circle cx="714" cy="459" r="5" fill="#1a6a38"/>
+<text x="724" y="463" font-size="9" fill="#1a6a38" font-weight="700">Goods Flow</text>
+<circle cx="800" cy="459" r="5" fill="#d46010"/>
+<text x="810" y="463" font-size="9" fill="#d46010" font-weight="700">Expenditure</text>
+<line x1="874" y1="459" x2="884" y2="459" stroke="#c09020" stroke-width="2" stroke-dasharray="5 3"/>
+<circle cx="886" cy="459" r="3" fill="#c09020"/>
+<text x="894" y="463" font-size="9" fill="#c09020" font-weight="700">Income Return</text>
+
+</svg>
+</div>
+
+<!-- GDP 3 Methods -->
+<div class="sec-lbl"><span class="sn">§2.2</span> GDP — Three Methods of Measurement</div>
+<div class="mc a1">
+<svg viewBox="0 0 1380 160" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ag" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#1a6a38" opacity="0.7"/></marker>
+</defs>
+<rect width="1380" height="160" fill="#f9f7f2"/>
+
+<!-- Center GDP node -->
+<rect x="550" y="52" width="278" height="58" rx="14" fill="#1a1410"/>
+<text x="689" y="77" text-anchor="middle" font-size="15" font-weight="700" fill="#f5e8c0">📊 GDP</text>
+<text x="689" y="97" text-anchor="middle" font-size="9" fill="rgba(245,232,192,0.55)" font-family="'JetBrains Mono'">Income = Expenditure = Output</text>
+
+<!-- Left: Expenditure -->
+<rect x="58" y="36" width="260" height="90" rx="12" fill="#1a3a8a"/>
+<text x="188" y="61" text-anchor="middle" font-size="14" fill="#fff">💸</text>
+<text x="188" y="80" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Expenditure Method</text>
+<text x="188" y="97" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">C + I + G + (X−M)</text>
+<text x="188" y="113" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)">Total spending on final goods</text>
+<path d="M320,81 Q434,81 548,81" stroke="#1a3a8a" stroke-width="2" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#ag)"/>
+
+<!-- Right: Income -->
+<rect x="1062" y="36" width="260" height="90" rx="12" fill="#1a6a38"/>
+<text x="1192" y="61" text-anchor="middle" font-size="14" fill="#fff">💰</text>
+<text x="1192" y="80" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Income Method</text>
+<text x="1192" y="97" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">W + R + I + P</text>
+<text x="1192" y="113" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)">Sum of all factor payments</text>
+<path d="M1060,81 Q950,81 830,81" stroke="#1a6a38" stroke-width="2" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#ag)"/>
+
+<!-- Bottom: Value Added -->
+<rect x="540" y="122" width="298" height="32" rx="10" fill="#d46010"/>
+<text x="689" y="135" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">🏭 Production Method (Value Added): Sum of VA at each stage</text>
+<text x="689" y="147" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Avoids double-counting · Intermediate goods excluded</text>
+</svg>
+</div>
+
+<!-- Savings & Growth -->
+<div class="g2">
+  <div class="pc purple">
+    <div class="pc-label">Savings → Growth Chain</div>
+    <h3>📈 Why Savings Matter</h3>
+    <div class="ic">
+      <div class="icn" style="border-color:var(--purple);background:rgba(90,26,138,0.07);color:var(--purple);">More Savings</div>
+      <div class="ica">→</div>
+      <div class="icn" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);">Capital Goods</div>
+      <div class="ica">→</div>
+      <div class="icn" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);">More Machines</div>
+      <div class="ica">→</div>
+      <div class="icn" style="border-color:var(--green);background:rgba(26,106,56,0.07);color:var(--green);">Higher GDP</div>
+    </div>
+    <div class="bar-wrap" style="margin-top:12px;">
+      <div style="font-size:10px;font-weight:700;margin-bottom:4px;font-family:'JetBrains Mono';">Investment Rate (% of GDP)</div>
+      <div class="bar-item">
+        <div class="bar-lbl">India 1947</div>
+        <div class="bar-track"><div class="bar-fill" style="width:12%;background:#b01a1a;">5%</div></div>
+        <div class="bar-val" style="color:var(--red);">5%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-lbl">India 2020</div>
+        <div class="bar-track"><div class="bar-fill" style="width:70%;background:#d46010;">28%</div></div>
+        <div class="bar-val" style="color:var(--amber);">28%</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-lbl">China</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%;background:#1a6a38;">40%</div></div>
+        <div class="bar-val" style="color:var(--green);">40%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">High-Yield Prelims Points</div>
+    <h3>🎯 Must-Know Economics Facts</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">All humans → Household Sector</div><div class="vs">Including entrepreneurs</div></div>
+      <div class="vi"><div class="vt">Intermediate goods NOT in GDP</div><div class="vs">Avoids double counting</div></div>
+      <div class="vi"><div class="vt">Net Investment = Gross − Depreciation</div><div class="vs">Depreciation = Consumption of Fixed Capital</div></div>
+      <div class="vi"><div class="vt">Savings = Investment (2-sector)</div><div class="vs">Fundamental macro identity</div></div>
+      <div class="vi"><div class="vt">Durable goods last &gt;3 years</div><div class="vs">TV, Car · Non-durable &lt;3yr</div></div>
+      <div class="vi"><div class="vt">GDP: 3 methods, same result</div><div class="vs">Expenditure · Income · Production</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PART 3: URBAN LOCAL BODIES ══════ -->
+<div class="sec-lbl"><span class="sn">PART 3</span> Urban Local Bodies — 74th Amendment & Governance</div>
+
+<!-- Master ULB Flow -->
+<div class="mc a2">
+<svg viewBox="0 0 1380 110" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ulb1" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#1a5878" opacity="0.7"/></marker>
+</defs>
+<rect width="1380" height="110" fill="#fffefb"/>
+<line x1="168" y1="55" x2="218" y2="55" stroke="#1a5878" stroke-width="1.8" opacity="0.5" marker-end="url(#ulb1)"/>
+<line x1="372" y1="55" x2="422" y2="55" stroke="#1a5878" stroke-width="1.8" opacity="0.5" marker-end="url(#ulb1)"/>
+<line x1="576" y1="55" x2="626" y2="55" stroke="#1a5878" stroke-width="1.8" opacity="0.5" marker-end="url(#ulb1)"/>
+<line x1="790" y1="55" x2="840" y2="55" stroke="#1a5878" stroke-width="1.8" opacity="0.5" marker-end="url(#ulb1)"/>
+<line x1="1004" y1="55" x2="1054" y2="55" stroke="#1a5878" stroke-width="1.8" opacity="0.5" marker-end="url(#ulb1)"/>
+<line x1="1218" y1="55" x2="1258" y2="55" stroke="#1a5878" stroke-width="1.8" opacity="0.5" marker-end="url(#ulb1)"/>
+
+<rect x="10" y="15" width="158" height="78" rx="10" fill="#c09020"/>
+<text x="89" y="42" text-anchor="middle" font-size="16" fill="#fff">🏙️</text>
+<text x="89" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Cities = 60% GDP</text>
+<text x="89" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">3% of India's land</text>
+
+<rect x="222" y="15" width="150" height="78" rx="10" fill="#b01a1a"/>
+<text x="297" y="42" text-anchor="middle" font-size="16" fill="#fff">⚠️</text>
+<text x="297" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">ULBs Are Weak</text>
+<text x="297" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">0.6% GDP revenue</text>
+
+<rect x="426" y="15" width="150" height="78" rx="10" fill="#1a3a8a"/>
+<text x="501" y="42" text-anchor="middle" font-size="16" fill="#fff">📜</text>
+<text x="501" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">74th Amendment</text>
+<text x="501" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">1992 · 18 Functions</text>
+
+<rect x="630" y="15" width="160" height="78" rx="10" fill="#5a1a8a"/>
+<text x="710" y="42" text-anchor="middle" font-size="16" fill="#fff">🕳️</text>
+<text x="710" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">3F Gap</text>
+<text x="710" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Law ≠ Reality</text>
+
+<rect x="844" y="15" width="160" height="78" rx="10" fill="#0a6070"/>
+<text x="924" y="42" text-anchor="middle" font-size="16" fill="#fff">🚀</text>
+<text x="924" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Reforms</text>
+<text x="924" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">JNNURM · NUDM · Bonds</text>
+
+<rect x="1058" y="15" width="160" height="78" rx="10" fill="#1a6a38"/>
+<text x="1138" y="42" text-anchor="middle" font-size="16" fill="#fff">✅</text>
+<text x="1138" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Solutions</text>
+<text x="1138" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">3F Transfer + Elections</text>
+
+<rect x="1262" y="15" width="108" height="78" rx="10" fill="#1a5878"/>
+<text x="1316" y="42" text-anchor="middle" font-size="16" fill="#fff">🌆</text>
+<text x="1316" y="59" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">City Growth</text>
+<text x="1316" y="75" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="'JetBrains Mono'">Unlocked</text>
+</svg>
+</div>
+
+<!-- Why Cities & Revenue Gap -->
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">Why Urban Local Bodies Matter</div>
+    <h3>🏙️ Cities Drive India's Economy</h3>
+    <div class="srow">
+      <div class="sb"><div class="sn2" style="color:var(--amber);">60%</div><div class="sm">of India's GDP</div><div class="sl">FROM CITIES</div></div>
+      <div class="sb"><div class="sn2" style="color:var(--blue);">3%</div><div class="sm">of India's Land</div><div class="sl">URBAN AREA</div></div>
+      <div class="sb"><div class="sn2" style="color:var(--green);">18</div><div class="sm">Functions</div><div class="sl">12TH SCHEDULE</div></div>
+    </div>
+    <div class="ic" style="margin-top:10px;">
+      <div class="icn" style="border-color:var(--gold);background:rgba(192,144,32,0.07);color:var(--gold);font-size:9px;">Cities Grow</div>
+      <div class="ica">→</div>
+      <div class="icn" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);font-size:9px;">ULBs Function</div>
+      <div class="ica">→</div>
+      <div class="icn" style="border-color:var(--green);background:rgba(26,106,56,0.07);color:var(--green);font-size:9px;">Services Delivered</div>
+      <div class="ica">→</div>
+      <div class="icn" style="border-color:var(--amber);background:rgba(212,96,16,0.07);color:var(--amber);font-size:9px;">Economy Thrives</div>
+    </div>
+    <div class="fg">
+      <div class="fi-box"><div class="fi-icon">💧</div><div class="fi-t">Water & Sanitation</div><div class="fi-s">Primary civic duty</div></div>
+      <div class="fi-box"><div class="fi-icon">🛣️</div><div class="fi-t">Roads & Infrastructure</div><div class="fi-s">Urban connectivity</div></div>
+      <div class="fi-box"><div class="fi-icon">🏗️</div><div class="fi-t">Urban Planning</div><div class="fi-s">Land use & zoning</div></div>
+      <div class="fi-box"><div class="fi-icon">🗑️</div><div class="fi-t">Solid Waste</div><div class="fi-s">Collection & disposal</div></div>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">Revenue Gap — RBI Data</div>
+    <h3>📊 Revenue as % of GDP — Stark Imbalance</h3>
+    <div class="col-chart">
+      <div class="col-item">
+        <div class="col-val" style="color:var(--blue);">9.2%</div>
+        <div class="col-bar"><div class="col-bar-inner" style="height:62%;background:linear-gradient(180deg,#2a5acc,var(--blue));min-height:10px;"></div></div>
+        <div class="col-nm">Central Govt.</div>
+        <div class="col-sub">9.2% of GDP</div>
+      </div>
+      <div class="col-item">
+        <div class="col-val" style="color:var(--amber);">14.6%</div>
+        <div class="col-bar"><div class="col-bar-inner" style="height:100%;background:linear-gradient(180deg,#e88020,var(--amber));"></div></div>
+        <div class="col-nm">State Govts.</div>
+        <div class="col-sub">14.6% of GDP</div>
+      </div>
+      <div class="col-item">
+        <div class="col-val" style="color:var(--red);">0.6%</div>
+        <div class="col-bar"><div class="col-bar-inner" style="height:4%;background:linear-gradient(180deg,#d03030,var(--red));min-height:14px;"></div></div>
+        <div class="col-nm" style="color:var(--red);">Municipalities</div>
+        <div class="col-sub">0.6% of GDP ⚠️</div>
+      </div>
+    </div>
+    <div style="background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);border-radius:9px;padding:10px;font-size:10px;font-weight:700;color:var(--red);">
+      🔴 Municipalities govern 60% of GDP on 0.6% fiscal capacity — 24× lower than states
+    </div>
+  </div>
+</div>
+
+<!-- WHY ULBs WEAK: 3 Pillars -->
+<div class="sec-lbl"><span class="sn">§3.1</span> Why Are ULBs Weak? — The 3 Pillars</div>
+
+<div class="mc a3">
+<svg viewBox="0 0 1380 270" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="w1" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#b01a1a" opacity="0.6"/></marker>
+  <marker id="w2" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#d46010" opacity="0.6"/></marker>
+  <marker id="w3" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#5a1a8a" opacity="0.6"/></marker>
+</defs>
+<rect width="1380" height="270" fill="#fffefb"/>
+
+<!-- Center Root -->
+<rect x="545" y="104" width="288" height="60" rx="14" fill="#1a1410"/>
+<text x="689" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="#f5e8c0">⚠️ Why Are ULBs Weak?</text>
+<text x="689" y="148" text-anchor="middle" font-size="9" fill="rgba(245,232,192,0.6)" font-family="'JetBrains Mono'">3 Pillars of Weakness</text>
+
+<!-- LEFT Branch: Functional -->
+<path d="M543,134 C420,134 360,68 290,68" stroke="#b01a1a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#w1)"/>
+<path d="M543,134 C420,134 360,148 290,148" stroke="#b01a1a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#w1)"/>
+<path d="M543,134 C420,134 360,228 290,228" stroke="#b01a1a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#w1)"/>
+
+<rect x="38" y="44" width="252" height="50" rx="10" fill="#b01a1a"/>
+<text x="164" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⚙️ 12th Schedule Not Devolved</text>
+<text x="164" y="80" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">States hold back 18 of 18 functions</text>
+
+<rect x="38" y="124" width="252" height="50" rx="10" fill="#9a1a1a"/>
+<text x="164" y="144" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🔀 Parallel Bodies Bypass ULBs</text>
+<text x="164" y="160" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Smart City SPVs skip municipalities</text>
+
+<rect x="38" y="204" width="252" height="50" rx="10" fill="#7a1010"/>
+<text x="164" y="224" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">👷 Staff Shortage</text>
+<text x="164" y="240" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">No engineers, planners, IEC staff</text>
+
+<rect x="18" y="20" width="60" height="18" rx="5" fill="rgba(176,26,26,0.12)"/>
+<text x="48" y="32" text-anchor="middle" font-size="8" font-weight="700" fill="#b01a1a" font-family="'JetBrains Mono'">PILLAR 1</text>
+
+<!-- MIDDLE Branch: Financial -->
+<path d="M689,165 L689,200" stroke="#d46010" stroke-width="2" fill="none" stroke-dasharray="4 3" opacity="0.5" marker-end="url(#w2)"/>
+<rect x="560" y="200" width="260" height="56" rx="12" fill="#d46010"/>
+<text x="690" y="224" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">💸 Financial Weakness</text>
+<text x="690" y="241" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">0.6% GDP · Property tax weak · GST loss</text>
+
+<!-- RIGHT Branch: Political -->
+<path d="M835,134 C960,134 1020,68 1090,68" stroke="#5a1a8a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#w3)"/>
+<path d="M835,134 C960,134 1020,148 1090,148" stroke="#5a1a8a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#w3)"/>
+<path d="M835,134 C960,134 1020,228 1090,228" stroke="#5a1a8a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#w3)"/>
+
+<rect x="1090" y="44" width="272" height="50" rx="10" fill="#5a1a8a"/>
+<text x="1226" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🗳️ Delayed Elections</text>
+<text x="1226" y="80" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Administrators run cities for years</text>
+
+<rect x="1090" y="124" width="272" height="50" rx="10" fill="#4a1070"/>
+<text x="1226" y="144" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏛️ State Interference</text>
+<text x="1226" y="160" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Mayors powerless vs state ministers</text>
+
+<rect x="1090" y="204" width="272" height="50" rx="10" fill="#38086a"/>
+<text x="1226" y="224" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📐 MPC Non-functional</text>
+<text x="1226" y="240" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Metropolitan Planning — mostly on paper</text>
+
+<rect x="1300" y="20" width="60" height="18" rx="5" fill="rgba(90,26,138,0.12)"/>
+<text x="1330" y="32" text-anchor="middle" font-size="8" font-weight="700" fill="#5a1a8a" font-family="'JetBrains Mono'">PILLAR 3</text>
+
+<rect x="656" y="188" width="68" height="18" rx="5" fill="rgba(212,96,16,0.12)"/>
+<text x="690" y="200" text-anchor="middle" font-size="8" font-weight="700" fill="#d46010" font-family="'JetBrains Mono'">PILLAR 2</text>
+</svg>
+</div>
+
+<!-- Law vs Reality -->
+<div class="pc dark" style="background:rgba(18,16,14,0.03);border-color:rgba(18,16,14,0.15);margin-bottom:20px;">
+  <h3 style="font-family:'Libre Baskerville',serif;font-size:15px;margin-bottom:10px;">⚖️ 74th Amendment — Promise vs. Ground Reality</h3>
+  <div class="g2" style="margin-bottom:0;">
+    <div style="padding:13px;border-radius:11px;background:rgba(26,58,138,0.05);border:1.5px solid rgba(26,58,138,0.2);">
+      <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:7px;">📜 Law on Paper (1992)</div>
+      <span class="pill b">18 Functions — 12th Schedule</span>
+      <span class="pill b">5-Year Term Guaranteed</span>
+      <span class="pill b">Ward Committees Mandated</span>
+      <span class="pill b">State Election Commission</span>
+      <span class="pill b">Metropolitan Planning Committee</span>
+      <span class="pill b">Proportional Reservations</span>
+    </div>
+    <div style="padding:13px;border-radius:11px;background:rgba(176,26,26,0.05);border:1.5px solid rgba(176,26,26,0.2);">
+      <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:7px;">⚠️ Reality on Ground</div>
+      <span class="chip no">Functions rarely devolved</span>
+      <span class="chip no">Elections regularly delayed</span>
+      <span class="chip no">Ward Committees non-functional</span>
+      <span class="chip no">SEC lacks independence</span>
+      <span class="chip no">MPC — mostly on paper</span>
+      <span class="chip no">Mayors lack real power</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PART 4: IMPACT & CASE STUDIES ══════ -->
+<div class="sec-lbl"><span class="sn">PART 4</span> When Empowerment Works — Outcomes & Case Studies</div>
+
+<div class="g3">
+  <div class="pc green">
+    <div class="pc-label">Service Delivery</div>
+    <h3>🚰 Better Civic Services</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Water & Sanitation</div><div class="vs">Reliable supply, sewage treatment</div></div>
+      <div class="vi"><div class="vt">Roads & Maintenance</div><div class="vs">Faster repair, upkeep</div></div>
+      <div class="vi"><div class="vt">Solid Waste</div><div class="vs">Door-to-door, segregation</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Visible improvement</span>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Democratic Depth</div>
+    <h3>🗣️ Participation & Planning</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Ward Committees Active</div><div class="vs">Citizens shape local budgets</div></div>
+      <div class="vi"><div class="vt">DPCs & MPCs Functional</div><div class="vs">Grassroots planning realised</div></div>
+      <div class="vi"><div class="vt">Faster Issue Resolution</div><div class="vs">Local accountability works</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Democracy deepened</span>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Social Equity</div>
+    <h3>👩‍👦 Marginalised Groups</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Women in Governance</div><div class="vs">1/3 reservation in practice</div></div>
+      <div class="vi"><div class="vt">SC/ST Representation</div><div class="vs">Proportional reservations</div></div>
+      <div class="vi"><div class="vt">Local Economy</div><div class="vs">Livelihoods, markets, SHGs</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Equity gains</span>
+  </div>
+</div>
+
+<!-- Case Studies -->
+<div class="g3">
+  <div class="pc teal">
+    <div class="pc-label">Kerala · Solid Waste</div>
+    <h3>🗑️ Alappuzha Zero Waste</h3>
+    <div style="padding:10px 12px;border-radius:9px;background:rgba(10,96,112,0.07);border:1.5px solid rgba(10,96,112,0.2);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--teal);">Near-Zero</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">WASTE TO LANDFILL</div>
+    </div>
+    <div class="vl">
+      <div class="vi"><div class="vt">Ward-level composting</div><div class="vs">Community-managed, no middlemen</div></div>
+      <div class="vi"><div class="vt">Ward Sabha coordination</div><div class="vs">Monthly citizen meetings</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Template for India</span>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Kerala · Women & Poverty</div>
+    <h3>👩 Kudumbashree</h3>
+    <div style="padding:10px 12px;border-radius:9px;background:rgba(26,88,120,0.07);border:1.5px solid rgba(26,88,120,0.2);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--sky);">5 Lakh+</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">WOMEN MICROENTERPRISES</div>
+    </div>
+    <div class="vl">
+      <div class="vi"><div class="vt">Women's SHGs in governance</div><div class="vs">Integrated with local ULB planning</div></div>
+      <div class="vi"><div class="vt">Poverty alleviation</div><div class="vs">Through bottom-up democracy</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Grassroots democracy</span>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Pune · Finance</div>
+    <h3>🏙️ Municipal Bonds Pioneer</h3>
+    <div style="padding:10px 12px;border-radius:9px;background:rgba(90,26,138,0.07);border:1.5px solid rgba(90,26,138,0.2);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--purple);">₹2,600 Cr+</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">RAISED NATIONALLY SINCE FY2018</div>
+    </div>
+    <div class="vl">
+      <div class="vi"><div class="vt">First post-independence bond</div><div class="vs">Pune broke new ground in finance</div></div>
+      <div class="vi"><div class="vt">Reduces grant dependence</div><div class="vs">Long-term urban planning enabled</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Fiscal innovation</span>
+  </div>
+</div>
+
+<!-- ══════ PART 5: SOLUTIONS ══════ -->
+<div class="sec-lbl"><span class="sn">PART 5</span> Solutions — Strengthening Municipalities</div>
+
+<!-- Solutions Diagram -->
+<div class="mc a4">
+<svg viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="s1" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#1a6a38" opacity="0.7"/></marker>
+  <marker id="s2" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#c09020" opacity="0.7"/></marker>
+  <marker id="s3" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M1,1 L7,4 L1,7 Z" fill="#1a3a8a" opacity="0.7"/></marker>
+</defs>
+<rect width="1380" height="200" fill="#f9f7f2"/>
+
+<!-- Center -->
+<rect x="555" y="72" width="268" height="58" rx="14" fill="#1a1410"/>
+<text x="689" y="96" text-anchor="middle" font-size="14" font-weight="700" fill="#f5e8c0">💡 Solutions Needed</text>
+<text x="689" y="114" text-anchor="middle" font-size="9" fill="rgba(245,232,192,0.55)" font-family="'JetBrains Mono'">Functional · Financial · Political</text>
+
+<!-- Left solutions -->
+<path d="M553,101 C450,101 380,50 310,50" stroke="#1a6a38" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#s1)"/>
+<path d="M553,101 C450,101 380,101 310,101" stroke="#c09020" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#s2)"/>
+<path d="M553,101 C450,101 380,150 310,150" stroke="#1a3a8a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5" marker-end="url(#s3)"/>
+
+<rect x="30" y="26" width="278" height="50" rx="10" fill="#1a6a38"/>
+<text x="169" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⚙️ Full 12th Schedule Devolution</text>
+<text x="169" y="63" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">All 18 functions actually given</text>
+
+<rect x="30" y="78" width="278" height="50" rx="10" fill="#c09020"/>
+<text x="169" y="99" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">💰 Strengthen Property Tax</text>
+<text x="169" y="115" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Update valuations, auto-collection</text>
+
+<rect x="30" y="128" width="278" height="50" rx="10" fill="#1a3a8a"/>
+<text x="169" y="149" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🗳️ Timely Elections (Enforced)</text>
+<text x="169" y="165" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Constitutionally mandated, no delays</text>
+
+<!-- Right solutions -->
+<path d="M825,101 C928,101 998,50 1068,50" stroke="#0a6070" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5"/>
+<path d="M825,101 C928,101 998,101 1068,101" stroke="#d46010" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5"/>
+<path d="M825,101 C928,101 998,150 1068,150" stroke="#5a1a8a" stroke-width="1.8" fill="none" stroke-dasharray="5 3" opacity="0.5"/>
+
+<rect x="1070" y="26" width="290" height="50" rx="10" fill="#0a6070"/>
+<text x="1215" y="47" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📊 Abolish Parallel SPVs</text>
+<text x="1215" y="63" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Merge Smart City bodies with ULBs</text>
+
+<rect x="1070" y="78" width="290" height="50" rx="10" fill="#d46010"/>
+<text x="1215" y="99" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📈 Municipal Bonds + GST Share</text>
+<text x="1215" y="115" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Capital markets + revenue compensation</text>
+
+<rect x="1070" y="128" width="290" height="50" rx="10" fill="#5a1a8a"/>
+<text x="1215" y="149" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏙️ Real Powers to Mayors</text>
+<text x="1215" y="165" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="'JetBrains Mono'">Executive authority + ULB autonomy</text>
+</svg>
+</div>
+
+<div class="g3">
+  <div class="pc green">
+    <div class="pc-label">Functional Fix</div>
+    <h3>⚙️ Transfer Real Powers</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Full 12th Schedule Devolution</div><div class="vs">All 18 functions to ULBs</div></div>
+      <div class="vi"><div class="vt">Abolish Parallel Bodies</div><div class="vs">Merge SPVs with municipalities</div></div>
+      <div class="vi"><div class="vt">Activate Ward Committees</div><div class="vs">Citizen participation at every ward</div></div>
+      <div class="vi"><div class="vt">Hire Skilled Staff</div><div class="vs">Engineers, urban planners, managers</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Legal Devolution</span>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Financial Fix</div>
+    <h3>💰 Fiscal Empowerment</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Strengthen Property Tax</div><div class="vs">Updated valuations, auto-collection</div></div>
+      <div class="vi"><div class="vt">GST Compensation</div><div class="vs">Revenue sharing from GST pool</div></div>
+      <div class="vi"><div class="vt">Municipal Bonds</div><div class="vs">Capital market access for cities</div></div>
+      <div class="vi"><div class="vt">Stronger State Finance Comm.</div><div class="vs">Implement SFC recommendations</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Fiscal Strength</span>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Political Fix</div>
+    <h3>🗳️ Elections & Autonomy</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Timely Elections</div><div class="vs">Constitutionally enforced, no delays</div></div>
+      <div class="vi"><div class="vt">Mayor's Real Powers</div><div class="vs">Real executive authority to mayors</div></div>
+      <div class="vi"><div class="vt">Activate MPCs / DPCs</div><div class="vs">Metro & district planning bodies</div></div>
+      <div class="vi"><div class="vt">Digital NUDM</div><div class="vs">Data-driven governance framework</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Political Autonomy</span>
+  </div>
+</div>
+
+<!-- ══════ TIMELINE: 3 Phases ══════ -->
+<div class="sec-lbl"><span class="sn">§5.1</span> Decentralization — 3 Phases</div>
+
+<div class="ph-row">
+  <div class="ph" style="border-color:var(--amber);background:rgba(212,96,16,0.04);">
+    <div class="ph-num" style="color:var(--amber);">74th</div>
+    <div class="ph-title">Constitutional Foundation</div>
+    <div class="ph-sub" style="color:var(--muted);">Amendment · 1992</div>
+    <div style="font-size:10px;margin:8px 0;line-height:1.6;color:var(--muted);">18 functions · 5-year terms<br>Ward committees · Elections<br>SEC & MPC mandated</div>
+    <span class="pill a">Legal Empowerment</span>
+  </div>
+  <div class="ph" style="border-color:var(--gold);background:rgba(192,144,32,0.04);">
+    <div class="ph-num" style="color:var(--gold);">3F</div>
+    <div class="ph-title">The Empowerment Gap</div>
+    <div class="ph-sub" style="color:var(--muted);">Post-1993 Reality</div>
+    <div style="font-size:10px;margin:8px 0;line-height:1.6;color:var(--muted);">Funds · Functions · Functionaries<br>NOT actually devolved to ULBs<br>Legal ≠ Real</div>
+    <span class="pill r">Implementation Gap</span>
+  </div>
+  <div class="ph" style="border-color:var(--green);background:rgba(26,106,56,0.04);">
+    <div class="ph-num" style="color:var(--green);">Now</div>
+    <div class="ph-title">Real Devolution Phase</div>
+    <div class="ph-sub" style="color:var(--muted);">The Ongoing Challenge</div>
+    <div style="font-size:10px;margin:8px 0;line-height:1.6;color:var(--muted);">Municipal Bonds · NUDM<br>JNNURM · AMRUT · Smart Cities<br>Making it real</div>
+    <span class="pill g">Making It Real</span>
+  </div>
+</div>
+
+<!-- Wins vs Challenges -->
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">After Decentralization — Gains</div>
+    <h3>✅ What Worked</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip ok">✅ Constitutional status secured</span>
+      <span class="chip ok">✅ More citizen participation</span>
+      <span class="chip ok">✅ Faster local issue resolution</span>
+      <span class="chip ok">✅ Welfare scheme alignment</span>
+      <span class="chip ok">✅ Local economy strengthened</span>
+      <span class="chip ok">✅ Women in urban governance</span>
+      <span class="chip ok">✅ SC/ST representation</span>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Persistent Challenges</div>
+    <h3>⚠️ What Still Fails</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip no">❌ Financial dependence (80%+ grants)</span>
+      <span class="chip no">❌ Political interference</span>
+      <span class="chip no">❌ Capacity & skill gaps</span>
+      <span class="chip no">❌ Gender & social barriers</span>
+      <span class="chip no">❌ Functions not devolved</span>
+      <span class="chip no">❌ Weak accountability</span>
+      <span class="chip no">❌ Parallel bodies bypassing ULBs</span>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="ks">
+  <div class="ks-icon">🌆</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea</div>
+    <div class="ks-body">India built a constitutional framework for local urban democracy in 1992. <strong style="color:#f5d780;">The real challenge remains: converting legal decentralization into fiscal and administrative reality.</strong> Without funds + autonomy, municipalities remain weak despite the law. With genuine empowerment, cities become the engines of India's sustainable development — delivering services, deepening democracy, and driving 60% of GDP from just 3% of land.</div>
+    <div class="ks-pills">
+      <span class="kp">🏙️ Legal → Real</span>
+      <span class="kp">💸 Fiscal Federalism</span>
+      <span class="kp">🗳️ Democratic Devolution</span>
+      <span class="kp">📈 Cities = Growth</span>
+      <span class="kp">⚖️ Social Equity</span>
+      <span class="kp">💰 Savings = Investment</span>
+      <span class="kp">📊 3 GDP Methods</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>
