@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDI in Insurance · Aatma Nirbhar Bharat · Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ee;--paper:#fffdf7;--ink:#1a1510;
+  --gold:#c08b14;--gold-lt:#f7e199;--gold-pale:#fef9e6;
+  --amber:#d4600a;--amber-lt:#fdecd4;
+  --blue:#1a3d7c;--blue-lt:#e8edf8;
+  --green:#1a6640;--green-lt:#e6f3ec;
+  --teal:#0a5c6e;--teal-lt:#e3f3f6;
+  --purple:#5c1a8c;--purple-lt:#ede3f7;
+  --red:#a01a1a;--red-lt:#f7e6e6;
+  --sky:#1a5070;--sky-lt:#e3edf5;
+  --muted:#7a6a4a;--border:#e0d4b0;
+  --card:#fffdf7;--card2:#f4f0e5;
+  --shadow:0 2px 18px rgba(0,0,0,0.07);
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 1000px 600px at 10% 5%,rgba(192,139,20,0.07) 0%,transparent 60%),
+  radial-gradient(ellipse 800px 800px at 90% 95%,rgba(26,61,124,0.06) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 22px 100px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:48px 16px 24px;}
+.hdr-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.hdr h1{font-family:'Fraunces',serif;font-size:clamp(28px,5.5vw,56px);line-height:1.08;font-weight:900;color:var(--ink);}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr-sub{margin-top:8px;font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1.5px;}
+.hdr::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:16px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;box-shadow:var(--shadow);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.amber::before{background:var(--amber);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Fraunces',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;font-weight:700;}
+
+/* MAP CARD */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;box-shadow:var(--shadow);}
+.mc svg{display:block;width:100%;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.c1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc.c2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc.c3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.c4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc.c5::before{background:linear-gradient(90deg,var(--purple),var(--blue),var(--sky));}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(192,139,20,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,102,64,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,61,124,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,96,10,0.12);color:var(--amber);}
+.pill.purple{background:rgba(92,26,140,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,92,110,0.12);color:var(--teal);}
+.pill.red{background:rgba(160,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,80,112,0.12);color:var(--sky);}
+
+/* CHIPS */
+.chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.good{background:rgba(26,102,64,0.07);border-color:rgba(26,102,64,0.2);color:var(--green);}
+.chip.bad{background:rgba(160,26,26,0.07);border-color:rgba(160,26,26,0.2);color:var(--red);}
+.chip.neu{background:rgba(192,139,20,0.07);border-color:rgba(192,139,20,0.2);color:var(--gold);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-n{font-family:'Fraunces',serif;font-size:26px;font-weight:900;line-height:1;}
+.stat-l{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-s{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:800;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* FEAT GRID */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.ft{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.ft .fi{font-size:16px;margin-bottom:4px;}
+.ft .fn{font-size:11px;font-weight:800;}
+.ft .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctbl td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(192,139,20,0.03);}
+.ctbl td:first-child{font-weight:800;color:var(--amber);}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.fn2{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.fa{font-size:18px;color:var(--muted);}
+
+/* KEYSTONE */
+.ks{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.ks-icon{font-size:36px;flex:0 0 auto;}
+.ks-title{font-family:'Fraunces',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.ks-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.ks-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* PHASE */
+.ph-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0;}
+@media(max-width:900px){.ph-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.ph-row{grid-template-columns:1fr;}}
+.ph-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.ph-n{font-family:'Fraunces',serif;font-size:28px;font-weight:900;}
+.ph-t{font-size:12px;font-weight:800;margin:4px 0;}
+.ph-s{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;color:var(--muted);}
+
+/* IMPACT CHAIN */
+.ic{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-n{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-a{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;background:rgba(26,102,64,0.06);border:1.5px solid rgba(26,102,64,0.2);margin:8px 0;}
+.callout-t{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* TIMELINE */
+.tl{position:relative;margin:14px 0;padding-left:28px;}
+.tl::before{content:'';position:absolute;left:9px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),var(--blue));border-radius:2px;}
+.tl-item{position:relative;margin-bottom:12px;}
+.tl-item::before{content:'';position:absolute;left:-23px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--paper);box-shadow:0 0 0 2px var(--gold);}
+.tl-item.blue::before{background:var(--blue);box-shadow:0 0 0 2px var(--blue);}
+.tl-item.green::before{background:var(--green);box-shadow:0 0 0 2px var(--green);}
+.tl-item.red::before{background:var(--red);box-shadow:0 0 0 2px var(--red);}
+.tl-yr{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--amber);}
+.tl-txt{font-size:11px;font-weight:700;line-height:1.4;}
+.tl-sub{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* BADGE */
+.badge{display:inline-block;padding:3px 9px;border-radius:6px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;}
+.badge.fire{background:#fef0e0;color:#c04a00;border:1px solid rgba(192,74,0,0.2);}
+.badge.star{background:var(--gold-pale);color:var(--gold);border:1px solid rgba(192,139,20,0.2);}
+.badge.ok{background:var(--green-lt);color:var(--green);border:1px solid rgba(26,102,64,0.2);}
+
+/* PILLAR BOX */
+.pb{padding:14px;border-radius:12px;background:var(--card2);border:1.5px solid var(--border);text-align:center;}
+.pb .pe{font-size:22px;margin-bottom:4px;}
+.pb .pt{font-size:12px;font-weight:800;}
+.pb .ps{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+.pb-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:12px 0;}
+@media(max-width:640px){.pb-row{grid-template-columns:1fr 1fr;}}
+
+/* DIVIDER */
+.divl{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-sup">Indian Economy · UPSC Prelims · Macro Policy</div>
+  <h1>FDI in Insurance · <em>Aatma Nirbhar Bharat</em></h1>
+  <div class="hdr-sub">Reform Story → RBI Measures → Structural Shifts → Amrit Kaal Vision</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec">Master Flow — The Big Picture</div>
+<div class="mc c1">
+  <svg id="svgMaster" viewBox="0 0 1340 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: FDI TIMELINE ══ -->
+<div class="sec">① FDI in Insurance — Reform Timeline</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-lbl">Timeline · Very Important</div>
+    <h3>📜 FDI Limit Evolution</h3>
+    <div class="tl">
+      <div class="tl-item red">
+        <div class="tl-yr">1972</div>
+        <div class="tl-txt">Insurance Sector Nationalized</div>
+        <div class="tl-sub">State monopoly begins</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-yr">1999</div>
+        <div class="tl-txt">IRDA Act Passed</div>
+        <div class="tl-sub">Regulator established</div>
+      </div>
+      <div class="tl-item blue">
+        <div class="tl-yr">2000</div>
+        <div class="tl-txt">Sector Opened · FDI = <span style="color:var(--amber);">26%</span></div>
+        <div class="tl-sub">Private players enter · IRDAI formed</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-yr">2015</div>
+        <div class="tl-txt">FDI Limit Raised → <span style="color:var(--amber);">49%</span></div>
+        <div class="tl-sub">Increased competition</div>
+      </div>
+      <div class="tl-item green">
+        <div class="tl-yr">2021</div>
+        <div class="tl-txt">FDI Limit → <span style="color:var(--green);">74% (Automatic Route)</span></div>
+        <div class="tl-sub">Aatma Nirbhar Bharat era · Defence too</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;"><span class="badge fire">🔥 IRDAI = Regulator (Est. 2000)</span></div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-lbl">Types & Key Terms</div>
+    <h3>🔑 Insurance Basics</h3>
+    <div class="fg">
+      <div class="ft"><div class="fi">❤️</div><div class="fn">Life Insurance</div><div class="fs">Covers death risk</div></div>
+      <div class="ft"><div class="fi">🚗</div><div class="fn">General (Non-life)</div><div class="fs">Fire, motor, marine, health</div></div>
+    </div>
+    <div class="divl" style="margin:12px 0;"></div>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vt">📊 Insurance Penetration</div>
+        <div class="vs">Premium as % of GDP · India ≈ 3.76% (low globally)</div>
+      </div>
+      <div class="vi">
+        <div class="vt">💲 Insurance Density</div>
+        <div class="vs">Premium per capita · Life ≈ $58 · Non-life ≈ $19</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;border-radius:9px;background:var(--red-lt);border:1px dashed var(--red);">
+      <span style="font-size:11px;font-weight:800;color:var(--red);">⚠️ Under-penetrated: Low awareness · Low financial literacy · Reactive buying</span>
+    </div>
+  </div>
+</div>
+
+<!-- FDI WHY + SVG Diagram -->
+<div class="mc c2">
+  <svg id="svgFDI" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="pc amber" style="margin-bottom:20px;">
+  <div class="pc-lbl">Why Increase FDI?</div>
+  <h3>🎯 Rationale for FDI Liberalization</h3>
+  <div class="g4">
+    <div class="ft"><div class="fi">💰</div><div class="fn">Foreign Capital</div><div class="fs">Fund infra via LT premiums</div></div>
+    <div class="ft"><div class="fi">⚔️</div><div class="fn">Competition</div><div class="fs">Better products & pricing</div></div>
+    <div class="ft"><div class="fi">✅</div><div class="fn">Claims Settlement</div><div class="fs">International best practices</div></div>
+    <div class="ft"><div class="fi">🏗️</div><div class="fn">Infra Financing</div><div class="fs">Long-term fund generation</div></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: AATMA NIRBHAR ══ -->
+<div class="sec">② Aatma Nirbhar Bharat — Concept & Pillars</div>
+
+<div class="mc c3">
+  <svg id="svgAN" viewBox="0 0 1340 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc green">
+    <div class="pc-lbl">Core Philosophy</div>
+    <h3>🇮🇳 What It Really Means</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">❌ NOT Isolationism</div><div class="vs">Not closing doors to world</div></div>
+      <div class="vi"><div class="vt">❌ NOT Old Import Substitution</div><div class="vs">Not license raj redux</div></div>
+      <div class="vi"><div class="vt">✅ Self-reliance + Global Integration</div><div class="vs">Compete globally from a position of strength</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:var(--green-lt);border-radius:9px;border:1.5px solid rgba(26,102,64,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--green);">Inspired By</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:3px;">Swami Vivekananda's self-strength · <em>Vasudhaiva Kutumbakam</em> (triggered by COVID crisis)</div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-lbl">Five Pillars</div>
+    <h3>🏛️ Pillars of Aatma Nirbhar</h3>
+    <div class="pb-row" style="grid-template-columns:1fr 1fr;">
+      <div class="pb"><div class="pe">📊</div><div class="pt">Economy</div><div class="ps">Quantum jump</div></div>
+      <div class="pb"><div class="pe">🏗️</div><div class="pt">Infrastructure</div><div class="ps">Modern identity</div></div>
+      <div class="pb"><div class="pe">💻</div><div class="pt">System</div><div class="ps">Tech-driven governance</div></div>
+      <div class="pb"><div class="pe">👥</div><div class="pt">Demography</div><div class="ps">Youth power dividend</div></div>
+      <div class="pb" style="grid-column:1/-1;"><div class="pe">📦</div><div class="pt">Demand</div><div class="ps">Strong supply chains</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- OLD vs NEW TABLE -->
+<div class="pc sky" style="margin-bottom:20px;">
+  <div class="pc-lbl">Model Comparison · Prelims Important</div>
+  <h3>⚖️ Old Model vs New Model — Command & Control vs Plug & Play</h3>
+  <table class="ctbl">
+    <thead><tr><th>Old Model</th><th>New Model</th></tr></thead>
+    <tbody>
+      <tr><td>License Raj</td><td>Ease of Doing Business</td></tr>
+      <tr><td>Import substitution</td><td>Global supply chain participation</td></tr>
+      <tr><td>PSU dominance</td><td>Private sector participation</td></tr>
+      <tr><td>FDI restrictions</td><td>FDI liberalization (auto route)</td></tr>
+      <tr><td>Command & Control</td><td>Plug & Play (Govt. provides land + policy)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ SECTION 3: REFORMS ══ -->
+<div class="sec">③ Major Reforms Under Aatma Nirbhar Bharat</div>
+
+<div class="mc c4">
+  <svg id="svgReforms" viewBox="0 0 1340 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-lbl">Economic Reforms</div>
+    <h3>📦 Production & Trade</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">⛏️ Commercial Coal Mining</div><div class="vs">Private participation allowed</div></div>
+      <div class="vi"><div class="vt">🏭 MSME Redefinition</div><div class="vs">Higher investment + turnover limits</div></div>
+      <div class="vi"><div class="vt">🛡️ Global Tenders ≤ ₹200 Cr Restricted</div><div class="vs">Protects MSMEs from foreign bidders</div></div>
+      <div class="vi"><div class="vt">⚖️ Labour Reforms</div><div class="vs">One license · One registration</div></div>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-lbl">Strategic Sectors</div>
+    <h3>🛡️ Defence & Space</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">🛡️ Defence — 74% FDI (Auto)</div><div class="vs">Same as insurance sector</div></div>
+      <div class="vi"><div class="vt">🏭 Ordnance Factory Corporatized</div><div class="vs">Ordnance Factory Board → companies</div></div>
+      <div class="vi"><div class="vt">🚀 Space Sector Opened</div><div class="vs">Private players in launch + satellites</div></div>
+      <div class="vi"><div class="vt">🗺️ National Land Bank Portal</div><div class="vs">Ease infra + industrial setup</div></div>
+    </div>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-lbl">Infrastructure & Energy</div>
+    <h3>⚡ Power & Aviation</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">💡 Electricity Reforms</div><div class="vs">DBT subsidy · Smart meters · DISCOM accountability</div></div>
+      <div class="vi"><div class="vt">✈️ Aircraft MRO Hub</div><div class="vs">GST reduced 18% → 5%</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;background:var(--teal-lt);border-radius:9px;border:1.5px solid rgba(10,92,110,0.2);">
+      <span style="font-size:10px;font-weight:800;color:var(--teal);">🎯 Goal: Make India a global supply chain hub</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: RBI MEASURES ══ -->
+<div class="sec">④ RBI Measures During COVID — Monetary Support</div>
+
+<div class="mc c5">
+  <svg id="svgRBI" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc red">
+    <div class="pc-lbl">Rate & Reserve Measures</div>
+    <h3>📉 Monetary Easing</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">🔽 Repo Rate Reduced</div><div class="vs">Cheaper borrowing for banks</div></div>
+      <div class="vi"><div class="vt">🔽 CRR: 4% → 3%</div><div class="vs">₹1.37 lakh crore released</div></div>
+      <div class="vi"><div class="vt">🔼 MSF Limit Increased</div><div class="vs">Emergency liquidity window widened</div></div>
+      <div class="vi"><div class="vt">🔽 LCR: 100% → 80%</div><div class="vs">Banks hold less high-quality liquid assets</div></div>
+    </div>
+  </div>
+
+  <div class="pc sky">
+    <div class="pc-lbl">Credit & Refinance</div>
+    <h3>💳 Targeted Support</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">🛑 EMI Moratorium</div><div class="vs">6-month pause on loan repayments</div></div>
+      <div class="vi"><div class="vt">💵 LTRO — ₹1 Lakh Crore</div><div class="vs">Long-term repo operations for liquidity</div></div>
+      <div class="vi"><div class="vt">🌾 NABARD — Special Refinance</div><div class="vs">Agriculture & rural credit</div></div>
+      <div class="vi"><div class="vt">🏭 SIDBI — Special Refinance</div><div class="vs">MSMEs & small businesses</div></div>
+      <div class="vi"><div class="vt">🏘️ NHB — Special Refinance</div><div class="vs">Housing finance companies</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: STRUCTURAL SHIFTS ══ -->
+<div class="sec">⑤ Five Structural Shifts in the Economy</div>
+
+<div class="mc c1" style="margin-bottom:18px;">
+  <svg id="svgShifts" viewBox="0 0 1340 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g4" style="margin-bottom:0;">
+  <div class="pc green">
+    <div class="pc-lbl">Shift 1</div>
+    <h3>🌾 Agriculture</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Private sector in farming</div><div class="vs">APMC reform attempts</div></div>
+      <div class="vi"><div class="vt">FPOs empowered</div><div class="vs">Farmer producer organisations</div></div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-lbl">Shift 2</div>
+    <h3>☀️ Renewable Energy</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Solar + Wind capacity</div><div class="vs">Climate + self-reliance goal</div></div>
+      <div class="vi"><div class="vt">PLI for Solar Modules</div><div class="vs">Domestic manufacturing</div></div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-lbl">Shift 3</div>
+    <h3>💻 ICT & Startups</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Startup India ecosystem</div><div class="vs">Unicorns + digital economy</div></div>
+      <div class="vi"><div class="vt">UPI global expansion</div><div class="vs">Fintech leadership</div></div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-lbl">Shift 4 & 5</div>
+    <h3>🏗️ Supply Chain + Infra</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">PLI Schemes — 14 sectors</div><div class="vs">China+1 supply chain opportunity</div></div>
+      <div class="vi"><div class="vt">PM Gati Shakti NMP</div><div class="vs">Multimodal infra push</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: AMRIT KAAL ══ -->
+<div class="sec">⑥ Amrit Kaal — Vision for Next 25 Years</div>
+
+<div class="ph-row" style="grid-template-columns:repeat(5,1fr);">
+  <div class="ph-box" style="border-color:var(--gold);background:rgba(192,139,20,0.04);">
+    <div class="ph-n" style="color:var(--gold);">🇮🇳</div>
+    <div class="ph-t">Developed India</div>
+    <div class="ph-s">Viksit Bharat @2047</div>
+    <div style="font-size:10px;margin-top:6px;color:var(--muted);">$5T economy and beyond</div>
+  </div>
+  <div class="ph-box" style="border-color:var(--amber);background:rgba(212,96,10,0.04);">
+    <div class="ph-n" style="color:var(--amber);">🧠</div>
+    <div class="ph-t">No Colonial Mindset</div>
+    <div class="ph-s">Decolonize systems</div>
+    <div style="font-size:10px;margin-top:6px;color:var(--muted);">Indian ways of thinking</div>
+  </div>
+  <div class="ph-box" style="border-color:var(--purple);background:rgba(92,26,140,0.04);">
+    <div class="ph-n" style="color:var(--purple);">🏛️</div>
+    <div class="ph-t">Pride in Heritage</div>
+    <div class="ph-s">Cultural confidence</div>
+    <div style="font-size:10px;margin-top:6px;color:var(--muted);">History + innovation</div>
+  </div>
+  <div class="ph-box" style="border-color:var(--green);background:rgba(26,102,64,0.04);">
+    <div class="ph-n" style="color:var(--green);">🤝</div>
+    <div class="ph-t">Unity</div>
+    <div class="ph-s">Ek Bharat</div>
+    <div style="font-size:10px;margin-top:6px;color:var(--muted);">Diversity as strength</div>
+  </div>
+  <div class="ph-box" style="border-color:var(--blue);background:rgba(26,61,124,0.04);">
+    <div class="ph-n" style="color:var(--blue);">📋</div>
+    <div class="ph-t">Citizens' Duties</div>
+    <div class="ph-s">Responsibilities first</div>
+    <div style="font-size:10px;margin-top:6px;color:var(--muted);">Rights come from duties</div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="ks">
+  <div class="ks-icon">🚀</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Full Connected Flow</div>
+    <div class="ks-sub">Insurance FDI Reform → More Capital & Competition → COVID Crisis → Aatma Nirbhar Bharat → Structural Reforms + Private Participation → RBI Liquidity Support → Shift from Command & Control to Market-Driven Economy → <strong style="color:#f5d78a;">Vision: Amrit Kaal → Developed India @2047</strong></div>
+    <div class="ks-pills">
+      <span class="kp">📜 FDI 26→74%</span>
+      <span class="kp">🇮🇳 Self-Reliance</span>
+      <span class="kp">💳 RBI Easing</span>
+      <span class="kp">🏗️ 5 Structural Shifts</span>
+      <span class="kp">🌆 Amrit Kaal 2047</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,col,dash,w){
+  const mx=(x1+x2)/2;
+  const p=el('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:col||'#aaa','stroke-width':w||1.8,fill:'none','stroke-dasharray':dash?'5 3':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  // main rect
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  // top highlight
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+1,width:w-4,height:2,rx:'1',fill:'rgba(255,255,255,0.25)'}));
+
+  let ty=y - (lines.length-1)*7.5 - (sub?5:0) - (emoji?10:0);
+  if(emoji){
+    const em=el('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:textCol});
+    em.textContent=emoji;g.appendChild(em);ty+=18;
+  }
+  lines.forEach((l,i)=>{
+    const t=el('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Plus Jakarta Sans,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.setAttribute('viewBox','0 0 1340 110');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:110,fill:'rgba(247,244,238,0.4)'}));
+
+  const steps=[
+    {x:80, label:['Insurance','Nationalized'], sub:'1972 → Monopoly', fill:'#a01a1a', emoji:'🏛️'},
+    {x:242, label:['IRDA + Private','Entry'], sub:'1999–2000', fill:'#b87c10', emoji:'📋'},
+    {x:404, label:['FDI 26%→49%','→74%'], sub:'2000–2021', fill:'#1a3d7c', emoji:'📈'},
+    {x:566, label:['COVID Crisis','Disruption'], sub:'2020 shock', fill:'#7a0a0a', emoji:'😷'},
+    {x:728, label:['Aatma Nirbhar','Bharat'], sub:'5 Pillars', fill:'#1a6640', emoji:'🇮🇳'},
+    {x:890, label:['RBI Liquidity','Support'], sub:'Repo·CRR·LTRO', fill:'#0a5c6e', emoji:'🏦'},
+    {x:1050, label:['Structural','Reforms'], sub:'5 Shifts', fill:'#5c1a8c', emoji:'🔀'},
+    {x:1212, label:['Amrit Kaal','@2047'], sub:'Viksit Bharat', fill:'#1a5070', emoji:'🌅'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      curve(svg,s.x+72,55,steps[i+1].x-72,55,'#c08b14',false,2);
+      // Arrow
+      const arr=el('polygon',{points:`${steps[i+1].x-75},51 ${steps[i+1].x-68},55 ${steps[i+1].x-75},59`,fill:'rgba(192,139,20,0.6)'});
+      svg.appendChild(arr);
+    }
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,55,130,68,s.fill,s.label,s.sub,s.emoji);
+  });
+
+  const t=el('text',{x:670,y:16,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,100,60,0.4)'});
+  t.textContent='MASTER FLOW: FROM NATIONALIZATION → LIBERALIZATION → COVID → REFORM → VISION 2047';
+  svg.appendChild(t);
+})();
+
+// ─── FDI RADIAL ───
+(function(){
+  const svg=document.getElementById('svgFDI');
+  svg.setAttribute('viewBox','0 0 1340 200');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:200,fill:'rgba(247,244,238,0.3)'}));
+
+  node(svg,670,100,220,58,'#1a3d7c',['Why Increase FDI?','Benefits'],'Capital · Competition · Growth','💡');
+
+  const items=[
+    {x:100,y:55, fill:'#c08b14', label:['Foreign','Capital'], sub:'Infra financing', emoji:'💰'},
+    {x:100,y:145, fill:'#1a6640', label:['Infra Long-term','Funding'], sub:'Premium → bonds', emoji:'🏗️'},
+    {x:310,y:30, fill:'#d4600a', label:['More','Competition'], sub:'Better products', emoji:'⚔️'},
+    {x:310,y:170, fill:'#1a5070', label:['Claims','Settlement'], sub:'Global best practice', emoji:'✅'},
+    {x:1030,y:30, fill:'#5c1a8c', label:['Low','Penetration'], sub:'3.76% of GDP only', emoji:'📉'},
+    {x:1030,y:170, fill:'#a01a1a', label:['Low','Awareness'], sub:'Financial literacy gap', emoji:'⚠️'},
+    {x:1230,y:55, fill:'#0a5c6e', label:['Reactive','Buying'], sub:'Only crisis purchase', emoji:'😟'},
+    {x:1230,y:145, fill:'#6a2a10', label:['Under-','Penetrated'], sub:'Density gap vs world', emoji:'🌐'},
+  ];
+
+  // Left side (benefits) in green, right side (problems) in red
+  items.forEach(n=>{
+    const fromX=n.x<670?580:760;
+    const fromY=n.y<100?88:112;
+    curve(svg,fromX,fromY,n.x+(n.x<670?72:-72),n.y,n.x<670?'#1a664044':'#a01a1a44',true,1.6);
+    node(svg,n.x,n.y,140,52,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  const tl=el('text',{x:250,y:194,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,102,64,0.5)','letter-spacing':'2'});
+  tl.textContent='BENEFITS OF FDI INCREASE';svg.appendChild(tl);
+  const tr=el('text',{x:1100,y:194,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(160,26,26,0.5)','letter-spacing':'2'});
+  tr.textContent='CHALLENGES (UNDER-PENETRATION)';svg.appendChild(tr);
+
+  // vertical separator
+  svg.appendChild(el('line',{x1:670,y1:8,x2:670,y2:190,stroke:'rgba(200,180,140,0.2)','stroke-width':'1.5','stroke-dasharray':'5 3'}));
+})();
+
+// ─── AATMA NIRBHAR MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgAN');
+  svg.setAttribute('viewBox','0 0 1340 220');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:220,fill:'rgba(247,244,238,0.3)'}));
+
+  node(svg,670,110,230,60,'#1a1510',['Aatma Nirbhar Bharat'],'Self-Reliance + Global Integration','🇮🇳');
+
+  const spokes=[
+    // Left
+    {x:120,y:40, fill:'#1a6640', label:['Economy'], sub:'Quantum jump', emoji:'📊'},
+    {x:120,y:100, fill:'#0a5c6e', label:['Infrastructure'], sub:'Modern identity', emoji:'🏗️'},
+    {x:120,y:165, fill:'#5c1a8c', label:['System'], sub:'Tech governance', emoji:'💻'},
+    // right
+    {x:1220,y:40, fill:'#d4600a', label:['Demography'], sub:'Youth power', emoji:'👥'},
+    {x:1220,y:110, fill:'#a01a1a', label:['Demand'], sub:'Supply chains', emoji:'📦'},
+    {x:1220,y:175, fill:'#1a3d7c', label:['Defence 74%','FDI Auto'], sub:'Strategic reform', emoji:'🛡️'},
+    // Bottom mid
+    {x:450,y:195, fill:'#c08b14', label:['Plug & Play','Model'], sub:'Land+Policy+Infra', emoji:'🔌'},
+    {x:670,y:195, fill:'#7a4a10', label:['Coal Mining','Private'], sub:'End PSU monopoly', emoji:'⛏️'},
+    {x:900,y:195, fill:'#006050', label:['Space Sector','Opened'], sub:'Private in launch', emoji:'🚀'},
+  ];
+
+  spokes.forEach(n=>{
+    const fx=n.x<670?555:785;
+    const fy=n.y<110?99:(n.y>110?121:110);
+    const tx=n.x+(n.x<670?72:(n.x>670?-72:0));
+    const ty=n.y+(n.y>155?-26:0);
+    curve(svg,fx,fy,tx,ty,'#c08b1440',true,1.5);
+    node(svg,n.x,n.y,148,46,n.fill,n.label,n.sub,n.emoji);
+  });
+})();
+
+// ─── REFORMS RADIAL ───
+(function(){
+  const svg=document.getElementById('svgReforms');
+  svg.setAttribute('viewBox','0 0 1340 240');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:240,fill:'rgba(247,244,238,0.3)'}));
+
+  node(svg,670,120,220,56,'#1a1510',['Major Reforms Under','Aatma Nirbhar Bharat'],'Sectoral Transformation','🔀');
+
+  const reforms=[
+    // Top arc
+    {x:180,y:40, fill:'#1a6640', label:['Commercial Coal','Mining'], sub:'Private participation', emoji:'⛏️'},
+    {x:390,y:25, fill:'#c08b14', label:['MSME','Redefinition'], sub:'Higher limits', emoji:'🏭'},
+    {x:600,y:22, fill:'#d4600a', label:['Global Tenders','≤ ₹200 Cr'], sub:'Protect MSMEs', emoji:'🛡️'},
+    {x:820,y:22, fill:'#1a3d7c', label:['Labour','Reforms'], sub:'1 License · 1 Reg.', emoji:'⚖️'},
+    {x:1030,y:30, fill:'#5c1a8c', label:['Defence','74% FDI Auto'], sub:'+ Ordnance Corp.', emoji:'🛡️'},
+    {x:1230,y:50, fill:'#0a5c6e', label:['Space Sector','Opened'], sub:'Private launch', emoji:'🚀'},
+    // Bottom arc
+    {x:200,y:205, fill:'#a01a1a', label:['National Land','Bank Portal'], sub:'Infra setup ease', emoji:'🗺️'},
+    {x:420,y:222, fill:'#7a4a10', label:['Electricity','Reforms'], sub:'DBT·Smart meters', emoji:'💡'},
+    {x:670,y:228, fill:'#1a5070', label:['Aircraft MRO','Hub'], sub:'GST 18%→5%', emoji:'✈️'},
+    {x:920,y:222, fill:'#2a5830', label:['Insurance','74% FDI'], sub:'Auto route reform', emoji:'🏥'},
+    {x:1150,y:205, fill:'#4a2080', label:['PLI Schemes','14 Sectors'], sub:'China+1 strategy', emoji:'📦'},
+  ];
+
+  reforms.forEach(n=>{
+    const fx=n.y<120?670:670;
+    const fy=n.y<120?92:148;
+    curve(svg,fx,fy,n.x+(n.x<670?70:-70),n.y,'#c08b1430',true,1.4);
+    node(svg,n.x,n.y,148,44,n.fill,n.label,n.sub,n.emoji);
+  });
+})();
+
+// ─── RBI MEASURES FLOW ───
+(function(){
+  const svg=document.getElementById('svgRBI');
+  svg.setAttribute('viewBox','0 0 1340 200');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:200,fill:'rgba(247,244,238,0.3)'}));
+
+  // Central node
+  node(svg,670,100,200,54,'#1a1510',['RBI COVID','Measures'],'Monetary Support 2020','🏦');
+
+  // Top row
+  const top=[
+    {x:110,y:45, fill:'#a01a1a', label:['Repo Rate','Reduced'], sub:'Cheaper borrowing', emoji:'🔽'},
+    {x:280,y:35, fill:'#c08b14', label:['CRR','4%→3%'], sub:'₹1.37L Cr released', emoji:'🔓'},
+    {x:450,y:28, fill:'#d4600a', label:['MSF Limit','Increased'], sub:'Emergency window', emoji:'🆘'},
+    {x:620,y:28, fill:'#1a3d7c', label:['LCR','100%→80%'], sub:'More lending room', emoji:'📊'},
+    // Right top
+    {x:880,y:28, fill:'#0a5c6e', label:['EMI Moratorium','6 Months'], sub:'COVID relief', emoji:'⏸️'},
+    {x:1060,y:35, fill:'#5c1a8c', label:['LTRO','₹1 Lakh Cr'], sub:'Long-term liquidity', emoji:'💵'},
+    {x:1230,y:45, fill:'#1a5070', label:['LCR Easing','→80%'], sub:'Flexibility buffer', emoji:'🔄'},
+  ];
+
+  // Bottom row
+  const bot=[
+    {x:200,y:168, fill:'#1a6640', label:['NABARD','Refinance'], sub:'Agri & rural credit', emoji:'🌾'},
+    {x:420,y:178, fill:'#2a5830', label:['SIDBI','Refinance'], sub:'MSME support', emoji:'🏭'},
+    {x:640,y:182, fill:'#006050', label:['NHB','Refinance'], sub:'Housing finance', emoji:'🏘️'},
+    {x:870,y:178, fill:'#7a4a10', label:['TLTRO','Targeted'], sub:'Sector-specific', emoji:'🎯'},
+    {x:1090,y:168, fill:'#4a1a70', label:['Open Mkt Ops','OMO'], sub:'Govt bond buying', emoji:'📋'},
+  ];
+
+  [...top,...bot].forEach(n=>{
+    const fy=n.y<100?86:114;
+    curve(svg,670,fy,n.x+(n.x<670?72:-72),n.y,'#a01a1a33',true,1.4);
+    node(svg,n.x,n.y,140,46,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  const tl=el('text',{x:340,y:196,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(160,26,26,0.45)','letter-spacing':'2'});
+  tl.textContent='RATE & RESERVE TOOLS';svg.appendChild(tl);
+  const tr=el('text',{x:1000,y:196,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(10,92,110,0.45)','letter-spacing':'2'});
+  tr.textContent='CREDIT & REFINANCE TOOLS';svg.appendChild(tr);
+})();
+
+// ─── STRUCTURAL SHIFTS FLOW ───
+(function(){
+  const svg=document.getElementById('svgShifts');
+  svg.setAttribute('viewBox','0 0 1340 160');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:160,fill:'rgba(247,244,238,0.3)'}));
+
+  const shifts=[
+    {x:114, fill:'#1a6640', label:['Agriculture','Reforms'], sub:'APMC · FPOs', emoji:'🌾'},
+    {x:342, fill:'#0a5c6e', label:['Renewable','Energy Shift'], sub:'Solar + Wind PLI', emoji:'☀️'},
+    {x:570, fill:'#1a3d7c', label:['ICT & Startup','Growth'], sub:'UPI · Unicorns', emoji:'💻'},
+    {x:798, fill:'#5c1a8c', label:['Supply Chain','Shift'], sub:'PLI · China+1', emoji:'🔀'},
+    {x:1026, fill:'#c08b14', label:['Infrastructure','Push'], sub:'Gati Shakti NMP', emoji:'🏗️'},
+    {x:1230, fill:'#a01a1a', label:['Amrit Kaal','2047 Vision'], sub:'Viksit Bharat', emoji:'🌅'},
+  ];
+
+  shifts.forEach((s,i)=>{
+    if(i<shifts.length-1){
+      const nx=shifts[i+1].x;
+      curve(svg,s.x+88,80,nx-88,80,'#c08b1455',false,2.5);
+      // Arrow triangle
+      const ax=nx-90;
+      svg.appendChild(el('polygon',{points:`${ax},75 ${ax+10},80 ${ax},85`,fill:'rgba(192,139,20,0.7)'}));
+    }
+    node(svg,s.x,80,160,72,s.fill,[s.label[0],s.label[1]],s.sub,s.emoji);
+  });
+
+  const t=el('text',{x:670,y:15,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'2.5','fill':'rgba(92,26,140,0.45)'});
+  t.textContent='FIVE STRUCTURAL SHIFTS IN INDIA\'S ECONOMY';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>
