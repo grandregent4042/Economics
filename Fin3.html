@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G-Sec & Financial Markets — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ee;
+  --paper:#fffefb;
+  --ink:#1a1714;
+  --muted:#7a6e62;
+  --border:#e2d9cc;
+  --gold:#9a6f1e;
+  --gold-lt:#f0e2c0;
+  --amber:#c45c0e;
+  --amber-lt:#fce8d4;
+  --blue:#1c3f7a;
+  --blue-lt:#dce9ff;
+  --green:#1a5e38;
+  --green-lt:#d4edd9;
+  --purple:#5a1f7c;
+  --purple-lt:#ead9f8;
+  --teal:#0a5c6e;
+  --teal-lt:#cff0f6;
+  --red:#b01a1a;
+  --red-lt:#f8dada;
+  --sky:#1a5272;
+  --sky-lt:#d9edf8;
+  --card:#fffdf8;
+}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 1200px 600px at 10% 5%, rgba(154,111,30,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 800px 800px at 90% 90%, rgba(28,63,122,0.04) 0%, transparent 60%);
+  pointer-events:none;z-index:0;
+}
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 20px 100px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:52px 20px 32px;position:relative;}
+.hdr-mono{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Libre Baskerville',serif;font-size:clamp(28px,4.5vw,52px);line-height:1.1;color:var(--ink);}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr p{color:var(--muted);font-size:13px;margin-top:8px;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;}
+.hdr::after{content:'';display:block;width:100px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:18px auto 0;border-radius:3px;}
+
+/* SECTION LABELS */
+.sec{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin:38px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px;}
+@media(max-width:1000px){.g3,.g4,.g5{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g5{grid-template-columns:1fr;}}
+
+/* CARDS */
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:16px 18px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.card.c-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.card.c-blue::before{background:var(--blue);}
+.card.c-green::before{background:var(--green);}
+.card.c-purple::before{background:var(--purple);}
+.card.c-teal::before{background:var(--teal);}
+.card.c-red::before{background:var(--red);}
+.card.c-amber::before{background:var(--amber);}
+.card.c-sky::before{background:var(--sky);}
+
+.card-lbl{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.card h3{font-family:'Libre Baskerville',serif;font-size:14.5px;margin-bottom:10px;display:flex;align-items:center;gap:6px;line-height:1.3;}
+
+/* SVG MAP WRAPPERS */
+.map-wrap{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:24px;position:relative;}
+.map-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;border-radius:18px 18px 0 0;}
+.mw-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.mw-blue::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.mw-green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.mw-teal::before{background:linear-gradient(90deg,var(--teal),var(--blue));}
+.mw-red::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.mw-sky::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+.map-wrap svg{display:block;width:100%;padding:4px 0;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:600;margin:2px;font-family:'JetBrains Mono',monospace;letter-spacing:0.3px;}
+.pill-gold{background:rgba(154,111,30,0.12);color:var(--gold);}
+.pill-blue{background:rgba(28,63,122,0.1);color:var(--blue);}
+.pill-green{background:rgba(26,94,56,0.1);color:var(--green);}
+.pill-amber{background:rgba(196,92,14,0.1);color:var(--amber);}
+.pill-red{background:rgba(176,26,26,0.1);color:var(--red);}
+.pill-purple{background:rgba(90,31,124,0.1);color:var(--purple);}
+.pill-teal{background:rgba(10,92,110,0.1);color:var(--teal);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:9px;margin:10px 0;}
+.stat-box{flex:1;padding:10px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:rgba(240,226,192,0.15);}
+.stat-n{font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;line-height:1;}
+.stat-lbl{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:600;margin-top:1px;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vi{padding:8px 11px;border-radius:8px;background:rgba(240,226,192,0.2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:1px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* CHIPS */
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip-ok{background:rgba(26,94,56,0.07);border-color:rgba(26,94,56,0.25);color:var(--green);}
+.chip-bad{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.chip-neu{background:rgba(154,111,30,0.07);border-color:rgba(154,111,30,0.25);color:var(--gold);}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:8px 0;}
+.fn{padding:5px 11px;border-radius:7px;font-size:10.5px;font-weight:700;border:1.5px solid;}
+.farr{font-size:16px;color:var(--muted);}
+
+/* KEYSTONE DARK */
+.keystone{background:var(--ink);color:#f0e4c2;border-radius:16px;padding:22px 28px;margin:24px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.ks-icon{font-size:34px;}
+.ks-title{font-family:'Libre Baskerville',serif;font-size:18px;font-style:italic;margin-bottom:4px;}
+.ks-sub{font-size:11px;color:#c5b480;line-height:1.65;}
+.ks-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10.5px;font-family:'JetBrains Mono',monospace;}
+
+/* TYPE BADGE */
+.type-badge{display:inline-block;padding:2px 8px;border-radius:5px;font-size:8.5px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+
+/* CALLOUT */
+.callout{padding:10px 13px;border-radius:9px;background:rgba(26,94,56,0.06);border:1.5px solid rgba(26,94,56,0.18);margin:8px 0;}
+.callout-t{font-size:10px;font-weight:700;color:var(--green);margin-bottom:2px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* PHASE BOXES */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 22px;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.pbox{padding:15px;border-radius:12px;border:2px solid;text-align:center;}
+.pnum{font-family:'Libre Baskerville',serif;font-size:26px;font-weight:700;}
+.ptitle{font-size:12px;font-weight:700;margin:3px 0;}
+.psub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:6px;}
+
+/* DIVIDER */
+.div-dotted{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:6px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-mono">Indian Economy · Financial Markets · UPSC Prelims</div>
+  <h1>Government Securities &amp; <em>Financial Markets</em></h1>
+  <p>G-Sec Market → Funds → Depository Receipts — One Smooth Prelims-Ready Flow</p>
+</div>
+
+<!-- ═══ SECTION 0: BIG PICTURE FLOW ═══ -->
+<div class="sec">Big Picture Flow</div>
+
+<div class="map-wrap mw-gold">
+<svg viewBox="0 0 1320 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+    <path d="M0,0 L0,8 L8,4 z" fill="#9a6f1e" opacity="0.7"/>
+  </marker>
+  <marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+    <path d="M0,0 L0,8 L8,4 z" fill="#1c3f7a" opacity="0.7"/>
+  </marker>
+</defs>
+
+<!-- Background subtle -->
+<rect width="1320" height="120" fill="rgba(247,244,238,0.4)" rx="14"/>
+
+<!-- Nodes: 8 steps -->
+<g id="flow-nodes">
+  <!-- 1 Govt needs money -->
+  <rect x="10" y="32" width="140" height="56" rx="10" fill="#9a6f1e" opacity="0.9"/>
+  <rect x="10" y="32" width="140" height="56" rx="10" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+  <text x="80" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏛️ Govt Needs</text>
+  <text x="80" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Money</text>
+  <text x="80" y="83" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono,monospace">BORROWER</text>
+
+  <!-- arrow -->
+  <line x1="152" y1="60" x2="172" y2="60" stroke="#9a6f1e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 2 Issues G-Secs -->
+  <rect x="175" y="32" width="140" height="56" rx="10" fill="#1c3f7a" opacity="0.9"/>
+  <text x="245" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📄 Issues G-Secs</text>
+  <text x="245" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">T-Bills / Bonds</text>
+  <text x="245" y="83" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono,monospace">RISK-FREE</text>
+
+  <line x1="317" y1="60" x2="337" y2="60" stroke="#9a6f1e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 3 RBI auctions -->
+  <rect x="340" y="32" width="140" height="56" rx="10" fill="#5a1f7c"/>
+  <text x="410" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⚙️ RBI Auctions</text>
+  <text x="410" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">via E-Kuber</text>
+  <text x="410" y="83" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono,monospace">PRIMARY MARKET</text>
+
+  <line x1="482" y1="60" x2="502" y2="60" stroke="#9a6f1e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 4 Banks buy (SLR) -->
+  <rect x="505" y="32" width="140" height="56" rx="10" fill="#0a5c6e"/>
+  <text x="575" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏦 Banks Buy</text>
+  <text x="575" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">for SLR</text>
+  <text x="575" y="83" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono,monospace">MANDATORY HOLD</text>
+
+  <line x1="647" y1="60" x2="667" y2="60" stroke="#9a6f1e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 5 CCIL Settles -->
+  <rect x="670" y="32" width="140" height="56" rx="10" fill="#1a5e38"/>
+  <text x="740" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">✅ CCIL Settles</text>
+  <text x="740" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">via NDS-OM</text>
+  <text x="740" y="83" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono,monospace">SECONDARY MKT</text>
+
+  <line x1="812" y1="60" x2="832" y2="60" stroke="#9a6f1e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 6 Investors diversify -->
+  <rect x="835" y="32" width="140" height="56" rx="10" fill="#b01a1a"/>
+  <text x="905" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📊 Investors</text>
+  <text x="905" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Diversify</text>
+  <text x="905" y="83" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono,monospace">MFs · ETFs · AIFs</text>
+
+  <line x1="977" y1="60" x2="997" y2="60" stroke="#9a6f1e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 7 Raise Global Capital -->
+  <rect x="1000" y="32" width="140" height="56" rx="10" fill="#c45c0e"/>
+  <text x="1070" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🌐 Global Capital</text>
+  <text x="1070" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">ADR / GDR</text>
+  <text x="1070" y="83" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono,monospace">DRs</text>
+
+  <line x1="1142" y1="60" x2="1162" y2="60" stroke="#9a6f1e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 8 SWF / ESG -->
+  <rect x="1165" y="32" width="140" height="56" rx="10" fill="#1a1714"/>
+  <text x="1235" y="54" text-anchor="middle" font-size="11" font-weight="700" fill="#f0e4c2">🌿 SWF / ESG</text>
+  <text x="1235" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#f0e4c2">Sovereign Funds</text>
+  <text x="1235" y="83" text-anchor="middle" font-size="8.5" fill="rgba(200,170,120,0.7)" font-family="JetBrains Mono,monospace">NIIF · BRSR</text>
+</g>
+</svg>
+</div>
+
+<!-- ═══ SECTION 1: G-SEC CORE IDEA ═══ -->
+<div class="sec">① Government Securities — The Core Idea</div>
+
+<div class="g3">
+  <div class="card c-gold">
+    <div class="card-lbl">Why G-Secs?</div>
+    <h3>🏛️ Govt Borrowing Mechanism</h3>
+    <div class="flow">
+      <div class="fn" style="border-color:var(--gold);background:rgba(154,111,30,0.08);color:var(--gold);">Govt (Borrower)</div>
+      <div class="farr">↔</div>
+      <div class="fn" style="border-color:var(--blue);background:rgba(28,63,122,0.08);color:var(--blue);">Investor (Lender)</div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><div class="vt">Investor earns interest (coupon)</div><div class="vs">SEMI-ANNUAL PAYMENT</div></div>
+      <div class="vi"><div class="vt">Sovereign Guarantee</div><div class="vs">RISK-FREE INVESTMENT</div></div>
+      <div class="vi"><div class="vt">Issued by RBI on behalf of Govt</div><div class="vs">DEBT INSTRUMENT</div></div>
+    </div>
+  </div>
+
+  <div class="card c-blue">
+    <div class="card-lbl">Participants</div>
+    <h3>👥 Who Can Invest?</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Commercial Banks</div><div class="vs">MANDATORY — SATISFY SLR</div></div>
+      <div class="vi"><div class="vt">Primary Dealers</div><div class="vs">MARKET MAKERS</div></div>
+      <div class="vi"><div class="vt">Insurance Companies</div><div class="vs">LONG-TERM INVESTORS</div></div>
+      <div class="vi"><div class="vt">Provident Funds</div><div class="vs">SAFE HAVEN ASSET</div></div>
+      <div class="vi" style="background:rgba(28,63,122,0.08);border-color:rgba(28,63,122,0.2);">
+        <div class="vt" style="color:var(--blue);">🆕 Retail via RBI Retail Direct (2021)</div>
+        <div class="vs">RDG ACCOUNT + NDS-OM ACCESS</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-lbl">Key Institutions</div>
+    <h3>🏢 The G-Sec Ecosystem</h3>
+    <div class="vlist">
+      <div class="vi" style="background:rgba(26,94,56,0.06);border-color:rgba(26,94,56,0.2);">
+        <div class="vt" style="color:var(--green);">RBI</div>
+        <div class="vs">ISSUES & MANAGES G-SECS • E-KUBER PLATFORM</div>
+      </div>
+      <div class="vi"><div class="vt">CCIL</div><div class="vs">CLEARS & SETTLES • CENTRAL COUNTERPARTY</div></div>
+      <div class="vi"><div class="vt">FBIL</div><div class="vs">BENCHMARK ADMINISTRATOR • INTEREST RATES</div></div>
+      <div class="vi"><div class="vt">FIMMDA</div><div class="vs">DEVELOPS MONEY & BOND MARKET PRACTICES</div></div>
+      <div class="vi"><div class="vt">NDS-OM</div><div class="vs">ELECTRONIC TRADING • OPERATED BY CCIL</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 2: TYPES OF G-SECS ═══ -->
+<div class="sec">② Types of Government Securities</div>
+
+<!-- SVG Mind Map of G-Sec Types -->
+<div class="map-wrap mw-gold">
+<svg viewBox="0 0 1320 340" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="a1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+    <path d="M0,0 L0,7 L7,3.5 z" fill="#9a6f1e" opacity="0.5"/>
+  </marker>
+  <marker id="a2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+    <path d="M0,0 L0,7 L7,3.5 z" fill="#1c3f7a" opacity="0.5"/>
+  </marker>
+  <marker id="a3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+    <path d="M0,0 L0,7 L7,3.5 z" fill="#5a1f7c" opacity="0.5"/>
+  </marker>
+</defs>
+
+<!-- Root node -->
+<rect x="510" y="130" width="300" height="72" rx="12" fill="#1a1714"/>
+<rect x="510" y="130" width="300" height="72" rx="12" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+<text x="660" y="158" text-anchor="middle" font-size="13" font-weight="700" fill="#f0e4c2">📄 Government Securities</text>
+<text x="660" y="177" text-anchor="middle" font-size="11" fill="rgba(200,170,120,0.8)">Types Overview</text>
+<text x="660" y="193" text-anchor="middle" font-size="8.5" fill="rgba(150,130,90,0.8)" font-family="JetBrains Mono,monospace">RISK-FREE · SOVEREIGN GUARANTEE</text>
+
+<!-- Left branch: Short-term -->
+<!-- Connector from root -->
+<path d="M510,166 C400,166 360,90 290,90" stroke="#9a6f1e" stroke-width="1.5" fill="none" opacity="0.5" stroke-dasharray="5 3" marker-end="url(#a1)"/>
+<path d="M510,170 C400,170 360,176 290,176" stroke="#9a6f1e" stroke-width="1.5" fill="none" opacity="0.5" stroke-dasharray="5 3" marker-end="url(#a1)"/>
+<path d="M510,180 C400,180 360,260 290,260" stroke="#9a6f1e" stroke-width="1.5" fill="none" opacity="0.5" stroke-dasharray="5 3" marker-end="url(#a1)"/>
+
+<!-- T-Bills -->
+<rect x="100" y="52" width="190" height="76" rx="10" fill="#9a6f1e"/>
+<text x="195" y="75" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📅 Treasury Bills</text>
+<text x="195" y="92" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">91 · 182 · 364 days</text>
+<text x="195" y="108" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono,monospace">ZERO COUPON · DISCOUNTED</text>
+<rect x="110" y="117" width="82" height="14" rx="4" fill="rgba(255,255,255,0.15)"/>
+<text x="151" y="127" text-anchor="middle" font-size="8.5" fill="#fff" font-family="JetBrains Mono,monospace">SHORT-TERM</text>
+
+<!-- CMBs -->
+<rect x="100" y="148" width="190" height="68" rx="10" fill="#c45c0e"/>
+<text x="195" y="172" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">💰 Cash Mgmt Bills</text>
+<text x="195" y="190" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">&lt; 91 days</text>
+<text x="195" y="207" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono,monospace">TEMP CASH MISMATCH</text>
+
+<!-- SDLs -->
+<rect x="100" y="232" width="190" height="68" rx="10" fill="#1a5272"/>
+<text x="195" y="256" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏛️ State Dev. Loans</text>
+<text x="195" y="274" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">State Govts issue</text>
+<text x="195" y="291" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono,monospace">SLR ELIGIBLE · RBI REPO ✓</text>
+
+<!-- Right branch: Dated G-Secs -->
+<path d="M810,155 C900,155 940,90 1000,90" stroke="#1c3f7a" stroke-width="1.5" fill="none" opacity="0.5" stroke-dasharray="5 3" marker-end="url(#a2)"/>
+<path d="M810,163 C900,163 940,176 1000,176" stroke="#1c3f7a" stroke-width="1.5" fill="none" opacity="0.5" stroke-dasharray="5 3" marker-end="url(#a2)"/>
+<path d="M810,172 C900,172 940,260 1000,260" stroke="#1c3f7a" stroke-width="1.5" fill="none" opacity="0.5" stroke-dasharray="5 3" marker-end="url(#a2)"/>
+
+<!-- Right side header label -->
+<text x="1100" y="40" text-anchor="middle" font-size="9" fill="rgba(28,63,122,0.6)" font-family="JetBrains Mono,monospace" letter-spacing="2">DATED G-SECS (5–40 yrs)</text>
+
+<!-- Fixed Rate -->
+<rect x="1000" y="52" width="200" height="76" rx="10" fill="#1c3f7a"/>
+<text x="1100" y="76" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📌 Fixed Rate Bonds</text>
+<text x="1100" y="94" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Coupon fixed till maturity</text>
+<text x="1100" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">SEMI-ANNUAL COUPON</text>
+
+<!-- Floating Rate / SGB / IIBs -->
+<rect x="1000" y="148" width="200" height="68" rx="10" fill="#5a1f7c"/>
+<text x="1100" y="172" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📊 Floating Rate Bonds</text>
+<text x="1100" y="190" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Coupon linked to T-Bill</text>
+<text x="1100" y="207" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">FRBs</text>
+
+<!-- SGBs etc  -->
+<rect x="1000" y="232" width="200" height="90" rx="10" fill="#1a5e38"/>
+<text x="1100" y="254" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🥇 Sovereign Gold Bonds</text>
+<text x="1100" y="272" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Linked to gold price</text>
+<text x="1100" y="288" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)" font-weight="700">2.5% interest · 8-yr maturity</text>
+<text x="1100" y="308" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">ALSO: IIBs · STRIPS · Call/Put</text>
+
+<!-- Bottom labels -->
+<text x="195" y="318" text-anchor="middle" font-size="8.5" fill="rgba(154,111,30,0.55)" font-family="JetBrains Mono,monospace" letter-spacing="1.5">SHORT-TERM INSTRUMENTS</text>
+<text x="1100" y="334" text-anchor="middle" font-size="8.5" fill="rgba(28,63,122,0.55)" font-family="JetBrains Mono,monospace" letter-spacing="1.5">LONG-TERM INSTRUMENTS</text>
+</svg>
+</div>
+
+<!-- Dated G-Sec details row -->
+<div class="g4">
+  <div class="card c-purple">
+    <div class="card-lbl">Dated Type</div>
+    <h3>🔗 Zero Coupon Bonds</h3>
+    <div class="vi">No periodic interest<br><span class="vs">ISSUED AT DISCOUNT TO FACE VALUE</span></div>
+  </div>
+  <div class="card c-teal">
+    <div class="card-lbl">Dated Type</div>
+    <h3>📈 Inflation Indexed</h3>
+    <div class="vi">Principal + coupon inflation-linked<br><span class="vs">IIBs · CAPITAL INDEXED BONDS</span></div>
+  </div>
+  <div class="card c-amber">
+    <div class="card-lbl">Dated Type</div>
+    <h3>⚡ Call/Put Option Bonds</h3>
+    <div class="vi">Issuer calls back OR investor exits early<br><span class="vs">EMBEDDED OPTIONS</span></div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-lbl">Dated Type</div>
+    <h3>✂️ STRIPS</h3>
+    <div class="vi">Separate trading of principal &amp; interest<br><span class="vs">CREATES ZERO-COUPON PIECES</span></div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 3: ISSUANCE & MARKET ═══ -->
+<div class="sec">③ Issuance & Secondary Market</div>
+
+<div class="map-wrap mw-blue">
+<svg viewBox="0 0 1320 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="b1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+    <path d="M0,0 L0,7 L7,3.5 z" fill="#1c3f7a" opacity="0.6"/>
+  </marker>
+</defs>
+<rect width="1320" height="200" fill="rgba(247,244,238,0.3)" rx="14"/>
+
+<!-- PRIMARY MARKET column -->
+<text x="330" y="28" text-anchor="middle" font-size="9" fill="rgba(28,63,122,0.6)" font-family="JetBrains Mono,monospace" letter-spacing="3">PRIMARY MARKET</text>
+
+<rect x="180" y="40" width="160" height="64" rx="10" fill="#1c3f7a"/>
+<text x="260" y="65" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏦 RBI Issues</text>
+<text x="260" y="82" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">E-Kuber Platform</text>
+<text x="260" y="96" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">AUCTION SYSTEM</text>
+
+<line x1="342" y1="72" x2="368" y2="72" stroke="#1c3f7a" stroke-width="2" marker-end="url(#b1)" opacity="0.8"/>
+
+<rect x="370" y="40" width="160" height="64" rx="10" fill="#5a1f7c"/>
+<text x="450" y="65" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">👥 Participants</text>
+<text x="450" y="82" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Banks · PDs · Ins. · PFs</text>
+<text x="450" y="96" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">+ RETAIL DIRECT 2021</text>
+
+<!-- Divider -->
+<line x1="640" y1="20" x2="640" y2="180" stroke="rgba(200,180,140,0.25)" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="640" y="185" text-anchor="middle" font-size="8" fill="rgba(154,111,30,0.4)" font-family="JetBrains Mono,monospace">PRIMARY → SECONDARY</text>
+
+<!-- SECONDARY MARKET column -->
+<text x="980" y="28" text-anchor="middle" font-size="9" fill="rgba(10,92,110,0.6)" font-family="JetBrains Mono,monospace" letter-spacing="3">SECONDARY MARKET</text>
+
+<rect x="680" y="40" width="160" height="64" rx="10" fill="#0a5c6e"/>
+<text x="760" y="65" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📊 NDS-OM</text>
+<text x="760" y="82" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Electronic Trading</text>
+<text x="760" y="96" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">OPERATED BY CCIL</text>
+
+<line x1="842" y1="72" x2="868" y2="72" stroke="#0a5c6e" stroke-width="2" opacity="0.8"/>
+<path d="M840,72 L860,72" stroke="#0a5c6e" stroke-width="2" marker-end="url(#b1)" opacity="0.7"/>
+
+<rect x="870" y="40" width="160" height="64" rx="10" fill="#1a5e38"/>
+<text x="950" y="65" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">✅ CCIL Guarantees</text>
+<text x="950" y="82" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Settlement</text>
+<text x="950" y="96" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">CENTRAL COUNTERPARTY</text>
+
+<line x1="1032" y1="72" x2="1052" y2="72" stroke="#1a5e38" stroke-width="2" opacity="0.7"/>
+<path d="M1050,72 L1070,72" stroke="#1a5e38" stroke-width="2" marker-end="url(#b1)" opacity="0.7"/>
+
+<rect x="1072" y="40" width="160" height="64" rx="10" fill="#1a5272"/>
+<text x="1152" y="65" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📡 OTC + Exchanges</text>
+<text x="1152" y="82" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Alternative channels</text>
+<text x="1152" y="96" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">BSE · NSE</text>
+
+<!-- Bottom note: Retail Direct -->
+<rect x="140" y="126" width="360" height="50" rx="9" fill="rgba(28,63,122,0.07)" stroke="rgba(28,63,122,0.2)" stroke-width="1.5"/>
+<text x="320" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#1c3f7a">🆕 RBI Retail Direct Scheme (2021)</text>
+<text x="320" y="166" text-anchor="middle" font-size="10" fill="#7a6e62">Retail investors open RDG Account → Access NDS-OM directly → Buy G-Secs</text>
+
+<!-- OMO note -->
+<rect x="840" y="126" width="380" height="50" rx="9" fill="rgba(10,92,110,0.07)" stroke="rgba(10,92,110,0.2)" stroke-width="1.5"/>
+<text x="1030" y="148" text-anchor="middle" font-size="11" font-weight="700" fill="#0a5c6e">💡 RBI manages liquidity via Repo / OMO</text>
+<text x="1030" y="166" text-anchor="middle" font-size="10" fill="#7a6e62">Open Market Operations = RBI buys/sells G-Secs to control money supply</text>
+</svg>
+</div>
+
+<!-- ═══ SECTION 4: FUNDS ═══ -->
+<div class="sec">④ Types of Investment Funds</div>
+
+<div class="map-wrap mw-green">
+<svg viewBox="0 0 1320 290" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="c1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+    <path d="M0,0 L0,7 L7,3.5 z" fill="#1a5e38" opacity="0.5"/>
+  </marker>
+</defs>
+<rect width="1320" height="290" fill="rgba(247,244,238,0.3)" rx="14"/>
+
+<!-- Central root -->
+<rect x="510" y="100" width="300" height="68" rx="12" fill="#1a1714"/>
+<text x="660" y="126" text-anchor="middle" font-size="13" font-weight="700" fill="#f0e4c2">📊 Investment Funds</text>
+<text x="660" y="145" text-anchor="middle" font-size="10" fill="rgba(200,170,120,0.8)">Pooling Capital for Returns</text>
+<text x="660" y="161" text-anchor="middle" font-size="8.5" fill="rgba(150,130,90,0.8)" font-family="JetBrains Mono,monospace">REGULATED · DIVERSIFIED</text>
+
+<!-- LEFT SIDE: MF, ETF, Hedge -->
+<path d="M510,128 C400,128 360,68 280,68" stroke="#1a5e38" stroke-width="1.5" fill="none" opacity="0.45" stroke-dasharray="5 3" marker-end="url(#c1)"/>
+<path d="M510,134 C400,134 360,164 280,164" stroke="#1a5e38" stroke-width="1.5" fill="none" opacity="0.45" stroke-dasharray="5 3" marker-end="url(#c1)"/>
+<path d="M510,140 C400,140 360,240 280,240" stroke="#1a5e38" stroke-width="1.5" fill="none" opacity="0.45" stroke-dasharray="5 3" marker-end="url(#c1)"/>
+
+<!-- Mutual Funds -->
+<rect x="80" y="32" width="200" height="72" rx="10" fill="#1a5e38"/>
+<text x="180" y="56" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏦 Mutual Funds</text>
+<text x="180" y="74" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Pool money · SEBI regulated</text>
+<text x="180" y="91" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">OPEN & CLOSED-ENDED</text>
+
+<!-- ETFs -->
+<rect x="80" y="128" width="200" height="72" rx="10" fill="#0a5c6e"/>
+<text x="180" y="152" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📈 ETFs</text>
+<text x="180" y="170" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Traded like shares on exchange</text>
+<text x="180" y="187" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">TRACKS NIFTY · S&amp;P 500</text>
+
+<!-- Hedge Funds -->
+<rect x="80" y="212" width="200" height="64" rx="10" fill="#b01a1a"/>
+<text x="180" y="236" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⚡ Hedge Funds</text>
+<text x="180" y="254" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">High risk · Use leverage</text>
+<text x="180" y="268" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">LESS REGULATED</text>
+
+<!-- RIGHT SIDE: AIFs, REITs, ESG, SWF -->
+<path d="M810,122 C900,122 940,60 1020,60" stroke="#1a5e38" stroke-width="1.5" fill="none" opacity="0.45" stroke-dasharray="5 3" marker-end="url(#c1)"/>
+<path d="M810,134 C900,134 940,148 1020,148" stroke="#1a5e38" stroke-width="1.5" fill="none" opacity="0.45" stroke-dasharray="5 3" marker-end="url(#c1)"/>
+<path d="M810,146 C900,146 940,226 1020,226" stroke="#1a5e38" stroke-width="1.5" fill="none" opacity="0.45" stroke-dasharray="5 3" marker-end="url(#c1)"/>
+
+<!-- AIFs -->
+<rect x="1020" y="20" width="260" height="84" rx="10" fill="#5a1f7c"/>
+<text x="1150" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏗️ AIFs (Alt. Investment Funds)</text>
+<text x="1150" y="62" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Cat I → Infrastructure, start-ups</text>
+<text x="1150" y="78" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Cat II → PE, Debt · Cat III → Hedge</text>
+<text x="1150" y="94" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">SEBI REGULATED</text>
+
+<!-- REITs & InvITs -->
+<rect x="1020" y="118" width="260" height="72" rx="10" fill="#9a6f1e"/>
+<text x="1150" y="142" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏢 REITs &amp; InvITs</text>
+<text x="1150" y="160" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">REIT → Real Estate · InvIT → Infra</text>
+<text x="1150" y="180" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">10–15 YEAR HORIZON</text>
+
+<!-- ESG & SWF -->
+<rect x="1020" y="204" width="126" height="72" rx="10" fill="#1a5e38"/>
+<text x="1083" y="228" text-anchor="middle" font-size="10.5" font-weight="700" fill="#fff">🌿 ESG Funds</text>
+<text x="1083" y="246" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)">Env · Social · Gov</text>
+<text x="1083" y="264" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">SEBI BRSR</text>
+
+<rect x="1154" y="204" width="126" height="72" rx="10" fill="#1c3f7a"/>
+<text x="1217" y="228" text-anchor="middle" font-size="10.5" font-weight="700" fill="#fff">🌐 SWF</text>
+<text x="1217" y="246" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.8)">Govt-owned fund</text>
+<text x="1217" y="264" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">NIIF · SANTIAGO</text>
+</svg>
+</div>
+
+<!-- AIF Category Detail -->
+<div class="g3">
+  <div class="card c-purple">
+    <div class="card-lbl">AIF Category I</div>
+    <h3>🌱 Infrastructure &amp; Start-ups</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Infrastructure Funds</div><div class="vs">ROADS, PORTS, POWER</div></div>
+      <div class="vi"><div class="vt">Start-up / Venture Capital Funds</div><div class="vs">EARLY STAGE INVESTMENTS</div></div>
+      <div class="vi"><div class="vt">Angel Funds</div><div class="vs">ANGEL INVESTORS POOL</div></div>
+    </div>
+  </div>
+  <div class="card c-teal">
+    <div class="card-lbl">AIF Category II</div>
+    <h3>🏦 Private Equity &amp; Debt</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Private Equity Funds</div><div class="vs">UNLISTED COMPANY EQUITY</div></div>
+      <div class="vi"><div class="vt">Debt Funds</div><div class="vs">CORPORATE BONDS, CPs</div></div>
+      <div class="vi"><div class="vt">Real Estate Funds</div><div class="vs">PROPERTY INVESTMENTS</div></div>
+    </div>
+  </div>
+  <div class="card c-red">
+    <div class="card-lbl">AIF Category III</div>
+    <h3>⚡ High Risk Funds</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Hedge Funds</div><div class="vs">LEVERAGE · SHORT SELLING</div></div>
+      <div class="vi"><div class="vt">Derivatives Funds</div><div class="vs">OPTIONS, FUTURES</div></div>
+      <div class="vi"><div class="vt">Complex Strategies</div><div class="vs">HIGH RISK · HIGH RETURN</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 5: DEPOSITORY RECEIPTS ═══ -->
+<div class="sec">⑤ Depository Receipts — Raising Foreign Capital</div>
+
+<div class="map-wrap mw-sky">
+<svg viewBox="0 0 1320 250" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="d1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+    <path d="M0,0 L0,7 L7,3.5 z" fill="#1a5272" opacity="0.6"/>
+  </marker>
+</defs>
+<rect width="1320" height="250" fill="rgba(247,244,238,0.3)" rx="14"/>
+
+<!-- Central concept -->
+<rect x="480" y="88" width="360" height="72" rx="12" fill="#1a1714"/>
+<text x="660" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#f0e4c2">🌐 Depository Receipts</text>
+<text x="660" y="132" text-anchor="middle" font-size="10.5" fill="rgba(200,170,120,0.8)">Indian companies raise global capital</text>
+<text x="660" y="150" text-anchor="middle" font-size="8.5" fill="rgba(150,130,90,0.8)" font-family="JetBrains Mono,monospace">SHARES HELD IN CUSTODIAN · RECEIPTS ISSUED ABROAD</text>
+
+<!-- ADR - left -->
+<path d="M480,124 C380,124 340,76 260,76" stroke="#1c3f7a" stroke-width="1.8" fill="none" opacity="0.5" stroke-dasharray="5 3" marker-end="url(#d1)"/>
+<rect x="60" y="40" width="200" height="76" rx="10" fill="#1c3f7a"/>
+<text x="160" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">🇺🇸 ADR</text>
+<text x="160" y="83" text-anchor="middle" font-size="10.5" font-weight="700" fill="rgba(255,255,255,0.9)">American Depository Receipt</text>
+<text x="160" y="100" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.7)">Listed in USA · Dollar denominated</text>
+<text x="160" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">NYSE · NASDAQ</text>
+
+<!-- GDR - left below -->
+<path d="M480,130 C380,130 340,174 260,174" stroke="#5a1f7c" stroke-width="1.8" fill="none" opacity="0.5" stroke-dasharray="5 3" marker-end="url(#d1)"/>
+<rect x="60" y="138" width="200" height="76" rx="10" fill="#5a1f7c"/>
+<text x="160" y="163" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">🌍 GDR</text>
+<text x="160" y="181" text-anchor="middle" font-size="10.5" font-weight="700" fill="rgba(255,255,255,0.9)">Global Depository Receipt</text>
+<text x="160" y="198" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.7)">Listed in Europe · Globally tradable</text>
+<text x="160" y="210" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">LUXEMBOURG · LONDON</text>
+
+<!-- IDR - right -->
+<path d="M840,124 C940,124 980,76 1060,76" stroke="#9a6f1e" stroke-width="1.8" fill="none" opacity="0.5" stroke-dasharray="5 3" marker-end="url(#d1)"/>
+<rect x="1060" y="40" width="220" height="76" rx="10" fill="#9a6f1e"/>
+<text x="1170" y="65" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">🇮🇳 IDR</text>
+<text x="1170" y="83" text-anchor="middle" font-size="10.5" font-weight="700" fill="rgba(255,255,255,0.9)">Indian Depository Receipt</text>
+<text x="1170" y="100" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.7)">Foreign co. raises money in India</text>
+<text x="1170" y="112" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">RUPEE DENOMINATED</text>
+
+<!-- How it works -->
+<path d="M840,134 C940,134 980,186 1060,186" stroke="#c45c0e" stroke-width="1.8" fill="none" opacity="0.5" stroke-dasharray="5 3" marker-end="url(#d1)"/>
+<rect x="1060" y="152" width="220" height="80" rx="10" fill="#c45c0e"/>
+<text x="1170" y="176" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⚙️ Mechanism</text>
+<text x="1170" y="194" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">Shares held by custodian bank</text>
+<text x="1170" y="212" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">Receipts issued to foreign investors</text>
+<text x="1170" y="226" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">INDIRECT OWNERSHIP</text>
+
+<!-- Comparison row below: Benefits -->
+<rect x="360" y="180" width="300" height="56" rx="9" fill="rgba(26,94,56,0.08)" stroke="rgba(26,94,56,0.2)" stroke-width="1.5"/>
+<text x="510" y="204" text-anchor="middle" font-size="11" font-weight="700" fill="#1a5e38">💡 Why Use DRs?</text>
+<text x="510" y="222" text-anchor="middle" font-size="10" fill="#7a6e62">Access foreign capital · Improve brand visibility · Attract FII</text>
+</svg>
+</div>
+
+<!-- Comparison table -->
+<div class="g3">
+  <div class="card c-blue">
+    <div class="card-lbl">ADR Details</div>
+    <h3>🇺🇸 American DR — Key Facts</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-n" style="color:var(--blue);font-size:16px;">NYSE</div><div class="stat-lbl">LISTING EXCHANGE</div></div>
+      <div class="stat-box"><div class="stat-n" style="color:var(--blue);font-size:16px;">USD</div><div class="stat-lbl">CURRENCY</div></div>
+    </div>
+    <div class="vi" style="margin-top:6px;">Regulated by SEC (US)<br><span class="vs">STRINGENT DISCLOSURE NORMS</span></div>
+  </div>
+  <div class="card c-purple">
+    <div class="card-lbl">GDR Details</div>
+    <h3>🌍 Global DR — Key Facts</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-n" style="color:var(--purple);font-size:13px;">London</div><div class="stat-lbl">EXCHANGE</div></div>
+      <div class="stat-box"><div class="stat-n" style="color:var(--purple);font-size:13px;">EUR/USD</div><div class="stat-lbl">CURRENCY</div></div>
+    </div>
+    <div class="vi" style="margin-top:6px;">Listed in Luxembourg, London<br><span class="vs">GLOBALLY TRADABLE</span></div>
+  </div>
+  <div class="card c-gold">
+    <div class="card-lbl">IDR Details</div>
+    <h3>🇮🇳 Indian DR — Key Facts</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-n" style="color:var(--gold);font-size:13px;">BSE/NSE</div><div class="stat-lbl">EXCHANGE</div></div>
+      <div class="stat-box"><div class="stat-n" style="color:var(--gold);font-size:13px;">INR</div><div class="stat-lbl">CURRENCY</div></div>
+    </div>
+    <div class="vi" style="margin-top:6px;">Foreign company raises in India<br><span class="vs">REGULATED BY SEBI + RBI</span></div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 6: PRELIMS TRAPS ═══ -->
+<div class="sec">⑥ Key Prelims Traps &amp; Quick Facts</div>
+
+<div class="g5">
+  <div class="card c-red">
+    <div class="card-lbl">Trap 1</div>
+    <h3>📅 T-Bills</h3>
+    <div class="chip chip-bad" style="margin-bottom:6px;">ZERO COUPON</div>
+    <div class="vi">Issued at discount, no periodic interest<br><span class="vs">91 · 182 · 364 DAYS</span></div>
+  </div>
+  <div class="card c-gold">
+    <div class="card-lbl">Trap 2</div>
+    <h3>🥇 SGBs</h3>
+    <div class="chip chip-neu" style="margin-bottom:6px;">2.5% INTEREST</div>
+    <div class="vi">Gold price linked + interest<br><span class="vs">8-YEAR MATURITY</span></div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-lbl">Trap 3</div>
+    <h3>🏛️ SDL</h3>
+    <div class="chip chip-ok" style="margin-bottom:6px;">SLR ELIGIBLE</div>
+    <div class="vi">State govt bond<br><span class="vs">USED AS COLLATERAL IN RBI REPO</span></div>
+  </div>
+  <div class="card c-green">
+    <div class="card-lbl">Trap 4</div>
+    <h3>📱 Retail Direct</h3>
+    <div class="chip chip-ok" style="margin-bottom:6px;">SINCE 2021</div>
+    <div class="vi">Open RDG account → NDS-OM<br><span class="vs">DIRECT RETAIL G-SEC ACCESS</span></div>
+  </div>
+  <div class="card c-teal">
+    <div class="card-lbl">Trap 5</div>
+    <h3>✅ CCIL</h3>
+    <div class="chip chip-ok" style="margin-bottom:6px;">SETTLEMENT GUARANTEE</div>
+    <div class="vi">Central counterparty<br><span class="vs">CLEARS ALL G-SEC TRADES</span></div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 7: EVERYTHING CONNECTED ═══ -->
+<div class="sec">⑦ The Full Ecosystem — Everything Connected</div>
+
+<div class="map-wrap mw-teal">
+<svg viewBox="0 0 1320 320" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<defs>
+  <marker id="e1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+    <path d="M0,0 L0,7 L7,3.5 z" fill="#9a6f1e" opacity="0.55"/>
+  </marker>
+  <marker id="e2" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+    <path d="M0,0 L0,7 L7,3.5 z" fill="#1a5e38" opacity="0.55"/>
+  </marker>
+  <marker id="e3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+    <path d="M0,0 L0,7 L7,3.5 z" fill="#1c3f7a" opacity="0.55"/>
+  </marker>
+</defs>
+<rect width="1320" height="320" fill="rgba(247,244,238,0.35)" rx="14"/>
+
+<!-- Top row: 4 source nodes -->
+<!-- Govt -->
+<rect x="60" y="24" width="200" height="60" rx="10" fill="#1a1714"/>
+<text x="160" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#f0e4c2">🏛️ Government</text>
+<text x="160" y="68" text-anchor="middle" font-size="9.5" fill="rgba(200,170,120,0.8)">Issues G-Secs to borrow</text>
+<text x="160" y="78" text-anchor="middle" font-size="8" fill="rgba(150,130,90,0.6)" font-family="JetBrains Mono,monospace">SOVEREIGN BORROWER</text>
+
+<!-- RBI -->
+<rect x="310" y="24" width="200" height="60" rx="10" fill="#9a6f1e"/>
+<text x="410" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⚙️ RBI</text>
+<text x="410" y="68" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Auctions · OMO · Repo</text>
+<text x="410" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">LIQUIDITY MANAGER</text>
+
+<!-- Banks -->
+<rect x="810" y="24" width="200" height="60" rx="10" fill="#1c3f7a"/>
+<text x="910" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🏦 Banks &amp; PDs</text>
+<text x="910" y="68" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Buy G-Secs for SLR</text>
+<text x="910" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">MANDATORY INVESTORS</text>
+
+<!-- CCIL -->
+<rect x="1060" y="24" width="200" height="60" rx="10" fill="#0a5c6e"/>
+<text x="1160" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">✅ CCIL</text>
+<text x="1160" y="68" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Settlement guarantee</text>
+<text x="1160" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono,monospace">CENTRAL COUNTERPARTY</text>
+
+<!-- Central Hub -->
+<rect x="510" y="120" width="300" height="76" rx="14" fill="#9a6f1e"/>
+<rect x="510" y="120" width="300" height="76" rx="14" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+<text x="660" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">💰 G-Sec Ecosystem</text>
+<text x="660" y="165" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,0.85)">Sovereign · Risk-Free · Liquid</text>
+<text x="660" y="181" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono,monospace">SLR · REPO · OMO · RETAIL DIRECT</text>
+
+<!-- Connectors: top to center -->
+<path d="M160,86 C160,104 400,120 510,150" stroke="#9a6f1e" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="5 3" marker-end="url(#e1)"/>
+<path d="M410,86 C420,104 490,122 510,150" stroke="#9a6f1e" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="5 3" marker-end="url(#e1)"/>
+<path d="M910,86 C860,104 820,122 810,150" stroke="#1c3f7a" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="5 3" marker-end="url(#e3)"/>
+<path d="M1160,86 C1100,104 900,120 810,152" stroke="#0a5c6e" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="5 3" marker-end="url(#e3)"/>
+
+<!-- Bottom row: outcomes / channels -->
+<rect x="60" y="234" width="185" height="64" rx="10" fill="#5a1f7c"/>
+<text x="152" y="258" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📊 Mutual Funds</text>
+<text x="152" y="276" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Retail investors access G-Secs</text>
+<text x="152" y="290" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">SEBI REGULATED</text>
+
+<rect x="260" y="234" width="185" height="64" rx="10" fill="#1a5e38"/>
+<text x="352" y="258" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">📈 ETFs / REITs</text>
+<text x="352" y="276" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Exchange-traded pooling</text>
+<text x="352" y="290" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">TRADED ON EXCHANGE</text>
+
+<rect x="460" y="234" width="185" height="64" rx="10" fill="#c45c0e"/>
+<text x="552" y="258" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🌐 ADR / GDR</text>
+<text x="552" y="276" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Raise capital abroad</text>
+<text x="552" y="290" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">DEPOSITORY RECEIPTS</text>
+
+<rect x="660" y="234" width="185" height="64" rx="10" fill="#b01a1a"/>
+<text x="752" y="258" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">⚡ Hedge / AIFs</text>
+<text x="752" y="276" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Alt. investments</text>
+<text x="752" y="290" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">CAT I · II · III</text>
+
+<rect x="860" y="234" width="185" height="64" rx="10" fill="#0a5c6e"/>
+<text x="952" y="258" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">🌿 ESG / SWF</text>
+<text x="952" y="276" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Responsible &amp; sovereign</text>
+<text x="952" y="290" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">NIIF · BRSR</text>
+
+<rect x="1060" y="234" width="200" height="64" rx="10" fill="#1a5272"/>
+<text x="1160" y="258" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">💰 Retail Direct</text>
+<text x="1160" y="276" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Common investor access</text>
+<text x="1160" y="290" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono,monospace">RBI RETAIL DIRECT 2021</text>
+
+<!-- Connectors: center to bottom -->
+<path d="M600,198 C460,214 360,226 260,234" stroke="#9a6f1e" stroke-width="1.5" fill="none" opacity="0.35" stroke-dasharray="5 3" marker-end="url(#e1)"/>
+<path d="M620,198 C560,216 520,226 460,234" stroke="#9a6f1e" stroke-width="1.5" fill="none" opacity="0.35" stroke-dasharray="5 3" marker-end="url(#e1)"/>
+<path d="M660,198 C660,216 660,226 660,234" stroke="#c45c0e" stroke-width="1.5" fill="none" opacity="0.35" stroke-dasharray="5 3" marker-end="url(#e1)"/>
+<path d="M700,198 C720,216 740,226 760,234" stroke="#b01a1a" stroke-width="1.5" fill="none" opacity="0.35" stroke-dasharray="5 3" marker-end="url(#e1)"/>
+<path d="M730,198 C820,216 880,226 960,234" stroke="#0a5c6e" stroke-width="1.5" fill="none" opacity="0.35" stroke-dasharray="5 3" marker-end="url(#e1)"/>
+<path d="M750,198 C880,214 1000,226 1060,234" stroke="#1a5272" stroke-width="1.5" fill="none" opacity="0.35" stroke-dasharray="5 3" marker-end="url(#e1)"/>
+<path d="M580,198 C400,216 220,226 155,234" stroke="#5a1f7c" stroke-width="1.5" fill="none" opacity="0.35" stroke-dasharray="5 3" marker-end="url(#e1)"/>
+</svg>
+</div>
+
+<!-- ═══ KEYSTONE ═══ -->
+<div class="keystone">
+  <div class="ks-icon">📊</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Complete Connection</div>
+    <div class="ks-sub">
+      Government needs money → issues G-Secs via RBI auctions on E-Kuber → Banks buy (satisfy SLR) → CCIL settles via NDS-OM → RBI manages liquidity via Repo/OMO → Investors diversify through MFs, ETFs, AIFs, REITs, ESG → Companies raise global capital via ADR/GDR → Retail investors access via RBI Retail Direct 2021
+    </div>
+    <div class="ks-pills">
+      <span class="kp">🏛️ G-Secs</span>
+      <span class="kp">✅ CCIL</span>
+      <span class="kp">📊 Funds</span>
+      <span class="kp">🌐 DRs</span>
+      <span class="kp">🥇 SGBs</span>
+      <span class="kp">🌿 ESG</span>
+      <span class="kp">🏗️ AIFs</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<style>
+/* Subtle page load animation */
+.card, .map-wrap {
+  animation: fadeUp 0.5s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.card:nth-child(1){animation-delay:0.05s}
+.card:nth-child(2){animation-delay:0.1s}
+.card:nth-child(3){animation-delay:0.15s}
+.card:nth-child(4){animation-delay:0.18s}
+.card:nth-child(5){animation-delay:0.2s}
+</style>
+</body>
+</html>

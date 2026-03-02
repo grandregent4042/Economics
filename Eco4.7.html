@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GST — Complete Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%,rgba(184,124,16,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,0.05) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+.map-card.mc6::before{background:linear-gradient(90deg,var(--purple),var(--red),var(--amber));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:10px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+
+/* FEAT */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:7px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.neu{background:#fff3cd;color:#856404;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.ic-node{padding:5px 10px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 3px;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:22px 28px;margin:20px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.keystone-icon{font-size:34px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* CALLOUT */
+.callout{padding:10px 13px;border-radius:9px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:14px 0;}
+@media(max-width:900px){.phase-row{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr 1fr;}}
+.phase-box{padding:14px 10px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;}
+.phase-title{font-size:10px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);}
+
+/* TRICK BOX */
+.trick-box{background:linear-gradient(135deg,rgba(184,124,16,0.1),rgba(26,58,138,0.07));border:2px solid var(--gold);border-radius:16px;padding:20px 24px;margin:20px 0;}
+.trick-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px;}
+@media(max-width:900px){.trick-row{grid-template-columns:1fr 1fr;}}
+.trick-item{padding:10px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);text-align:center;}
+.trick-key{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:3px;}
+.trick-val{font-size:10px;font-weight:800;}
+
+/* ITC EXAMPLE BOX */
+.itc-box{background:linear-gradient(135deg,rgba(26,106,58,0.05),rgba(26,58,138,0.05));border:1.5px solid var(--border);border-radius:14px;padding:18px;margin:14px 0;}
+.itc-step{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;background:var(--card);border:1px solid var(--border);margin:6px 0;}
+.itc-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:800;flex:0 0 26px;color:#fff;}
+.itc-text{font-size:11px;flex:1;}
+.itc-math{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--green);min-width:100px;text-align:right;}
+
+/* RATE SLABS */
+.slab-row{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap;}
+.slab{padding:10px 14px;border-radius:10px;text-align:center;border:2px solid;}
+.slab-pct{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;}
+.slab-lbl{font-size:9px;font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* BEFORE/AFTER */
+.ba-grid{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:stretch;margin:12px 0;}
+.ba-col{padding:14px;border-radius:12px;}
+.ba-arrow{display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--gold);}
+.ba-title{font-size:11px;font-weight:800;margin-bottom:8px;}
+.ba-item{font-size:10px;padding:4px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px;}
+.ba-item:last-child{border-bottom:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Economy · Indirect Taxes · UPSC Prelims</div>
+  <h1>GST — <em>Complete Mind Map</em></h1>
+  <div class="header-sub">Cascading Tax → 101st Amendment → One Nation One Tax → ITC → GST Council → Challenges</div>
+</div>
+
+<!-- SECTION 0: MASTER FLOW -->
+<div class="sec-label">Master Flow — The Big Picture</div>
+<div class="map-card mc1">
+  <svg id="svgFlow" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- SECTION 1: WHY GST — BEFORE vs AFTER -->
+<div class="sec-label">① Why GST Was Needed — The Problem of Cascading Tax</div>
+<div class="map-card mc2">
+  <svg id="svgWhy" viewBox="0 0 1360 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">Before GST — The Old Mess</div>
+    <h3>⚠️ Multiple Taxes = Cascading Effect</h3>
+    <div class="ba-col" style="background:rgba(176,26,26,0.05);border:1.5px solid rgba(176,26,26,0.15);border-radius:10px;padding:12px;margin-bottom:10px;">
+      <div class="ba-title" style="color:var(--red);">Centre Levied:</div>
+      <div class="ba-item"><span style="color:var(--red);">●</span> Excise Duty</div>
+      <div class="ba-item"><span style="color:var(--red);">●</span> Service Tax</div>
+      <div class="ba-item"><span style="color:var(--red);">●</span> Central Sales Tax (CST)</div>
+    </div>
+    <div class="ba-col" style="background:rgba(212,106,16,0.05);border:1.5px solid rgba(212,106,16,0.15);border-radius:10px;padding:12px;margin-bottom:10px;">
+      <div class="ba-title" style="color:var(--amber);">States Levied:</div>
+      <div class="ba-item"><span style="color:var(--amber);">●</span> VAT (different rates)</div>
+      <div class="ba-item"><span style="color:var(--amber);">●</span> Entry Tax</div>
+      <div class="ba-item"><span style="color:var(--amber);">●</span> Luxury Tax</div>
+    </div>
+    <div style="padding:10px;border-radius:9px;background:rgba(176,26,26,0.07);border:1.5px solid rgba(176,26,26,0.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--red);">🔴 Cascading: Excise 12.5% + VAT 10% on (Price + Excise)</div>
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--red);margin-top:4px;">≈ 23.75% effective tax!</div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">After GST — One Clean System</div>
+    <h3>✅ One Nation, One Indirect Tax</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">1 Jul</div><div class="stat-sub">2017</div><div class="stat-label">LAUNCH DATE</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);">101st</div><div class="stat-sub">Amendment</div><div class="stat-label">CONSTITUTIONAL</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">ITC</div><div class="stat-sub">No Cascade</div><div class="stat-label">KEY MECHANISM</div></div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">📍 Destination-based Tax</div><div class="vs">Revenue goes to consuming state, not producing state</div></div>
+      <div class="vitem"><div class="vt">💡 Value Added Tax</div><div class="vs">Tax only on value addition at each stage</div></div>
+      <div class="vitem"><div class="vt">🔗 Input Tax Credit (ITC)</div><div class="vs">Eliminates cascading — seamless credit chain</div></div>
+      <div class="vitem"><div class="vt">🇮🇳 Unified National Market</div><div class="vs">No state barriers, one tax system</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: GST STRUCTURE — CGST, SGST, IGST -->
+<div class="sec-label">② GST Structure — CGST + SGST + IGST</div>
+<div class="map-card mc3">
+  <svg id="svgStructure" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Within State</div>
+    <h3>🏛️ CGST + SGST</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(26,58,138,0.06);border:1.5px solid rgba(26,58,138,0.2);margin-bottom:10px;">
+      <div style="text-align:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--blue);">INTRA-STATE SALE</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">CGST → Centre</div><div class="vs">Half the GST rate goes to Centre</div></div>
+      <div class="vitem"><div class="vt">SGST → State</div><div class="vs">Half the GST rate stays with State</div></div>
+    </div>
+    <div class="callout" style="margin-top:8px;background:rgba(26,58,138,0.06);border-color:rgba(26,58,138,0.2);">
+      <div class="callout-title" style="color:var(--blue);">Example: 18% GST = 9% CGST + 9% SGST</div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Between States</div>
+    <h3>🌐 IGST</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(10,96,112,0.06);border:1.5px solid rgba(10,96,112,0.2);margin-bottom:10px;">
+      <div style="text-align:center;font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--teal);">INTER-STATE SALE</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">IGST Collected by Centre</div><div class="vs">Full rate collected at federal level</div></div>
+      <div class="vitem"><div class="vt">Shared Later with State</div><div class="vs">Consuming state gets its share</div></div>
+    </div>
+    <div class="callout" style="margin-top:8px;background:rgba(10,96,112,0.06);border-color:rgba(10,96,112,0.2);">
+      <div class="callout-title" style="color:var(--teal);">Imports = IGST + Customs Duty (treated as inter-state)</div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Acts Passed</div>
+    <h3>📋 Legal Framework</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">📄 CGST Act</div><div class="vs">Central Goods & Services Tax</div></div>
+      <div class="vitem"><div class="vt">📄 SGST Acts</div><div class="vs">State-level GST legislation</div></div>
+      <div class="vitem"><div class="vt">📄 IGST Act</div><div class="vs">Inter-state transactions</div></div>
+      <div class="vitem"><div class="vt">📄 GST Compensation Act</div><div class="vs">2017 — protect state revenues</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: GST COUNCIL -->
+<div class="sec-label">③ GST Council — Constitution, Voting & SC Judgment</div>
+<div class="map-card mc4">
+  <svg id="svgCouncil" viewBox="0 0 1360 210" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc purple">
+    <div class="pc-label">GST Council Structure</div>
+    <h3>🏛️ Members & Chairperson</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">👑 Chairperson: Union Finance Minister</div><div class="vs">Heads the council</div></div>
+      <div class="vitem"><div class="vt">🏦 Union MoS (Revenue)</div><div class="vs">Central government representation</div></div>
+      <div class="vitem"><div class="vt">🏛️ State Finance Ministers</div><div class="vs">All 28 States + 8 UTs with legislature</div></div>
+    </div>
+    <!-- Voting weight visual -->
+    <div style="margin-top:12px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);margin-bottom:6px;">VOTING WEIGHT — 3/4th majority needed</div>
+      <div style="display:flex;height:36px;border-radius:8px;overflow:hidden;border:1.5px solid var(--border);">
+        <div style="width:33.33%;background:linear-gradient(90deg,#1a3a8a,#2a4a9a);display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:10px;font-weight:800;color:#fff;">Centre 1/3</span>
+        </div>
+        <div style="width:66.67%;background:linear-gradient(90deg,#1a6a3a,#2a7a4a);display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:10px;font-weight:800;color:#fff;">States Together 2/3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Supreme Court Judgment — May 2022</div>
+    <h3>⚖️ Landmark SC Ruling</h3>
+    <div style="padding:14px;border-radius:11px;background:rgba(176,26,26,0.06);border:2px solid rgba(176,26,26,0.2);margin-bottom:12px;text-align:center;">
+      <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--red);">GST Council Recommendations are</div>
+      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--red);margin:4px 0;">NOT BINDING</div>
+      <div style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);">Only Persuasive in Nature</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Centre & States have concurrent powers</div><div class="vs">Both can legislate on GST independently</div></div>
+      <div class="vitem"><div class="vt">Cooperative federalism in practice</div><div class="vs">Council = advisory, not mandatory</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: ITC MECHANISM -->
+<div class="sec-label">④ How GST Works — Input Tax Credit (ITC) Mechanism</div>
+
+<div class="itc-box">
+  <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;margin-bottom:14px;color:var(--ink);">💡 ITC Example — Eliminating Cascading at 18% GST</div>
+  <div class="itc-step">
+    <div class="itc-num" style="background:var(--amber);">A</div>
+    <div class="itc-text"><strong>Manufacturer A</strong> adds value ₹100 → Sells at ₹100</div>
+    <div class="itc-math">GST = ₹18 ✓ Pays ₹18</div>
+  </div>
+  <div style="text-align:center;font-size:18px;color:var(--muted);margin:2px 0;">↓</div>
+  <div class="itc-step">
+    <div class="itc-num" style="background:var(--blue);">B</div>
+    <div class="itc-text"><strong>Trader B</strong> adds value ₹200 → Sells at ₹300 → GST on ₹300 = ₹54</div>
+    <div class="itc-math">Pays only ₹36 (₹54 − ₹18 credit)</div>
+  </div>
+  <div style="text-align:center;font-size:18px;color:var(--muted);margin:2px 0;">↓</div>
+  <div class="itc-step">
+    <div class="itc-num" style="background:var(--green);">C</div>
+    <div class="itc-text"><strong>Consumer</strong> pays final price including total GST ₹54</div>
+    <div class="itc-math">No double taxation ✅</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;">
+    <div style="padding:10px;border-radius:9px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.15);text-align:center;">
+      <div style="font-size:10px;font-weight:800;color:var(--red);">❌ Old System</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--red);">Tax on Tax</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">Cascading = 23.75%</div>
+    </div>
+    <div style="padding:10px;border-radius:9px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.15);text-align:center;">
+      <div style="font-size:10px;font-weight:800;color:var(--green);">✅ GST System</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--green);">Tax on Value Added</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">ITC = No Cascade</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: SPECIAL PROVISIONS + RATE SLABS -->
+<div class="sec-label">⑤ GST Rate Slabs + Special Provisions</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">GST Rate Structure</div>
+    <h3>📊 Five-Tier System</h3>
+    <div class="slab-row" style="justify-content:center;">
+      <div class="slab" style="border-color:var(--green);background:rgba(26,106,58,0.07);flex:1;">
+        <div class="slab-pct" style="color:var(--green);">0%</div>
+        <div class="slab-lbl" style="color:var(--green);">EXEMPT</div>
+      </div>
+      <div class="slab" style="border-color:var(--teal);background:rgba(10,96,112,0.07);flex:1;">
+        <div class="slab-pct" style="color:var(--teal);">5%</div>
+        <div class="slab-lbl" style="color:var(--teal);">ESSENTIALS</div>
+      </div>
+      <div class="slab" style="border-color:var(--blue);background:rgba(26,58,138,0.07);flex:1;">
+        <div class="slab-pct" style="color:var(--blue);">12%</div>
+        <div class="slab-lbl" style="color:var(--blue);">STANDARD</div>
+      </div>
+      <div class="slab" style="border-color:var(--amber);background:rgba(212,106,16,0.07);flex:1;">
+        <div class="slab-pct" style="color:var(--amber);">18%</div>
+        <div class="slab-lbl" style="color:var(--amber);">SERVICES</div>
+      </div>
+      <div class="slab" style="border-color:var(--red);background:rgba(176,26,26,0.07);flex:1;">
+        <div class="slab-pct" style="color:var(--red);">28%</div>
+        <div class="slab-lbl" style="color:var(--red);">LUXURY</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:8px 12px;border-radius:8px;background:rgba(176,26,26,0.06);border:1px dashed var(--red);">
+      <span style="font-size:10px;font-weight:800;color:var(--red);">⚠️ + Cess on 28% items (luxury/demerit goods). Multi-rate = Complex system</span>
+    </div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Special GST Provisions</div>
+    <h3>📐 Key Rules to Remember</h3>
+    <table class="ctable">
+      <thead><tr><th>PROVISION</th><th>RULE</th><th>STATUS</th></tr></thead>
+      <tbody>
+        <tr><td>🌍 Exports</td><td>Zero-rated — GST refunded</td><td><span class="tag ok">Refund</span></td></tr>
+        <tr><td>📦 Imports</td><td>IGST + Customs Duty</td><td><span class="tag neu">Inter-state</span></td></tr>
+        <tr><td>🚛 E-Way Bill</td><td>Mandatory &gt;₹50,000</td><td><span class="tag ok">Digital</span></td></tr>
+        <tr><td>🏪 Composition</td><td>Turnover ≤₹1.5 Cr, pay 1%</td><td><span class="tag neu">Optional</span></td></tr>
+        <tr><td>🛠️ Services Comp.</td><td>≤₹50 Lakh, pay 6%</td><td><span class="tag neu">Optional</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- SECTION 6: COMPENSATION TO STATES -->
+<div class="sec-label">⑥ GST Compensation to States — The Revenue Protection Story</div>
+<div class="map-card mc5">
+  <svg id="svgComp" viewBox="0 0 1360 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">The Fear</div>
+    <h3>😨 Why States Were Worried</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Revenue Loss Fear</div><div class="vs">Octroi, entry tax abolished — big revenue source gone</div></div>
+      <div class="vitem"><div class="vt">GST = Destination-based</div><div class="vs">Producing states lose revenue to consuming states</div></div>
+    </div>
+    <span class="ps-chip prob" style="margin-top:8px;">⚠️ States needed assurance</span>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">The Promise</div>
+    <h3>🤝 Compensation Guarantee</h3>
+    <div style="text-align:center;padding:12px;border-radius:10px;background:rgba(184,124,16,0.07);border:1.5px solid rgba(184,124,16,0.2);margin-bottom:10px;">
+      <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:800;color:var(--amber);">14%</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">ANNUAL GROWTH GUARANTEED</div>
+      <div style="font-size:10px;font-weight:700;margin-top:4px;">Base Year: 2015-16</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Funded via Compensation Cess</div><div class="vs">Levy on luxury/demerit goods (28% slab)</div></div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Timeline</div>
+    <h3>📅 Compensation Period</h3>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(176,26,26,0.05);border-color:rgba(176,26,26,0.15);">
+        <div class="vt" style="color:var(--red);">Originally: Till June 2022</div>
+        <div class="vs">5 years from GST launch</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🦠 COVID Impact</div>
+        <div class="vs">Revenue shortfall → Centre borrowed on states' behalf</div>
+      </div>
+      <div class="vitem" style="background:rgba(26,106,58,0.05);border-color:rgba(26,106,58,0.15);">
+        <div class="vt" style="color:var(--green);">Extended: Till March 2026</div>
+        <div class="vs">To repay COVID-era borrowings via cess</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: BENEFITS + CHALLENGES -->
+<div class="sec-label">⑦ Benefits & Challenges — The Full Picture</div>
+<div class="map-card mc6">
+  <svg id="svgBC" viewBox="0 0 1360 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Benefits of GST</div>
+    <h3>✅ Winners — Business, Govt, Consumer</h3>
+    <div style="margin-bottom:8px;font-family:'DM Mono',monospace;font-size:9px;color:var(--green);">FOR BUSINESS</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;">
+      <span class="ps-chip sol">✅ Easy compliance</span>
+      <span class="ps-chip sol">✅ Uniform rates</span>
+      <span class="ps-chip sol">✅ No check-posts</span>
+      <span class="ps-chip sol">✅ Better logistics</span>
+      <span class="ps-chip sol">✅ Economy formalized</span>
+    </div>
+    <div style="margin-bottom:8px;font-family:'DM Mono',monospace;font-size:9px;color:var(--blue);">FOR GOVERNMENT</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;">
+      <span class="ps-chip sol">✅ Higher revenue efficiency</span>
+      <span class="ps-chip sol">✅ Broader tax base</span>
+      <span class="ps-chip sol">✅ Better evasion control</span>
+    </div>
+    <div style="margin-bottom:8px;font-family:'DM Mono',monospace;font-size:9px;color:var(--teal);">FOR CONSUMERS</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="ps-chip sol">✅ Transparent pricing</span>
+      <span class="ps-chip sol">✅ Reduced hidden taxes</span>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Challenges in GST</div>
+    <h3>⚠️ Problems That Remain</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt" style="color:var(--red);">🔄 Inverted Duty Structure</div>
+        <div class="vs">Input tax rate &gt; Output tax rate → Refund blockage (e.g. Raw mat. 18%, Product 12%)</div>
+      </div>
+      <div class="vitem">
+        <div class="vt" style="color:var(--amber);">🚫 Exclusions from GST</div>
+        <div class="vs">Alcohol, Petroleum, Electricity, Real estate (partial), Land — embedded taxes remain</div>
+      </div>
+      <div class="vitem">
+        <div class="vt" style="color:var(--purple);">📊 Threshold Evasion</div>
+        <div class="vs">Turnover &lt;₹40 lakh exempt → Firms split to stay below threshold</div>
+      </div>
+      <div class="vitem">
+        <div class="vt" style="color:var(--blue);">💼 Informal Sector Burden</div>
+        <div class="vs">Heavy compliance, digital requirements, filing burden on small businesses</div>
+      </div>
+      <div class="vitem">
+        <div class="vt" style="color:var(--red);">🌐 Multi-Rate Complexity</div>
+        <div class="vs">5 slabs + cess = complex system, classification disputes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 8: RoDTEP + MACRO LINK -->
+<div class="sec-label">⑧ RoDTEP Scheme + Macro Economic Link</div>
+<div class="g2">
+  <div class="pc teal">
+    <div class="pc-label">RoDTEP — Export Refund Scheme</div>
+    <h3>🌍 Replacing MEIS for Exporters</h3>
+    <div class="impact-chain">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);">MEIS (old)</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);">Not WTO compliant</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">RoDTEP from Jan 2021</div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Remission of Duties on Exported Products</div><div class="vs">Refunds fuel, electricity, mandi tax embedded in exports</div></div>
+      <div class="vitem"><div class="vt">WTO-Compliant</div><div class="vs">Based on actual duties paid, not market-linked</div></div>
+      <div class="vitem"><div class="vt">Effective: 1 Jan 2021</div><div class="vs">Replaced MEIS — Merchandise Exports from India Scheme</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="ps-chip sol">✅ Supports exports + WTO rules</span></div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Full Macro Economic Link</div>
+    <h3>🔗 How GST Connects to Everything</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;gap:5px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);">Indirect Tax Problem → Cascading</div>
+      <div class="ic-arr" style="margin:0 0 0 8px;">↓</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);">GST = Unified Market + ITC</div>
+      <div class="ic-arr" style="margin:0 0 0 8px;">↓</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">GST Revenue → Budget → Fiscal Deficit</div>
+      <div class="ic-arr" style="margin:0 0 0 8px;">↓</div>
+      <div class="ic-node" style="border-color:var(--purple);background:rgba(90,26,138,0.08);color:var(--purple);">Compensation → Centre Borrowing → FRBM Impact</div>
+    </div>
+    <div style="margin-top:10px;padding:10px;border-radius:9px;background:rgba(212,106,16,0.07);border:1.5px solid rgba(212,106,16,0.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--amber);">🔗 GST links to: Monetary Policy · Fiscal Policy · FRBM · External Trade · Federalism</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 9: PRELIMS HOTSPOTS -->
+<div class="sec-label">🔥 Most Probable Prelims Areas</div>
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--amber);background:rgba(212,106,16,0.04);">
+    <div class="phase-num" style="color:var(--amber);">1 Jul</div>
+    <div class="phase-title">GST Launch</div>
+    <div class="phase-sub">2017 · 101st Amendment</div>
+    <span class="pill amber">Factual</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+    <div class="phase-num" style="color:var(--blue);">3/4</div>
+    <div class="phase-title">Council Majority</div>
+    <div class="phase-sub">Centre 1/3 · States 2/3</div>
+    <span class="pill blue">Numbers</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--red);background:rgba(176,26,26,0.04);">
+    <div class="phase-num" style="color:var(--red);">2022</div>
+    <div class="phase-title">SC Judgment</div>
+    <div class="phase-sub">Recommendations not binding</div>
+    <span class="pill red">SC Case</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--green);background:rgba(26,106,58,0.04);">
+    <div class="phase-num" style="color:var(--green);">ITC</div>
+    <div class="phase-title">No Cascading</div>
+    <div class="phase-sub">Input Tax Credit mechanism</div>
+    <span class="pill green">Concept</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--purple);background:rgba(90,26,138,0.04);">
+    <div class="phase-num" style="color:var(--purple);">0%</div>
+    <div class="phase-title">Exports = Zero-rated</div>
+    <div class="phase-sub">GST refunded to exporter</div>
+    <span class="pill purple">Key Rule</span>
+  </div>
+</div>
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--teal);background:rgba(10,96,112,0.04);">
+    <div class="phase-num" style="color:var(--teal);">₹50K</div>
+    <div class="phase-title">E-Way Bill</div>
+    <div class="phase-sub">Threshold for mandatory bill</div>
+    <span class="pill teal">Threshold</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--amber);background:rgba(212,106,16,0.04);">
+    <div class="phase-num" style="color:var(--amber);">1.5 Cr</div>
+    <div class="phase-title">Composition Goods</div>
+    <div class="phase-sub">Flat 1% rate for small biz</div>
+    <span class="pill amber">Limit</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--sky);background:rgba(26,88,120,0.04);">
+    <div class="phase-num" style="color:var(--sky);">14%</div>
+    <div class="phase-title">State Guarantee</div>
+    <div class="phase-sub">Annual growth — base 2015-16</div>
+    <span class="pill sky">Compensation</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--green);background:rgba(26,106,58,0.04);">
+    <div class="phase-num" style="color:var(--green);">RoDTEP</div>
+    <div class="phase-title">Replaces MEIS</div>
+    <div class="phase-sub">Jan 2021 · WTO compliant</div>
+    <span class="pill green">Export</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--red);background:rgba(176,26,26,0.04);">
+    <div class="phase-num" style="color:var(--red);">IDS</div>
+    <div class="phase-title">Inverted Duty</div>
+    <div class="phase-sub">Input &gt; Output → Refund issue</div>
+    <span class="pill red">Problem</span>
+  </div>
+</div>
+
+<!-- TRICK BOX -->
+<div class="trick-box">
+  <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold);margin-bottom:4px;">🧠 Quick-Fire Memory Locks</div>
+  <div style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:10px;">LOCK THESE BEFORE EXAM</div>
+  <div class="trick-row">
+    <div class="trick-item"><div class="trick-key">GST DATE</div><div class="trick-val" style="color:var(--amber);">1 July 2017</div></div>
+    <div class="trick-item"><div class="trick-key">AMENDMENT</div><div class="trick-val" style="color:var(--blue);">101st Constitutional</div></div>
+    <div class="trick-item"><div class="trick-key">INTRA-STATE</div><div class="trick-val" style="color:var(--green);">CGST + SGST</div></div>
+    <div class="trick-item"><div class="trick-key">INTER-STATE</div><div class="trick-val" style="color:var(--teal);">IGST (Centre collects)</div></div>
+    <div class="trick-item"><div class="trick-key">COUNCIL HEAD</div><div class="trick-val" style="color:var(--purple);">Union Finance Minister</div></div>
+    <div class="trick-item"><div class="trick-key">SC RULING</div><div class="trick-val" style="color:var(--red);">Recommendations = Persuasive</div></div>
+    <div class="trick-item"><div class="trick-key">DESTINATION TAX</div><div class="trick-val" style="color:var(--sky);">Revenue → Consuming State</div></div>
+    <div class="trick-item"><div class="trick-key">COMPOSITION</div><div class="trick-val" style="color:var(--gold);">≤₹1.5 Cr → 1% flat (no ITC)</div></div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🇮🇳</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">
+      Fragmented indirect taxes → cascading → GST as <strong style="color:#f5d78a;">One Nation, One Tax, One Market</strong>. ITC is the engine that eliminates cascading. GST Council balances federal interests — but SC 2022 confirmed states retain sovereignty. Compensation Cess protected states from revenue shocks. What remains unresolved: exclusions (petroleum, alcohol), inverted duty structure, and informal sector compliance gaps.
+    </div>
+    <div class="keystone-pills">
+      <span class="kpill">🔗 ITC = No Cascade</span>
+      <span class="kpill">🌐 Destination Tax</span>
+      <span class="kpill">⚖️ Council = Persuasive Only</span>
+      <span class="kpill">💰 Compensation = 14% Growth</span>
+      <span class="kpill">🚫 Petroleum Still Outside GST</span>
+      <span class="kpill">📦 Exports = Zero Rated</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+function monoLabel(svg,x,y,txt,col){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace','letter-spacing':'2',fill:col||'rgba(120,100,60,0.38)'});
+  t.textContent=txt;svg.appendChild(t);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgFlow');
+  const steps=[
+    {x:80,  label:['Cascading','Tax Problem'], sub:'Pre-2017 mess',    fill:'#b01a1a',emoji:'⚠️'},
+    {x:260, label:['101st Amend.','2016'],     sub:'Constitutional basis',fill:'#5a1a8a',emoji:'📜'},
+    {x:440, label:['GST','1 Jul 2017'],         sub:'One Nation One Tax',fill:'#1a3a8a',emoji:'🇮🇳'},
+    {x:620, label:['ITC','Mechanism'],          sub:'Eliminates cascade',fill:'#1a6a3a',emoji:'🔗'},
+    {x:800, label:['GST Council','Governance'], sub:'3/4 majority · SC 2022',fill:'#5a1a8a',emoji:'🏛️'},
+    {x:980, label:['Rate Slabs','0-28%+Cess'],  sub:'5-tier structure',  fill:'#b87c10',emoji:'📊'},
+    {x:1155,label:['Compensation','to States'], sub:'14% growth · June 2026',fill:'#0a6070',emoji:'🤝'},
+    {x:1290,label:['Challenges','& RoDTEP'],    sub:'Exclusions · IDS',  fill:'#d46a10',emoji:'🔍'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1)edge(svg,s.x+72,65,steps[i+1].x-72,65,'#b87c10',false,2);
+  });
+  steps.forEach(s=>node(svg,s.x,65,135,68,s.fill,s.label,s.sub,s.emoji));
+  monoLabel(svg,680,18,'MASTER FLOW: CASCADING PROBLEM → GST SOLUTION → COUNCIL → RATES → COMPENSATION → CHALLENGES','rgba(120,100,60,0.4)');
+})();
+
+// ─── WHY GST: Before vs After ───
+(function(){
+  const svg=document.getElementById('svgWhy');
+  svg.setAttribute('viewBox','0 0 1360 230');
+
+  // Dividing line
+  svg.appendChild(se('line',{x1:680,y1:20,x2:680,y2:218,stroke:'rgba(200,180,140,0.3)','stroke-width':'2','stroke-dasharray':'8 4'}));
+
+  // Left: BEFORE — cascade diagram
+  // Central "Old Tax" root
+  node(svg,230,50,200,52,'#b01a1a',['Before GST','Multiple Taxes'],'Fragmented & Cascading','⚠️');
+
+  const oldTaxes=[
+    {x:60,  y:140, fill:'#8a1010', label:['Excise Duty'],    sub:'Centre → manufacturing'},
+    {x:230, y:140, fill:'#a01414', label:['Service Tax'],    sub:'Centre → services'},
+    {x:400, y:140, fill:'#b82020', label:['VAT/Entry Tax'],  sub:'States → varied rates'},
+    {x:60,  y:200, fill:'#601010', label:['Tax on Tax!'],    sub:'23.75% effective'},
+    {x:230, y:200, fill:'#701010', label:['No ITC Across'],  sub:'No credit chain'},
+    {x:400, y:200, fill:'#6a2010', label:['Frag. Market'],   sub:'State barriers'},
+  ];
+  oldTaxes.forEach((n,i)=>{
+    const py=i<3?50:140;
+    edge(svg,i<3?230:([60,230,400][i-3]),py+26,n.x,n.y-26,n.fill+'77',true,1.5);
+    node(svg,n.x,n.y,155,44,n.fill,[n.label[0]],n.sub);
+  });
+
+  // Right: AFTER — GST clean
+  node(svg,1050,50,200,52,'#1a6a3a',['After GST','Clean System'],'One Nation One Tax','✅');
+
+  const newTax=[
+    {x:870,  y:140, fill:'#1a3a8a', label:['CGST'],         sub:'Centre share'},
+    {x:1050, y:140, fill:'#1a6a3a', label:['SGST/IGST'],    sub:'State/Inter-state'},
+    {x:1230, y:140, fill:'#0a6070', label:['ITC Chain'],     sub:'Seamless credit'},
+    {x:870,  y:200, fill:'#155a30', label:['Only Value Add'],sub:'Tax on addition'},
+    {x:1050, y:200, fill:'#1a5878', label:['Unified Market'],sub:'No barriers'},
+    {x:1230, y:200, fill:'#5a1a8a', label:['Digital Filing'],sub:'E-way bill, GSTN'},
+  ];
+  newTax.forEach((n,i)=>{
+    const py=i<3?50:140;
+    edge(svg,i<3?1050:([870,1050,1230][i-3]),py+26,n.x,n.y-26,n.fill+'77',true,1.5);
+    node(svg,n.x,n.y,155,44,n.fill,[n.label[0]],n.sub);
+  });
+
+  // Labels
+  monoLabel(svg,340,218,'BEFORE: CASCADING — TAX ON TAX','rgba(176,26,26,0.45)');
+  monoLabel(svg,1050,218,'AFTER GST: ITC — TAX ONLY ON VALUE ADDITION','rgba(26,106,58,0.45)');
+
+  // VS badge
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('circle',{cx:'680',cy:'115',r:'22',fill:'#12100e'}));
+  const vs=se('text',{x:'680',y:'115','text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'800','font-family':'Playfair Display,serif',fill:'#f5d78a'});
+  vs.textContent='VS';g.appendChild(vs);svg.appendChild(g);
+})();
+
+// ─── GST STRUCTURE ───
+(function(){
+  const svg=document.getElementById('svgStructure');
+  svg.setAttribute('viewBox','0 0 1360 200');
+
+  // Central GST node
+  node(svg,680,60,200,52,'#1a1208',['GST Structure','CGST + SGST + IGST'],'Two scenarios by transaction type','🏛️');
+
+  // Left: Intra-state
+  const lRoot=node; // use node function
+  node(svg,230,140,200,52,'#1a3a8a',['Intra-State Sale'],     'Within same state','🏠');
+  node(svg,100,195,155,38,'#1a4aa0',['CGST → Centre'],        '9% if 18% GST');
+  node(svg,360,195,155,38,'#1a6a3a',['SGST → State'],         '9% if 18% GST');
+  edge(svg,595,60,360,114,'#1a3a8a55',true,2);
+  edge(svg,230,166,100,176,'#1a3a8a55',true,1.5);
+  edge(svg,230,166,360,176,'#1a6a3a55',true,1.5);
+
+  // Right: Inter-state
+  node(svg,950,140,200,52,'#0a6070',['Inter-State/Import'],  'Between states','🌐');
+  node(svg,810,195,165,38,'#0a6070',['IGST Collected'],      'By Centre');
+  node(svg,1090,195,165,38,'#0a5060',['Shared with State'],  'Consuming state gets share');
+  edge(svg,765,60,810,114,'#0a607055',true,2);
+  edge(svg,950,166,810,176,'#0a607055',true,1.5);
+  edge(svg,950,166,1090,176,'#0a506055',true,1.5);
+
+  // Exports node
+  node(svg,1260,140,160,52,'#1a6a3a',['Exports'],             'Zero-rated','🌍');
+  edge(svg,765,60,1180,114,'#1a6a3a55',true,1.5);
+
+  monoLabel(svg,680,195,'INTRA-STATE = CGST + SGST | INTER-STATE = IGST | EXPORTS = ZERO-RATED');
+})();
+
+// ─── GST COUNCIL ───
+(function(){
+  const svg=document.getElementById('svgCouncil');
+  svg.setAttribute('viewBox','0 0 1360 210');
+
+  // Central council node
+  node(svg,680,100,230,58,'#5a1a8a',['GST Council','Art. 279A'],'Cooperative Federalism Body','🏛️');
+
+  // Members — left
+  const members=[
+    {x:150,y:55,  fill:'#1a1208',label:['Union Finance','Minister'],   sub:'Chairperson',        emoji:'👑'},
+    {x:150,y:145, fill:'#1a3a8a',label:['Union MoS','Revenue'],        sub:'Central representation',emoji:'🏦'},
+    {x:380,y:40,  fill:'#1a5878',label:['All State Finance','Ministers'],sub:'28 states + UTs',  emoji:'🏛️'},
+  ];
+  members.forEach(m=>{
+    edge(svg,564,100,m.x+(m.x<400?84:94),m.y,'#5a1a8a55',true,1.6);
+    node(svg,m.x,m.y,175,48,m.fill,m.label,m.sub,m.emoji);
+  });
+
+  // Voting pie — right as bar visual
+  node(svg,1000,55,250,52,'#1a3a8a',['Voting Weight','3/4th Majority Needed'],'For any recommendation to pass','⚖️');
+
+  // voting visual bars
+  const bx=880,by=95,bw=240,bh=24;
+  svg.appendChild(se('rect',{x:bx,y:by,width:bw,height:bh,rx:'6',fill:'rgba(200,180,140,0.2)',stroke:'var(--border)','stroke-width':'1'}));
+  svg.appendChild(se('rect',{x:bx,y:by,width:bw*0.333,height:bh,rx:'6',fill:'#1a3a8a'}));
+  svg.appendChild(se('rect',{x:bx+bw*0.333,y:by,width:bw*0.667,height:bh,rx:'0 6 6 0',fill:'#1a6a3a'}));
+  const ct=se('text',{x:bx+bw*0.167,y:by+12,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'800',fill:'#fff'});ct.textContent='Centre 1/3';svg.appendChild(ct);
+  const st=se('text',{x:bx+bw*0.667,y:by+12,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'800',fill:'#fff'});st.textContent='States 2/3';svg.appendChild(st);
+
+  // SC 2022 node
+  node(svg,1000,155,280,46,'#b01a1a',['SC May 2022: Recommendations'],  'NOT Binding — Only Persuasive ⚖️');
+
+  edge(svg,796,100,880,67,'#1a3a8a55',true,1.5);
+  edge(svg,796,110,880,107,'#b01a1a55',true,1.5);
+
+  monoLabel(svg,680,200,'GST COUNCIL: CENTRE 1/3 + STATES 2/3 → 3/4th MAJORITY → SC 2022: PERSUASIVE ONLY');
+})();
+
+// ─── COMPENSATION ───
+(function(){
+  const svg=document.getElementById('svgComp');
+  svg.setAttribute('viewBox','0 0 1360 160');
+
+  // Linear flow: State Fear → Promise → Cess → COVID → Extended
+  const steps=[
+    {x:130, fill:'#b01a1a', label:['States Fear'], sub:'Revenue loss post-GST'},
+    {x:350, fill:'#d46a10', label:['14% Growth'],  sub:'Guaranteed annually'},
+    {x:570, fill:'#b87c10', label:['Base: 2015-16'],sub:'Reference year'},
+    {x:790, fill:'#0a6070', label:['Comp. Cess'],  sub:'Luxury goods levy'},
+    {x:1010,fill:'#5a1a8a', label:['COVID Impact'],sub:'Revenue shortfall 2020'},
+    {x:1230,fill:'#1a6a3a', label:['Till Mar 2026'],sub:'Extended to repay debt'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1)edge(svg,s.x+80,80,steps[i+1].x-80,80,'#b87c10',false,2);
+    node(svg,s.x,80,145,56,s.fill,[s.label[0]],s.sub);
+  });
+  // arrows
+  monoLabel(svg,680,148,'STATE REVENUE PROTECTION: FEAR → 14% GUARANTEE → CESS → COVID SHOCK → EXTENSION TO 2026');
+})();
+
+// ─── BENEFITS & CHALLENGES ───
+(function(){
+  const svg=document.getElementById('svgBC');
+  svg.setAttribute('viewBox','0 0 1360 220');
+  svg.appendChild(se('line',{x1:680,y1:16,x2:680,y2:208,stroke:'rgba(200,180,140,0.25)','stroke-width':'2','stroke-dasharray':'7 4'}));
+
+  // LEFT: Benefits tree
+  node(svg,250,48,230,52,'#1a6a3a',['GST Benefits'],'For Business · Govt · Consumer','✅');
+  const benefits=[
+    {x:60,  y:140, fill:'#1a6a3a', label:['Easy Compliance'],  sub:'Uniform + digital'},
+    {x:230, y:140, fill:'#1a3a8a', label:['Unified Market'],    sub:'No check-posts'},
+    {x:400, y:140, fill:'#0a6070', label:['Higher Revenue'],    sub:'Broader tax base'},
+    {x:60,  y:198, fill:'#155a30', label:['Economy Formal'],    sub:'MSME onboarded'},
+    {x:230, y:198, fill:'#1a5878', label:['Transparent Price'], sub:'No hidden tax'},
+    {x:400, y:198, fill:'#2a6a60', label:['Better Logistics'],  sub:'E-way + speed'},
+  ];
+  benefits.forEach((n,i)=>{
+    const px=i<3?250:([60,230,400][i-3]);
+    const py=i<3?48:140;
+    edge(svg,px,py+26,n.x,n.y-22,n.fill+'66',true,1.4);
+    node(svg,n.x,n.y,155,40,n.fill,[n.label[0]],n.sub);
+  });
+
+  // RIGHT: Challenges tree
+  node(svg,1100,48,230,52,'#b01a1a',['GST Challenges'],'Problems That Remain','⚠️');
+  const challenges=[
+    {x:870,  y:140, fill:'#b01a1a', label:['Inverted Duty'],    sub:'Input > Output → blockage'},
+    {x:1050, y:140, fill:'#8a1010', label:['Exclusions'],        sub:'Petro · Alcohol · Elec.'},
+    {x:1230, y:140, fill:'#6a0a0a', label:['Threshold Abuse'],  sub:'Firm splitting ₹40L'},
+    {x:870,  y:198, fill:'#701818', label:['Informal Burden'],   sub:'Heavy digital compliance'},
+    {x:1050, y:198, fill:'#601010', label:['Multi-Rate'],        sub:'5 slabs + cess = complex'},
+    {x:1230, y:198, fill:'#501010', label:['Classification War'],sub:'Rate disputes frequent'},
+  ];
+  challenges.forEach((n,i)=>{
+    const px=i<3?1100:([870,1050,1230][i-3]);
+    const py=i<3?48:140;
+    edge(svg,px,py+26,n.x,n.y-22,n.fill+'66',true,1.4);
+    node(svg,n.x,n.y,155,40,n.fill,[n.label[0]],n.sub);
+  });
+
+  monoLabel(svg,340,212,'BENEFITS','rgba(26,106,58,0.5)');
+  monoLabel(svg,1060,212,'CHALLENGES','rgba(176,26,26,0.5)');
+})();
+</script>
+</body>
+</html>

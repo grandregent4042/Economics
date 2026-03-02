@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monetary Policy & Financial Inclusion — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0f0f;--bg:#f6f3ed;--bg2:#ede9e0;--card:#fffefa;
+  --gold:#b8860b;--gold-lt:#f5e6a3;--amber:#c46200;--amber-lt:#fde8cc;
+  --green:#166534;--green-lt:#dcfce7;--blue:#1e3a8a;--blue-lt:#dbeafe;
+  --teal:#0f766e;--teal-lt:#ccfbf1;--red:#991b1b;--red-lt:#fee2e2;
+  --purple:#5b21b6;--purple-lt:#ede9fe;--sky:#0369a1;--sky-lt:#e0f2fe;
+  --border:#ddd6c0;--muted:#6b6450;--shadow:rgba(15,15,15,0.08);
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+
+/* PAPER TEXTURE */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:52px 16px 28px;position:relative;}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:0.85;}
+.header h1{font-family:'Libre Baskerville',serif;font-size:clamp(28px,4.5vw,52px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--amber);}
+.header-sub{margin-top:10px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;}
+.header-rule{display:flex;align-items:center;gap:16px;margin:18px auto 0;max-width:500px;}
+.header-rule::before,.header-rule::after{content:'';flex:1;height:2px;background:linear-gradient(90deg,transparent,var(--border));}
+.header-rule span{width:8px;height:8px;background:var(--amber);border-radius:50%;flex-shrink:0;}
+
+/* ── SECTION LABELS ── */
+.sec{display:flex;align-items:center;gap:14px;margin:38px 0 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+.sec::before{background:linear-gradient(90deg,transparent,var(--border));}
+
+/* ── GRID LAYOUTS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:18px;}
+.g1x2{display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:18px;}
+@media(max-width:980px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1,.g1x2{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1,.g1x2{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.25s,transform 0.2s;box-shadow:0 2px 12px var(--shadow);}
+.pc:hover{box-shadow:0 8px 32px var(--shadow);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Libre Baskerville',serif;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.35;}
+
+/* ── VERTICAL LIST ── */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:8px;background:var(--bg2);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.vitem .vt{font-weight:700;margin-bottom:1px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── STAT BOX ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px 10px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--bg2);}
+.stat-num{font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;line-height:1;}
+.stat-label{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* ── PILLS & CHIPS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9.5px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(184,134,11,0.12);color:var(--gold);}
+.pill.green{background:var(--green-lt);color:var(--green);}
+.pill.blue{background:var(--blue-lt);color:var(--blue);}
+.pill.amber{background:var(--amber-lt);color:var(--amber);}
+.pill.purple{background:var(--purple-lt);color:var(--purple);}
+.pill.teal{background:var(--teal-lt);color:var(--teal);}
+.pill.red{background:var(--red-lt);color:var(--red);}
+.pill.sky{background:var(--sky-lt);color:var(--sky);}
+
+.chip{display:inline-block;padding:3px 9px;border-radius:7px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.prob{background:rgba(153,27,27,0.06);border-color:rgba(153,27,27,0.25);color:var(--red);}
+.chip.sol{background:rgba(22,101,52,0.06);border-color:rgba(22,101,52,0.25);color:var(--green);}
+.chip.neu{background:rgba(184,134,11,0.06);border-color:rgba(184,134,11,0.25);color:var(--gold);}
+
+/* ── FEAT GRID ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:8px;background:var(--bg2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:3px;}
+.feat .ft{font-size:10.5px;font-weight:700;}
+.feat .fs{font-size:8.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── IMPACT CHAIN ── */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:5px 0;}
+.ic-node{padding:6px 11px;border-radius:7px;font-size:9.5px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:13px;color:var(--muted);margin:0 4px;flex:0 0 auto;}
+
+/* ── CALLOUT ── */
+.callout{padding:10px 13px;border-radius:9px;background:rgba(22,101,52,0.05);border:1.5px solid rgba(22,101,52,0.18);margin:8px 0;}
+.callout.amber{background:rgba(196,98,0,0.05);border-color:rgba(196,98,0,0.2);}
+.callout-title{font-size:10px;font-weight:800;color:var(--green);margin-bottom:2px;}
+.callout.amber .callout-title{color:var(--amber);}
+.callout-body{font-size:9.5px;color:var(--muted);line-height:1.55;}
+
+/* ── PHASE BOXES ── */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:18px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;}
+.phase-title{font-size:12px;font-weight:700;margin:4px 0;}
+.phase-sub{font-size:8.5px;font-family:'JetBrains Mono',monospace;margin-bottom:8px;color:var(--muted);}
+
+/* ── SVG MAP CARD ── */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;position:relative;margin-bottom:22px;box-shadow:0 2px 16px var(--shadow);}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--teal));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--blue));}
+.map-card svg{display:block;width:100%;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f0ead8;border-radius:18px;padding:28px 32px;margin:22px 0;display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;box-shadow:0 4px 28px rgba(0,0,0,0.12);}
+.keystone-icon{font-size:38px;flex:0 0 auto;}
+.keystone-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.keystone-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.09);font-size:10px;font-family:'JetBrains Mono',monospace;}
+
+/* ── COLUMN CHART ── */
+.col-chart{display:flex;align-items:flex-end;gap:20px;padding:16px 20px 8px;height:180px;}
+.col-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;}
+.col-val{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;}
+.col-bar-wrap{flex:1;width:100%;display:flex;align-items:flex-end;}
+.col-bar{width:100%;border-radius:8px 8px 0 0;box-shadow:0 2px 10px rgba(0,0,0,0.15);}
+.col-name{font-size:11px;font-weight:700;text-align:center;}
+.col-sub{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#f0ead8;padding:8px 10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:1px;}
+.ctable th:first-child{border-radius:6px 0 0 0;}
+.ctable th:last-child{border-radius:0 6px 0 0;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,134,11,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:8.5px;font-weight:700;}
+.tag.ok{background:#d1fae5;color:#065f46;}
+.tag.na{background:#fee2e2;color:#991b1b;}
+.tag.part{background:#fef3c7;color:#92400e;}
+
+/* ── HIGHLIGHT BAND ── */
+.highlight-band{background:linear-gradient(135deg,rgba(184,134,11,0.08),rgba(196,98,0,0.06));border:1.5px solid rgba(184,134,11,0.2);border-radius:12px;padding:14px 18px;margin:12px 0;font-size:11px;line-height:1.6;}
+
+/* ── FLOW ARROW ROW ── */
+.flow-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;}
+.fa{font-size:16px;color:var(--muted);}
+
+/* ANIMATION */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+.pc,.map-card,.keystone,.phase-box{animation:fadeUp 0.5s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Indian Economy · RBI · Monetary Policy · UPSC Prelims</div>
+  <h1>Monetary Policy &amp; <em>Financial Inclusion</em></h1>
+  <div class="header-sub">NSFI · Repo Rate · MCLR · External Benchmark → Transmission Flow</div>
+  <div class="header-rule"><span></span></div>
+</div>
+
+<!-- ══ SECTION 0: MASTER FLOW ══ -->
+<div class="sec">Master Concept Flow</div>
+
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1380 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: FINANCIAL INCLUSION ══ -->
+<div class="sec">① National Strategy for Financial Inclusion (NSFI)</div>
+
+<div class="map-card mc2">
+  <svg id="svgNSFI" viewBox="0 0 1380 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">NSFI Definition</div>
+    <h3>🏦 What is Financial Inclusion?</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🏧</div><div class="ft">Bank Account</div><div class="fs">Basic savings access</div></div>
+      <div class="feat"><div class="fi">💳</div><div class="ft">Low-cost Credit</div><div class="fs">For poor & rural</div></div>
+      <div class="feat"><div class="fi">🛡️</div><div class="ft">Insurance</div><div class="fs">Life & health cover</div></div>
+      <div class="feat"><div class="fi">👴</div><div class="ft">Pension</div><div class="fs">Old-age security</div></div>
+      <div class="feat"><div class="fi">💸</div><div class="ft">Remittance</div><div class="fs">Money transfer</div></div>
+      <div class="feat"><div class="fi">📊</div><div class="ft">Financial Advice</div><div class="fs">Guidance & literacy</div></div>
+    </div>
+    <div class="callout amber" style="margin-top:10px;">
+      <div class="callout-title">🔥 Prelims Fact</div>
+      <div class="callout-body">NSFI = 2019–2024 &nbsp;|&nbsp; Linked to SDGs &nbsp;|&nbsp; Administered by RBI</div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Why It Matters + Evolution</div>
+    <h3>📈 Importance &amp; Historical Path</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;">
+      <span class="pill green">↓ Poverty</span>
+      <span class="pill blue">↑ Savings</span>
+      <span class="pill teal">↑ Investment</span>
+      <span class="pill gold">↓ Inequality</span>
+      <span class="pill amber">SDG Linked</span>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">1956 — LIC Nationalisation</div><div class="vs">Insurance for all citizens</div></div>
+      <div class="vitem"><div class="vt">1969 &amp; 1980 — Bank Nationalisation</div><div class="vs">14 + 6 major banks nationalised</div></div>
+      <div class="vitem"><div class="vt">1975 — Regional Rural Banks (RRBs)</div><div class="vs">Rural credit access expanded</div></div>
+      <div class="vitem"><div class="vt">2014 — PMJDY (Jan Dhan Yojana)</div><div class="vs">Zero balance accounts for all</div></div>
+      <div class="vitem"><div class="vt">2019–24 — NSFI</div><div class="vs">6-pillar strategy framework</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="pc teal" style="margin-bottom:18px;">
+  <div class="pc-label">6 Pillars of NSFI</div>
+  <h3>🏛️ National Strategy for Financial Inclusion — 6 Pillars</h3>
+  <div class="g3" style="margin-bottom:0;">
+    <div class="vitem"><div style="font-size:18px;margin-bottom:4px;">🌐</div><div class="vt">1. Universal Access</div><div class="vs">Banking touchpoints everywhere</div></div>
+    <div class="vitem"><div style="font-size:18px;margin-bottom:4px;">🤝</div><div class="vt">2. Coordination</div><div class="vs">All regulators aligned</div></div>
+    <div class="vitem"><div style="font-size:18px;margin-bottom:4px;">📦</div><div class="vt">3. Basic Bouquet of Services</div><div class="vs">Savings, credit, insurance, pension</div></div>
+    <div class="vitem"><div style="font-size:18px;margin-bottom:4px;">🛡️</div><div class="vt">4. Customer Protection</div><div class="vs">Grievance redress, fair practices</div></div>
+    <div class="vitem"><div style="font-size:18px;margin-bottom:4px;">📚</div><div class="vt">5. Financial Literacy</div><div class="vs">Education &amp; awareness</div></div>
+    <div class="vitem"><div style="font-size:18px;margin-bottom:4px;">🌾</div><div class="vt">6. Livelihood Access</div><div class="vs">Linking credit to income</div></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: BANKING MODEL ══ -->
+<div class="sec">② Deposit Rate ↔ Lending Rate — The Banking Model</div>
+
+<div class="map-card mc3">
+  <svg id="svgBanking" viewBox="0 0 1380 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc amber">
+    <div class="pc-label">Core Banking Model</div>
+    <h3>🏦 How Banks Price Loans</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Deposit Rate (e.g. 8%)</div><div class="vs">Interest paid to depositors — cost of funds</div></div>
+      <div class="vitem"><div class="vt">+ CRR Cost</div><div class="vs">Cash Reserve Ratio — idle at RBI, no return</div></div>
+      <div class="vitem"><div class="vt">+ SLR Cost</div><div class="vs">Statutory Liquidity Ratio — low-yield bonds</div></div>
+      <div class="vitem"><div class="vt">+ Operating Cost</div><div class="vs">Staff, branches, technology</div></div>
+      <div class="vitem"><div class="vt">+ Profit Margin</div><div class="vs">Spread for bank's earnings</div></div>
+    </div>
+    <div class="highlight-band" style="margin-top:10px;">
+      <strong>∴ Lending Rate = Deposit Rate + All Costs + Profit</strong><br>
+      <span style="font-size:10px;color:var(--muted);">Lending rate is always higher than deposit rate</span>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Key Principle</div>
+    <h3>⚡ Why Lending Rate &gt; Deposit Rate</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">8%</div>
+        <div class="stat-sub">Deposit Rate</div>
+        <div class="stat-label">BANK PAYS PUBLIC</div>
+      </div>
+      <div class="stat-box" style="background:rgba(22,101,52,0.06);border-color:rgba(22,101,52,0.2);">
+        <div class="stat-num" style="color:var(--green);">&gt;11%</div>
+        <div class="stat-sub">Lending Rate</div>
+        <div class="stat-label">BANK CHARGES BORROWER</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-title">💡 The Spread</div>
+      <div class="callout-body">The difference between lending rate and deposit rate is called the <strong>SPREAD</strong> — this covers all costs and profit. Under external benchmark, spread changes only if borrower's credit profile changes.</div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip sol">✅ Public deposits → Bank earns</span>
+      <span class="chip sol">✅ Bank lends → Economy grows</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: REPO TRANSMISSION ══ -->
+<div class="sec">③ Repo Rate Transmission — How RBI Controls Economy</div>
+
+<div class="map-card mc4">
+  <svg id="svgTransmission" viewBox="0 0 1380 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Stage 1: RBI → Money Markets</div>
+    <h3>🏛️ Policy Signal</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Repo Rate changes</div><div class="vs">RBI's primary policy rate</div></div>
+      <div class="vitem"><div class="vt">Reverse Repo adjusts</div><div class="vs">Overnight deposit rate</div></div>
+      <div class="vitem"><div class="vt">Call Money Rate moves</div><div class="vs">Short-term interbank rate</div></div>
+      <div class="vitem"><div class="vt">Bond yields shift</div><div class="vs">Govt securities market</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="pill blue">Financial Markets Respond</span></div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Stage 2: Banks adjust</div>
+    <h3>🏦 Bank Rate Adjustment</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Deposit rates change</div><div class="vs">Banks offer new FD rates</div></div>
+      <div class="vitem"><div class="vt">Lending rates change</div><div class="vs">Home loans, MSME loans adjust</div></div>
+      <div class="vitem"><div class="vt">Credit availability shifts</div><div class="vs">Easier or tighter credit</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="pill teal">Banks Transmit Signal</span></div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Stage 3: Real Economy</div>
+    <h3>🌱 Economic Impact</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Consumer spending changes</div><div class="vs">EMIs become cheaper/costlier</div></div>
+      <div class="vitem"><div class="vt">Investment decisions shift</div><div class="vs">Business borrowing adjusts</div></div>
+      <div class="vitem"><div class="vt">Inflation targeted</div><div class="vs">Demand management achieved</div></div>
+      <div class="vitem"><div class="vt">Growth affected</div><div class="vs">GDP growth path alters</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="pill green">Real Economy Responds</span></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: LENDING RATE HISTORY ══ -->
+<div class="sec">④ Evolution of Lending Rate Benchmarks</div>
+
+<div class="map-card mc5">
+  <svg id="svgTimeline" viewBox="0 0 1380 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc amber">
+    <div class="pc-label">Pre-2010</div>
+    <h3>📜 Prime Lending Rate (PLR)</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Discretionary rate</div><div class="vs">Banks set freely — no formula</div></div>
+      <div class="vitem"><div class="vt">Below-PLR lending allowed</div><div class="vs">Opaque, inconsistent</div></div>
+      <div class="vitem"><div class="vt">Very slow transmission</div><div class="vs">No link to RBI policy rate</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip prob">❌ Non-transparent</span></div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">2010 — Base Rate</div>
+    <h3>📐 Base Rate System</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Formula-based minimum rate</div><div class="vs">No lending below base rate</div></div>
+      <div class="vitem"><div class="vt">Average cost of funds</div><div class="vs">Based on all past deposits</div></div>
+      <div class="vitem"><div class="vt">Components included</div><div class="vs">Avg deposits + CRR/SLR + ops + profit</div></div>
+    </div>
+    <div class="callout amber" style="margin-top:8px;">
+      <div class="callout-title">⚠️ Problem</div>
+      <div class="callout-body">Used <strong>average cost</strong> of old deposits — slow to reflect repo cuts. Transmission still lagged.</div>
+    </div>
+    <div style="margin-top:6px;"><span class="chip neu">🟡 Better but slow</span></div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">2016 — MCLR</div>
+    <h3>⚡ Marginal Cost of Funds (MCLR)</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Marginal cost of new deposits</div><div class="vs">Not historical average cost</div></div>
+      <div class="vitem"><div class="vt">Tenor premium added</div><div class="vs">Longer tenor = higher MCLR</div></div>
+      <div class="vitem"><div class="vt">Reviewed monthly</div><div class="vs">More frequent updates</div></div>
+    </div>
+    <div class="callout amber" style="margin-top:8px;">
+      <div class="callout-title">⚠️ Still Imperfect</div>
+      <div class="callout-body">Transmission improved but banks could delay MCLR cuts. Spread manipulation possible.</div>
+    </div>
+    <div style="margin-top:6px;"><span class="chip neu">🟡 Faster but imperfect</span></div>
+  </div>
+</div>
+
+<!-- MCLR Components Detail -->
+<div class="pc gold" style="margin-bottom:18px;">
+  <div class="pc-label">MCLR Deep Dive</div>
+  <h3>🔬 MCLR = Sum of These 4 Components</h3>
+  <div class="g4" style="margin-bottom:0;">
+    <div class="vitem" style="text-align:center;padding:14px 10px;">
+      <div style="font-size:22px;margin-bottom:6px;">💰</div>
+      <div class="vt" style="font-size:12px;">Marginal Cost of Funds</div>
+      <div class="vs">New deposit rates — most sensitive to repo</div>
+    </div>
+    <div class="vitem" style="text-align:center;padding:14px 10px;">
+      <div style="font-size:22px;margin-bottom:6px;">📦</div>
+      <div class="vt" style="font-size:12px;">CRR &amp; SLR Cost</div>
+      <div class="vs">Mandatory reserve cost</div>
+    </div>
+    <div class="vitem" style="text-align:center;padding:14px 10px;">
+      <div style="font-size:22px;margin-bottom:6px;">🏢</div>
+      <div class="vt" style="font-size:12px;">Operating Cost</div>
+      <div class="vs">Staff, branches, overheads</div>
+    </div>
+    <div class="vitem" style="text-align:center;padding:14px 10px;">
+      <div style="font-size:22px;margin-bottom:6px;">⏱️</div>
+      <div class="vt" style="font-size:12px;">Tenor Premium</div>
+      <div class="vs">Longer tenure = higher cost</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: EXTERNAL BENCHMARK ══ -->
+<div class="sec">⑤ External Benchmark Rate — 2019 (The Game Changer)</div>
+
+<div class="map-card mc1">
+  <svg id="svgExtBench" viewBox="0 0 1380 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">RBI Mandate — Oct 1, 2019</div>
+    <h3>📌 External Benchmark Linked Rate (EBLR)</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Mandatory for new floating-rate loans</div><div class="vs">Retail + MSME sector only</div></div>
+      <div class="vitem"><div class="vt">Approved Benchmarks (choose one):</div><div class="vs"></div></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin:10px 0;">
+      <span class="pill green">🏛️ Repo Rate</span>
+      <span class="pill blue">📋 3-Month T-Bill</span>
+      <span class="pill teal">📋 6-Month T-Bill</span>
+      <span class="pill gold">✅ Any RBI Benchmark</span>
+    </div>
+    <div class="highlight-band">
+      <strong>Formula: Loan Rate = External Benchmark + Credit Spread</strong><br>
+      <span style="font-size:10px;color:var(--muted);">Example: Home Loan = Repo + 3% spread</span>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Reset period</div><div class="vs">At least once every 3 months</div></div>
+      <div class="vitem"><div class="vt">Spread changes only if</div><div class="vs">Borrower's credit profile changes significantly</div></div>
+      <div class="vitem"><div class="vt">Banks free to decide spread amount</div><div class="vs">But once set, can't arbitrarily change it</div></div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Why External Benchmark Was Needed</div>
+    <h3>💡 Problem Solved</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🔴 Problem: Banks feared reducing deposit rates</div>
+        <div class="vs">Competition for deposits kept rates high</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔴 Problem: Small savings schemes at high rates</div>
+        <div class="vs">PPF, NSC competed with bank deposits</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔴 Problem: Old high-rate deposits still on books</div>
+        <div class="vs">Average cost remained elevated</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">✅ Solution: Link directly to repo rate</div>
+        <div class="vs">No bank discretion — automatic, transparent</div>
+      </div>
+    </div>
+    <div class="highlight-band" style="margin-top:10px;">
+      <strong>⚠️ IMPORTANT: NBFCs are NOT required to link to external benchmark</strong>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip sol">✅ Faster transmission</span>
+      <span class="chip sol">✅ Transparency</span>
+      <span class="chip sol">✅ Automatic adjustment</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: COMPARISON TABLE ══ -->
+<div class="sec">⑥ Benchmark Comparison — At a Glance</div>
+
+<div class="pc dark" style="margin-bottom:18px;">
+  <h3 style="font-family:'Libre Baskerville',serif;font-size:16px;margin-bottom:14px;">📊 PLR → Base Rate → MCLR → External Benchmark</h3>
+  <div style="overflow-x:auto;">
+    <table class="ctable">
+      <thead>
+        <tr>
+          <th>BENCHMARK</th>
+          <th>YEAR</th>
+          <th>BASIS</th>
+          <th>TRANSMISSION SPEED</th>
+          <th>APPLIES TO</th>
+          <th>KEY ISSUE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PLR</td>
+          <td>Pre-2010</td>
+          <td>Discretionary</td>
+          <td><span class="tag na">Very Slow</span></td>
+          <td>All loans</td>
+          <td>No formula, opaque</td>
+        </tr>
+        <tr>
+          <td>Base Rate</td>
+          <td>2010</td>
+          <td>Average cost of deposits</td>
+          <td><span class="tag part">Slow</span></td>
+          <td>All loans</td>
+          <td>Historical avg delays cuts</td>
+        </tr>
+        <tr>
+          <td>MCLR</td>
+          <td>April 2016</td>
+          <td>Marginal cost of funds</td>
+          <td><span class="tag part">Medium</span></td>
+          <td>All loans</td>
+          <td>Banks still delayed</td>
+        </tr>
+        <tr>
+          <td>External Benchmark</td>
+          <td>Oct 2019</td>
+          <td>Repo / T-Bill rate</td>
+          <td><span class="tag ok">Fast (3-month reset)</span></td>
+          <td>Retail &amp; MSME only</td>
+          <td>NBFCs excluded</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ SECTION 7: COMPLETE CONCEPT FLOW ══ -->
+<div class="sec">⑦ Complete Concept Flow — End to End</div>
+
+<div class="map-card mc4">
+  <svg id="svgFinalFlow" viewBox="0 0 1380 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 8: HIGH PROBABILITY PRELIMS FACTS ══ -->
+<div class="sec">⑧ 🔥 High-Probability Prelims Points</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Date Facts — Must Know</div>
+    <h3>📅 Critical Dates</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">NSFI = 2019–2024</div><div class="vs">National Strategy for Financial Inclusion</div></div>
+      <div class="vitem"><div class="vt">Base Rate introduced = 2010</div><div class="vs">Replaced PLR system</div></div>
+      <div class="vitem"><div class="vt">MCLR introduced = 1 April 2016</div><div class="vs">Replaced Base Rate</div></div>
+      <div class="vitem"><div class="vt">External Benchmark = 1 Oct 2019</div><div class="vs">Made mandatory by RBI</div></div>
+      <div class="vitem"><div class="vt">Reset period = min 3 months</div><div class="vs">Under external benchmark</div></div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Concept Facts</div>
+    <h3>💡 Tricky Concepts</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">MCLR = Marginal cost (NOT average)</div><div class="vs">Key difference from Base Rate</div></div>
+      <div class="vitem"><div class="vt">NBFCs NOT covered by EBLR mandate</div><div class="vs">Only banks — Prelims trap!</div></div>
+      <div class="vitem"><div class="vt">Spread changes only if credit profile changes</div><div class="vs">Not at bank's discretion</div></div>
+      <div class="vitem"><div class="vt">Financial inclusion = 6-pillar NSFI</div><div class="vs">Not just bank accounts</div></div>
+      <div class="vitem"><div class="vt">Transmission = 2 stages</div><div class="vs">RBI → Markets → Real Economy</div></div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Flow Summary</div>
+    <h3>🔗 Complete Chain</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Financial Inclusion</div><div class="vs">→ More bank accounts mobilised</div></div>
+      <div class="vitem"><div class="vt">More Deposits</div><div class="vs">→ RBI controls liquidity via repo</div></div>
+      <div class="vitem"><div class="vt">Repo Rate</div><div class="vs">→ Money market rates change</div></div>
+      <div class="vitem"><div class="vt">Money Market</div><div class="vs">→ Deposit rate changes</div></div>
+      <div class="vitem"><div class="vt">Deposit Rate</div><div class="vs">→ Lending rate changes</div></div>
+      <div class="vitem"><div class="vt">Lending Rate</div><div class="vs">→ Spending → Inflation &amp; Growth</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🎯</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">Financial Inclusion → more people in banking → deposits grow → RBI's monetary policy (repo rate) transmits through deposit rates → lending rates → spending decisions → inflation &amp; growth. The evolution from PLR to MCLR to External Benchmark reflects India's struggle to make <strong style="color:#f5d78a;">this transmission faster and more transparent.</strong></div>
+    <div class="keystone-pills">
+      <span class="kpill">📜 NSFI 2019–24</span>
+      <span class="kpill">🏦 Repo → Transmission</span>
+      <span class="kpill">⚡ MCLR = Marginal Cost</span>
+      <span class="kpill">🔗 EBLR = Oct 2019</span>
+      <span class="kpill">⚠️ NBFCs Excluded</span>
+      <span class="kpill">🔄 3-Month Reset</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,attrs){
+  const el=document.createElementNS(NS,tag);
+  for(const[k,v]of Object.entries(attrs))el.setAttribute(k,v);
+  return el;
+}
+function addDefs(svg){let d=svg.querySelector('defs');if(!d){d=se('defs',{});svg.insertBefore(d,svg.firstChild);}return d;}
+function mkGrad(svg,id,c1,c2,vertical){
+  const d=addDefs(svg);
+  const g=se('linearGradient',{id,x1:'0',y1:'0',x2:vertical?'0':'1',y2:vertical?'1':'0'});
+  g.appendChild(se('stop',{offset:'0%','stop-color':c1}));
+  g.appendChild(se('stop',{offset:'100%','stop-color':c2}));
+  d.appendChild(g);
+}
+function mkArrowMarker(svg,id,color){
+  const d=addDefs(svg);
+  const m=se('marker',{id,markerWidth:'8',markerHeight:'6',refX:'7',refY:'3',orient:'auto'});
+  m.appendChild(se('path',{d:'M0,0 L0,6 L8,3 z',fill:color}));
+  d.appendChild(m);
+}
+function curvedArrow(svg,x1,y1,x2,y2,color,markId,dashed){
+  const mx=(x1+x2)/2;
+  const p=se('path',{
+    d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color,'stroke-width':'2',fill:'none',
+    'stroke-dasharray':dashed?'5 4':'none',
+    'marker-end':`url(#${markId})`,opacity:'0.8'
+  });
+  svg.appendChild(p);
+}
+function straightArrow(svg,x1,y1,x2,y2,color,markId,dashed){
+  const p=se('path',{
+    d:`M${x1},${y1} L${x2},${y2}`,
+    stroke:color,'stroke-width':'2',fill:'none',
+    'stroke-dasharray':dashed?'5 4':'none',
+    'marker-end':`url(#${markId})`,opacity:'0.8'
+  });
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fillColor,label1,label2,emoji,rx){
+  rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // Shadow
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  // Main rect
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill:fillColor,stroke:'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+  let ty=y;
+  if(emoji&&label2){ty=y-14;}
+  else if(emoji){ty=y-8;}
+  else if(label2){ty=y-8;}
+  if(emoji){
+    const em=se('text',{x,y:ty-2,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:'#fff'});
+    em.textContent=emoji;g.appendChild(em);ty+=16;
+  }
+  if(label1){
+    const t1=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:'#fff'});
+    t1.textContent=label1;g.appendChild(t1);
+    if(label2)ty+=14;
+  }
+  if(label2){
+    const t2=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-family':'JetBrains Mono,monospace',fill:'rgba(255,255,255,0.62)'});
+    t2.textContent=label2;g.appendChild(t2);
+  }
+  svg.appendChild(g);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:110,fill:'rgba(248,243,237,0.4)'}));
+  mkArrowMarker(svg,'mA','#b8860b');
+  const steps=[
+    {x:90,  fill:'#1e3a8a', l1:'Financial Inclusion', l2:'NSFI 2019–24', e:'🏦'},
+    {x:280, fill:'#b8860b', l1:'More Deposits',       l2:'Public savings ↑',  e:'💰'},
+    {x:470, fill:'#0f766e', l1:'RBI Repo Rate',        l2:'Monetary policy',   e:'🏛️'},
+    {x:660, fill:'#5b21b6', l1:'Money Markets',        l2:'Call money, bonds',  e:'📈'},
+    {x:850, fill:'#c46200', l1:'Deposit Rates',        l2:'Banks adjust FDs',   e:'🏦'},
+    {x:1040,fill:'#166534', l1:'Lending Rates',        l2:'Loans cheaper/costlier',e:'💳'},
+    {x:1230,fill:'#991b1b', l1:'Spending & Growth',    l2:'GDP & inflation',   e:'🌱'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      straightArrow(svg,s.x+88,55,steps[i+1].x-88,55,'#b8860b','mA',false);
+    }
+    node(svg,s.x,55,170,62,s.fill,s.l1,s.l2,s.e);
+  });
+})();
+
+// ─── NSFI MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgNSFI');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:300,fill:'rgba(248,243,237,0.3)'}));
+  mkArrowMarker(svg,'nsA','#1e3a8a');
+
+  // Central node
+  node(svg,690,150,200,64,'#1e3a8a','Financial Inclusion','NSFI Framework','🏦');
+
+  // Left cluster — Components
+  const left=[
+    {x:200,y:50, fill:'#b8860b', l1:'Bank Account', l2:'Zero-balance access', e:'🏧'},
+    {x:120,y:130,fill:'#c46200', l1:'Low-cost Credit',l2:'For poor & rural',  e:'💳'},
+    {x:200,y:210,fill:'#0f766e', l1:'Insurance',     l2:'Life & health',       e:'🛡️'},
+    {x:330,y:270,fill:'#166534', l1:'Pension',        l2:'Old-age security',   e:'👴'},
+  ];
+  // Right cluster — Pillars
+  const right=[
+    {x:1180,y:50, fill:'#5b21b6', l1:'Universal Access', l2:'Pillar 1',          e:'🌐'},
+    {x:1260,y:140,fill:'#0369a1', l1:'Coordination',      l2:'Pillar 2',          e:'🤝'},
+    {x:1180,y:230,fill:'#991b1b', l1:'Customer Protection',l2:'Pillar 4',         e:'🛡️'},
+    {x:1050,y:270,fill:'#b8860b', l1:'Financial Literacy', l2:'Pillars 5 & 6',    e:'📚'},
+  ];
+  // Bottom — Why matters
+  const bottom=[
+    {x:470,y:270,fill:'#166534', l1:'↓ Poverty',     l2:'SDG Goal'},
+    {x:690,y:270,fill:'#c46200', l1:'↑ Investment',  l2:'Multiplier effect'},
+    {x:910,y:270,fill:'#1e3a8a', l1:'↓ Inequality',  l2:'Social equity'},
+  ];
+
+  [...left,...right,...bottom].forEach(n=>{
+    const fx=n.x<690?592:788;
+    const fy=n.y<150?120:n.y>150?180:150;
+    // draw dashed connectors
+    const mx=(fx+n.x)/2;
+    const path=se('path',{
+      d:`M${fx},${fy} C${mx},${fy} ${mx},${n.y} ${n.x},${n.y}`,
+      stroke:'#b8860b44','stroke-width':'1.8',fill:'none','stroke-dasharray':'4 3'
+    });
+    svg.appendChild(path);
+    node(svg,n.x,n.y,160,50,n.fill,n.l1,n.l2,n.e||null);
+  });
+})();
+
+// ─── BANKING MODEL ───
+(function(){
+  const svg=document.getElementById('svgBanking');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:220,fill:'rgba(248,243,237,0.3)'}));
+  mkArrowMarker(svg,'bkA','#c46200');
+  mkArrowMarker(svg,'bkB','#1e3a8a');
+
+  // Public → Bank → Borrower
+  node(svg,140,110,180,64,'#0369a1','Public','Depositors','👥');
+  node(svg,690,110,200,64,'#b8860b','BANK','Intermediary','🏦');
+  node(svg,1250,110,180,64,'#166534','Borrowers','Home/MSME loans','💳');
+
+  // Public → Bank
+  straightArrow(svg,232,90,586,90,'#0369a1','bkA',false);
+  const t1=se('text',{x:410,y:82,'text-anchor':'middle','font-size':'10','font-weight':'700','font-family':'Outfit',fill:'#0369a1'});
+  t1.textContent='Deposits @ 8%';svg.appendChild(t1);
+
+  // Bank → Borrower
+  straightArrow(svg,794,90,1158,90,'#166534','bkA',false);
+  const t2=se('text',{x:980,y:82,'text-anchor':'middle','font-size':'10','font-weight':'700','font-family':'Outfit',fill:'#166534'});
+  t2.textContent='Lends @ >11%';svg.appendChild(t2);
+
+  // Spread annotation
+  const t3=se('text',{x:690,y:188,'text-anchor':'middle','font-size':'10','font-weight':'700','font-family':'JetBrains Mono',fill:'#b8860b','letter-spacing':'1'});
+  t3.textContent='SPREAD = CRR cost + SLR cost + Operating cost + Profit';svg.appendChild(t3);
+
+  // Bottom flow: components
+  const components=[
+    {x:230, y:195, txt:'CRR Cost'},
+    {x:460, y:195, txt:'SLR Cost'},
+    {x:690, y:195, txt:'Ops Cost'},
+    {x:920, y:195, txt:'Profit'},
+    {x:1150,y:195, txt:'= Lending Rate'},
+  ];
+  // connect them with +
+  components.forEach((c,i)=>{
+    const r=se('rect',{x:c.x-70,y:c.y-16,width:140,height:32,rx:6,ry:6,fill:i===components.length-1?'rgba(22,101,52,0.15)':'rgba(196,98,0,0.1)',stroke:i===components.length-1?'rgba(22,101,52,0.3)':'rgba(196,98,0,0.2)','stroke-width':'1.2'});
+    svg.appendChild(r);
+    const t=se('text',{x:c.x,y:c.y,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'700','font-family':'JetBrains Mono',fill:i===components.length-1?'#166534':'#c46200'});
+    t.textContent=c.txt;svg.appendChild(t);
+    if(i<components.length-1){
+      const plus=se('text',{x:c.x+85,y:c.y+1,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14','font-weight':'700',fill:'#6b6450'});
+      plus.textContent='+';svg.appendChild(plus);
+    }
+  });
+})();
+
+// ─── TRANSMISSION ───
+(function(){
+  const svg=document.getElementById('svgTransmission');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:260,fill:'rgba(248,243,237,0.3)'}));
+  mkArrowMarker(svg,'trA','#0f766e');
+  mkArrowMarker(svg,'trB','#5b21b6');
+
+  // Main transmission chain (top row)
+  const chain=[
+    {x:90,  y:70, fill:'#1e3a8a', l1:'RBI Repo Rate',    l2:'Policy decision', e:'🏛️'},
+    {x:310, y:70, fill:'#0369a1', l1:'Reverse Repo',      l2:'Overnight rate',  e:'↔️'},
+    {x:530, y:70, fill:'#0f766e', l1:'Call Money Rate',   l2:'Interbank market',e:'📞'},
+    {x:750, y:70, fill:'#5b21b6', l1:'Bond Yields',       l2:'G-sec market',   e:'📊'},
+    {x:970, y:70, fill:'#c46200', l1:'Deposit Rates',     l2:'FD rates adjust', e:'💰'},
+    {x:1190,y:70, fill:'#166534', l1:'Lending Rates',     l2:'Loans adjust',   e:'💳'},
+  ];
+  chain.forEach((c,i)=>{
+    if(i<chain.length-1){
+      straightArrow(svg,c.x+92,70,chain[i+1].x-92,70,'#0f766e','trA',false);
+    }
+    node(svg,c.x,c.y,178,60,c.fill,c.l1,c.l2,c.e);
+  });
+
+  // Two stage label
+  const stageY=150;
+  // Stage 1 bracket
+  const b1=se('path',{d:`M90,${stageY} L90,${stageY+20} L750,${stageY+20} L750,${stageY}`,stroke:'#0f766e','stroke-width':'2',fill:'none'});
+  svg.appendChild(b1);
+  const tS1=se('text',{x:420,y:stageY+38,'text-anchor':'middle','font-size':'10','font-weight':'700','font-family':'JetBrains Mono',fill:'#0f766e','letter-spacing':'1'});
+  tS1.textContent='STAGE 1: REPO → FINANCIAL MARKETS';svg.appendChild(tS1);
+
+  // Stage 2 bracket
+  const b2=se('path',{d:`M750,${stageY} L750,${stageY+20} L1280,${stageY+20} L1280,${stageY}`,stroke:'#5b21b6','stroke-width':'2',fill:'none'});
+  svg.appendChild(b2);
+  const tS2=se('text',{x:1020,y:stageY+38,'text-anchor':'middle','font-size':'10','font-weight':'700','font-family':'JetBrains Mono',fill:'#5b21b6','letter-spacing':'1'});
+  tS2.textContent='STAGE 2: MARKETS → REAL ECONOMY';svg.appendChild(tS2);
+
+  // Bottom outcomes
+  const outcomes=[
+    {x:300, y:210, fill:'#991b1b', l1:'Consumer Spending',l2:'EMIs cheaper/costlier'},
+    {x:600, y:210, fill:'#166534', l1:'Business Investment',l2:'Credit costs adjust'},
+    {x:900, y:210, fill:'#0f766e', l1:'Inflation Control', l2:'Demand management'},
+    {x:1180,y:210, fill:'#1e3a8a', l1:'GDP Growth',        l2:'Economic trajectory'},
+  ];
+  outcomes.forEach((o,i)=>{
+    if(i<outcomes.length-1){
+      straightArrow(svg,o.x+102,210,outcomes[i+1].x-102,210,'#b8860b','trA',true);
+    }
+    node(svg,o.x,o.y,200,50,o.fill,o.l1,o.l2,null);
+  });
+
+  // Connect top chain to outcomes
+  const conXs=[970,1190];
+  const conTxts=['→ Rate cuts → borrowing up','→ Growth vs inflation tradeoff'];
+  conXs.forEach((x,i)=>{
+    const arr=se('line',{x1:x,y1:102,x2:outcomes[i+2].x,y2:185,stroke:'rgba(184,134,11,0.3)','stroke-width':'1.5','stroke-dasharray':'4 3'});
+    svg.appendChild(arr);
+  });
+})();
+
+// ─── TIMELINE ───
+(function(){
+  const svg=document.getElementById('svgTimeline');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:140,fill:'rgba(248,243,237,0.3)'}));
+
+  // Timeline line
+  svg.appendChild(se('line',{x1:60,y1:70,x2:1320,y2:70,stroke:'#ddd6c0','stroke-width':'3'}));
+
+  const events=[
+    {x:120,  year:'Pre-2010', name:'PLR',           fill:'#6b6450', sub:'Discretionary'},
+    {x:390,  year:'2010',     name:'Base Rate',      fill:'#c46200', sub:'Avg cost based'},
+    {x:660,  year:'Apr 2016', name:'MCLR',           fill:'#1e3a8a', sub:'Marginal cost'},
+    {x:930,  year:'Oct 2019', name:'Ext. Benchmark', fill:'#166534', sub:'Repo linked'},
+    {x:1200, year:'Future',   name:'Full Coverage?', fill:'#5b21b6', sub:'NBFCs included?'},
+  ];
+  events.forEach((e,i)=>{
+    // dot
+    svg.appendChild(se('circle',{cx:e.x,cy:70,r:10,fill:e.fill,stroke:'#fff','stroke-width':'2.5'}));
+
+    // alternating up/down
+    const up=i%2===0;
+    const lineY=up?40:100;
+    svg.appendChild(se('line',{x1:e.x,y1:up?59:81,x2:e.x,y2:lineY+(up?-24:24),stroke:e.fill,'stroke-width':'1.5','stroke-dasharray':'3 2'}));
+
+    const boxY=up?20:110;
+    const bg=se('rect',{x:e.x-72,y:up?boxY-16:boxY-6,width:144,height:40,rx:7,ry:7,fill:e.fill});
+    svg.appendChild(bg);
+    const tn=se('text',{x:e.x,y:up?boxY+2:boxY+8,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit',fill:'#fff'});
+    tn.textContent=e.name;svg.appendChild(tn);
+    const ty2=se('text',{x:e.x,y:up?boxY+15:boxY+22,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono',fill:'rgba(255,255,255,0.65)'});
+    ty2.textContent=e.year+' · '+e.sub;svg.appendChild(ty2);
+  });
+  // progression label
+  const tl=se('text',{x:690,y:132,'text-anchor':'middle','font-size':'9','font-family':'JetBrains Mono',fill:'rgba(107,100,80,0.5)','letter-spacing':'3'});
+  tl.textContent='EVOLUTION: MORE TRANSPARENCY → FASTER TRANSMISSION → BORROWER BENEFIT';
+  svg.appendChild(tl);
+})();
+
+// ─── EXTERNAL BENCHMARK MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgExtBench');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:280,fill:'rgba(248,243,237,0.3)'}));
+  mkArrowMarker(svg,'ebA','#166534');
+
+  // Central
+  node(svg,690,140,210,68,'#166534','External Benchmark','Linked Rate (EBLR)','📌');
+
+  // Left — How it works
+  const left=[
+    {x:180,y:45,  fill:'#1e3a8a', l1:'Repo Rate',       l2:'Primary benchmark',  e:'🏛️'},
+    {x:100,y:130, fill:'#0369a1', l1:'3-Month T-Bill',  l2:'Alternative bench.',  e:'📋'},
+    {x:180,y:215, fill:'#0f766e', l1:'6-Month T-Bill',  l2:'Another option',      e:'📋'},
+    {x:340,y:260, fill:'#5b21b6', l1:'RBI Approved',    l2:'Any RBI benchmark',   e:'✅'},
+  ];
+  // Right — Rules
+  const right=[
+    {x:1200,y:45,  fill:'#c46200', l1:'3-Month Reset',     l2:'Mandatory min freq.',  e:'⏱️'},
+    {x:1280,y:135, fill:'#991b1b', l1:'NBFCs Excluded',    l2:'Banks only!',           e:'⚠️'},
+    {x:1200,y:225, fill:'#b8860b', l1:'Spread = Credit Risk',l2:'+ operating cost',   e:'📊'},
+    {x:1050,y:265, fill:'#166534', l1:'Spread Fixed',       l2:'Changes if profile↑', e:'🔒'},
+  ];
+
+  [...left,...right].forEach(n=>{
+    const fx=n.x<690?590:790;
+    const fy=n.y<140?115:n.y>140?165:140;
+    const mx=(fx+n.x)/2;
+    const path=se('path',{
+      d:`M${fx},${fy} C${mx},${fy} ${mx},${n.y} ${n.x},${n.y}`,
+      stroke:n.fill+'55','stroke-width':'1.8',fill:'none','stroke-dasharray':'4 3'
+    });
+    svg.appendChild(path);
+    node(svg,n.x,n.y,170,50,n.fill,n.l1,n.l2,n.e);
+  });
+
+  // Formula annotation
+  const fbox=se('rect',{x:530,y:216,width:320,height:50,rx:10,ry:10,fill:'rgba(22,101,52,0.1)',stroke:'rgba(22,101,52,0.3)','stroke-width':'1.5'});
+  svg.appendChild(fbox);
+  const ft=se('text',{x:690,y:234,'text-anchor':'middle','font-size':'10','font-weight':'700','font-family':'JetBrains Mono',fill:'#166534'});
+  ft.textContent='LOAN RATE = Repo Rate + Spread';svg.appendChild(ft);
+  const ft2=se('text',{x:690,y:250,'text-anchor':'middle','font-size':'9','font-family':'JetBrains Mono',fill:'#6b6450'});
+  ft2.textContent='e.g. Home Loan = 6.5% + 3% = 9.5%';svg.appendChild(ft2);
+})();
+
+// ─── FINAL FLOW ───
+(function(){
+  const svg=document.getElementById('svgFinalFlow');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:180,fill:'rgba(248,243,237,0.3)'}));
+  mkArrowMarker(svg,'ffA','#b8860b');
+
+  const steps=[
+    {x:80,  fill:'#1e3a8a', l1:'Financial Inclusion', l2:'More ppl in banking',  e:'🏦'},
+    {x:270, fill:'#0369a1', l1:'Deposits Mobilised',  l2:'Savings in banks',     e:'💰'},
+    {x:460, fill:'#b8860b', l1:'RBI Sets Repo',        l2:'Monetary policy',     e:'🏛️'},
+    {x:650, fill:'#5b21b6', l1:'Money Market',          l2:'Rates respond',       e:'📈'},
+    {x:840, fill:'#0f766e', l1:'Deposit Rate ↓↑',      l2:'Banks adjust FDs',   e:'🏦'},
+    {x:1030,fill:'#c46200', l1:'Lending Rate ↓↑',      l2:'Loans adjust',       e:'💳'},
+    {x:1220,fill:'#166534', l1:'Spending &amp; GDP',    l2:'Inflation targeted', e:'🌱'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      straightArrow(svg,s.x+90,90,steps[i+1].x-90,90,'#b8860b','ffA',false);
+    }
+    node(svg,s.x,90,175,66,s.fill,s.l1,s.l2,s.e);
+  });
+
+  // Bottom label
+  const tl=se('text',{x:690,y:162,'text-anchor':'middle','font-size':'9','font-family':'JetBrains Mono',fill:'rgba(107,100,80,0.5)','letter-spacing':'3'});
+  tl.textContent='COMPLETE MONETARY POLICY TRANSMISSION CHAIN';
+  svg.appendChild(tl);
+})();
+</script>
+</body>
+</html>

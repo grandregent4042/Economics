@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRBM Act + Debt — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%,rgba(184,124,16,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%,rgba(26,58,138,0.05) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+.map-card.mc6::before{background:linear-gradient(90deg,var(--purple),var(--red),var(--amber));}
+.map-card svg{display:block;width:100%;}
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:10px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.neu{background:#fff3cd;color:#856404;}
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.ic-node{padding:5px 10px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 3px;}
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:22px 28px;margin:20px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.keystone-icon{font-size:34px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+.callout{padding:10px 13px;border-radius:9px;background:rgba(184,124,16,0.06);border:1.5px solid rgba(184,124,16,0.2);margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;color:var(--gold);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:14px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;}
+.phase-title{font-size:11px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:6px;color:var(--muted);}
+.big-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:800;line-height:1;}
+.big-num-box{padding:14px;border-radius:12px;text-align:center;margin:8px 0;}
+/* target boxes */
+.target-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:10px 0;}
+.target-box{padding:14px;border-radius:12px;border:2px solid;text-align:center;position:relative;}
+.target-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;}
+.target-label{font-size:10px;font-weight:800;margin-top:4px;}
+.target-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);}
+/* donut-like pie chart in HTML */
+.donut-wrap{position:relative;width:120px;height:120px;margin:8px auto;}
+.donut-wrap svg{width:100%;height:100%;}
+.donut-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+/* trick box */
+.trick-box{background:linear-gradient(135deg,rgba(184,124,16,0.1),rgba(26,58,138,0.07));border:2px solid var(--gold);border-radius:16px;padding:20px 24px;margin:20px 0;}
+.trick-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px;}
+@media(max-width:640px){.trick-row{grid-template-columns:1fr;}}
+.trick-item{padding:12px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);text-align:center;}
+.trick-key{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:3px;}
+.trick-val{font-size:11px;font-weight:800;}
+/* escape clause */
+.escape-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0;}
+@media(max-width:700px){.escape-grid{grid-template-columns:1fr 1fr;}}
+.escape-item{padding:10px 8px;border-radius:9px;background:var(--card2);border:1.5px solid rgba(176,26,26,0.2);text-align:center;}
+.escape-icon{font-size:18px;margin-bottom:4px;}
+.escape-txt{font-size:10px;font-weight:800;color:var(--red);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Economy · Fiscal Framework · UPSC Prelims</div>
+  <h1>FRBM Act + Deficit, Debt & <em>External Debt</em></h1>
+  <div class="header-sub">Fiscal Policy → Deficit → Borrowing → Debt → Sustainability → FRBM</div>
+</div>
+
+<!-- SECTION 0: MASTER FLOW -->
+<div class="sec-label">Master Flow — The Big Connected Picture</div>
+<div class="map-card mc1">
+  <svg id="svgFlow" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- SECTION 1: WHY FRBM + OBJECTIVES -->
+<div class="sec-label">① Why FRBM Act? — Genesis & Objectives</div>
+<div class="map-card mc2">
+  <svg id="svgWhy" viewBox="0 0 1360 210" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">Pre-FRBM Crisis</div>
+    <h3>⚠️ Why the Law Was Needed</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">6%</div>
+        <div class="stat-sub">Fiscal Deficit</div>
+        <div class="stat-label">OF GDP IN 2000</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">📈</div>
+        <div class="stat-sub">Rising Public Debt</div>
+        <div class="stat-label">UNSUSTAINABLE</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">2003</div>
+        <div class="stat-sub">FRBM Enacted</div>
+        <div class="stat-label">JULY 2004 EFFECTIVE</div>
+      </div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);">High Deficit</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);">Rising Debt</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">FRBM 2003</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">Discipline ✅</div>
+    </div>
+    <div class="callout" style="margin-top:8px;background:rgba(176,26,26,0.05);border-color:rgba(176,26,26,0.2);">
+      <div class="callout-title" style="color:var(--red);">📌 Committee chaired by: EAS Sarma</div>
+      <div class="callout-body">Recommended statutory fiscal rules to limit borrowing and impose accountability on government finances.</div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">FRBM Objectives</div>
+    <h3>🎯 What the Act Aims to Achieve</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🌱 Inter-generational Equity</div><div class="vs">Don't burden future generations with today's debt</div></div>
+      <div class="vitem"><div class="vt">📊 Long-term Macro Stability</div><div class="vs">Sustainable growth without fiscal shocks</div></div>
+      <div class="vitem"><div class="vt">📉 Limit Deficits & Borrowing</div><div class="vs">Hard caps on government expenditure excess</div></div>
+      <div class="vitem"><div class="vt">🏦 Remove Pressure on Monetary Policy</div><div class="vs">RBI not forced to monetize deficit</div></div>
+      <div class="vitem"><div class="vt">📋 Transparency Requirements</div><div class="vs">Govt must present fiscal policy statements</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: KEY TARGETS -->
+<div class="sec-label">② Key Targets — The Hard Numbers (Very Important)</div>
+<div class="map-card mc3">
+  <svg id="svgTargets" viewBox="0 0 1360 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="target-grid">
+  <div class="target-box" style="border-color:var(--red);background:rgba(176,26,26,0.04);">
+    <div class="target-num" style="color:var(--red);">3%</div>
+    <div class="target-label">Fiscal Deficit Limit</div>
+    <div class="target-sub">of GDP — Hard Cap</div>
+    <span class="ps-chip prob" style="margin-top:8px;display:block;">⚠️ Most violated target</span>
+  </div>
+  <div class="target-box" style="border-color:var(--amber);background:rgba(212,106,16,0.04);">
+    <div class="target-num" style="color:var(--amber);">60%</div>
+    <div class="target-label">General Govt Debt</div>
+    <div class="target-sub">Centre + States combined</div>
+    <span class="ps-chip neu" style="margin-top:8px;display:block;">📌 Combined target</span>
+  </div>
+  <div class="target-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+    <div class="target-num" style="color:var(--blue);">40%</div>
+    <div class="target-label">Central Govt Debt</div>
+    <div class="target-sub">Central government only</div>
+    <span class="ps-chip sol" style="margin-top:8px;display:block;">✅ States get 20%</span>
+  </div>
+</div>
+
+<!-- SECTION 3: ESCAPE CLAUSE + RBI RULES -->
+<div class="sec-label">③ Escape Clause + RBI Borrowing Rules</div>
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">Escape Clause — When Rules Can Break</div>
+    <h3>🚨 Permitted Deviations (Max 0.5% GDP)</h3>
+    <div class="escape-grid">
+      <div class="escape-item"><div class="escape-icon">⚔️</div><div class="escape-txt">National Security</div></div>
+      <div class="escape-item"><div class="escape-icon">💣</div><div class="escape-txt">War</div></div>
+      <div class="escape-item"><div class="escape-icon">🌪️</div><div class="escape-txt">National Calamity</div></div>
+      <div class="escape-item"><div class="escape-icon">🔄</div><div class="escape-txt">Structural Reforms</div></div>
+      <div class="escape-item"><div class="escape-icon">📉</div><div class="escape-txt">Growth Collapse ≥3%</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px;border-radius:9px;background:rgba(176,26,26,0.07);border:1.5px solid rgba(176,26,26,0.2);text-align:center;">
+      <span style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--red);">0.5%</span>
+      <span style="font-size:11px;font-weight:800;color:var(--red);"> of GDP max deviation per year</span>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">RBI & Borrowing Rules</div>
+    <h3>🏦 What RBI Can and Cannot Do</h3>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(176,26,26,0.05);border-color:rgba(176,26,26,0.15);">
+        <div class="vt" style="color:var(--red);">❌ Cannot Direct-Borrow from RBI</div>
+        <div class="vs">Except temporary advances (Ways & Means)</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">✅ RBI May Subscribe — Special Case</div>
+        <div class="vs">Can subscribe to primary issues in special circumstances</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">✅ Secondary Market Operations</div>
+        <div class="vs">RBI can buy/sell govt securities (OMO)</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:11px;font-weight:800;color:var(--gold);">📌 Purpose: Prevent monetization of deficit → controls inflation</div>
+  </div>
+</div>
+
+<!-- SECTION 4: TRANSPARENCY + POST COVID -->
+<div class="sec-label">④ Transparency Requirements + Post-Covid Reality</div>
+<div class="g2">
+  <div class="pc sky">
+    <div class="pc-label">Mandatory Transparency Statements</div>
+    <h3>📋 Govt Must Present to Parliament</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📄</div><div class="ft">Medium Term Fiscal Policy</div><div class="fs">MTFP Statement</div></div>
+      <div class="feat"><div class="fi">📊</div><div class="ft">Fiscal Policy Strategy</div><div class="fs">FPSS Statement</div></div>
+      <div class="feat"><div class="fi">📈</div><div class="ft">Macroeconomic Framework</div><div class="fs">MFS Statement</div></div>
+      <div class="feat"><div class="fi">💰</div><div class="ft">Medium-Term Expenditure</div><div class="fs">MTEF Statement</div></div>
+    </div>
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-title">📅 Half-Yearly Review</div>
+      <div class="callout-body">Finance Minister must review budget progress every 6 months and report to Parliament.</div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Post-COVID Situation</div>
+    <h3>🦠 Pandemic Impact on Targets</h3>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(176,26,26,0.05);border-color:rgba(176,26,26,0.15);">
+        <div class="vt" style="color:var(--red);">Fiscal Deficit Spiked</div>
+        <div class="vs">COVID spending blew through 3% cap</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Consolidation Path Charted</div>
+        <div class="vs">Govt aims gradual reduction in deficit</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Target: Below 4.5% → 3%</div>
+        <div class="vs">Phased approach over medium term</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px;border-radius:9px;background:rgba(90,26,138,0.07);border:1.5px solid rgba(90,26,138,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--purple);">Centre Debt/GDP: Peaked ~59% during COVID → Now gradually declining</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: DEFICIT & CROWDING OUT -->
+<div class="sec-label">⑤ Deficit Economics — Crowding Out vs Crowding In + IRGD</div>
+<div class="map-card mc4">
+  <svg id="svgDeficit" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Crowding Out</div>
+    <h3>📉 Govt Borrows → Private Shrinks</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);">Govt Borrows More</div>
+      <div class="ic-arr" style="margin:2px 0 2px 8px;">↓</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);">Interest Rates Rise</div>
+      <div class="ic-arr" style="margin:2px 0 2px 8px;">↓</div>
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);">Private Investment Falls</div>
+    </div>
+    <div style="margin-top:8px;"><span class="ps-chip prob">⚠️ Classical concern</span></div>
+    <div style="margin-top:6px;font-size:10px;color:var(--muted);">India evidence: No strong crowding out post-liberalization</div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Crowding In</div>
+    <h3>📈 Govt Spends → Private Rises</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;">
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">Govt Infra Spending</div>
+      <div class="ic-arr" style="margin:2px 0 2px 8px;">↓</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.08);color:var(--teal);">Demand Boosts Economy</div>
+      <div class="ic-arr" style="margin:2px 0 2px 8px;">↓</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">Private Investment Rises</div>
+    </div>
+    <div style="margin-top:8px;"><span class="ps-chip sol">✅ Keynesian view</span></div>
+    <div style="margin-top:6px;font-size:10px;color:var(--muted);">Infrastructure spending creates multiplier effect</div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">IRGD — Debt Sustainability Key</div>
+    <h3>⚖️ Interest Rate vs Growth Rate</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(184,124,16,0.07);border:1.5px solid rgba(184,124,16,0.2);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:700;color:var(--muted);">IRGD = Interest Rate − Growth Rate</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(26,106,58,0.06);border-color:rgba(26,106,58,0.2);">
+        <div class="vt" style="color:var(--green);">Growth Rate > Interest Rate → ✅ Sustainable</div>
+        <div class="vs">Debt ratio falls automatically over time</div>
+      </div>
+      <div class="vitem" style="background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.2);">
+        <div class="vt" style="color:var(--red);">Interest Rate > Growth Rate → ❌ Unsustainable</div>
+        <div class="vs">Debt snowballs — requires primary surplus</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;font-size:10px;color:var(--muted);">📌 India: Interest rate historically &lt; growth rate → Debt sustainable</div>
+  </div>
+</div>
+
+<!-- SECTION 6: PUBLIC DEBT STRUCTURE -->
+<div class="sec-label">⑥ Public Debt of India — Structure & Components</div>
+<div class="map-card mc5">
+  <svg id="svgDebt" viewBox="0 0 1360 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Internal Debt</div>
+    <h3>🏛️ Domestic Borrowing Components</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">📄 Treasury Bills (T-Bills)</div><div class="vs">Short-term (91, 182, 364 days)</div></div>
+      <div class="vitem"><div class="vt">📅 Dated Securities</div><div class="vs">Long-term G-Secs (5–40 years)</div></div>
+      <div class="vitem"><div class="vt">🏪 Domestic Market Borrowing</div><div class="vs">Primary issuance via RBI auctions</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px;border-radius:9px;background:rgba(26,58,138,0.07);border:1.5px solid rgba(26,58,138,0.2);font-size:10px;font-weight:700;color:var(--blue);">
+      📌 Charged on Consolidated Fund of India
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">External Debt — Sources</div>
+    <h3>🌐 International Borrowing</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🏦</div><div class="ft">World Bank (IBRD/IDA)</div><div class="fs">Multilateral</div></div>
+      <div class="feat"><div class="fi">🏗️</div><div class="ft">ADB</div><div class="fs">Asian Development Bank</div></div>
+      <div class="feat"><div class="fi">🤝</div><div class="ft">Bilateral</div><div class="fs">Japan, Germany, etc.</div></div>
+      <div class="feat"><div class="fi">💵</div><div class="ft">IMF</div><div class="fs">Emergency/BoP support</div></div>
+      <div class="feat"><div class="fi">📈</div><div class="ft">Commercial Borrowing</div><div class="fs">Largest component</div></div>
+      <div class="feat"><div class="fi">👤</div><div class="ft">NRI Deposits</div><div class="fs">FCNR, NRE, NRO</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: EXTERNAL DEBT DETAILS -->
+<div class="sec-label">⑦ External Debt — Currency, Tenure & Sovereign Classification</div>
+<div class="map-card mc6">
+  <svg id="svgExt" viewBox="0 0 1360 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">Currency Composition</div>
+    <h3>💱 External Debt by Currency</h3>
+    <!-- Visual bar chart -->
+    <div style="margin:10px 0;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;width:80px;text-align:right;color:var(--muted);">US Dollar</div>
+        <div style="flex:1;background:var(--card2);border-radius:4px;height:20px;overflow:hidden;border:1px solid var(--border);">
+          <div style="width:55%;height:100%;background:linear-gradient(90deg,#2a5acc,var(--blue));border-radius:4px;display:flex;align-items:center;padding-left:6px;"><span style="font-size:9px;font-weight:800;color:#fff;">55%</span></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;width:80px;text-align:right;color:var(--muted);">Rupee</div>
+        <div style="flex:1;background:var(--card2);border-radius:4px;height:20px;overflow:hidden;border:1px solid var(--border);">
+          <div style="width:30%;height:100%;background:linear-gradient(90deg,#e88020,var(--amber));border-radius:4px;display:flex;align-items:center;padding-left:6px;"><span style="font-size:9px;font-weight:800;color:#fff;">30%</span></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;width:80px;text-align:right;color:var(--muted);">Yen/Euro+</div>
+        <div style="flex:1;background:var(--card2);border-radius:4px;height:20px;overflow:hidden;border:1px solid var(--border);">
+          <div style="width:15%;height:100%;background:linear-gradient(90deg,#1a6a3a,var(--green));border-radius:4px;display:flex;align-items:center;padding-left:6px;"><span style="font-size:9px;font-weight:800;color:#fff;">15%</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--muted);margin-top:6px;">⚠️ Expressed in US Dollars. Dollar appreciation → Debt burden increases</div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Tenure Classification</div>
+    <h3>📅 Short vs Long Term</h3>
+    <div style="display:flex;gap:12px;margin:10px 0;">
+      <div style="flex:1;padding:16px;border-radius:10px;background:rgba(176,26,26,0.06);border:2px solid rgba(176,26,26,0.2);text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--red);">~21%</div>
+        <div style="font-size:11px;font-weight:800;margin-top:4px;">Short-Term</div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">≤1 YEAR MATURITY</div>
+      </div>
+      <div style="flex:1;padding:16px;border-radius:10px;background:rgba(26,58,138,0.06);border:2px solid rgba(26,58,138,0.2);text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:800;color:var(--blue);">~79%</div>
+        <div style="font-size:11px;font-weight:800;margin-top:4px;">Long-Term</div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">&gt;1 YEAR MATURITY</div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:var(--muted);">📌 Commercial borrowing = Largest single component</div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Sovereign vs Non-Sovereign</div>
+    <h3>🏛️ Classification by Borrower</h3>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(26,58,138,0.06);border-color:rgba(26,58,138,0.2);">
+        <div class="vt" style="color:var(--blue);">🏛️ Sovereign Debt</div>
+        <div class="vs">Government external debt — state guaranteed</div>
+      </div>
+      <div class="vitem" style="background:rgba(26,106,58,0.06);border-color:rgba(26,106,58,0.2);">
+        <div class="vt" style="color:var(--green);">🏢 Non-Sovereign Debt</div>
+        <div class="vs">Private sector external debt — no govt guarantee</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;">
+      <div class="vitem" style="background:rgba(26,88,120,0.06);border-color:rgba(26,88,120,0.2);">
+        <div class="vt" style="color:var(--sky);">⚖️ Article 293 — States & Borrowing</div>
+        <div class="vs">States need Centre approval if they owe Centre or Centre guaranteed their loans. States have 3% GSDP fiscal deficit limit</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 8: PRELIMS HOTSPOTS -->
+<div class="sec-label">🔥 Most Probable Prelims Areas</div>
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--red);background:rgba(176,26,26,0.04);">
+    <div class="phase-num" style="color:var(--red);">01</div>
+    <div class="phase-title">FRBM Dates & Committee</div>
+    <div class="phase-sub">2003 enacted · 2004 effective · EAS Sarma</div>
+    <span class="pill red">Factual</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--amber);background:rgba(212,106,16,0.04);">
+    <div class="phase-num" style="color:var(--amber);">02</div>
+    <div class="phase-title">3% + 60% + 40% Targets</div>
+    <div class="phase-sub">Deficit · General · Central Debt</div>
+    <span class="pill amber">Numbers</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+    <div class="phase-num" style="color:var(--blue);">03</div>
+    <div class="phase-title">Escape Clause — 0.5% limit</div>
+    <div class="phase-sub">5 triggers for deviation</div>
+    <span class="pill blue">Concepts</span>
+  </div>
+</div>
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--green);background:rgba(26,106,58,0.04);">
+    <div class="phase-num" style="color:var(--green);">04</div>
+    <div class="phase-title">IRGD Concept</div>
+    <div class="phase-sub">Growth &gt; Interest = Sustainable</div>
+    <span class="pill green">Theory</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--purple);background:rgba(90,26,138,0.04);">
+    <div class="phase-num" style="color:var(--purple);">05</div>
+    <div class="phase-title">Sovereign vs Non-Sovereign</div>
+    <div class="phase-sub">Govt vs Private external debt</div>
+    <span class="pill purple">Classification</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--teal);background:rgba(10,96,112,0.04);">
+    <div class="phase-num" style="color:var(--teal);">06</div>
+    <div class="phase-title">Article 293 + Consol. Fund</div>
+    <div class="phase-sub">States borrowing · Public debt charged</div>
+    <span class="pill teal">Constitutional</span>
+  </div>
+</div>
+
+<!-- TRICK BOX -->
+<div class="trick-box">
+  <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold);margin-bottom:4px;">🧠 Quick-Fire Memory Locks</div>
+  <div style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:10px;">INSTANT RECALL FOR EXAM</div>
+  <div class="trick-row">
+    <div class="trick-item"><div class="trick-key">FRBM YEAR</div><div class="trick-val" style="color:var(--red);">Enacted: 2003 | Effective: July 2004</div></div>
+    <div class="trick-item"><div class="trick-key">FISCAL DEFICIT CAP</div><div class="trick-val" style="color:var(--amber);">3% of GDP</div></div>
+    <div class="trick-item"><div class="trick-key">DEBT TARGETS</div><div class="trick-val" style="color:var(--blue);">60% General | 40% Centre</div></div>
+    <div class="trick-item"><div class="trick-key">ESCAPE CLAUSE</div><div class="trick-val" style="color:var(--purple);">Max 0.5% deviation/year</div></div>
+    <div class="trick-item"><div class="trick-key">IRGD RULE</div><div class="trick-val" style="color:var(--green);">Growth &gt; Interest = Safe</div></div>
+    <div class="trick-item"><div class="trick-key">USD SHARE</div><div class="trick-val" style="color:var(--teal);">~55% of External Debt</div></div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Big Connected Flow</div>
+    <div class="keystone-sub">
+      <strong style="color:#f5d78a;">Fiscal Policy → Deficit → Borrowing → Debt → FRBM imposes discipline.</strong><br>
+      Debt sustainability depends on IRGD: if growth exceeds interest rate, debt ratio falls automatically. FRBM caps deficit at 3%, debt at 60%/40%, and forces transparency through mandatory statements. When rules are broken (COVID), escape clauses allow limited deviation — but fiscal consolidation must follow.
+    </div>
+    <div class="keystone-pills">
+      <span class="kpill">📊 FRBM = Fiscal Discipline</span>
+      <span class="kpill">⚖️ IRGD = Sustainability Test</span>
+      <span class="kpill">🏦 RBI ≠ Unlimited Lender</span>
+      <span class="kpill">🌐 External Debt = USD Dominated</span>
+      <span class="kpill">📋 3F: Deficit → Debt → Sustainability</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+function addTxt(svg,x,y,txt,col,fs,fw,anchor){
+  const t=se('text',{x,y,'text-anchor':anchor||'middle','font-size':fs||'10','font-weight':fw||'700','font-family':'Nunito,sans-serif',fill:col});
+  t.textContent=txt;svg.appendChild(t);
+}
+function monoTxt(svg,x,y,txt,col,fs){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':fs||'8.5','font-family':'DM Mono,monospace','letter-spacing':'1.5',fill:col||'rgba(120,100,60,0.4)'});
+  t.textContent=txt;svg.appendChild(t);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgFlow');
+  const steps=[
+    {x:80,  label:['Fiscal','Policy'],    sub:'Tax + Spend tool',   fill:'#1a1208',emoji:'🏛️'},
+    {x:250, label:['Deficit'],            sub:'Spend > Revenue',    fill:'#b01a1a',emoji:'📉'},
+    {x:420, label:['Borrowing'],          sub:'Govt issues bonds',  fill:'#d46a10',emoji:'🏦'},
+    {x:590, label:['Public Debt'],        sub:'Internal+External',  fill:'#1a3a8a',emoji:'📊'},
+    {x:760, label:['Sustainability?'],    sub:'IRGD Test',          fill:'#5a1a8a',emoji:'⚖️'},
+    {x:930, label:['FRBM Act 2003'],      sub:'3% cap · 60%/40%',  fill:'#0a6070',emoji:'📋'},
+    {x:1100,label:['Escape Clause'],      sub:'0.5% deviation',     fill:'#b87c10',emoji:'🚨'},
+    {x:1280,label:['Consolidation'],      sub:'Fiscal discipline',  fill:'#1a6a3a',emoji:'✅'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1)edge(svg,s.x+72,65,steps[i+1].x-72,65,'#b87c10',false,2);
+  });
+  steps.forEach(s=>node(svg,s.x,65,137,68,s.fill,s.label,s.sub,s.emoji));
+  monoTxt(svg,680,18,'MASTER FLOW: FISCAL POLICY → DEFICIT → BORROWING → DEBT → FRBM → CONSOLIDATION','rgba(120,100,60,0.4)','9');
+})();
+
+// ─── WHY FRBM ───
+(function(){
+  const svg=document.getElementById('svgWhy');
+  // Central node
+  node(svg,680,105,220,58,'#1a1208',['FRBM Act 2003','Core Framework'],'Enacted 2003 · Effective July 2004','📋');
+
+  const left=[
+    {x:160,y:55,  fill:'#b01a1a',label:['6% Deficit'],     sub:'Pre-FRBM crisis 2000',emoji:'📉'},
+    {x:160,y:125, fill:'#d46a10',label:['Rising Debt'],     sub:'Unsustainable path',  emoji:'💸'},
+    {x:160,y:195, fill:'#7a4010',label:['EAS Sarma Comm.'],sub:'Recommended rules',   emoji:'👤'},
+  ];
+  const right=[
+    {x:1200,y:55,  fill:'#1a6a3a',label:['3% Deficit Cap'],sub:'Hard fiscal limit',     emoji:'🎯'},
+    {x:1200,y:125, fill:'#1a3a8a',label:['60%/40% Debt'],  sub:'General/Central limits',emoji:'⚖️'},
+    {x:1200,y:195, fill:'#0a6070',label:['Transparency'],   sub:'4 mandatory statements',emoji:'📄'},
+  ];
+  [...left,...right].forEach(n=>{
+    const fx=n.x<680?592:768, fy=n.y<105?95:(n.y>105?115:105);
+    edge(svg,fx,fy,n.x+(n.x<680?84:-84),n.y,'#b87c1055',true,1.6);
+    node(svg,n.x,n.y,190,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  monoTxt(svg,680,200,'WHY FRBM → OBJECTIVES → TARGETS → TRANSPARENCY → RBI RULES','rgba(120,100,60,0.35)','8');
+})();
+
+// ─── TARGETS SVG ───
+(function(){
+  const svg=document.getElementById('svgTargets');
+  // 3 target nodes in a row with arrow connections
+  const targets=[
+    {x:200, fill:'#b01a1a', num:'3%',  label:['Fiscal Deficit Cap'], sub:'of GDP — Hard limit'},
+    {x:680, fill:'#d46a10', num:'60%', label:['General Govt Debt'],  sub:'Centre + States combined'},
+    {x:1160,fill:'#1a3a8a', num:'40%', label:['Central Govt Debt'],  sub:'Centre alone'},
+  ];
+  // arrows
+  edge(svg,310,90,540,90,'#b87c10',false,2.5);
+  edge(svg,820,90,1040,90,'#b87c10',false,2.5);
+
+  // "+" label between
+  const p1=se('text',{x:425,y:94,'text-anchor':'middle','font-size':'18','font-weight':'800',fill:'#b87c10'});p1.textContent='→';svg.appendChild(p1);
+  const p2=se('text',{x:930,y:94,'text-anchor':'middle','font-size':'18','font-weight':'800',fill:'#b87c10'});p2.textContent='→';svg.appendChild(p2);
+
+  targets.forEach(t=>{
+    // shadow
+    svg.appendChild(se('rect',{x:t.x-100+2,y:50+3,width:200,height:80,rx:'12',fill:'rgba(0,0,0,0.07)'}));
+    svg.appendChild(se('rect',{x:t.x-100,y:50,width:200,height:80,rx:'12',fill:t.fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+    const num=se('text',{x:t.x,y:84,'text-anchor':'middle','dominant-baseline':'middle','font-size':'28','font-weight':'800','font-family':'Playfair Display,serif',fill:'#fff'});
+    num.textContent=t.num;svg.appendChild(num);
+    const lb=se('text',{x:t.x,y:104,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'700','font-family':'Nunito,sans-serif',fill:'rgba(255,255,255,0.85)'});
+    lb.textContent=t.label[0];svg.appendChild(lb);
+    const sb=se('text',{x:t.x,y:120,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(255,255,255,0.55)'});
+    sb.textContent=t.sub;svg.appendChild(sb);
+  });
+  monoTxt(svg,680,20,'FRBM KEY TARGETS — THE THREE NUMBERS EVERY PRELIMS ASPIRANT MUST KNOW','rgba(176,26,26,0.5)','8.5');
+
+  // Bottom note
+  const bn=se('text',{x:680,y:165,'text-anchor':'middle','font-size':'10','font-weight':'700','font-family':'Nunito,sans-serif',fill:'rgba(90,26,138,0.7)'});
+  bn.textContent='States Deficit Target: 3% of GSDP (Article 293 framework)';svg.appendChild(bn);
+})();
+
+// ─── DEFICIT ECONOMICS ───
+(function(){
+  const svg=document.getElementById('svgDeficit');
+  // Central node
+  node(svg,680,100,230,56,'#1a1208',['Deficit Economics','Key Debates'],'Inflation · Crowding · Sustainability','📊');
+
+  const spokes=[
+    {x:140,y:55,  fill:'#b01a1a',label:['Crowding Out'],   sub:'Pvt. investment falls'},
+    {x:140,y:150, fill:'#1a6a3a',label:['Crowding In'],    sub:'Pvt. investment rises'},
+    {x:380,y:45,  fill:'#d46a10',label:['Raises Demand'],  sub:'Aggregate demand up'},
+    {x:380,y:160, fill:'#b87c10',label:['Inflation Risk'],  sub:'If at full capacity'},
+    {x:990,y:55,  fill:'#5a1a8a',label:['IRGD Concept'],   sub:'Growth vs Interest rate'},
+    {x:990,y:150, fill:'#0a6070',label:['Idle Resources'], sub:'May not be inflationary'},
+    {x:1230,y:55, fill:'#1a3a8a',label:['Post-Lib India'], sub:'No strong crowding out'},
+    {x:1230,y:150,fill:'#1a5878',label:['Debt Ratio Falls'],sub:'If growth > interest'},
+  ];
+  spokes.forEach(n=>{
+    const fx=n.x<680?595:765, fy=n.y<100?94:106;
+    edge(svg,fx,fy,n.x+(n.x<680?80:-80),n.y,n.fill+'66',true,1.5);
+    node(svg,n.x,n.y,165,44,n.fill,[n.label[0]],n.sub);
+  });
+  monoTxt(svg,680,192,'DEFICIT IMPACT: INFLATION · CROWDING OUT vs IN · IRGD SUSTAINABILITY TEST','rgba(120,100,60,0.35)','8');
+})();
+
+// ─── DEBT STRUCTURE ───
+(function(){
+  const svg=document.getElementById('svgDebt');
+  svg.setAttribute('viewBox','0 0 1360 230');
+
+  // Root
+  node(svg,680,50,260,54,'#1a1208',['Public Debt of India','Total Liabilities'],'Charged on Consolidated Fund','🏛️');
+
+  // Row 2 — 4 categories
+  const cats=[
+    {x:180,  y:145, fill:'#1a3a8a', label:['Internal Debt'],   sub:'T-Bills · G-Secs · OMO', emoji:'🏦'},
+    {x:510,  y:145, fill:'#1a6a3a', label:['External Debt'],   sub:'World Bank · ADB · NRI',  emoji:'🌐'},
+    {x:840,  y:145, fill:'#5a1a8a', label:['Public Account'],  sub:'PF · Small Savings',      emoji:'📂'},
+    {x:1170, y:145, fill:'#b87c10', label:['Off-Budget Liab.'],sub:'PSU loans · Guarantees',  emoji:'📋'},
+  ];
+  cats.forEach(c=>{
+    const path=se('path',{d:`M680,78 C680,${(78+119)/2} ${c.x},${(78+119)/2} ${c.x},119`,
+      stroke:'#b87c1055','stroke-width':'2',fill:'none','stroke-dasharray':'6 3'});
+    svg.appendChild(path);
+    node(svg,c.x,c.y,210,52,c.fill,[c.label[0]],c.sub,c.emoji);
+  });
+
+  // Bracket label: Public Debt = Internal + External
+  const br=se('path',{d:'M90,180 L90,200 L580,200 L580,180',stroke:'#1a3a8a55','stroke-width':'2',fill:'none'});
+  svg.appendChild(br);
+  const brt=se('text',{x:335,y:216,'text-anchor':'middle','font-size':'9','font-weight':'800','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.6)'});
+  brt.textContent='↑ PUBLIC DEBT (Internal + External)';svg.appendChild(brt);
+
+  monoTxt(svg,680,220,'TOTAL LIABILITIES = INTERNAL + EXTERNAL + PUBLIC ACCOUNT + OFF-BUDGET','rgba(120,100,60,0.35)','8');
+})();
+
+// ─── EXTERNAL DEBT BREAKDOWN ───
+(function(){
+  const svg=document.getElementById('svgExt');
+  // Horizontal flow: Sources → Currency → Tenure → Classification
+  const cols=[
+    {x:200,  label:'External Debt Sources', fill:'#0a6070', nodes:['World Bank (IBRD/IDA)','ADB · IMF','Japan · Germany (Bilateral)','Commercial Borrowing 💰','NRI Deposits']},
+    {x:560,  label:'Currency Mix',          fill:'#b87c10', nodes:['USD ~55% (Dominant)','INR ~30%','JPY + EUR ~15%','Expressed in USD','FX Risk on USD loans']},
+    {x:920,  label:'Tenure Split',          fill:'#5a1a8a', nodes:['Short-term ~21%','Long-term ~79%','Comm. Borrowing = Largest','T-Bills short · G-Secs long','Rollover risk: short-term']},
+    {x:1200, label:'Classification',        fill:'#1a3a8a', nodes:['Sovereign = Govt debt','Non-Sovereign = Pvt.','Art. 293 State Rules','3% GSDP State limit','Centre approval needed']},
+  ];
+
+  // Column headers
+  cols.forEach(c=>{
+    svg.appendChild(se('rect',{x:c.x-120,y:16,width:240,height:28,rx:'6',fill:c.fill}));
+    const t=se('text',{x:c.x,y:34,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'800','font-family':'Nunito,sans-serif',fill:'#fff'});
+    t.textContent=c.label;svg.appendChild(t);
+
+    // Items
+    c.nodes.forEach((n,i)=>{
+      const y=60+i*24;
+      svg.appendChild(se('rect',{x:c.x-115,y:y-10,width:230,height:20,rx:'4',fill:'rgba(0,0,0,0.03)',stroke:'rgba(200,180,140,0.3)','stroke-width':'1'}));
+      const nt=se('text',{x:c.x-108,y:y+4,'text-anchor':'start','dominant-baseline':'middle','font-size':'9.5','font-weight':'600','font-family':'Nunito,sans-serif',fill:c.fill});
+      nt.textContent=n;svg.appendChild(nt);
+    });
+  });
+
+  // Arrows between columns
+  [360,720,1060].forEach(x=>{
+    const arr=se('text',{x:x,y:92,'text-anchor':'middle','font-size':'18','font-weight':'800',fill:'rgba(184,124,16,0.5)'});
+    arr.textContent='→';svg.appendChild(arr);
+  });
+
+  monoTxt(svg,680,172,'EXTERNAL DEBT: SOURCES → CURRENCY COMPOSITION → TENURE → SOVEREIGN CLASSIFICATION','rgba(120,100,60,0.35)','8');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priority Sector Lending — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0e1118;--paper:#f6f3ed;--cream:#fffcf5;
+  --gold:#c08a18;--gold-lt:#f5e4b0;--amber:#d97010;
+  --green:#197040;--blue:#1a3c8a;--purple:#6318a4;
+  --teal:#086870;--red:#b01818;--sky:#175888;
+  --muted:#7a6e58;--border:#ddd0b2;--card:#fffcf2;
+  --card2:#f2ece0;--sh:rgba(0,0,0,0.07);
+  --orange:#c04808;
+}
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:
+    radial-gradient(ellipse 1000px 600px at 10% 5%, rgba(192,138,24,0.055) 0%,transparent 65%),
+    radial-gradient(ellipse 800px 800px at 90% 95%, rgba(26,60,138,0.045) 0%,transparent 65%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:52px 16px 22px;}
+.header-sup{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:.8;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4.5vw,52px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;}
+.header::after{content:'';display:block;width:110px;height:4px;background:linear-gradient(90deg,var(--green),var(--gold),var(--blue),var(--red));margin:16px auto 0;border-radius:4px;}
+
+/* ── SECTION LABELS ── */
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px;}
+@media(max-width:1100px){.g5{grid-template-columns:repeat(3,1fr);}.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){.g3{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g5{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;transition:box-shadow .22s,transform .22s;}
+.pc:hover{box-shadow:0 8px 32px var(--sh);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.amber::before{background:var(--amber);}
+.pc.orange::before{background:var(--orange);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* ── MAP CARD ── */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc1::before{background:linear-gradient(90deg,var(--green),var(--gold),var(--amber));}
+.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc3::before{background:linear-gradient(90deg,var(--red),var(--orange),var(--amber));}
+.mc4::before{background:linear-gradient(90deg,var(--teal),var(--green),var(--blue));}
+.mc5::before{background:linear-gradient(90deg,var(--sky),var(--blue));}
+.mc6::before{background:linear-gradient(90deg,var(--gold),var(--green));}
+.map-card svg{display:block;width:100%;}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(192,138,24,0.13);color:var(--gold);}
+.pill.green{background:rgba(25,112,64,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,60,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(217,112,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(99,24,164,0.12);color:var(--purple);}
+.pill.teal{background:rgba(8,104,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,24,24,0.11);color:var(--red);}
+.pill.sky{background:rgba(23,88,136,0.12);color:var(--sky);}
+.pill.orange{background:rgba(192,72,8,0.12);color:var(--orange);}
+
+/* ── CHIPS ── */
+.chip{display:inline-block;padding:3px 10px;border-radius:7px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:rgba(25,112,64,.08);border-color:rgba(25,112,64,.2);color:var(--green);}
+.chip.bad{background:rgba(176,24,24,.07);border-color:rgba(176,24,24,.2);color:var(--red);}
+.chip.neu{background:rgba(192,138,24,.08);border-color:rgba(192,138,24,.2);color:var(--gold);}
+.chip.warn{background:rgba(217,112,16,.08);border-color:rgba(217,112,16,.2);color:var(--amber);}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;line-height:1.45;}
+.vitem .vt{font-weight:700;margin-bottom:2px;}
+.vitem .vs{font-size:9.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── STAT BOXES ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px 8px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-label{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(192,138,24,.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 9px;border-radius:5px;font-size:9px;font-weight:800;}
+.tag.y{background:#d4edda;color:#155724;}
+.tag.n{background:#f8d7da;color:#721c24;}
+.tag.o{background:#fff3cd;color:#856404;}
+.tag.b{background:#cce5ff;color:#004085;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:22px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:38px;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11.5px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 14px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10.5px;font-family:'JetBrains Mono',monospace;}
+
+/* ── CALLOUT ── */
+.callout{padding:12px 15px;border-radius:10px;background:rgba(25,112,64,.06);border:1.5px solid rgba(25,112,64,.2);margin:8px 0;}
+.callout-t{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ── FEAT GRID ── */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.fi-box{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.fi-icon{font-size:17px;margin-bottom:4px;}
+.fi-title{font-size:11px;font-weight:800;}
+.fi-sub{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* ── IMPACT CHAIN ── */
+.ic-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 13px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:15px;color:var(--muted);margin:0 4px;}
+
+/* ── BAR CHART ── */
+.bar-wrap{display:flex;flex-direction:column;gap:10px;margin:12px 0;}
+.bar-row2{display:flex;align-items:center;gap:10px;}
+.bar-lbl{font-size:10px;font-weight:700;width:110px;flex:0 0 110px;text-align:right;font-family:'JetBrains Mono',monospace;line-height:1.3;}
+.bar-track{flex:1;background:var(--card2);border-radius:6px;height:24px;overflow:hidden;border:1px solid var(--border);}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:9px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#fff;}
+.bar-val{font-size:11px;font-weight:800;width:38px;font-family:'JetBrains Mono',monospace;}
+
+/* ── PHASE ROW ── */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 20px;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:18px;border-radius:13px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:5px 0 3px;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+
+/* ── ANIMATE ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.animate-in{animation:fadeUp .6s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══ HEADER ══ -->
+<div class="header animate-in">
+  <div class="header-sup">UPSC Prelims · Indian Economy · Banking Chapter</div>
+  <h1>Priority Sector Lending — <em>Mind Map</em></h1>
+  <div class="header-sub">PSL Targets → Sectors → Innovations → Lead Bank → KCC → Interest Subvention → RBI Data</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec-label">① Master Flow — The Big Picture</div>
+<div class="map-card mc1 animate-in">
+  <svg id="svgMaster" viewBox="0 0 1340 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ WHAT IS PSL ══ -->
+<div class="sec-label">② What is Priority Sector Lending?</div>
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Core Concept</div>
+    <h3>🏦 Why PSL Exists</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Market Failure in Credit</div><div class="vs">Some sectors don't get enough credit naturally</div></div>
+      <div class="vitem"><div class="vt">RBI Mandate</div><div class="vs">Banks must lend a fixed % of total credit to priority sectors</div></div>
+      <div class="vitem"><div class="vt">⚠️ No Preferential Rate</div><div class="vs">PSL guidelines do NOT fix preferential interest rates</div></div>
+    </div>
+    <div style="margin-top:10px;" class="ic-chain">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,24,24,.07);color:var(--red);">Credit Gap</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,60,138,.07);color:var(--blue);">RBI Mandates</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(25,112,64,.07);color:var(--green);">Banks Lend</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(192,138,24,.07);color:var(--gold);">Inclusive Growth</div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">If Target Missed</div>
+    <h3>⚠️ PSL Shortfall Mechanism</h3>
+    <div style="padding:16px;border-radius:12px;background:rgba(176,24,24,.06);border:1.5px solid rgba(176,24,24,.2);margin-bottom:12px;text-align:center;">
+      <div style="font-size:11px;font-weight:800;color:var(--red);margin-bottom:4px;">Banks Fail PSL Target</div>
+      <div style="font-size:28px;margin:4px 0;">⬇️</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--amber);">RIDF</div>
+      <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);">Rural Infrastructure Development Fund</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Managed by NABARD</div><div class="vs">National Bank for Agriculture & Rural Development</div></div>
+      <div class="vitem"><div class="vt">Deposit Shortfall Amount</div><div class="vs">Bank deposits shortfall in RIDF as penalty</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PSL TARGETS ══ -->
+<div class="sec-label">③ PSL Targets — Bank Type Wise 🔥</div>
+<div class="map-card mc2">
+  <svg id="svgTargets" viewBox="0 0 1340 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="pc blue" style="margin-bottom:20px;">
+  <div class="pc-label">Visual Comparison — PSL Targets</div>
+  <h3>📊 Bank-wise PSL % Targets at a Glance</h3>
+  <div class="bar-wrap">
+    <div class="bar-row2">
+      <div class="bar-lbl">SCBs</div>
+      <div class="bar-track"><div class="bar-fill" style="width:53.3%;background:linear-gradient(90deg,#1a5090,var(--blue));">40%</div></div>
+      <div class="bar-val" style="color:var(--blue);">40%</div>
+    </div>
+    <div class="bar-row2">
+      <div class="bar-lbl">RRBs</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#186838,var(--green));">75%</div></div>
+      <div class="bar-val" style="color:var(--green);">75%</div>
+    </div>
+    <div class="bar-row2">
+      <div class="bar-lbl">Small Finance</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#106060,var(--teal));">75%</div></div>
+      <div class="bar-val" style="color:var(--teal);">75%</div>
+    </div>
+    <div class="bar-row2">
+      <div class="bar-lbl">Urban Coop.</div>
+      <div class="bar-track"><div class="bar-fill" style="width:53.3%;background:linear-gradient(90deg,#7a3090,var(--purple));">40% → 75%</div></div>
+      <div class="bar-val" style="color:var(--purple);">40%↑</div>
+    </div>
+    <div class="bar-row2">
+      <div class="bar-lbl">Payment Banks</div>
+      <div class="bar-track"><div class="bar-fill" style="width:2%;background:var(--red);min-width:50px;">Do not lend</div></div>
+      <div class="bar-val" style="color:var(--red);">N/A</div>
+    </div>
+    <div class="bar-row2">
+      <div class="bar-lbl">Rural Coop.</div>
+      <div class="bar-track"><div class="bar-fill" style="width:2%;background:var(--muted);min-width:50px;">No guideline</div></div>
+      <div class="bar-val" style="color:var(--muted);">—</div>
+    </div>
+  </div>
+  <div style="padding:9px 12px;margin-top:8px;border-radius:9px;background:rgba(176,24,24,.06);border:1.5px dashed rgba(176,24,24,.3);">
+    <span style="font-size:10px;font-weight:800;color:var(--red);">🔥 Key: SCBs = 40% · RRBs & SFBs = 75% · Payment Banks = Do not lend (Prelims trap!)</span>
+  </div>
+</div>
+
+<!-- ══ PRIORITY SECTORS ══ -->
+<div class="sec-label">④ Priority Sectors — Categories</div>
+<div class="map-card mc3">
+  <svg id="svgSectors" viewBox="0 0 1340 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc green">
+    <div class="pc-label">Core Sectors</div>
+    <h3>🌾 Main Priority Sectors</h3>
+    <div class="fg">
+      <div class="fi-box"><div class="fi-icon">🌾</div><div class="fi-title">Agriculture</div><div class="fi-sub">Crop loans, farm equipment</div></div>
+      <div class="fi-box"><div class="fi-icon">🏭</div><div class="fi-title">MSME</div><div class="fi-sub">Micro, Small, Medium Enterprises</div></div>
+      <div class="fi-box"><div class="fi-icon">📦</div><div class="fi-title">Export</div><div class="fi-sub">Export credit</div></div>
+      <div class="fi-box"><div class="fi-icon">🎓</div><div class="fi-title">Education</div><div class="fi-sub">Student loans</div></div>
+      <div class="fi-box"><div class="fi-icon">🏠</div><div class="fi-title">Housing</div><div class="fi-sub">Affordable housing</div></div>
+      <div class="fi-box"><div class="fi-icon">☀️</div><div class="fi-title">Renewable Energy</div><div class="fi-sub">Solar, wind, clean energy</div></div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Social & Others</div>
+    <h3>🤝 Social Infrastructure & Others</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🏗️ Social Infrastructure</div><div class="vs">Schools, hospitals, sanitation</div></div>
+      <div class="vitem"><div class="vt">🚀 Startups (Others)</div><div class="vs">Up to ₹50 crore limit</div></div>
+      <div class="vitem"><div class="vt">😟 Distressed Borrowers</div><div class="vs">Under "Others" category</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;border-radius:9px;background:rgba(8,104,112,.07);border:1.5px solid rgba(8,104,112,.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--teal);">9 categories total in PSL</div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Special Focus</div>
+    <h3>👥 Weaker Sections</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">SC / ST Communities</div></div>
+      <div class="vitem"><div class="vt">Self Help Groups (SHGs)</div></div>
+      <div class="vitem"><div class="vt">Small & Marginal Farmers</div></div>
+      <div class="vitem"><div class="vt">Artisans & Craftsmen</div></div>
+      <div class="vitem"><div class="vt">Differently Abled Persons</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Explicit Sub-Target</span>
+  </div>
+</div>
+
+<!-- ══ NEW MODELS / INNOVATIONS ══ -->
+<div class="sec-label">⑤ New Innovations in PSL Delivery</div>
+<div class="map-card mc4">
+  <svg id="svgModels" viewBox="0 0 1340 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <!-- On-Lending -->
+  <div class="pc amber">
+    <div class="pc-label">Model A</div>
+    <h3>🔗 On-Lending Model</h3>
+    <div class="ic-chain" style="flex-direction:column;align-items:flex-start;gap:6px;">
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,60,138,.08);color:var(--blue);width:100%;">🏦 Bank</div>
+      <div style="margin-left:20px;color:var(--muted);font-size:13px;">⬇️ lends to</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(217,112,16,.08);color:var(--amber);width:100%;">🏢 NBFC</div>
+      <div style="margin-left:20px;color:var(--muted);font-size:13px;">⬇️ on-lends to</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(25,112,64,.08);color:var(--green);width:100%;">🌾 Priority Sector</div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;border-radius:9px;background:rgba(217,112,16,.07);border:1.5px solid rgba(217,112,16,.2);">
+      <div style="font-size:10px;font-weight:800;color:var(--amber);">Limit = 5% of bank's PSL</div>
+      <div style="font-size:9.5px;color:var(--muted);margin-top:3px;">Purpose: Reach remote borrowers via NBFC network</div>
+    </div>
+  </div>
+
+  <!-- District Weight -->
+  <div class="pc sky">
+    <div class="pc-label">Model B</div>
+    <h3>⚖️ District-Level Weight System</h3>
+    <div class="g2" style="margin-bottom:10px;gap:10px;">
+      <div style="padding:12px;border-radius:10px;background:rgba(25,112,64,.07);border:1.5px solid rgba(25,112,64,.2);text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--green);">125%</div>
+        <div style="font-size:9.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);">LOW CREDIT DISTRICTS</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;color:var(--green);">Encouragement Weight</div>
+      </div>
+      <div style="padding:12px;border-radius:10px;background:rgba(176,24,24,.07);border:1.5px solid rgba(176,24,24,.2);text-align:center;">
+        <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--red);">90%</div>
+        <div style="font-size:9.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);">HIGH CREDIT DISTRICTS</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;color:var(--red);">Discouragement Weight</div>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="callout-t">📌 Example Calculation</div>
+      <div class="callout-b">₹32 loan in low-credit district → counts as ₹40 (32 × 1.25). Encourages inclusive geographic lending.</div>
+    </div>
+  </div>
+
+  <!-- Co-Lending -->
+  <div class="pc teal">
+    <div class="pc-label">Model C · Introduced 2020</div>
+    <h3>🤝 Co-Lending Model</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Joint Lending</div><div class="vs">Bank + NBFC lend together to priority sector</div></div>
+      <div class="vitem"><div class="vt">Risk Shared</div><div class="vs">Both parties share credit risk proportionally</div></div>
+      <div class="vitem"><div class="vt">NBFC Retention</div><div class="vs" style="color:var(--red);font-weight:700;">Minimum 20% must stay on NBFC books 🔥</div></div>
+      <div class="vitem"><div class="vt">Bank Funds Cheaper</div><div class="vs">Bank provides low-cost funds portion</div></div>
+    </div>
+    <div style="margin-top:10px;" class="ic-chain">
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,60,138,.07);color:var(--blue);font-size:9px;">Bank Reach</div>
+      <div class="ic-arr">+</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(217,112,16,.07);color:var(--amber);font-size:9px;">NBFC Network</div>
+      <div class="ic-arr">=</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(25,112,64,.07);color:var(--green);font-size:9px;">More Coverage</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LEAD BANK SCHEME ══ -->
+<div class="sec-label">⑥ Lead Bank Scheme</div>
+<div class="map-card mc5">
+  <svg id="svgLeadBank" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Lead Bank Scheme · 1969</div>
+    <h3>🏦 One Lead Bank Per District</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">1969</div>
+        <div class="stat-sub">Year Introduced</div>
+        <div class="stat-label">NARASIMHAM COMMITTEE</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">All</div>
+        <div class="stat-sub">Districts Covered</div>
+        <div class="stat-label">PAN-INDIA COVERAGE</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Coordinate Banking Activities</div><div class="vs">Between all banks in the district</div></div>
+      <div class="vitem"><div class="vt">Identify Credit Gaps</div><div class="vs">Map underserved areas & populations</div></div>
+      <div class="vitem"><div class="vt">Promote Rural Development</div><div class="vs">Link credit with development planning</div></div>
+    </div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Lead Bank Mechanism</div>
+    <h3>🗺️ How It Works</h3>
+    <div class="ic-chain" style="flex-direction:column;align-items:flex-start;gap:8px;">
+      <div class="ic-node" style="border-color:var(--sky);background:rgba(23,88,136,.08);color:var(--sky);width:100%;">📋 SLBC — State Level Bankers Committee (top-level coordination)</div>
+      <div style="margin-left:20px;font-size:13px;color:var(--muted);">⬇️ coordinates with</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,60,138,.08);color:var(--blue);width:100%;">🏦 Lead Bank — Assigned to Each District</div>
+      <div style="margin-left:20px;font-size:13px;color:var(--muted);">⬇️ anchors</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(25,112,64,.08);color:var(--green);width:100%;">📊 DCC — District Credit Plan & Coordination</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ KCC ══ -->
+<div class="sec-label">⑦ Kisan Credit Card (KCC)</div>
+<div class="map-card mc6">
+  <svg id="svgKCC" viewBox="0 0 1340 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Kisan Credit Card · Introduced 1998-99</div>
+    <h3>🌾 What KCC Covers</h3>
+    <div class="fg">
+      <div class="fi-box"><div class="fi-icon">🌱</div><div class="fi-title">Crop Loans</div><div class="fi-sub">All cropping activities</div></div>
+      <div class="fi-box"><div class="fi-icon">📦</div><div class="fi-title">Post-Harvest</div><div class="fi-sub">Storage, processing expenses</div></div>
+      <div class="fi-box"><div class="fi-icon">🐄</div><div class="fi-title">Dairy & Fisheries</div><div class="fi-sub">Allied agricultural activities</div></div>
+      <div class="fi-box"><div class="fi-icon">🚜</div><div class="fi-title">Farm Machinery</div><div class="fi-sub">Equipment purchase & repair</div></div>
+      <div class="fi-box"><div class="fi-icon">💼</div><div class="fi-title">Working Capital</div><div class="fi-sub">Operational farm needs</div></div>
+      <div class="fi-box"><div class="fi-icon">🏡</div><div class="fi-title">Consumption</div><div class="fi-sub">Some personal needs included</div></div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">KCC — Who & How</div>
+    <h3>👨‍🌾 Eligibility & Implementation</h3>
+    <div class="g2" style="gap:10px;margin-bottom:12px;">
+      <div>
+        <div style="font-size:10px;font-weight:800;color:var(--green);margin-bottom:6px;font-family:'JetBrains Mono',monospace;">✅ ELIGIBLE</div>
+        <div class="vlist">
+          <div class="vitem vt" style="padding:7px 10px;">Owner Farmers</div>
+          <div class="vitem vt" style="padding:7px 10px;">Tenant Farmers</div>
+          <div class="vitem vt" style="padding:7px 10px;">SHGs</div>
+          <div class="vitem vt" style="padding:7px 10px;">Joint Liability Groups</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:800;color:var(--blue);margin-bottom:6px;font-family:'JetBrains Mono',monospace;">🏦 IMPLEMENTED BY</div>
+        <div class="vlist">
+          <div class="vitem vt" style="padding:7px 10px;">Commercial Banks</div>
+          <div class="vitem vt" style="padding:7px 10px;">RRBs</div>
+          <div class="vitem vt" style="padding:7px 10px;">Cooperatives</div>
+        </div>
+      </div>
+    </div>
+    <div class="callout" style="border-color:rgba(192,138,24,.3);background:rgba(192,138,24,.06);">
+      <div class="callout-t" style="color:var(--gold);">🔥 Prelims Distinction</div>
+      <div class="callout-b">KCC = Credit delivery mechanism (not a subsidy). Interest Subvention = separate interest subsidy scheme.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INTEREST SUBVENTION ══ -->
+<div class="sec-label">⑧ Interest Subvention Scheme (ISS)</div>
+<div class="map-card mc1">
+  <svg id="svgISS" viewBox="0 0 1340 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc orange">
+    <div class="pc-label">Interest Subvention Scheme · Govt of India (NOT RBI)</div>
+    <h3>💸 Short-Term Agri Loan Subsidy</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">₹3L</div>
+        <div class="stat-sub">Loan Limit</div>
+        <div class="stat-label">SHORT TERM AGRI</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">7%</div>
+        <div class="stat-sub">Base Rate</div>
+        <div class="stat-label">STANDARD RATE</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">3%</div>
+        <div class="stat-sub">Incentive</div>
+        <div class="stat-label">TIMELY REPAYMENT</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">4%</div>
+        <div class="stat-sub">Effective Rate</div>
+        <div class="stat-label">IF REPAID ON TIME</div>
+      </div>
+    </div>
+    <div class="ic-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(217,112,16,.08);color:var(--amber);">Base 7%</div>
+      <div class="ic-arr">−</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(25,112,64,.08);color:var(--green);">3% Incentive</div>
+      <div class="ic-arr">=</div>
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,24,24,.08);color:var(--red);">Effective 4%</div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Critical Distinction for Prelims</div>
+    <h3>⚡ KCC vs Interest Subvention</h3>
+    <div style="overflow-x:auto;border-radius:10px;border:1.5px solid var(--border);">
+      <table class="ctable">
+        <thead>
+          <tr><th>Feature</th><th>KCC</th><th>Int. Subvention</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Nature</td><td>Credit delivery tool</td><td>Interest subsidy</td></tr>
+          <tr><td>Run by</td><td>Banks (RBI guided)</td><td>Govt of India</td></tr>
+          <tr><td>Benefit</td><td>Easy credit access</td><td>Lower interest rate</td></tr>
+          <tr><td>Condition</td><td>Eligibility based</td><td>Timely repayment</td></tr>
+          <tr><td>Rate</td><td>Market rate applies</td><td><span class="tag y">4% effective</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RBI REPORTS & SURVEYS ══ -->
+<div class="sec-label">⑨ RBI Policy Research — Reports & Surveys</div>
+<div class="map-card mc2">
+  <svg id="svgRBI" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Mandatory RBI Publications</div>
+    <h3>📑 Two Key Annual Reports</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">📘 Annual Report</div>
+        <div class="vs">Statutory basis: RBI Act 1934 · Published every year by RBI Board</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">📗 Report on Trend & Progress of Banking in India</div>
+        <div class="vs">Statutory basis: Banking Regulation Act 1949 · Banking system overview</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;border-radius:9px;background:rgba(176,24,24,.06);border:1.5px dashed rgba(176,24,24,.3);">
+      <span style="font-size:10px;font-weight:800;color:var(--red);">🔥 RBI publishes exactly 2 mandatory annual reports</span>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">RBI Surveys · Quarterly Frequency</div>
+    <h3>📊 Two Key Quarterly Surveys</h3>
+    <div class="g2" style="gap:10px;margin-bottom:0;">
+      <div style="padding:14px;border-radius:11px;background:rgba(99,24,164,.07);border:1.5px solid rgba(99,24,164,.2);text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">😊</div>
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--purple);">Consumer Confidence Survey</div>
+        <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:4px;">QUARTERLY</div>
+        <div style="font-size:10px;margin-top:6px;">Gauges household sentiment on economy, employment, prices</div>
+      </div>
+      <div style="padding:14px;border-radius:11px;background:rgba(26,60,138,.07);border:1.5px solid rgba(26,60,138,.2);text-align:center;">
+        <div style="font-size:20px;margin-bottom:6px;">📈</div>
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--blue);">Inflation Expectation Survey</div>
+        <div style="font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:4px;">QUARTERLY</div>
+        <div style="font-size:10px;margin-top:6px;">Used for monetary policy decisions by MPC</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRELIMS QUICK FIRE ══ -->
+<div class="sec-label">⑩ High Probability Prelims Points 🔥</div>
+<div class="map-card mc3">
+  <svg id="svgPoints" viewBox="0 0 1340 150" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g4" style="margin-bottom:24px;">
+  <div class="pc green">
+    <div class="pc-label">Targets</div>
+    <h3>📊 Key Numbers</h3>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(26,60,138,.07);border-color:rgba(26,60,138,.2);"><div class="vt" style="color:var(--blue);">SCBs = 40%</div></div>
+      <div class="vitem" style="background:rgba(25,112,64,.07);border-color:rgba(25,112,64,.2);"><div class="vt" style="color:var(--green);">RRBs = 75%</div></div>
+      <div class="vitem" style="background:rgba(8,104,112,.07);border-color:rgba(8,104,112,.2);"><div class="vt" style="color:var(--teal);">SFBs = 75%</div></div>
+      <div class="vitem" style="background:rgba(176,24,24,.07);border-color:rgba(176,24,24,.2);"><div class="vt" style="color:var(--red);">Payment Banks = ❌ Don't lend</div></div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Models</div>
+    <h3>🔗 PSL Innovations</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Co-lending NBFC retention = 20%</div></div>
+      <div class="vitem"><div class="vt">On-lending limit = 5% of bank PSL</div></div>
+      <div class="vitem"><div class="vt">Low credit district weight = 125%</div></div>
+      <div class="vitem"><div class="vt">High credit district weight = 90%</div></div>
+    </div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Schemes</div>
+    <h3>🌾 KCC & Subvention</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">KCC introduced = 1998-99</div></div>
+      <div class="vitem"><div class="vt">Subvention rate = 4% effective</div></div>
+      <div class="vitem"><div class="vt">Lead Bank Scheme = 1969</div></div>
+      <div class="vitem"><div class="vt">RIDF managed by NABARD</div></div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">RBI Data</div>
+    <h3>📑 Reports & Surveys</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Annual Report → RBI Act 1934</div></div>
+      <div class="vitem"><div class="vt">Banking Report → BR Act 1949</div></div>
+      <div class="vitem"><div class="vt">Consumer Confidence = Quarterly</div></div>
+      <div class="vitem"><div class="vt">Inflation Expectation = Quarterly</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ KEYSTONE ══ -->
+<div class="keystone">
+  <div class="keystone-icon">🏦</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">Banks must give <strong style="color:#f5d78a;">40% credit to priority sectors</strong>. If they fail, the shortfall goes to RIDF managed by NABARD. RBI introduced <strong style="color:#f5d78a;">on-lending & co-lending models</strong> to expand reach via NBFCs. The <strong style="color:#f5d78a;">Lead Bank Scheme (1969)</strong> coordinates district credit. <strong style="color:#f5d78a;">KCC (1998-99)</strong> gives farmers timely credit. The Govt provides <strong style="color:#f5d78a;">4% effective rate</strong> via Interest Subvention. RBI monitors via reports and quarterly surveys for monetary policy decisions.</div>
+    <div class="kpills">
+      <span class="kpill">📊 SCBs = 40%</span>
+      <span class="kpill">🌾 RRBs = 75%</span>
+      <span class="kpill">🔗 Co-lending 2020</span>
+      <span class="kpill">💳 KCC 1998-99</span>
+      <span class="kpill">💸 ISS = 4% effective</span>
+      <span class="kpill">🏗️ RIDF → NABARD</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v] of Object.entries(attrs)) e.setAttribute(k,v);
+  return e;
+}
+function curve(svg,x1,y1,x2,y2,color,dash,w){
+  const mx=(x1+x2)/2;
+  svg.appendChild(el('path',{
+    d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color||'#aaa','stroke-width':w||2,fill:'none',
+    'stroke-dasharray':dash?'5 4':'none',opacity:'0.65'
+  }));
+}
+function vline(svg,x1,y1,x2,y2,color,dash,w){
+  svg.appendChild(el('path',{
+    d:`M${x1},${y1} L${x2},${y2}`,
+    stroke:color||'#aaa','stroke-width':w||1.5,fill:'none',
+    'stroke-dasharray':dash?'5 4':'none',opacity:'0.55'
+  }));
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,txc,rx){
+  txc=txc||'#fff'; rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let sy = y - (lines.length-1)*7.5;
+  if(emoji) sy -= 10;
+  if(sub) sy -= 6;
+  if(emoji){
+    const em=el('text',{x,y:sy,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:txc});
+    em.textContent=emoji; g.appendChild(em); sy+=18;
+  }
+  lines.forEach((l,i)=>{
+    const t=el('text',{x,y:sy+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:txc});
+    t.textContent=l; g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x,y:sy+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:txc==='#fff'?'rgba(255,255,255,0.52)':'rgba(0,0,0,0.4)'});
+    s.textContent=sub; g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+function lbl(svg,x,y,text,color,size,mono){
+  const t=el('text',{x,y,'text-anchor':'middle','font-size':size||9,'font-family':mono?'JetBrains Mono,monospace':'Outfit,sans-serif','letter-spacing':mono?'1.5':'0',fill:color||'rgba(120,100,60,0.45)'});
+  t.textContent=text; svg.appendChild(t);
+}
+
+// ─── MASTER FLOW ───
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:120,fill:'rgba(250,245,238,0.4)'}));
+  const steps=[
+    {x:80,  fill:'#b82020', label:['Credit Gap'], sub:'Sectors underserved', emoji:'📉'},
+    {x:235, fill:'#1a3c8a', label:['RBI Mandates','PSL'], sub:'40% / 75% targets', emoji:'📋'},
+    {x:395, fill:'#197040', label:['Priority','Sectors'], sub:'9 categories', emoji:'🌾'},
+    {x:560, fill:'#c08a18', label:['Innovations','in PSL'], sub:'On/Co-Lending', emoji:'🔗'},
+    {x:720, fill:'#086870', label:['Lead Bank','Scheme'], sub:'1969 · District coord.', emoji:'🗺️'},
+    {x:880, fill:'#197040', label:['KCC Farmer','Credit'], sub:'1998-99', emoji:'💳'},
+    {x:1045,fill:'#c04808', label:['Interest','Subvention'], sub:'4% effective rate', emoji:'💸'},
+    {x:1200,fill:'#1a3c8a', label:['RBI Reports','& Surveys'], sub:'2 reports · Quarterly', emoji:'📑'},
+    {x:1310,fill:'#197040', label:['Inclusive','Growth'], sub:'Target achieved', emoji:'🎯'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1];
+      vline(svg,s.x+62,60,nx.x-62,60,s.fill+'88',false,2);
+    }
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,60,118,68,s.fill,s.label,s.sub,s.emoji);
+  });
+  lbl(svg,670,14,'MASTER FLOW — PSL MANDATE → TARGETS → MECHANISMS → MONITORING → INCLUSIVE GROWTH','rgba(120,100,60,0.4)',8.5,true);
+})();
+
+// ─── PSL TARGETS RADIAL ───
+(()=>{
+  const svg=document.getElementById('svgTargets');
+  const W=1340, H=240;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,W/2,100,200,52,'#0e1118',['PSL Targets','Bank-wise'],'RBI Mandate','📊');
+
+  // arrange 6 banks in a wide ellipse
+  const banks=[
+    {angle:-150, fill:'#1a3c8a', label:['SCBs'], sub:'40%',      emoji:'🏦'},
+    {angle:-90,  fill:'#197040', label:['RRBs'], sub:'75%',      emoji:'🏡'},
+    {angle:-30,  fill:'#086870', label:['SFBs'], sub:'75%',      emoji:'🏪'},
+    {angle:30,   fill:'#6318a4', label:['Urban Coop.'], sub:'40%→75%', emoji:'🏛️'},
+    {angle:90,   fill:'#b82020', label:['Payment Banks'], sub:'❌ No lending', emoji:'📵'},
+    {angle:150,  fill:'#7a6e58', label:['Rural Coop.'], sub:'No guideline', emoji:'🌾'},
+  ];
+  const rx=480, ry=82;
+  banks.forEach(b=>{
+    const rad=b.angle*Math.PI/180;
+    const bx=W/2+rx*Math.cos(rad);
+    const by=100+ry*Math.sin(rad);
+    curve(svg,W/2,100,bx,by,b.fill+'88',false,2);
+    node(svg,bx,by,165,52,b.fill,b.label,b.sub,b.emoji);
+  });
+  lbl(svg,W/2,228,'SCBs = 40% · RRBs/SFBs = 75% · PAYMENT BANKS DO NOT LEND','rgba(120,100,60,0.45)',8.5,true);
+})();
+
+// ─── SECTORS DIAGRAM ───
+(()=>{
+  const svg=document.getElementById('svgSectors');
+  const W=1340, H=280;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,W/2,100,200,52,'#0e1118',['9 Priority','Sectors'],'PSL Categories','🗂️');
+
+  const sectors=[
+    {x:100, y:55,  fill:'#197040', label:['🌾 Agriculture'],  sub:'Crop, farm, dairy'},
+    {x:280, y:35,  fill:'#1a3c8a', label:['🏭 MSME'],         sub:'Micro/Small/Medium'},
+    {x:460, y:55,  fill:'#086870', label:['📦 Export'],        sub:'Export credit'},
+    {x:100, y:160, fill:'#6318a4', label:['🎓 Education'],     sub:'Student loans'},
+    {x:280, y:180, fill:'#c08a18', label:['🏠 Housing'],       sub:'Affordable homes'},
+    {x:840, y:55,  fill:'#197040', label:['☀️ Renew. Energy'], sub:'Solar, wind'},
+    {x:1020,y:35,  fill:'#c04808', label:['🏗️ Social Infra'], sub:'Schools, hospitals'},
+    {x:1200,y:55,  fill:'#7a3090', label:['🚀 Others'],        sub:'Startups ≤₹50Cr'},
+    {x:1040,y:160, fill:'#b82020', label:['👥 Weaker Sections'],sub:'SC/ST, SHGs, farmers'},
+  ];
+  sectors.forEach(s=>{
+    const fx=s.x<W/2? W/2-100 : W/2+100;
+    curve(svg,fx,100,s.x+(s.x<W/2?80:-80),s.y,'#c08a1855',true,1.8);
+    node(svg,s.x,s.y,175,46,s.fill,s.label,s.sub,null);
+  });
+  lbl(svg,W/2,270,'9 PRIORITY SECTORS · AGRICULTURE · MSME · EXPORT · EDUCATION · HOUSING · RENEWABLE · SOCIAL · OTHERS · WEAKER SECTIONS','rgba(25,112,64,0.45)',8,true);
+})();
+
+// ─── MODELS DIAGRAM ───
+(()=>{
+  const svg=document.getElementById('svgModels');
+  const W=1340, H=280;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,W/2,50,240,52,'#0e1118',['PSL Delivery','Innovations'],'RBI 3 New Models','🔗');
+
+  // Three sub-trees below
+  const cols=[290,W/2,W-290];
+  const titles=[
+    {fill:'#d97010', label:['On-Lending','Model'], sub:'Bank → NBFC → Sector'},
+    {fill:'#175888', label:['District Weight','System'], sub:'125% / 90% weights'},
+    {fill:'#086870', label:['Co-Lending','Model 2020'], sub:'Bank + NBFC joint'},
+  ];
+  cols.forEach((cx,i)=>{
+    curve(svg,W/2,76,cx,118,titles[i].fill+'88',false,2);
+    node(svg,cx,140,190,52,titles[i].fill,titles[i].label,titles[i].sub,null);
+  });
+
+  // On-lending chain
+  vline(svg,290,166,290,204,'#d9701055',true,1.5);
+  node(svg,290,222,230,40,'#c05808',['Bank → NBFC → Priority'], '5% of PSL limit', null);
+
+  // District weights
+  const dw=[
+    {x:590,y:216,fill:'#197040',label:['Low District = 125%']},
+    {x:750,y:216,fill:'#b82020',label:['High District = 90%']},
+  ];
+  dw.forEach(d=>{
+    vline(svg,W/2,166,d.x,204,d.fill+'55',true,1.5);
+    node(svg,d.x,d.y,155,40,d.fill,d.label,null,null);
+  });
+
+  // Co-lending chain
+  const cl=[
+    {x:1000,y:216,fill:'#1a3c8a',label:['Bank funds cheap portion']},
+    {x:1190,y:216,fill:'#c08a18',label:['NBFC keeps 20% 🔥']},
+  ];
+  cl.forEach(d=>{
+    vline(svg,W-290,166,d.x,204,d.fill+'55',true,1.5);
+    node(svg,d.x,d.y,175,40,d.fill,d.label,null,null);
+  });
+
+  lbl(svg,W/2,270,'ON-LENDING (5% LIMIT) · DISTRICT WEIGHTS (125%/90%) · CO-LENDING 2020 (20% NBFC RETENTION)','rgba(8,104,112,0.45)',8.5,true);
+})();
+
+// ─── LEAD BANK ───
+(()=>{
+  const svg=document.getElementById('svgLeadBank');
+  const W=1340, H=200;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+
+  // Horizontal flow
+  const steps=[
+    {x:120, fill:'#1a3c8a', label:['SLBC'], sub:'State Level Bankers Cmte.', emoji:'🏛️'},
+    {x:340, fill:'#086870', label:['Lead Bank'], sub:'One per district', emoji:'🏦'},
+    {x:570, fill:'#197040', label:['DCC / ACP'], sub:'Annual Credit Plan', emoji:'📋'},
+    {x:800, fill:'#c08a18', label:['Credit Gap', 'Mapping'], sub:'Identify underserved areas', emoji:'🗺️'},
+    {x:1020,fill:'#6318a4', label:['Rural Dev.', 'Coordination'], sub:'Link credit to development', emoji:'🤝'},
+    {x:1220,fill:'#197040', label:['Inclusive', 'Credit Growth'], sub:'1969 scheme, all districts', emoji:'🎯'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      vline(svg,s.x+72,100,steps[i+1].x-72,100,s.fill+'88',false,2);
+    }
+    node(svg,s.x,100,138,70,s.fill,s.label,s.sub,s.emoji);
+  });
+  lbl(svg,W/2,185,'LEAD BANK SCHEME (1969) · SLBC → LEAD BANK PER DISTRICT → DISTRICT CREDIT PLAN → RURAL DEVELOPMENT','rgba(26,60,138,0.45)',8.5,true);
+})();
+
+// ─── KCC DIAGRAM ───
+(()=>{
+  const svg=document.getElementById('svgKCC');
+  const W=1340, H=240;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,W/2,90,230,52,'#0e1118',['Kisan Credit Card','(KCC)'],'Introduced 1998-99','💳');
+
+  // Left: What it covers
+  const covers=[
+    {x:130,y:50,  fill:'#197040', label:['🌱 Crop Loans'],  sub:'All crop activities'},
+    {x:320,y:30,  fill:'#086870', label:['📦 Post-Harvest'], sub:'Storage & processing'},
+    {x:130,y:160, fill:'#c08a18', label:['🐄 Dairy/Fishery'],sub:'Allied activities'},
+    {x:320,y:180, fill:'#197040', label:['💼 Working Cap.'], sub:'Operational needs'},
+  ];
+  // Right: Eligibility / implementers
+  const eligibility=[
+    {x:1020,y:50,  fill:'#1a3c8a', label:['Owner Farmers'],   sub:'Primary beneficiary'},
+    {x:1210,y:30,  fill:'#6318a4', label:['Tenant Farmers'],  sub:'Included explicitly'},
+    {x:1020,y:160, fill:'#c04808', label:['SHGs & JLGs'],     sub:'Group beneficiaries'},
+    {x:1210,y:180, fill:'#197040', label:['Via Banks/RRBs'],  sub:'Commercial + Cooperative'},
+  ];
+  [...covers,...eligibility].forEach(n=>{
+    const fx = n.x < W/2 ? W/2-115 : W/2+115;
+    curve(svg,fx,90,n.x+(n.x<W/2?80:-80),n.y,n.fill+'66',true,1.8);
+    node(svg,n.x,n.y,170,46,n.fill,n.label,n.sub,null);
+  });
+  // center vertical separator hint
+  svg.appendChild(el('line',{x1:W/2,y1:30,x2:W/2,y2:210,stroke:'rgba(200,180,140,0.12)','stroke-width':'1','stroke-dasharray':'6 4'}));
+  lbl(svg,340,225,'WHAT KCC COVERS','rgba(25,112,64,0.4)',8,true);
+  lbl(svg,1100,225,'WHO IS ELIGIBLE & HOW DELIVERED','rgba(26,60,138,0.4)',8,true);
+})();
+
+// ─── ISS DIAGRAM ───
+(()=>{
+  const svg=document.getElementById('svgISS');
+  const W=1340, H=180;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+
+  // Horizontal calculation chain
+  const steps=[
+    {x:130, fill:'#c04808', label:['Short-Term','Agri Loan'], sub:'Up to ₹3 lakh', emoji:'🌾'},
+    {x:320, fill:'#d97010', label:['Base Rate'], sub:'7% per annum', emoji:'📊'},
+    {x:510, fill:'#197040', label:['Timely', 'Repayment'], sub:'+3% incentive bonus', emoji:'✅'},
+    {x:700, fill:'#b82020', label:['Effective Rate'], sub:'7% − 3% = 4%', emoji:'🎯'},
+    {x:890, fill:'#1a3c8a', label:['Govt of India', 'Scheme'], sub:'NOT RBI scheme', emoji:'🏛️'},
+    {x:1080,fill:'#6318a4', label:['KCC is Credit', 'Delivery'], sub:'Separate mechanism', emoji:'💳'},
+    {x:1260,fill:'#197040', label:['ISS is', 'Interest Subsidy'], sub:'Different from KCC', emoji:'💸'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const sym = i===1 ? '−' : (i===2 ? '=' : '→');
+      vline(svg,s.x+68,90,steps[i+1].x-68,90,s.fill+'88',false,2);
+      if(i<=2){
+        const mt=el('text',{x:(s.x+steps[i+1].x)/2,y:90,'text-anchor':'middle','dominant-baseline':'middle','font-size':'18','fill':'rgba(100,80,40,0.5)','font-weight':'800'});
+        mt.textContent=sym; svg.appendChild(mt);
+      }
+    }
+    node(svg,s.x,90,128,68,s.fill,s.label,s.sub,s.emoji);
+  });
+  lbl(svg,W/2,168,'INTEREST SUBVENTION: 7% BASE − 3% INCENTIVE = 4% EFFECTIVE (GOVT OF INDIA, NOT RBI)','rgba(192,72,8,0.45)',8.5,true);
+})();
+
+// ─── RBI REPORTS ───
+(()=>{
+  const svg=document.getElementById('svgRBI');
+  const W=1340, H=200;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+
+  node(svg,W/2,90,220,52,'#0e1118',['RBI Policy','Research & Data'],'Reports + Surveys','📑');
+
+  // Left: Annual Reports
+  const reports=[
+    {x:200,y:45, fill:'#1a3c8a', label:['Annual Report'],   sub:'RBI Act 1934'},
+    {x:200,y:145,fill:'#197040', label:['Trend & Progress'], sub:'BR Act 1949'},
+  ];
+  // Right: Surveys
+  const surveys=[
+    {x:W-200,y:45, fill:'#6318a4', label:['Consumer Confidence Survey'],  sub:'Quarterly'},
+    {x:W-200,y:145,fill:'#c04808', label:['Inflation Expectation Survey'], sub:'Quarterly · MPC input'},
+  ];
+  [...reports,...surveys].forEach(n=>{
+    const fx = n.x < W/2 ? W/2-110 : W/2+110;
+    curve(svg,fx,90,n.x+(n.x<W/2?90:-90),n.y,n.fill+'77',false,2);
+    node(svg,n.x,n.y,195,48,n.fill,n.label,n.sub,null);
+  });
+  svg.appendChild(el('line',{x1:W/2,y1:20,x2:W/2,y2:180,stroke:'rgba(200,180,140,0.15)','stroke-width':'1','stroke-dasharray':'5 4'}));
+  lbl(svg,330,182,'MANDATORY ANNUAL REPORTS (2)','rgba(26,60,138,0.4)',8,true);
+  lbl(svg,W-330,182,'QUARTERLY SURVEYS (2) — MONETARY POLICY INPUT','rgba(99,24,164,0.4)',8,true);
+})();
+
+// ─── PRELIMS POINTS CHAIN ───
+(()=>{
+  const svg=document.getElementById('svgPoints');
+  const W=1340, H=150;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+  const pts=[
+    {x:75,  fill:'#1a3c8a', label:['SCBs = 40%'],   sub:'Target', emoji:'📊'},
+    {x:225, fill:'#197040', label:['RRB/SFB = 75%'], sub:'Higher target', emoji:'🏡'},
+    {x:375, fill:'#b82020', label:['Pay.Banks'],      sub:'No lending', emoji:'❌'},
+    {x:525, fill:'#086870', label:['Co-lending'],     sub:'NBFC = 20%', emoji:'🤝'},
+    {x:675, fill:'#c08a18', label:['KCC 1998'],       sub:'Farmer credit', emoji:'💳'},
+    {x:825, fill:'#c04808', label:['ISS = 4%'],       sub:'Effective rate', emoji:'💸'},
+    {x:975, fill:'#1a3c8a', label:['RIDF'],           sub:'→ NABARD', emoji:'🏗️'},
+    {x:1115,fill:'#6318a4', label:['Lead Bank'],      sub:'1969', emoji:'🗺️'},
+    {x:1255,fill:'#197040', label:['2 Reports'],      sub:'RBI mandatory', emoji:'📑'},
+  ];
+  pts.forEach((p,i)=>{
+    if(i<pts.length-1){
+      vline(svg,p.x+55,76,pts[i+1].x-55,76,p.fill+'55',false,1.5);
+    }
+    node(svg,p.x,76,104,68,p.fill,[p.label[0]],p.sub,p.emoji);
+  });
+  lbl(svg,W/2,142,'HIGH PROBABILITY PRELIMS POINTS — NUMBERS & DATES TO MEMORISE','rgba(192,72,8,0.5)',8.5,true);
+})();
+</script>
+</body>
+</html>

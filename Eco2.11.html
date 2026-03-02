@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basel Norms & Banking Regulation — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f1624;--paper:#f4f7fc;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#6a7a8a;--border:#ccd8ea;
+  --card:#ffffff;--card2:#eef2f8;--sky:#1a5878;--navy:#0a1a40;
+  --indigo:#2a3080;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 10% 5%, rgba(26,58,138,0.07) 0%, transparent 60%),
+  radial-gradient(ellipse 700px 700px at 90% 90%, rgba(10,96,112,0.05) 0%, transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--blue);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--blue);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--blue),var(--teal),var(--green));margin:14px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--blue);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(26,58,138,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.navy::before{background:var(--navy);}
+.pc.indigo::before{background:var(--indigo);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--blue),var(--teal),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--purple),var(--blue),var(--teal));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+.pill.navy{background:rgba(10,26,64,0.12);color:var(--navy);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+.ps-chip.gold{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--navy);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(26,58,138,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--blue);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.warn{background:#fff3cd;color:#856404;}
+
+/* VERTICAL LIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:8px 0;}
+.ic-node{padding:6px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;white-space:nowrap;}
+.ic-arr{font-size:16px;color:var(--muted);margin:0 3px;}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;border:1.5px solid;margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;margin-bottom:3px;}
+.callout-body{font-size:10px;line-height:1.5;}
+
+/* KEYSTONE */
+.keystone{background:var(--navy);color:#e8f0fe;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#a8c0e0;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* FORMULA BOX */
+.formula{padding:14px 18px;border-radius:12px;background:linear-gradient(135deg,rgba(26,58,138,0.08),rgba(10,96,112,0.06));border:2px solid rgba(26,58,138,0.2);text-align:center;margin:10px 0;}
+.formula-main{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--blue);}
+.formula-sub{font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px;}
+
+/* HIGHLIGHT BOX */
+.highlight-box{padding:12px 14px;border-radius:10px;background:rgba(26,58,138,0.06);border-left:4px solid var(--blue);margin:8px 0;}
+.highlight-box.red{background:rgba(176,26,26,0.06);border-left-color:var(--red);}
+.highlight-box.green{background:rgba(26,106,58,0.06);border-left-color:var(--green);}
+.highlight-box.gold{background:rgba(184,124,16,0.06);border-left-color:var(--gold);}
+.highlight-box.teal{background:rgba(10,96,112,0.06);border-left-color:var(--teal);}
+.hb-title{font-size:11px;font-weight:800;color:var(--blue);margin-bottom:3px;}
+.hb-title.red{color:var(--red);}
+.hb-title.green{color:var(--green);}
+.hb-title.gold{color:var(--gold);}
+.hb-title.teal{color:var(--teal);}
+.hb-body{font-size:10px;line-height:1.6;}
+
+/* CAPITAL STACK */
+.cap-stack{display:flex;flex-direction:column;gap:4px;margin:10px 0;}
+.cap-bar{border-radius:8px;padding:8px 14px;display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:800;}
+.cap-pct{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;}
+
+/* BADGE */
+.badge{display:inline-block;padding:3px 9px;border-radius:6px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;}
+
+/* FLAG */
+.prelim-flag{background:linear-gradient(135deg,#fff3cd,#ffeeba);border:2px solid #d4ac0d;border-radius:12px;padding:14px 18px;margin:16px 0;}
+.prelim-flag-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:#7d6608;margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Economy · Banking Regulation · UPSC Prelims</div>
+  <h1>Basel Norms & Banking Regulation — <em>Mind Map</em></h1>
+  <div class="header-sub">Basel I → II → III · CRAR · PCA · D-SIB · Systemic Risk · Financial Stability</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec-label">Master Flow — The Big Picture</div>
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1400 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: WHY BASEL? ══ -->
+<div class="sec-label">① Why Basel Norms Are Needed</div>
+
+<div class="map-card mc2">
+  <svg id="svgWhy" viewBox="0 0 1400 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">The Banking Business Model</div>
+    <h3>🏦 How Banks Work & Where Risk Comes From</h3>
+    <div class="impact-chain" style="flex-wrap:wrap;">
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">Depositors</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.08);color:var(--teal);">Bank Accepts Deposits</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);">Gives Loans</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);">Borrower Default Risk</div>
+    </div>
+    <div class="highlight-box" style="margin-top:10px;">
+      <div class="hb-title">Why This Creates Systemic Risk</div>
+      <div class="hb-body">Too many loan defaults → Bank loses capital → Cannot repay depositors → Bank run → Financial crisis → <strong>Basel Norms prevent this</strong></div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">What Basel Solves</div>
+    <h3>📜 The Global Rulebook</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">📍 Where: Basel, Switzerland</div><div class="vs">City that lends its name to the norms</div></div>
+      <div class="vitem"><div class="vt">🏛️ BIS — Bank for International Settlements</div><div class="vs">Parent body; "Central bank of central banks"</div></div>
+      <div class="vitem"><div class="vt">📋 BCBS — Basel Committee on Banking Supervision</div><div class="vs">The committee that drafts Basel norms</div></div>
+      <div class="vitem"><div class="vt">🤝 Basel Accord</div><div class="vs">Formal agreement; India has accepted all Basel norms</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: BASEL EVOLUTION ══ -->
+<div class="sec-label">② Evolution of Basel Norms — I → II → III</div>
+
+<div class="map-card mc3">
+  <svg id="svgBasel" viewBox="0 0 1400 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+    <div class="phase-num" style="color:var(--blue);">I</div>
+    <div class="phase-title">Basel I — 1988</div>
+    <div class="phase-sub" style="color:var(--muted);">India adopted: 1999</div>
+    <div style="font-size:11px;margin-top:8px;line-height:1.7;color:var(--muted);">
+      Credit Risk only<br>
+      <span style="font-weight:800;color:var(--blue);">Min Capital = 8% of RWA</span><br>
+      Simple, broad framework
+    </div>
+    <span class="pill blue" style="margin-top:8px;">Credit Risk Focus</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--teal);background:rgba(10,96,112,0.04);">
+    <div class="phase-num" style="color:var(--teal);">II</div>
+    <div class="phase-title">Basel II — 2004</div>
+    <div class="phase-sub" style="color:var(--muted);">3 Pillars Framework</div>
+    <div style="font-size:11px;margin-top:8px;line-height:1.7;color:var(--muted);">
+      + Market Risk<br>
+      + Operational Risk<br>
+      <span style="font-weight:800;color:var(--teal);">3 Pillars: Capital · Supervision · Disclosure</span>
+    </div>
+    <span class="pill teal" style="margin-top:8px;">Expanded Coverage</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--green);background:rgba(26,106,58,0.04);">
+    <div class="phase-num" style="color:var(--green);">III</div>
+    <div class="phase-title">Basel III — 2010</div>
+    <div class="phase-sub" style="color:var(--muted);">Post-2008 Crisis Response</div>
+    <div style="font-size:11px;margin-top:8px;line-height:1.7;color:var(--muted);">
+      More + better quality capital<br>
+      Control leverage<br>
+      <span style="font-weight:800;color:var(--green);">Liquidity ratios: LCR + NSFR</span>
+    </div>
+    <span class="pill green" style="margin-top:8px;">Crisis-Proof Banks</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: RISK WEIGHTED ASSETS + CRAR ══ -->
+<div class="sec-label">③ RWA, CRAR & Capital — The Core Mechanics</div>
+
+<div class="map-card mc4">
+  <svg id="svgCRAR" viewBox="0 0 1400 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Risk Weighted Assets (RWA)</div>
+    <h3>⚖️ Not All Loans Are Equal</h3>
+    <table class="ctable">
+      <tr><th>Loan Type</th><th>Risk Weight</th><th>Example</th></tr>
+      <tr><td>Govt. Securities</td><td><span class="tag ok">0%</span></td><td>Risk-free</td></tr>
+      <tr><td>Mortgage / Collateral</td><td><span class="tag warn">50%</span></td><td>Home loan</td></tr>
+      <tr><td>Personal / Unsecured</td><td><span class="tag na">100%</span></td><td>Personal loan</td></tr>
+    </table>
+    <div class="formula" style="margin-top:10px;">
+      <div class="formula-main">RWA = Loan × Risk Weight</div>
+      <div class="formula-sub">Higher risk → Higher RWA → More capital needed</div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">CRAR Formula</div>
+    <h3>📐 Capital to Risk Weighted Asset Ratio</h3>
+    <div class="formula">
+      <div class="formula-main" style="color:var(--teal);">CRAR = Capital ÷ RWA</div>
+      <div class="formula-sub">Expressed as percentage</div>
+    </div>
+    <div class="highlight-box teal" style="margin-top:8px;">
+      <div class="hb-title teal">Why CRAR Matters</div>
+      <div class="hb-body">Higher CRAR = More cushion to absorb losses<br>Bank 1 CRAR 40% vs Bank 2 CRAR 30% → Bank 1 is safer<br><strong>Higher CRAR = Higher depositor safety 🔥</strong></div>
+    </div>
+  </div>
+  <div class="pc navy">
+    <div class="pc-label">India vs Global Requirement</div>
+    <h3>🇮🇳 RBI's Stricter Norms</h3>
+    <div class="cap-stack">
+      <div class="cap-bar" style="background:rgba(26,58,138,0.15);color:var(--blue);">
+        <span>Tier 1 Capital (Equity + Retained Earnings)</span>
+        <span class="cap-pct" style="color:var(--blue);">7%</span>
+      </div>
+      <div class="cap-bar" style="background:rgba(10,96,112,0.15);color:var(--teal);">
+        <span>Tier 2 Capital (Bonds + Subord. Debt)</span>
+        <span class="cap-pct" style="color:var(--teal);">2%</span>
+      </div>
+      <div class="cap-bar" style="background:rgba(26,106,58,0.15);color:var(--green);">
+        <span>Capital Conservation Buffer (CCB)</span>
+        <span class="cap-pct" style="color:var(--green);">2.5%</span>
+      </div>
+      <div class="cap-bar" style="background:var(--navy);color:#fff;">
+        <span style="font-weight:800;">India Total CRAR (RBI Requirement)</span>
+        <span class="cap-pct">11.5%</span>
+      </div>
+    </div>
+    <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px;">Global minimum = 10.5% | India = 11.5% (RBI stricter)</div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: CAPITAL TYPES & CCB ══ -->
+<div class="sec-label">④ Types of Capital & Conservation Buffer</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Tier 1 vs Tier 2 Capital</div>
+    <h3>🏛️ Capital Quality Matters</h3>
+    <div class="g2" style="margin-bottom:0;gap:10px;">
+      <div style="padding:12px;border-radius:10px;background:rgba(26,58,138,0.07);border:1.5px solid rgba(26,58,138,0.2);">
+        <div style="font-size:12px;font-weight:800;color:var(--blue);margin-bottom:8px;">🔵 Tier 1 — Core Capital</div>
+        <div class="vlist" style="gap:5px;">
+          <div class="vitem" style="padding:6px 10px;"><div class="vt">Equity / Share Capital</div></div>
+          <div class="vitem" style="padding:6px 10px;"><div class="vt">Retained Earnings</div></div>
+        </div>
+        <div style="margin-top:8px;font-size:10px;color:var(--blue);font-weight:700;">✅ Absorbs losses FIRST<br>Highest quality capital</div>
+      </div>
+      <div style="padding:12px;border-radius:10px;background:rgba(10,96,112,0.07);border:1.5px solid rgba(10,96,112,0.2);">
+        <div style="font-size:12px;font-weight:800;color:var(--teal);margin-bottom:8px;">🟢 Tier 2 — Supplementary</div>
+        <div class="vlist" style="gap:5px;">
+          <div class="vitem" style="padding:6px 10px;"><div class="vt">Bonds</div></div>
+          <div class="vitem" style="padding:6px 10px;"><div class="vt">Subordinated Debt</div></div>
+        </div>
+        <div style="margin-top:8px;font-size:10px;color:var(--teal);font-weight:700;">⚠️ Less strong than Tier 1<br>Secondary loss absorber</div>
+      </div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Capital Conservation Buffer</div>
+    <h3>🛡️ The Safety Cushion (2.5%)</h3>
+    <div class="highlight-box green">
+      <div class="hb-title green">What Happens if CCB Breached?</div>
+      <div class="hb-body">
+        Bank falls below CCB threshold:<br>
+        ❌ Cannot distribute dividends<br>
+        ❌ Faces capital distribution restrictions<br>
+        ❌ Bonus payments restricted<br>
+        ✅ Forces banks to rebuild capital in good times
+      </div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);font-size:9px;">CRAR Drops</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);font-size:9px;">CCB Breached</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);font-size:9px;">No Dividends</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);font-size:9px;">Capital Rebuilt</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: NPA & RECAP ══ -->
+<div class="sec-label">⑤ NPA Impact & Bank Recapitalisation</div>
+
+<div class="map-card mc2">
+  <svg id="svgNPA" viewBox="0 0 1400 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">NPA Spiral</div>
+    <h3>⚠️ When Loans Become NPAs</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;">
+      <div style="display:flex;align-items:center;gap:8px;margin:3px 0;font-size:11px;">
+        <span style="font-size:16px;">1️⃣</span> Loan becomes NPA (Non-Performing Asset)
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin:3px 0;font-size:11px;">
+        <span style="font-size:16px;">2️⃣</span> Bank must make provisions (set aside money)
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin:3px 0;font-size:11px;">
+        <span style="font-size:16px;">3️⃣</span> Capital reduces → CRAR falls below minimum
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin:3px 0;font-size:11px;">
+        <span style="font-size:16px;">4️⃣</span> Bank cannot lend → Credit crunch in economy
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin:3px 0;font-size:11px;">
+        <span style="font-size:16px;">5️⃣</span> Slower economic growth 📉
+      </div>
+    </div>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">PSB Recapitalisation</div>
+    <h3>💉 Government Injects Capital</h3>
+    <div class="highlight-box gold">
+      <div class="hb-title gold">Why Recapitalisation?</div>
+      <div class="hb-body">When CRAR of Public Sector Banks falls, government steps in to restore lending capacity and financial stability.</div>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">💰</div><div class="ft">Direct Budget Support</div><div class="fs">Direct capital infusion from fiscal budget</div></div>
+      <div class="feat"><div class="fi">📄</div><div class="ft">Recapitalisation Bonds</div><div class="fs">RBI bonds exchanged for capital; off-budget route</div></div>
+    </div>
+    <div style="margin-top:8px;padding:8px 12px;background:rgba(26,58,138,0.06);border-radius:8px;font-size:10px;font-weight:700;color:var(--blue);">
+      Goal: ↑ Capital → ↑ CRAR → ↑ Lending Capacity → ↑ Credit Growth
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: PCA ══ -->
+<div class="sec-label">⑥ Prompt Corrective Action (PCA) — RBI's Early Warning System</div>
+
+<div class="map-card mc4">
+  <svg id="svgPCA" viewBox="0 0 1400 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">PCA Triggers (3 Parameters)</div>
+    <h3>🚨 When Does PCA Activate?</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span style="font-size:22px;flex:0 0 auto;">1️⃣</span>
+          <div><div class="vt">Capital (CRAR)</div><div class="vs">CRAR falls below required minimum</div></div>
+        </div>
+      </div>
+      <div class="vitem">
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span style="font-size:22px;flex:0 0 auto;">2️⃣</span>
+          <div><div class="vt">Asset Quality (NPA)</div><div class="vs">NPA levels breach threshold</div></div>
+        </div>
+      </div>
+      <div class="vitem">
+        <div style="display:flex;gap:10px;align-items:center;">
+          <span style="font-size:22px;flex:0 0 auto;">3️⃣</span>
+          <div><div class="vt">Leverage Ratio</div><div class="vs">Equity capital vs total assets too low</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:8px 12px;background:rgba(176,26,26,0.08);border-radius:8px;font-size:10px;font-weight:700;color:var(--red);">
+      ⚠️ PCA does NOT stop normal banking (deposits + lending continue)
+    </div>
+  </div>
+
+  <div class="pc amber">
+    <div class="pc-label">PCA Restrictions RBI Can Impose</div>
+    <h3>🔒 RBI's Powers Under PCA</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;">
+      <span class="ps-chip prob">🚫 No Branch Expansion</span>
+      <span class="ps-chip prob">🚫 No Dividend Distribution</span>
+      <span class="ps-chip prob">🚫 Cap Management Salary</span>
+      <span class="ps-chip prob">🚫 Restrict Risky Lending</span>
+      <span class="ps-chip prob">🚫 Higher Provisioning</span>
+      <span class="ps-chip prob">🚫 Change Management/Board</span>
+      <span class="ps-chip prob">🚫 Force Merger</span>
+      <span class="ps-chip prob">🚫 Supersede Board</span>
+    </div>
+    <div class="highlight-box" style="margin-top:10px;">
+      <div class="hb-title">Goal of PCA</div>
+      <div class="hb-body">Restore financial health → Conserve capital → Reduce risky lending → Protect depositors</div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">PCA Applicability</div>
+    <h3>📋 Who PCA Applies To</h3>
+    <div style="margin-bottom:8px;padding:10px;border-radius:9px;background:rgba(26,106,58,0.08);border:1px solid rgba(26,106,58,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--green);margin-bottom:5px;">✅ PCA Applies To:</div>
+      <span class="ps-chip sol">Scheduled Commercial Banks</span>
+      <span class="ps-chip sol">NBFCs (PCA-like framework)</span>
+    </div>
+    <div style="padding:10px;border-radius:9px;background:rgba(176,26,26,0.07);border:1px solid rgba(176,26,26,0.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--red);margin-bottom:5px;">❌ PCA Does NOT Apply To:</div>
+      <span class="ps-chip prob">RRBs (NABARD supervises)</span>
+      <span class="ps-chip prob">Payment Banks</span>
+      <span class="ps-chip prob">Small Finance Banks</span>
+      <span class="ps-chip prob">UCBs (SAF applies instead)</span>
+    </div>
+    <div class="callout" style="background:rgba(90,26,138,0.06);border-color:rgba(90,26,138,0.25);margin-top:8px;">
+      <div class="callout-title" style="color:var(--purple);">🏦 SAF for Urban Cooperative Banks (UCBs)</div>
+      <div class="callout-body" style="color:var(--muted);">Triggers: Low capital + High NPA + 2 consecutive years of losses. Similar restrictions to PCA.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 7: D-SIB / SIFI ══ -->
+<div class="sec-label">⑦ Systemically Important Institutions — "Too Big to Fail"</div>
+
+<div class="map-card mc5">
+  <svg id="svgSIFI" viewBox="0 0 1400 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc navy">
+    <div class="pc-label">D-SIB — Domestic Systemically Important Banks</div>
+    <h3>🏦 "Too Big to Fail" Banks</h3>
+    <div class="callout" style="background:rgba(10,26,64,0.06);border-color:rgba(10,26,64,0.25);">
+      <div class="callout-title" style="color:var(--navy);">📐 Criteria</div>
+      <div class="callout-body">Asset Size > 2% of GDP → Declared by RBI annually</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--navy);">SBI</div>
+        <div class="stat-label">D-SIB</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">HDFC</div>
+        <div class="stat-label">D-SIB</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--teal);">ICICI</div>
+        <div class="stat-label">D-SIB</div>
+      </div>
+    </div>
+    <div class="highlight-box" style="margin-top:8px;">
+      <div class="hb-title">Consequences for D-SIBs</div>
+      <div class="hb-body">
+        → Higher capital requirements (extra surcharge)<br>
+        → Extra/enhanced supervision by RBI<br>
+        → Moral Hazard Control: prevents excessive risk-taking<br>
+        → "Bail-in" over "bailout" approach preferred
+      </div>
+    </div>
+  </div>
+
+  <div class="pc sky">
+    <div class="pc-label">Full Landscape of Systemically Important Entities</div>
+    <h3>🌐 SIFI Ecosystem in India</h3>
+    <table class="ctable">
+      <tr><th>Entity Type</th><th>Declared By</th><th>Threshold / Examples</th></tr>
+      <tr><td>D-SIB (Banks)</td><td>RBI</td><td>Asset > 2% GDP | SBI, HDFC, ICICI</td></tr>
+      <tr><td>SI-NBFC</td><td>RBI</td><td>Asset > ₹500 Crore</td></tr>
+      <tr><td>D-SII (Insurers)</td><td>IRDAI</td><td>LIC, GIC, NIAC</td></tr>
+      <tr><td>SI-FMI (Mkt. Infra)</td><td>SEBI</td><td>MCX, NCDEX</td></tr>
+    </table>
+    <div class="highlight-box red" style="margin-top:10px;">
+      <div class="hb-title red">⚠️ Why "Too Big to Fail" Is Also Dangerous</div>
+      <div class="hb-body">Market expects govt. rescue → Banks take MORE risk (Moral Hazard) → Hence: Extra capital + supervision required</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 8: PCA vs D-SIB COMPARISON ══ -->
+<div class="sec-label">⑧ PCA vs D-SIB — Compare & Contrast</div>
+
+<div class="g2">
+  <div class="pc teal">
+    <div class="pc-label">Framework Comparison</div>
+    <h3>⚖️ PCA vs D-SIB at a Glance</h3>
+    <table class="ctable">
+      <tr><th>Parameter</th><th>PCA</th><th>D-SIB</th></tr>
+      <tr><td>Purpose</td><td>Rescue weak banks</td><td>Monitor large banks</td></tr>
+      <tr><td>Trigger</td><td>CRAR, NPA, Leverage fall</td><td>Asset size > 2% GDP</td></tr>
+      <tr><td>Declared by</td><td>RBI (reactive)</td><td>RBI (annual list)</td></tr>
+      <tr><td>Key Action</td><td>Restrictions imposed</td><td>Higher capital surcharge</td></tr>
+      <tr><td>Goal</td><td>Restore financial health</td><td>Prevent systemic risk</td></tr>
+    </table>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">Concept Flow: Full Picture</div>
+    <h3>🔄 How It All Connects</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;gap:6px;">
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);">Deposits → Loans → Risk</div>
+      <div style="color:var(--muted);margin-left:10px;">↓</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);">Risk Weighted Assets (RWA)</div>
+      <div style="color:var(--muted);margin-left:10px;">↓</div>
+      <div class="ic-node" style="border-color:var(--indigo);background:rgba(42,48,128,0.07);color:var(--indigo);">CRAR = Capital ÷ RWA</div>
+      <div style="color:var(--muted);margin-left:10px;">↓</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);">Basel Norms set minimum CRAR</div>
+      <div style="color:var(--muted);margin-left:10px;">↓</div>
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.07);color:var(--red);">If breached → PCA triggered</div>
+      <div style="color:var(--muted);margin-left:10px;">↓</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);">Govt. Recapitalises if needed</div>
+      <div style="color:var(--muted);margin-left:10px;">↓</div>
+      <div class="ic-node" style="border-color:var(--navy);background:rgba(10,26,64,0.07);color:var(--navy);">Large banks → D-SIB surcharge → Financial Stability</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 9: PRELIMS FLAGS ══ -->
+<div class="sec-label">⑨ High-Probability Prelims Points 🔥</div>
+
+<div class="prelim-flag">
+  <div class="prelim-flag-title">⭐ UPSC Prelims — Must-Remember Facts</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;">
+    <span class="ps-chip neu">📅 Basel I — 1988 (India: 1999)</span>
+    <span class="ps-chip neu">📅 Basel II — 2004</span>
+    <span class="ps-chip neu">📅 Basel III — 2010 (Post-2008 crisis)</span>
+    <span class="ps-chip neu">🏛️ BCBS under BIS, Basel, Switzerland</span>
+    <span class="ps-chip neu">📐 Basel I min = 8% of RWA</span>
+    <span class="ps-chip neu">🇮🇳 India CRAR = 11.5% (RBI stricter)</span>
+    <span class="ps-chip neu">🛡️ CCB = 2.5%</span>
+    <span class="ps-chip neu">💰 Tier 1 = 7% | Tier 2 = 2%</span>
+    <span class="ps-chip neu">📊 CRAR = Capital ÷ RWA</span>
+    <span class="ps-chip neu">🚨 PCA Triggers: Capital, NPA, Leverage</span>
+    <span class="ps-chip neu">❌ PCA not for RRBs</span>
+    <span class="ps-chip neu">🏦 SAF for UCBs (not PCA)</span>
+    <span class="ps-chip neu">📏 D-SIB: Asset > 2% GDP</span>
+    <span class="ps-chip neu">💼 NBFC SI: Asset > ₹500 Cr</span>
+    <span class="ps-chip neu">🏦 D-SIB: SBI, HDFC, ICICI</span>
+    <span class="ps-chip neu">🛡️ D-SII (IRDAI): LIC, GIC, NIAC</span>
+    <span class="ps-chip neu">📈 SI-FMI (SEBI): MCX, NCDEX</span>
+    <span class="ps-chip neu">⚠️ Basel III = 4 focus: Capital·Leverage·Funding·Liquidity</span>
+    <span class="ps-chip neu">🔒 CCB breach → No dividends</span>
+    <span class="ps-chip neu">💉 Recap Bonds = Off-budget capital infusion</span>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🏦</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">Banks take <strong style="color:#a8d8ff;">deposits → give loans → face credit risk</strong>. To prevent collapse, Basel Norms require minimum capital buffers (CRAR). India follows Basel III via RBI at <strong style="color:#a8d8ff;">11.5% CRAR</strong>. When capital falls dangerously, <strong style="color:#a8d8ff;">PCA activates</strong>. When banks become too large to fail, they become <strong style="color:#a8d8ff;">D-SIBs</strong> with extra safeguards. All roads lead to: <strong style="color:#f5d78a;">protect depositors → maintain financial stability → sustain credit growth.</strong></div>
+    <div class="keystone-pills">
+      <span class="kpill">🏦 Basel Norms = Global Rulebook</span>
+      <span class="kpill">📐 CRAR = Safety Measure</span>
+      <span class="kpill">🚨 PCA = Early Warning</span>
+      <span class="kpill">🌐 D-SIB = Too Big to Fail</span>
+      <span class="kpill">🛡️ Financial Stability</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a||{}))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+
+function straightEdge(svg,x1,y1,x2,y2,color,dashed){
+  const p=se('path',{d:`M${x1},${y1} L${x2},${y2}`,stroke:color||'#aaa','stroke-width':'1.8',fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.5'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx===undefined?10:rx;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let ty=y;
+  const totalH=(lines.length*14)+(sub?12:0)+(emoji?18:0);
+  ty=y-totalH/2+(emoji?9:7);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.38)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// MASTER FLOW
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.setAttribute('viewBox','0 0 1400 110');
+  svg.appendChild(se('rect',{x:0,y:0,width:1400,height:110,fill:'rgba(244,247,252,0.6)'}));
+
+  const steps=[
+    {x:88,  label:'Deposits\n→ Loans',     sub:'Banking Business',          fill:'#1a3a8a', emoji:'🏦'},
+    {x:260, label:'Default\nRisk',          sub:'Borrower may not repay',    fill:'#b01a1a', emoji:'⚠️'},
+    {x:440, label:'Risk Weighted\nAssets',  sub:'RWA Calculation',           fill:'#5a1a8a', emoji:'⚖️'},
+    {x:620, label:'CRAR\nRatio',            sub:'Capital ÷ RWA',             fill:'#0a6070', emoji:'📐'},
+    {x:800, label:'Basel\nNorms',           sub:'I → II → III',              fill:'#0a2060', emoji:'📜'},
+    {x:980, label:'PCA\nFramework',         sub:'Early Warning + Restrictions',fill:'#d46a10', emoji:'🚨'},
+    {x:1160,label:'D-SIB\nSurcharge',      sub:'Too Big to Fail',           fill:'#1a5878', emoji:'🌐'},
+    {x:1320,label:'Financial\nStability',   sub:'Depositors Protected',      fill:'#1a6a3a', emoji:'🛡️'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      edge(svg,s.x+72,55,steps[i+1].x-72,55,'#1a3a8a',false,1.8);
+    }
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,55,136,68,s.fill,s.label.split('\n'),s.sub,s.emoji);
+  });
+  const t=se('text',{x:700,y:16,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3',fill:'rgba(26,58,138,0.4)'});
+  t.textContent='MASTER FLOW: RISK → REGULATION → STABILITY';
+  svg.appendChild(t);
+})();
+
+// WHY NORMS SVG
+(function(){
+  const svg=document.getElementById('svgWhy');
+  svg.setAttribute('viewBox','0 0 1400 200');
+
+  node(svg,700,100,210,58,'#0a1a40',['Why Basel Norms?'],'Global Banking Safety Rules','🌐');
+
+  const items=[
+    {x:130,  y:55, fill:'#b01a1a', label:['Loan Defaults'],   sub:'Borrower risk',     emoji:'💸'},
+    {x:130,  y:145,fill:'#5a1a8a', label:['Bank Collapses'],  sub:'Capital wiped out', emoji:'🏚️'},
+    {x:370,  y:30, fill:'#1a3a8a', label:['Contagion Risk'],  sub:'Bank runs spread',  emoji:'📉'},
+    {x:370,  y:170,fill:'#d46a10', label:['Depositor Loss'],  sub:'Savings gone',      emoji:'😰'},
+    {x:1020, y:30, fill:'#1a6a3a', label:['Capital Buffer'],  sub:'Absorb losses',     emoji:'🛡️'},
+    {x:1020, y:170,fill:'#0a6070', label:['CRAR Minimum'],    sub:'8% Basel / 11.5% India',emoji:'📐'},
+    {x:1250, y:55, fill:'#1a5878', label:['Safer Banks'],     sub:'Resilient system',  emoji:'✅'},
+    {x:1250, y:145,fill:'#2a3080', label:['BIS / BCBS'],      sub:'Basel, Switzerland',emoji:'🏛️'},
+  ];
+
+  items.forEach(n=>{
+    const fx=n.x<700?595:805;
+    const fy=n.y<100?92:108;
+    edge(svg,fx,fy,n.x+(n.x<700?80:-80),n.y,n.x<700?'#b01a1a44':'#1a6a3a44',true,1.6);
+    node(svg,n.x,n.y,185,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+})();
+
+// BASEL EVOLUTION SVG
+(function(){
+  const svg=document.getElementById('svgBasel');
+  svg.setAttribute('viewBox','0 0 1400 220');
+
+  // Timeline bar
+  svg.appendChild(se('line',{x1:100,y1:110,x2:1300,y2:110,stroke:'rgba(26,58,138,0.2)','stroke-width':'3','stroke-dasharray':'8 4'}));
+
+  const basel=[
+    {x:200,  fill:'#1a3a8a', year:'1988',  tag:'Basel I', lines:['Credit Risk Only','Min 8% of RWA'], sub:'India adopted 1999', emoji:'📜'},
+    {x:700,  fill:'#0a6070', year:'2004',  tag:'Basel II',lines:['3 Pillars','Market + Op Risk'],sub:'Capital·Supervision·Disclosure', emoji:'🏛️'},
+    {x:1200, fill:'#1a6a3a', year:'2010',  tag:'Basel III',lines:['Post-2008 Crisis','4 Focus Areas'], sub:'Capital·Leverage·Funding·Liquidity',emoji:'🛡️'},
+  ];
+
+  // Arrow markers
+  const defs=se('defs',{});
+  const m=se('marker',{id:'arr',markerWidth:'8',markerHeight:'6',refX:'6',refY:'3',orient:'auto'});
+  m.appendChild(se('path',{d:'M0,0 L0,6 L8,3 z',fill:'rgba(26,58,138,0.35)'}));
+  defs.appendChild(m);
+  svg.insertBefore(defs,svg.firstChild);
+
+  // Connection arrows
+  svg.appendChild(se('path',{d:'M340,110 L540,110',stroke:'rgba(26,58,138,0.4)','stroke-width':'2',fill:'none','marker-end':'url(#arr)'}));
+  svg.appendChild(se('path',{d:'M840,110 L1040,110',stroke:'rgba(26,58,138,0.4)','stroke-width':'2',fill:'none','marker-end':'url(#arr)'}));
+
+  // Crisis label
+  const cl=se('text',{x:1070,y:75,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(176,26,26,0.7)','letter-spacing':'1'});
+  cl.textContent='← 2008 FINANCIAL CRISIS →';
+  svg.appendChild(cl);
+  const cl2=se('text',{x:1070,y:87,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(176,26,26,0.5)'});
+  cl2.textContent='TRIGGERED BASEL III';
+  svg.appendChild(cl2);
+
+  basel.forEach((b,i)=>{
+    // year dot
+    svg.appendChild(se('circle',{cx:b.x,cy:110,r:10,fill:b.fill}));
+    const yt=se('text',{x:b.x,y:110,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8','font-weight':'800','font-family':'DM Mono,monospace',fill:'#fff'});
+    yt.textContent=b.year.slice(2);svg.appendChild(yt);
+    // year label
+    const yl=se('text',{x:b.x,y:127,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.7)','font-weight':'700'});
+    yl.textContent=b.year; svg.appendChild(yl);
+    // card
+    const cardY= i%2===0 ? 50 : 170;
+    const lineY= i%2===0 ? 100 : 120;
+    svg.appendChild(se('line',{x1:b.x,y1:lineY,x2:b.x,y2:i%2===0?cardY+30:cardY-30,stroke:b.fill+'88','stroke-width':'1.5','stroke-dasharray':'4 3'}));
+    node(svg,b.x,cardY,210,56,b.fill,b.lines,b.sub,b.emoji);
+    // tag
+    const tg=se('rect',{x:b.x-30,y:(i%2===0?cardY-38:cardY+24),width:60,height:16,rx:5,ry:5,fill:b.fill});
+    svg.appendChild(tg);
+    const tt=se('text',{x:b.x,y:(i%2===0?cardY-30:cardY+32),'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-weight':'800','font-family':'DM Mono,monospace',fill:'#fff'});
+    tt.textContent=b.tag; svg.appendChild(tt);
+  });
+
+  // Pillars for Basel II
+  const pillarY=210;
+  const pillars=['①Capital','②Supervision','③Disclosure'];
+  pillars.forEach((p,i)=>{
+    const px=550+i*110;
+    svg.appendChild(se('rect',{x:px-48,y:pillarY-14,width:96,height:18,rx:5,ry:5,fill:'rgba(10,96,112,0.12)',stroke:'rgba(10,96,112,0.3)','stroke-width':'1'}));
+    const pt=se('text',{x:px,y:pillarY-5,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'700','font-family':'Nunito,sans-serif',fill:'#0a6070'});
+    pt.textContent=p; svg.appendChild(pt);
+  });
+  const pl=se('text',{x:700,y:198,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(10,96,112,0.5)','letter-spacing':'1'});
+  pl.textContent='BASEL II — THREE PILLARS'; svg.appendChild(pl);
+})();
+
+// CRAR / RWA SVG
+(function(){
+  const svg=document.getElementById('svgCRAR');
+  svg.setAttribute('viewBox','0 0 1400 200');
+
+  // Left: RWA Tree
+  node(svg,280,40,240,46,'#1a3a8a',['Risk Weighted Assets (RWA)'],'Loan × Risk Weight','⚖️');
+
+  const rwaItems=[
+    {x:100, y:140, fill:'#1a6a3a', label:['Govt Bonds'],   sub:'0% risk weight',   emoji:'🏛️'},
+    {x:280, y:140, fill:'#d46a10', label:['Home Loans'],    sub:'50% risk weight',  emoji:'🏠'},
+    {x:460, y:140, fill:'#b01a1a', label:['Personal Loans'],sub:'100% risk weight', emoji:'💸'},
+  ];
+  rwaItems.forEach(n=>{
+    edge(svg,280,66,n.x,120,'#1a3a8a44',true,1.5);
+    node(svg,n.x,140,168,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  const rarr=se('text',{x:280,y:192,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.45)','letter-spacing':'2'});
+  rarr.textContent='HIGHER RISK → MORE CAPITAL NEEDED'; svg.appendChild(rarr);
+
+  // Divider
+  svg.appendChild(se('line',{x1:620,y1:10,x2:620,y2:190,stroke:'rgba(200,200,220,0.3)','stroke-width':'1','stroke-dasharray':'6 3'}));
+
+  // Right: CRAR Formula & Capital Stack
+  node(svg,940,40,240,46,'#0a1a40',['CRAR = Capital ÷ RWA'],'Minimum % required','📐');
+
+  const crarItems=[
+    {x:740, y:140, fill:'#1a3a8a', label:['Tier 1'],        sub:'7% (equity+earnings)', emoji:'💎'},
+    {x:940, y:140, fill:'#0a6070', label:['Tier 2'],         sub:'2% (bonds+debt)',     emoji:'📄'},
+    {x:1140,y:140, fill:'#1a6a3a', label:['CCB Buffer'],     sub:'2.5% safety cushion', emoji:'🛡️'},
+  ];
+  crarItems.forEach(n=>{
+    edge(svg,940,66,n.x,120,'#0a1a4044',true,1.5);
+    node(svg,n.x,140,178,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // Total CRAR box
+  svg.appendChild(se('rect',{x:1270,y:90,width:108,height:60,rx:10,ry:10,fill:'#0a1a40'}));
+  const tv=se('text',{x:1324,y:112,'text-anchor':'middle','dominant-baseline':'middle','font-size':'22','font-weight':'800','font-family':'Playfair Display,serif',fill:'#fff'});
+  tv.textContent='11.5%'; svg.appendChild(tv);
+  const tl=se('text',{x:1324,y:130,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(255,255,255,0.55)'});
+  tl.textContent='INDIA CRAR'; svg.appendChild(tl);
+  const tl2=se('text',{x:1324,y:142,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(255,255,255,0.45)'});
+  tl2.textContent='RBI REQUIRED'; svg.appendChild(tl2);
+})();
+
+// NPA CHAIN SVG
+(function(){
+  const svg=document.getElementById('svgNPA');
+  svg.setAttribute('viewBox','0 0 1400 160');
+  svg.appendChild(se('rect',{x:0,y:0,width:1400,height:160,fill:'rgba(244,247,252,0.5)'}));
+
+  const steps=[
+    {x:100,  fill:'#b01a1a', label:['Loan → NPA'],          sub:'Borrower defaults',      emoji:'💔'},
+    {x:305,  fill:'#d46a10', label:['Provisions Made'],      sub:'Bank sets aside funds',   emoji:'📤'},
+    {x:510,  fill:'#5a1a8a', label:['Capital Reduces'],      sub:'Balance sheet hit',       emoji:'📉'},
+    {x:715,  fill:'#1a3a8a', label:['CRAR Falls'],           sub:'Below RBI minimum',       emoji:'⚠️'},
+    {x:920,  fill:'#0a6070', label:['PCA Triggered'],        sub:'RBI intervenes',          emoji:'🚨'},
+    {x:1120, fill:'#b87c10', label:['Govt. Recapitalises'],  sub:'Budget / Bonds',          emoji:'💉'},
+    {x:1310, fill:'#1a6a3a', label:['CRAR Restored'],        sub:'Lending resumes',         emoji:'✅'},
+  ];
+
+  for(let i=0;i<steps.length-1;i++){
+    edge(svg,steps[i].x+80,80,steps[i+1].x-80,80,'#1a3a8a33',false,2);
+  }
+  steps.forEach(s=>node(svg,s.x,80,165,68,s.fill,[s.label[0]],s.sub,s.emoji));
+
+  const t=se('text',{x:700,y:148,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(176,26,26,0.5)','letter-spacing':'2'});
+  t.textContent='NPA SPIRAL → PCA → RECAPITALISATION CYCLE';
+  svg.appendChild(t);
+})();
+
+// PCA SVG
+(function(){
+  const svg=document.getElementById('svgPCA');
+  svg.setAttribute('viewBox','0 0 1400 220');
+
+  node(svg,700,110,220,58,'#0a1a40',['Prompt Corrective Action','(PCA)'],'RBI Early Warning System','🚨');
+
+  // Left: Triggers
+  const triggers=[
+    {x:170, y:50,  fill:'#b01a1a', label:['CRAR Falls'],      sub:'Capital Adequacy Ratio low', emoji:'📉'},
+    {x:170, y:130, fill:'#d46a10', label:['NPA Rises'],        sub:'Asset Quality Breached',    emoji:'⚠️'},
+    {x:170, y:200, fill:'#5a1a8a', label:['Leverage Weak'],    sub:'Equity vs Total Assets',    emoji:'⚖️'},
+  ];
+  triggers.forEach(n=>{
+    edge(svg,593,110,n.x+80,n.y,'#b01a1a44',true,1.6);
+    node(svg,n.x,n.y,165,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // Right: Restrictions
+  const restrictions=[
+    {x:1230,y:40,  fill:'#1a3a8a', label:['No Branch Expansion'],   sub:'Growth halted',           emoji:'🚫'},
+    {x:1230,y:100, fill:'#0a6070', label:['No Dividends'],           sub:'Capital conserved',       emoji:'💰'},
+    {x:1230,y:160, fill:'#1a6a3a', label:['No Risky Lending'],       sub:'NPA risk reduced',        emoji:'🔒'},
+    {x:1040,y:55,  fill:'#b87c10', label:['Cap Salaries'],           sub:'Management restricted',   emoji:'🏛️'},
+    {x:1040,y:165, fill:'#2a3080', label:['Force Merger / Takeover'],sub:'Last resort',             emoji:'🔀'},
+  ];
+  restrictions.forEach(n=>{
+    edge(svg,807,110,n.x-80,n.y,'#1a3a8a44',true,1.6);
+    node(svg,n.x,n.y,175,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // Applicability divider
+  const appY=204;
+  const apps=[
+    {x:350, fill:'#1a6a3a', text:'✅ Sched. Commercial Banks', col:'#1a6a3a'},
+    {x:580, fill:'#0a6070', text:'✅ NBFCs (PCA-like)', col:'#0a6070'},
+    {x:780, fill:'#b01a1a', text:'❌ Not RRBs', col:'#b01a1a'},
+    {x:940, fill:'#b01a1a', text:'❌ Not Payment Banks', col:'#b01a1a'},
+    {x:1120,fill:'#b87c10', text:'UCBs → SAF instead', col:'#b87c10'},
+  ];
+  apps.forEach(a=>{
+    svg.appendChild(se('rect',{x:a.x-90,y:appY-12,width:180,height:18,rx:5,ry:5,fill:a.fill+'18',stroke:a.fill+'44','stroke-width':'1'}));
+    const at=se('text',{x:a.x,y:appY-3,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'700','font-family':'Nunito,sans-serif',fill:a.col});
+    at.textContent=a.text; svg.appendChild(at);
+  });
+})();
+
+// SIFI SVG
+(function(){
+  const svg=document.getElementById('svgSIFI');
+  svg.setAttribute('viewBox','0 0 1400 200');
+
+  node(svg,700,100,230,56,'#0a1a40',['Systemically Important','Financial Institutions'],'Too Big to Fail','🌐');
+
+  const sfis=[
+    {x:140,  y:55,  fill:'#1a3a8a', label:['D-SIB'],              sub:'Asset > 2% GDP | RBI declares', emoji:'🏦'},
+    {x:140,  y:155, fill:'#5a1a8a', label:['SI-NBFC'],             sub:'Asset > ₹500 Cr | RBI',        emoji:'📊'},
+    {x:415,  y:40,  fill:'#b01a1a', label:['SBI'],                 sub:'D-SIB | Public sector',         emoji:'🏛️'},
+    {x:415,  y:110, fill:'#0a6070', label:['HDFC Bank'],           sub:'D-SIB | Private',               emoji:'💼'},
+    {x:415,  y:180, fill:'#1a6a3a', label:['ICICI Bank'],          sub:'D-SIB | Private',               emoji:'💳'},
+    {x:980,  y:55,  fill:'#d46a10', label:['D-SII (Insurers)'],    sub:'IRDAI | LIC, GIC, NIAC',        emoji:'🛡️'},
+    {x:980,  y:155, fill:'#1a5878', label:['SI-FMI (Mkt Infra)'],  sub:'SEBI | MCX, NCDEX',             emoji:'📈'},
+    {x:1250, y:55,  fill:'#b01a1a', label:['Moral Hazard'],        sub:'Expect govt rescue → Take risk', emoji:'⚠️'},
+    {x:1250, y:155, fill:'#1a6a3a', label:['Extra Capital Buffer'],sub:'Surcharge on top of CRAR',      emoji:'💰'},
+  ];
+
+  sfis.forEach(n=>{
+    const fx=n.x<700?593:807;
+    edge(svg,fx,100,n.x+(n.x<700?85:-85),n.y,n.x<700?'#1a3a8a44':'#1a6a3a44',true,1.5);
+    node(svg,n.x,n.y,195,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+})();
+</script>
+</body>
+</html>

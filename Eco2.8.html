@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RBI · CBDC · Crypto — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0d0c0a;
+  --paper:#faf8f3;
+  --cream:#f2ede0;
+  --gold:#b8890a;
+  --amber:#d46a10;
+  --teal:#0a7060;
+  --blue:#1a3a8a;
+  --purple:#6a1a9a;
+  --red:#b81a1a;
+  --green:#0a6a3a;
+  --muted:#8a7a60;
+  --border:#ddd0b0;
+  --card:#fffdf7;
+  --card2:#f5f0e4;
+  --sky:#0a5070;
+  --rose:#8a1040;
+  --navy:#0a1a4a;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(ellipse 900px 600px at 5% 5%,rgba(184,137,10,0.07) 0%,transparent 55%),
+  radial-gradient(ellipse 700px 900px at 95% 95%,rgba(26,58,138,0.06) 0%,transparent 55%),
+  radial-gradient(ellipse 500px 500px at 50% 50%,rgba(10,112,96,0.03) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:48px 16px 22px;}
+.hdr-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Libre Baskerville',serif;font-size:clamp(26px,4.5vw,50px);line-height:1.1;}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr-sub{margin-top:9px;font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1.5px;}
+.hdr::after{content:'';display:block;width:100px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--teal),var(--blue));margin:16px auto 0;border-radius:3px;}
+
+/* SECTION LABEL */
+.sl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:12px;}
+.sl::before,.sl::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px;}
+.g21{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:1000px){.g3,.g4,.g5{grid-template-columns:1fr 1fr;}.g21{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g5,.g21{grid-template-columns:1fr;}}
+
+/* PANEL CARD */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,137,10,0.1);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.cg::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.cb::before{background:var(--blue);}
+.pc.ct::before{background:var(--teal);}
+.pc.cgn::before{background:var(--green);}
+.pc.cr::before{background:var(--red);}
+.pc.cp::before{background:var(--purple);}
+.pc.cs::before{background:var(--sky);}
+.pc.ca::before{background:var(--amber);}
+.pc.cn::before{background:var(--navy);}
+.pc-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:7px;}
+.pc h3{font-family:'Libre Baskerville',serif;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.35;}
+
+/* MAP CARD */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:26px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.m1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--teal));}
+.mc.m2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--sky));}
+.mc.m3::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc.m4::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.m5::before{background:linear-gradient(90deg,var(--purple),var(--blue),var(--teal));}
+.mc svg{display:block;width:100%;}
+
+/* VLIST */
+.vl{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:8px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pg{background:rgba(184,137,10,0.12);color:var(--gold);}
+.pb{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pt{background:rgba(10,112,96,0.12);color:var(--teal);}
+.pr{background:rgba(184,26,26,0.12);color:var(--red);}
+.pp{background:rgba(106,26,154,0.12);color:var(--purple);}
+.pgn{background:rgba(10,106,58,0.12);color:var(--green);}
+.ps{background:rgba(10,80,112,0.12);color:var(--sky);}
+
+/* CHIPS */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.yes{background:rgba(10,106,58,0.06);border-color:rgba(10,106,58,0.2);color:var(--green);}
+.no{background:rgba(184,26,26,0.06);border-color:rgba(184,26,26,0.2);color:var(--red);}
+.neu{background:rgba(184,137,10,0.07);border-color:rgba(184,137,10,0.2);color:var(--gold);}
+
+/* STAT BOX */
+.sr{display:flex;gap:10px;margin:10px 0;}
+.sb{flex:1;padding:12px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.sn{font-family:'Libre Baskerville',serif;font-size:26px;font-weight:700;line-height:1;}
+.sl2{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.ss{font-size:11px;color:var(--ink);font-weight:700;margin-top:3px;}
+
+/* IMPACT CHAIN */
+.ic{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.in{padding:6px 11px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;white-space:nowrap;}
+.ia{font-size:16px;color:var(--muted);flex:0 0 auto;}
+
+/* CALLOUT */
+.co{padding:11px 14px;border-radius:10px;border:1.5px solid;margin:8px 0;}
+.co-t{font-size:11px;font-weight:700;margin-bottom:3px;}
+.co-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* TABLE */
+.ct{width:100%;border-collapse:collapse;font-size:11px;}
+.ct th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ct td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ct tr:last-child td{border-bottom:none;}
+.ct tr:nth-child(even) td{background:rgba(184,137,10,0.025);}
+.ct td:first-child{font-weight:700;color:var(--amber);font-family:'DM Mono',monospace;}
+.tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;}
+.tok{background:#d4edda;color:#155724;}
+.tno{background:#f8d7da;color:#721c24;}
+.tna{background:#fff3cd;color:#856404;}
+
+/* KEYSTONE */
+.ks{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:24px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.ks-i{font-size:40px;flex:0 0 auto;}
+.ks-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.ks-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.ks-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'DM Mono',monospace;}
+
+/* FEAT GRID */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.f{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.fi{font-size:16px;margin-bottom:4px;}
+.ft{font-size:11px;font-weight:700;}
+.fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* PHASE ROW */
+.pr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.pr{grid-template-columns:1fr;}}
+.pb2{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.pn{font-family:'Libre Baskerville',serif;font-size:26px;font-weight:700;}
+.pt2{font-size:12px;font-weight:800;margin:4px 0;}
+.ps2{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:8px;}
+.step{display:flex;align-items:flex-start;gap:12px;padding:9px 13px;border-radius:10px;background:var(--card2);border:1px solid var(--border);}
+.stepn{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;font-family:'DM Mono',monospace;flex:0 0 26px;color:#fff;}
+.stepc{font-size:11px;line-height:1.5;}
+
+/* HIGHLIGHT BOX */
+.hbox{padding:12px 16px;border-radius:10px;margin:8px 0;}
+
+/* BADGE STRIP */
+.bs{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.anim{animation:fadeUp 0.5s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr anim">
+  <div class="hdr-tag">Indian Economy · RBI · Digital Currency · UPSC Prelims</div>
+  <h1>RBI Income · ECF · <em>Crypto · CBDC · e-RUPI</em></h1>
+  <div class="hdr-sub">RBI Income → Economic Capital → Bimal Jalan → Surplus → Crypto → e₹ CBDC → e-RUPI</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sl">Master Flow — The Big Picture</div>
+<div class="mc m1">
+  <svg id="svgMaster" viewBox="0 0 1360 110" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- ══ SECTION 1: RBI INCOME ══ -->
+<div class="sl">① RBI's Sources of Income</div>
+
+<div class="mc m2">
+  <svg id="svgIncome" viewBox="0 0 1360 230" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc cg">
+    <div class="pc-lbl">Primary Source — ~90%</div>
+    <h3>🌐 Foreign Currency Assets</h3>
+    <div class="sr">
+      <div class="sb"><div class="sn" style="color:var(--amber);">~90%</div><div class="ss">of Forex Reserves</div><div class="sl2">BIGGEST EARNER</div></div>
+    </div>
+    <div class="vl">
+      <div class="vi"><div class="vt">Invested in US Govt bonds</div><div class="vs">Earns interest on foreign holdings</div></div>
+      <div class="vi"><div class="vt">Parked in foreign banks</div><div class="vs">Safe, liquid, high-quality assets</div></div>
+    </div>
+    <div class="co" style="border-color:rgba(184,137,10,0.25);background:rgba(184,137,10,0.05);margin-top:8px;">
+      <div class="co-t" style="color:var(--gold);">📌 Prelims Fact</div>
+      <div class="co-b">FCA ≈ 90% of total forex reserves — biggest component</div>
+    </div>
+  </div>
+
+  <div class="pc cb">
+    <div class="pc-lbl">Monetary Operations</div>
+    <h3>📄 Govt Securities & Repo</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Govt Securities (OMO)</div><div class="vs">RBI buys G-secs → earns interest income</div></div>
+      <div class="vi"><div class="vt">Repo Lending</div><div class="vs">Banks borrow from RBI at repo rate → RBI earns</div></div>
+      <div class="vi"><div class="vt">Debt Manager Commission</div><div class="vs">RBI manages govt borrowing → earns fee</div></div>
+    </div>
+    <div class="bs">
+      <span class="pill pb">OMO Income</span>
+      <span class="pill pb">Repo Interest</span>
+      <span class="pill pb">Debt Mgmt Fee</span>
+    </div>
+  </div>
+
+  <div class="pc ca">
+    <div class="pc-lbl">Unique Concept 🔥</div>
+    <h3>🖨️ Seigniorage</h3>
+    <div class="hbox" style="background:rgba(212,106,16,0.07);border:1.5px solid rgba(212,106,16,0.2);">
+      <div style="font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;color:var(--amber);">Seigniorage</div>
+      <div style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;">PROFIT FROM ISSUING CURRENCY</div>
+    </div>
+    <div class="ic" style="margin-top:8px;">
+      <div class="in" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);">Printing Cost</div>
+      <div class="ia">≪</div>
+      <div class="in" style="border-color:var(--green);background:rgba(10,106,58,0.07);color:var(--green);">Face Value</div>
+      <div class="ia">=</div>
+      <div class="in" style="border-color:var(--gold);background:rgba(184,137,10,0.1);color:var(--gold);">Seigniorage Profit</div>
+    </div>
+    <div class="co" style="border-color:rgba(212,106,16,0.25);background:rgba(212,106,16,0.05);">
+      <div class="co-b">₹2000 note costs ₹4–5 to print → face value ₹2000 → profit = seigniorage</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: ECF & BIMAL JALAN ══ -->
+<div class="sl">② Economic Capital Framework (ECF) & Bimal Jalan Committee</div>
+
+<div class="mc m3">
+  <svg id="svgECF" viewBox="0 0 1360 170" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cgn">
+    <div class="pc-lbl">Economic Capital Framework</div>
+    <h3>🏛️ Why RBI Needs Capital</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Fight financial crises</div><div class="vs">Buffer to absorb economic shocks</div></div>
+      <div class="vi"><div class="vt">Maintain stability</div><div class="vs">Confidence in monetary system</div></div>
+      <div class="vi"><div class="vt">Remain solvent</div><div class="vs">Central bank must always be solvent</div></div>
+    </div>
+    <div class="co" style="border-color:rgba(10,106,58,0.25);background:rgba(10,106,58,0.05);margin-top:8px;">
+      <div class="co-t" style="color:var(--green);">⚖️ Section 47 — RBI Act 1934</div>
+      <div class="co-b">After keeping required reserves → <strong>remaining surplus transferred to Govt.</strong> RBI is 100% owned by Government of India.</div>
+    </div>
+    <div class="ic" style="margin-top:8px;">
+      <div class="in" style="border-color:var(--green);background:rgba(10,106,58,0.07);color:var(--green);">RBI Earns</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);">Keeps Reserve</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);">Transfers Surplus</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--gold);background:rgba(184,137,10,0.07);color:var(--gold);">Govt Revenue ↑</div>
+    </div>
+  </div>
+
+  <div class="pc cp">
+    <div class="pc-lbl">Bimal Jalan Committee 2019 🔥</div>
+    <h3>👨‍💼 Surplus Transfer Formula</h3>
+    <div class="sr">
+      <div class="sb">
+        <div class="sn" style="color:var(--purple);">5.5%</div>
+        <div class="ss">to 6.5%</div>
+        <div class="sl2">CONTINGENCY RISK BUFFER (CRB)</div>
+      </div>
+      <div class="sb">
+        <div class="sn" style="color:var(--blue);">§47</div>
+        <div class="ss">RBI Act</div>
+        <div class="sl2">LEGAL BASIS</div>
+      </div>
+    </div>
+    <div class="vl" style="margin-top:8px;">
+      <div class="vi"><div class="vt">CRB = 5.5%–6.5% of balance sheet</div><div class="vs">Contingency Risk Buffer — safety net</div></div>
+      <div class="vi"><div class="vt">Ensures harmony between RBI & Govt</div><div class="vs">Avoids conflicts over surplus claims</div></div>
+      <div class="vi"><div class="vt">Determines dividend to Govt</div><div class="vs">Higher CRB → less surplus transferred</div></div>
+    </div>
+    <div class="bs">
+      <span class="pill pp">Bimal Jalan — Chair</span>
+      <span class="pill pp">2019 Report</span>
+      <span class="pill pp">CRB: 5.5–6.5%</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: CRYPTO ══ -->
+<div class="sl">③ Cryptocurrency — Key Features & Taxation</div>
+
+<div class="mc m4">
+  <svg id="svgCrypto" viewBox="0 0 1360 180" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cr">
+    <div class="pc-lbl">What Is Crypto?</div>
+    <h3>₿ Features of Cryptocurrency</h3>
+    <div class="fg">
+      <div class="f"><div class="fi">⛓️</div><div class="ft">Blockchain Based</div><div class="fs">Distributed ledger technology</div></div>
+      <div class="f"><div class="fi">🌐</div><div class="ft">Decentralized</div><div class="fs">No central authority</div></div>
+      <div class="f"><div class="fi">⛏️</div><div class="ft">Mining Creates Coins</div><div class="fs">Proof-of-work mechanism</div></div>
+      <div class="f"><div class="fi">🔢</div><div class="ft">Limited Supply</div><div class="fs">E.g. Bitcoin: 21 million cap</div></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip no">❌ Not Legal Tender</span>
+      <span class="chip no">❌ Not Issued by Govt/RBI</span>
+      <span class="chip no">❌ Not Regulated by RBI</span>
+      <span class="chip neu">📦 Treated as Asset (like Gold)</span>
+    </div>
+  </div>
+
+  <div class="pc ca">
+    <div class="pc-lbl">Taxation in India 🔥</div>
+    <h3>💸 Crypto Tax Rules</h3>
+    <div class="sr">
+      <div class="sb">
+        <div class="sn" style="color:var(--red);">30%</div>
+        <div class="ss">Tax on Gains</div>
+        <div class="sl2">FLAT RATE — NO DEDUCTION</div>
+      </div>
+      <div class="sb">
+        <div class="sn" style="color:var(--amber);">1%</div>
+        <div class="ss">TDS on Transfer</div>
+        <div class="sl2">AT SOURCE DEDUCTION</div>
+      </div>
+    </div>
+    <div class="vl" style="margin-top:8px;">
+      <div class="vi"><div class="vt">30% flat tax on gains</div><div class="vs">No deductions allowed, no offsetting losses</div></div>
+      <div class="vi"><div class="vt">1% TDS on each transfer</div><div class="vs">Deducted at source on crypto transfers</div></div>
+      <div class="vi"><div class="vt">No distinction — short/long term</div><div class="vs">Unlike stocks, no LTCG/STCG benefit</div></div>
+    </div>
+    <div class="bs">
+      <span class="pill pr">Bitcoin · Ethereum</span>
+      <span class="pill pg">Examples of Crypto</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: CBDC ══ -->
+<div class="sl">④ CBDC — Central Bank Digital Currency (e₹)</div>
+
+<div class="mc m5">
+  <svg id="svgCBDC" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc cgn">
+    <div class="pc-lbl">What Is e₹?</div>
+    <h3>💚 CBDC Definition</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Digital form of Indian Rupee</div><div class="vs">Issued by RBI under RBI Act (amended)</div></div>
+      <div class="vi"><div class="vt">Legal tender</div><div class="vs">Cannot be refused for payment</div></div>
+      <div class="vi"><div class="vt">1:1 convertible with cash</div><div class="vs">₹100 e₹ = ₹100 cash always</div></div>
+      <div class="vi"><div class="vt">Pilot launched by RBI</div><div class="vs">Wholesale + Retail pilots ongoing</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip yes">✅ Legal Tender</span>
+      <span class="chip yes">✅ RBI Backed</span>
+      <span class="chip yes">✅ Regulated</span>
+    </div>
+  </div>
+
+  <div class="pc cb">
+    <div class="pc-lbl">Why RBI Launched CBDC?</div>
+    <h3>🎯 Objectives of e₹</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">🔒 Control over digital money</div><div class="vs">State-backed digital currency</div></div>
+      <div class="vi"><div class="vt">⚠️ Reduce crypto risks</div><div class="vs">Offer safe alternative to private crypto</div></div>
+      <div class="vi"><div class="vt">🖨️ Reduce printing cost</div><div class="vs">Digital = no physical note costs</div></div>
+      <div class="vi"><div class="vt">⚡ Faster payments</div><div class="vs">Real-time settlement, no clearing</div></div>
+      <div class="vi"><div class="vt">📱 Promote digital economy</div><div class="vs">Financial inclusion via digital wallets</div></div>
+    </div>
+  </div>
+
+  <div class="pc cs">
+    <div class="pc-lbl">How e₹ Works</div>
+    <h3>⚙️ e₹ Mechanics</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="stepn" style="background:var(--sky);">1</div>
+        <div class="stepc">RBI issues e₹ → Distributed through banks</div>
+      </div>
+      <div class="step">
+        <div class="stepn" style="background:var(--blue);">2</div>
+        <div class="stepc">Stored in digital wallet (app-based)</div>
+      </div>
+      <div class="step">
+        <div class="stepn" style="background:var(--teal);">3</div>
+        <div class="stepc">P2P + merchant payments via QR code</div>
+      </div>
+      <div class="step">
+        <div class="stepn" style="background:var(--green);">4</div>
+        <div class="stepc">Wallet-to-wallet → no interbank settlement needed</div>
+      </div>
+    </div>
+    <div class="hbox" style="background:rgba(10,80,112,0.06);border:1px solid rgba(10,80,112,0.2);margin-top:8px;">
+      <div style="font-size:10px;font-weight:700;color:var(--sky);">⚡ No Interest (like cash) · Bearer Instrument · Complements Cash</div>
+    </div>
+  </div>
+</div>
+
+<!-- CBDC Pros & Cons -->
+<div class="g2">
+  <div class="pc cgn">
+    <div class="pc-lbl">Advantages</div>
+    <h3>✅ Why CBDC Is Better</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip yes">✅ Safer than bank deposits</span>
+      <span class="chip yes">✅ Faster settlement</span>
+      <span class="chip yes">✅ Lower printing cost</span>
+      <span class="chip yes">✅ Legal tender</span>
+      <span class="chip yes">✅ Uses DLT technology</span>
+      <span class="chip yes">✅ Financial inclusion</span>
+      <span class="chip yes">✅ Cross-border payment ease</span>
+      <span class="chip yes">✅ Offline capability (planned)</span>
+    </div>
+  </div>
+  <div class="pc cr">
+    <div class="pc-lbl">Risks</div>
+    <h3>⚠️ CBDC Risks</h3>
+    <div class="vl">
+      <div class="vi">
+        <div class="vt">🏦 Bank Disintermediation</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(184,26,26,0.06);border-radius:6px;color:var(--red);">People shift deposits from banks → banks lose funding → credit crunch</div>
+      </div>
+      <div class="vi">
+        <div class="vt">💻 Cyber Risks</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(184,26,26,0.06);border-radius:6px;color:var(--red);">Digital infrastructure attacks, hacking</div>
+      </div>
+      <div class="vi">
+        <div class="vt">🎭 Digital Fraud</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(184,26,26,0.06);border-radius:6px;color:var(--red);">Phishing, fake wallets, identity theft</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: e-RUPI ══ -->
+<div class="sl">⑤ e-RUPI — Prepaid Digital Voucher</div>
+
+<div class="mc m4">
+  <svg id="svgERupi" viewBox="0 0 1360 150" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cp">
+    <div class="pc-lbl">What Is e-RUPI?</div>
+    <h3>🎫 e-RUPI: NOT a Currency!</h3>
+    <div class="hbox" style="background:rgba(106,26,154,0.06);border:1.5px solid rgba(106,26,154,0.2);margin-bottom:10px;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:15px;font-weight:700;color:var(--purple);">Prepaid Digital Voucher — Powered by NPCI</div>
+    </div>
+    <div class="vl">
+      <div class="vi"><div class="vt">Person-specific</div><div class="vs">Linked to specific beneficiary's mobile</div></div>
+      <div class="vi"><div class="vt">Purpose-specific</div><div class="vs">Only for designated purpose (vaccination, subsidy)</div></div>
+      <div class="vi"><div class="vt">Cannot be transferred</div><div class="vs">Non-transferable — unlike CBDC</div></div>
+      <div class="vi"><div class="vt">Cannot be converted to cash</div><div class="vs">No cash withdrawal possible</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip no">❌ NOT Legal Tender</span>
+      <span class="chip no">❌ NOT Digital Currency</span>
+      <span class="chip no">❌ NOT Transferable</span>
+    </div>
+  </div>
+
+  <div class="pc cs">
+    <div class="pc-lbl">Use Cases</div>
+    <h3>🎯 Where e-RUPI Is Used</h3>
+    <div class="fg" style="grid-template-columns:1fr 1fr;">
+      <div class="f"><div class="fi">💉</div><div class="ft">Vaccination</div><div class="fs">PM-JAY, health schemes</div></div>
+      <div class="f"><div class="fi">🌾</div><div class="ft">Subsidy Payments</div><div class="fs">Direct benefit transfer</div></div>
+      <div class="f"><div class="fi">🎓</div><div class="ft">Education</div><div class="fs">Scholarship disbursement</div></div>
+      <div class="f"><div class="fi">🏥</div><div class="ft">Welfare Schemes</div><div class="fs">Targeted beneficiaries</div></div>
+    </div>
+    <div class="ic" style="margin-top:10px;">
+      <div class="in" style="border-color:var(--purple);background:rgba(106,26,154,0.07);color:var(--purple);font-size:9px;">Govt/Corp Issues</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--sky);background:rgba(10,80,112,0.07);color:var(--sky);font-size:9px;">To Beneficiary</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--teal);background:rgba(10,112,96,0.07);color:var(--teal);font-size:9px;">Used at Service Provider</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--green);background:rgba(10,106,58,0.07);color:var(--green);font-size:9px;">Redeemed</div>
+    </div>
+    <div class="co" style="border-color:rgba(10,80,112,0.25);background:rgba(10,80,112,0.05);margin-top:4px;">
+      <div class="co-t" style="color:var(--sky);">📌 Key: NPCI Powered — SMS/QR based</div>
+      <div class="co-b">Works even without internet. Issuer: Govt or Corporates (for employee welfare).</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: BIG COMPARISON TABLE ══ -->
+<div class="sl">⑥ Crypto vs CBDC vs e-RUPI — Master Comparison</div>
+
+<div class="mc m2">
+  <svg id="svgComp" viewBox="0 0 1360 160" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="pc cn">
+  <div class="pc-lbl">Master Comparison — Prelims Ready</div>
+  <h3 style="color:#f5e8c0;">📊 Crypto vs CBDC vs e-RUPI</h3>
+  <table class="ct">
+    <thead><tr><th>Feature</th><th>Cryptocurrency (Bitcoin etc.)</th><th>CBDC — e₹</th><th>e-RUPI</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Legal Tender</td>
+        <td><span class="tag tno">❌ NO</span></td>
+        <td><span class="tag tok">✅ YES</span></td>
+        <td><span class="tag tno">❌ NO</span></td>
+      </tr>
+      <tr>
+        <td>Issuer</td>
+        <td>Private / Decentralized (no issuer)</td>
+        <td>Reserve Bank of India</td>
+        <td>Govt of India / Corporates (via NPCI)</td>
+      </tr>
+      <tr>
+        <td>Backed By</td>
+        <td><span class="tag tno">Nothing (code/trust)</span></td>
+        <td><span class="tag tok">RBI / Govt of India</span></td>
+        <td><span class="tag tna">Prepaid value</span></td>
+      </tr>
+      <tr>
+        <td>Interest Earned</td>
+        <td><span class="tag tno">❌ NO</span> (price change only)</td>
+        <td><span class="tag tno">❌ NO</span> (like cash)</td>
+        <td><span class="tag tno">❌ NO</span></td>
+      </tr>
+      <tr>
+        <td>Transferable</td>
+        <td><span class="tag tok">✅ YES</span></td>
+        <td><span class="tag tok">✅ YES</span></td>
+        <td><span class="tag tno">❌ NO — fixed beneficiary</span></td>
+      </tr>
+      <tr>
+        <td>Regulated by RBI</td>
+        <td><span class="tag tno">❌ NO</span></td>
+        <td><span class="tag tok">✅ YES</span></td>
+        <td><span class="tag tna">NPCI + Govt</span></td>
+      </tr>
+      <tr>
+        <td>Technology</td>
+        <td>Blockchain / DLT</td>
+        <td>DLT (blockchain-like)</td>
+        <td>SMS + QR code (NPCI)</td>
+      </tr>
+      <tr>
+        <td>Convertible to Cash</td>
+        <td><span class="tag tok">✅ YES</span> (via exchange)</td>
+        <td><span class="tag tok">✅ YES</span> (1:1)</td>
+        <td><span class="tag tno">❌ NO</span></td>
+      </tr>
+      <tr>
+        <td>Taxation</td>
+        <td>30% + 1% TDS</td>
+        <td>Normal income tax rules</td>
+        <td>Not applicable</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ SECTION 7: PRELIMS QUICK FIRE ══ -->
+<div class="sl">⑦ High-Probability Prelims Points</div>
+
+<div class="g2">
+  <div class="pc cg">
+    <div class="pc-lbl">Must-Know Numbers & Facts</div>
+    <h3>🔢 Key Numbers for Prelims</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">FCA ≈ 90% of Forex Reserves</div><div class="vs">Biggest source of RBI income</div></div>
+      <div class="vi"><div class="vt">Section 47 → Surplus Transfer</div><div class="vs">RBI Act 1934 — legal basis</div></div>
+      <div class="vi"><div class="vt">Bimal Jalan CRB → 5.5% to 6.5%</div><div class="vs">Contingency Risk Buffer range</div></div>
+      <div class="vi"><div class="vt">Crypto Tax → 30% gains + 1% TDS</div><div class="vs">No deductions allowed</div></div>
+      <div class="vi"><div class="vt">RBI = 100% Govt owned</div><div class="vs">No private shareholders</div></div>
+    </div>
+  </div>
+  <div class="pc cr">
+    <div class="pc-lbl">Common Exam Traps</div>
+    <h3>⚠️ Statement Traps to Watch</h3>
+    <div class="vl">
+      <div class="vi">
+        <div class="vt">❌ "e-RUPI is a digital currency"</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(10,106,58,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ e-RUPI is a prepaid VOUCHER, NOT currency</div>
+      </div>
+      <div class="vi">
+        <div class="vt">❌ "CBDC earns interest like FD"</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(10,106,58,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ CBDC earns NO interest — like physical cash</div>
+      </div>
+      <div class="vi">
+        <div class="vt">❌ "Crypto is legal tender in India"</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(10,106,58,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ Crypto is NOT legal tender — treated as asset</div>
+      </div>
+      <div class="vi">
+        <div class="vt">❌ "e-RUPI is powered by RBI"</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(10,106,58,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ e-RUPI is powered by NPCI, not RBI</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="ks">
+  <div class="ks-i">🏦</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Connecting Story</div>
+    <div class="ks-sub">
+      RBI earns from FCA + G-secs + Seigniorage → Keeps capital buffer (Bimal Jalan: 5.5–6.5% CRB) → Transfers surplus to Govt (Section 47) → As crypto grew with risks, RBI launched <strong style="color:#f5d78a;">CBDC (e₹)</strong> — a legal tender digital rupee → Meanwhile, Govt launched <strong style="color:#f5d78a;">e-RUPI</strong> as a targeted welfare voucher (NOT currency). Key: CBDC = digital cash. e-RUPI = digital coupon.
+    </div>
+    <div class="ks-pills">
+      <span class="kp">🌐 FCA = 90% Income</span>
+      <span class="kp">📋 Section 47</span>
+      <span class="kp">👨‍💼 CRB: 5.5–6.5%</span>
+      <span class="kp">₿ Crypto: 30% Tax</span>
+      <span class="kp">💚 e₹ = Legal Tender</span>
+      <span class="kp">🎫 e-RUPI = Voucher</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function txt(svg,x,y,str,sz,fill,wt,anchor,fam){
+  const t=el('text',{x,y,'text-anchor':anchor||'middle','dominant-baseline':'middle','font-size':sz||11,'font-weight':wt||'600','font-family':fam||'Plus Jakarta Sans,sans-serif',fill:fill||'#fff'});
+  t.textContent=str;svg.appendChild(t);return t;
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,rx){
+  rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.22)','stroke-width':'1.5'}));
+  const arr=Array.isArray(lines)?lines:[lines];
+  let ty=y-(arr.length-1)*7-(sub?5:0)-(emoji?10:0);
+  if(emoji){txt(g,x,ty-8,emoji,15,'#fff','400');ty+=14;}
+  arr.forEach((l,i)=>txt(g,x,ty+i*15,l,11,'#fff','700'));
+  if(sub)txt(g,x,ty+arr.length*15,sub,8.5,'rgba(255,255,255,0.5)','400','middle','DM Mono,monospace');
+  svg.appendChild(g);
+}
+function curve(svg,x1,y1,x2,y2,col,dash){
+  svg.appendChild(el('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:col||'#aaa','stroke-width':'2',fill:'none','stroke-dasharray':dash?'5 4':'none',opacity:'0.72'}));
+}
+function arrow(svg,x1,y1,x2,y2,col){
+  const id='a'+Math.random().toString(36).slice(2,6);
+  let d=svg.querySelector('defs');if(!d){d=el('defs',{});svg.insertBefore(d,svg.firstChild);}
+  const m=el('marker',{id,markerWidth:'7',markerHeight:'7',refX:'5',refY:'3.5',orient:'auto'});
+  m.appendChild(el('polygon',{points:'0 0,7 3.5,0 7',fill:col||'#aaa'}));
+  d.appendChild(m);
+  svg.appendChild(el('line',{x1,y1,x2,y2,stroke:col||'#aaa','stroke-width':'2','marker-end':`url(#${id})`,opacity:'0.82'}));
+}
+function label(svg,x,y,text,col){
+  txt(svg,x,y,text,8,col||'rgba(120,100,60,0.42)','500','middle','DM Mono,monospace');
+}
+
+/* ── MASTER FLOW ── */
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:110,fill:'rgba(250,245,238,0.3)'}));
+  const steps=[
+    {x:90,  fill:'#b8890a', label:['RBI Earns'],    sub:'FCA+GSec+Seigniorage', emoji:'💰'},
+    {x:260, fill:'#1a3a8a', label:['ECF Buffer'],   sub:'Capital Reserve',       emoji:'🏛️'},
+    {x:430, fill:'#6a1a9a', label:['Bimal Jalan'],  sub:'CRB: 5.5–6.5%',        emoji:'👨‍💼'},
+    {x:600, fill:'#0a6a3a', label:['Surplus→Govt'], sub:'Section 47 Transfer',   emoji:'📤'},
+    {x:770, fill:'#b81a1a', label:['Crypto Rises'], sub:'Bitcoin · Ethereum',    emoji:'₿'},
+    {x:950, fill:'#0a7060', label:['RBI Launches'], sub:'CBDC Pilot e₹',         emoji:'💚'},
+    {x:1130,fill:'#0a5070', label:['e₹ Ecosystem'], sub:'Legal Tender Digital',  emoji:'📱'},
+    {x:1290,fill:'#d46a10', label:['e-RUPI'],       sub:'Targeted Voucher NPCI', emoji:'🎫'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) arrow(svg,s.x+70,55,steps[i+1].x-70,55,s.fill+'99');
+  });
+  steps.forEach(s=>node(svg,s.x,55,130,66,s.fill,s.label,s.sub,s.emoji));
+  label(svg,680,100,'MASTER FLOW: RBI INCOME → ECF → SURPLUS → CRYPTO CHALLENGE → CBDC LAUNCH → e-RUPI');
+})();
+
+/* ── INCOME SVG ── */
+(()=>{
+  const svg=document.getElementById('svgIncome');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:230,fill:'rgba(250,248,243,0.3)'}));
+  node(svg,680,50,230,56,'#0a1a4a',['RBI Income Sources'],'5 Key Revenue Streams','💰');
+
+  const sources=[
+    {x:140, y:145, fill:'#b8890a', label:['Foreign Currency','Assets (FCA)'], sub:'~90% of forex · US bonds', emoji:'🌐'},
+    {x:360, y:130, fill:'#1a3a8a', label:['Govt Securities','(OMO Income)'],  sub:'Interest on G-secs',       emoji:'📄'},
+    {x:580, y:150, fill:'#0a5070', label:['Repo Lending'],                    sub:'Banks pay repo interest',  emoji:'🏦'},
+    {x:800, y:130, fill:'#6a1a9a', label:['Debt Manager','Commission'],        sub:'Manages govt borrowing',   emoji:'📋'},
+    {x:1020,y:145, fill:'#d46a10', label:['Seigniorage'],                     sub:'Print cost < Face value',  emoji:'🖨️'},
+  ];
+  sources.forEach(s=>{
+    curve(svg,680,78,s.x,s.y-30,'#b8890a55',true);
+    node(svg,s.x,s.y,200,60,s.fill,s.label,s.sub,s.emoji);
+  });
+
+  // Large FCA badge
+  svg.appendChild(el('rect',{x:38,y:188,width:204,height:22,rx:7,ry:7,fill:'rgba(184,137,10,0.12)',stroke:'rgba(184,137,10,0.3)','stroke-width':'1'}));
+  txt(svg,140,199,'⭐ ~90% OF TOTAL FOREX RESERVES',8,'#b8890a','700','middle','DM Mono,monospace');
+
+  label(svg,680,220,'RBI EARNS FROM: FOREIGN ASSETS · GOVERNMENT SECURITIES · REPO · DEBT MANAGEMENT · SEIGNIORAGE');
+})();
+
+/* ── ECF SVG ── */
+(()=>{
+  const svg=document.getElementById('svgECF');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:170,fill:'rgba(250,248,243,0.3)'}));
+
+  const flow=[
+    {x:120, fill:'#0a6a3a', label:['RBI Earns','Income'],    sub:'All revenue sources', emoji:'💰'},
+    {x:310, fill:'#1a3a8a', label:['ECF Assessment'],        sub:'Capital adequacy check',emoji:'📊'},
+    {x:500, fill:'#6a1a9a', label:['CRB Allocation','5.5–6.5%'],sub:'Bimal Jalan 2019',emoji:'🛡️'},
+    {x:700, fill:'#b8890a', label:['Contingency','Fund'],    sub:'Safety buffer kept',   emoji:'🔒'},
+    {x:900, fill:'#0a7060', label:['Remaining','Surplus'],   sub:'Available for transfer',emoji:'📦'},
+    {x:1090,fill:'#d46a10', label:['Transferred','to Govt'], sub:'Section 47 dividend',  emoji:'📤'},
+    {x:1270,fill:'#0a1a4a', label:['Govt Revenue','Increases'],sub:'Budget benefit',     emoji:'📈'},
+  ];
+  flow.forEach((f,i)=>{
+    if(i<flow.length-1) arrow(svg,f.x+78,85,flow[i+1].x-78,85,f.fill+'aa');
+  });
+  flow.forEach(f=>node(svg,f.x,85,148,72,f.fill,f.label,f.sub,f.emoji));
+
+  // CRB highlight
+  svg.appendChild(el('rect',{x:412,y:16,width:176,height:20,rx:6,ry:6,fill:'rgba(106,26,154,0.1)',stroke:'rgba(106,26,154,0.25)','stroke-width':'1'}));
+  txt(svg,500,26,'CRB = 5.5% – 6.5% of Balance Sheet',8,'#6a1a9a','700','middle','DM Mono,monospace');
+
+  label(svg,680,158,'ECF FLOW: EARN → ASSESS → ALLOCATE CRB → KEEP BUFFER → TRANSFER SURPLUS TO GOVT (SECTION 47)');
+})();
+
+/* ── CRYPTO SVG ── */
+(()=>{
+  const svg=document.getElementById('svgCrypto');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:180,fill:'rgba(250,248,243,0.3)'}));
+
+  node(svg,680,55,220,54,'#0a1a4a',['Cryptocurrency'],'Bitcoin · Ethereum · Decentralized','₿');
+
+  // features — radial
+  const items=[
+    {x:160, y:130, fill:'#b81a1a', label:['NOT Legal','Tender'],     sub:'Cannot be used for payment', emoji:'🚫'},
+    {x:380, y:140, fill:'#0a1a4a', label:['Blockchain','Based'],     sub:'Distributed ledger tech',    emoji:'⛓️'},
+    {x:600, y:130, fill:'#d46a10', label:['Decentralized','Asset'],  sub:'No central authority',       emoji:'🌐'},
+    {x:810, y:140, fill:'#6a1a9a', label:['Mining Creates','Coins'], sub:'Proof-of-work system',       emoji:'⛏️'},
+    {x:1020,y:130, fill:'#0a6a3a', label:['Limited Supply'],         sub:'Bitcoin: 21M cap',           emoji:'🔢'},
+    {x:1210,y:140, fill:'#b8890a', label:['Tax: 30%','+ 1% TDS'],   sub:'India tax treatment',        emoji:'🧾'},
+  ];
+  items.forEach(n=>{
+    curve(svg,680,82,n.x,n.y-28,'#b81a1a44',true);
+    node(svg,n.x,n.y,175,56,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  label(svg,680,170,'CRYPTO = DIGITAL ASSET (NOT CURRENCY) · TAXED AT 30% GAINS + 1% TDS ON TRANSFER IN INDIA');
+})();
+
+/* ── CBDC SVG ── */
+(()=>{
+  const svg=document.getElementById('svgCBDC');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:200,fill:'rgba(250,248,243,0.3)'}));
+
+  node(svg,680,55,240,58,'#0a6a3a',['CBDC — e₹','Central Bank Digital Currency'],'Issued by RBI · Legal Tender','💚');
+
+  // Left branches: what it is
+  const left=[
+    {x:160, y:130, fill:'#0a6a3a', label:['Legal Tender'],       sub:'Cannot be refused', emoji:'✅'},
+    {x:360, y:120, fill:'#1a3a8a', label:['RBI Issued'],          sub:'Under RBI Act',     emoji:'🏛️'},
+    {x:540, y:130, fill:'#0a5070', label:['1:1 Convertible'],     sub:'With physical cash', emoji:'💱'},
+  ];
+  // Right branches: features
+  const right=[
+    {x:820, y:130, fill:'#0a7060', label:['No Interest'],         sub:'Like physical cash', emoji:'🔇'},
+    {x:1000,y:120, fill:'#6a1a9a', label:['Digital Wallet'],      sub:'App/QR based',       emoji:'📱'},
+    {x:1200,y:130, fill:'#d46a10', label:['Pilot by RBI'],        sub:'Wholesale+Retail',   emoji:'🚀'},
+  ];
+  [...left,...right].forEach(n=>{
+    curve(svg,680,84,n.x,n.y-28,n.x<680?'#0a6a3a44':'#0a7060044',true);
+    node(svg,n.x,n.y,175,54,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  // Bottom connection arrows left→right
+  arrow(svg,220,160,540-88,160,'#0a6a3a55');
+  arrow(svg,540+88,160,820-88,160,'#0a7060055');
+  arrow(svg,820+88,160,1000-88,160,'#6a1a9a55');
+
+  label(svg,680,192,'e₹ = DIGITAL RUPEE · LEGAL TENDER · BEARER INSTRUMENT · NO INTEREST · COMPLEMENTS CASH');
+})();
+
+/* ── e-RUPI SVG ── */
+(()=>{
+  const svg=document.getElementById('svgERupi');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:150,fill:'rgba(250,248,243,0.3)'}));
+
+  const flow=[
+    {x:110, fill:'#0a1a4a', label:['Govt / Corporate','Issues Voucher'], sub:'Defined purpose + beneficiary', emoji:'🏛️'},
+    {x:310, fill:'#6a1a9a', label:['NPCI Generates'],                    sub:'SMS/QR voucher',               emoji:'⚙️'},
+    {x:510, fill:'#b81a1a', label:['Sent to','Beneficiary'],             sub:'Mobile number linked',         emoji:'📲'},
+    {x:710, fill:'#0a5070', label:['Used ONLY For','Purpose Defined'],   sub:'Cannot be diverted',           emoji:'🎯'},
+    {x:920, fill:'#0a7060', label:['Service Provider','Redeems'],        sub:'Hospital/shop etc.',           emoji:'🏥'},
+    {x:1120,fill:'#d46a10', label:['Payment Flows','to Provider'],       sub:'Direct, no cash handling',     emoji:'✅'},
+    {x:1280,fill:'#b8890a', label:['No Cash','No Transfer'],             sub:'Cannot convert to cash',       emoji:'🔒'},
+  ];
+  flow.forEach((f,i)=>{
+    if(i<flow.length-1) arrow(svg,f.x+86,75,flow[i+1].x-86,75,f.fill+'99');
+  });
+  flow.forEach(f=>node(svg,f.x,75,162,70,f.fill,f.label,f.sub,f.emoji));
+
+  label(svg,680,142,'e-RUPI = PREPAID VOUCHER (NOT CURRENCY) · PERSON-SPECIFIC · PURPOSE-SPECIFIC · NO CASH CONVERSION · NPCI POWERED');
+})();
+
+/* ── COMPARISON SVG ── */
+(()=>{
+  const svg=document.getElementById('svgComp');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:160,fill:'rgba(250,248,243,0.3)'}));
+
+  const items=[
+    {x:220, fill:'#b81a1a', label:['Cryptocurrency'],    sub:'Bitcoin · Ethereum',    emoji:'₿'},
+    {x:680, fill:'#0a6a3a', label:['CBDC — e₹'],         sub:'Digital Rupee by RBI',  emoji:'💚'},
+    {x:1140,fill:'#6a1a9a', label:['e-RUPI'],             sub:'Prepaid Voucher (NPCI)',emoji:'🎫'},
+  ];
+  items.forEach(n=>node(svg,n.x,80,260,70,n.fill,n.label,n.sub,n.emoji));
+
+  // VS labels
+  svg.appendChild(el('rect',{x:440,y:68,width:50,height:24,rx:12,ry:12,fill:'rgba(120,100,60,0.1)'}));
+  txt(svg,465,80,'VS',9,'#8a7a60','800');
+  svg.appendChild(el('rect',{x:900,y:68,width:50,height:24,rx:12,ry:12,fill:'rgba(120,100,60,0.1)'}));
+  txt(svg,925,80,'VS',9,'#8a7a60','800');
+
+  // Key difference labels
+  txt(svg,220,128,'❌ Not Regulated · 30% Tax',9,'#b81a1a','600');
+  txt(svg,680,128,'✅ Legal Tender · RBI Backed · No Interest',9,'#0a6a3a','600');
+  txt(svg,1140,128,'🎫 Voucher · NOT Currency · No Transfer',9,'#6a1a9a','600');
+
+  label(svg,680,150,'KEY DISTINCTION: CRYPTO = ASSET · e₹ = DIGITAL CURRENCY · e-RUPI = TARGETED VOUCHER');
+})();
+</script>
+</body>
+</html>

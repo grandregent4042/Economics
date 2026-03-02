@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derivatives & Commodity Exchanges — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0e0c;--paper:#f9f6f0;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf6;--card2:#f3ede1;--sky:#1a5878;--rose:#9a1a5a;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 10% 5%,rgba(184,124,16,0.07) 0%,transparent 60%),
+  radial-gradient(ellipse 700px 700px at 90% 95%,rgba(26,58,138,0.05) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 18px;position:relative;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.rose::before{background:var(--rose);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+.map-card.mc6::before{background:linear-gradient(90deg,var(--purple),var(--rose),var(--amber));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+.pill.rose{background:rgba(154,26,90,0.12);color:var(--rose);}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.ps-chip.blue{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+.ps-chip.purple{background:rgba(90,26,138,0.07);border-color:rgba(90,26,138,0.2);color:var(--purple);}
+.ps-chip.teal{background:rgba(10,96,112,0.07);border-color:rgba(10,96,112,0.2);color:var(--teal);}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* VERTICAL LIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* COMPARE TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.nu{background:#fff3cd;color:#856404;}
+
+/* PHASE ROW */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0 20px;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;color:var(--muted);}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:11px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:18px;color:var(--muted);}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.flow-node{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.flow-arr{font-size:18px;color:var(--muted);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.4px;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* WARNING BOX */
+.warn-box{padding:12px 14px;border-radius:10px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);margin:8px 0;}
+.warn-title{font-size:11px;font-weight:800;color:var(--red);margin-bottom:3px;}
+.warn-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+.div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:10px 0;}
+
+/* SIDE BADGE */
+.side-badge{position:absolute;top:12px;right:14px;padding:3px 9px;border-radius:6px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Economy · Financial Markets · UPSC Prelims</div>
+  <h1>Derivatives &amp; Commodity Exchanges — <em>Mind Map</em></h1>
+  <div class="header-sub">Underlying Assets → Contract Types → Uses → Exchanges → Farmer Example → Key Comparisons</div>
+</div>
+
+<!-- ══════ SECTION 0: MASTER FLOW ══════ -->
+<div class="sec-label">Master Flow — The Big Picture</div>
+
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1380 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══════ SECTION 1: WHAT IS A DERIVATIVE ══════ -->
+<div class="sec-label">① What is a Derivative?</div>
+
+<div class="map-card mc2">
+  <svg id="svgDerivative" viewBox="0 0 1380 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">Definition</div>
+    <h3>📄 Derivative = Value from Underlying</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(184,124,16,0.07);border:1.5px solid rgba(184,124,16,0.2);margin-bottom:12px;">
+      <div style="font-family:'Playfair Display',serif;font-size:13px;font-style:italic;color:var(--amber);line-height:1.6;">"A contract whose value depends on an underlying asset — not intrinsically valuable itself"</div>
+    </div>
+    <div style="font-size:11px;font-weight:800;margin-bottom:8px;">Underlying Assets:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="pill amber">📈 Stock</span>
+      <span class="pill blue">📊 Index (Nifty)</span>
+      <span class="pill gold">🥇 Commodity (Gold)</span>
+      <span class="pill teal">💱 Currency (USD/INR)</span>
+      <span class="pill purple">💹 Interest Rate</span>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">3 Core Uses</div>
+    <h3>🎯 Why Derivatives Are Used</h3>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="fi">🛡️</div>
+        <div class="ft">Hedging</div>
+        <div class="fs">Reduce / transfer risk</div>
+      </div>
+      <div class="feat">
+        <div class="fi">📈</div>
+        <div class="ft">Speculation</div>
+        <div class="fs">Profit from price change</div>
+      </div>
+      <div class="feat" style="grid-column:1/-1;">
+        <div class="fi">⚖️</div>
+        <div class="ft">Arbitrage</div>
+        <div class="fs">Profit from price difference across markets</div>
+      </div>
+    </div>
+    <div class="warn-box" style="margin-top:8px;">
+      <div class="warn-title">⚠️ Economic Survey Warning</div>
+      <div class="warn-body">Too much derivatives trading → "Financialization of Savings" → Diverts money from productive sectors</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 2: TYPES OF DERIVATIVES ══════ -->
+<div class="sec-label">② Types of Derivatives — Very Important for Prelims</div>
+
+<div class="map-card mc3">
+  <svg id="svgTypes" viewBox="0 0 1380 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:14px;">
+  <!-- Forward -->
+  <div class="pc amber">
+    <span class="side-badge" style="background:rgba(212,106,16,0.15);color:var(--amber);">OTC</span>
+    <div class="pc-label">Type 1</div>
+    <h3>🤝 Forward Contract</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Private Agreement</div><div class="vs">Between two parties directly</div></div>
+      <div class="vitem"><div class="vt">Not Standardized</div><div class="vs">Fully customizable terms</div></div>
+      <div class="vitem" style="border-color:rgba(176,26,26,0.2);background:rgba(176,26,26,0.04);"><div class="vt" style="color:var(--red);">High Counterparty Risk</div><div class="vs">Other party may default</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="ps-chip purple">🔒 Customized</span>
+      <span class="ps-chip prob">❌ Default Risk</span>
+    </div>
+  </div>
+  <!-- Futures -->
+  <div class="pc green">
+    <span class="side-badge" style="background:rgba(26,106,58,0.15);color:var(--green);">Exchange</span>
+    <div class="pc-label">Type 2</div>
+    <h3>📋 Futures Contract</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Standardized Contract</div><div class="vs">Fixed lot sizes, expiry dates</div></div>
+      <div class="vitem"><div class="vt">Traded on Exchanges</div><div class="vs">NSE, BSE, MCX, NCDEX</div></div>
+      <div class="vitem" style="border-color:rgba(26,106,58,0.2);background:rgba(26,106,58,0.04);"><div class="vt" style="color:var(--green);">Clearing House Guarantee</div><div class="vs">No default risk, high liquidity</div></div>
+      <div class="vitem"><div class="vt">Both Parties Obligated</div><div class="vs">Must settle at expiry</div></div>
+    </div>
+    <div class="impact-chain" style="margin-top:8px;justify-content:center;">
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);font-size:10px;">Price ↑</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);font-size:10px;">Buyer Gains</div>
+      <span style="font-size:12px;color:var(--muted);margin:0 4px;">|</span>
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);font-size:10px;">Price ↓</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);font-size:10px;">Buyer Loses</div>
+    </div>
+  </div>
+</div>
+
+<div class="g2" style="margin-bottom:14px;">
+  <!-- Options -->
+  <div class="pc purple">
+    <span class="side-badge" style="background:rgba(90,26,138,0.15);color:var(--purple);">Right, Not Obligation</span>
+    <div class="pc-label">Type 3</div>
+    <h3>🎯 Options Contract</h3>
+    <div class="g2" style="margin-bottom:10px;gap:8px;">
+      <div style="padding:10px;border-radius:9px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);">
+        <div style="font-size:12px;font-weight:800;color:var(--green);">📞 Call Option</div>
+        <div style="font-size:10px;margin-top:4px;">Right to <strong>BUY</strong></div>
+        <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:3px;">Used when expecting price RISE</div>
+      </div>
+      <div style="padding:10px;border-radius:9px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.2);">
+        <div style="font-size:12px;font-weight:800;color:var(--red);">📤 Put Option</div>
+        <div style="font-size:10px;margin-top:4px;">Right to <strong>SELL</strong></div>
+        <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:3px;">Used when expecting price FALL</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Buyer Pays Premium</div><div class="vs">Loss limited to premium paid</div></div>
+      <div class="vitem"><div class="vt">Seller Has Obligation</div><div class="vs">Must honor if buyer exercises</div></div>
+    </div>
+  </div>
+  <!-- Swaps + Warrants -->
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <div class="pc teal" style="flex:1;">
+      <span class="side-badge" style="background:rgba(10,96,112,0.15);color:var(--teal);">OTC</span>
+      <div class="pc-label">Type 4</div>
+      <h3>🔄 Swaps</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;">
+        <div style="flex:1;min-width:120px;padding:8px 10px;border-radius:8px;background:rgba(10,96,112,0.07);border:1px solid rgba(10,96,112,0.2);">
+          <div style="font-size:11px;font-weight:800;">Interest Rate Swap</div>
+          <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;">Fixed ↔ Floating rate</div>
+        </div>
+        <div style="flex:1;min-width:120px;padding:8px 10px;border-radius:8px;background:rgba(26,58,138,0.07);border:1px solid rgba(26,58,138,0.2);">
+          <div style="font-size:11px;font-weight:800;">Currency Swap</div>
+          <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;">Exchange of cash flows</div>
+        </div>
+      </div>
+    </div>
+    <div class="pc rose" style="flex:1;">
+      <div class="pc-label">Type 5</div>
+      <h3>📜 Warrants</h3>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Long-term Options</div><div class="vs">Issued by the company itself</div></div>
+        <div class="vitem"><div class="vt">Used to Raise Capital</div><div class="vs">Gives right to buy stock at set price</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 3: DERIVATIVES IN INDIA ══════ -->
+<div class="sec-label">③ Derivatives in India — Exchanges & Regulation</div>
+
+<div class="map-card mc4">
+  <svg id="svgIndia" viewBox="0 0 1380 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g4" style="margin-bottom:20px;">
+  <div class="pc blue">
+    <div class="pc-label">Exchange</div>
+    <h3>📊 NSE</h3>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">National Stock Exchange</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill blue">Equity Derivatives</span>
+      <span class="pill blue">Nifty Futures</span>
+      <span class="pill blue">Currency</span>
+    </div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Exchange</div>
+    <h3>🏦 BSE</h3>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Bombay Stock Exchange</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill sky">Sensex Futures</span>
+      <span class="pill sky">Equity Options</span>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Exchange</div>
+    <h3>🥇 MCX</h3>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Multi Commodity Exchange — Largest</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill amber">Gold · Silver</span>
+      <span class="pill amber">Crude Oil</span>
+      <span class="pill amber">Base Metals</span>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Exchange</div>
+    <h3>🌾 NCDEX</h3>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">National Commodity &amp; Derivatives Exchange</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill green">Wheat · Chana</span>
+      <span class="pill green">Soyabean</span>
+      <span class="pill green">Agri Focus</span>
+    </div>
+  </div>
+</div>
+
+<div style="padding:16px 20px;border-radius:14px;background:rgba(26,58,138,0.04);border:1.5px solid rgba(26,58,138,0.15);display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:20px;">
+  <div style="font-size:28px;">⚖️</div>
+  <div style="flex:1;">
+    <div style="font-size:12px;font-weight:800;color:var(--blue);">Regulator: SEBI (Securities and Exchange Board of India)</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:3px;font-family:'DM Mono',monospace;">FMC (Forward Markets Commission) was merged into SEBI — Single regulator for all derivatives</div>
+  </div>
+  <span class="pill blue">FMC → SEBI Merger</span>
+</div>
+
+<!-- ══════ SECTION 4: USES OF DERIVATIVES ══════ -->
+<div class="sec-label">④ Uses of Derivatives — Exam Favourite</div>
+
+<div class="g3" style="margin-bottom:20px;">
+  <div class="pc green">
+    <div class="pc-label">Use 1</div>
+    <h3>🛡️ Hedging</h3>
+    <div style="padding:12px;border-radius:9px;background:rgba(26,106,58,0.06);border:1px solid rgba(26,106,58,0.2);margin-bottom:8px;">
+      <div style="font-size:12px;font-weight:800;color:var(--green);">Lock Price → Reduce Risk</div>
+    </div>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;gap:5px;">
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);font-size:10px;">Farmer has wheat harvest due</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:20px;">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);font-size:10px;">Sells futures at today's price</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:20px;">→</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(184,124,16,0.07);color:var(--gold);font-size:10px;">Protected from price fall</div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Use 2</div>
+    <h3>📈 Speculation</h3>
+    <div style="padding:12px;border-radius:9px;background:rgba(212,106,16,0.06);border:1px solid rgba(212,106,16,0.2);margin-bottom:8px;">
+      <div style="font-size:12px;font-weight:800;color:var(--amber);">Bet on Price Change → Profit</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Nifty Expected to Rise</div><div class="vs">Buy Nifty futures → profit if rises</div></div>
+      <div class="vitem"><div class="vt">Leverage Effect</div><div class="vs">Small capital controls large position</div></div>
+    </div>
+    <div class="warn-box" style="margin-top:8px;">
+      <div class="warn-title">⚠️ Risk: Loss Magnified Too</div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Use 3</div>
+    <h3>⚖️ Arbitrage</h3>
+    <div style="padding:12px;border-radius:9px;background:rgba(10,96,112,0.06);border:1px solid rgba(10,96,112,0.2);margin-bottom:8px;">
+      <div style="font-size:12px;font-weight:800;color:var(--teal);">Price Difference = Profit</div>
+    </div>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;gap:5px;">
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);font-size:10px;">Same asset — different markets</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:20px;">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);font-size:10px;">Buy cheap / Sell expensive simultaneously</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:20px;">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);font-size:10px;">Risk-free profit (in theory)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 5: FARMER EXAMPLE ══════ -->
+<div class="sec-label">⑤ Farmer Example — Very Important for Prelims</div>
+
+<div class="map-card mc5">
+  <svg id="svgFarmer" viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3" style="margin-bottom:20px;">
+  <div class="pc red">
+    <div class="pc-label">Scenario 1 — No Hedge</div>
+    <h3>😟 Without Protection</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;gap:5px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.07);color:var(--red);font-size:10px;">Farmer plants wheat</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:20px;">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);font-size:10px;">Market prices fall at harvest</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:20px;">→</div>
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.07);color:var(--red);font-size:10px;">Farmer LOSES income</div>
+    </div>
+    <span class="ps-chip prob" style="margin-top:8px;">❌ Full exposure to price risk</span>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Scenario 2 — Futures Hedge</div>
+    <h3>✅ With Futures</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;gap:5px;">
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);font-size:10px;">Farmer locks price via futures</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:20px;">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);font-size:10px;">Price falls at harvest</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:20px;">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);font-size:10px;">Gains from futures offset spot loss</div>
+    </div>
+    <span class="ps-chip sol" style="margin-top:8px;">✅ Price risk transferred</span>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Scenario 3 — Put Option</div>
+    <h3>🛡️ With Put Option (Insurance)</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;gap:5px;">
+      <div class="ic-node" style="border-color:var(--purple);background:rgba(90,26,138,0.07);color:var(--purple);font-size:10px;">Farmer buys Put Option (pays premium)</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:20px;">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);font-size:10px;">Price ↓ → Exercise option → Protected</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:20px;">→</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(184,124,16,0.07);color:var(--gold);font-size:10px;">Price ↑ → Ignore option → Profit from market</div>
+    </div>
+    <span class="ps-chip sol" style="margin-top:8px;">✅ Acts like crop insurance</span>
+  </div>
+</div>
+
+<!-- ══════ SECTION 6: ADVANTAGES & RISKS ══════ -->
+<div class="sec-label">⑥ Advantages &amp; Risks</div>
+
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc green">
+    <div class="pc-label">Advantages</div>
+    <h3>✅ Benefits of Derivatives</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">⚡</div><div class="ft">Leverage</div><div class="fs">Small capital, big exposure</div></div>
+      <div class="feat"><div class="fi">🛡️</div><div class="ft">Risk Management</div><div class="fs">Transfer unwanted risk</div></div>
+      <div class="feat"><div class="fi">💧</div><div class="ft">Liquidity</div><div class="fs">High volume trading</div></div>
+      <div class="feat"><div class="fi">💡</div><div class="ft">Price Discovery</div><div class="fs">Futures signal future prices</div></div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Risks — Important for Prelims</div>
+    <h3>⚠️ Dangers of Derivatives</h3>
+    <div class="vlist">
+      <div class="vitem" style="border-color:rgba(176,26,26,0.2);background:rgba(176,26,26,0.04);"><div class="vt" style="color:var(--red);">Counterparty Risk (OTC)</div><div class="vs">Other party defaults on contract</div></div>
+      <div class="vitem" style="border-color:rgba(212,106,16,0.2);background:rgba(212,106,16,0.04);"><div class="vt" style="color:var(--amber);">Leverage Risk</div><div class="vs">Losses also magnified, not just gains</div></div>
+      <div class="vitem"><div class="vt">Market Risk</div><div class="vs">Sudden price movements</div></div>
+    </div>
+    <div class="warn-box" style="margin-top:10px;">
+      <div class="warn-title">📌 Economic Survey Warning</div>
+      <div class="warn-body">"Financialization of Savings" — excessive derivative speculation diverts capital away from real investment (factories, agriculture, infrastructure)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 7: COMMODITY EXCHANGES ══════ -->
+<div class="sec-label">⑦ Commodity Exchanges — MCX vs NCDEX</div>
+
+<div class="map-card mc6">
+  <svg id="svgCommodity" viewBox="0 0 1380 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc amber">
+    <div class="pc-label">MCX · Multi Commodity Exchange</div>
+    <h3>🥇 MCX — Largest Commodity Exchange</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">#1</div>
+        <div class="stat-sub">Largest</div>
+        <div class="stat-label">INDIA COMMODITY</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--gold);">Non-Agri</div>
+        <div class="stat-sub">Focus Area</div>
+        <div class="stat-label">PRIMARY SEGMENT</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;">
+      <span class="pill amber">🥇 Gold</span>
+      <span class="pill amber">🥈 Silver</span>
+      <span class="pill amber">🛢️ Crude Oil</span>
+      <span class="pill amber">🔩 Base Metals</span>
+    </div>
+    <div class="callout" style="background:rgba(212,106,16,0.06);border:1.5px solid rgba(212,106,16,0.2);margin-top:10px;">
+      <div class="callout-title" style="color:var(--amber);">💡 Role in Price Discovery</div>
+      <div class="callout-body">MCX gold prices used as benchmark across India's jewellery and investment markets</div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">NCDEX · National Commodity &amp; Derivatives Exchange</div>
+    <h3>🌾 NCDEX — Agriculture Focus</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">Agri</div>
+        <div class="stat-sub">Specialisation</div>
+        <div class="stat-label">PRIMARY SEGMENT</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--teal);">🌾</div>
+        <div class="stat-sub">Farmer Tool</div>
+        <div class="stat-label">HEDGING PLATFORM</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;">
+      <span class="pill green">🌾 Wheat</span>
+      <span class="pill green">🫘 Chana</span>
+      <span class="pill green">🫚 Soyabean</span>
+      <span class="pill green">🌱 Pulses</span>
+    </div>
+    <div class="callout" style="background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.2);margin-top:10px;">
+      <div class="callout-title" style="color:var(--green);">💡 Key Benefit for Farmers</div>
+      <div class="callout-body">Farmers use NCDEX to hedge crop prices before harvest — protects against price crashes</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 8: KEY DIFFERENCES ══════ -->
+<div class="sec-label">⑧ Key Differences — Quick Revision Table</div>
+
+<div class="pc blue" style="margin-bottom:20px;">
+  <div class="pc-label">Comparison Table — Prelims Ready</div>
+  <h3>📊 Forward vs Futures vs Options vs Swaps</h3>
+  <div style="overflow-x:auto;margin-top:10px;">
+    <table class="ctable">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Forward</th>
+          <th>Futures</th>
+          <th>Options</th>
+          <th>Swaps</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standardized?</td>
+          <td><span class="tag na">No (Custom)</span></td>
+          <td><span class="tag ok">Yes</span></td>
+          <td><span class="tag ok">Yes</span></td>
+          <td><span class="tag na">No (OTC)</span></td>
+        </tr>
+        <tr>
+          <td>Traded On</td>
+          <td>OTC (private)</td>
+          <td>Exchange (NSE/MCX)</td>
+          <td>Exchange</td>
+          <td>OTC (mostly)</td>
+        </tr>
+        <tr>
+          <td>Default Risk</td>
+          <td><span class="tag na">High</span></td>
+          <td><span class="tag ok">None (Clearing House)</span></td>
+          <td><span class="tag ok">Low</span></td>
+          <td><span class="tag na">High</span></td>
+        </tr>
+        <tr>
+          <td>Obligation</td>
+          <td>Both parties</td>
+          <td>Both parties</td>
+          <td>Seller only</td>
+          <td>Both parties</td>
+        </tr>
+        <tr>
+          <td>Premium Paid?</td>
+          <td><span class="tag na">No</span></td>
+          <td><span class="tag na">No</span></td>
+          <td><span class="tag ok">Yes (by buyer)</span></td>
+          <td><span class="tag na">No</span></td>
+        </tr>
+        <tr>
+          <td>Buyer's Loss</td>
+          <td>Unlimited</td>
+          <td>Unlimited</td>
+          <td><span class="tag ok">Limited to premium</span></td>
+          <td>Varies</td>
+        </tr>
+        <tr>
+          <td>Liquidity</td>
+          <td><span class="tag na">Low</span></td>
+          <td><span class="tag ok">Very High</span></td>
+          <td><span class="tag ok">High</span></td>
+          <td><span class="tag nu">Moderate</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
+    <span class="ps-chip blue">📌 Futures vs Options: Key Prelims Distinction</span>
+    <span class="ps-chip sol">Futures = Obligation | Options = Right</span>
+    <span class="ps-chip prob">Forwards = OTC = Default Risk</span>
+  </div>
+</div>
+
+<!-- ══════ KEYSTONE ══════ -->
+<div class="keystone">
+  <div class="keystone-icon">🔥</div>
+  <div style="flex:1;">
+    <div class="keystone-title">Final Connection — The Core Idea</div>
+    <div class="keystone-sub">
+      <strong style="color:#f5d78a;">Derivative</strong> = Risk management tool whose value depends on underlying asset<br>
+      <strong style="color:#f5d78a;">Futures</strong> = Compulsory, standardized exchange-traded contract<br>
+      <strong style="color:#f5d78a;">Options</strong> = Insurance-like contract — buyer has right, not obligation<br>
+      <strong style="color:#f5d78a;">Commodity Exchange</strong> = Platform for price discovery (MCX = metals, NCDEX = agri)
+    </div>
+    <div class="keystone-pills">
+      <span class="kpill">📄 Contract = Value from Underlying</span>
+      <span class="kpill">🛡️ Hedge = Risk Transfer</span>
+      <span class="kpill">⚖️ Futures ≠ Options</span>
+      <span class="kpill">🌾 NCDEX = Farmer's Friend</span>
+      <span class="kpill">🥇 MCX = Metals/Energy</span>
+      <span class="kpill">⚖️ Regulator = SEBI</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+function vEdge(svg,x1,y1,x2,y2,color,dashed,w){
+  const my=(y1+y2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`,
+    stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.6'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?9:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15+1,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.38)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+function label(svg,x,y,text,color,sz,mono){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':sz||'9','font-family':mono?'DM Mono,monospace':'Nunito,sans-serif',fill:color||'rgba(120,100,60,0.5)','letter-spacing':'2','font-weight':mono?'400':'700'});
+  t.textContent=text;svg.appendChild(t);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.setAttribute('viewBox','0 0 1380 140');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:140,fill:'rgba(250,246,238,0.5)'}));
+
+  const steps=[
+    {x:90,  label:['Underlying','Asset'],     sub:'Stock·Index·Commodity',   fill:'#b87c10', emoji:'📦'},
+    {x:270, label:['Derivative','Contract'],  sub:'Value from Underlying',   fill:'#1a3a8a', emoji:'📄'},
+    {x:450, label:['Forward /','Futures'],    sub:'Obligation-based',        fill:'#1a6a3a', emoji:'📋'},
+    {x:630, label:['Options'],                sub:'Right, not obligation',   fill:'#5a1a8a', emoji:'🎯'},
+    {x:810, label:['Swaps /','Warrants'],     sub:'OTC / Long-term',         fill:'#0a6070', emoji:'🔄'},
+    {x:990, label:['Hedge /','Speculate'],    sub:'3 Uses',                  fill:'#d46a10', emoji:'🛡️'},
+    {x:1170,label:['MCX /','NCDEX'],          sub:'Commodity Exchanges',     fill:'#b87c10', emoji:'🥇'},
+    {x:1310,label:['SEBI'],                   sub:'Regulator',               fill:'#1a5878', emoji:'⚖️'},
+  ];
+
+  for(let i=0;i<steps.length-1;i++){
+    edge(svg,steps[i].x+72,70,steps[i+1].x-72,70,'#b87c10',false,2);
+  }
+  steps.forEach(s=>{node(svg,s.x,70,138,72,s.fill,s.label,s.sub,s.emoji);});
+  label(svg,690,16,'MASTER FLOW: UNDERLYING → DERIVATIVE TYPES → USES → EXCHANGES → REGULATION',null,9,true);
+})();
+
+// ─── DERIVATIVE SPOKES ───
+(function(){
+  const svg=document.getElementById('svgDerivative');
+  svg.setAttribute('viewBox','0 0 1380 280');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:280,fill:'rgba(250,246,238,0.4)'}));
+
+  // Central node
+  node(svg,690,140,210,66,'#12100e',['Derivative','= Value from Underlying'],'Contract on underlying asset','📄');
+
+  // Left: Underlying Assets (vertical)
+  const assets=[
+    {y:40,  fill:'#b87c10', label:['Stock'],            sub:'Equity shares',        emoji:'📈'},
+    {y:100, fill:'#1a3a8a', label:['Index'],             sub:'Nifty / Bank Nifty',   emoji:'📊'},
+    {y:160, fill:'#d46a10', label:['Commodity'],         sub:'Gold / Wheat',         emoji:'🥇'},
+    {y:220, fill:'#0a6070', label:['Currency'],          sub:'USD/INR',              emoji:'💱'},
+    {y:270, fill:'#5a1a8a', label:['Interest Rate'],     sub:'Benchmark rates',      emoji:'💹'},
+  ];
+  assets.forEach(a=>{
+    edge(svg,590,140,255,a.y,'#b87c1055',true,1.6);
+    node(svg,175,a.y,150,40,a.fill,[a.label[0]],a.sub,a.emoji);
+  });
+
+  // Right: Uses
+  const uses=[
+    {y:60,  fill:'#1a6a3a', label:['Hedging'],     sub:'Reduce / transfer risk',  emoji:'🛡️'},
+    {y:140, fill:'#d46a10', label:['Speculation'],  sub:'Profit from price move',  emoji:'📈'},
+    {y:220, fill:'#0a6070', label:['Arbitrage'],    sub:'Price diff across markets',emoji:'⚖️'},
+  ];
+  uses.forEach(u=>{
+    edge(svg,790,140,1095,u.y,'#1a3a8a55',true,1.6);
+    node(svg,1190,u.y,175,44,u.fill,[u.label[0]],u.sub,u.emoji);
+  });
+
+  label(svg,175,16,'UNDERLYING ASSETS',null,9,true);
+  label(svg,1190,16,'USES / PURPOSES',null,9,true);
+})();
+
+// ─── TYPES TREE ───
+(function(){
+  const svg=document.getElementById('svgTypes');
+  svg.setAttribute('viewBox','0 0 1380 300');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:300,fill:'rgba(250,246,238,0.4)'}));
+
+  // Root
+  node(svg,690,40,280,52,'#12100e',['5 Types of Derivatives'],'Forward · Futures · Options · Swaps · Warrants','📋');
+
+  // 5 types spread horizontally
+  const types=[
+    {x:135, fill:'#d46a10', label:['Forward'],     sub:'OTC · Custom · High risk', emoji:'🤝'},
+    {x:390, fill:'#1a6a3a', label:['Futures'],     sub:'Exchange · Standard',      emoji:'📋'},
+    {x:645, fill:'#5a1a8a', label:['Options'],     sub:'Right, not obligation',    emoji:'🎯'},
+    {x:920, fill:'#0a6070', label:['Swaps'],       sub:'OTC · Cash flow exchange', emoji:'🔄'},
+    {x:1185,fill:'#9a1a5a', label:['Warrants'],    sub:'Long-term · By company',   emoji:'📜'},
+  ];
+
+  types.forEach(t=>{
+    vEdge(svg,690,66,t.x,130,'#b87c1044',true,1.6);
+    node(svg,t.x,140,210,52,t.fill,[t.label[0]],t.sub,t.emoji);
+  });
+
+  // Sub details for each
+  const details=[
+    {px:135, nodes:[
+      {dy:40,fill:'#b87c10',label:['Private Agreement'],sub:'Bilateral deal'},
+      {dy:88,fill:'#b01a1a',label:['Counterparty Risk'],sub:'No clearing house'},
+    ]},
+    {px:390, nodes:[
+      {dy:40,fill:'#1a6a3a',label:['Clearing House'],sub:'No default risk'},
+      {dy:88,fill:'#1a3a8a',label:['Both Obligated'],sub:'Must settle'},
+    ]},
+    {px:645, nodes:[
+      {dy:40,fill:'#5a1a8a',label:['Call = Buy Right'],sub:'Price rise expected'},
+      {dy:88,fill:'#9a1a5a',label:['Put = Sell Right'],sub:'Price fall expected'},
+    ]},
+    {px:920, nodes:[
+      {dy:40,fill:'#0a6070',label:['IR Swap'],sub:'Fixed ↔ Floating'},
+      {dy:88,fill:'#1a5878',label:['Currency Swap'],sub:'Cross-currency flows'},
+    ]},
+    {px:1185, nodes:[
+      {dy:40,fill:'#9a1a5a',label:['By Company'],sub:'Raises capital'},
+      {dy:88,fill:'#7a1a6a',label:['Long-term'],sub:'Months to years'},
+    ]},
+  ];
+
+  details.forEach(d=>{
+    d.nodes.forEach(n=>{
+      const ny=166+n.dy;
+      vEdge(svg,d.px,168,d.px,ny,'#88884433',true,1.4);
+      node(svg,d.px,ny,180,38,n.fill,[n.label[0]],n.sub,null,null,8);
+    });
+  });
+})();
+
+// ─── INDIA EXCHANGES ───
+(function(){
+  const svg=document.getElementById('svgIndia');
+  svg.setAttribute('viewBox','0 0 1380 220');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:220,fill:'rgba(250,246,238,0.4)'}));
+
+  node(svg,690,50,260,56,'#12100e',['Derivatives in India'],'Exchanges + Regulation + Types','🇮🇳');
+
+  const exch=[
+    {x:170,  fill:'#1a3a8a', label:['NSE'],           sub:'National Stock Exchange',      emoji:'📊'},
+    {x:470,  fill:'#1a5878', label:['BSE'],            sub:'Bombay Stock Exchange',        emoji:'🏦'},
+    {x:770,  fill:'#d46a10', label:['MCX'],            sub:'Commodities (largest)',        emoji:'🥇'},
+    {x:1070, fill:'#1a6a3a', label:['NCDEX'],          sub:'Agri commodities',             emoji:'🌾'},
+  ];
+  const regulator={x:1270, fill:'#b87c10', label:['SEBI'], sub:'Regulator (FMC merged)', emoji:'⚖️'};
+
+  exch.forEach(e=>{
+    vEdge(svg,690,78,e.x,140,'#1a3a8a44',true,1.5);
+    node(svg,e.x,148,215,52,e.fill,[e.label[0]],e.sub,e.emoji);
+  });
+
+  // SEBI on right
+  edge(svg,820,50,1200,50,'#b87c1066',true,1.6);
+  node(svg,1270,50,165,52,regulator.fill,[regulator.label[0]],regulator.sub,regulator.emoji);
+
+  // Derivative types
+  const types2=[
+    {x:270,  fill:'#1a3a8a', label:['Equity Derivatives'],  sub:'Stocks & indices'},
+    {x:600,  fill:'#0a6070', label:['Commodity Derivatives'],sub:'Metals & agri'},
+    {x:930,  fill:'#5a1a8a', label:['Currency Derivatives'], sub:'USD/INR etc.'},
+  ];
+  types2.forEach(t=>{
+    node(svg,t.x,208,240,28,t.fill,[t.label[0]],t.sub,null,'#fff',7);
+  });
+  label(svg,690,194,'DERIVATIVE TYPES TRADED',null,8,true);
+})();
+
+// ─── FARMER FLOW ───
+(function(){
+  const svg=document.getElementById('svgFarmer');
+  svg.setAttribute('viewBox','0 0 1380 200');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:200,fill:'rgba(250,246,238,0.4)'}));
+
+  // Three paths: No hedge / Futures / Put option
+  const paths=[
+    {
+      title:'No Hedge', titleFill:'#b01a1a', y:55,
+      steps:[
+        {x:120,fill:'#7a4010',label:'Farmer plants',sub:'wheat crop'},
+        {x:340,fill:'#b01a1a',label:'Price falls',sub:'at harvest'},
+        {x:560,fill:'#b01a1a',label:'Income loss',sub:'no protection'},
+      ]
+    },
+    {
+      title:'Futures', titleFill:'#1a6a3a', y:105,
+      steps:[
+        {x:750,fill:'#1a6a3a',label:'Lock price via Futures',sub:'before harvest'},
+        {x:990,fill:'#d46a10',label:'Price falls in market',sub:'as expected'},
+        {x:1230,fill:'#1a6a3a',label:'Futures gain offsets spot loss',sub:'net: protected'},
+      ]
+    },
+    {
+      title:'Put Option', titleFill:'#5a1a8a', y:155,
+      steps:[
+        {x:750,fill:'#5a1a8a',label:'Buy Put Option',sub:'pay premium'},
+        {x:990,fill:'#0a6070',label:'Price ↓ → Exercise',sub:'Price ↑ → Ignore'},
+        {x:1230,fill:'#1a6a3a',label:'Acts like Insurance',sub:'limited downside'},
+      ]
+    }
+  ];
+
+  // Top labels
+  label(svg,340,16,'SCENARIO 1: NO HEDGE',null,9,true);
+  label(svg,990,16,'SCENARIO 2: FUTURES HEDGE',null,9,true);
+
+  // Scenario 1 (left half)
+  for(let i=0;i<paths[0].steps.length-1;i++){
+    const s=paths[0].steps[i],n=paths[0].steps[i+1];
+    edge(svg,s.x+80,55,n.x-80,55,'#b01a1a55',false,2);
+  }
+  paths[0].steps.forEach(s=>{node(svg,s.x,55,155,44,s.fill,[s.label],s.sub,null);});
+
+  // Divider
+  svg.appendChild(se('line',{x1:650,y1:10,x2:650,y2:190,stroke:'rgba(200,180,140,0.25)','stroke-width':'1.5','stroke-dasharray':'5 4'}));
+
+  // Scenario 2 (top right)
+  for(let i=0;i<paths[1].steps.length-1;i++){
+    const s=paths[1].steps[i],n=paths[1].steps[i+1];
+    edge(svg,s.x+105,105,n.x-105,105,'#1a6a3a55',false,2);
+  }
+  paths[1].steps.forEach(s=>{node(svg,s.x,105,205,44,s.fill,[s.label],s.sub,null);});
+
+  // Scenario 3 (bottom right)
+  for(let i=0;i<paths[2].steps.length-1;i++){
+    const s=paths[2].steps[i],n=paths[2].steps[i+1];
+    edge(svg,s.x+105,155,n.x-105,155,'#5a1a8a55',false,2);
+  }
+  paths[2].steps.forEach(s=>{node(svg,s.x,155,205,44,s.fill,[s.label],s.sub,null);});
+
+  // Labels
+  label(svg,110,190,'NO HEDGE',null,8,true);
+  label(svg,870,192,'FUTURES',null,8,true);
+  label(svg,1120,192,'PUT OPTION',null,8,true);
+})();
+
+// ─── COMMODITY EXCHANGE COMPARISON ───
+(function(){
+  const svg=document.getElementById('svgCommodity');
+  svg.setAttribute('viewBox','0 0 1380 220');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:220,fill:'rgba(250,246,238,0.4)'}));
+
+  node(svg,690,50,300,56,'#12100e',['Commodity Exchanges'],'Price Discovery Platform','🏛️');
+
+  // MCX (left tree)
+  node(svg,250,130,230,56,'#d46a10',['MCX'],['Largest · Non-Agri'],'🥇');
+  vEdge(svg,690,78,250,102,'#d46a1055',true,1.8);
+
+  const mcxItems=[
+    {x:100,y:190,fill:'#d46a10',label:'Gold · Silver'},
+    {x:260,y:190,fill:'#7a4010',label:'Crude Oil'},
+    {x:400,y:190,fill:'#5a3a10',label:'Base Metals'},
+  ];
+  mcxItems.forEach(m=>{
+    vEdge(svg,250,158,m.x,176,'#d46a1044',true,1.4);
+    node(svg,m.x,190,130,28,m.fill,[m.label],null,null,'#fff',7);
+  });
+
+  // NCDEX (right tree)
+  node(svg,1130,130,230,56,'#1a6a3a',['NCDEX'],['Agri Focus · Farmers'],'🌾');
+  vEdge(svg,690,78,1130,102,'#1a6a3a55',true,1.8);
+
+  const ncdexItems=[
+    {x:980,y:190,fill:'#1a6a3a',label:'Wheat · Chana'},
+    {x:1130,y:190,fill:'#0a6070',label:'Soyabean'},
+    {x:1270,y:190,fill:'#1a5878',label:'Other Agri'},
+  ];
+  ncdexItems.forEach(n=>{
+    vEdge(svg,1130,158,n.x,176,'#1a6a3a44',true,1.4);
+    node(svg,n.x,190,130,28,n.fill,[n.label],null,null,'#fff',7);
+  });
+
+  // Center: Both → SEBI
+  node(svg,690,165,200,44,'#1a5878',['SEBI Regulated'],'FMC merged into SEBI','⚖️');
+  vEdge(svg,690,78,690,143,'#1a587855',true,1.8);
+
+  label(svg,250,10,'MCX — MULTI COMMODITY EXCHANGE',null,8,true);
+  label(svg,1130,10,'NCDEX — AGRI COMMODITIES',null,8,true);
+})();
+</script>
+</body>
+</html>

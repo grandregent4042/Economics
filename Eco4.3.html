@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscal Policy — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;--gold-lt:#f5d78a;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 900px 500px at 15% 10%, rgba(184,124,16,0.06) 0%, transparent 60%),
+  radial-gradient(ellipse 700px 700px at 85% 90%, rgba(26,58,138,0.05) 0%, transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:14px auto 0;border-radius:4px;}
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:10px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+.map-card svg{display:block;width:100%;}
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:10px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.ps-chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.ic-node{padding:5px 10px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:16px;color:var(--muted);}
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:22px 28px;margin:20px 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.keystone-icon{font-size:34px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:19px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.keystone-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0;}
+@media(max-width:900px){.phase-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:14px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;}
+.phase-title{font-size:11px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:6px;color:var(--muted);}
+.callout{padding:10px 13px;border-radius:9px;background:rgba(212,106,16,0.06);border:1.5px solid rgba(212,106,16,0.2);margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;color:var(--amber);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.flow-node{padding:5px 10px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.flow-arr{font-size:16px;color:var(--muted);}
+.trick-box{background:linear-gradient(135deg,rgba(184,124,16,0.1),rgba(26,58,138,0.07));border:2px solid var(--gold);border-radius:16px;padding:20px 24px;margin:20px 0;}
+.trick-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
+@media(max-width:640px){.trick-row{grid-template-columns:1fr;}}
+.trick-item{padding:12px;border-radius:10px;border:1.5px solid var(--border);background:var(--card);text-align:center;}
+.trick-icon{font-size:22px;margin-bottom:6px;}
+.trick-key{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:1px;margin-bottom:4px;}
+.trick-val{font-size:12px;font-weight:800;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Economy · Macroeconomics · UPSC Prelims</div>
+  <h1>Fiscal Policy — <em>Mind Map</em></h1>
+  <div class="header-sub">Government's Tool: Tax + Spending → Control the Economy</div>
+</div>
+
+<!-- SECTION 0: MASTER FLOW -->
+<div class="sec-label">Master Flow — The Big Picture</div>
+<div class="map-card mc1">
+  <svg id="svgFlow" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- SECTION 1: OBJECTIVES -->
+<div class="sec-label">① Objectives of Fiscal Policy</div>
+<div class="map-card mc2">
+  <svg id="svgObj" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- SECTION 2: TWO MAIN TYPES -->
+<div class="sec-label">② Two Main Types — Expansionary vs Contractionary</div>
+<div class="map-card mc3">
+  <svg id="svgTypes" viewBox="0 0 1360 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <!-- Expansionary -->
+  <div class="pc green">
+    <div class="pc-label">Type A — Expansionary</div>
+    <h3>⬆️ Pump Priming — Inject Money</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">High</div><div class="stat-sub">Unemployment</div><div class="stat-label">TRIGGER</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">Low</div><div class="stat-sub">Demand</div><div class="stat-label">TRIGGER</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">Recession</div><div class="stat-sub">Economy State</div><div class="stat-label">WHEN</div></div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">⬆ Spending</div>
+      <div class="ic-arr">+</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">⬇ Taxes</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">More Income</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.08);color:var(--amber);">More Jobs 📈</div>
+    </div>
+    <div class="callout"><div class="callout-title">💡 Pump Priming</div><div class="callout-body">Injecting money into the economy to stimulate demand, production, and employment. Used during slowdowns.</div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">
+      <span class="ps-chip sol">✅ Higher Demand</span>
+      <span class="ps-chip sol">✅ More Production</span>
+      <span class="ps-chip prob">❌ Higher Deficit</span>
+    </div>
+  </div>
+  <!-- Contractionary -->
+  <div class="pc red">
+    <div class="pc-label">Type B — Contractionary</div>
+    <h3>⬇️ Cool Down — Reduce Money Supply</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">High</div><div class="stat-sub">Inflation</div><div class="stat-label">TRIGGER</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">Over</div><div class="stat-sub">Heating</div><div class="stat-label">TRIGGER</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">Boom</div><div class="stat-sub">Economy State</div><div class="stat-label">WHEN</div></div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);">⬇ Spending</div>
+      <div class="ic-arr">+</div>
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);">⬆ Taxes</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.08);color:var(--blue);">Less Money</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);">Inflation ⬇️</div>
+    </div>
+    <div class="callout" style="background:rgba(176,26,26,0.06);border-color:rgba(176,26,26,0.2);"><div class="callout-title" style="color:var(--red);">⚠️ Fiscal Austerity</div><div class="callout-body">Government tightens belt: cuts spending, raises taxes. Cools down overheated economy.</div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">
+      <span class="ps-chip sol">✅ Controls Inflation</span>
+      <span class="ps-chip sol">✅ Lower Deficit</span>
+      <span class="ps-chip prob">❌ Less Demand</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: BUSINESS CYCLE -->
+<div class="sec-label">③ Fiscal Policy & Business Cycle — Counter vs Pro</div>
+<div class="map-card mc4">
+  <svg id="svgCycle" viewBox="0 0 1360 290" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- Counter vs Pro Cyclical Table -->
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Counter-Cyclical — ④ (Very Important)</div>
+    <h3>🔄 Works AGAINST Business Cycle</h3>
+    <table class="ctable">
+      <thead><tr><th>SITUATION</th><th>GOVT ACTION</th><th>RESULT</th></tr></thead>
+      <tbody>
+        <tr><td>📈 Boom</td><td>⬇ Spend + ⬆ Tax</td><td><span class="tag ok">Stabilizes</span></td></tr>
+        <tr><td>📉 Recession</td><td>⬆ Spend + ⬇ Tax</td><td><span class="tag ok">Stimulates</span></td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:10px;padding:10px;border-radius:9px;background:rgba(26,106,58,0.07);border:1.5px solid rgba(26,106,58,0.2);">
+      <span style="font-size:11px;font-weight:800;color:var(--green);">✅ Considered GOOD Policy — Reduces fluctuations, stabilizes economy</span>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Pro-Cyclical — ⑤ (Dangerous)</div>
+    <h3>⚡ Works WITH Business Cycle</h3>
+    <table class="ctable">
+      <thead><tr><th>SITUATION</th><th>GOVT ACTION</th><th>RESULT</th></tr></thead>
+      <tbody>
+        <tr><td>📈 Boom</td><td>⬆ Spend + ⬇ Tax</td><td><span class="tag na">Amplifies</span></td></tr>
+        <tr><td>📉 Recession</td><td>⬇ Spend + ⬆ Tax</td><td><span class="tag na">Deepens</span></td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:10px;padding:10px;border-radius:9px;background:rgba(176,26,26,0.07);border:1.5px solid rgba(176,26,26,0.2);">
+      <span style="font-size:11px;font-weight:800;color:var(--red);">⚠️ Considered DANGEROUS — Boom bigger, Recession deeper, instability grows</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: FISCAL CONSOLIDATION + DEFICIT CONNECT -->
+<div class="sec-label">⑥ Fiscal Consolidation + Deficit Connection</div>
+<div class="map-card mc5">
+  <svg id="svgConsolidate" viewBox="0 0 1360 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">⑦ Fiscal Consolidation</div>
+    <h3>📊 Meaning: Fiscal Discipline</h3>
+    <div style="padding:12px 14px;border-radius:10px;background:rgba(184,124,16,0.07);border:1.5px solid rgba(184,124,16,0.2);margin-bottom:10px;">
+      <div style="font-size:11px;font-weight:800;color:var(--gold);">Goal: Reduce Fiscal Deficit + Reduce Public Debt</div>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">💰</div><div class="ft">Increase Revenue</div><div class="fs">More tax collection</div></div>
+      <div class="feat"><div class="fi">✂️</div><div class="ft">Cut Wasteful Spending</div><div class="fs">Expenditure rationalization</div></div>
+      <div class="feat"><div class="fi">🏷️</div><div class="ft">Rationalize Subsidies</div><div class="fs">Targeted, not blanket</div></div>
+      <div class="feat"><div class="fi">📋</div><div class="ft">Tax Compliance</div><div class="fs">GST, IT reforms</div></div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">⑧ Connect with Deficits</div>
+    <h3>🔗 Policy → Deficit Relationship</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🟢 Expansionary Policy</div>
+        <div class="vs">⬆ Spending + ⬇ Taxes</div>
+        <div class="impact-chain" style="margin-top:5px;">
+          <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.08);color:var(--red);font-size:9px;">Fiscal Deficit ⬆ RISES</div>
+        </div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔴 Contractionary Policy</div>
+        <div class="vs">⬇ Spending + ⬆ Taxes</div>
+        <div class="impact-chain" style="margin-top:5px;">
+          <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.08);color:var(--green);font-size:9px;">Fiscal Deficit ⬇ FALLS</div>
+        </div>
+      </div>
+      <div class="vitem" style="background:rgba(26,58,138,0.06);border-color:rgba(26,58,138,0.2);">
+        <div class="vt" style="color:var(--blue);">📌 Economic Survey 2016-17 Insight</div>
+        <div class="vs" style="color:var(--muted);">India has pro-cyclical bias — spending rises during growth phase; revenues & spending behave counter-cyclically during slowdowns</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: PRELIMS HOTSPOTS -->
+<div class="sec-label">🔥 Most Probable Prelims Areas</div>
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--green);background:rgba(26,106,58,0.04);">
+    <div class="phase-num" style="color:var(--green);">01</div>
+    <div class="phase-title">Expansionary vs Contractionary</div>
+    <div class="phase-sub">Trigger, action, result</div>
+    <span class="pill green">Must Know</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--amber);background:rgba(212,106,16,0.04);">
+    <div class="phase-num" style="color:var(--amber);">02</div>
+    <div class="phase-title">Counter vs Pro-Cyclical</div>
+    <div class="phase-sub">Difference + which is good</div>
+    <span class="pill amber">Very Important</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+    <div class="phase-num" style="color:var(--blue);">03</div>
+    <div class="phase-title">Pump Priming + Consolidation</div>
+    <div class="phase-sub">Definition meanings</div>
+    <span class="pill blue">Definitions</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--purple);background:rgba(90,26,138,0.04);">
+    <div class="phase-num" style="color:var(--purple);">04</div>
+    <div class="phase-title">Policy in Inflation/Recession</div>
+    <div class="phase-sub">Which policy used when</div>
+    <span class="pill purple">Application</span>
+  </div>
+</div>
+
+<!-- MEMORY TRICK -->
+<div class="trick-box">
+  <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold);margin-bottom:4px;">🧠 One-Line Memory Trick</div>
+  <div style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:12px;">LOCK THESE IN → INSTANT RECALL</div>
+  <div class="trick-row">
+    <div class="trick-item">
+      <div class="trick-icon">📉</div>
+      <div class="trick-key">RECESSION</div>
+      <div class="trick-val" style="color:var(--green);">"Spend More, Tax Less"</div>
+    </div>
+    <div class="trick-item">
+      <div class="trick-icon">📈</div>
+      <div class="trick-key">INFLATION</div>
+      <div class="trick-val" style="color:var(--red);">"Spend Less, Tax More"</div>
+    </div>
+    <div class="trick-item">
+      <div class="trick-icon">⚖️</div>
+      <div class="trick-key">STABILITY</div>
+      <div class="trick-val" style="color:var(--blue);">Counter-Cyclical</div>
+    </div>
+    <div class="trick-item">
+      <div class="trick-icon">⚠️</div>
+      <div class="trick-key">INSTABILITY</div>
+      <div class="trick-val" style="color:var(--amber);">Pro-Cyclical</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">Fiscal Policy = Government's lever of <strong style="color:#f5d78a;">Tax + Spending</strong> to steer the economy. Paired with <strong style="color:#f5d78a;">Monetary Policy (RBI)</strong>, it's the complete toolkit. The art lies in knowing <em>when</em> to expand and <em>when</em> to consolidate — always working <strong style="color:#f5d78a;">against</strong> the business cycle, never with it.</div>
+    <div class="keystone-pills">
+      <span class="kpill">📈 Expansionary = Recession Fix</span>
+      <span class="kpill">📉 Contractionary = Inflation Fix</span>
+      <span class="kpill">⚖️ Counter-Cyclical = Good</span>
+      <span class="kpill">⚡ Pro-Cyclical = Dangerous</span>
+      <span class="kpill">📊 Consolidation = Discipline</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=se('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.4)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgFlow');
+  const steps=[
+    {x:80,  label:['Fiscal Policy'],sub:'Tax + Spending tool',fill:'#1a1208',emoji:'🏛️'},
+    {x:250, label:['Objectives'],   sub:'Growth·Jobs·Inflation',fill:'#1a3a8a',emoji:'🎯'},
+    {x:420, label:['Two Types'],    sub:'Expand vs Contract',  fill:'#1a6a3a',emoji:'⚖️'},
+    {x:590, label:['Business','Cycle'],sub:'Boom & Recession',fill:'#b87c10',emoji:'📊'},
+    {x:760, label:['Counter-','Cyclical'],sub:'Stabilize ✅',fill:'#0a6070',emoji:'🔄'},
+    {x:930, label:['Pro-Cyclical'], sub:'Dangerous ⚠️',       fill:'#b01a1a',emoji:'⚡'},
+    {x:1100,label:['Fiscal','Consolidation'],sub:'Reduce Deficit',fill:'#5a1a8a',emoji:'📋'},
+    {x:1280,label:['Economic','Stability'],sub:'Ultimate Goal', fill:'#1a5878',emoji:'🌟'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1)edge(svg,s.x+72,65,steps[i+1].x-72,65,'#b87c10',false,2);
+  });
+  steps.forEach(s=>node(svg,s.x,65,137,68,s.fill,s.label,s.sub,s.emoji));
+  const t=se('text',{x:680,y:18,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3','fill':'rgba(120,100,60,0.4)'});
+  t.textContent='MASTER FLOW: FISCAL POLICY FRAMEWORK → OBJECTIVES → TYPES → CYCLE → CONSOLIDATION → STABILITY';
+  svg.appendChild(t);
+})();
+
+// ─── OBJECTIVES MAP ───
+(function(){
+  const svg=document.getElementById('svgObj');
+  node(svg,680,100,220,56,'#1a1208',['Objectives of','Fiscal Policy'],'Govt adjusts Tax & Spending to...','🎯');
+  const spokes=[
+    {x:160,y:55,  fill:'#1a6a3a',label:['Economic Growth'],  sub:'GDP up',       emoji:'📈'},
+    {x:370,y:40,  fill:'#1a3a8a',label:['Employment'],        sub:'Reduce joblessness',emoji:'👷'},
+    {x:160,y:165, fill:'#b87c10',label:['Control Inflation'], sub:'Price stability',emoji:'💰'},
+    {x:370,y:175, fill:'#5a1a8a',label:['Equitable Distrib.'],sub:'Income equality',emoji:'⚖️'},
+    {x:990,y:55,  fill:'#0a6070',label:['Welfare Provision'], sub:'Health·Edu·Subsidy',emoji:'🏥'},
+    {x:1200,y:40, fill:'#d46a10',label:['Infrastructure'],    sub:'Public investment',emoji:'🏗️'},
+    {x:990,y:165, fill:'#b01a1a',label:['Fiscal Balance'],    sub:'Manage deficits', emoji:'📊'},
+    {x:1200,y:175,fill:'#1a5878',label:['External Balance'],  sub:'BOP stability',   emoji:'🌐'},
+  ];
+  spokes.forEach(n=>{
+    const fx=n.x<680?592:768,fy=n.y<100?90:110;
+    edge(svg,fx,fy,n.x+(n.x<680?85:-85),n.y,'#b87c1055',true,1.6);
+    node(svg,n.x,n.y,175,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  const t=se('text',{x:680,y:192,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(120,100,60,0.4)','letter-spacing':'2'});
+  t.textContent='⚠ FOCUS CHANGES DEPENDING ON ECONOMIC SITUATION — CONTEXT IS KEY';
+  svg.appendChild(t);
+})();
+
+// ─── TYPES: Expansionary vs Contractionary ───
+(function(){
+  const svg=document.getElementById('svgTypes');
+  svg.setAttribute('viewBox','0 0 1360 260');
+
+  // Central divider
+  svg.appendChild(se('line',{x1:680,y1:20,x2:680,y2:248,stroke:'rgba(200,180,140,0.3)','stroke-width':'2','stroke-dasharray':'8 4'}));
+
+  // Expansionary Root
+  node(svg,310,50,240,56,'#1a6a3a',['Expansionary','Fiscal Policy'],'Recession · Low Demand','⬆️',undefined,12);
+  // Contractionary Root
+  node(svg,1050,50,240,56,'#b01a1a',['Contractionary','Fiscal Policy'],'Inflation · Overheating','⬇️',undefined,12);
+
+  const expNodes=[
+    {x:100, y:155, fill:'#1a6a3a', label:['⬆ Govt Spending'],  sub:'Public expenditure up'},
+    {x:310, y:155, fill:'#155a30', label:['⬇ Tax Rates'],       sub:'Disposable income rises'},
+    {x:520, y:155, fill:'#0a4a28', label:['Pump Priming'],       sub:'Money injected in economy'},
+    {x:100, y:220, fill:'#1a3a8a', label:['⬆ Demand'],          sub:'Consumption rises'},
+    {x:310, y:220, fill:'#1a5a28', label:['⬆ Employment'],      sub:'Jobs created'},
+    {x:520, y:220, fill:'#b87c10', label:['⬆ Fiscal Deficit'],  sub:'Spending > Revenue'},
+  ];
+  const conNodes=[
+    {x:840, y:155, fill:'#b01a1a', label:['⬇ Govt Spending'],  sub:'Austerity measures'},
+    {x:1050,y:155, fill:'#8a1010', label:['⬆ Tax Rates'],      sub:'Less money in hands'},
+    {x:1260,y:155, fill:'#6a0a0a', label:['Demand Contraction'],sub:'Spending cools'},
+    {x:840, y:220, fill:'#7a1a1a', label:['⬇ Inflation'],      sub:'Price stability restored'},
+    {x:1050,y:220, fill:'#601010', label:['⬇ Demand'],         sub:'Less consumption'},
+    {x:1260,y:220, fill:'#d46a10', label:['⬇ Fiscal Deficit'], sub:'Revenue > Spending'},
+  ];
+
+  expNodes.forEach((n,i)=>{
+    const px=i<3?[100,310,520][i]:[100,310,520][i-3];
+    const py=i<3?50:155;
+    edge(svg,px,py+(i<3?28:28),n.x,n.y-(28),n.fill+'66',true,1.5);
+    node(svg,n.x,n.y,188,44,n.fill,[n.label[0]],n.sub);
+  });
+  conNodes.forEach((n,i)=>{
+    const px=i<3?[840,1050,1260][i]:[840,1050,1260][i-3];
+    const py=i<3?50:155;
+    edge(svg,px,py+(i<3?28:28),n.x,n.y-28,n.fill+'66',true,1.5);
+    node(svg,n.x,n.y,188,44,n.fill,[n.label[0]],n.sub);
+  });
+
+  const lt=se('text',{x:310,y:252,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,106,58,0.5)','letter-spacing':'2'});
+  lt.textContent='EXPANSIONARY → PUMP PRIMING'; svg.appendChild(lt);
+  const rt=se('text',{x:1050,y:252,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(176,26,26,0.5)','letter-spacing':'2'});
+  rt.textContent='CONTRACTIONARY → FISCAL AUSTERITY'; svg.appendChild(rt);
+})();
+
+// ─── BUSINESS CYCLE: Counter vs Pro ───
+(function(){
+  const svg=document.getElementById('svgCycle');
+  // Layout: 3 rows
+  //  Row 1 (y≈60):  Sine wave (left half) | blank (right half)
+  //  Row 2 (y≈130): blank (left half) | Counter root | Pro root
+  //  Row 3 (y≈210): blank (left half) | 4 child nodes evenly spaced
+  svg.setAttribute('viewBox','0 0 1360 290');
+
+  // ── Sine wave (left half: 0–640) ──
+  const cyclePoints=[];
+  for(let i=0;i<=64;i++){
+    const x=20+i*9.5;
+    const y=70-50*Math.sin(i*Math.PI/16);
+    cyclePoints.push(`${x},${y}`);
+  }
+  const cyclePath=se('polyline',{points:cyclePoints.join(' '),stroke:'#b87c10','stroke-width':'2.5',fill:'none',opacity:'0.35'});
+  svg.appendChild(cyclePath);
+
+  // Sine wave labels
+  const addTxt=(x,y,txt,col,fs)=>{const t=se('text',{x,y,'text-anchor':'middle','font-size':fs||'10','font-weight':'800','font-family':'Nunito,sans-serif',fill:col});t.textContent=txt;svg.appendChild(t);};
+  addTxt(105,14,'📈 BOOM','#d46a10','10');
+  addTxt(310,130,'📉 RECESSION','#b01a1a','10');
+  addTxt(515,14,'📈 BOOM','#d46a10','10');
+  addTxt(320,148,'BUSINESS CYCLE','rgba(184,124,16,0.4)','8');
+
+  // "Good vs Bad" label row
+  addTxt(880,18,'← COUNTER-CYCLICAL (GOOD)  vs  PRO-CYCLICAL (DANGEROUS) →','rgba(80,60,20,0.35)','9');
+
+  // Vertical separator
+  svg.appendChild(se('line',{x1:660,y1:28,x2:660,y2:278,stroke:'rgba(200,180,140,0.25)','stroke-width':'1.5','stroke-dasharray':'7 4'}));
+
+  // ── Row 2: Root nodes ──
+  // Counter-Cyclical root at x=850
+  node(svg,850,100,230,58,'#0a6070',['Counter-Cyclical','Policy'],'Works AGAINST cycle ✅','🔄');
+  // Pro-Cyclical root at x=1150
+  node(svg,1150,100,230,58,'#b01a1a',['Pro-Cyclical','Policy'],'Works WITH cycle ⚠️','⚡');
+
+  // ── Row 3: 4 child nodes — 2 under each root, well separated ──
+  // Counter children
+  node(svg,760,210,195,50,'#1a6a3a',['BOOM → Spend ⬇'],'Tax ⬆ to cool down');
+  node(svg,970,210,195,50,'#1a3a8a',['RECESSION → Spend ⬆'],'Tax ⬇ to stimulate');
+  // Pro children
+  node(svg,1055,210,185,50,'#8a1010',['BOOM → Spend ⬆'],'Amplifies boom 🔥');
+  node(svg,1265,210,185,50,'#601010',['REC → Spend ⬇'],'Deepens recession ❄️');
+
+  // Edges: counter root → children
+  edge(svg,815,129,760,185,'#0a607066',true,1.5);
+  edge(svg,885,129,970,185,'#0a607066',true,1.5);
+  // Edges: pro root → children
+  edge(svg,1115,129,1055,185,'#b01a1a66',true,1.5);
+  edge(svg,1185,129,1265,185,'#b01a1a66',true,1.5);
+
+  // Result badges at bottom
+  const badge=(x,y,txt,col)=>{
+    const g=document.createElementNS(NS,'g');
+    g.appendChild(se('rect',{x:x-60,y:y-12,width:120,height:24,rx:'6',fill:col+'22',stroke:col+'55','stroke-width':'1'}));
+    const t=se('text',{x,y:''+y,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'800','font-family':'DM Mono,monospace',fill:col});
+    t.textContent=txt;g.appendChild(t);svg.appendChild(g);
+  };
+  badge(850,268,'✅ STABILIZES ECONOMY','#1a6a3a');
+  badge(1150,268,'⚠️ DESTABILIZES ECONOMY','#b01a1a');
+})();
+
+// ─── FISCAL CONSOLIDATION FLOW ───
+(function(){
+  const svg=document.getElementById('svgConsolidate');
+  svg.setAttribute('viewBox','0 0 1360 160');
+
+  node(svg,680,80,200,54,'#5a1a8a',['Fiscal','Consolidation'],'Reduce deficit + debt','📊');
+
+  const left=[
+    {x:110,y:55,  fill:'#5a1a8a', label:['Increase Revenue'],   sub:'Tax reform + compliance'},
+    {x:350,y:45,  fill:'#4a0a6a', label:['Cut Wasteful Spend'], sub:'Rationalize expenditure'},
+    {x:110,y:130, fill:'#3a0050', label:['Rationalize Subsidy'], sub:'Targeted not blanket'},
+    {x:350,y:135, fill:'#2a0040', label:['Improve Compliance'], sub:'GST + Direct Tax'},
+  ];
+  const right=[
+    {x:1250,y:55,  fill:'#1a3a8a',label:['Lower Deficit'],     sub:'Revenue > Expenditure'},
+    {x:1010,y:45,  fill:'#0a6070',label:['Less Public Debt'],  sub:'Less borrowing needed'},
+    {x:1250,y:130, fill:'#1a6a3a',label:['Fiscal Space'],      sub:'Room for future spending'},
+    {x:1010,y:135, fill:'#1a5878',label:['Investor Confidence'],sub:'Stable macro signals'},
+  ];
+
+  left.forEach(n=>{
+    edge(svg,580,80,n.x+84,n.y,'#5a1a8a55',true,1.5);
+    node(svg,n.x,n.y,164,44,n.fill,[n.label[0]],n.sub);
+  });
+  right.forEach(n=>{
+    edge(svg,780,80,n.x-84,n.y,'#1a3a8a55',true,1.5);
+    node(svg,n.x,n.y,164,44,n.fill,[n.label[0]],n.sub);
+  });
+
+  const tl=se('text',{x:230,y:152,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(90,26,138,0.45)','letter-spacing':'2'});
+  tl.textContent='METHODS'; svg.appendChild(tl);
+  const tr=se('text',{x:1130,y:152,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.45)','letter-spacing':'2'});
+  tr.textContent='OUTCOMES'; svg.appendChild(tr);
+})();
+</script>
+</body>
+</html>

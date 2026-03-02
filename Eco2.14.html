@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foreign Investment — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0e1420;--paper:#f5f8ff;
+  --gold:#b87c10;--amber:#d46a10;
+  --green:#1a6a3a;--blue:#1a3a8a;
+  --purple:#5a1a8a;--teal:#0a6070;
+  --red:#b01a1a;--muted:#6a7a8a;
+  --border:#c8d4ea;--card:#ffffff;
+  --card2:#edf1fa;--sky:#1a5878;
+  --navy:#0a1a40;--indigo:#2a3080;
+  --olive:#4a6020;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:
+  radial-gradient(ellipse 1000px 600px at 5% 0%, rgba(26,58,138,0.06) 0%,transparent 60%),
+  radial-gradient(ellipse 800px 800px at 95% 100%, rgba(26,106,58,0.05) 0%,transparent 60%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--blue);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(24px,4.5vw,48px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--green);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--blue),var(--green),var(--amber));margin:14px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--blue);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(26,58,138,0.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.blue::before{background:var(--blue);}
+.pc.green::before{background:var(--green);}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.teal::before{background:var(--teal);}
+.pc.purple::before{background:var(--purple);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.navy::before{background:var(--navy);}
+.pc.olive::before{background:var(--olive);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* MAP CARDS */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--blue),var(--teal),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--olive));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card svg{display:block;width:100%;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+.pill.olive{background:rgba(74,96,32,0.12);color:var(--olive);}
+
+/* CHIPS */
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.25);color:var(--green);}
+.ps-chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.25);color:var(--red);}
+.ps-chip.neu{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.25);color:var(--blue);}
+.ps-chip.gold{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.25);color:var(--gold);}
+.ps-chip.amber{background:rgba(212,106,16,0.07);border-color:rgba(212,106,16,0.25);color:var(--amber);}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* FEAT GRID */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--navy);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(26,58,138,0.02);}
+.ctable td:first-child{font-weight:700;color:var(--blue);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.na{background:#f8d7da;color:#721c24;}
+.tag.warn{background:#fff3cd;color:#856404;}
+.tag.info{background:#d1ecf1;color:#0c5460;}
+
+/* FORMULA */
+.formula{padding:14px 18px;border-radius:12px;text-align:center;margin:10px 0;border:2px solid;}
+.formula-main{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;}
+.formula-sub{font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px;}
+
+/* IMPACT CHAIN */
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:8px 0;}
+.ic-node{padding:6px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;white-space:nowrap;}
+.ic-arr{font-size:16px;color:var(--muted);margin:0 3px;}
+
+/* HIGHLIGHT BOX */
+.hbox{padding:12px 14px;border-radius:10px;border-left:4px solid;margin:8px 0;}
+.hbox .ht{font-size:11px;font-weight:800;margin-bottom:4px;}
+.hbox .hb{font-size:10px;line-height:1.6;}
+
+/* COMPARISON SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
+.split-col{padding:12px;border-radius:10px;border:1.5px solid;}
+
+/* KEYSTONE */
+.keystone{background:var(--navy);color:#e8f2ff;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#a0c0e8;line-height:1.7;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* PRELIM FLAG */
+.prelim-flag{background:linear-gradient(135deg,#fff9e6,#fff3cd);border:2px solid #d4ac0d;border-radius:12px;padding:16px 20px;margin:16px 0;}
+.prelim-flag-title{font-family:'Playfair Display',serif;font-size:14px;font-weight:800;color:#7d6608;margin-bottom:10px;}
+
+/* GOLDEN RULE BOX */
+.golden-rule{background:linear-gradient(135deg,rgba(184,124,16,0.1),rgba(212,106,16,0.08));border:2px solid var(--gold);border-radius:14px;padding:16px 20px;margin:14px 0;text-align:center;}
+.golden-rule-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.golden-rule-main{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;}
+
+/* CURRENCY RISK VISUAL */
+.risk-visual{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+.risk-col{padding:12px;border-radius:10px;border:2px solid;text-align:center;}
+.risk-icon{font-size:28px;margin-bottom:6px;}
+.risk-title{font-size:11px;font-weight:800;margin-bottom:4px;}
+.risk-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Economy · Foreign Investment · UPSC Prelims</div>
+  <h1>Foreign Investment — <em>Mind Map</em></h1>
+  <div class="header-sub">FDI · FPI · ECB · Masala Bonds · ODI · ADR/GDR · Capital Instruments</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec-label">Master Flow — The Big Picture</div>
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1400 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: WHAT IS FOREIGN INVESTMENT ══ -->
+<div class="sec-label">① What Is Foreign Investment & Capital Instruments</div>
+<div class="map-card mc2">
+  <svg id="svgCapInst" viewBox="0 0 1400 210" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc blue">
+    <div class="pc-label">Equity Shares</div>
+    <h3>📊 Ownership Stake</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Ownership Rights</div><div class="vs">Part-owner of company</div></div>
+      <div class="vitem"><div class="vt">Voting Rights</div><div class="vs">Shape company decisions</div></div>
+    </div>
+    <span class="pill blue" style="margin-top:8px;">Core Instrument</span>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Preference Shares (Conv.)</div>
+    <h3>🥇 Preference + Convert</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Preferred Dividend</div><div class="vs">Paid before equity holders</div></div>
+      <div class="vitem"><div class="vt">Priority Repayment</div><div class="vs">On winding up</div></div>
+      <div class="vitem"><div class="vt">Must Convert</div><div class="vs">Into equity shares later</div></div>
+    </div>
+    <span class="pill purple" style="margin-top:8px;">Hybrid Instrument</span>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Convertible Debentures</div>
+    <h3>📄 Bonds → Equity</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Bond-like Instrument</div><div class="vs">Earns interest like a bond</div></div>
+      <div class="vitem"><div class="vt">Fully Convertible</div><div class="vs">Must convert into equity</div></div>
+    </div>
+    <span class="pill teal" style="margin-top:8px;">Debt → Equity</span>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Share Warrants</div>
+    <h3>🎫 Right to Buy Later</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Right, Not Obligation</div><div class="vs">Option to buy shares at set price</div></div>
+      <div class="vitem"><div class="vt">If Not Exercised</div><div class="vs">Initial money forfeited</div></div>
+    </div>
+    <span class="pill amber" style="margin-top:8px;">Option Instrument</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: FDI vs FPI — THE GOLDEN RULE ══ -->
+<div class="sec-label">② FDI vs FPI — The 10% Golden Rule 🔥</div>
+<div class="map-card mc3">
+  <svg id="svgFDIFPI" viewBox="0 0 1400 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- Golden Rule Box -->
+<div class="golden-rule">
+  <div class="golden-rule-title">🔥 The Golden Rule — Must Remember</div>
+  <div style="display:flex;gap:30px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:6px;">
+    <div style="text-align:center;">
+      <div class="golden-rule-main" style="color:var(--blue);">≥ 10%</div>
+      <div style="font-size:12px;font-weight:800;color:var(--blue);margin-top:4px;">= FDI</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">IN LISTED CO.</div>
+    </div>
+    <div style="font-size:32px;color:var(--muted);">|</div>
+    <div style="text-align:center;">
+      <div class="golden-rule-main" style="color:var(--green);">< 10%</div>
+      <div style="font-size:12px;font-weight:800;color:var(--green);margin-top:4px;">= FPI</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">IN LISTED CO.</div>
+    </div>
+    <div style="font-size:32px;color:var(--muted);">|</div>
+    <div style="text-align:center;">
+      <div class="golden-rule-main" style="color:var(--purple);">Any %</div>
+      <div style="font-size:12px;font-weight:800;color:var(--purple);margin-top:4px;">= FDI</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">UNLISTED CO.</div>
+    </div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Foreign Direct Investment (FDI)</div>
+    <h3>🏭 Long-Term · Strategic Control</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📊</div><div class="ft">≥ 10% in Listed Co.</div><div class="fs">OR any % in unlisted</div></div>
+      <div class="feat"><div class="fi">🏦</div><div class="ft">Primary Market</div><div class="fs">New capital to company</div></div>
+      <div class="feat"><div class="fi">🕐</div><div class="ft">Long-Term</div><div class="fs">Strategic commitment</div></div>
+      <div class="feat"><div class="fi">🎛️</div><div class="ft">Active Management</div><div class="fs">Board-level influence</div></div>
+    </div>
+    <div class="hbox" style="border-color:var(--blue);background:rgba(26,58,138,0.05);">
+      <div class="ht" style="color:var(--blue);">⚡ Special Rule: "Once FDI, Always FDI"</div>
+      <div class="hb">If investment crosses 10% within 1 year → reclassified as FDI.<br>Even if stake later falls below 10% → still treated as FDI.</div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Foreign Portfolio Investment (FPI)</div>
+    <h3>📈 Short-Term · No Control</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📉</div><div class="ft">< 10% in Listed Co.</div><div class="fs">Minority stake only</div></div>
+      <div class="feat"><div class="fi">🏪</div><div class="ft">Secondary Market</div><div class="fs">Ownership transfers; no new capital</div></div>
+      <div class="feat"><div class="fi">⚡</div><div class="ft">Short-Term</div><div class="fs">Hot money; volatile</div></div>
+      <div class="feat"><div class="fi">🚫</div><div class="ft">No Management Role</div><div class="fs">Passive investor only</div></div>
+    </div>
+    <div class="hbox" style="border-color:var(--green);background:rgba(26,106,58,0.05);">
+      <div class="ht" style="color:var(--green);">📋 Limits & Regulation</div>
+      <div class="hb">Single FPI → Max 10% in any company.<br>All FPIs combined → Up to sectoral cap.<br>Regulated by: <strong>SEBI</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- Comparison Table -->
+<div class="pc navy">
+  <div class="pc-label">Direct Comparison</div>
+  <h3 style="color:var(--card);">⚖️ FDI vs FPI — Side by Side</h3>
+  <table class="ctable">
+    <tr><th>Parameter</th><th>FDI</th><th>FPI</th></tr>
+    <tr><td>Threshold (Listed)</td><td><span class="tag ok">≥ 10%</span></td><td><span class="tag warn">< 10%</span></td></tr>
+    <tr><td>Unlisted Company</td><td><span class="tag ok">Any %</span></td><td><span class="tag na">N/A</span></td></tr>
+    <tr><td>Time Horizon</td><td>Long-term</td><td>Short-term</td></tr>
+    <tr><td>Market Type</td><td>Primary market</td><td>Secondary market</td></tr>
+    <tr><td>Management Role</td><td>Active (Board level)</td><td>None (passive)</td></tr>
+    <tr><td>Capital Flow</td><td>New capital to company</td><td>Ownership changes hands</td></tr>
+    <tr><td>Regulator</td><td>DPIIT + RBI (FEMA)</td><td>SEBI</td></tr>
+    <tr><td>Volatility</td><td>Stable</td><td>Volatile (hot money)</td></tr>
+  </table>
+</div>
+
+<!-- ══ SECTION 3: FDI ROUTES ══ -->
+<div class="sec-label">③ FDI Investment Routes & Regulation</div>
+<div class="map-card mc4">
+  <svg id="svgRoutes" viewBox="0 0 1400 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Route 1 — Preferred</div>
+    <h3>🟢 Automatic Route</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">95%+</div>
+        <div class="stat-sub">of all FDI</div>
+        <div class="stat-label">VIA THIS ROUTE</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">No Govt. Approval Needed</div><div class="vs">Invest directly, notify RBI after</div></div>
+      <div class="vitem"><div class="vt">Most Sectors Covered</div><div class="vs">Manufacturing, services, IT, etc.</div></div>
+      <div class="vitem"><div class="vt">Investor-Friendly</div><div class="vs">Ease of doing business priority</div></div>
+    </div>
+    <span class="ps-chip sol" style="margin-top:8px;">✅ Fast-Track</span>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Route 2 — Sensitive Sectors</div>
+    <h3>🔴 Government Route</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Prior Govt. Approval Required</div><div class="vs">Apply to FIPB / relevant ministry</div></div>
+      <div class="vitem"><div class="vt">Sensitive Sectors</div><div class="vs">Defence, atomic energy, telecom (above limits)</div></div>
+      <div class="vitem"><div class="vt">Strategic Review</div><div class="vs">National security considerations</div></div>
+    </div>
+    <span class="ps-chip amber" style="margin-top:8px;">⚠️ Approval Needed</span>
+  </div>
+</div>
+
+<!-- Regulatory Framework -->
+<div class="pc sky" style="margin-bottom:20px;">
+  <div class="pc-label">Regulatory Framework</div>
+  <h3>🏛️ Who Governs Foreign Investment?</h3>
+  <div class="g4" style="margin-bottom:0;">
+    <div style="padding:12px;border-radius:10px;background:rgba(26,58,138,0.07);border:1.5px solid rgba(26,58,138,0.2);text-align:center;">
+      <div style="font-size:20px;margin-bottom:6px;">📋</div>
+      <div style="font-size:11px;font-weight:800;color:var(--blue);">FEMA 1999</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;">Governing law for all foreign exchange</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(10,96,112,0.07);border:1.5px solid rgba(10,96,112,0.2);text-align:center;">
+      <div style="font-size:20px;margin-bottom:6px;">🏦</div>
+      <div style="font-size:11px;font-weight:800;color:var(--teal);">RBI</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;">Reporting + compliance oversight</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(26,106,58,0.07);border:1.5px solid rgba(26,106,58,0.2);text-align:center;">
+      <div style="font-size:20px;margin-bottom:6px;">🏛️</div>
+      <div style="font-size:11px;font-weight:800;color:var(--green);">DPIIT</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;">Sets FDI policy + sectoral caps</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(90,26,138,0.07);border:1.5px solid rgba(90,26,138,0.2);text-align:center;">
+      <div style="font-size:20px;margin-bottom:6px;">📊</div>
+      <div style="font-size:11px;font-weight:800;color:var(--purple);">SEBI</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;">Registers + regulates FPIs</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: ECB + MASALA BONDS ══ -->
+<div class="sec-label">④ External Commercial Borrowing (ECB) & Masala Bonds 🔥</div>
+<div class="map-card mc5">
+  <svg id="svgECB" viewBox="0 0 1400 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc navy">
+    <div class="pc-label">External Commercial Borrowing</div>
+    <h3>💼 ECB — India Borrows Abroad</h3>
+    <div class="hbox" style="border-color:var(--blue);background:rgba(26,58,138,0.05);">
+      <div class="ht" style="color:var(--blue);">Definition</div>
+      <div class="hb">Loans raised by Indian companies from <strong>foreign lenders</strong>. This is a <strong>debt route</strong> (not equity).</div>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🏦</div><div class="ft">Bank Loans</div><div class="fs">Foreign bank credit</div></div>
+      <div class="feat"><div class="fi">📄</div><div class="ft">Bonds</div><div class="fs">Issued to foreign investors</div></div>
+      <div class="feat"><div class="fi">💱</div><div class="ft">FCCB</div><div class="fs">Foreign Currency Conv. Bonds</div></div>
+      <div class="feat"><div class="fi">🚢</div><div class="ft">Trade Credit</div><div class="fs">Import financing</div></div>
+    </div>
+    <div class="hbox" style="border-color:var(--amber);background:rgba(212,106,16,0.05);margin-top:10px;">
+      <div class="ht" style="color:var(--amber);">Currency Options</div>
+      <div class="hb">Can be in <strong>USD (Dollar-denominated)</strong> or <strong>INR (Rupee-denominated)</strong></div>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-label">Masala Bonds — Type of ECB</div>
+    <h3>🌶️ Masala Bonds — The Indian Special</h3>
+    <div class="hbox" style="border-color:var(--gold);background:rgba(184,124,16,0.06);">
+      <div class="ht" style="color:var(--gold);">Key Features</div>
+      <div class="hb">✔ Issued <strong>outside India</strong><br>✔ Denominated in <strong>Indian Rupees (INR)</strong><br>✔ Type of ECB (debt instrument)</div>
+    </div>
+    <!-- Currency Risk Visual -->
+    <div class="risk-visual">
+      <div class="risk-col" style="border-color:var(--red);background:rgba(176,26,26,0.05);">
+        <div class="risk-icon">💵</div>
+        <div class="risk-title" style="color:var(--red);">Dollar Bond (USD)</div>
+        <div class="risk-sub">Currency risk on →<br><strong style="color:var(--red);">Indian Company</strong><br>Rupee depreciates = Company loses</div>
+      </div>
+      <div class="risk-col" style="border-color:var(--green);background:rgba(26,106,58,0.05);">
+        <div class="risk-icon">🌶️</div>
+        <div class="risk-title" style="color:var(--green);">Masala Bond (INR)</div>
+        <div class="risk-sub">Currency risk on →<br><strong style="color:var(--green);">Foreign Investor</strong><br>Rupee depreciates = Investor loses</div>
+      </div>
+    </div>
+    <div style="padding:8px 12px;background:rgba(26,58,138,0.07);border-radius:8px;font-size:10px;font-weight:700;color:var(--blue);margin-top:6px;text-align:center;">
+      🔑 Masala Bond = India shifts currency risk to the foreign investor
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: ADR/GDR + ODI ══ -->
+<div class="sec-label">⑤ ADR / GDR — Raising Money Abroad & ODI</div>
+<div class="map-card mc1">
+  <svg id="svgADR" viewBox="0 0 1400 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">ADR — American Depository Receipt</div>
+    <h3>🇺🇸 India → US Markets</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;gap:6px;">
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);font-size:10px;">Indian Company Issues Shares</div>
+      <div style="color:var(--muted);margin-left:10px;font-size:14px;">↓</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);font-size:10px;">Domestic Custodian Bank holds them</div>
+      <div style="color:var(--muted);margin-left:10px;font-size:14px;">↓</div>
+      <div class="ic-node" style="border-color:var(--purple);background:rgba(90,26,138,0.07);color:var(--purple);font-size:10px;">Overseas Depository Bank issues ADR</div>
+      <div style="color:var(--muted);margin-left:10px;font-size:14px;">↓</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);font-size:10px;">US Investors Buy ADR on US Markets</div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">GDR — Global Depository Receipt</div>
+    <h3>🌍 India → Global Markets</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Same Mechanism as ADR</div><div class="vs">But traded on international (non-US) markets</div></div>
+      <div class="vitem"><div class="vt">Luxembourg / London</div><div class="vs">Common exchanges for GDRs</div></div>
+      <div class="vitem"><div class="vt">Represents Indian Shares</div><div class="vs">Denominated in foreign currency</div></div>
+      <div class="vitem"><div class="vt">Broader Reach</div><div class="vs">Access to global investor base</div></div>
+    </div>
+    <span class="pill purple" style="margin-top:8px;">Global Capital Raise</span>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">ODI — Overseas Direct Investment</div>
+    <h3>↗️ India Invests Abroad</h3>
+    <div class="hbox" style="border-color:var(--teal);background:rgba(10,96,112,0.05);">
+      <div class="ht" style="color:var(--teal);">Definition</div>
+      <div class="hb">When an <strong>Indian company invests abroad</strong> → Called ODI.<br>It is the exact <strong>opposite of FDI</strong>.</div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vitem"><div class="vt">Indian Companies Expand Globally</div><div class="vs">Tata, Reliance, Infosys abroad</div></div>
+      <div class="vitem"><div class="vt">Regulated by RBI</div><div class="vs">Under FEMA guidelines</div></div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:10px;align-items:center;justify-content:center;">
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);font-size:10px;">FDI: Foreign → India</div>
+      <div style="font-size:18px;color:var(--muted);">↔</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);font-size:10px;">ODI: India → Foreign</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: FULL CONCEPT MAP ══ -->
+<div class="sec-label">⑥ Complete Concept Flow — All Routes at Once</div>
+<div class="map-card mc3">
+  <svg id="svgAll" viewBox="0 0 1400 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 7: PRELIMS ══ -->
+<div class="sec-label">⑦ High-Probability Prelims Points 🔥</div>
+<div class="prelim-flag">
+  <div class="prelim-flag-title">⭐ UPSC Prelims — Must-Remember Facts</div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;">
+    <span class="ps-chip neu">📐 FDI ≥ 10% in listed company</span>
+    <span class="ps-chip neu">📐 FPI < 10% in listed company</span>
+    <span class="ps-chip neu">⚡ Any % in unlisted = FDI</span>
+    <span class="ps-chip neu">🔒 "Once FDI, Always FDI"</span>
+    <span class="ps-chip neu">📅 < 10% crosses 1yr → FDI</span>
+    <span class="ps-chip neu">🟢 95%+ FDI via Auto Route</span>
+    <span class="ps-chip neu">📋 FEMA 1999 governs FI</span>
+    <span class="ps-chip neu">🏛️ DPIIT sets FDI policy</span>
+    <span class="ps-chip neu">📊 SEBI registers FPIs</span>
+    <span class="ps-chip neu">💼 ECB = Debt (not equity)</span>
+    <span class="ps-chip neu">🌶️ Masala Bond = Rupee-denominated ECB</span>
+    <span class="ps-chip neu">💱 Masala Bond = Currency risk on foreign investor</span>
+    <span class="ps-chip neu">💵 Dollar Bond = Currency risk on Indian company</span>
+    <span class="ps-chip neu">🇺🇸 ADR = US depository receipt</span>
+    <span class="ps-chip neu">🌍 GDR = Global depository receipt</span>
+    <span class="ps-chip neu">🏦 ADR issued by Overseas Depository Bank</span>
+    <span class="ps-chip neu">↗️ ODI = Indian company invests abroad</span>
+    <span class="ps-chip neu">🚫 Single FPI → Max 10% in one company</span>
+    <span class="ps-chip neu">📈 FPI → Secondary market (no new capital)</span>
+    <span class="ps-chip neu">🏭 FDI → Primary market (new capital)</span>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🌐</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">A foreign investor can enter India via <strong style="color:#a8d8ff;">equity (FDI/FPI)</strong> or <strong style="color:#a8d8ff;">debt (ECB)</strong>.<br>If ownership ≥ 10% → <strong style="color:#f5d78a;">FDI (long-term, active, primary market)</strong>.<br>If < 10% → <strong style="color:#a8ffa8;">FPI (short-term, passive, secondary market)</strong>.<br>If India borrows abroad → <strong style="color:#ffb8a8;">ECB (dollar risk on India)</strong>. If Masala bond → <strong style="color:#ffd8a8;">currency risk shifts to foreign investor</strong>.<br>If Indian company goes abroad → <strong style="color:#d8d8ff;">ODI (reverse of FDI)</strong>. To raise capital abroad without direct listing → <strong style="color:#ffe8a8;">ADR/GDR</strong>.</div>
+    <div class="keystone-pills">
+      <span class="kpill">📊 10% Rule</span>
+      <span class="kpill">🏭 FDI = Control</span>
+      <span class="kpill">📈 FPI = Portfolio</span>
+      <span class="kpill">💼 ECB = Debt</span>
+      <span class="kpill">🌶️ Masala = INR Risk Shift</span>
+      <span class="kpill">↗️ ODI = India Abroad</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a||{}))e.setAttribute(k,v);return e;}
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  svg.appendChild(se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:color||'#aaa','stroke-width':w||1.8,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'}));
+}
+function vline(svg,x1,y1,x2,y2,color,dashed){
+  svg.appendChild(se('line',{x1,y1,x2,y2,stroke:color||'#aaa','stroke-width':'1.8',fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.5'}));
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff'; rx=rx===undefined?10:rx;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  const totalLines=lines.length;
+  let ty=y-(totalLines*7)-(sub?5:0)-(emoji?9:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10.5','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+totalLines*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'7.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.38)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// MASTER FLOW
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(se('rect',{x:0,y:0,width:1400,height:110,fill:'rgba(245,248,255,0.6)'}));
+  const steps=[
+    {x:88,   fill:'#1a3a8a', label:'Foreign\nInvestor',       sub:'Resident outside India', emoji:'🌐'},
+    {x:255,  fill:'#0a6070', label:'Capital\nInstruments',     sub:'Equity/Pref/Conv/Warrants',emoji:'📄'},
+    {x:430,  fill:'#1a3a8a', label:'Equity\nRoute',            sub:'FDI or FPI',              emoji:'📊'},
+    {x:610,  fill:'#1a6a3a', label:'≥ 10% →\nFDI',            sub:'Long-term + Control',     emoji:'🏭'},
+    {x:790,  fill:'#4a6020', label:'< 10% →\nFPI',            sub:'Short-term + Passive',    emoji:'📈'},
+    {x:970,  fill:'#5a1a8a', label:'Debt Route\n(ECB)',        sub:'Dollar or Rupee',         emoji:'💼'},
+    {x:1140, fill:'#b87c10', label:'Masala\nBond (INR)',       sub:'Risk on foreign investor',emoji:'🌶️'},
+    {x:1310, fill:'#1a5878', label:'ADR/GDR\n+ ODI',          sub:'Other capital routes',    emoji:'🏦'},
+  ];
+  steps.forEach((s,i)=>{if(i<steps.length-1)edge(svg,s.x+72,55,steps[i+1].x-72,55,'#1a3a8a',false,1.8);});
+  steps.forEach(s=>node(svg,s.x,55,136,68,s.fill,s.label.split('\n'),s.sub,s.emoji));
+  const t=se('text',{x:700,y:16,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3',fill:'rgba(26,58,138,0.4)'});
+  t.textContent='MASTER FLOW: FOREIGN INVESTOR → EQUITY OR DEBT → FDI / FPI / ECB / MASALA / ADR';
+  svg.appendChild(t);
+})();
+
+// CAPITAL INSTRUMENTS SPIDER
+(function(){
+  const svg=document.getElementById('svgCapInst');
+  svg.setAttribute('viewBox','0 0 1400 210');
+  node(svg,700,105,250,56,'#0a1a40',['Foreign Investment','Capital Instruments'],'Person outside India → Indian company','🌐');
+  const items=[
+    {x:130, y:55,  fill:'#1a3a8a', label:['Equity Shares'],          sub:'Ownership + Voting rights',    emoji:'📊'},
+    {x:130, y:155, fill:'#5a1a8a', label:['Pref. Shares (Conv.)'],   sub:'Priority dividend + Converts',  emoji:'🥇'},
+    {x:380, y:35,  fill:'#0a6070', label:['Share Warrants'],         sub:'Right to buy shares later',     emoji:'🎫'},
+    {x:380, y:175, fill:'#4a6020', label:['Conv. Debentures'],       sub:'Bond that converts to equity',  emoji:'📄'},
+    {x:1020,y:35,  fill:'#1a6a3a', label:['FDI Route'],              sub:'≥ 10% or unlisted',            emoji:'🏭'},
+    {x:1020,y:175, fill:'#b87c10', label:['FPI Route'],              sub:'< 10% in listed co.',           emoji:'📈'},
+    {x:1260,y:55,  fill:'#d46a10', label:['ECB (Debt Route)'],       sub:'Loans from foreign lenders',   emoji:'💼'},
+    {x:1260,y:155, fill:'#1a5878', label:['ADR / GDR'],              sub:'Depository receipts abroad',   emoji:'🏦'},
+  ];
+  items.forEach(n=>{
+    const fx=n.x<700?577:823; const fy=n.y<105?98:112;
+    edge(svg,fx,fy,n.x+(n.x<700?82:-82),n.y,n.x<700?'#1a3a8a44':'#1a6a3a44',true,1.5);
+    node(svg,n.x,n.y,195,48,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+})();
+
+// FDI vs FPI SPIDER
+(function(){
+  const svg=document.getElementById('svgFDIFPI');
+  svg.setAttribute('viewBox','0 0 1400 240');
+  // Two central nodes side by side
+  node(svg,380,120,210,58,'#1a3a8a',['FDI','Foreign Direct Inv.'],'≥ 10% listed / any unlisted','🏭');
+  node(svg,1020,120,210,58,'#1a6a3a',['FPI','Foreign Portfolio Inv.'],'< 10% in listed company','📈');
+  // divider
+  svg.appendChild(se('line',{x1:700,y1:20,x2:700,y2:220,stroke:'rgba(200,210,230,0.4)','stroke-width':'2','stroke-dasharray':'8 4'}));
+  // FDI leaves
+  const fdi=[
+    {x:100,y:50,  fill:'#1a3a8a', label:['Long-Term'],         sub:'Strategic commitment',        emoji:'🕐'},
+    {x:100,y:130, fill:'#0a6070', label:['Primary Market'],    sub:'New capital to company',      emoji:'🏦'},
+    {x:100,y:205, fill:'#2a3080', label:['Active Mgmt.'],      sub:'Board-level influence',       emoji:'🎛️'},
+    {x:320,y:35,  fill:'#5a1a8a', label:['Once FDI→Always FDI'],sub:'Even if falls below 10%',  emoji:'🔒'},
+    {x:320,y:210, fill:'#4a6020', label:['Auto / Govt Route'], sub:'95%+ via auto route',        emoji:'🟢'},
+  ];
+  fdi.forEach(n=>{
+    edge(svg,380-105,120,n.x+(n.x<380?90:-90),n.y,'#1a3a8a44',true,1.5);
+    node(svg,n.x,n.y,185,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  // FPI leaves
+  const fpi=[
+    {x:1300,y:50,  fill:'#1a6a3a', label:['Short-Term'],        sub:'Hot money, volatile',         emoji:'⚡'},
+    {x:1300,y:130, fill:'#0a6070', label:['Secondary Market'],  sub:'Ownership changes hands',     emoji:'🔄'},
+    {x:1300,y:205, fill:'#4a6020', label:['No Mgmt. Role'],     sub:'Purely passive investor',     emoji:'🚫'},
+    {x:1080,y:35,  fill:'#5a1a8a', label:['SEBI Regulated'],    sub:'Register before investing',   emoji:'📋'},
+    {x:1080,y:210, fill:'#d46a10', label:['Max 10% per FPI'],   sub:'Sectoral cap for all FPIs',  emoji:'📊'},
+  ];
+  fpi.forEach(n=>{
+    edge(svg,1020+105,120,n.x+(n.x>1020?-90:90),n.y,'#1a6a3a44',true,1.5);
+    node(svg,n.x,n.y,185,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  // label
+  const tl=se('text',{x:380,y:228,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.45)','letter-spacing':'2'});
+  tl.textContent='FDI — STRATEGIC / LONG-TERM'; svg.appendChild(tl);
+  const tr=se('text',{x:1020,y:228,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,106,58,0.45)','letter-spacing':'2'});
+  tr.textContent='FPI — PORTFOLIO / SHORT-TERM'; svg.appendChild(tr);
+})();
+
+// FDI ROUTES
+(function(){
+  const svg=document.getElementById('svgRoutes');
+  svg.setAttribute('viewBox','0 0 1400 190');
+  node(svg,700,95,220,54,'#0a1a40',['FDI Entry Routes'],'How Foreign Investors Enter India','🚪');
+  const items=[
+    {x:170, y:50,  fill:'#1a6a3a', label:['Automatic Route'],    sub:'No govt. approval; >95% FDI',  emoji:'🟢'},
+    {x:170, y:140, fill:'#0a6070', label:['Most Sectors'],        sub:'Manufacturing, IT, Services',  emoji:'🏭'},
+    {x:450, y:40,  fill:'#4a6020', label:['Notify RBI After'],    sub:'Reporting required post-invest',emoji:'📋'},
+    {x:450, y:158, fill:'#1a3a8a', label:['FEMA 1999 Governs'],   sub:'Legal framework for all FI',   emoji:'📜'},
+    {x:940, y:40,  fill:'#b01a1a', label:['Govt. Route'],         sub:'Prior approval mandatory',      emoji:'🔴'},
+    {x:940, y:158, fill:'#d46a10', label:['Sensitive Sectors'],   sub:'Defence, Atomic, Telecom',     emoji:'🛡️'},
+    {x:1210,y:50,  fill:'#5a1a8a', label:['DPIIT Policy'],        sub:'Sets caps + conditions',        emoji:'🏛️'},
+    {x:1210,y:148, fill:'#1a5878', label:['National Security'],   sub:'Strategic review applied',     emoji:'🔐'},
+  ];
+  items.forEach(n=>{
+    const fx=n.x<700?591:809;
+    edge(svg,fx,95,n.x+(n.x<700?82:-82),n.y,n.x<700?'#1a6a3a44':'#b01a1a44',true,1.5);
+    node(svg,n.x,n.y,190,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  // split line
+  svg.appendChild(se('line',{x1:700,y1:15,x2:700,y2:178,stroke:'rgba(200,210,230,0.3)','stroke-width':'1.5','stroke-dasharray':'6 3'}));
+  const tl=se('text',{x:380,y:182,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,106,58,0.45)','letter-spacing':'2'});
+  tl.textContent='AUTOMATIC ROUTE (95%+ OF FDI)'; svg.appendChild(tl);
+  const tr=se('text',{x:1060,y:182,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(176,26,26,0.45)','letter-spacing':'2'});
+  tr.textContent='GOVERNMENT ROUTE (SENSITIVE SECTORS)'; svg.appendChild(tr);
+})();
+
+// ECB + MASALA
+(function(){
+  const svg=document.getElementById('svgECB');
+  svg.setAttribute('viewBox','0 0 1400 220');
+  // Two trees: ECB (left) | Masala Bonds (right)
+  const W=1400, colW=700;
+  node(svg,colW/2,46,220,48,'#0a1a40',['External Commercial Borrowing'],'Indian co. borrows from foreign lenders','💼');
+  const ecbItems=[
+    {fill:'#1a3a8a', label:['Bank Loans'],          sub:'Foreign bank credit',         emoji:'🏦'},
+    {fill:'#0a6070', label:['Bonds (FCCBs)'],        sub:'Convertible foreign bonds',   emoji:'📄'},
+    {fill:'#5a1a8a', label:['Trade Credit'],         sub:'Import finance',              emoji:'🚢'},
+    {fill:'#2a3080', label:['Financial Lease'],      sub:'Equipment financing',         emoji:'⚙️'},
+    {fill:'#b87c10', label:['Dollar Denominated'],   sub:'USD risk on Indian co.',      emoji:'💵'},
+    {fill:'#4a6020', label:['Rupee Denominated'],    sub:'INR — basis for Masala bond', emoji:'₹'},
+  ];
+  const lCols=3,lCellW=colW/lCols,lStartY=120,lCellH=90;
+  ecbItems.forEach((n,i)=>{
+    const col=i%lCols,row=Math.floor(i/lCols);
+    const cx=lCellW*col+lCellW/2,cy=lStartY+row*lCellH;
+    const path=se('path',{d:`M${colW/2},${46+24} C${colW/2},${(46+24+cy-24)/2} ${cx},${(46+24+cy-24)/2} ${cx},${cy-24}`,stroke:'#1a3a8a44','stroke-width':'1.5',fill:'none','stroke-dasharray':'4 3'});
+    svg.appendChild(path);
+    node(svg,cx,cy,lCellW-18,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  // separator
+  svg.appendChild(se('line',{x1:colW,y1:10,x2:colW,y2:210,stroke:'rgba(200,210,230,0.3)','stroke-width':'1.5','stroke-dasharray':'6 3'}));
+  // RIGHT: Masala Bonds
+  const rrx=colW+colW/2;
+  node(svg,rrx,46,240,48,'#b87c10',['Masala Bonds'],'Rupee-denominated ECB issued abroad','🌶️');
+  const masalaItems=[
+    {fill:'#b87c10', label:['Issued Outside India'],   sub:'International capital markets',  emoji:'🌍'},
+    {fill:'#d46a10', label:['INR Denominated'],        sub:'Not USD — Indian Rupees only',   emoji:'₹'},
+    {fill:'#7a4010', label:['Type of ECB'],            sub:'Debt instrument, not equity',    emoji:'💼'},
+    {fill:'#b01a1a', label:['Rupee Depreciates'],      sub:'Foreign investor bears the loss',emoji:'📉'},
+    {fill:'#1a6a3a', label:['Advantage for India'],    sub:'Currency risk off India\'s books',emoji:'✅'},
+    {fill:'#1a3a8a', label:['vs Dollar Bond'],         sub:'Dollar bond: India bears risk',  emoji:'⚖️'},
+  ];
+  const rCols=3,rCellW=colW/rCols;
+  masalaItems.forEach((n,i)=>{
+    const col=i%rCols,row=Math.floor(i/rCols);
+    const cx=colW+rCellW*col+rCellW/2,cy=lStartY+row*lCellH;
+    const path=se('path',{d:`M${rrx},${46+24} C${rrx},${(46+24+cy-24)/2} ${cx},${(46+24+cy-24)/2} ${cx},${cy-24}`,stroke:'#b87c1044','stroke-width':'1.5',fill:'none','stroke-dasharray':'4 3'});
+    svg.appendChild(path);
+    node(svg,cx,cy,rCellW-18,46,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  const tl=se('text',{x:colW/2,y:214,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.45)','letter-spacing':'2'});
+  tl.textContent='ECB — DEBT ROUTE (DOLLAR OR RUPEE)'; svg.appendChild(tl);
+  const tr=se('text',{x:colW+colW/2,y:214,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(184,124,16,0.45)','letter-spacing':'2'});
+  tr.textContent='MASALA BONDS — RISK SHIFTS TO FOREIGN INVESTOR'; svg.appendChild(tr);
+})();
+
+// ADR/GDR/ODI FLOW
+(function(){
+  const svg=document.getElementById('svgADR');
+  svg.setAttribute('viewBox','0 0 1400 200');
+  // ADR chain
+  const adrSteps=[
+    {x:100, fill:'#1a3a8a', label:['Indian Co.'],          sub:'Issues shares',              emoji:'🏢'},
+    {x:290, fill:'#0a6070', label:['Custodian Bank'],      sub:'Holds shares in India',      emoji:'🏦'},
+    {x:480, fill:'#5a1a8a', label:['Overseas Dep. Bank'],  sub:'Issues ADR/GDR receipts',    emoji:'🌐'},
+    {x:670, fill:'#1a6a3a', label:['ADR (US)'],            sub:'US investors buy on NYSE',   emoji:'🇺🇸'},
+    {x:860, fill:'#4a6020', label:['GDR (Global)'],        sub:'Non-US global exchanges',    emoji:'🌍'},
+  ];
+  adrSteps.forEach((s,i)=>{
+    if(i<adrSteps.length-1)edge(svg,s.x+82,60,adrSteps[i+1].x-82,60,'#1a3a8a44',false,2);
+    node(svg,s.x,60,156,50,s.fill,[s.label[0]],s.sub,s.emoji);
+  });
+  const ta=se('text',{x:480,y:120,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.45)','letter-spacing':'2'});
+  ta.textContent='ADR / GDR — CAPITAL RAISING MECHANISM'; svg.appendChild(ta);
+  // ODI + comparison
+  node(svg,1100,70,220,52,'#0a1a40',['ODI','Overseas Direct Inv.'],'India company invests abroad','↗️');
+  const odiItems=[
+    {x:1300,y:40, fill:'#1a5878', label:['India → Abroad'],   sub:'Opposite of FDI',         emoji:'🔄'},
+    {x:1300,y:120,fill:'#1a6a3a', label:['RBI Regulated'],    sub:'Under FEMA guidelines',   emoji:'📋'},
+    {x:1300,y:175,fill:'#5a1a8a', label:['Tata/Infosys etc'],sub:'Indian MNCs expanding',   emoji:'🌐'},
+  ];
+  odiItems.forEach(n=>{
+    edge(svg,1100+110,70,n.x-78,n.y,'#1a5878aa',true,1.5);
+    node(svg,n.x,n.y,148,40,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  // separator
+  svg.appendChild(se('line',{x1:990,y1:15,x2:990,y2:185,stroke:'rgba(200,210,230,0.3)','stroke-width':'1.5','stroke-dasharray':'6 3'}));
+  const t2=se('text',{x:1250,y:195,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,88,120,0.45)','letter-spacing':'2'});
+  t2.textContent='ODI — INDIA INVESTS ABROAD'; svg.appendChild(t2);
+})();
+
+// ALL ROUTES OVERVIEW
+(function(){
+  const svg=document.getElementById('svgAll');
+  svg.setAttribute('viewBox','0 0 1400 230');
+  node(svg,700,115,200,52,'#0a1a40',['Foreign Investor','All Routes'],'Complete investment landscape','🌐');
+  const allItems=[
+    {x:130,  y:50,  fill:'#1a3a8a', label:['FDI'],              sub:'≥10% | Long-term | Control',      emoji:'🏭'},
+    {x:130,  y:130, fill:'#1a6a3a', label:['FPI'],              sub:'<10% | Short-term | Passive',     emoji:'📈'},
+    {x:130,  y:200, fill:'#5a1a8a', label:['ECB (Debt)'],       sub:'Loan from foreign lender',        emoji:'💼'},
+    {x:380,  y:38,  fill:'#4a6020', label:['Auto Route'],       sub:'95%+ FDI; no approval',          emoji:'🟢'},
+    {x:380,  y:100, fill:'#b01a1a', label:['Govt Route'],       sub:'Sensitive sectors; approval',    emoji:'🔴'},
+    {x:380,  y:168, fill:'#d46a10', label:['FEMA + DPIIT'],     sub:'Legal + policy framework',        emoji:'📋'},
+    {x:380,  y:210, fill:'#0a6070', label:['SEBI (FPI)'],       sub:'Registers all FPIs',             emoji:'📊'},
+    {x:1030, y:38,  fill:'#b87c10', label:['Masala Bonds'],     sub:'INR ECB; risk on investor',      emoji:'🌶️'},
+    {x:1030, y:100, fill:'#1a5878', label:['Dollar ECB'],       sub:'USD; risk on Indian co.',        emoji:'💵'},
+    {x:1030, y:168, fill:'#1a3a8a', label:['ADR'],              sub:'US investors; depository rcpt',  emoji:'🇺🇸'},
+    {x:1030, y:210, fill:'#4a6020', label:['GDR'],              sub:'Global investors; intl markets', emoji:'🌍'},
+    {x:1270, y:65,  fill:'#1a5878', label:['ODI'],              sub:'India → Abroad (reverse FDI)',   emoji:'↗️'},
+    {x:1270, y:155, fill:'#5a1a8a', label:['FCCB'],            sub:'Foreign conv. bonds',            emoji:'📄'},
+  ];
+  allItems.forEach(n=>{
+    const fx=n.x<700?603:797;
+    edge(svg,fx,115,n.x+(n.x<700?82:-82),n.y,n.x<700?'#1a3a8a44':'#b87c1044',true,1.4);
+    node(svg,n.x,n.y,178,42,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  svg.appendChild(se('line',{x1:700,y1:12,x2:700,y2:218,stroke:'rgba(200,210,230,0.2)','stroke-width':'1.5','stroke-dasharray':'6 3'}));
+  const tl=se('text',{x:380,y:224,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.4)','letter-spacing':'2'});
+  tl.textContent='EQUITY ROUTES (FDI + FPI)'; svg.appendChild(tl);
+  const tr=se('text',{x:1100,y:224,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(184,124,16,0.4)','letter-spacing':'2'});
+  tr.textContent='DEBT + OTHER ROUTES (ECB + ADR + ODI)'; svg.appendChild(tr);
+})();
+</script>
+</body>
+</html>

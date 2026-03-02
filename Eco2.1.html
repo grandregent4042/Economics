@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money & Banking — UPSC Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f3ee;
+  --paper:#fffcf8;
+  --ink:#1a1510;
+  --ink2:#3d3228;
+  --muted:#8a7a6a;
+  --border:#e2d8cc;
+  --gold:#c4860a;
+  --gold-lt:#f8edd6;
+  --amber:#d4620a;
+  --green:#1a6a3a;
+  --green-lt:#edf7f2;
+  --blue:#1a3878;
+  --blue-lt:#edf1fb;
+  --red:#b81a1a;
+  --red-lt:#fbeaea;
+  --purple:#5a1a8a;
+  --teal:#0a6068;
+  --sky:#1a5878;
+  --card:#fffdf8;
+  --shadow:rgba(26,21,16,0.08);
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* Subtle paper texture overlay */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.header{
+  padding:56px 0 28px;
+  text-align:center;
+  border-bottom:1.5px solid var(--border);
+  margin-bottom:40px;
+}
+.header-eyebrow{
+  font-family:'DM Mono',monospace;
+  font-size:10px;letter-spacing:5px;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:14px;
+}
+.header h1{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(28px,5vw,52px);
+  line-height:1.1;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-desc{
+  font-size:13px;color:var(--muted);
+  font-family:'DM Mono',monospace;letter-spacing:1px;
+  margin-top:6px;
+}
+.header-rule{
+  display:flex;align-items:center;gap:16px;
+  max-width:500px;margin:20px auto 0;
+}
+.header-rule span{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.header-rule i{font-style:normal;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--gold);}
+
+/* ── SECTION LABEL ── */
+.sec{
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);
+  display:flex;align-items:center;gap:14px;
+  margin:44px 0 18px;
+}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── CARDS ── */
+.card{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:18px 20px;
+  position:relative;
+  overflow:hidden;
+  transition:box-shadow .2s,transform .2s;
+}
+.card:hover{
+  box-shadow:0 8px 32px var(--shadow);
+  transform:translateY(-2px);
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  border-radius:14px 14px 0 0;
+}
+.card.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.card.green::before{background:var(--green);}
+.card.blue::before{background:var(--blue);}
+.card.red::before{background:var(--red);}
+.card.purple::before{background:var(--purple);}
+.card.teal::before{background:var(--teal);}
+.card.amber::before{background:var(--amber);}
+.card.sky::before{background:var(--sky);}
+
+.card-eyebrow{
+  font-family:'DM Mono',monospace;font-size:9px;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+.card h3{
+  font-family:'Libre Baskerville',serif;
+  font-size:15px;font-weight:700;
+  margin-bottom:12px;line-height:1.3;
+}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* ── PILLS ── */
+.pill{
+  display:inline-flex;align-items:center;
+  padding:3px 10px;border-radius:20px;
+  font-size:10px;font-weight:600;
+  font-family:'DM Mono',monospace;
+  margin:2px;letter-spacing:0.3px;
+}
+.pill.gold{background:rgba(196,134,10,0.1);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.1);color:var(--green);}
+.pill.blue{background:rgba(26,56,120,0.1);color:var(--blue);}
+.pill.red{background:rgba(184,26,26,0.1);color:var(--red);}
+.pill.purple{background:rgba(90,26,138,0.1);color:var(--purple);}
+.pill.amber{background:rgba(212,98,10,0.1);color:var(--amber);}
+.pill.teal{background:rgba(10,96,104,0.1);color:var(--teal);}
+
+/* ── STAT ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{
+  flex:1;padding:12px 10px;border-radius:10px;
+  border:1.5px solid var(--border);
+  text-align:center;background:var(--bg);
+}
+.stat-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:26px;font-weight:700;line-height:1;
+}
+.stat-sub{font-size:10px;font-weight:600;margin-top:3px;}
+.stat-label{font-size:8px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;letter-spacing:1px;}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{
+  padding:8px 12px;border-radius:8px;
+  background:var(--bg);border:1px solid var(--border);
+  font-size:11px;line-height:1.5;
+}
+.vitem .vt{font-weight:700;margin-bottom:1px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* ── CHIP ── */
+.chip{
+  display:inline-block;padding:3px 9px;
+  border-radius:6px;font-size:10px;font-weight:700;
+  border:1.5px solid;margin:2px;
+  font-family:'DM Mono',monospace;letter-spacing:0.2px;
+}
+.chip.ok{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.chip.bad{background:rgba(184,26,26,0.07);border-color:rgba(184,26,26,0.2);color:var(--red);}
+.chip.neu{background:rgba(196,134,10,0.07);border-color:rgba(196,134,10,0.2);color:var(--gold);}
+
+/* ── CALLOUT ── */
+.callout{
+  padding:11px 14px;border-radius:9px;
+  background:rgba(26,56,120,0.05);
+  border:1.5px solid rgba(26,56,120,0.15);
+  margin:8px 0;
+}
+.callout-title{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ── KEYSTONE ── */
+.keystone{
+  background:var(--ink);color:#f5e8c0;
+  border-radius:18px;padding:28px 32px;
+  margin:24px 0;
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+}
+.keystone-icon{font-size:40px;flex:0 0 auto;}
+.keystone-title{
+  font-family:'Libre Baskerville',serif;
+  font-size:20px;font-style:italic;margin-bottom:6px;
+}
+.keystone-sub{font-size:11.5px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{
+  padding:4px 12px;border-radius:20px;
+  background:rgba(255,255,255,0.1);
+  font-size:11px;font-family:'DM Mono',monospace;
+}
+
+/* ── PHASE BOX ── */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{
+  padding:18px;border-radius:13px;
+  border:2px solid;text-align:center;
+}
+.phase-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:30px;font-weight:700;
+}
+.phase-title{font-size:12px;font-weight:800;margin:5px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-bottom:8px;}
+
+/* ── FLOW ── */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.flow-node{
+  padding:6px 12px;border-radius:8px;
+  font-size:11px;font-weight:600;border:1.5px solid;
+}
+.flow-arr{font-size:16px;color:var(--muted);}
+
+/* ── BAR ── */
+.bar-row{display:flex;flex-direction:column;gap:10px;margin:10px 0;}
+.bar-item{display:flex;align-items:center;gap:10px;}
+.bar-label{font-size:10px;font-weight:700;width:88px;flex:0 0 88px;text-align:right;font-family:'DM Mono',monospace;}
+.bar-track{flex:1;background:var(--bg);border-radius:5px;height:22px;overflow:hidden;border:1px solid var(--border);}
+.bar-fill{height:100%;border-radius:5px;display:flex;align-items:center;padding-left:8px;font-size:9px;font-weight:800;font-family:'DM Mono',monospace;color:#fff;}
+.bar-val{font-size:11px;font-weight:700;width:36px;font-family:'DM Mono',monospace;}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{
+  background:var(--ink);color:#fff;
+  padding:8px 10px;text-align:left;
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;
+}
+.ctable td{
+  padding:9px 10px;border-bottom:1px solid var(--border);
+  vertical-align:top;line-height:1.5;
+}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(196,134,10,0.025);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* ── IMPACT CHAIN ── */
+.ic{display:flex;align-items:center;flex-wrap:wrap;padding:6px 0;margin:8px 0;gap:0;}
+.ic-node{
+  padding:7px 11px;border-radius:8px;
+  font-size:10px;font-weight:700;
+  white-space:nowrap;border:1.5px solid;
+}
+.ic-arr{font-size:12px;color:var(--muted);flex:0 0 auto;margin:0 3px;}
+
+/* ── SVG MAP CARD ── */
+.map-card{
+  background:var(--card);border:1.5px solid var(--border);
+  border-radius:16px;overflow:hidden;
+  position:relative;margin-bottom:24px;
+}
+.map-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;
+}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card svg{display:block;width:100%;}
+
+/* ── COMPARISON ── */
+.compare-box{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-radius:12px;overflow:hidden;
+  border:1.5px solid var(--border);margin-top:10px;
+}
+.compare-side{padding:14px 16px;}
+.compare-side.left{background:rgba(26,56,120,0.04);border-right:1px solid var(--border);}
+.compare-side.right{background:rgba(184,26,26,0.04);}
+.compare-title{font-size:11px;font-weight:800;margin-bottom:8px;}
+
+/* Timeline */
+.timeline{position:relative;padding-left:28px;margin:10px 0;}
+.timeline::before{
+  content:'';position:absolute;left:8px;top:0;bottom:0;
+  width:2px;background:var(--border);
+}
+.tl-item{position:relative;margin-bottom:12px;}
+.tl-dot{
+  position:absolute;left:-24px;top:3px;
+  width:12px;height:12px;border-radius:50%;
+  border:2px solid;background:var(--card);
+}
+.tl-year{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);font-weight:500;}
+.tl-text{font-size:11px;font-weight:700;line-height:1.4;}
+.tl-sub{font-size:9px;color:var(--muted);margin-top:1px;}
+
+/* highlight box */
+.hi{
+  padding:10px 14px;border-radius:9px;
+  margin:8px 0;font-size:11px;font-weight:700;
+  border-left:3px solid;
+}
+.hi.warn{background:rgba(184,26,26,0.06);border-color:var(--red);color:var(--red);}
+.hi.info{background:rgba(26,56,120,0.06);border-color:var(--blue);color:var(--blue);}
+.hi.tip{background:rgba(26,106,58,0.06);border-color:var(--green);color:var(--green);}
+.hi.gold{background:rgba(196,134,10,0.06);border-color:var(--gold);color:var(--gold);}
+
+/* FADE IN */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.card,.map-card,.keystone,.phase-row,.g2,.g3,.g4{animation:fadeUp .5s ease both;}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="header">
+  <div class="header-eyebrow">Indian Economy · UPSC Prelims · Chapter Notes</div>
+  <h1>Money, Banking &<br><em>Exchange Rates</em></h1>
+  <div class="header-desc">Barter → Paper Currency → RBI → Money Supply → Exchange Rate Systems</div>
+  <div class="header-rule">
+    <span></span><i>MIND MAP</i><span></span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 0: MASTER FLOW ══════════ -->
+<div class="sec">Master Flow — The Big Picture</div>
+
+<div class="map-card mc1" style="margin-bottom:28px;">
+  <svg id="svgMaster" viewBox="0 0 1240 100" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══════════ SECTION 1: BARTER → MONEY ══════════ -->
+<div class="sec">① Why Money Was Needed — The Barter Problem</div>
+
+<div class="map-card mc2" style="margin-bottom:24px;">
+  <svg id="svgBarter" viewBox="0 0 1240 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:24px;">
+  <div class="card red">
+    <div class="card-eyebrow">The Core Problem</div>
+    <h3>⚠️ Barter System Failures</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🔄 Double Coincidence of Wants</div>
+        <div class="vs">Both parties must want exactly what the other has</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">⏱️ Time-Consuming</div>
+        <div class="vs">Difficult in large, complex economies</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">📏 No Common Measure</div>
+        <div class="vs">Cannot compare value of dissimilar goods</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🏦 No Store of Value</div>
+        <div class="vs">Perishable goods cannot be saved</div>
+      </div>
+    </div>
+    <div class="hi warn" style="margin-top:10px;">❌ Barter fails at scale → Intermediate commodity needed</div>
+  </div>
+
+  <div class="card gold">
+    <div class="card-eyebrow">What Makes Good Money?</div>
+    <h3>✅ Properties of Ideal Money</h3>
+    <div class="g2" style="gap:8px;margin-bottom:0;">
+      <div style="padding:9px;border-radius:8px;background:var(--bg);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:18px;">📦</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;">Limited Supply</div>
+      </div>
+      <div style="padding:9px;border-radius:8px;background:var(--bg);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:18px;">🤝</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;">Acceptable to All</div>
+      </div>
+      <div style="padding:9px;border-radius:8px;background:var(--bg);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:18px;">🛡️</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;">Durable</div>
+      </div>
+      <div style="padding:9px;border-radius:8px;background:var(--bg);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:18px;">✂️</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;">Divisible</div>
+      </div>
+      <div style="padding:9px;border-radius:8px;background:var(--bg);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:18px;">🎒</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;">Portable</div>
+      </div>
+      <div style="padding:9px;border-radius:8px;background:var(--bg);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:18px;">💎</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;">Intrinsic Value</div>
+      </div>
+    </div>
+    <div class="hi tip" style="margin-top:10px;">✅ Gold & Silver → Then Paper Currency</div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 2: HOW PAPER CURRENCY STARTED ══════════ -->
+<div class="sec">② Paper Currency — How It Emerged</div>
+
+<div class="map-card mc3" style="margin-bottom:24px;">
+  <svg id="svgPaper" viewBox="0 0 1240 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:24px;">
+  <div class="card blue">
+    <div class="card-eyebrow">Gold → Paper → Modern Currency</div>
+    <h3>📜 Evolution of Currency</h3>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--amber);"></div>
+        <div class="tl-year">PHASE 1</div>
+        <div class="tl-text">🪙 Commodity Money (Gold/Silver)</div>
+        <div class="tl-sub">Intrinsic value, limited supply, accepted universally</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--gold);"></div>
+        <div class="tl-year">PHASE 2</div>
+        <div class="tl-text">🏦 Trusted Goldsmith (Person X)</div>
+        <div class="tl-sub">Deposits gold → Gets paper receipt → Receipts circulate as money</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--blue);"></div>
+        <div class="tl-year">PHASE 3</div>
+        <div class="tl-text">🏛️ Central Bank (RBI in India)</div>
+        <div class="tl-sub">Issues currency notes, backed by assets (not necessarily gold)</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="border-color:var(--green);"></div>
+        <div class="tl-year">TODAY</div>
+        <div class="tl-text">💳 Fiat Currency</div>
+        <div class="tl-sub">Backed by govt. securities, foreign currency reserves</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card green">
+    <div class="card-eyebrow">Banking Structure</div>
+    <h3>🏦 Why Commercial Banks Exist</h3>
+    <div class="ic" style="flex-direction:column;align-items:flex-start;gap:8px;margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(196,134,10,0.07);color:var(--gold);width:100%;text-align:center;">
+        👥 People / Public
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;padding-left:40px;">
+        <div style="width:2px;height:20px;background:var(--border);margin-left:50px;"></div>
+        <span style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">deposits & loans</span>
+      </div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,56,120,0.07);color:var(--blue);width:100%;text-align:center;">
+        🏦 Commercial Banks
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;padding-left:40px;">
+        <div style="width:2px;height:20px;background:var(--border);margin-left:50px;"></div>
+        <span style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">regulated & supervised</span>
+      </div>
+      <div class="ic-node" style="border-color:var(--red);background:rgba(184,26,26,0.07);color:var(--red);width:100%;text-align:center;">
+        🏛️ RBI — Reserve Bank of India
+      </div>
+    </div>
+    <div class="hi info" style="margin-top:12px;">📌 RBI currency must be backed by assets (not necessarily gold) — Prelims Fact</div>
+    <div class="callout" style="margin-top:8px;">
+      <div class="callout-title">Gold Supply Problem</div>
+      <div class="callout-body">Gold supply didn't grow with GDP → Carrying gold was risky → Paper currency solved both.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 3: FUNCTIONS OF MONEY ══════════ -->
+<div class="sec">③ Functions of Money — 3 Core Functions</div>
+
+<div class="map-card mc4" style="margin-bottom:24px;">
+  <svg id="svgFunctions" viewBox="0 0 1240 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3" style="margin-bottom:24px;">
+  <div class="card gold">
+    <div class="card-eyebrow">Function 1</div>
+    <h3>🔄 Medium of Exchange</h3>
+    <p style="font-size:11px;line-height:1.6;color:var(--ink2);">Eliminates the need for double coincidence of wants. Money acts as an intermediary in all buy/sell transactions.</p>
+    <div class="ic" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,98,10,0.07);color:var(--amber);font-size:10px;">Goods</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(196,134,10,0.07);color:var(--gold);font-size:10px;">💰 Money</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,98,10,0.07);color:var(--amber);font-size:10px;">Goods</div>
+    </div>
+    <span class="pill gold" style="margin-top:8px;">Solves Barter Problem</span>
+  </div>
+
+  <div class="card blue">
+    <div class="card-eyebrow">Function 2</div>
+    <h3>📏 Unit of Account</h3>
+    <p style="font-size:11px;line-height:1.6;color:var(--ink2);">All prices expressed in money terms. Allows comparison of value across completely different goods and services.</p>
+    <div style="margin-top:12px;padding:10px;border-radius:8px;background:var(--blue-lt);text-align:center;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:14px;color:var(--blue);">1 kg Rice = ₹50</div>
+      <div style="font-family:'Libre Baskerville',serif;font-size:14px;color:var(--blue);">1 Phone = ₹15,000</div>
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px;">Common denominator</div>
+    </div>
+    <span class="pill blue" style="margin-top:8px;">Common Measure of Value</span>
+  </div>
+
+  <div class="card green">
+    <div class="card-eyebrow">Function 3</div>
+    <h3>🏦 Store of Value</h3>
+    <p style="font-size:11px;line-height:1.6;color:var(--ink2);">Wealth can be saved in money form for future use. Unlike perishable goods, money retains purchasing power over time.</p>
+    <div style="margin-top:10px;padding:10px;border-radius:8px;background:var(--red-lt);border:1px dashed var(--red);">
+      <div style="font-size:10px;font-weight:700;color:var(--red);">⚠️ Inflation Warning</div>
+      <div style="font-size:9px;color:var(--muted);margin-top:2px;font-family:'DM Mono',monospace;">High inflation erodes store of value function</div>
+    </div>
+    <span class="pill green" style="margin-top:8px;">Deferred Purchasing Power</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 4: MONEY SUPPLY & GDP ══════════ -->
+<div class="sec">④ Money Supply & GDP — The Crucial Relationship</div>
+
+<div class="map-card mc1" style="margin-bottom:24px;">
+  <svg id="svgMoneySupply" viewBox="0 0 1240 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:24px;">
+  <div class="card amber">
+    <div class="card-eyebrow">Core Principle</div>
+    <h3>💹 Money Supply Chases Output</h3>
+    <div class="hi gold" style="margin-bottom:12px;">Money Supply ∝ Expected Nominal GDP (Real GDP + Target Inflation)</div>
+    <table class="ctable">
+      <thead>
+        <tr><th>SITUATION</th><th>RESULT</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Money ↑, Output constant</td><td>Prices ↑ → <strong style="color:var(--red);">Inflation</strong></td></tr>
+        <tr><td>Money ↓, Output constant</td><td>Prices ↓ → <strong style="color:var(--blue);">Deflation</strong></td></tr>
+        <tr><td>Output ↑, Money constant</td><td>Prices ↓ → <strong style="color:var(--green);">Purchasing Power ↑</strong></td></tr>
+        <tr><td>Output ↓, Money constant</td><td>Prices ↑ → <strong style="color:var(--red);">Inflation</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-title">📌 Prelims Key</div>
+      <div class="callout-body">Money supply grows in line with Real GDP growth + Target inflation rate.</div>
+    </div>
+  </div>
+
+  <div class="card purple">
+    <div class="card-eyebrow">🔥 Seigniorage — Very Important Term</div>
+    <h3>🏦 Profit of the Central Bank</h3>
+    <div style="padding:14px;border-radius:10px;background:rgba(90,26,138,0.06);border:1.5px solid rgba(90,26,138,0.15);text-align:center;margin-bottom:12px;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:18px;font-style:italic;color:var(--purple);">Seigniorage</div>
+      <div style="font-size:10px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:4px;">= Profit earned by central bank from issuing money</div>
+    </div>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">💼 Interest on Reserves</div>
+        <div class="vs">Interest earned on assets backing currency</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🏦 CRR Interest Income</div>
+        <div class="vs">Interest from Cash Reserve Ratio balances</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">📉 Inflation Tax</div>
+        <div class="vs">Currency loses value → Real burden on holders</div>
+      </div>
+    </div>
+    <div class="hi warn" style="margin-top:10px;">🔥 Inflation Tax = Inflation Rate × Monetary Base</div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 5: EXCHANGE RATES ══════════ -->
+<div class="sec">⑤ Exchange Rate Systems — Before & After 1993</div>
+
+<div class="map-card mc2" style="margin-bottom:24px;">
+  <svg id="svgExchange" viewBox="0 0 1240 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="phase-row" style="margin-bottom:24px;">
+  <div class="phase-box" style="border-color:var(--red);background:rgba(184,26,26,0.03);">
+    <div class="phase-num" style="color:var(--red);">Pre-1947</div>
+    <div class="phase-title">Colonial Rate</div>
+    <div class="phase-sub">Fixed by British</div>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">$1 = ₹1 (approx.)<br>Artificially overvalued</div>
+    <span class="pill red" style="margin-top:8px;">Colonial Era</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--amber);background:rgba(212,98,10,0.03);">
+    <div class="phase-num" style="color:var(--amber);">1947–1993</div>
+    <div class="phase-title">Fixed & Adjustable</div>
+    <div class="phase-sub">Government-set rate</div>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Government fixed rate<br>Devaluation used when needed<br>$1 = ₹31 by 1993</div>
+    <span class="pill amber" style="margin-top:8px;">Fixed Regime</span>
+  </div>
+  <div class="phase-box" style="border-color:var(--green);background:rgba(26,106,58,0.03);">
+    <div class="phase-num" style="color:var(--green);">Post-1993</div>
+    <div class="phase-title">Managed Float</div>
+    <div class="phase-sub">Market-determined</div>
+    <div style="font-size:11px;line-height:1.6;color:var(--muted);">Demand & supply<br>RBI intervenes to control volatility<br>Not fixed</div>
+    <span class="pill green" style="margin-top:8px;">Floating Regime</span>
+  </div>
+</div>
+
+<div class="g2" style="margin-bottom:24px;">
+  <div class="card blue">
+    <div class="card-eyebrow">Types of Float</div>
+    <h3>🌊 Floating Exchange Systems</h3>
+    <div class="compare-box">
+      <div class="compare-side left">
+        <div class="compare-title" style="color:var(--blue);">🆓 Free Float</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">No central bank intervention</div></div>
+          <div class="vitem"><div class="vt">Pure market forces</div></div>
+          <div class="vitem"><div class="vt">Example: USA, Japan</div></div>
+        </div>
+      </div>
+      <div class="compare-side right">
+        <div class="compare-title" style="color:var(--teal);">🇮🇳 Managed Float (India)</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">RBI buys/sells dollars</div></div>
+          <div class="vitem"><div class="vt">Reduces extreme volatility</div></div>
+          <div class="vitem"><div class="vt">Does NOT fix exact rate</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hi info" style="margin-top:10px;">📌 India = Managed Float since 1993</div>
+  </div>
+
+  <div class="card red">
+    <div class="card-eyebrow">Terminology — Very Important</div>
+    <h3>📖 Key Terms: Appreciation vs Depreciation</h3>
+    <table class="ctable" style="margin-bottom:10px;">
+      <thead>
+        <tr><th>TERM</th><th>MEANING</th><th>REGIME</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Appreciation</td><td>Currency value ↑ (market)</td><td>Floating</td></tr>
+        <tr><td>Depreciation</td><td>Currency value ↓ (market)</td><td>Floating</td></tr>
+        <tr><td>Revaluation</td><td>Govt. increases value</td><td>Fixed</td></tr>
+        <tr><td>Devaluation</td><td>Govt. reduces value</td><td>Fixed</td></tr>
+      </tbody>
+    </table>
+    <div class="hi warn">⚠️ Devaluation = Fixed Regime | Depreciation = Floating Regime</div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 6: WHY DEVALUE ══════════ -->
+<div class="sec">⑥ Devaluation & Inflation-Exchange Rate Link</div>
+
+<div class="map-card mc3" style="margin-bottom:24px;">
+  <svg id="svgDevalue" viewBox="0 0 1240 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:24px;">
+  <div class="card amber">
+    <div class="card-eyebrow">Why Devalue Under Fixed System?</div>
+    <h3>📉 Purpose of Devaluation</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">📦 Boost Exports</div>
+        <div class="vs">Cheaper currency → Foreign buyers pay less → Exports competitive</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">⚖️ Correct Balance of Payments (BoP)</div>
+        <div class="vs">Trade deficit corrected when exports rise and imports fall</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">💸 Attract Foreign Investment</div>
+        <div class="vs">Assets appear cheaper to foreign investors</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-title">📌 India's Devaluations</div>
+      <div class="callout-body">1947: $1 = ₹1 → 1993: $1 = ₹31 (multiple devaluations in between for BoP correction)</div>
+    </div>
+  </div>
+
+  <div class="card teal">
+    <div class="card-eyebrow">Inflation → Exchange Rate Link</div>
+    <h3>📊 How Inflation Weakens Rupee</h3>
+    <div class="ic" style="flex-direction:column;align-items:flex-start;gap:6px;margin-top:8px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(184,26,26,0.07);color:var(--red);width:100%;">India Inflation > US Inflation</div>
+      <div style="padding-left:20px;font-size:11px;color:var(--muted);">↓</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,98,10,0.07);color:var(--amber);width:100%;">Indian goods become expensive</div>
+      <div style="padding-left:20px;font-size:11px;color:var(--muted);">↓</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(196,134,10,0.07);color:var(--gold);width:100%;">Exports fall</div>
+      <div style="padding-left:20px;font-size:11px;color:var(--muted);">↓</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,104,0.07);color:var(--teal);width:100%;">Demand for rupee falls</div>
+      <div style="padding-left:20px;font-size:11px;color:var(--muted);">↓</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,56,120,0.07);color:var(--blue);width:100%;">Rupee Depreciates automatically</div>
+    </div>
+    <div class="hi tip" style="margin-top:10px;">✅ Under floating: Inflation automatically causes depreciation</div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 7: QUICK REVISION ══════════ -->
+<div class="sec">⑦ UPSC Prelims — Quick Revision Checklist</div>
+
+<div class="g3" style="margin-bottom:24px;">
+  <div class="card blue">
+    <div class="card-eyebrow">Must-Know Concepts</div>
+    <h3>📋 Core Terms</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip ok">✅ Double Coincidence of Wants</span>
+      <span class="chip ok">✅ Characteristics of Money</span>
+      <span class="chip ok">✅ RBI Currency Backing</span>
+      <span class="chip ok">✅ Seigniorage</span>
+      <span class="chip ok">✅ Inflation Tax Formula</span>
+      <span class="chip ok">✅ Money × Output = Price Level</span>
+    </div>
+  </div>
+  <div class="card green">
+    <div class="card-eyebrow">Exchange Rate Terms</div>
+    <h3>💱 Must Distinguish</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip ok">✅ Fixed vs Floating</span>
+      <span class="chip ok">✅ Devaluation (Fixed)</span>
+      <span class="chip ok">✅ Depreciation (Float)</span>
+      <span class="chip ok">✅ Managed Float — India</span>
+      <span class="chip ok">✅ Free Float — USA/Japan</span>
+      <span class="chip ok">✅ Appreciation vs Revaluation</span>
+    </div>
+  </div>
+  <div class="card amber">
+    <div class="card-eyebrow">Common Trap Questions</div>
+    <h3>⚠️ Tricky Prelims Traps</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">RBI currency = backed by gold?</div>
+        <div class="vs">❌ Not necessarily. Backed by assets (securities, forex)</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">India = Free Float after 1993?</div>
+        <div class="vs">❌ No. India = Managed Float (RBI intervenes)</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Depreciation = govt. decision?</div>
+        <div class="vs">❌ No. Market-driven. Devaluation = govt. decision</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ KEYSTONE ══════════ -->
+<div class="keystone">
+  <div class="keystone-icon">💡</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Story</div>
+    <div class="keystone-sub">
+      <strong style="color:#f5d78a;">Barter failed</strong> → Money needed → Gold used → Paper currency emerged → RBI issues currency backed by assets → Money supply must match output growth → Too much money = inflation → Money has 3 functions (exchange, account, store) → Exchange rate was fixed until 1993 → Now market-determined (managed float) → Inflation in India automatically weakens rupee.
+    </div>
+    <div class="kpills">
+      <span class="kpill">💱 Barter → Money</span>
+      <span class="kpill">🏛️ RBI Issues Currency</span>
+      <span class="kpill">📊 Money ∝ GDP</span>
+      <span class="kpill">🏦 Seigniorage Profit</span>
+      <span class="kpill">🇮🇳 Managed Float</span>
+      <span class="kpill">📉 Inflation → Depreciation</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v]of Object.entries(a))e.setAttribute(k,v);
+  return e;
+}
+
+function curve(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{
+    d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color||'#bbb','stroke-width':w||1.8,
+    fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'
+  });
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  // main box
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  
+  let ty=y;
+  const totalH=(emoji?16:0)+(lines.length)*15+(sub?12:0);
+  ty=y-totalH/2+8;
+  
+  if(emoji){
+    const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});
+    em.textContent=emoji;g.appendChild(em);ty+=18;
+  }
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){
+    const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.45)'});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+function arrow(svg,x1,y1,x2,y2,color){
+  const id='arr'+Math.random().toString(36).slice(2,7);
+  const defs=svg.querySelector('defs')||(() => {const d=se('defs',{});svg.insertBefore(d,svg.firstChild);return d;})();
+  const m=se('marker',{id,markerWidth:'8',markerHeight:'8',refX:'6',refY:'3',orient:'auto'});
+  m.appendChild(se('path',{d:'M0,0 L0,6 L8,3 z',fill:color||'#aaa'}));
+  defs.appendChild(m);
+  const l=se('line',{x1,y1,x2,y2,stroke:color||'#aaa','stroke-width':'2','marker-end':`url(#${id})`});
+  svg.appendChild(l);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const W=1240;
+  svg.setAttribute('viewBox',`0 0 ${W} 100`);
+
+  const bg=se('rect',{x:0,y:0,width:W,height:100,fill:'rgba(248,245,238,0.5)'});
+  svg.appendChild(bg);
+
+  const steps=[
+    {x:80,   label:['Barter'],         sub:'Double Coincidence', fill:'#b01a1a', emoji:'🔄'},
+    {x:230,  label:['Need Money'],      sub:'Intermediate Good',  fill:'#b87c10', emoji:'❓'},
+    {x:380,  label:['Gold & Silver'],   sub:'Commodity Money',    fill:'#c4860a', emoji:'🪙'},
+    {x:530,  label:['Paper Currency'],  sub:'Backed by Assets',   fill:'#d4620a', emoji:'📜'},
+    {x:680,  label:['RBI Issues'],      sub:'Central Bank',       fill:'#1a3878', emoji:'🏛️'},
+    {x:830,  label:['Money Supply'],    sub:'Chases GDP',         fill:'#5a1a8a', emoji:'📊'},
+    {x:990,  label:['3 Functions'],     sub:'Exchange·Account·Store', fill:'#0a6068', emoji:'💎'},
+    {x:1150, label:['Exchange Rate'],   sub:'Fixed→Float 1993',   fill:'#1a6a3a', emoji:'💱'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      // straight connecting arrow
+      const x1=s.x+58, x2=steps[i+1].x-58;
+      arrow(svg,x1,50,x2,50,'rgba(180,160,100,0.6)');
+    }
+    node(svg,s.x,50,110,62,s.fill,[s.label[0]],s.sub,s.emoji,'#fff',9);
+  });
+})();
+
+// ─── BARTER MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgBarter');
+  svg.setAttribute('viewBox','0 0 1240 200');
+
+  // Center
+  node(svg,620,100,180,58,'#1a1510',['Why Money?'],'The Core Problem','💡');
+
+  const left=[
+    {x:160, y:55,  fill:'#b01a1a', label:['Double Coincidence'],    sub:'A must want B, B must want A', emoji:'🔄'},
+    {x:160, y:140, fill:'#8a4010', label:['No Common Measure'],      sub:'Can\'t compare values', emoji:'📏'},
+    {x:360, y:170, fill:'#6a1a5a', label:['Not Divisible'],          sub:'Can\'t split a cow', emoji:'✂️'},
+  ];
+  const right=[
+    {x:1090,y:55,  fill:'#1a6a3a', label:['Limited Supply'],         sub:'Scarce = Valuable', emoji:'📦'},
+    {x:1090,y:140, fill:'#1a3878', label:['Durable & Portable'],     sub:'Easy to carry & store', emoji:'💪'},
+    {x:880, y:170, fill:'#0a6068', label:['Universal Acceptance'],   sub:'Everyone accepts it', emoji:'🤝'},
+  ];
+
+  left.forEach(n=>{
+    curve(svg,530,100,n.x+100,n.y,'#b01a1a',true,1.6);
+    node(svg,n.x,n.y,190,48,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+  right.forEach(n=>{
+    curve(svg,710,100,n.x-100,n.y,'#1a3878',true,1.6);
+    node(svg,n.x,n.y,190,48,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+
+  const tl=se('text',{x:620,y:190,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(120,100,60,0.5)','letter-spacing':'2'});
+  tl.textContent='PROBLEMS WITH BARTER (LEFT) → PROPERTIES MONEY MUST HAVE (RIGHT)';
+  svg.appendChild(tl);
+})();
+
+// ─── PAPER CURRENCY FLOW ───
+(function(){
+  const svg=document.getElementById('svgPaper');
+  svg.setAttribute('viewBox','0 0 1240 160');
+
+  const nodes=[
+    {x:90,   fill:'#c4860a', label:['Gold Deposited'],   sub:'People trust goldsmith', emoji:'🪙'},
+    {x:260,  fill:'#d4620a', label:['Paper Slip Issued'], sub:'Promise to pay gold',   emoji:'📄'},
+    {x:440,  fill:'#b87c10', label:['Slips Circulate'],  sub:'Used as money',         emoji:'💵'},
+    {x:620,  fill:'#1a3878', label:['Central Bank (RBI)'],sub:'Modern version of goldsmith',emoji:'🏛️'},
+    {x:800,  fill:'#5a1a8a', label:['Currency Issued'],  sub:'Backed by assets',      emoji:'💴'},
+    {x:980,  fill:'#1a6a3a', label:['Govt. Securities'], sub:'Not just gold anymore', emoji:'📋'},
+    {x:1150, fill:'#0a6068', label:['Fiat Money Today'], sub:'Legal tender',          emoji:'✅'},
+  ];
+
+  nodes.forEach((n,i)=>{
+    if(i<nodes.length-1){
+      const x1=n.x+72, x2=nodes[i+1].x-72;
+      arrow(svg,x1,80,x2,80,'rgba(180,150,80,0.5)');
+    }
+    node(svg,n.x,80,136,70,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+
+  const t=se('text',{x:620,y:150,'text-anchor':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(120,100,60,0.45)','letter-spacing':'2'});
+  t.textContent='PAPER CURRENCY EVOLUTION: GOLDSMITH RECEIPT → RBI CURRENCY NOTE';
+  svg.appendChild(t);
+})();
+
+// ─── FUNCTIONS OF MONEY (radial) ───
+(function(){
+  const svg=document.getElementById('svgFunctions');
+  svg.setAttribute('viewBox','0 0 1240 160');
+
+  // Center
+  node(svg,620,80,160,56,'#1a1510',['Functions','of Money'],'3 Core Roles','💰');
+
+  const items=[
+    {x:120, y:80, fill:'#c4860a', label:['Medium of'],     sub2:'Exchange',    sub:'Buying & selling', emoji:'🔄'},
+    {x:370, y:32, fill:'#1a3878', label:['Unit of'],       sub2:'Account',     sub:'Measuring value', emoji:'📏'},
+    {x:370, y:130,fill:'#b01a1a', label:['NOT Medium of'], sub2:'Deferred Payment', sub:'Credit function (extra)', emoji:'💳'},
+    {x:870, y:32, fill:'#1a6a3a', label:['Store of'],      sub2:'Value',       sub:'Wealth storage', emoji:'🏦'},
+    {x:870, y:130,fill:'#5a1a8a', label:['Standard of'],   sub2:'Deferred Payment', sub:'Settle future debts', emoji:'📅'},
+    {x:1120,y:80, fill:'#0a6068', label:['Inflation'],     sub2:'Risk',        sub:'Erodes store of value', emoji:'⚠️'},
+  ];
+
+  items.forEach(n=>{
+    const cx=n.x<620?540:700;
+    curve(svg,cx,80,n.x+(n.x<620?90:-90),n.y,'rgba(180,150,80,0.4)',true,1.5);
+    node(svg,n.x,n.y,160,52,n.fill,[n.label[0],n.sub2],n.sub,n.emoji,'#fff',9);
+  });
+})();
+
+// ─── MONEY SUPPLY MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgMoneySupply');
+  svg.setAttribute('viewBox','0 0 1240 180');
+
+  node(svg,620,90,200,60,'#1a1510',['Money Supply','& Output'],'Core Relationship','💹');
+
+  const items=[
+    {x:130, y:45, fill:'#b01a1a', label:['Money↑, Output='], sub:'→ Prices ↑ (Inflation)', emoji:'🔺'},
+    {x:130, y:135,fill:'#1a3878', label:['Money↓, Output='], sub:'→ Prices ↓ (Deflation)', emoji:'🔻'},
+    {x:380, y:20, fill:'#c4860a', label:['Output↑, Money='], sub:'→ Prices ↓ (Good!)', emoji:'📈'},
+    {x:380, y:160,fill:'#5a1a8a', label:['Output↓, Money='], sub:'→ Prices ↑ (Bad!)', emoji:'📉'},
+    {x:860, y:20, fill:'#1a6a3a', label:['Real GDP Growth'], sub:'Money should grow same', emoji:'🌱'},
+    {x:860, y:160,fill:'#d4620a', label:['Target Inflation'], sub:'Factor in money growth', emoji:'🎯'},
+    {x:1110,y:45, fill:'#0a6068', label:['Seigniorage'],     sub:'Central bank profit', emoji:'🏦'},
+    {x:1110,y:135,fill:'#7a1a6a', label:['Inflation Tax'],   sub:'= Rate × Monetary Base', emoji:'💸'},
+  ];
+
+  items.forEach(n=>{
+    const cx=n.x<620?520:720;
+    const cy=n.y<90?70:110;
+    curve(svg,cx,cy,n.x+(n.x<620?90:-90),n.y,'rgba(180,150,80,0.35)',true,1.5);
+    node(svg,n.x,n.y,168,50,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+})();
+
+// ─── EXCHANGE RATE SYSTEMS ───
+(function(){
+  const svg=document.getElementById('svgExchange');
+  svg.setAttribute('viewBox','0 0 1240 200');
+
+  node(svg,620,100,190,60,'#1a1510',['Exchange Rate','Systems'],'Fixed vs Floating','💱');
+
+  const left=[
+    {x:150, y:45,  fill:'#b01a1a', label:['Fixed Rate'],          sub:'Govt. sets the rate', emoji:'🔒'},
+    {x:150, y:110, fill:'#8a4010', label:['Devaluation'],          sub:'Official currency reduction', emoji:'📉'},
+    {x:150, y:168, fill:'#6a1010', label:['India 1947–1993'],      sub:'$1 = ₹1 → ₹31', emoji:'🇮🇳'},
+    {x:390, y:30,  fill:'#7a1a4a', label:['BoP Correction'],       sub:'Used to fix deficits', emoji:'⚖️'},
+    {x:390, y:170, fill:'#5a3a10', label:['Boost Exports'],        sub:'Cheaper for foreigners', emoji:'📦'},
+  ];
+  const right=[
+    {x:1090,y:45,  fill:'#1a6a3a', label:['Floating Rate'],        sub:'Market determines', emoji:'🌊'},
+    {x:1090,y:110, fill:'#1a3878', label:['Managed Float (India)'], sub:'RBI intervenes', emoji:'🏛️'},
+    {x:1090,y:168, fill:'#0a6068', label:['Free Float (USA/Japan)'],sub:'No intervention', emoji:'🆓'},
+    {x:860, y:30,  fill:'#2a6a3a', label:['Appreciation'],         sub:'Value ↑ (market)', emoji:'🟢'},
+    {x:860, y:170, fill:'#3a1a6a', label:['Depreciation'],         sub:'Value ↓ (market)', emoji:'🔴'},
+  ];
+
+  left.forEach(n=>{
+    curve(svg,530,100,n.x+100,n.y,'#b01a1a',true,1.6);
+    node(svg,n.x,n.y,196,50,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+  right.forEach(n=>{
+    curve(svg,710,100,n.x-100,n.y,'#1a3878',true,1.6);
+    node(svg,n.x,n.y,196,50,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+
+  const t=se('text',{x:620,y:192,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(120,100,60,0.45)','letter-spacing':'2'});
+  t.textContent='FIXED REGIME (LEFT: PRE-1993) ← INDIA SWITCHED 1993 → FLOATING REGIME (RIGHT: POST-1993)';
+  svg.appendChild(t);
+})();
+
+// ─── DEVALUATION IMPACT CHAIN ───
+(function(){
+  const svg=document.getElementById('svgDevalue');
+  svg.setAttribute('viewBox','0 0 1240 160');
+
+  // Two rows: top = devaluation, bottom = inflation effect
+  // Row 1: Devaluation chain
+  const devalChain=[
+    {x:90,  fill:'#b01a1a', label:'Govt. Devalues', sub:'Fixed regime decision', emoji:'📉'},
+    {x:280, fill:'#c4860a', label:'Rupee Cheaper',  sub:'Foreign perspective', emoji:'💱'},
+    {x:470, fill:'#d4620a', label:'Exports ↑',      sub:'Competitive prices', emoji:'📦'},
+    {x:660, fill:'#1a6a3a', label:'Foreign Exchange ↑', sub:'More dollars inflow', emoji:'💵'},
+    {x:850, fill:'#1a3878', label:'BoP Improves',   sub:'Trade deficit corrects', emoji:'⚖️'},
+  ];
+
+  const t1=se('text',{x:20,y:28,'font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(184,26,26,0.6)','letter-spacing':'1','font-weight':'700'});
+  t1.textContent='DEVALUATION CHAIN →';svg.appendChild(t1);
+
+  devalChain.forEach((n,i)=>{
+    if(i<devalChain.length-1){
+      arrow(svg,n.x+72,40,devalChain[i+1].x-72,40,'rgba(180,130,50,0.5)');
+    }
+    node(svg,n.x,40,136,56,n.fill,[n.label],n.sub,n.emoji,'#fff',8);
+  });
+
+  // Row 2: Inflation → depreciation chain
+  const infChain=[
+    {x:90,  fill:'#5a1a8a', label:'India Inflation ↑', sub:'Higher than trading partners', emoji:'🔥'},
+    {x:280, fill:'#7a1a4a', label:'Indian Goods Costly', sub:'Exports uncompetitive', emoji:'🏷️'},
+    {x:470, fill:'#8a4010', label:'Exports Fall ↓',     sub:'Less demand for ₹', emoji:'📉'},
+    {x:660, fill:'#0a6068', label:'Rupee Demand ↓',     sub:'Market forces sell ₹', emoji:'💸'},
+    {x:850, fill:'#1a3878', label:'Rupee Depreciates',  sub:'Auto under floating', emoji:'⬇️'},
+  ];
+
+  const t2=se('text',{x:20,y:118,'font-size':'9','font-family':'DM Mono,monospace',fill:'rgba(90,26,138,0.6)','letter-spacing':'1','font-weight':'700'});
+  t2.textContent='INFLATION → DEPRECIATION →';svg.appendChild(t2);
+
+  infChain.forEach((n,i)=>{
+    if(i<infChain.length-1){
+      arrow(svg,n.x+72,130,infChain[i+1].x-72,130,'rgba(90,26,138,0.4)');
+    }
+    node(svg,n.x,130,136,52,n.fill,[n.label],n.sub,n.emoji,'#fff',8);
+  });
+
+  // separating line
+  svg.appendChild(se('line',{x1:20,y1:83,x2:1020,y2:83,stroke:'rgba(200,180,140,0.3)','stroke-width':'1','stroke-dasharray':'5 4'}));
+})();
+
+</script>
+</body>
+</html>

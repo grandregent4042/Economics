@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economics Mind Map — UPSC</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#fafaf7;
+  --ink:#1a1814;
+  --muted:#8a7f6e;
+  --border:#e2ddd0;
+  --card:#ffffff;
+  --card2:#f5f2eb;
+
+  --gold:#c8860a;
+  --gold-lt:#fdf3dc;
+  --amber:#e07010;
+  --amber-lt:#fef0dc;
+  --red:#c0281a;
+  --red-lt:#fde8e6;
+  --blue:#1a3d8a;
+  --blue-lt:#e8edf8;
+  --green:#1a6640;
+  --green-lt:#e6f4ec;
+  --purple:#5c1a8a;
+  --purple-lt:#f0e8fa;
+  --teal:#0a5c6e;
+  --teal-lt:#e4f2f5;
+}
+
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;line-height:1.5;}
+
+/* Paper texture */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 0%, rgba(200,134,10,0.06) 0%, transparent 60%);
+  pointer-events:none;z-index:0;
+}
+
+.page{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:0 28px 120px;}
+
+/* ═══ HEADER ═══ */
+.header{
+  text-align:center;
+  padding:52px 20px 28px;
+  position:relative;
+}
+.header-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:4px;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:12px;
+}
+.header h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,5.5vw,60px);
+  font-weight:700;line-height:1.05;
+  color:var(--ink);
+}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-desc{
+  margin-top:10px;
+  font-size:13px;color:var(--muted);
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:0.5px;
+}
+.header-rule{
+  display:flex;align-items:center;gap:16px;
+  max-width:500px;margin:18px auto 0;
+}
+.header-rule span{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:3px;color:var(--gold);
+  white-space:nowrap;
+}
+.header-rule::before,.header-rule::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border));
+}
+.header-rule::after{background:linear-gradient(270deg,transparent,var(--border));}
+
+/* ═══ SECTION LABEL ═══ */
+.sec{
+  display:flex;align-items:center;gap:14px;
+  margin:40px 0 18px;
+}
+.sec-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:700;color:var(--gold);
+  line-height:1;flex:0 0 auto;
+}
+.sec-title{
+  font-family:'Outfit',sans-serif;
+  font-size:14px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink);
+}
+.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ═══ GRIDS ═══ */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
+.g1_2{display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:16px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g1_2{grid-template-columns:1fr;}}
+@media(max-width:580px){.g2,.g3,.g4,.g1_2{grid-template-columns:1fr;}}
+
+/* ═══ CARDS ═══ */
+.card{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:3px;
+  border-radius:14px 14px 0 0;
+}
+.card.c-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.card.c-red::before{background:var(--red);}
+.card.c-blue::before{background:var(--blue);}
+.card.c-green::before{background:var(--green);}
+.card.c-purple::before{background:var(--purple);}
+.card.c-teal::before{background:var(--teal);}
+.card.c-amber::before{background:var(--amber);}
+.card.c-dark::before{background:var(--ink);}
+
+.card-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8.5px;letter-spacing:2.5px;
+  color:var(--muted);text-transform:uppercase;
+  margin-bottom:6px;
+}
+.card h3{
+  font-family:'Outfit',sans-serif;
+  font-size:15px;font-weight:700;
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ═══ SVG DIAGRAM WRAPPER ═══ */
+.svg-wrap{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  margin-bottom:18px;
+  position:relative;
+}
+.svg-wrap::before{
+  content:attr(data-title);
+  display:block;
+  padding:8px 16px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:2.5px;
+  color:var(--muted);text-transform:uppercase;
+  border-bottom:1px solid var(--border);
+  background:var(--card2);
+}
+.svg-wrap svg{display:block;width:100%;height:auto;}
+
+/* ═══ FORMULA BOX ═══ */
+.formula{
+  background:var(--gold-lt);
+  border:2px solid var(--gold);
+  border-radius:12px;
+  padding:16px 20px;
+  text-align:center;
+  margin:10px 0;
+}
+.formula-eq{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(16px,2.5vw,22px);
+  font-weight:600;color:var(--ink);
+  letter-spacing:0.5px;
+}
+.formula-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:2px;
+  color:var(--gold);margin-top:5px;
+}
+
+/* ═══ TAGS ═══ */
+.tag{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 9px;border-radius:20px;
+  font-size:10px;font-weight:600;
+  font-family:'JetBrains Mono',monospace;
+  margin:2px;
+}
+.tag.gold{background:var(--gold-lt);color:var(--gold);border:1px solid rgba(200,134,10,0.25);}
+.tag.red{background:var(--red-lt);color:var(--red);border:1px solid rgba(192,40,26,0.25);}
+.tag.blue{background:var(--blue-lt);color:var(--blue);border:1px solid rgba(26,61,138,0.25);}
+.tag.green{background:var(--green-lt);color:var(--green);border:1px solid rgba(26,102,64,0.25);}
+.tag.purple{background:var(--purple-lt);color:var(--purple);border:1px solid rgba(92,26,138,0.25);}
+.tag.teal{background:var(--teal-lt);color:var(--teal);border:1px solid rgba(10,92,110,0.25);}
+.tag.amber{background:var(--amber-lt);color:var(--amber);border:1px solid rgba(224,112,16,0.25);}
+
+/* ═══ INFO ROWS ═══ */
+.info-row{
+  display:flex;gap:8px;align-items:flex-start;
+  padding:8px 10px;border-radius:8px;
+  background:var(--card2);border:1px solid var(--border);
+  margin:5px 0;font-size:11px;
+}
+.info-icon{font-size:14px;flex:0 0 20px;line-height:1.4;}
+.info-text strong{font-weight:700;display:block;font-size:11px;margin-bottom:1px;}
+.info-text span{font-size:10px;color:var(--muted);}
+
+/* ═══ STAT BOXES ═══ */
+.stat-row{display:flex;gap:10px;}
+.stat{
+  flex:1;padding:12px;border-radius:10px;
+  background:var(--card2);border:1.5px solid var(--border);
+  text-align:center;
+}
+.stat-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:700;line-height:1;
+}
+.stat-l{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+
+/* ═══ KEYSTONE ═══ */
+.keystone{
+  background:var(--ink);color:#f5ead0;
+  border-radius:16px;padding:26px 32px;
+  margin:20px 0;
+  display:grid;grid-template-columns:auto 1fr;
+  gap:24px;align-items:center;
+}
+.keystone-icon{font-size:40px;}
+.keystone h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-style:italic;
+  color:#f5ead0;margin-bottom:6px;
+}
+.keystone p{font-size:12px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{
+  padding:4px 12px;border-radius:20px;
+  background:rgba(255,255,255,0.08);
+  font-size:10px;font-family:'JetBrains Mono',monospace;
+  color:#e8d8a0;
+}
+@media(max-width:580px){.keystone{grid-template-columns:1fr;}}
+
+/* ═══ FLOW CHAIN ═══ */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{
+  padding:6px 12px;border-radius:8px;
+  font-size:10.5px;font-weight:600;
+  border:1.5px solid;
+}
+.fa{font-size:14px;color:var(--muted);}
+
+/* ═══ COMPARISON TABLE ═══ */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;margin:8px 0;}
+.ctable th{
+  padding:8px 12px;text-align:left;
+  background:var(--ink);color:#fff;
+  font-family:'JetBrains Mono',monospace;
+  font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;
+}
+.ctable th:first-child{border-radius:6px 0 0 0;}
+.ctable th:last-child{border-radius:0 6px 0 0;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(200,134,10,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* ═══ HIGHLIGHT CALLOUT ═══ */
+.callout{
+  padding:12px 15px;border-radius:10px;
+  margin:8px 0;border-left:3px solid;
+  font-size:11px;line-height:1.6;
+}
+.callout.warn{background:var(--red-lt);border-color:var(--red);color:var(--red);}
+.callout.tip{background:var(--green-lt);border-color:var(--green);color:var(--green);}
+.callout.note{background:var(--gold-lt);border-color:var(--gold);color:var(--gold);}
+.callout.info{background:var(--blue-lt);border-color:var(--blue);color:var(--blue);}
+
+/* ═══ PHASE STRIP ═══ */
+.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0;}
+@media(max-width:760px){.phases{grid-template-columns:1fr 1fr;}}
+.phase{
+  padding:14px;border-radius:12px;border:2px solid;
+  text-align:center;
+}
+.phase-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:700;
+}
+.phase-t{font-size:11px;font-weight:700;margin:4px 0 2px;}
+.phase-s{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+
+/* ═══ ANIMATE ═══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+.card,.svg-wrap,.formula,.keystone,.phases{animation:fadeUp 0.5s ease both;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ══════ HEADER ══════ -->
+<div class="header">
+  <div class="header-eyebrow">Economics · Macroeconomics · UPSC Prelims & Mains</div>
+  <h1>Liquidity Trap · Inflation · Deflation<br><em>& the Phillips Curve</em></h1>
+  <div class="header-desc">Concept Cluster — All ideas connected &amp; flowing</div>
+  <div class="header-rule"><span>Master Mind Map</span></div>
+</div>
+
+<!-- ══════ SECTION 0: MASTER FLOW ══════ -->
+<div class="sec"><div class="sec-num">0</div><div class="sec-title">Master Flow — The Big Picture</div></div>
+
+<div class="svg-wrap" data-title="Master Concept Flow — Left to Right">
+<svg viewBox="0 0 1280 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#c8a060" opacity="0.7"/>
+    </marker>
+    <linearGradient id="lgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c8860a"/>
+      <stop offset="100%" stop-color="#1a3d8a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Connecting line -->
+  <line x1="100" y1="55" x2="1180" y2="55" stroke="url(#lgrad)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+
+  <!-- Nodes -->
+  <!-- 1: Real vs Nominal -->
+  <g>
+    <rect x="10" y="18" width="160" height="74" rx="10" fill="#1a3d8a" opacity="0.9"/>
+    <text x="90" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="white">📐 Real vs</text>
+    <text x="90" y="54" text-anchor="middle" font-size="12" font-weight="700" fill="white">Nominal Rate</text>
+    <text x="90" y="72" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">FOUNDATION</text>
+    <text x="90" y="84" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">Fisher Equation</text>
+  </g>
+  <path d="M175,55 L205,55" stroke="#c8a060" stroke-width="2" marker-end="url(#arr)" opacity="0.8"/>
+
+  <!-- 2: Inflation -->
+  <g>
+    <rect x="210" y="18" width="155" height="74" rx="10" fill="#c8860a" opacity="0.9"/>
+    <text x="287" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="white">📈 Inflation</text>
+    <text x="287" y="54" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">Demand-Pull</text>
+    <text x="287" y="66" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">Cost-Push</text>
+    <text x="287" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">PRICES RISE</text>
+  </g>
+  <path d="M370,55 L400,55" stroke="#c8a060" stroke-width="2" marker-end="url(#arr)" opacity="0.8"/>
+
+  <!-- 3: Deflation -->
+  <g>
+    <rect x="405" y="18" width="155" height="74" rx="10" fill="#c0281a" opacity="0.9"/>
+    <text x="482" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="white">📉 Deflation</text>
+    <text x="482" y="54" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">Prices Fall</text>
+    <text x="482" y="66" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">Demand Collapses</text>
+    <text x="482" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">DANGEROUS</text>
+  </g>
+  <path d="M565,55 L595,55" stroke="#c8a060" stroke-width="2" marker-end="url(#arr)" opacity="0.8"/>
+
+  <!-- 4: Liquidity Trap -->
+  <g>
+    <rect x="600" y="18" width="165" height="74" rx="10" fill="#5c1a8a" opacity="0.9"/>
+    <text x="682" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="white">🔒 Liquidity</text>
+    <text x="682" y="54" text-anchor="middle" font-size="12" font-weight="700" fill="white">Trap</text>
+    <text x="682" y="66" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Rates ≈ 0%</text>
+    <text x="682" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">MONETARY FAILS</text>
+  </g>
+  <path d="M770,55 L800,55" stroke="#c8a060" stroke-width="2" marker-end="url(#arr)" opacity="0.8"/>
+
+  <!-- 5: Phillips Curve -->
+  <g>
+    <rect x="805" y="18" width="165" height="74" rx="10" fill="#0a5c6e" opacity="0.9"/>
+    <text x="887" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="white">〰️ Phillips</text>
+    <text x="887" y="54" text-anchor="middle" font-size="12" font-weight="700" fill="white">Curve</text>
+    <text x="887" y="66" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Inflation ↑ ↔ Unemp. ↓</text>
+    <text x="887" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">SHORT RUN ONLY</text>
+  </g>
+  <path d="M975,55 L1005,55" stroke="#c8a060" stroke-width="2" marker-end="url(#arr)" opacity="0.8"/>
+
+  <!-- 6: Stagflation -->
+  <g>
+    <rect x="1010" y="18" width="165" height="74" rx="10" fill="#1a6640" opacity="0.9"/>
+    <text x="1092" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="white">⚡ Stagflation</text>
+    <text x="1092" y="54" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">High Inflation +</text>
+    <text x="1092" y="66" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.85)">High Unemployment</text>
+    <text x="1092" y="82" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">BREAKS PHILLIPS</text>
+  </g>
+</svg>
+</div>
+
+<!-- ══════ SECTION 1: NOMINAL VS REAL ══════ -->
+<div class="sec"><div class="sec-num">1</div><div class="sec-title">Nominal vs Real Interest Rate — The Foundation</div></div>
+
+<div class="g1_2">
+  <div>
+    <div class="formula">
+      <div class="formula-eq">Nominal Rate = Inflation + Real Rate</div>
+      <div class="formula-label">FISHER EQUATION — UPSC CORE</div>
+    </div>
+    <div class="formula" style="border-color:var(--green);background:var(--green-lt);margin-top:10px;">
+      <div class="formula-eq" style="font-size:17px;">Real Return = Deposit Rate − Inflation</div>
+      <div class="formula-label" style="color:var(--green);">WHAT YOU ACTUALLY EARN</div>
+    </div>
+  </div>
+
+  <div class="card c-blue">
+    <div class="card-label">Worked Examples</div>
+    <h3>🔢 Calculate Real Return</h3>
+    <table class="ctable">
+      <thead><tr><th>Deposit Rate</th><th>Inflation</th><th>Real Return</th><th>Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>8%</td><td>6%</td><td>+2%</td><td><span class="tag green">✅ Positive</span></td></tr>
+        <tr><td>4%</td><td>6%</td><td>−2%</td><td><span class="tag red">❌ Negative</span></td></tr>
+        <tr><td>6%</td><td>6%</td><td>0%</td><td><span class="tag gold">→ Break-even</span></td></tr>
+      </tbody>
+    </table>
+    <div class="callout note" style="margin-top:10px;">
+      <strong>Key Insight:</strong> If real return is negative, people won't deposit → hoarding begins → Liquidity Trap risk.
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 2: INFLATION ══════ -->
+<div class="sec"><div class="sec-num">2</div><div class="sec-title">Inflation — Types, Causes, Effects</div></div>
+
+<!-- Inflation Mindmap -->
+<div class="svg-wrap" data-title="Inflation Types & Causes — Radial Mindmap">
+<svg viewBox="0 0 1280 400" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+  <defs>
+    <marker id="ma" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M1,1 L6,3.5 L1,6 Z" fill="#c8a060" opacity="0.6"/>
+    </marker>
+  </defs>
+
+  <!-- Central node -->
+  <g>
+    <ellipse cx="640" cy="200" rx="100" ry="50" fill="#c8860a"/>
+    <text x="640" y="195" text-anchor="middle" font-size="15" font-weight="800" fill="white">📈 INFLATION</text>
+    <text x="640" y="213" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)" font-family="JetBrains Mono">RISE IN PRICE LEVEL</text>
+  </g>
+
+  <!-- Left: Types of Inflation -->
+  <!-- Low Inflation -->
+  <path d="M542,185 Q430,150 340,110" stroke="#c8a060" stroke-width="1.5" fill="none" stroke-dasharray="5 3" marker-end="url(#ma)"/>
+  <g>
+    <rect x="200" y="82" width="145" height="60" rx="9" fill="#1a6640"/>
+    <text x="272" y="106" text-anchor="middle" font-size="11" font-weight="700" fill="white">✅ Low Inflation</text>
+    <text x="272" y="122" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.75)">Single digit · Stable</text>
+    <text x="272" y="135" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">GOOD FOR GROWTH</text>
+  </g>
+
+  <!-- Galloping -->
+  <path d="M542,192 Q430,195 340,195" stroke="#c8a060" stroke-width="1.5" fill="none" stroke-dasharray="5 3" marker-end="url(#ma)"/>
+  <g>
+    <rect x="200" y="167" width="145" height="60" rx="9" fill="#e07010"/>
+    <text x="272" y="191" text-anchor="middle" font-size="11" font-weight="700" fill="white">⚠️ Galloping</text>
+    <text x="272" y="207" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.75)">Double/Triple digit</text>
+    <text x="272" y="220" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">HOARDING BEGINS</text>
+  </g>
+
+  <!-- Hyperinflation -->
+  <path d="M542,210 Q430,250 340,278" stroke="#c8a060" stroke-width="1.5" fill="none" stroke-dasharray="5 3" marker-end="url(#ma)"/>
+  <g>
+    <rect x="200" y="250" width="145" height="60" rx="9" fill="#c0281a"/>
+    <text x="272" y="274" text-anchor="middle" font-size="11" font-weight="700" fill="white">🔥 Hyperinflation</text>
+    <text x="272" y="290" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.75)">Currency collapses</text>
+    <text x="272" y="303" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">GERMANY 1920s</text>
+  </g>
+
+  <!-- Right: Causes -->
+  <!-- Demand Pull -->
+  <path d="M740,180 Q850,140 940,108" stroke="#c8a060" stroke-width="1.5" fill="none" stroke-dasharray="5 3" marker-end="url(#ma)"/>
+  <g>
+    <rect x="935" y="80" width="180" height="65" rx="9" fill="#1a3d8a"/>
+    <text x="1025" y="101" text-anchor="middle" font-size="11" font-weight="700" fill="white">💰 Demand-Pull</text>
+    <text x="1025" y="116" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Too much money</text>
+    <text x="1025" y="129" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">chasing few goods</text>
+    <text x="1025" y="142" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">EXPANSIONARY POLICY</text>
+  </g>
+
+  <!-- Cost Push -->
+  <path d="M740,197 Q850,197 935,197" stroke="#c8a060" stroke-width="1.5" fill="none" stroke-dasharray="5 3" marker-end="url(#ma)"/>
+  <g>
+    <rect x="935" y="170" width="180" height="65" rx="9" fill="#5c1a8a"/>
+    <text x="1025" y="191" text-anchor="middle" font-size="11" font-weight="700" fill="white">🛢️ Cost-Push</text>
+    <text x="1025" y="207" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Oil shocks · High wages</text>
+    <text x="1025" y="220" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Supply disruption</text>
+    <text x="1025" y="233" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">RUPEE DEPRECIATION</text>
+  </g>
+
+  <!-- Disinflation -->
+  <path d="M740,215 Q850,260 940,290" stroke="#c8a060" stroke-width="1.5" fill="none" stroke-dasharray="5 3" marker-end="url(#ma)"/>
+  <g>
+    <rect x="935" y="262" width="180" height="65" rx="9" fill="#0a5c6e"/>
+    <text x="1025" y="282" text-anchor="middle" font-size="11" font-weight="700" fill="white">📉 Disinflation</text>
+    <text x="1025" y="298" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Inflation still +ve</text>
+    <text x="1025" y="311" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">but rate is falling</text>
+    <text x="1025" y="324" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">10%→9%→4%→2%</text>
+  </g>
+
+  <!-- Labels -->
+  <text x="272" y="22" text-anchor="middle" font-size="9" font-family="JetBrains Mono" letter-spacing="2" fill="rgba(26,102,64,0.5)">TYPES</text>
+  <line x1="200" y1="30" x2="340" y2="30" stroke="rgba(200,180,140,0.3)" stroke-width="1"/>
+  <text x="1025" y="22" text-anchor="middle" font-size="9" font-family="JetBrains Mono" letter-spacing="2" fill="rgba(26,61,138,0.5)">CAUSES</text>
+  <line x1="935" y1="30" x2="1115" y2="30" stroke="rgba(200,180,140,0.3)" stroke-width="1"/>
+
+  <!-- Bottom example -->
+  <g>
+    <rect x="490" y="300" width="300" height="44" rx="9" fill="rgba(200,134,10,0.08)" stroke="rgba(200,134,10,0.3)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="640" y="318" text-anchor="middle" font-size="10" font-weight="700" fill="#c8860a">🛢️ Crude Oil ↑ → Transport Cost ↑ → All Prices ↑</text>
+    <text x="640" y="334" text-anchor="middle" font-size="9" fill="#b88030" font-family="JetBrains Mono">COST-PUSH EXAMPLE — KEY FOR MAINS</text>
+  </g>
+</svg>
+</div>
+
+<!-- ══════ SECTION 3: DEFLATION & LIQUIDITY TRAP ══════ -->
+<div class="sec"><div class="sec-num">3</div><div class="sec-title">Deflation & Liquidity Trap — The Dangerous Duo</div></div>
+
+<!-- Flowchart: Deflation → Liquidity Trap -->
+<div class="svg-wrap" data-title="Deflation → Liquidity Trap → Fiscal Policy Needed (Vertical Flow)">
+<svg viewBox="0 0 1280 320" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+  <defs>
+    <marker id="da" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1,1.5 L8,4.5 L1,7.5 Z" fill="#c0281a" opacity="0.8"/>
+    </marker>
+    <marker id="ga" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M1,1.5 L8,4.5 L1,7.5 Z" fill="#1a6640" opacity="0.8"/>
+    </marker>
+  </defs>
+
+  <!-- Left Branch: Deflation Chain -->
+  <text x="290" y="22" text-anchor="middle" font-size="9" font-family="JetBrains Mono" letter-spacing="2" fill="rgba(192,40,26,0.5)">DEFLATION SPIRAL</text>
+
+  <!-- Node 1 -->
+  <rect x="165" y="34" width="250" height="44" rx="9" fill="#c0281a"/>
+  <text x="290" y="52" text-anchor="middle" font-size="12" font-weight="700" fill="white">📉 Prices Fall (Deflation)</text>
+  <text x="290" y="68" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">GENERAL PRICE LEVEL DROPS</text>
+
+  <path d="M290,82 L290,100" stroke="#c0281a" stroke-width="2" marker-end="url(#da)"/>
+
+  <!-- Node 2 -->
+  <rect x="165" y="104" width="250" height="44" rx="9" fill="#b03020"/>
+  <text x="290" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="white">⏳ People Postpone Buying</text>
+  <text x="290" y="138" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">WHY BUY NOW IF IT'LL BE CHEAPER</text>
+
+  <path d="M290,152 L290,170" stroke="#c0281a" stroke-width="2" marker-end="url(#da)"/>
+
+  <!-- Node 3 -->
+  <rect x="165" y="174" width="250" height="44" rx="9" fill="#a02818"/>
+  <text x="290" y="192" text-anchor="middle" font-size="12" font-weight="700" fill="white">📦 Demand Falls → Prod. Falls</text>
+  <text x="290" y="208" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">SUPPLY CHAIN COLLAPSE</text>
+
+  <path d="M290,222 L290,240" stroke="#c0281a" stroke-width="2" marker-end="url(#da)"/>
+
+  <!-- Node 4 -->
+  <rect x="165" y="244" width="250" height="44" rx="9" fill="#901810"/>
+  <text x="290" y="262" text-anchor="middle" font-size="12" font-weight="700" fill="white">💼 Unemployment Rises</text>
+  <text x="290" y="278" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">→ DEPRESSION RISK</text>
+
+  <!-- Center: Connector -->
+  <path d="M420,200 Q540,200 560,200" stroke="#c8a060" stroke-width="2" stroke-dasharray="5 4" opacity="0.5"/>
+  <text x="490" y="193" text-anchor="middle" font-size="9" font-family="JetBrains Mono" fill="rgba(200,134,10,0.6)">LEADS TO</text>
+
+  <!-- Right Branch: Liquidity Trap -->
+  <text x="860" y="22" text-anchor="middle" font-size="9" font-family="JetBrains Mono" letter-spacing="2" fill="rgba(92,26,138,0.5)">LIQUIDITY TRAP MECHANISM</text>
+
+  <rect x="570" y="34" width="580" height="262" rx="12" fill="rgba(92,26,138,0.03)" stroke="rgba(92,26,138,0.15)" stroke-width="1.5"/>
+
+  <!-- LT Steps horizontal arrangement -->
+  <!-- Step 1 -->
+  <rect x="588" y="52" width="124" height="68" rx="9" fill="#5c1a8a"/>
+  <text x="650" y="74" text-anchor="middle" font-size="11" font-weight="700" fill="white">📉 Recession</text>
+  <text x="650" y="90" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Economy slows</text>
+  <text x="650" y="104" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">down sharply</text>
+
+  <path d="M715,86 L738,86" stroke="#c8a060" stroke-width="1.5" marker-end="url(#ma)"/>
+
+  <!-- Step 2 -->
+  <rect x="742" y="52" width="124" height="68" rx="9" fill="#4a1278"/>
+  <text x="804" y="74" text-anchor="middle" font-size="11" font-weight="700" fill="white">RBI Cuts 📉</text>
+  <text x="804" y="90" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Repo rate</text>
+  <text x="804" y="104" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">reduced ↓↓</text>
+
+  <path d="M869,86 L892,86" stroke="#c8a060" stroke-width="1.5" marker-end="url(#ma)"/>
+
+  <!-- Step 3 -->
+  <rect x="896" y="52" width="130" height="68" rx="9" fill="#3a0c60"/>
+  <text x="961" y="68" text-anchor="middle" font-size="11" font-weight="700" fill="white">Rates → 0%</text>
+  <text x="961" y="84" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Zero Lower</text>
+  <text x="961" y="98" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">Bound hit</text>
+  <text x="961" y="112" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="JetBrains Mono">CAN'T GO LOWER</text>
+
+  <!-- Trap Box -->
+  <rect x="618" y="148" width="520" height="56" rx="9" fill="rgba(92,26,138,0.15)" stroke="rgba(92,26,138,0.4)" stroke-width="2"/>
+  <text x="878" y="168" text-anchor="middle" font-size="13" font-weight="800" fill="#5c1a8a">🔒 LIQUIDITY TRAP</text>
+  <text x="878" y="186" text-anchor="middle" font-size="10" fill="#5c1a8a">People hold cash · Expect economy to stay weak · Wait for higher rates</text>
+
+  <!-- Why trap? -->
+  <path d="M878,208 L878,224" stroke="#5c1a8a" stroke-width="1.5" stroke-dasharray="3 2"/>
+
+  <rect x="618" y="228" width="520" height="52" rx="9" fill="#c0281a" stroke="rgba(192,40,26,0.5)" stroke-width="1.5"/>
+  <text x="878" y="248" text-anchor="middle" font-size="12" font-weight="700" fill="white">❌ Monetary Policy INEFFECTIVE</text>
+  <text x="878" y="264" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.75)">RBI cannot stimulate economy further via rate cuts</text>
+
+  <!-- Solution arrow -->
+  <path d="M1132,86 L1160,86 L1160,280 L1240,280" stroke="#1a6640" stroke-width="2.5" fill="none" marker-end="url(#ga)"/>
+  <rect x="1244" y="256" width="22" height="48" rx="4" fill="#1a6640"/>
+  <text x="1255" y="275" text-anchor="middle" font-size="8" font-weight="700" fill="white" transform="rotate(90 1255 280)">FISCAL →</text>
+
+  <text x="1168" y="195" font-size="9" font-family="JetBrains Mono" fill="rgba(26,102,64,0.7)" writing-mode="tb" glyph-orientation-vertical="0" transform="rotate(90 1168 195)">USE FISCAL POLICY</text>
+</svg>
+</div>
+
+<div class="g2">
+  <div class="card c-red">
+    <div class="card-label">Deflation — Why Dangerous</div>
+    <h3>📉 The Deflation Spiral</h3>
+    <div class="callout warn">
+      <strong>⚠️ Warning:</strong> Deflation is often MORE dangerous than inflation. It creates a self-reinforcing downward spiral that is hard to escape.
+    </div>
+    <div class="info-row"><div class="info-icon">1️⃣</div><div class="info-text"><strong>People wait to buy</strong><span>"Prices will be lower tomorrow" mindset</span></div></div>
+    <div class="info-row"><div class="info-icon">2️⃣</div><div class="info-text"><strong>Demand collapses</strong><span>Businesses lose revenue rapidly</span></div></div>
+    <div class="info-row"><div class="info-icon">3️⃣</div><div class="info-text"><strong>Production falls</strong><span>Workers get laid off → unemployment ↑</span></div></div>
+    <div class="info-row"><div class="info-icon">4️⃣</div><div class="info-text"><strong>Depression risk</strong><span>Economy enters prolonged slump</span></div></div>
+    <div style="margin-top:10px;">
+      <span class="tag blue">Japan's Lost Decades</span>
+      <span class="tag red">Deflation → Liquidity Trap</span>
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-label">Liquidity Trap — Policy Response</div>
+    <h3>🔒 Trap → Fiscal Stimulus</h3>
+    <div class="callout info">
+      <strong>Key Insight:</strong> When monetary policy fails at Zero Lower Bound, Government MUST step in with Fiscal Policy.
+    </div>
+    <div class="flow">
+      <div class="fn" style="border-color:var(--red);color:var(--red);background:var(--red-lt);">Trap Detected</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--purple);color:var(--purple);background:var(--purple-lt);">RBI Fails</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--green);color:var(--green);background:var(--green-lt);">Fiscal Spend</div>
+    </div>
+    <div class="info-row" style="margin-top:8px;"><div class="info-icon">🏗️</div><div class="info-text"><strong>Govt. Spending</strong><span>Infrastructure, welfare, direct transfers</span></div></div>
+    <div class="info-row"><div class="info-icon">✂️</div><div class="info-text"><strong>Tax Cuts</strong><span>Put money in people's hands directly</span></div></div>
+    <div class="info-row"><div class="info-icon">🌏</div><div class="info-text"><strong>Japan Example</strong><span>Long stagnation due to liquidity trap</span></div></div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 4: PHILLIPS CURVE ══════ -->
+<div class="sec"><div class="sec-num">4</div><div class="sec-title">The Phillips Curve — Short Run vs Long Run</div></div>
+
+<div class="svg-wrap" data-title="Phillips Curve Diagram — Inflation vs Unemployment">
+<svg viewBox="0 0 1280 380" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+  <defs>
+    <marker id="axarr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#1a1814" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- LEFT: Short-Run Phillips Curve Graph -->
+  <text x="320" y="22" text-anchor="middle" font-size="9" font-family="JetBrains Mono" letter-spacing="2" fill="rgba(26,61,138,0.6)">SHORT-RUN PHILLIPS CURVE</text>
+
+  <!-- Axes -->
+  <line x1="100" y1="340" x2="540" y2="340" stroke="#1a1814" stroke-width="2" marker-end="url(#axarr)" opacity="0.7"/>
+  <line x1="100" y1="340" x2="100" y2="30" stroke="#1a1814" stroke-width="2" marker-end="url(#axarr)" opacity="0.7"/>
+
+  <!-- Axis labels -->
+  <text x="540" y="358" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1814">Unemployment →</text>
+  <text x="68" y="200" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1814" transform="rotate(-90 68 200)">Inflation →</text>
+
+  <!-- Downward sloping curve -->
+  <path d="M160,60 Q280,160 500,310" stroke="#1a3d8a" stroke-width="3" fill="none"/>
+
+  <!-- Label on curve -->
+  <text x="200" y="130" font-size="11" font-weight="700" fill="#1a3d8a">Short-Run</text>
+  <text x="200" y="145" font-size="11" font-weight="700" fill="#1a3d8a">Phillips Curve</text>
+
+  <!-- Point A: High Inflation, Low Unemployment -->
+  <circle cx="180" cy="85" r="7" fill="#c0281a"/>
+  <text x="198" y="82" font-size="10" font-weight="700" fill="#c0281a">A: High Inflation</text>
+  <text x="198" y="96" font-size="10" fill="#c0281a">Low Unemployment</text>
+
+  <!-- Point B: Low Inflation, High Unemployment -->
+  <circle cx="450" cy="295" r="7" fill="#1a6640"/>
+  <text x="322" y="305" font-size="10" font-weight="700" fill="#1a6640">B: Low Inflation</text>
+  <text x="322" y="320" font-size="10" fill="#1a6640">High Unemployment</text>
+
+  <!-- Arrow between A and B showing tradeoff -->
+  <path d="M190,100 Q310,190 440,285" stroke="#c8860a" stroke-width="1.5" stroke-dasharray="6 4" fill="none" marker-end="url(#ma)" opacity="0.7"/>
+  <text x="330" y="190" text-anchor="middle" font-size="10" font-weight="700" fill="#c8860a" transform="rotate(50 330 190)">Tradeoff</text>
+
+  <!-- Grid tick marks -->
+  <text x="92" y="92" text-anchor="end" font-size="9" fill="#8a7f6e" font-family="JetBrains Mono">High</text>
+  <text x="92" y="312" text-anchor="end" font-size="9" fill="#8a7f6e" font-family="JetBrains Mono">Low</text>
+  <text x="160" y="356" text-anchor="middle" font-size="9" fill="#8a7f6e" font-family="JetBrains Mono">Low</text>
+  <text x="470" y="356" text-anchor="middle" font-size="9" fill="#8a7f6e" font-family="JetBrains Mono">High</text>
+
+  <!-- Separator -->
+  <line x1="580" y1="20" x2="580" y2="360" stroke="rgba(200,180,140,0.25)" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- RIGHT: Stagflation / Long-Run explanation -->
+  <text x="930" y="22" text-anchor="middle" font-size="9" font-family="JetBrains Mono" letter-spacing="2" fill="rgba(192,40,26,0.5)">STAGFLATION — BREAKS THE CURVE</text>
+
+  <!-- Long-run vertical line -->
+  <line x1="840" y1="340" x2="1220" y2="340" stroke="#1a1814" stroke-width="2" marker-end="url(#axarr)" opacity="0.7"/>
+  <line x1="840" y1="340" x2="840" y2="30" stroke="#1a1814" stroke-width="2" marker-end="url(#axarr)" opacity="0.7"/>
+
+  <!-- Axis labels right -->
+  <text x="1220" y="358" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1814">Unemployment →</text>
+  <text x="808" y="200" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1814" transform="rotate(-90 808 200)">Inflation →</text>
+
+  <!-- Short-run curve (shifted out) -->
+  <path d="M870,260 Q970,200 1120,80" stroke="#1a3d8a" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="5 3"/>
+  <text x="990" y="175" font-size="9" fill="#1a3d8a" opacity="0.5" font-family="JetBrains Mono">SHORT-RUN (OLD)</text>
+
+  <!-- Long-run vertical line -->
+  <line x1="1030" y1="50" x2="1030" y2="330" stroke="#c0281a" stroke-width="3"/>
+  <text x="1052" y="80" font-size="11" font-weight="700" fill="#c0281a">Long-Run</text>
+  <text x="1052" y="95" font-size="11" font-weight="700" fill="#c0281a">Phillips Curve</text>
+  <text x="1052" y="112" font-size="9" fill="#c0281a" font-family="JetBrains Mono">(VERTICAL)</text>
+  <text x="1052" y="127" font-size="9" fill="#c0281a" font-family="JetBrains Mono">Natural Rate</text>
+
+  <!-- Stagflation point — high inflation AND high unemployment -->
+  <circle cx="950" cy="90" r="10" fill="#e07010" stroke="#fff" stroke-width="2"/>
+  <text x="958" y="75" font-size="11" font-weight="800" fill="#e07010">⚡ STAGFLATION</text>
+  <text x="958" y="90" font-size="10" fill="#c8860a">High Inflation</text>
+  <text x="958" y="105" font-size="10" fill="#c8860a">+ High Unemployment</text>
+  <text x="958" y="122" font-size="9" fill="#8a7f6e" font-family="JetBrains Mono">1970s OIL CRISIS</text>
+
+  <!-- Dashed lines to axes for stagflation point -->
+  <line x1="840" y1="90" x2="940" y2="90" stroke="#e07010" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
+  <line x1="950" y1="90" x2="950" y2="340" stroke="#e07010" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
+
+  <!-- Annotation box -->
+  <rect x="870" y="265" width="320" height="60" rx="9" fill="rgba(224,112,16,0.08)" stroke="rgba(224,112,16,0.3)" stroke-width="1.5"/>
+  <text x="1030" y="286" text-anchor="middle" font-size="11" font-weight="700" fill="#e07010">1970s Proved Phillips Curve Wrong</text>
+  <text x="1030" y="302" text-anchor="middle" font-size="9.5" fill="#8a7f6e">Oil shocks → Cost-Push Inflation + Recession</text>
+  <text x="1030" y="318" text-anchor="middle" font-size="9.5" fill="#8a7f6e">= Stagflation. Tradeoff breaks in long-run</text>
+</svg>
+</div>
+
+<div class="g3">
+  <div class="card c-blue">
+    <div class="card-label">Phillips Curve — Core Idea</div>
+    <h3>〰️ Inverse Relationship</h3>
+    <div class="formula" style="padding:12px 14px;">
+      <div class="formula-eq" style="font-size:16px;">Inflation ↑ ⟺ Unemployment ↓</div>
+      <div class="formula-label">INVERSE TRADEOFF</div>
+    </div>
+    <div class="info-row" style="margin-top:8px;"><div class="info-icon">💡</div><div class="info-text"><strong>Why?</strong><span>Higher demand → more jobs → higher wages → firms raise prices</span></div></div>
+    <div class="info-row"><div class="info-icon">⏱️</div><div class="info-text"><strong>Short Run only</strong><span>Tradeoff breaks down in the long run</span></div></div>
+    <div style="margin-top:8px;"><span class="tag blue">A.W. Phillips, 1958</span></div>
+  </div>
+
+  <div class="card c-amber">
+    <div class="card-label">Stagflation — Phillips Curve Breaks</div>
+    <h3>⚡ The 1970s Shock</h3>
+    <div class="callout warn" style="margin-bottom:10px;">
+      <strong>Stagflation</strong> = High Inflation + High Unemployment simultaneously. This BREAKS the Phillips Curve tradeoff.
+    </div>
+    <div class="info-row"><div class="info-icon">🛢️</div><div class="info-text"><strong>Oil Price Shock (1973)</strong><span>OPEC embargo → massive cost-push inflation</span></div></div>
+    <div class="info-row"><div class="info-icon">📉</div><div class="info-text"><strong>Recession Simultaneously</strong><span>Output fell, unemployment rose sharply</span></div></div>
+    <div class="info-row"><div class="info-icon">🔥</div><div class="info-text"><strong>Policy Dilemma</strong><span>Fight inflation OR fight unemployment, not both</span></div></div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-label">Long-Run Phillips Curve</div>
+    <h3>📊 Vertical at Natural Rate</h3>
+    <div class="info-row"><div class="info-icon">↕️</div><div class="info-text"><strong>Vertical Line</strong><span>Long-run curve = vertical at Natural Rate of Unemployment</span></div></div>
+    <div class="info-row"><div class="info-icon">🧠</div><div class="info-text"><strong>Why Vertical?</strong><span>Workers adjust expectations — no real tradeoff exists long-term</span></div></div>
+    <div class="info-row"><div class="info-icon">🎯</div><div class="info-text"><strong>Natural Rate</strong><span>Structural + frictional unemployment remains even at full capacity</span></div></div>
+    <div style="margin-top:8px;"><span class="tag green">Friedman-Phelps Critique</span></div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 5: FULL CONCEPT CONNECTION MAP ══════ -->
+<div class="sec"><div class="sec-num">5</div><div class="sec-title">Everything Connected — The Grand Policy Flow</div></div>
+
+<div class="svg-wrap" data-title="Complete Macroeconomic Policy Response Map">
+<svg viewBox="0 0 1280 440" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+  <defs>
+    <marker id="pa" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#c8a060" opacity="0.8"/>
+    </marker>
+    <marker id="ra" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#c0281a" opacity="0.8"/>
+    </marker>
+    <marker id="gna" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#1a6640" opacity="0.8"/>
+    </marker>
+  </defs>
+
+  <!-- Background zones -->
+  <rect x="20" y="20" width="380" height="400" rx="14" fill="rgba(192,40,26,0.03)" stroke="rgba(192,40,26,0.12)" stroke-width="1.5"/>
+  <text x="210" y="42" text-anchor="middle" font-size="9" font-family="JetBrains Mono" letter-spacing="2" fill="rgba(192,40,26,0.4)">INFLATION ZONE</text>
+
+  <rect x="820" y="20" width="440" height="400" rx="14" fill="rgba(26,61,138,0.03)" stroke="rgba(26,61,138,0.12)" stroke-width="1.5"/>
+  <text x="1040" y="42" text-anchor="middle" font-size="9" font-family="JetBrains Mono" letter-spacing="2" fill="rgba(26,61,138,0.4)">RECESSION / DEFLATION ZONE</text>
+
+  <!-- Central node: Economy -->
+  <ellipse cx="640" cy="220" rx="110" ry="55" fill="#1a1814"/>
+  <text x="640" y="212" text-anchor="middle" font-size="14" font-weight="800" fill="#f5ead0">🌏 ECONOMY</text>
+  <text x="640" y="230" text-anchor="middle" font-size="10" fill="rgba(245,234,208,0.6)" font-family="JetBrains Mono">EQUILIBRIUM STATE</text>
+  <text x="640" y="248" text-anchor="middle" font-size="10" fill="rgba(245,234,208,0.5)" font-family="JetBrains Mono">OUTPUT + EMPLOYMENT</text>
+
+  <!-- INFLATION branch (left upper) -->
+  <path d="M535,195 Q400,140 340,110" stroke="#c0281a" stroke-width="2" fill="none" marker-end="url(#ra)" stroke-dasharray="5 3"/>
+  <rect x="130" y="74" width="210" height="72" rx="10" fill="#c0281a"/>
+  <text x="235" y="97" text-anchor="middle" font-size="12" font-weight="700" fill="white">📈 Inflation Rises</text>
+  <text x="235" y="113" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Demand-Pull / Cost-Push</text>
+  <text x="235" y="129" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">PURCHASING POWER FALLS</text>
+
+  <!-- RBI Raises rates -->
+  <path d="M200,150 L200,185" stroke="#c8a060" stroke-width="2" marker-end="url(#pa)"/>
+  <rect x="100" y="188" width="200" height="52" rx="9" fill="#b87c10"/>
+  <text x="200" y="208" text-anchor="middle" font-size="11" font-weight="700" fill="white">RBI Raises Repo Rate ↑</text>
+  <text x="200" y="224" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Cools demand, reduces money supply</text>
+  <text x="200" y="238" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">CONTRACTIONARY MONETARY</text>
+
+  <!-- Phillips curve: Inflation up means Unemp down -->
+  <path d="M320,220 L350,220" stroke="#c8a060" stroke-width="1.5" fill="none" marker-end="url(#pa)" stroke-dasharray="4 3"/>
+  <rect x="30" y="260" width="290" height="60" rx="9" fill="rgba(200,134,10,0.08)" stroke="rgba(200,134,10,0.3)" stroke-width="1.5"/>
+  <text x="175" y="284" text-anchor="middle" font-size="11" font-weight="700" fill="#c8860a">〰️ Phillips Curve Active</text>
+  <text x="175" y="300" text-anchor="middle" font-size="10" fill="#b07c10">Inflation ↑ → Unemployment ↓</text>
+  <text x="175" y="316" text-anchor="middle" font-size="9" fill="#8a7f6e" font-family="JetBrains Mono">SHORT-RUN TRADEOFF</text>
+
+  <!-- Stagflation breaks it -->
+  <path d="M175,325 L175,360" stroke="#e07010" stroke-width="1.5" marker-end="url(#pa)"/>
+  <rect x="60" y="363" width="230" height="46" rx="9" fill="#e07010"/>
+  <text x="175" y="382" text-anchor="middle" font-size="11" font-weight="700" fill="white">⚡ Stagflation Breaks It</text>
+  <text x="175" y="398" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Oil shock: Inflation + Recession</text>
+
+  <!-- RECESSION branch (right upper) -->
+  <path d="M745,195 Q900,140 960,108" stroke="#1a3d8a" stroke-width="2" fill="none" marker-end="url(#gna)" stroke-dasharray="5 3"/>
+  <rect x="940" y="74" width="220" height="72" rx="10" fill="#1a3d8a"/>
+  <text x="1050" y="97" text-anchor="middle" font-size="12" font-weight="700" fill="white">📉 Recession Begins</text>
+  <text x="1050" y="113" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Demand falls · Output drops</text>
+  <text x="1050" y="129" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">UNEMPLOYMENT RISES</text>
+
+  <!-- RBI Cuts rates -->
+  <path d="M1050,150 L1050,185" stroke="#c8a060" stroke-width="2" marker-end="url(#pa)"/>
+  <rect x="940" y="188" width="220" height="52" rx="9" fill="#0a5c6e"/>
+  <text x="1050" y="208" text-anchor="middle" font-size="11" font-weight="700" fill="white">RBI Cuts Repo Rate ↓</text>
+  <text x="1050" y="224" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Boosts demand, increases money supply</text>
+  <text x="1050" y="238" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">EXPANSIONARY MONETARY</text>
+
+  <!-- Rates hit zero → Liquidity Trap -->
+  <path d="M1050,244 L1050,270" stroke="#c8a060" stroke-width="2" marker-end="url(#pa)"/>
+  <rect x="900" y="273" width="290" height="60" rx="9" fill="#5c1a8a"/>
+  <text x="1045" y="297" text-anchor="middle" font-size="12" font-weight="700" fill="white">🔒 Rates Hit 0% → Trap!</text>
+  <text x="1045" y="313" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.8)">Monetary policy EXHAUSTED</text>
+  <text x="1045" y="327" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.55)" font-family="JetBrains Mono">ZERO LOWER BOUND HIT</text>
+
+  <!-- Fiscal needed -->
+  <path d="M1045,337 L1045,363" stroke="#1a6640" stroke-width="2" marker-end="url(#gna)"/>
+  <rect x="890" y="366" width="300" height="46" rx="9" fill="#1a6640"/>
+  <text x="1040" y="385" text-anchor="middle" font-size="11" font-weight="700" fill="white">✅ Use FISCAL POLICY Instead</text>
+  <text x="1040" y="401" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.8)">Govt spending · Tax cuts · Stimulus</text>
+
+  <!-- Deflation contributes to recession -->
+  <path d="M745,240 Q800,310 900,290" stroke="#c0281a" stroke-width="1.5" fill="none" stroke-dasharray="5 3" marker-end="url(#ra)" opacity="0.6"/>
+  <rect x="590" y="330" width="220" height="44" rx="9" fill="rgba(192,40,26,0.08)" stroke="rgba(192,40,26,0.3)" stroke-width="1.5"/>
+  <text x="700" y="350" text-anchor="middle" font-size="11" font-weight="700" fill="#c0281a">📉 Deflation Deepens</text>
+  <text x="700" y="366" text-anchor="middle" font-size="9.5" fill="#c0281a">Demand ↓↓ → Trap accelerates</text>
+
+  <!-- Nominal = Inflation + Real annotation at bottom -->
+  <rect x="480" y="408" width="320" height="28" rx="8" fill="rgba(200,134,10,0.1)" stroke="rgba(200,134,10,0.3)" stroke-width="1.5"/>
+  <text x="640" y="427" text-anchor="middle" font-size="10.5" font-weight="700" fill="#c8860a">📐 Nominal = Inflation + Real Rate  ·  Fisher Equation underpins all</text>
+</svg>
+</div>
+
+<!-- ══════ SECTION 6: POLICY COMPARISON TABLE ══════ -->
+<div class="sec"><div class="sec-num">6</div><div class="sec-title">Policy Response Quick Reference</div></div>
+
+<div class="card c-dark" style="margin-bottom:16px;">
+  <div class="card-label">Complete Policy Matrix</div>
+  <h3>🏛️ Situation → Diagnosis → Policy Tool</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>Situation</th>
+        <th>What's Happening</th>
+        <th>RBI Response</th>
+        <th>Govt Response</th>
+        <th>Phillips Curve</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>📈 Demand-Pull Inflation</td>
+        <td>Too much money, demand exceeds supply</td>
+        <td><span class="tag red">Raise Repo Rate ↑</span></td>
+        <td><span class="tag amber">Cut Spending</span></td>
+        <td>Inflation ↑ → Unemp ↓ (curve works)</td>
+      </tr>
+      <tr>
+        <td>🛢️ Cost-Push Inflation</td>
+        <td>Supply shocks (oil), wages rise</td>
+        <td><span class="tag gold">Moderate hike</span></td>
+        <td><span class="tag gold">Supply-side reforms</span></td>
+        <td>May cause stagflation</td>
+      </tr>
+      <tr>
+        <td>📉 Recession</td>
+        <td>Demand falls, output drops, unemp rises</td>
+        <td><span class="tag green">Cut Repo Rate ↓</span></td>
+        <td><span class="tag blue">Increase Spending</span></td>
+        <td>Unemp ↑ → Inflation ↓</td>
+      </tr>
+      <tr>
+        <td>🔒 Liquidity Trap</td>
+        <td>Rates at 0%, monetary policy fails</td>
+        <td><span class="tag red">❌ Ineffective</span></td>
+        <td><span class="tag green">✅ Fiscal Stimulus MUST</span></td>
+        <td>Curve irrelevant</td>
+      </tr>
+      <tr>
+        <td>⚡ Stagflation</td>
+        <td>High inflation + high unemployment</td>
+        <td><span class="tag amber">Difficult dilemma</span></td>
+        <td><span class="tag purple">Supply-side only</span></td>
+        <td>BREAKS Phillips Curve</td>
+      </tr>
+      <tr>
+        <td>📉 Deflation</td>
+        <td>Prices fall, demand collapses</td>
+        <td><span class="tag green">Cut Rates aggressively</span></td>
+        <td><span class="tag green">Emergency Stimulus</span></td>
+        <td>Risk: Trap + Depression</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════ SECTION 7: HIGH-PROBABILITY PRELIMS POINTS ══════ -->
+<div class="sec"><div class="sec-num">7</div><div class="sec-title">High-Probability UPSC Prelims Points</div></div>
+
+<div class="g4">
+  <div class="card c-gold">
+    <div class="card-label">Formula</div>
+    <h3>📐 Fisher Equation</h3>
+    <div class="formula" style="padding:10px;">
+      <div class="formula-eq" style="font-size:14px;">Nominal = Inflation + Real</div>
+    </div>
+    <div class="callout note" style="margin-top:8px;font-size:10px;">
+      Negative real return → people stop saving → hoarding risk
+    </div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-label">Definition</div>
+    <h3>🔒 Liquidity Trap</h3>
+    <div class="info-row"><div class="info-icon">🎯</div><div class="info-text"><strong>= Zero Lower Bound</strong><span>Rates can't go below 0% (practically)</span></div></div>
+    <div class="info-row"><div class="info-icon">❌</div><div class="info-text"><strong>Monetary Policy Fails</strong><span>RBI cannot stimulate via rates</span></div></div>
+    <div style="margin-top:6px;"><span class="tag purple">Japan Example</span></div>
+  </div>
+
+  <div class="card c-red">
+    <div class="card-label">Key Distinction</div>
+    <h3>📊 Deflation vs Disinflation</h3>
+    <div class="callout warn" style="font-size:10px;margin-bottom:6px;"><strong>Deflation:</strong> Prices actually FALL (negative inflation)</div>
+    <div class="callout tip" style="font-size:10px;"><strong>Disinflation:</strong> Inflation is still +ve but SLOWING DOWN (10%→4%→2%)</div>
+  </div>
+
+  <div class="card c-teal">
+    <div class="card-label">Key Curve</div>
+    <h3>〰️ Phillips Curve</h3>
+    <div class="info-row"><div class="info-icon">↕️</div><div class="info-text"><strong>Inverse relationship</strong><span>Inflation ↑ ↔ Unemployment ↓</span></div></div>
+    <div class="info-row"><div class="info-icon">⏱️</div><div class="info-text"><strong>Short-run only</strong><span>Stagflation breaks it in long run</span></div></div>
+  </div>
+</div>
+
+<div class="phases">
+  <div class="phase" style="border-color:var(--gold);background:var(--gold-lt);">
+    <div class="phase-n" style="color:var(--gold);">D-P</div>
+    <div class="phase-t">Demand-Pull</div>
+    <div class="phase-s">Too much money</div>
+    <div style="margin-top:6px;font-size:10px;color:var(--amber);">→ Raise Rates</div>
+  </div>
+  <div class="phase" style="border-color:var(--amber);background:var(--amber-lt);">
+    <div class="phase-n" style="color:var(--amber);">C-P</div>
+    <div class="phase-t">Cost-Push</div>
+    <div class="phase-s">Supply shocks</div>
+    <div style="margin-top:6px;font-size:10px;color:var(--amber);">→ Supply Reforms</div>
+  </div>
+  <div class="phase" style="border-color:var(--red);background:var(--red-lt);">
+    <div class="phase-n" style="color:var(--red);">STG</div>
+    <div class="phase-t">Stagflation</div>
+    <div class="phase-s">Both at once!</div>
+    <div style="margin-top:6px;font-size:10px;color:var(--red);">→ No easy fix</div>
+  </div>
+  <div class="phase" style="border-color:var(--purple);background:var(--purple-lt);">
+    <div class="phase-n" style="color:var(--purple);">L-T</div>
+    <div class="phase-t">Liquidity Trap</div>
+    <div class="phase-s">Rates at 0%</div>
+    <div style="margin-top:6px;font-size:10px;color:var(--purple);">→ Fiscal Policy</div>
+  </div>
+</div>
+
+<!-- ══════ KEYSTONE ══════ -->
+<div class="keystone">
+  <div class="keystone-icon">⚡</div>
+  <div>
+    <h3>The Core Connecting Idea</h3>
+    <p>
+      All macro concepts flow from one truth: <strong style="color:#f5d780;">monetary policy has limits</strong>. Fisher shows real returns determine saving behavior. When rates fall to zero, the Liquidity Trap emerges and monetary policy fails — requiring fiscal intervention. The Phillips Curve explains the inflation-unemployment tradeoff in the short run, but stagflation (cost-push shocks) destroys that tradeoff in the long run. Deflation is the most dangerous outcome, feeding directly into the Liquidity Trap spiral. <em>Japan's lost decades = textbook proof of all these concepts.</em>
+    </p>
+    <div class="kpills">
+      <span class="kpill">📐 Fisher Equation</span>
+      <span class="kpill">📈 Demand-Pull = Raise Rates</span>
+      <span class="kpill">🛢️ Cost-Push = Supply Reforms</span>
+      <span class="kpill">🔒 Trap = Fiscal MUST</span>
+      <span class="kpill">⚡ Stagflation Breaks Phillips</span>
+      <span class="kpill">📉 Deflation → Depression Risk</span>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

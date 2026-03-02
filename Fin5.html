@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEBI — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--ink:#12100e;--paper:#f6f9ff;--blue:#1d4ed8;--purple:#7c3aed;--teal:#0f766e;--green:#059669;--red:#dc2626;--amber:#0891b2;--sky:#0369a1;--muted:#64748b;--border:#cbd5e1;--card:#ffffff;--card2:#f1f5f9;}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 900px 500px at 10% 10%,rgba(37,99,235,.05) 0%,transparent 60%),radial-gradient(ellipse 700px 700px at 90% 90%,rgba(124,58,237,.04) 0%,transparent 60%);pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+.header{text-align:center;padding:44px 16px 20px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--blue);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,52px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--blue);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:90px;height:4px;background:linear-gradient(90deg,var(--blue),var(--purple),var(--amber));margin:14px auto 0;border-radius:4px;}
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--blue);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.pc:hover{box-shadow:0 6px 28px rgba(37,99,235,.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--blue),#60a5fa);}
+.pc.amber::before{background:linear-gradient(90deg,var(--amber),#22d3ee);}
+.pc.green::before{background:linear-gradient(90deg,var(--green),#34d399);}
+.pc.blue::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--amber));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--sky));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),#f87171,#f59e0b);}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--purple),var(--blue),var(--teal));}
+.map-card svg{display:block;width:100%;}
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+.ps-chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.ps-chip.sol{background:#f0fdf4;border-color:#bbf7d0;color:var(--green);}
+.ps-chip.info{background:#eff6ff;border-color:#bfdbfe;color:var(--blue);}
+.ps-chip.warn{background:#fef2f2;border-color:#fecaca;color:var(--red);}
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:7px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+.keystone{background:linear-gradient(135deg,#1e3a8a,#1d4ed8,#4c1d95);color:#e0f2fe;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#bae6fd;line-height:1.6;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,.12);font-size:11px;font-family:'DM Mono',monospace;}
+.kw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;}
+.kw-item{padding:12px;border-radius:10px;background:var(--card2);border:1.5px solid var(--border);text-align:center;}
+.kw-abbr{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--blue);}
+.kw-full{font-size:10px;font-weight:700;margin:3px 0;}
+.kw-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);}
+.trap-box{padding:18px;border-radius:12px;background:#fff7ed;border:2px solid #fed7aa;margin-bottom:20px;}
+.trap-item{display:flex;gap:10px;align-items:flex-start;margin:8px 0;font-size:11px;line-height:1.6;}
+.trap-num{background:var(--red);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;flex:0 0 20px;font-family:'DM Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="header">
+  <div class="header-sup">Indian Economy · Capital Markets · UPSC Prelims</div>
+  <h1>SEBI — <em>Mind Map</em></h1>
+  <div class="header-sub">Structure · Powers · Mechanisms · Current Developments · Prelims Traps</div>
+</div>
+
+<div class="sec-label">Master Flow — The Big Picture</div>
+<div class="map-card mc1"><svg id="svgFlow" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg></div>
+
+<div class="sec-label">① What is SEBI? — Origin & Purpose</div>
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">Origin Timeline</div>
+    <h3>📅 How SEBI Came to Be</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);">1988</div><div class="stat-sub">Established</div><div class="stat-label">NON-STATUTORY</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--purple);">1992</div><div class="stat-sub">SEBI Act</div><div class="stat-label">STATUTORY BODY</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">Scam</div><div class="stat-sub">Harshad Mehta</div><div class="stat-label">TRIGGER ⚠️</div></div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--blue);background:#eff6ff;color:var(--blue);">1988 Setup</div><div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:#7c3aed;background:#ede9fe;color:#7c3aed;">1992 Scam</div><div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:#f0fdfa;color:var(--teal);">SEBI Act 1992</div><div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:#f0fdf4;color:var(--green);">Statutory Powers</div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:#eff6ff;border-radius:8px;border:1px solid #bfdbfe;">
+      <span style="font-size:10px;font-weight:800;color:var(--blue);">📌 Purpose: Regulate capital markets + Protect investors</span>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">RBI vs SEBI</div>
+    <h3>⚖️ Market Regulator Divide</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;">
+      <div style="padding:14px;border-radius:10px;background:#eff6ff;border:1.5px solid #bfdbfe;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">🏦</div>
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:var(--blue);">RBI</div>
+        <div style="font-size:10px;font-weight:700;margin:4px 0;">Money Market</div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">T-Bills, CPs, CDs<br>Short-term instruments</div>
+      </div>
+      <div style="padding:14px;border-radius:10px;background:#faf5ff;border:1.5px solid #e9d5ff;text-align:center;">
+        <div style="font-size:22px;margin-bottom:6px;">📈</div>
+        <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:800;color:var(--purple);">SEBI</div>
+        <div style="font-size:10px;font-weight:700;margin:4px 0;">Capital Market</div>
+        <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">Stocks, Bonds, MFs<br>Long-term securities</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:9px 12px;background:#fef2f2;border-radius:8px;border:1px solid #fecaca;">
+      <span style="font-size:10px;font-weight:800;color:var(--red);">⚠️ PRELIMS TRAP: SEBI = STATUTORY under 1992 Act (not 1988)</span>
+    </div>
+  </div>
+</div>
+
+<div class="sec-label">② Core Mandate — 3 Functions</div>
+<div class="map-card mc2"><svg id="svgMandate" viewBox="0 0 1360 310" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg></div>
+
+<div class="sec-label">③ Organizational Structure</div>
+<div class="map-card mc4"><svg id="svgOrg" viewBox="0 0 1360 250" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg></div>
+
+<div class="sec-label">④ Key Mechanisms & Enforcement</div>
+<div class="map-card mc3"><svg id="svgMech" viewBox="0 0 1360 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg></div>
+
+<div class="sec-label">⑤ Market Infrastructure Institutions (MIIs)</div>
+<div class="g4">
+  <div class="pc blue"><div class="pc-label">Stock Exchanges</div><h3>🏛️ Exchanges</h3><div class="vlist"><div class="vitem"><div class="vt">NSE</div><div class="vs">National Stock Exchange</div></div><div class="vitem"><div class="vt">BSE</div><div class="vs">Bombay Stock Exchange</div></div></div><span class="ps-chip info" style="margin-top:8px;">MII Category</span></div>
+  <div class="pc teal"><div class="pc-label">Clearing</div><h3>🔄 Clearing Corps.</h3><div class="vlist"><div class="vitem"><div class="vt">NSCCL</div><div class="vs">NSE Clearing Ltd.</div></div><div class="vitem"><div class="vt">ICCL</div><div class="vs">BSE Clearing</div></div></div><span class="ps-chip info" style="margin-top:8px;">MII Category</span></div>
+  <div class="pc purple"><div class="pc-label">Depositories</div><h3>🗄️ Depositories</h3><div class="vlist"><div class="vitem"><div class="vt">NSDL</div><div class="vs">National Securities Depository</div></div><div class="vitem"><div class="vt">CDSL</div><div class="vs">Central Depository Services</div></div></div><span class="ps-chip info" style="margin-top:8px;">MII Category</span></div>
+  <div class="pc sky"><div class="pc-label">Intermediaries</div><h3>👥 Other Entities</h3><div class="vlist"><div class="vitem"><div class="vt">Stock Brokers</div><div class="vs">Trading intermediaries</div></div><div class="vitem"><div class="vt">Merchant Bankers</div><div class="vs">IPO managers</div></div><div class="vitem"><div class="vt">FPIs</div><div class="vs">Foreign portfolio investors</div></div></div></div>
+</div>
+
+<div class="sec-label">⑥ Capital Market Flow — End to End</div>
+<div class="map-card mc1"><svg id="svgCapFlow" viewBox="0 0 1360 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg></div>
+
+<div class="sec-label">⑦ Recent Developments & SEBI Actions</div>
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Market Surge</div>
+    <h3>📊 India's Capital Market Growth</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">↑↑</div><div class="stat-sub">IPO Pipeline</div><div class="stat-label">RECORD FILINGS</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);">14Cr+</div><div class="stat-sub">Demat Accounts</div><div class="stat-label">RISING SHARPLY</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--purple);">2×</div><div class="stat-sub">SIP Flows</div><div class="stat-label">DOUBLED</div></div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Market Cap to GDP improved</div><div class="vs">India among best performing EMEs</div></div>
+      <div class="vitem"><div class="vt">Rising foreign investor confidence</div><div class="vs">Increasing FPI inflows into equities</div></div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">SEBI's Recent Actions</div>
+    <h3>🚀 Key Regulatory Moves</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">BRSR Mandatory</div><div class="vs">ESG disclosure for top 1000 listed companies</div></div>
+      <div class="vitem"><div class="vt">T+1 Settlement</div><div class="vs">World's fastest equity settlement cycle</div></div>
+      <div class="vitem"><div class="vt">Algo Trading Rules</div><div class="vs">Retail access with safeguards introduced</div></div>
+      <div class="vitem"><div class="vt">F&O Curbs 2024</div><div class="vs">Weekly expiry contracts limited</div></div>
+      <div class="vitem"><div class="vt">FPI Disclosure Norms</div><div class="vs">Beneficial ownership rules tightened</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sec-label">⑧ Must-Know Prelims Keywords</div>
+<div class="pc gold" style="margin-bottom:20px;">
+  <div class="pc-label">Abbreviation Bank</div>
+  <h3>🔑 Key Terms — SEBI Edition</h3>
+  <div class="kw-grid">
+    <div class="kw-item"><div class="kw-abbr">SCORES</div><div class="kw-full">Complaint Redressal Platform</div><div class="kw-sub">Online investor grievance system</div></div>
+    <div class="kw-item"><div class="kw-abbr" style="color:var(--green);">IPF</div><div class="kw-full">Investor Protection Fund</div><div class="kw-sub">Compensation to aggrieved investors</div></div>
+    <div class="kw-item"><div class="kw-abbr" style="color:var(--purple);">SAT</div><div class="kw-full">Securities Appellate Tribunal</div><div class="kw-sub">Appeals body — NOT SEBI internal</div></div>
+    <div class="kw-item"><div class="kw-abbr" style="color:var(--teal);">BRSR</div><div class="kw-full">Business Responsibility & Sustainability</div><div class="kw-sub">ESG disclosures — mandatory</div></div>
+    <div class="kw-item"><div class="kw-abbr" style="color:var(--sky);">MIIs</div><div class="kw-full">Market Infrastructure Institutions</div><div class="kw-sub">Exchanges + Clearing + Depositories</div></div>
+    <div class="kw-item"><div class="kw-abbr" style="color:#92400e;">NISM</div><div class="kw-full">National Institute of Securities Markets</div><div class="kw-sub">SEBI's education & awareness arm</div></div>
+  </div>
+</div>
+
+<div class="sec-label">⑨ Top 5 Prelims Traps 🧠</div>
+<div class="trap-box">
+  <div style="font-size:13px;font-weight:800;color:#c2410c;margin-bottom:12px;">⚠️ Don't Fall For These</div>
+  <div class="trap-item"><div class="trap-num">1</div><div><strong>SEBI became STATUTORY under the 1992 Act</strong> — not 1988. It was merely set up in 1988 as a non-statutory body.</div></div>
+  <div class="trap-item"><div class="trap-num">2</div><div><strong>SCORES is an online complaint platform</strong> — not a court or tribunal. It's SEBI's grievance redressal mechanism.</div></div>
+  <div class="trap-item"><div class="trap-num">3</div><div><strong>SAT is NOT internal to SEBI</strong> — it's a separate quasi-judicial body you appeal to against SEBI orders.</div></div>
+  <div class="trap-item"><div class="trap-num">4</div><div><strong>BRSR is MANDATORY for top listed companies</strong> — not voluntary. Mandated for ESG transparency.</div></div>
+  <div class="trap-item"><div class="trap-num">5</div><div><strong>SEBI regulates all MIIs</strong> — Exchanges + Clearing Corps + Depositories (not just stock exchanges).</div></div>
+</div>
+
+<div class="keystone">
+  <div class="keystone-icon">📈</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">India built a statutory framework for capital market governance via the SEBI Act 1992. <strong style="color:#7dd3fc;">SEBI's 3-pronged mandate — Regulate, Protect, Develop — keeps markets transparent, investors safe, and innovation alive.</strong><br>RBI owns the money market. SEBI owns the capital market. Together they form India's financial regulatory backbone.</div>
+    <div class="keystone-pills">
+      <span class="kpill">📜 Statutory since 1992</span>
+      <span class="kpill">🏛️ Capital Market Regulator</span>
+      <span class="kpill">🛡️ Investor Protection</span>
+      <span class="kpill">📊 SCORES + SAT + IPF</span>
+      <span class="kpill">🌍 India = Top EME</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+const se=(t,a)=>{const e=document.createElementNS(NS,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;};
+const curve=(svg,x1,y1,x2,y2,col,dash,w)=>{const mx=(x1+x2)/2;svg.appendChild(se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:col||'#94a3b8','stroke-width':w||1.8,fill:'none','stroke-dasharray':dash?'5 4':'none',opacity:'.65'}));};
+const lbl=(svg,x,y,txt,col,sz)=>{const t=se('text',{x,y,'text-anchor':'middle','font-size':sz||9,'font-family':'DM Mono,monospace',fill:col||'rgba(100,116,139,.5)','letter-spacing':'2','font-weight':'700'});t.textContent=txt;svg.appendChild(t);};
+function node(svg,x,y,w,h,fill,lines,sub,emoji,tc,rx){
+  tc=tc||'#fff';rx=rx||10;const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,.1)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,.25)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*7.5)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:tc});em.textContent=emoji;g.appendChild(em);ty+=18;}
+  lines.forEach((l,i)=>{const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:tc});t.textContent=l;g.appendChild(t);});
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:'rgba(255,255,255,.5)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// MASTER FLOW
+(()=>{
+  const svg=document.getElementById('svgFlow');
+  lbl(svg,680,18,'MARKET NEED → SCAM → ACT → REGULATE → PROTECT → DEVELOP → INTEGRITY','rgba(30,58,138,.4)');
+  const steps=[
+    {x:90,  l:['Capital Market','Need'],     fill:'#1d4ed8',emoji:'💡'},
+    {x:272, l:['1992 Securities','Scam'],    fill:'#dc2626',emoji:'⚠️'},
+    {x:454, l:['SEBI Act','1992'],           fill:'#7c3aed',emoji:'📜'},
+    {x:636, l:['Regulate','Markets'],        fill:'#0f766e',emoji:'🏛️'},
+    {x:818, l:['Protect','Investors'],       fill:'#059669',emoji:'🛡️'},
+    {x:1000,l:['Develop','Markets'],         fill:'#0891b2',emoji:'🚀'},
+    {x:1182,l:['Market','Integrity'],        fill:'#0369a1',emoji:'⚖️'},
+    {x:1310,l:['India','Top EME'],           fill:'#1d4ed8',emoji:'🌍'},
+  ];
+  steps.forEach((s,i)=>{if(i<steps.length-1)curve(svg,s.x+60,72,steps[i+1].x-60,72,'#2563eb55',false,2);});
+  steps.forEach(s=>node(svg,s.x,72,115,62,s.fill,s.l,null,s.emoji));
+})();
+
+// MANDATE
+(()=>{
+  const svg=document.getElementById('svgMandate');
+  node(svg,680,150,215,58,'#1e3a8a',['SEBI','Core Mandate'],'3-Pronged Authority','📋');
+  // Regulatory left cluster
+  const rn=[
+    [230,75, '#1d4ed8',['Regulatory','Function'],'Register & oversee','🏛️'],
+    [75, 75, '#2563eb',['Stock Exchanges'],'NSE, BSE oversight','📊'],
+    [230,162,'#3b82f6',['Mergers &','Takeovers'],'Monitor M&A','🔀'],
+    [75, 162,'#1e40af',['Insider Trading','Ban'],'Criminal offence','🚫'],
+    [230,249,'#1d4ed8',['BRSR / FPI','Regulation'],'ESG + foreign inv.','🌱'],
+    [75, 249,'#2563eb',['Mutual Fund','Regulation'],'AUM, NAV disclosure','💹'],
+  ];
+  // Protective right cluster
+  const pn=[
+    [1130,75, '#059669',['Protective','Function'],'Safeguard investors','🛡️'],
+    [1285,75, '#10b981',['SCORES'],'Online complaints','💻'],
+    [1130,162,'#059669',['Prevent Fraud','& Unfair Trade'],'Fair markets','⚠️'],
+    [1285,162,'#34d399',['Investor','Protection Fund'],'IPF compensation','💰'],
+  ];
+  // Developmental bottom
+  const dn=[
+    [440, 270,'#0891b2',['Developmental','Function'],'Promote innovation','🚀'],
+    [620, 270,'#0f766e',['NISM'],'Investor education','🎓'],
+    [800, 270,'#0369a1',['New Financial','Products'],'Innovation hub','💡'],
+    [980, 270,'#0891b2',['Investor','Awareness'],'Programs & outreach','📢'],
+  ];
+  // edges regulatory
+  [[590,148,305,75],[305,51,150,75],[590,155,305,162],[305,162,150,162],[590,165,305,249],[305,249,150,249]].forEach(([x1,y1,x2,y2])=>curve(svg,x1,y1,x2,y2,'#2563eb44',true,1.6));
+  // edges protective
+  [[770,148,1055,75],[1055,51,1210,75],[770,155,1055,162],[1055,162,1210,162]].forEach(([x1,y1,x2,y2])=>curve(svg,x1,y1,x2,y2,'#05996944',true,1.6));
+  // edges developmental
+  dn.forEach(n=>{svg.appendChild(se('line',{x1:n[0],y1:180,x2:n[0],y2:n[1]-26,stroke:'#0891b244','stroke-width':'1.8','stroke-dasharray':'5 4',opacity:'.7'}));});
+  [...rn,...pn,...dn].forEach(n=>node(svg,n[0],n[1],148,50,n[2],n[3],n[4],n[5]));
+  lbl(svg,155,295,'REGULATORY','rgba(29,78,216,.4)');
+  lbl(svg,1208,295,'PROTECTIVE','rgba(5,150,105,.4)');
+  lbl(svg,710,297,'DEVELOPMENTAL','rgba(8,145,178,.4)');
+})();
+
+// ORG
+(()=>{
+  const svg=document.getElementById('svgOrg');
+  node(svg,680,44,260,50,'#1e3a8a',['Chairman (Appointed by Govt of India)'],'Head of SEBI Board','👤');
+  const board=[
+    [160,'#1d4ed8',['Finance','Ministry']],
+    [360,'#7c3aed',['RBI','Nominee']],
+    [560,'#0f766e',['Law','Ministry']],
+    [760,'#059669',['Corporate','Affairs']],
+    [960,'#0891b2',['Domain','Experts']],
+    [1160,'#0369a1',['Independent','Members']],
+  ];
+  board.forEach(b=>{curve(svg,680,71,b[0],102,'#1d4ed844',true,1.5);node(svg,b[0],120,155,46,b[1],b[2],'Board Member','');});
+  lbl(svg,680,180,'KEY DIVISIONS','rgba(100,116,139,.5)');
+  const divs=[
+    [120,'Market\nRegulation'],[300,'Corporate\nFinance'],[480,'Legal\nAffairs'],[660,'Investor\nProtection'],
+    [850,'Economic &\nPolicy Analysis'],[1050,'Market\nSurveillance'],[1260,'Regional Offices\nMUM·DEL·KOL·CHE·AHM'],
+  ];
+  divs.forEach(d=>node(svg,d[0],218,165,44,'#374151',d[1].split('\n'),'Division',''));
+})();
+
+// MECHANISMS
+(()=>{
+  const svg=document.getElementById('svgMech');
+  node(svg,680,140,215,58,'#1e3a8a',['Key Mechanisms','& Enforcement'],'How SEBI Exercises Power','⚙️');
+  const left=[
+    [185,60, '#dc2626',['IPO & Primary','Market Rules'],'Listing norms + transparency','📋'],
+    [185,148,'#b91c1c',['Secondary','Market Control'],'Trading practices oversight','📉'],
+    [185,236,'#991b1b',['Suspension','& Penalties'],'Fines, broker bans','🔨'],
+  ];
+  const right=[
+    [1175,60, '#7c3aed',['Real-Time','Surveillance'],'Monitor exchanges 24/7','🔍'],
+    [1175,148,'#6d28d9',['SAT — Securities','Appellate Tribunal'],'Appeals (not internal)','⚖️'],
+    [1175,236,'#5b21b6',['SCORES','Platform'],'Online complaint redressal','💻'],
+  ];
+  const bottom=[
+    [360, 258,'#0891b2',['Mutual Fund','Regulation'],'AUM, NAV, disclosure','📊'],
+    [580, 258,'#0f766e',['FPI','Regulation'],'Foreign portfolio investors','🌐'],
+    [800, 258,'#059669',['BRSR','Compliance'],'ESG sustainability reports','🌱'],
+    [1020,258,'#0369a1',['Insider Trading','Prevention'],'Market fairness','🚫'],
+  ];
+  left.forEach(n=>{curve(svg,590,140,n[0]+86,n[1],'#dc262644',true,1.8);node(svg,n[0],n[1],165,52,n[2],n[3],n[4],n[5]);});
+  right.forEach(n=>{curve(svg,770,140,n[0]-86,n[1],'#7c3aed44',true,1.8);node(svg,n[0],n[1],165,52,n[2],n[3],n[4],n[5]);});
+  bottom.forEach(n=>{svg.appendChild(se('line',{x1:n[0],y1:170,x2:n[0],y2:n[1]-26,stroke:'#0891b244','stroke-width':'1.8','stroke-dasharray':'5 4',opacity:'.7'}));node(svg,n[0],n[1],168,52,n[2],n[3],n[4],n[5]);});
+})();
+
+// CAP FLOW
+(()=>{
+  const svg=document.getElementById('svgCapFlow');
+  lbl(svg,680,16,'CAPITAL MARKET FLOW: COMPANY → IPO → INVESTOR → TRADE → SEBI OVERSIGHT → GRIEVANCE → RESOLUTION','rgba(30,58,138,.4)');
+  const steps=[
+    {x:100, l:['Companies','Need Capital'],   fill:'#1d4ed8',emoji:'🏢'},
+    {x:295, l:['IPO / Primary','Market'],     fill:'#7c3aed',emoji:'📋'},
+    {x:490, l:['Investor','Buys Shares'],     fill:'#059669',emoji:'🧑‍💼'},
+    {x:685, l:['Secondary','Market Trading'], fill:'#0f766e',emoji:'📊'},
+    {x:880, l:['SEBI','Monitors'],            fill:'#0891b2',emoji:'🔍'},
+    {x:1075,l:['Fraud/Complaint','Detected'], fill:'#dc2626',emoji:'⚠️'},
+    {x:1270,l:['SCORES → SAT','→ Resolution'],fill:'#0369a1',emoji:'✅'},
+  ];
+  steps.forEach((s,i)=>{if(i<steps.length-1)curve(svg,s.x+68,80,steps[i+1].x-68,80,'#2563eb44',false,2);});
+  steps.forEach(s=>node(svg,s.x,80,132,62,s.fill,s.l,null,s.emoji));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Economy 1965–1991 · Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#faf7f2;--paper:#f5f0e8;--ink:#1a1208;
+  --gold:#c9902a;--gold-lt:#f5e0a0;--gold-dk:#8a5f10;
+  --red:#b82020;--red-lt:#fdeaea;
+  --blue:#1a3a7a;--blue-lt:#e8eef8;
+  --green:#1a6a30;--green-lt:#e6f5eb;
+  --amber:#d45c10;--amber-lt:#fdf0e5;
+  --purple:#5a1a8a;--purple-lt:#f0e8f8;
+  --teal:#0a5a6a;--teal-lt:#e5f3f5;
+  --muted:#7a6848;--border:#ddd0b0;
+  --shadow:rgba(26,18,8,0.08);
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* PAPER TEXTURE */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.page{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:0 28px 100px;}
+
+/* HEADER */
+.header{
+  text-align:center;padding:52px 20px 36px;
+  border-bottom:2px solid var(--border);
+  margin-bottom:48px;
+  position:relative;
+}
+.header-tag{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:4px;color:var(--gold);text-transform:uppercase;
+  margin-bottom:12px;display:block;
+}
+.header h1{
+  font-family:'Playfair Display',serif;font-size:clamp(28px,4.5vw,52px);
+  line-height:1.1;color:var(--ink);
+  margin-bottom:8px;
+}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1.5px;}
+.header-line{
+  width:120px;height:4px;margin:16px auto 0;
+  background:linear-gradient(90deg,var(--red),var(--gold),var(--blue));
+  border-radius:4px;
+}
+
+/* SECTION LABELS */
+.sec{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:4px;color:var(--gold-dk);text-transform:uppercase;
+  margin:52px 0 20px;display:flex;align-items:center;gap:14px;
+}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* CARDS */
+.card{
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:16px;padding:20px;position:relative;overflow:hidden;
+  box-shadow:0 2px 12px var(--shadow),0 1px 3px rgba(26,18,8,0.04);
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 24px var(--shadow);}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.card.c-red::before{background:linear-gradient(90deg,var(--red),#e05050);}
+.card.c-blue::before{background:linear-gradient(90deg,var(--blue),#3a6ab0);}
+.card.c-green::before{background:linear-gradient(90deg,var(--green),#2a9a50);}
+.card.c-gold::before{background:linear-gradient(90deg,var(--gold-dk),var(--gold));}
+.card.c-amber::before{background:linear-gradient(90deg,var(--amber),#f08030);}
+.card.c-purple::before{background:linear-gradient(90deg,var(--purple),#8a3ab0);}
+.card.c-teal::before{background:linear-gradient(90deg,var(--teal),#1a8a9a);}
+
+.card-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.card h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;line-height:1.3;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* STAT BOXES */
+.stat-row{display:flex;gap:8px;margin:10px 0;}
+.stat{flex:1;padding:12px 8px;border-radius:10px;background:var(--paper);border:1px solid var(--border);text-align:center;}
+.stat-n{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;line-height:1;}
+.stat-t{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-s{font-size:10px;font-weight:600;margin-top:2px;}
+
+/* LIST ITEMS */
+.li{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:8px;background:var(--paper);border:1px solid var(--border);margin-bottom:6px;font-size:11.5px;}
+.li .ico{flex:0 0 18px;font-size:13px;margin-top:1px;}
+.li strong{font-weight:700;font-size:11.5px;}
+.li span{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;display:block;margin-top:1px;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9.5px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.p-r{background:rgba(184,32,32,0.1);color:var(--red);border:1px solid rgba(184,32,32,0.2);}
+.pill.p-g{background:rgba(26,106,48,0.1);color:var(--green);border:1px solid rgba(26,106,48,0.2);}
+.pill.p-b{background:rgba(26,58,122,0.1);color:var(--blue);border:1px solid rgba(26,58,122,0.2);}
+.pill.p-o{background:rgba(201,144,42,0.12);color:var(--gold-dk);border:1px solid rgba(201,144,42,0.25);}
+.pill.p-a{background:rgba(212,92,16,0.1);color:var(--amber);border:1px solid rgba(212,92,16,0.2);}
+.pill.p-p{background:rgba(90,26,138,0.1);color:var(--purple);border:1px solid rgba(90,26,138,0.2);}
+.pill.p-t{background:rgba(10,90,106,0.1);color:var(--teal);border:1px solid rgba(10,90,106,0.2);}
+
+/* FLOW CHAIN */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:600;border:1.5px solid;}
+.fa{font-size:16px;color:var(--muted);}
+
+/* KEYSTONE */
+.keystone{
+  background:var(--ink);color:#f5e8c0;border-radius:18px;
+  padding:28px 32px;margin:24px 0;
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+}
+.keystone .icon{font-size:40px;flex:0 0 auto;}
+.keystone h2{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.keystone p{font-size:11.5px;color:#c8b880;line-height:1.7;}
+.keystone .kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;}
+
+/* PHASE ROW */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;}
+@media(max-width:640px){.phases{grid-template-columns:1fr;}}
+.phase{padding:18px;border-radius:14px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;line-height:1;}
+.phase-title{font-size:13px;font-weight:700;margin:5px 0 3px;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);}
+.phase-body{font-size:10px;margin-top:8px;color:var(--muted);line-height:1.6;}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:11px;}
+.tbl th{background:var(--ink);color:#f5e8c0;padding:9px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.tbl th:first-child{border-radius:8px 0 0 0;}
+.tbl th:last-child{border-radius:0 8px 0 0;}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:nth-child(even) td{background:rgba(201,144,42,0.04);}
+.tbl td:first-child{font-weight:700;color:var(--amber);}
+
+/* SVG MAP WRAPPER */
+.svg-wrap{
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:18px;overflow:hidden;margin-bottom:24px;
+  box-shadow:0 2px 12px var(--shadow);
+  position:relative;
+}
+.svg-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;z-index:2;}
+.sv-red::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.sv-blue::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.sv-green::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.sv-gold::before{background:linear-gradient(90deg,var(--gold-dk),var(--amber),var(--gold));}
+.svg-wrap svg{display:block;width:100%;}
+
+/* IMPACT ITEM */
+.impact{padding:10px 12px;border-radius:9px;margin-bottom:8px;background:var(--paper);border:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.impact .i-ico{font-size:20px;flex:0 0 28px;text-align:center;}
+.impact .i-body .i-t{font-size:12px;font-weight:700;}
+.impact .i-body .i-s{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;margin:10px 0;border:1.5px solid;}
+.callout.ca-g{background:rgba(26,106,48,0.06);border-color:rgba(26,106,48,0.2);}
+.callout.ca-r{background:rgba(184,32,32,0.06);border-color:rgba(184,32,32,0.2);}
+.callout .ca-t{font-size:11px;font-weight:700;margin-bottom:3px;}
+.callout .ca-b{font-size:10px;color:var(--muted);line-height:1.6;}
+
+/* COMPARE TABLE */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+.cmp-col{padding:14px;border-radius:12px;border:1.5px solid;}
+.cmp-col.left{background:rgba(184,32,32,0.04);border-color:rgba(184,32,32,0.2);}
+.cmp-col.right{background:rgba(26,106,48,0.04);border-color:rgba(26,106,48,0.2);}
+.cmp-head{font-size:11px;font-weight:800;margin-bottom:8px;}
+.cmp-head.r{color:var(--red);}
+.cmp-head.g{color:var(--green);}
+.cmp-item{font-size:10px;padding:4px 0;border-bottom:1px dashed var(--border);color:var(--muted);}
+.cmp-item:last-child{border-bottom:none;}
+
+/* BAR BARS */
+.bar-vis{display:flex;align-items:flex-end;gap:24px;height:120px;padding:12px 16px 0;}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;}
+.bar-val{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;line-height:1;}
+.bar-body{flex:1;width:100%;display:flex;align-items:flex-end;}
+.bar-fill{width:100%;border-radius:8px 8px 0 0;transition:height 1s ease;}
+.bar-lbl{font-size:10px;font-weight:700;text-align:center;}
+.bar-sub{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);text-align:center;}
+
+/* SEPARATOR */
+.sep{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:12px 0;}
+
+/* ANNOTATION BOX */
+.ann{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:6px;font-size:10px;font-weight:700;font-family:'JetBrains Mono',monospace;margin:4px 2px;}
+.ann.a-r{background:rgba(184,32,32,0.08);color:var(--red);}
+.ann.a-g{background:rgba(26,106,48,0.08);color:var(--green);}
+
+/* STICKER */
+.sticker{position:absolute;top:14px;right:16px;padding:4px 10px;border-radius:6px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;}
+
+/* YEAR BADGE */
+.ybadge{display:inline-block;background:var(--ink);color:#f5e8c0;padding:2px 8px;border-radius:5px;font-size:9px;font-family:'JetBrains Mono',monospace;font-weight:700;margin-bottom:4px;}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:28px;margin:12px 0;}
+.timeline::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--gold),var(--blue));border-radius:2px;}
+.tl-item{position:relative;margin-bottom:14px;}
+.tl-item::before{content:'';position:absolute;left:-23px;top:6px;width:10px;height:10px;border-radius:50%;background:#fff;border:2.5px solid var(--gold);box-shadow:0 0 0 3px rgba(201,144,42,0.15);}
+.tl-year{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold-dk);font-weight:700;margin-bottom:2px;}
+.tl-text{font-size:12px;font-weight:600;margin-bottom:2px;}
+.tl-sub{font-size:10px;color:var(--muted);}
+
+/* FACT BOX */
+.fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0;}
+.fact{padding:10px;border-radius:9px;background:var(--paper);border:1px solid var(--border);}
+.fact .f-n{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;line-height:1;}
+.fact .f-t{font-size:10px;font-weight:700;margin-top:2px;}
+.fact .f-s{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ANIMATE IN */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.card,.svg-wrap,.keystone,.phases,.g2,.g3,.g4{animation:fadeUp 0.5s ease both;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<div class="header">
+  <span class="header-tag">Indian Economy · UPSC Prelims Revision</span>
+  <h1>Crisis · Control · Reform<br><em>1965 – 1991 & Beyond</em></h1>
+  <div class="header-sub">From Hindu Rate of Growth → BoP Crisis → LPG Reforms</div>
+  <div class="header-line"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MASTER FLOW
+════════════════════════════════════════════ -->
+<div class="sec">① Master Flow — The Complete Arc</div>
+
+<div class="svg-wrap sv-gold">
+  <svg id="svgMaster" viewBox="0 0 1240 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PHASE 1: CRISIS
+════════════════════════════════════════════ -->
+<div class="sec">② The 1965–67 Crisis — What Triggered Everything</div>
+
+<div class="g2">
+  <div class="card c-red">
+    <div class="card-label">Phase 1 · 1965–67</div>
+    <h3>⚡ Crisis Triggers</h3>
+    <div class="li"><div class="ico">🌾</div><div><strong>Two Droughts</strong><span>1965–66 back-to-back</span></div></div>
+    <div class="li"><div class="ico">⚔️</div><div><strong>Two Wars</strong><span>1962 China + 1965 Pakistan</span></div></div>
+    <div class="li"><div class="ico">📈</div><div><strong>Inflation 12%</strong><span>Food prices surged 20%</span></div></div>
+    <div class="li"><div class="ico">💰</div><div><strong>Fiscal Deficit 7.3% GDP</strong><span>Unsustainable spending</span></div></div>
+    <div class="li"><div class="ico">💵</div><div><strong>Forex: Only $340 mn</strong><span>&lt; 2 months of imports</span></div></div>
+    <div class="li"><div class="ico">🇺🇸</div><div><strong>US Suspended PL-480</strong><span>Food aid cut off</span></div></div>
+  </div>
+  <div class="card c-gold">
+    <div class="card-label">IMF & World Bank Response</div>
+    <h3>📋 External Prescription</h3>
+    <div class="li"><div class="ico">🌐</div><div><strong>Trade Liberalization</strong><span>Open markets, reduce controls</span></div></div>
+    <div class="li"><div class="ico">💱</div><div><strong>Rupee Devaluation</strong><span>1966: 36.5% devaluation</span></div></div>
+    <div class="li"><div class="ico">🌾</div><div><strong>New Agricultural Policy</strong><span>Green Revolution push</span></div></div>
+    <div class="sep"></div>
+    <div class="callout ca-r">
+      <div class="ca-t">⚠️ Political Reversal</div>
+      <div class="ca-b">Policies reversed due to massive political backlash after 1966 devaluation. India returned to state control model.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PHASE 2: STATE CONTROL
+════════════════════════════════════════════ -->
+<div class="sec">③ 1967–80 — Shift to Strong State Control</div>
+
+<div class="svg-wrap sv-red">
+  <svg id="svgControl" viewBox="0 0 1240 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="card c-red">
+    <div class="card-label">Nationalization Wave</div>
+    <h3>🏦 State Takeover</h3>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-year">1969</div><div class="tl-text">Bank Nationalization</div><div class="tl-sub">14 major banks taken over</div></div>
+      <div class="tl-item"><div class="tl-year">1969</div><div class="tl-text">MRTP Act</div><div class="tl-sub">Curbed big business expansion</div></div>
+      <div class="tl-item"><div class="tl-year">1972</div><div class="tl-text">Insurance Nationalized</div><div class="tl-sub">LIC expanded state control</div></div>
+      <div class="tl-item"><div class="tl-year">1973</div><div class="tl-text">Coal Nationalized</div><div class="tl-sub">Strategic sector secured</div></div>
+      <div class="tl-item"><div class="tl-year">1973</div><div class="tl-text">FERA Enacted</div><div class="tl-sub">Strict control on foreign firms</div></div>
+    </div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-label">Structural Bottlenecks</div>
+    <h3>🔒 License Raj System</h3>
+    <div class="li"><div class="ico">📄</div><div><strong>License Raj</strong><span>Govt controlled entry, capacity, location</span></div></div>
+    <div class="li"><div class="ico">🏭</div><div><strong>MRTP Act</strong><span>Restricted big firm expansion</span></div></div>
+    <div class="li"><div class="ico">🧶</div><div><strong>SSI Reservation</strong><span>800+ items for MSMEs only</span></div></div>
+    <div class="li"><div class="ico">🛡️</div><div><strong>Import Substitution</strong><span>Tariffs up to 200%!</span></div></div>
+    <div class="callout ca-r" style="margin-top:10px;">
+      <div class="ca-t">Result: Corruption & Inefficiency</div>
+      <div class="ca-b">Public sector consumed savings instead of generating them. India missed the East Asian export boom.</div>
+    </div>
+  </div>
+  <div class="card c-gold">
+    <div class="card-label">Growth Performance</div>
+    <h3>📊 Hindu Rate of Growth</h3>
+    <div class="fact-grid">
+      <div class="fact">
+        <div class="f-n" style="color:var(--red);">3.5%</div>
+        <div class="f-t">GDP Growth</div>
+        <div class="f-s">1950–1980 avg.</div>
+      </div>
+      <div class="fact">
+        <div class="f-n" style="color:var(--muted);">~3%</div>
+        <div class="f-t">Savings Rate</div>
+        <div class="f-s">in 1950</div>
+      </div>
+      <div class="fact">
+        <div class="f-n" style="color:var(--green);">5%</div>
+        <div class="f-t">Investment</div>
+        <div class="f-s">early 1950s</div>
+      </div>
+      <div class="fact">
+        <div class="f-n" style="color:var(--blue);">Raj</div>
+        <div class="f-t">Krishna's Term</div>
+        <div class="f-s">"Hindu Rate of Growth"</div>
+      </div>
+    </div>
+    <div class="callout ca-g" style="margin-top:10px;">
+      <div class="ca-t">💡 Named by Raj Krishna</div>
+      <div class="ca-b">Sluggish 3.5% growth despite planning — nicknamed to highlight structural underperformance.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PHASE 3: PARTIAL LIBERALIZATION
+════════════════════════════════════════════ -->
+<div class="sec">④ 1980s — Partial Liberalization</div>
+
+<div class="g2">
+  <div class="card c-green">
+    <div class="card-label">Indira Gandhi 1980 + Rajiv Gandhi 1984–89</div>
+    <h3>🔓 Marginal Opening</h3>
+    <div class="li"><div class="ico">🏭</div><div><strong>Relaxed Industrial Licensing</strong><span>Easier entry for industry</span></div></div>
+    <div class="li"><div class="ico">📦</div><div><strong>Reduced Import Restrictions</strong><span>Some tariff lowering</span></div></div>
+    <div class="li"><div class="ico">🚢</div><div><strong>Export Incentives</strong><span>Push for foreign exchange</span></div></div>
+    <div class="sep"></div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--green);">5.5%</div><div class="stat-s">Growth</div><div class="stat-t">1980s avg.</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--gold);">20%</div><div class="stat-s">Savings</div><div class="stat-t">by 1980</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--blue);">22%</div><div class="stat-s">Investment</div><div class="stat-t">by 1980</div></div>
+    </div>
+    <div class="callout ca-r" style="margin-top:8px;">
+      <div class="ca-t">⚠️ Reforms Were Marginal, Not Structural</div>
+      <div class="ca-b">Growth improved but fundamental bottlenecks remained. Fiscal deficit kept expanding.</div>
+    </div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-label">Why It Was Not Enough</div>
+    <h3>🚧 Remaining Bottlenecks</h3>
+    <div class="li"><div class="ico">📄</div><div><strong>License Raj Still Active</strong><span>Core entry barriers untouched</span></div></div>
+    <div class="li"><div class="ico">🛡️</div><div><strong>Import Substitution Intact</strong><span>Tariffs still extremely high</span></div></div>
+    <div class="li"><div class="ico">🏭</div><div><strong>MRTP Unchanged</strong><span>Big business still constrained</span></div></div>
+    <div class="li"><div class="ico">💸</div><div><strong>Fiscal Deficit Growing</strong><span>Populist spending unchecked</span></div></div>
+    <div class="li"><div class="ico">🌍</div><div><strong>Missed East Asia Boom</strong><span>Export-led growth passed India by</span></div></div>
+    <div class="li"><div class="ico">⏳</div><div><strong>Short-term Borrowing Rising</strong><span>Laid seeds of 1991 crisis</span></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     1991 CRISIS
+════════════════════════════════════════════ -->
+<div class="sec">⑤ 1991 Balance of Payments Crisis — The Breaking Point</div>
+
+<div class="svg-wrap sv-red">
+  <svg id="svgCrisis" viewBox="0 0 1240 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="card c-red">
+    <div class="card-label">Causes</div>
+    <h3>💥 Why It Happened</h3>
+    <div class="li"><div class="ico">📉</div><div><strong>Fiscal Deficit: 8.4%</strong><span>Unsustainable govt spending</span></div></div>
+    <div class="li"><div class="ico">🔴</div><div><strong>CAD: 3.1%</strong><span>Current account deficit</span></div></div>
+    <div class="li"><div class="ico">🔥</div><div><strong>Inflation: 17%</strong><span>Severe price pressure</span></div></div>
+    <div class="li"><div class="ico">🕌</div><div><strong>Gulf War 1990</strong><span>Oil prices spiked; remittances fell</span></div></div>
+    <div class="li"><div class="ico">💳</div><div><strong>Heavy Short-term Borrowing</strong><span>External debt accumulated</span></div></div>
+    <div class="li"><div class="ico">🛳️</div><div><strong>Weak Exports</strong><span>No competitive manufacturing</span></div></div>
+  </div>
+  <div class="card c-amber">
+    <div class="card-label">The Severity</div>
+    <h3>⚠️ Near-Default Situation</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--red);">$1B</div><div class="stat-s">Forex Left</div><div class="stat-t">barely 2 wks</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--gold-dk);">67T</div><div class="stat-s">Gold Pledged</div><div class="stat-t">Tonnes</div></div>
+    </div>
+    <div class="sep"></div>
+    <div class="flow" style="justify-content:center;">
+      <div class="fn" style="border-color:var(--red);background:rgba(184,32,32,0.07);color:var(--red);">Forex Collapse</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--amber);background:rgba(212,92,16,0.07);color:var(--amber);">Gold Pledge</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--blue);background:rgba(26,58,122,0.07);color:var(--blue);">IMF Bailout</div>
+    </div>
+    <div class="callout ca-r" style="margin-top:10px;">
+      <div class="ca-t">🔴 India Pledged 67 Tonnes of Gold</div>
+      <div class="ca-b">Airlifted to Bank of England & Bank of Japan as collateral. National humiliation that forced drastic reforms.</div>
+    </div>
+  </div>
+  <div class="card c-purple">
+    <div class="card-label">Conditions for Bailout</div>
+    <h3>📋 IMF Conditionalities</h3>
+    <div class="li"><div class="ico">💱</div><div><strong>Devalue Rupee</strong><span>Immediate exchange rate action</span></div></div>
+    <div class="li"><div class="ico">🌐</div><div><strong>Open Trade</strong><span>Liberalize imports</span></div></div>
+    <div class="li"><div class="ico">🏭</div><div><strong>Remove Controls</strong><span>Industrial deregulation</span></div></div>
+    <div class="li"><div class="ico">✂️</div><div><strong>Cut Deficit</strong><span>Fiscal consolidation</span></div></div>
+    <div class="sep"></div>
+    <div style="text-align:center;margin-top:8px;">
+      <span class="pill p-b">PM: PV Narasimha Rao</span>
+      <span class="pill p-g">FM: Dr. Manmohan Singh</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     LPG REFORMS
+════════════════════════════════════════════ -->
+<div class="sec">⑥ 1991 LPG Reforms — Liberalization · Privatization · Globalization</div>
+
+<div class="svg-wrap sv-blue">
+  <svg id="svgLPG" viewBox="0 0 1240 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="card c-red">
+    <div class="card-label">L — Liberalization</div>
+    <h3>🔓 Industrial & Trade Freedom</h3>
+    <div class="li"><div class="ico">✅</div><div><strong>License Raj Abolished</strong><span>Except strategic sectors</span></div></div>
+    <div class="li"><div class="ico">⚖️</div><div><strong>MRTP Diluted</strong><span>Big business restrictions eased</span></div></div>
+    <div class="li"><div class="ico">📉</div><div><strong>Customs Duty Cut</strong><span>200% → 65%</span></div></div>
+    <div class="li"><div class="ico">🚫</div><div><strong>Quantitative Restrictions Removed</strong><span>Import quotas gone</span></div></div>
+    <div class="li"><div class="ico">💱</div><div><strong>Rupee Devalued 24%</strong><span>1993: Market-based rate</span></div></div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-label">P — Privatization</div>
+    <h3>🏭 PSU Reform & Finance</h3>
+    <div class="li"><div class="ico">📊</div><div><strong>Disinvestment Started</strong><span>PSU shares sold to market</span></div></div>
+    <div class="li"><div class="ico">✂️</div><div><strong>Budgetary Support Cut</strong><span>Loss-making PSUs phased out</span></div></div>
+    <div class="li"><div class="ico">🏦</div><div><strong>Private Banks Allowed</strong><span>Banking sector opened</span></div></div>
+    <div class="li"><div class="ico">📈</div><div><strong>SEBI Strengthened 1992</strong><span>Capital market regulator</span></div></div>
+    <div class="li"><div class="ico">💼</div><div><strong>GDR Allowed</strong><span>Global Depository Receipts</span></div></div>
+  </div>
+  <div class="card c-green">
+    <div class="card-label">G — Globalization</div>
+    <h3>🌍 Foreign Investment & Tax</h3>
+    <div class="li"><div class="ico">🤝</div><div><strong>FDI Auto-Approval to 51%</strong><span>Automatic clearance route</span></div></div>
+    <div class="li"><div class="ico">🔄</div><div><strong>FERA → FEMA 1999</strong><span>Liberal foreign exchange rules</span></div></div>
+    <div class="li"><div class="ico">📉</div><div><strong>Income Tax Cut</strong><span>56% → 40%</span></div></div>
+    <div class="li"><div class="ico">🏢</div><div><strong>Corporate Tax Reduced</strong><span>Incentivize investment</span></div></div>
+    <div class="li"><div class="ico">🏛️</div><div><strong>Capital Issues Act Repealed</strong><span>Free market pricing</span></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     IMPACT
+════════════════════════════════════════════ -->
+<div class="sec">⑦ Impact of 1991 Reforms</div>
+
+<div class="g2">
+  <div class="card c-green">
+    <div class="card-label">Short-Term Impact · Early 1990s</div>
+    <h3>📈 Immediate Recovery</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--green);">↓8.5%</div><div class="stat-s">Inflation</div><div class="stat-t">from 17%</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--blue);">$15B</div><div class="stat-s">Forex by 1994</div><div class="stat-t">from $1.2B</div></div>
+    </div>
+    <div class="li" style="margin-top:8px;"><div class="ico">📊</div><div><strong>GDP Growth Improved</strong><span>Above 6% by mid-1990s</span></div></div>
+    <div class="li"><div class="ico">🚢</div><div><strong>Exports Doubled</strong><span>Competitive exchange rate helped</span></div></div>
+    <div class="li"><div class="ico">🏦</div><div><strong>Forex Rebuilt</strong><span>$1.2B → $15B within 3 years</span></div></div>
+    <div class="callout ca-g" style="margin-top:8px;">
+      <div class="ca-t">✅ Crisis Averted</div>
+      <div class="ca-b">India avoided sovereign default. Reforms stabilized the economy within 2 years.</div>
+    </div>
+  </div>
+  <div class="card c-purple">
+    <div class="card-label">Long-Term Impact</div>
+    <h3>📉📈 Mixed Outcomes</h3>
+    <div class="li"><div class="ico">✅</div><div><strong>Poverty Reduced</strong><span>36% (1993-94) → 27.5% (2004-05)</span></div></div>
+    <div class="li"><div class="ico">❌</div><div><strong>Inequality Rose</strong><span>Gini: 0.52 → 0.55</span></div></div>
+    <div class="li"><div class="ico">⚠️</div><div><strong>Jobless Growth</strong><span>Growth without enough employment</span></div></div>
+    <div class="li"><div class="ico">🏙️</div><div><strong>Services Led, Not Manufacturing</strong><span>Leapfrogged to services economy</span></div></div>
+    <div class="li"><div class="ico">🌾</div><div><strong>Agriculture Untouched</strong><span>Reforms didn't reach farms</span></div></div>
+    <div class="sep"></div>
+    <div>
+      <span class="ann a-g">✅ Growth accelerated</span>
+      <span class="ann a-r">❌ Unequal distribution</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     INDIA vs CHINA
+════════════════════════════════════════════ -->
+<div class="sec">⑧ India vs China — Key Prelims Comparison</div>
+
+<div class="card c-teal">
+  <div class="card-label">Important Prelims Angle</div>
+  <h3>🇮🇳 India vs 🇨🇳 China — Reform Paths Diverged</h3>
+  <div class="cmp">
+    <div class="cmp-col left">
+      <div class="cmp-head r">🇨🇳 China</div>
+      <div class="cmp-item">Reforms started 1978 (agriculture first)</div>
+      <div class="cmp-item">Bottom-up approach</div>
+      <div class="cmp-item">Boosted rural incomes first</div>
+      <div class="cmp-item">Manufacturing hub → export-led</div>
+      <div class="cmp-item">State-guided capitalism</div>
+    </div>
+    <div class="cmp-col right">
+      <div class="cmp-head g">🇮🇳 India</div>
+      <div class="cmp-item">Reforms started 1991 (crisis-driven)</div>
+      <div class="cmp-item">Top-down, industry-first</div>
+      <div class="cmp-item">Agriculture largely untouched</div>
+      <div class="cmp-item">Services-led economy</div>
+      <div class="cmp-item">Leapfrogged to IT/services</div>
+    </div>
+  </div>
+  <div class="flow" style="margin-top:12px;justify-content:center;">
+    <div class="fn" style="border-color:var(--red);background:rgba(184,32,32,0.07);color:var(--red);">China: Manufacturing Hub</div>
+    <div class="fa">⟷</div>
+    <div class="fn" style="border-color:var(--teal);background:rgba(10,90,106,0.07);color:var(--teal);">India: Service Economy</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     KEY FACTS TABLE
+════════════════════════════════════════════ -->
+<div class="sec">⑨ Must-Know Prelims Facts — At a Glance</div>
+
+<div class="card c-gold">
+  <div class="card-label">High-Priority Facts</div>
+  <h3>📌 Dates, Numbers & Names to Remember</h3>
+  <table class="tbl">
+    <thead>
+      <tr><th>Year / Fact</th><th>Event</th><th>Key Number / Detail</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1966</td><td>Rupee Devaluation</td><td><span class="pill p-r">36.5%</span> massive shock</td></tr>
+      <tr><td>1969</td><td>Bank Nationalization</td><td><span class="pill p-b">14 banks</span> taken over</td></tr>
+      <tr><td>1969</td><td>MRTP Act</td><td><span class="pill p-a">Monopoly curbs</span> on big business</td></tr>
+      <tr><td>1973</td><td>FERA Enacted</td><td><span class="pill p-p">Strict foreign exchange</span> control</td></tr>
+      <tr><td>1991</td><td>Gold Pledged</td><td><span class="pill p-r">67 tonnes</span> to England + Japan</td></tr>
+      <tr><td>1991</td><td>LPG Reforms</td><td><span class="pill p-g">Rao + Manmohan</span> duo</td></tr>
+      <tr><td>1991</td><td>Rupee Devalued</td><td><span class="pill p-a">24%</span> devaluation</td></tr>
+      <tr><td>1992</td><td>SEBI Statutory Powers</td><td><span class="pill p-b">Capital markets</span> regulated</td></tr>
+      <tr><td>1993</td><td>Market Exchange Rate</td><td><span class="pill p-g">Full current account</span> convertibility</td></tr>
+      <tr><td>1999</td><td>FERA → FEMA</td><td><span class="pill p-t">Liberal regime</span> replaced strict FERA</td></tr>
+      <tr><td>3.5%</td><td>Hindu Rate of Growth</td><td><span class="pill p-o">Raj Krishna's term</span> for 1950–80</td></tr>
+      <tr><td>200%</td><td>Pre-reform Tariffs</td><td><span class="pill p-r">Cut to 65%</span> post-1991</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     KEYSTONE
+════════════════════════════════════════════ -->
+<div class="sec">⑩ The Big Picture — Core Connecting Idea</div>
+
+<div class="keystone">
+  <div class="icon">🏛️</div>
+  <div style="flex:1;">
+    <h2>Crisis → Compulsion → Change</h2>
+    <p>India's economic reforms were not planned — they were forced. The 1991 BoP crisis compelled India to abandon 40 years of state-controlled, inward-looking policy. The LPG reforms unleashed growth, reduced poverty, but left agriculture behind and deepened inequality. The journey from <strong style="color:#f5d78a;">3.5% Hindu Rate of Growth → 6-8% modern growth</strong> was painful but transformative.</p>
+    <div class="kpills">
+      <span class="kpill">🔴 1965 Crisis Seed</span>
+      <span class="kpill">🔵 1969–80 State Control</span>
+      <span class="kpill">🟡 1980s Partial Reform</span>
+      <span class="kpill">⚠️ 1991 BoP Crisis</span>
+      <span class="kpill">🟢 LPG Reforms</span>
+      <span class="kpill">📈 Growth + Inequality</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function txt(svg,x,y,txt,fs,fw,fill,anchor,ff,ls){
+  const t=el('text',{x,y,'text-anchor':anchor||'middle','dominant-baseline':'middle','font-size':fs||11,'font-weight':fw||'400','font-family':ff||'DM Sans,sans-serif',fill:fill||'#1a1208','letter-spacing':ls||0});
+  t.textContent=txt;svg.appendChild(t);return t;
+}
+function rect(svg,x,y,w,h,fill,rx,stroke,sw){
+  const r=el('rect',{x,y,width:w,height:h,rx:rx||8,fill,stroke:stroke||'none','stroke-width':sw||0});
+  svg.appendChild(r);return r;
+}
+function line(svg,x1,y1,x2,y2,stroke,sw,da){
+  const l=el('line',{x1,y1,x2,y2,stroke,'stroke-width':sw||1.5,'stroke-dasharray':da||'none'});
+  svg.appendChild(l);return l;
+}
+function curve(svg,x1,y1,x2,y2,stroke,sw,da){
+  const mx=(x1+x2)/2;
+  const p=el('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke,'stroke-width':sw||1.5,fill:'none','stroke-dasharray':da||'none',opacity:0.6});
+  svg.appendChild(p);
+}
+function arrow(svg,x1,y1,x2,y2,color){
+  const dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy);
+  const ux=dx/len,uy=dy/len;
+  const hx=x2-ux*10, hy=y2-uy*10;
+  line(svg,x1,y1,hx,hy,color,2);
+  const lx=hx-uy*5, ly=hy+ux*5, rx=hx+uy*5, ry=hy-ux*5;
+  const path=el('path',{d:`M${lx},${ly} L${x2},${y2} L${rx},${ry}`,fill:color,stroke:'none'});
+  svg.appendChild(path);
+}
+function node(svg,cx,cy,w,h,fill,lines,sub,rx,border){
+  const g=el('g',{});
+  // shadow
+  g.appendChild(el('rect',{x:cx-w/2+2,y:cy-h/2+3,width:w,height:h,rx:rx||10,fill:'rgba(0,0,0,0.07)'}));
+  // bg
+  g.appendChild(el('rect',{x:cx-w/2,y:cy-h/2,width:w,height:h,rx:rx||10,fill,stroke:border||'rgba(255,255,255,0.3)','stroke-width':'1.5'}));
+  const totalH=(lines.length-1)*14+(sub?12:0);
+  let startY=cy-totalH/2;
+  lines.forEach((l,i)=>{
+    const t=el('text',{x:cx,y:startY+i*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'DM Sans,sans-serif',fill:'#fff'});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x:cx,y:startY+lines.length*14,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:'rgba(255,255,255,0.55)'});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const W=1240,H=120;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  rect(svg,0,0,W,H,'rgba(250,247,242,0.6)',0);
+
+  const steps=[
+    {x:80, label:['Crisis Phase'], sub:'1965–67', fill:'#b82020', emoji:'⚡'},
+    {x:245, label:['State Control'], sub:'1967–80', fill:'#1a3a7a', emoji:'🔒'},
+    {x:410, label:['Partial Reform'], sub:'1980s', fill:'#1a6a30', emoji:'🔓'},
+    {x:575, label:['Bottlenecks'], sub:'Structural Issues', fill:'#5a1a8a', emoji:'🚧'},
+    {x:740, label:['1991 BoP Crisis'], sub:'Near Default', fill:'#b82020', emoji:'💥'},
+    {x:905, label:['LPG Reforms'], sub:'Rao + Manmohan', fill:'#c9902a', emoji:'🏛️'},
+    {x:1070, label:['Growth Surge'], sub:'6–8% avg.', fill:'#1a6a30', emoji:'📈'},
+    {x:1190, label:['Mixed Impact'], sub:'↓Poverty ↑Inequality', fill:'#0a5a6a', emoji:'⚖️'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const x1=s.x+60,x2=steps[i+1].x-60;
+      arrow(svg,x1,H/2,x2,H/2,s.fill+'99');
+    }
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,H/2,118,72,s.fill,[s.emoji,s.label[0]],s.sub,10);
+  });
+})();
+
+// ─── STATE CONTROL ───
+(function(){
+  const svg=document.getElementById('svgControl');
+  const W=1240,H=200;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  rect(svg,0,0,W,H,'rgba(250,247,242,0.5)',0);
+
+  // Central node
+  node(svg,620,100,200,58,'#1a1208',['🔵 State Control Model'],'Post-1967 Dominant Strategy',12);
+
+  const items=[
+    {x:130,y:50, fill:'#b82020', label:['🏦 Bank Nation.'], sub:'1969 — 14 banks'},
+    {x:320,y:35, fill:'#1a3a7a', label:['📜 MRTP Act'], sub:'1969 — Curb big biz'},
+    {x:510,y:50, fill:'#8a5f10', label:['🛢️ Coal Nation.'], sub:'1973 — Strategic'},
+    {x:130,y:155,fill:'#1a6a30', label:['🛡️ Insurance'], sub:'1972 — Nationalized'},
+    {x:320,y:168,fill:'#5a1a8a', label:['🌍 FERA 1973'], sub:'Foreign firm control'},
+    {x:510,y:158,fill:'#0a5a6a', label:['🏭 Sick Ind.'], sub:'Taken over by state'},
+    {x:970,y:50, fill:'#b82020', label:['📄 License Raj'], sub:'Entry, capacity, location'},
+    {x:1130,y:65,fill:'#1a3a7a', label:['📦 Import Sub.'], sub:'Tariffs 200%'},
+    {x:970,y:158,fill:'#8a5f10', label:['🧶 SSI Reserve'], sub:'800+ items reserved'},
+    {x:1130,y:148,fill:'#5a1a8a', label:['⬆️ Public Sector'], sub:'Expanded massively'},
+  ];
+
+  items.forEach(n=>{
+    const fx=n.x<620?520:720;
+    const fy=n.y<100?85:115;
+    curve(svg,fx,fy,n.x+(n.x<620?70:-70),n.y,'#b87c2244',1.5,'4 3');
+    node(svg,n.x,n.y,158,46,n.fill,[n.label[0]],n.sub,8);
+  });
+})();
+
+// ─── 1991 CRISIS ───
+(function(){
+  const svg=document.getElementById('svgCrisis');
+  const W=1240,H=220;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  rect(svg,0,0,W,H,'rgba(252,244,244,0.5)',0);
+
+  // Cause → Effect chain at top
+  const chain=[
+    {x:100,  label:'High Deficit\n8.4%',   fill:'#b82020'},
+    {x:270,  label:'Gulf War\n1990',        fill:'#d45c10'},
+    {x:440,  label:'Oil Shock\n+Prices',    fill:'#8a5f10'},
+    {x:610,  label:'Remit. Drop\n↓',        fill:'#5a1a8a'},
+    {x:780,  label:'CAD 3.1%\nDeficit',     fill:'#1a3a7a'},
+    {x:950,  label:'Forex Crash\n$1 Billion',fill:'#b82020'},
+    {x:1120, label:'Gold Pledged\n67 Tonnes',fill:'#c9902a'},
+  ];
+  chain.forEach((c,i)=>{
+    const lines=c.label.split('\n');
+    // shadow
+    el('rect',{x:c.x-58,y:22,width:116,height:56,rx:10,fill:'rgba(0,0,0,0.07)'});
+    node(svg,c.x,50,116,56,c.fill,lines,'',10);
+    if(i<chain.length-1){
+      arrow(svg,c.x+58,50,chain[i+1].x-58,50,'#b82020aa');
+    }
+  });
+
+  // Consequence row
+  const cons=[
+    {x:210, fill:'#1a3a7a', label:'IMF Bail-out\nConditions'},
+    {x:620, fill:'#1a1208', label:'Political Will:\nRao + Manmohan'},
+    {x:1030,fill:'#1a6a30', label:'LPG Reforms\n1991'},
+  ];
+  cons.forEach((c,i)=>{
+    const lines=c.label.split('\n');
+    node(svg,c.x,160,190,56,c.fill,lines,'',10);
+    if(i<cons.length-1){
+      arrow(svg,c.x+95,160,cons[i+1].x-95,160,'#1a6a3088');
+    }
+  });
+  // connect top to bottom
+  arrow(svg,950,80,620,128,'#b82020aa');
+
+  // dotted line separating
+  line(svg,40,108,1200,108,'#ddd0b0',1,'6 4');
+  const tl=el('text',{x:50,y:103,'text-anchor':'start','font-size':'8','font-family':'JetBrains Mono,monospace','letter-spacing':'1.5',fill:'#7a684888'});
+  tl.textContent='CAUSES';svg.appendChild(tl);
+  const tr=el('text',{x:50,y:130,'text-anchor':'start','font-size':'8','font-family':'JetBrains Mono,monospace','letter-spacing':'1.5',fill:'#1a6a3088'});
+  tr.textContent='RESPONSE';svg.appendChild(tr);
+})();
+
+// ─── LPG REFORMS ───
+(function(){
+  const svg=document.getElementById('svgLPG');
+  const W=1240,H=240;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  rect(svg,0,0,W,H,'rgba(245,250,247,0.5)',0);
+
+  // Three pillars
+  const pillars=[
+    {x:200, col:'#b82020', label:'L', title:'Liberalization', items:['License Raj Abolished','MRTP Diluted','Customs 200%→65%','QRs Removed','Rupee Devalued 24%','1993: Market Rate']},
+    {x:620, col:'#1a3a7a', label:'P', title:'Privatization', items:['Disinvestment Started','PSU Support Cut','Private Banks Allowed','SEBI Strengthened 1992','Capital Issues Act Repealed','GDR Allowed']},
+    {x:1040,col:'#1a6a30', label:'G', title:'Globalization', items:['FDI Auto-Approval 51%','FERA → FEMA 1999','Income Tax 56%→40%','Corporate Tax Reduced','Foreign Investment Push','Current A/c Convertibility']},
+  ];
+  pillars.forEach(p=>{
+    // pillar header
+    rect(svg,p.x-170,10,340,52,p.col,12);
+    const t1=el('text',{x:p.x-100,y:38,'text-anchor':'middle','dominant-baseline':'middle','font-size':'24','font-weight':'800','font-family':'Playfair Display,serif',fill:'rgba(255,255,255,0.4)'});
+    t1.textContent=p.label;svg.appendChild(t1);
+    const t2=el('text',{x:p.x+20,y:32,'text-anchor':'middle','dominant-baseline':'middle','font-size':'13','font-weight':'700','font-family':'DM Sans,sans-serif',fill:'#fff'});
+    t2.textContent=p.title;svg.appendChild(t2);
+
+    // items as small cards in 2 columns
+    p.items.forEach((item,i)=>{
+      const col=i%2, row=Math.floor(i/2);
+      const cx=p.x-85+col*170, cy=90+row*52;
+      rect(svg,cx-78,cy-18,156,36,'#fff',7,'rgba(200,180,140,0.3)',1);
+      // color bar
+      rect(svg,cx-78,cy-18,3,36,p.col,0);
+      const t=el('text',{x:cx-68+78,y:cy,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'600','font-family':'DM Sans,sans-serif',fill:'#1a1208'});
+      t.textContent=item;svg.appendChild(t);
+    });
+  });
+
+  // vertical separators
+  line(svg,413,10,413,230,'#ddd0b0',1,'6 4');
+  line(svg,827,10,827,230,'#ddd0b0',1,'6 4');
+})();
+</script>
+</body>
+</html>

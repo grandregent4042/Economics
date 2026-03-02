@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monetization of Deficit · Fiscal Council — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0e0c0a;
+  --paper:#faf7f2;
+  --cream:#f3ede1;
+  --gold:#c08b1a;
+  --gold-lt:#f7dfa0;
+  --amber:#d4620e;
+  --green:#1a6b3c;
+  --blue:#1b3d8a;
+  --red:#b01c1c;
+  --purple:#5c1d8a;
+  --teal:#0c6068;
+  --muted:#7a6a52;
+  --border:#ddd0b0;
+  --card:#fffdf6;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 10% 15%, rgba(192,139,26,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 700px 700px at 90% 85%, rgba(27,61,138,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 500px 400px at 50% 50%, rgba(26,107,60,0.04) 0%, transparent 65%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+}
+
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.hdr{text-align:center;padding:52px 16px 28px;position:relative;}
+.hdr-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4.5vw,52px);line-height:1.08;color:var(--ink);font-weight:800;}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr-desc{margin-top:10px;font-size:13px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;}
+.hdr-bar{display:flex;justify-content:center;gap:0;margin:18px auto 0;width:120px;height:5px;border-radius:5px;overflow:hidden;}
+.hdr-bar span{flex:1;display:block;}
+
+/* ── SECTION LABEL ── */
+.slabel{display:flex;align-items:center;gap:14px;margin:36px 0 16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;}
+.slabel::before,.slabel::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2b{display:grid;grid-template-columns:3fr 2fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2b{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2b{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.red::before{background:var(--red);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.amber::before{background:var(--amber);}
+.pc.dark::before{background:var(--ink);}
+.pc-lbl{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;line-height:1.3;display:flex;align-items:center;gap:6px;}
+
+/* ── MAP CARD (SVG wrapper) ── */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.a::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc.b::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc.c::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.d::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.mc.e::before{background:linear-gradient(90deg,var(--purple),var(--blue));}
+.mc svg{display:block;width:100%;}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(192,139,26,0.13);color:var(--gold);}
+.pill.green{background:rgba(26,107,60,0.12);color:var(--green);}
+.pill.blue{background:rgba(27,61,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,98,14,0.12);color:var(--amber);}
+.pill.red{background:rgba(176,28,28,0.12);color:var(--red);}
+.pill.purple{background:rgba(92,29,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(12,96,104,0.12);color:var(--teal);}
+.pill.ink{background:rgba(14,12,10,0.1);color:var(--ink);}
+
+/* ── STAT BOXES ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:14px 10px;border-radius:12px;border:1.5px solid var(--border);text-align:center;background:var(--cream);}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;line-height:1;}
+.stat-lbl{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:4px;letter-spacing:0.5px;}
+.stat-sub{font-size:11px;font-weight:700;margin-top:3px;color:var(--ink);}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:9px 13px;border-radius:9px;background:var(--cream);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:800;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── IMPACT CHAIN ── */
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:10px 0;}
+.cn{padding:7px 13px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.ca{font-size:18px;color:var(--muted);margin:0 4px;}
+
+/* ── CHIPS ── */
+.chip{display:inline-block;padding:3px 10px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:rgba(26,107,60,0.07);border-color:rgba(26,107,60,0.2);color:var(--green);}
+.chip.no{background:rgba(176,28,28,0.07);border-color:rgba(176,28,28,0.2);color:var(--red);}
+.chip.nu{background:rgba(192,139,26,0.08);border-color:rgba(192,139,26,0.2);color:var(--gold);}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:28px 32px;margin:20px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.ks-icon{font-size:42px;flex:0 0 auto;}
+.ks-title{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;margin-bottom:6px;color:#f5d78a;}
+.ks-body{font-size:12px;color:rgba(245,232,192,0.8);line-height:1.7;}
+.ks-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 13px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'JetBrains Mono',monospace;color:#f5d78a;letter-spacing:0.3px;}
+
+/* ── CALLOUT ── */
+.callout{padding:12px 15px;border-radius:10px;background:rgba(26,107,60,0.06);border:1.5px solid rgba(26,107,60,0.2);margin:8px 0;}
+.callout.warn{background:rgba(176,28,28,0.05);border-color:rgba(176,28,28,0.2);}
+.callout-t{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout.warn .callout-t{color:var(--red);}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ── COMPARISON TABLE ── */
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--ink);color:#f5e8c0;padding:9px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctbl td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(192,139,26,0.03);}
+.ctbl td:first-child{font-weight:800;color:var(--amber);}
+
+/* ── TAG ── */
+.tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.tag.ok{background:#d4edda;color:#155724;}
+.tag.no{background:#f8d7da;color:#721c24;}
+.tag.nu{background:#fff3cd;color:#856404;}
+
+/* ── FEAT GRID ── */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.fi{padding:10px 12px;border-radius:9px;background:var(--cream);border:1px solid var(--border);}
+.fi .fi-e{font-size:18px;margin-bottom:3px;}
+.fi .fi-t{font-size:11px;font-weight:800;}
+.fi .fi-s{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* ── PHASE ROW ── */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.pb{padding:18px;border-radius:14px;border:2px solid;text-align:center;}
+.pb-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;}
+.pb-title{font-size:13px;font-weight:800;margin:4px 0;}
+.pb-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+
+/* ── PRELIMS BOX ── */
+.prelims{background:linear-gradient(135deg,rgba(192,139,26,0.08),rgba(27,61,138,0.06));border:2px dashed var(--gold);border-radius:16px;padding:20px 24px;margin:20px 0;}
+.prelims-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--gold);margin-bottom:12px;font-weight:800;}
+.prelims-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:640px){.prelims-grid{grid-template-columns:1fr;}}
+.pitem{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.6);border:1px solid rgba(192,139,26,0.15);font-size:11px;font-weight:600;}
+.pitem .pi-mark{font-size:14px;flex:0 0 auto;}
+
+/* ── FLOW TABLE ── */
+.flow-table{width:100%;border-collapse:collapse;margin:12px 0;}
+.flow-table td{padding:10px 14px;font-size:11px;vertical-align:middle;}
+.flow-table tr:nth-child(even) td{background:rgba(192,139,26,0.04);}
+
+/* ── BAR CHART ── */
+.bars{display:flex;flex-direction:column;gap:10px;margin:12px 0;}
+.bar-item{display:flex;align-items:center;gap:10px;}
+.bar-lbl{font-size:10px;font-weight:700;width:100px;flex:0 0 100px;text-align:right;font-family:'JetBrains Mono',monospace;}
+.bar-track{flex:1;background:var(--cream);border-radius:6px;height:24px;overflow:hidden;border:1px solid var(--border);}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:9px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#fff;}
+.bar-val{font-size:11px;font-weight:800;width:44px;flex:0 0 44px;font-family:'JetBrains Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="hdr">
+  <div class="hdr-eyebrow">Indian Economy · UPSC Prelims + Mains · Section 4.9</div>
+  <h1>Monetization of Deficit<br><em>Deficit Financing & Fiscal Council</em></h1>
+  <div class="hdr-desc">1997 Turning Point · FRBM Framework · WMA · OMO · Fiscal Oversight</div>
+  <div class="hdr-bar">
+    <span style="background:var(--amber);"></span>
+    <span style="background:var(--gold);"></span>
+    <span style="background:var(--green);"></span>
+    <span style="background:var(--blue);"></span>
+    <span style="background:var(--purple);"></span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 0: MASTER FLOW ══════════ -->
+<div class="slabel">Master Flow — The Big Picture</div>
+
+<div class="mc a">
+  <svg id="svgMaster" viewBox="0 0 1340 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<!-- ══════════ SECTION 1: MONETIZATION ══════════ -->
+<div class="slabel">① What is Monetization of Deficit?</div>
+
+<div class="mc b">
+  <svg id="svgMon" viewBox="0 0 1340 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-lbl">Before 1997 — Direct Monetization</div>
+    <h3>🏛️ How It Worked Then</h3>
+    <div class="chain">
+      <div class="cn" style="border-color:var(--gold);background:rgba(192,139,26,0.08);color:var(--gold);font-size:10px;">Govt issues<br>Ad Hoc T-Bills</div>
+      <div class="ca">→</div>
+      <div class="cn" style="border-color:var(--amber);background:rgba(212,98,14,0.08);color:var(--amber);font-size:10px;">RBI Prints<br>Money</div>
+      <div class="ca">→</div>
+      <div class="cn" style="border-color:var(--red);background:rgba(176,28,28,0.08);color:var(--red);font-size:10px;">Govt Uses to<br>Finance Deficit</div>
+    </div>
+    <div class="callout warn" style="margin-top:10px;">
+      <div class="callout-t">⚡ Primary Market Transaction</div>
+      <div class="callout-b">Direct deal between Govt & RBI. New money printed = money supply expands = inflation risk.</div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;">
+      <span class="pill amber">Ad Hoc Treasury Bills</span>
+      <span class="pill red">Primary Market</span>
+      <span class="pill red">Inflationary</span>
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-lbl">After 1997 — Reform</div>
+    <h3>✅ What Changed in 1997</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Agreement Signed — Govt & RBI</div><div class="vs">Ended ad hoc Treasury Bill issuance</div></div>
+      <div class="vi"><div class="vt">Ways & Means Advances (WMA)</div><div class="vs">Temporary short-term advances only; not money printing</div></div>
+      <div class="vi"><div class="vt">FRBM Act 2003</div><div class="vs">Formally prohibited direct monetization; allowed only in exceptional cases</div></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;">
+      <span class="pill green">WMA Introduced</span>
+      <span class="pill green">FRBM 2003</span>
+      <span class="pill green">No Direct Printing</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 2: 1997 TURNING POINT ══════════ -->
+<div class="slabel">② 1997 — The Turning Point & RBI's New Role</div>
+
+<div class="mc c">
+  <svg id="svgTurn" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-lbl">RBI Tool After 1997</div>
+    <h3>📊 Open Market Operations</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">OMO = Secondary Market</div><div class="vs">RBI buys/sells govt securities in open market</div></div>
+      <div class="vi"><div class="vt">Purpose: Liquidity Management</div><div class="vs">NOT for deficit financing — manages money supply</div></div>
+      <div class="vi"><div class="vt">Indirect Effect Only</div><div class="vs">Does not directly fund government</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Allowed always</span>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-lbl">Short-Term Facility</div>
+    <h3>🔄 Ways & Means Advances</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Temporary Mismatch Only</div><div class="vs">When receipts & expenditure timing differs</div></div>
+      <div class="vi"><div class="vt">Not Deficit Financing</div><div class="vs">Must be repaid within same financial year</div></div>
+      <div class="vi"><div class="vt">Short Duration</div><div class="vs">Bridge facility, not structural funding</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">✅ Temporary bridge</span>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-lbl">When Still Considered?</div>
+    <h3>⚠️ When Monetization Possible</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Banking System Illiquid</div><div class="vs">Banks face severe liquidity shortage</div></div>
+      <div class="vi"><div class="vt">Market Borrowing Risky</div><div class="vs">Would spike interest rates & crowd out pvt. sector</div></div>
+      <div class="vi"><div class="vt">Recovery At Stake</div><div class="vs">Crisis conditions threatening growth</div></div>
+    </div>
+    <span class="chip no" style="margin-top:8px;">❌ Only in crisis</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 3: IMPACT ══════════ -->
+<div class="slabel">③ Impact of Monetization — Positives vs Negatives</div>
+
+<div class="mc d">
+  <svg id="svgImpact" viewBox="0 0 1340 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-lbl">Positive Effects</div>
+    <h3>📈 Short-Term Benefits</h3>
+    <div class="fg">
+      <div class="fi"><div class="fi-e">💹</div><div class="fi-t">Aggregate Demand ↑</div><div class="fi-s">More money in system = spending</div></div>
+      <div class="fi"><div class="fi-e">🏗️</div><div class="fi-t">Supports Growth</div><div class="fi-s">Govt expenditure boosts economy</div></div>
+      <div class="fi"><div class="fi-e">💧</div><div class="fi-t">Liquidity Injection</div><div class="fi-s">Banking system gets relief</div></div>
+      <div class="fi"><div class="fi-e">⚡</div><div class="fi-t">Quick Fiscal Action</div><div class="fi-s">No market delay needed</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-t">📌 Only Viable In Crisis</div>
+      <div class="callout-b">Surplus liquidity = better to borrow from market. Deficit liquidity = monetization considered.</div>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-lbl">Negative Effects — Very Important</div>
+    <h3>📉 Long-Term Dangers</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">🔺 Inflation</div><div class="vs">Money supply rises → price level increases</div></div>
+      <div class="vi"><div class="vt">💱 Rupee Depreciation</div><div class="vs">More rupees in circulation = currency weakens</div></div>
+      <div class="vi"><div class="vt">🏃 Capital Outflow</div><div class="vs">Investors flee = forex reserves fall</div></div>
+      <div class="vi"><div class="vt">🎛️ RBI Loses Control</div><div class="vs">Monetary policy independence compromised</div></div>
+      <div class="vi"><div class="vt">📊 Macro Instability</div><div class="vs">Credit rating risks, investor confidence hit</div></div>
+    </div>
+    <div style="margin-top:8px;padding:10px;border-radius:8px;background:rgba(176,28,28,0.07);border:1px dashed var(--red);">
+      <span style="font-size:11px;font-weight:800;color:var(--red);">⚠️ Safe ONLY in exceptional crisis conditions</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 4: DEFICIT FINANCING ══════════ -->
+<div class="slabel">④ Deficit Financing — The Broader Framework</div>
+
+<div class="mc e">
+  <svg id="svgDF" viewBox="0 0 1340 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2b">
+  <div class="pc amber">
+    <div class="pc-lbl">All Routes to Finance Deficit</div>
+    <h3>🗺️ Deficit Financing Methods</h3>
+    <table class="ctbl">
+      <thead>
+        <tr><th>METHOD</th><th>MECHANISM</th><th>RISK</th><th>STATUS</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Market Borrowing</td>
+          <td>Govt sells bonds to public/banks</td>
+          <td>Crowding out pvt. investment</td>
+          <td><span class="tag ok">Normal</span></td>
+        </tr>
+        <tr>
+          <td>External Borrowing</td>
+          <td>Loans from multilateral orgs (IMF, WB)</td>
+          <td>Forex risk, conditionality</td>
+          <td><span class="tag nu">Limited</span></td>
+        </tr>
+        <tr>
+          <td>RBI Borrowing (WMA)</td>
+          <td>Short-term advances only</td>
+          <td>Low if temporary</td>
+          <td><span class="tag ok">Allowed</span></td>
+        </tr>
+        <tr>
+          <td>Printing Money</td>
+          <td>RBI creates new money directly</td>
+          <td>High — inflation, instability</td>
+          <td><span class="tag no">FRBM banned</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div class="pc blue">
+      <div class="pc-lbl">Key Distinction</div>
+      <h3>🔍 Monetization vs Market Borrowing</h3>
+      <div class="vlist">
+        <div class="vi"><div class="vt">Market Borrowing</div><div class="vs">Existing money shifts — no new money created; non-inflationary</div></div>
+        <div class="vi"><div class="vt">Monetization</div><div class="vs">New money created — money supply expands; inflationary</div></div>
+      </div>
+    </div>
+    <div class="pc purple">
+      <div class="pc-lbl">Conceptual Flow</div>
+      <h3>🔗 Big Macro Link</h3>
+      <div class="chain" style="flex-direction:column;align-items:flex-start;">
+        <div class="cn" style="border-color:var(--purple);background:rgba(92,29,138,0.08);color:var(--purple);font-size:10px;margin-bottom:4px;">Fiscal Deficit → Need to Borrow</div>
+        <div class="ca" style="font-size:14px;margin:0 0 0 10px;">↓</div>
+        <div class="cn" style="border-color:var(--blue);background:rgba(27,61,138,0.08);color:var(--blue);font-size:10px;margin:4px 0;">Market Borrowing → Public Debt</div>
+        <div class="ca" style="font-size:14px;margin:0 0 0 10px;">↓</div>
+        <div class="cn" style="border-color:var(--red);background:rgba(176,28,28,0.08);color:var(--red);font-size:10px;margin:4px 0;">RBI Borrowing → Monetization Risk</div>
+        <div class="ca" style="font-size:14px;margin:0 0 0 10px;">↓</div>
+        <div class="cn" style="border-color:var(--green);background:rgba(26,107,60,0.08);color:var(--green);font-size:10px;margin-top:4px;">FRBM Controls → Fiscal Council Monitors</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 5: FRBM ══════════ -->
+<div class="slabel">⑤ FRBM Act 2003 — The Legal Backbone</div>
+
+<div class="phase-row">
+  <div class="pb" style="border-color:var(--blue);background:rgba(27,61,138,0.04);">
+    <div class="pb-num" style="color:var(--blue);">2003</div>
+    <div class="pb-title">FRBM Enacted</div>
+    <div class="pb-sub">Fiscal Responsibility & Budget Mgmt.</div>
+    <div style="font-size:10px;line-height:1.7;color:var(--muted);">Direct monetization prohibited<br>Targets for fiscal deficit set<br>Fiscal Policy Strategy Statement</div>
+    <span class="pill blue" style="margin-top:8px;">Legal Framework</span>
+  </div>
+  <div class="pb" style="border-color:var(--gold);background:rgba(192,139,26,0.04);">
+    <div class="pb-num" style="color:var(--gold);">3F</div>
+    <div class="pb-title">Key FRBM Pillars</div>
+    <div class="pb-sub">Fiscal Discipline Framework</div>
+    <div style="font-size:10px;line-height:1.7;color:var(--muted);">Fiscal Deficit targets<br>Revenue Deficit elimination<br>Debt sustainability goals</div>
+    <span class="pill gold" style="margin-top:8px;">Discipline Rules</span>
+  </div>
+  <div class="pb" style="border-color:var(--green);background:rgba(26,107,60,0.04);">
+    <div class="pb-num" style="color:var(--green);">Gap</div>
+    <div class="pb-title">Implementation Challenge</div>
+    <div class="pb-sub">Law vs. Reality</div>
+    <div style="font-size:10px;line-height:1.7;color:var(--muted);">Off-budget borrowings via NSSF<br>Revenue overestimation common<br>Expenditure underestimated</div>
+    <span class="pill red" style="margin-top:8px;">Needs Enforcement</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 6: FISCAL COUNCIL ══════════ -->
+<div class="slabel">⑥ Fiscal Council — What, Why & Debate</div>
+
+<div class="mc a">
+  <svg id="svgFC" viewBox="0 0 1340 250" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc teal">
+    <div class="pc-lbl">Definition & Purpose</div>
+    <h3>🏛️ What is a Fiscal Council?</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Independent Body</div><div class="vs">Not under Finance Ministry control</div></div>
+      <div class="vi"><div class="vt">Reviews Fiscal Projections</div><div class="vs">Revenue estimates, expenditure forecasts</div></div>
+      <div class="vi"><div class="vt">Checks Sustainability</div><div class="vs">Is debt level manageable long-term?</div></div>
+      <div class="vi"><div class="vt">Publishes Reports</div><div class="vs">Transparent, public assessments</div></div>
+      <div class="vi"><div class="vt">Advises on Deviations</div><div class="vs">When FRBM rules are broken, explains why</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-t">📌 Key Difference from CAG</div>
+      <div class="callout-b">CAG audits AFTER spending. Fiscal Council forecasts & evaluates BEFORE implementation.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div class="pc green">
+      <div class="pc-lbl">Why Current System Fails</div>
+      <h3>⚠️ Current Problems</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:5px;">
+        <span class="chip no">❌ Revenue overestimated</span>
+        <span class="chip no">❌ Expenditure underestimated</span>
+        <span class="chip no">❌ Off-budget via NSSF/FCI</span>
+        <span class="chip no">❌ Weak accountability</span>
+        <span class="chip no">❌ CAG only post-audit</span>
+        <span class="chip no">❌ No independent forecasting</span>
+      </div>
+    </div>
+
+    <div class="pc gold">
+      <div class="pc-lbl">Global Context</div>
+      <h3>🌍 International Precedent</h3>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-num" style="color:var(--gold);">50+</div>
+          <div class="stat-sub">Countries</div>
+          <div class="stat-lbl">HAVE FISCAL COUNCILS (IMF)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" style="color:var(--blue);">XIV</div>
+          <div class="stat-sub">Finance Comm.</div>
+          <div class="stat-lbl">RECOMMENDED FOR INDIA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 7: FOR vs AGAINST ══════════ -->
+<div class="slabel">⑦ Fiscal Council — Arguments For & Against</div>
+
+<div class="mc b">
+  <svg id="svgDebate" viewBox="0 0 1340 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-lbl">Arguments in Favour</div>
+    <h3>✅ Why We Need a Fiscal Council</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Improves Fiscal Discipline</div><div class="vs">Independent check on Govt's fiscal math</div></div>
+      <div class="vi"><div class="vt">Transparency & Credibility</div><div class="vs">Markets & citizens trust independent forecasts</div></div>
+      <div class="vi"><div class="vt">50+ Countries Have It</div><div class="vs">Global best practice per IMF</div></div>
+      <div class="vi"><div class="vt">XIV Finance Comm. Backed It</div><div class="vs">Recommendation from constitutional body</div></div>
+      <div class="vi"><div class="vt">Pre-Implementation Review</div><div class="vs">Catches errors before budget is enacted</div></div>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-lbl">Arguments Against</div>
+    <h3>❌ Why It May Not Work</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">RBI & NSO Already Forecast</div><div class="vs">Existing institutions do this job</div></div>
+      <div class="vi"><div class="vt">Finance Ministry Accountability</div><div class="vs">Elected govt must own fiscal decisions</div></div>
+      <div class="vi"><div class="vt">Blame Shifting Risk</div><div class="vs">Govt may deflect responsibility to council</div></div>
+      <div class="vi"><div class="vt">FRBM Already Mandates FPSS</div><div class="vs">Fiscal Policy Strategy Statement exists</div></div>
+    </div>
+    <div class="callout warn" style="margin-top:10px;">
+      <div class="callout-t">⚡ Key Tension</div>
+      <div class="callout-b">Independence vs. Democratic Accountability — who should ultimately own fiscal truth?</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 8: CAG vs FISCAL COUNCIL ══════════ -->
+<div class="slabel">⑧ CAG vs Fiscal Council — Key Distinction</div>
+
+<div class="pc dark" style="margin-bottom:20px;background:rgba(14,12,10,0.03);border-color:rgba(14,12,10,0.15);">
+  <h3 style="font-family:'Playfair Display',serif;font-size:16px;margin-bottom:12px;">⚖️ Comparative Analysis</h3>
+  <table class="ctbl">
+    <thead>
+      <tr><th>DIMENSION</th><th>CAG (Comptroller & Auditor General)</th><th>FISCAL COUNCIL (Proposed)</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Timing</td>
+        <td>Post-expenditure — audits after money spent</td>
+        <td>Pre-implementation — reviews projections before spending</td>
+      </tr>
+      <tr>
+        <td>Function</td>
+        <td>Compliance audit — did Govt follow rules?</td>
+        <td>Fiscal forecast — will Govt's numbers add up?</td>
+      </tr>
+      <tr>
+        <td>Focus</td>
+        <td>Past — what was actually spent?</td>
+        <td>Future — what is planned to be spent?</td>
+      </tr>
+      <tr>
+        <td>Constitutional Status</td>
+        <td><span class="tag ok">Article 148 — Constitutional Body</span></td>
+        <td><span class="tag no">Not yet established in India</span></td>
+      </tr>
+      <tr>
+        <td>Powers</td>
+        <td>Can report to Parliament; binding audit</td>
+        <td>Advisory only — cannot override Finance Ministry</td>
+      </tr>
+      <tr>
+        <td>Gap Addressed</td>
+        <td>Accountability after the fact</td>
+        <td>Prevention of fiscal mismanagement upfront</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══════════ SECTION 9: MACRO FLOW ══════════ -->
+<div class="slabel">⑨ Full Macro Economy Flow — All Connected</div>
+
+<div class="mc a">
+  <svg id="svgMacro" viewBox="0 0 1340 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;"></svg>
+</div>
+
+<!-- ══════════ SECTION 10: PRELIMS HOTSPOT ══════════ -->
+<div class="slabel">🔥 Most Probable Prelims Areas</div>
+
+<div class="prelims">
+  <div class="prelims-title">🎯 High-Yield Prelims Focus Areas</div>
+  <div class="prelims-grid">
+    <div class="pitem"><span class="pi-mark">✔️</span>Direct monetization stopped in 1997 (Ad hoc T-Bill agreement)</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>WMA = Ways and Means Advances (temporary short-term, not deficit financing)</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>FRBM Act 2003 — prohibits direct monetization (exceptional cases only)</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>OMO = Open Market Operations = Secondary Market (NOT primary)</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>Monetization → increases money supply → inflation (key cause-effect)</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>Monetization vs. Market Borrowing — new money vs. existing money shift</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>Fiscal Council — independent body, advisory, not constitutional yet</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>CAG vs Fiscal Council — post-audit vs pre-implementation forecasting</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>XIV Finance Commission recommended Fiscal Council for India</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>50+ countries have Fiscal Councils (IMF observation)</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>Off-budget borrowings — NSSF via FCI bypasses FRBM targets</div>
+    <div class="pitem"><span class="pi-mark">✔️</span>Fiscal Policy Strategy Statement mandated under FRBM</div>
+  </div>
+</div>
+
+<!-- ══════════ KEYSTONE ══════════ -->
+<div class="keystone">
+  <div class="ks-icon">💡</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea</div>
+    <div class="ks-body">India built a legal framework (FRBM 2003) to prevent inflationary deficit financing. The 1997 reform ended direct money-printing. Now, the challenge is enforcement — FRBM targets are often missed through off-budget routes. A Fiscal Council would add an independent oversight layer to make fiscal discipline real, not just on paper.</div>
+    <div class="ks-pills">
+      <span class="kpill">🏦 1997 Reform</span>
+      <span class="kpill">📜 FRBM 2003</span>
+      <span class="kpill">🔄 WMA ≠ Monetization</span>
+      <span class="kpill">📊 OMO = Secondary</span>
+      <span class="kpill">🏛️ Fiscal Council = Oversight</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v]of Object.entries(attrs)) e.setAttribute(k,v);
+  return e;
+}
+
+function curve(svg,x1,y1,x2,y2,col,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=el('path',{
+    d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:col||'#ccc','stroke-width':w||1.8,fill:'none',
+    'stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'
+  });
+  svg.appendChild(p);
+}
+
+function straightLine(svg,x1,y1,x2,y2,col,dashed,w){
+  const p=el('path',{
+    d:`M${x1},${y1} L${x2},${y2}`,
+    stroke:col||'#ccc','stroke-width':w||1.8,fill:'none',
+    'stroke-dasharray':dashed?'5 4':'none',opacity:'0.6'
+  });
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff'; rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  // main box
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  
+  const lineCount=lines.length;
+  const emojiH=emoji?18:0;
+  const subH=sub?14:0;
+  const totalH=emojiH+lineCount*15+subH;
+  let ty=y-totalH/2+8;
+  
+  if(emoji){
+    const et=el('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});
+    et.textContent=emoji; g.appendChild(et); ty+=18;
+  }
+  lines.forEach((l,i)=>{
+    const t=el('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'DM Sans,sans-serif',fill:textCol});
+    t.textContent=l; g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x,y:ty+lineCount*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.42)'});
+    s.textContent=sub; g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+function label(svg,x,y,text,col,size,mono){
+  const t=el('text',{x,y,'text-anchor':'middle','font-size':size||9,'font-family':mono?'JetBrains Mono,monospace':'DM Sans,sans-serif','letter-spacing':mono?'2':'0','fill':col||'rgba(120,100,60,0.4)','font-weight':mono?'400':'700'});
+  t.textContent=text; svg.appendChild(t);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const bg=el('rect',{x:0,y:0,width:1340,height:140,fill:'rgba(250,247,242,0.5)'});
+  svg.appendChild(bg);
+
+  const steps=[
+    {x:85,  fill:'#c08b1a', emoji:'📊', label:['Fiscal','Deficit'],         sub:'Expenditure > Receipts'},
+    {x:250, fill:'#d4620e', emoji:'🏦', label:['Borrowing','Needed'],        sub:'Govt needs funds'},
+    {x:420, fill:'#1b3d8a', emoji:'🏛️', label:['Market','Borrowing'],       sub:'Normal — public/banks'},
+    {x:590, fill:'#b01c1c', emoji:'🖨️', label:['RBI','Monetization'],       sub:'Prints money — banned'},
+    {x:760, fill:'#1a6b3c', emoji:'📜', label:['FRBM 2003','Framework'],     sub:'Controls deficit'},
+    {x:935, fill:'#5c1d8a', emoji:'🏛️', label:['Fiscal','Council'],         sub:'Monitors compliance'},
+    {x:1105,fill:'#0c6068', emoji:'⚖️', label:['CAG','Oversight'],           sub:'Post-audit check'},
+    {x:1270,fill:'#1a6b3c', emoji:'✅', label:['Macro','Stability'],         sub:'Goal of the system'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      straightLine(svg,s.x+72,70,nx-72,70,'#c08b1a55',false,2);
+    }
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,70,136,72,s.fill,s.label,s.sub,s.emoji);
+  });
+
+  label(svg,670,128,'MASTER FLOW: FISCAL DEFICIT → BORROWING → FRBM CONTROL → FISCAL COUNCIL OVERSIGHT → MACRO STABILITY',undefined,8,true);
+})();
+
+// ─── MONETIZATION MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgMon');
+  svg.setAttribute('viewBox','0 0 1340 260');
+  el('rect',{x:0,y:0,width:1340,height:260,fill:'rgba(250,247,242,0.3)'});
+
+  // Center node
+  node(svg,670,130,200,58,'#0e0c0a',['Monetization','of Deficit'],'Financing deficit by printing money','💸');
+
+  // Left branches
+  const left=[
+    {x:180,y:55,  fill:'#c08b1a', label:['Before 1997'],         sub:'Ad hoc T-Bills to RBI',      emoji:'📜'},
+    {x:180,y:130, fill:'#b01c1c', label:['Direct Monetization'],  sub:'Primary market transaction',  emoji:'🔴'},
+    {x:180,y:205, fill:'#5c1d8a', label:['Money Printing'],       sub:'New money = inflation risk',  emoji:'🖨️'},
+  ];
+  // Right branches
+  const right=[
+    {x:1165,y:55,  fill:'#1a6b3c', label:['After 1997'],         sub:'WMA + OMO framework',          emoji:'✅'},
+    {x:1165,y:130, fill:'#1b3d8a', label:['OMO — Secondary'],    sub:'Liquidity mgmt. not deficit',  emoji:'📊'},
+    {x:1165,y:205, fill:'#0c6068', label:['WMA — Temporary'],    sub:'Short-term bridge only',       emoji:'🔄'},
+  ];
+  // Top/bottom
+  const top=[
+    {x:440,y:38, fill:'#d4620e', label:['Surplus Liquidity'],  sub:'Borrow from market',   emoji:'🏦'},
+    {x:900,y:38, fill:'#b87c10', label:['Crisis Condition'],   sub:'May consider monetize', emoji:'⚠️'},
+  ];
+  const bot=[
+    {x:440,y:220, fill:'#b01c1c', label:['Rupee Depreciation'], sub:'More ₹ = weaker currency', emoji:'📉'},
+    {x:900,y:220, fill:'#1a6b3c', label:['Growth Support'],     sub:'Short-term demand boost',  emoji:'📈'},
+  ];
+
+  left.forEach(n=>{
+    curve(svg,570,130,n.x+80,n.y,'#c08b1a55',true,1.6);
+    node(svg,n.x,n.y,152,46,n.fill,n.label,n.sub,n.emoji);
+  });
+  right.forEach(n=>{
+    curve(svg,770,130,n.x-80,n.y,'#1a6b3c55',true,1.6);
+    node(svg,n.x,n.y,152,46,n.fill,n.label,n.sub,n.emoji);
+  });
+  top.forEach(n=>{
+    curve(svg,n.x,60,n.x,100,'#d4620e44',true,1.6);
+    node(svg,n.x,38,164,40,n.fill,n.label,n.sub,n.emoji);
+  });
+  bot.forEach(n=>{
+    curve(svg,n.x,160,n.x,200,'#b01c1c44',true,1.6);
+    node(svg,n.x,220,164,40,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  label(svg,670,248,'PRE-1997: AD HOC T-BILLS · POST-1997: WMA + OMO · FRBM 2003: BANNED DIRECT MONETIZATION',undefined,8,true);
+})();
+
+// ─── TURNING POINT ───
+(function(){
+  const svg=document.getElementById('svgTurn');
+  svg.setAttribute('viewBox','0 0 1340 200');
+
+  // Timeline line
+  const tline=el('line',{x1:80,y1:100,x2:1260,y2:100,stroke:'#ddd0b0','stroke-width':'2'});
+  svg.appendChild(tline);
+
+  const events=[
+    {x:130,  year:'Pre-1997', fill:'#b01c1c', label:['Ad hoc T-Bills'],    sub:'Printed money era', emoji:'📜',top:true},
+    {x:380,  year:'1997',     fill:'#c08b1a', label:['Agreement Signed'],   sub:'Direct method ended', emoji:'🤝',top:false},
+    {x:620,  year:'WMA',      fill:'#1b3d8a', label:['Temp. Advances'],     sub:'Short-term bridge', emoji:'🔄',top:true},
+    {x:860,  year:'2003',     fill:'#1a6b3c', label:['FRBM Enacted'],       sub:'Formal prohibition', emoji:'📜',top:false},
+    {x:1090, year:'OMO',      fill:'#0c6068', label:['Secondary Market'],   sub:'RBI liquidity tool', emoji:'📊',top:true},
+    {x:1240, year:'Now',      fill:'#5c1d8a', label:['Fiscal Council?'],    sub:'Proposed oversight', emoji:'🏛️',top:false},
+  ];
+
+  events.forEach(e=>{
+    // dot on line
+    svg.appendChild(el('circle',{cx:e.x,cy:100,r:6,fill:e.fill}));
+    // stem
+    const sy=e.top?100:100, ey=e.top?44:156;
+    straightLine(svg,e.x,sy,e.x,ey,e.fill+'88',false,1.5);
+
+    const ny=e.top?34:166;
+    node(svg,e.x,ny,148,38,e.fill,[e.label[0]],e.sub,e.emoji);
+
+    // year label on line
+    const yt=el('text',{x:e.x,y:e.top?120:85,'text-anchor':'middle','font-size':'9','font-family':'JetBrains Mono,monospace',fill:e.fill,'font-weight':'700'});
+    yt.textContent=e.year; svg.appendChild(yt);
+  });
+
+  label(svg,670,190,'HISTORICAL TIMELINE: 1997 REFORM → FRBM 2003 → CURRENT FRAMEWORK',undefined,8,true);
+})();
+
+// ─── IMPACT MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgImpact');
+  svg.setAttribute('viewBox','0 0 1340 230');
+
+  node(svg,670,115,200,56,'#0e0c0a',['Impact of','Monetization'],'Macro consequences','⚡');
+
+  const positives=[
+    {x:170, y:50,  fill:'#1a6b3c', label:['Aggregate','Demand ↑'],   sub:'More spending power',    emoji:'💹'},
+    {x:170, y:115, fill:'#0c6068', label:['Short-term','Growth'],     sub:'Govt spend boosts GDP',  emoji:'📈'},
+    {x:170, y:180, fill:'#1b3d8a', label:['Liquidity','Injection'],   sub:'Banks get relief',       emoji:'💧'},
+  ];
+  const negatives=[
+    {x:1175,y:45,  fill:'#b01c1c', label:['Inflation'],                sub:'Money supply rises',     emoji:'🔺'},
+    {x:1175,y:100, fill:'#d4620e', label:['Rupee','Depreciation'],     sub:'Currency weakens',       emoji:'💱'},
+    {x:1175,y:155, fill:'#5c1d8a', label:['Capital','Outflow'],        sub:'Investors flee',         emoji:'🏃'},
+    {x:1175,y:210, fill:'#7a0010', label:['RBI Loses','Control'],      sub:'Monetary independence',  emoji:'🎛️'},
+  ];
+
+  positives.forEach(n=>{
+    curve(svg,570,115,n.x+80,n.y,'#1a6b3c55',true,1.6);
+    node(svg,n.x,n.y,152,46,n.fill,n.label,n.sub,n.emoji);
+  });
+  negatives.forEach(n=>{
+    curve(svg,770,115,n.x-80,n.y,'#b01c1c55',true,1.6);
+    node(svg,n.x,n.y,152,46,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  label(svg,380,218,'POSITIVE EFFECTS',undefined,9,true);
+  label(svg,960,218,'NEGATIVE EFFECTS (DOMINANT CONCERN)',undefined,9,true);
+})();
+
+// ─── DEFICIT FINANCING RADIAL ───
+(function(){
+  const svg=document.getElementById('svgDF');
+  svg.setAttribute('viewBox','0 0 1340 220');
+
+  node(svg,670,110,200,56,'#0e0c0a',['Deficit Financing','Broader Framework'],'All methods Govt uses','🗺️');
+
+  const methods=[
+    {x:160, y:60,  fill:'#1b3d8a', label:['Market','Borrowing'],     sub:'Normal — non-inflationary', emoji:'📊'},
+    {x:160, y:150, fill:'#0c6068', label:['External','Borrowing'],    sub:'IMF, World Bank, bilateral', emoji:'🌍'},
+    {x:450, y:30,  fill:'#c08b1a', label:['WMA from','RBI'],          sub:'Short-term bridge',          emoji:'🔄'},
+    {x:450, y:200, fill:'#5c1d8a', label:['Printing','Money'],        sub:'FRBM banned — inflation',    emoji:'🖨️'},
+    {x:900, y:30,  fill:'#1a6b3c', label:['FRBM','Controls'],         sub:'Sets deficit targets',       emoji:'📜'},
+    {x:900, y:200, fill:'#d4620e', label:['Fiscal Council','Monitors'],sub:'Independent oversight',    emoji:'🏛️'},
+    {x:1180,y:80,  fill:'#7a3a00', label:['Public','Debt'],           sub:'Accumulated borrowings',    emoji:'📋'},
+    {x:1180,y:155, fill:'#003a5a', label:['Debt','Sustainability'],   sub:'Long-term viability',       emoji:'⚖️'},
+  ];
+
+  methods.forEach(n=>{
+    const angle = Math.atan2(n.y-110, n.x-670);
+    const dist = Math.sqrt((n.x-670)**2+(n.y-110)**2);
+    const ex = 670+Math.cos(angle)*100;
+    const ey = 110+Math.sin(angle)*28;
+    const ex2 = n.x > 670 ? n.x-76 : n.x+76;
+    curve(svg,ex,ey,ex2,n.y,n.fill+'55',true,1.5);
+    node(svg,n.x,n.y,156,44,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  label(svg,670,210,'FISCAL DEFICIT → BORROWING METHODS → CONTROLS → MONITORING → DEBT SUSTAINABILITY',undefined,8,true);
+})();
+
+// ─── FISCAL COUNCIL MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgFC');
+  svg.setAttribute('viewBox','0 0 1340 250');
+
+  node(svg,670,125,200,60,'#0e0c0a',['Fiscal','Council'],'Independent fiscal watchdog','🏛️');
+
+  // What it does — left
+  const what=[
+    {x:175,y:50,  fill:'#0c6068', label:['Reviews Fiscal','Projections'], sub:'Revenue & expenditure estimates', emoji:'📊'},
+    {x:175,y:125, fill:'#1b3d8a', label:['Checks Debt','Sustainability'], sub:'Long-term fiscal health',         emoji:'⚖️'},
+    {x:175,y:200, fill:'#5c1d8a', label:['Advises on','Deviations'],      sub:'When FRBM rules broken',          emoji:'📢'},
+  ];
+  // Context — right
+  const context=[
+    {x:1165,y:50,  fill:'#1a6b3c', label:['XIV FC','Recommended'],         sub:'Finance Commission backed it',   emoji:'✅'},
+    {x:1165,y:115, fill:'#c08b1a', label:['50+ Countries','Have It'],       sub:'IMF global observation',         emoji:'🌍'},
+    {x:1165,y:180, fill:'#d4620e', label:['Not Yet','In India'],            sub:'Proposed — not constituted',     emoji:'⏳'},
+  ];
+  // Top — problems it solves
+  const probs=[
+    {x:440,y:38, fill:'#b01c1c', label:['Revenue Overestimation'], sub:'Govt inflates receipts', emoji:'📉'},
+    {x:900,y:38, fill:'#7a0010', label:['Off-Budget Borrowing'],   sub:'NSSF/FCI bypass FRBM',  emoji:'🕳️'},
+  ];
+  // Bottom — limitations
+  const limits=[
+    {x:440,y:218, fill:'#7a6a52', label:['Advisory Only'],          sub:'Cannot override Govt',        emoji:'🔇'},
+    {x:900,y:218, fill:'#3a2a10', label:['Blame Shifting Risk'],    sub:'Govt deflects to council',    emoji:'⚠️'},
+  ];
+
+  what.forEach(n=>{
+    curve(svg,570,125,n.x+82,n.y,'#0c606855',true,1.6);
+    node(svg,n.x,n.y,158,48,n.fill,n.label,n.sub,n.emoji);
+  });
+  context.forEach(n=>{
+    curve(svg,770,125,n.x-82,n.y,'#1a6b3c55',true,1.6);
+    node(svg,n.x,n.y,158,48,n.fill,n.label,n.sub,n.emoji);
+  });
+  probs.forEach(n=>{
+    curve(svg,670,95,n.x,68,'#b01c1c44',true,1.5);
+    node(svg,n.x,n.y,168,40,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  limits.forEach(n=>{
+    curve(svg,670,155,n.x,194,'#7a6a5244',true,1.5);
+    node(svg,n.x,n.y,168,40,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  label(svg,670,240,'FUNCTIONS · CONTEXT · PROBLEMS SOLVED · LIMITATIONS',undefined,8,true);
+})();
+
+// ─── DEBATE MIND MAP ───
+(function(){
+  const svg=document.getElementById('svgDebate');
+  svg.setAttribute('viewBox','0 0 1340 220');
+
+  // Two root nodes
+  node(svg,400,110,200,54,'#1a6b3c',['Arguments','FOR Council'],'Why India needs it','✅');
+  node(svg,940,110,200,54,'#b01c1c',['Arguments','AGAINST Council'],'Why it may not work','❌');
+
+  // Divider
+  svg.appendChild(el('line',{x1:670,y1:20,x2:670,y2:200,stroke:'rgba(200,180,140,0.25)','stroke-width':'1.5','stroke-dasharray':'6 4'}));
+
+  const forArgs=[
+    {x:90,  y:45,  fill:'#1a6b3c', label:['Fiscal Discipline'],    sub:'Independent check',       emoji:'⚖️'},
+    {x:90,  y:115, fill:'#0c6068', label:['Transparency'],          sub:'Credibility for markets', emoji:'🔍'},
+    {x:90,  y:185, fill:'#1b3d8a', label:['XIV FC Backed'],         sub:'Constitutional authority', emoji:'📜'},
+    {x:300, y:30,  fill:'#5c1d8a', label:['50+ Countries'],         sub:'Global best practice',    emoji:'🌍'},
+    {x:300, y:195, fill:'#c08b1a', label:['Pre-Budget Review'],     sub:'Prevents errors early',   emoji:'🔮'},
+  ];
+  const againstArgs=[
+    {x:1250,y:45,  fill:'#b01c1c', label:['RBI/NSO Exist'],        sub:'Already do forecasting',  emoji:'🏦'},
+    {x:1250,y:115, fill:'#d4620e', label:['Blame Shifting'],        sub:'Govt deflects ownership', emoji:'🎯'},
+    {x:1250,y:185, fill:'#7a0010', label:['FPSS Exists'],           sub:'FRBM mandates it already',emoji:'📋'},
+    {x:1040,y:30,  fill:'#8a3a00', label:['Accountability Gap'],    sub:'FM must own decisions',   emoji:'🏛️'},
+    {x:1040,y:195, fill:'#3a0a60', label:['Institutional Overlap'], sub:'Too many watchdogs',      emoji:'🔀'},
+  ];
+
+  forArgs.forEach(n=>{
+    curve(svg,300,110,n.x+78,n.y,'#1a6b3c55',true,1.5);
+    node(svg,n.x,n.y,148,42,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+  againstArgs.forEach(n=>{
+    curve(svg,1040,110,n.x>1040?n.x-78:n.x+78,n.y,'#b01c1c55',true,1.5);
+    node(svg,n.x,n.y,148,42,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  label(svg,340,210,'FOR — SUPPORTS FISCAL COUNCIL',undefined,9,true);
+  label(svg,1000,210,'AGAINST — QUESTIONS ITS NEED',undefined,9,true);
+})();
+
+// ─── MACRO FLOW ───
+(function(){
+  const svg=document.getElementById('svgMacro');
+  svg.setAttribute('viewBox','0 0 1340 180');
+
+  const bg=el('rect',{x:0,y:0,width:1340,height:180,fill:'rgba(250,247,242,0.4)'});
+  svg.appendChild(bg);
+
+  const steps=[
+    {x:80,   fill:'#c08b1a', emoji:'📊', label:['Fiscal','Policy'],        sub:'Govt spending decisions'},
+    {x:240,  fill:'#d4620e', emoji:'💸', label:['Fiscal','Deficit'],        sub:'Expenditure > Receipts'},
+    {x:400,  fill:'#b01c1c', emoji:'🏦', label:['Need to','Borrow'],        sub:'Funding gap arises'},
+    {x:560,  fill:'#1b3d8a', emoji:'📋', label:['Public','Debt'],           sub:'Market borrowings accumulate'},
+    {x:720,  fill:'#b01c1c', emoji:'🖨️', label:['Monetization','Risk'],    sub:'Temptation to print'},
+    {x:880,  fill:'#1a6b3c', emoji:'📜', label:['FRBM','Controls'],         sub:'Sets fiscal rules'},
+    {x:1040, fill:'#0c6068', emoji:'📊', label:['Fiscal Council','Monitors'],sub:'Independent oversight'},
+    {x:1200, fill:'#5c1d8a', emoji:'✅', label:['Debt','Sustainability'],    sub:'Macro stability achieved'},
+  ];
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      straightLine(svg,s.x+70,90,nx-70,90,'#c08b1a55',false,2.2);
+    }
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,90,132,68,s.fill,s.label,s.sub,s.emoji);
+  });
+
+  label(svg,670,162,'FULL MACRO ECONOMY FLOW: FISCAL POLICY → DEFICIT → DEBT → CONTROL → MONITORING → STABILITY',undefined,8,true);
+})();
+</script>
+</body>
+</html>

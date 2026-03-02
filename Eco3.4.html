@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SARFAESI · NPA Crisis · Bad Bank · RBI Circular</title>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f5f2eb;--ink:#14100a;--muted:#78705a;--border:#dccfaa;
+  --card:#fffef8;--card2:#ede8da;
+  --gold:#b8820a;--amber:#c05c0c;--green:#1a6035;--blue:#162e7a;
+  --purple:#581680;--teal:#0a5860;--red:#9e1010;--sky:#124e70;
+  --navy:#0c1c38;--rust:#8a2810;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);}
+body::before{content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 900px 500px at 0% 0%,rgba(158,16,16,0.06) 0%,transparent 55%),
+    radial-gradient(ellipse 700px 700px at 100% 100%,rgba(22,46,122,0.05) 0%,transparent 55%);
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 28px 120px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:52px 20px 24px;}
+.hdr-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Spectral',serif;font-size:clamp(26px,4.2vw,52px);line-height:1.1;}
+.hdr h1 em{font-style:italic;color:var(--amber);}
+.hdr-desc{margin-top:10px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1.2px;}
+.hdr::after{content:'';display:block;width:100px;height:4px;
+  background:linear-gradient(90deg,var(--red),var(--amber),var(--gold),var(--blue));
+  margin:18px auto 0;border-radius:4px;}
+
+/* SECTION LABEL */
+.sl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--amber);
+  text-transform:uppercase;margin:42px 0 16px;display:flex;align-items:center;gap:14px;}
+.sl::before,.sl::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.g3x1{display:grid;grid-template-columns:3fr 1fr;gap:16px;margin-bottom:18px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g3x1{grid-template-columns:1fr;}}
+@media(max-width:580px){.g2,.g3,.g4,.g3x1{grid-template-columns:1fr;}}
+
+/* CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:18px;
+  position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 24px rgba(158,16,16,0.08);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.cr::before{background:var(--red);}
+.pc.ca::before{background:var(--amber);}
+.pc.cg::before{background:var(--green);}
+.pc.cb::before{background:var(--blue);}
+.pc.cp::before{background:var(--purple);}
+.pc.ct::before{background:var(--teal);}
+.pc.csk::before{background:var(--sky);}
+.pc.cgo::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.cn::before{background:var(--navy);}
+.pc.crs::before{background:var(--rust);}
+.pc-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Spectral',serif;font-size:15px;margin-bottom:12px;line-height:1.3;}
+
+/* MAP CARD */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;position:relative;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.mc.m1::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.m2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc.m3::before{background:linear-gradient(90deg,var(--teal),var(--green));}
+.mc.m4::before{background:linear-gradient(90deg,var(--navy),var(--sky));}
+.mc.m5::before{background:linear-gradient(90deg,var(--rust),var(--amber));}
+.mc svg{display:block;width:100%;}
+
+/* VLIST */
+.vl{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:8px 11px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* FEAT GRID */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.fb{padding:10px;border-radius:8px;background:var(--card2);border:1px solid var(--border);}
+.fb .fi{font-size:17px;margin-bottom:4px;}
+.fb .ft{font-size:11px;font-weight:700;}
+.fb .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* STAT ROW */
+.sr{display:flex;gap:10px;margin:10px 0;}
+.sb{flex:1;padding:12px 8px;border-radius:10px;border:1.5px solid var(--border);background:var(--card2);text-align:center;}
+.sn{font-family:'Spectral',serif;font-size:24px;font-weight:700;line-height:1;}
+.sl2{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.ss{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(26,96,53,0.07);border-color:rgba(26,96,53,0.2);color:var(--green);}
+.chip.no{background:rgba(158,16,16,0.07);border-color:rgba(158,16,16,0.2);color:var(--red);}
+.chip.nn{background:rgba(184,130,10,0.07);border-color:rgba(184,130,10,0.2);color:var(--gold);}
+
+/* CHAIN */
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:4px;padding:6px 0;margin:8px 0;}
+.cn2{padding:6px 11px;border-radius:7px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ca2{font-size:16px;color:var(--muted);flex:0 0 auto;margin:0 2px;}
+
+/* CALLOUT */
+.callout{padding:11px 13px;border-radius:9px;margin:8px 0;}
+.callout .ct{font-size:11px;font-weight:700;margin-bottom:3px;}
+.callout .cb{font-size:10px;color:var(--muted);line-height:1.5;}
+.callout.cg{background:rgba(26,96,53,0.06);border:1.5px solid rgba(26,96,53,0.18);}
+.callout.cg .ct{color:var(--green);}
+.callout.cr2{background:rgba(158,16,16,0.06);border:1.5px solid rgba(158,16,16,0.18);}
+.callout.cr2 .ct{color:var(--red);}
+.callout.cb2{background:rgba(22,46,122,0.06);border:1.5px solid rgba(22,46,122,0.18);}
+.callout.cb2 .ct{color:var(--blue);}
+.callout.ca3{background:rgba(192,92,12,0.06);border:1.5px solid rgba(192,92,12,0.18);}
+.callout.ca3 .ct{color:var(--amber);}
+.callout.cgo{background:rgba(184,130,10,0.07);border:1.5px solid rgba(184,130,10,0.2);}
+.callout.cgo .ct{color:var(--gold);}
+
+/* KEYSTONE */
+.ks{background:var(--navy);color:#e8d4a0;border-radius:16px;padding:26px 32px;margin:24px 0;
+  display:flex;align-items:flex-start;gap:22px;flex-wrap:wrap;}
+.ks-ico{font-size:42px;flex:0 0 auto;padding-top:2px;}
+.ks-title{font-family:'Spectral',serif;font-size:22px;font-style:italic;margin-bottom:7px;color:#f5e0a0;}
+.ks-body{font-size:12px;color:#b0a068;line-height:1.9;}
+.ks-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.08);font-size:10px;
+  font-family:'DM Mono',monospace;color:#c8aa60;letter-spacing:.5px;}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:11px;}
+.tbl th{background:var(--navy);color:#fff;padding:9px 11px;text-align:left;
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.tbl td{padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:nth-child(even) td{background:rgba(184,130,10,0.03);}
+.tbl td:first-child{font-weight:700;color:var(--amber);}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;align-items:stretch;gap:0;}
+.step-num{display:flex;flex-direction:column;align-items:center;flex:0 0 34px;}
+.step-circle{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;flex:0 0 26px;color:#fff;}
+.step-line{flex:1;width:2px;background:var(--border);margin:2px auto;}
+.step:last-child .step-line{display:none;}
+.step-content{flex:1;padding:0 0 13px 10px;}
+.step-title{font-size:12px;font-weight:700;margin-bottom:2px;}
+.step-sub{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-sup">Indian Economy · NPA Framework · UPSC Prelims</div>
+  <h1>SARFAESI · NPA Crisis · <em>Bad Bank · RBI Circular</em></h1>
+  <div class="hdr-desc">Loan → NPA → SARFAESI / ARC → Bad Bank (NARCL) → RBI Framework → IBC</div>
+</div>
+
+<!-- SECTION 0: MASTER FLOW -->
+<div class="sl">① Master Concept Chain — Full Ecosystem</div>
+<div class="mc m1">
+  <svg id="svgMaster" viewBox="0 0 1340 130" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- SECTION 1: SARFAESI -->
+<div class="sl">② SARFAESI Act 2002 — The Core Weapon</div>
+
+<div class="g2">
+  <div class="pc cr">
+    <div class="pc-lbl">Why SARFAESI Was Needed</div>
+    <h3>⚠️ Pre-SARFAESI Problems</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Courts Required for Recovery</div><div class="vs">Every NPA needed lengthy court proceedings</div></div>
+      <div class="vi"><div class="vt">Recovery Was Painfully Slow</div><div class="vs">Cases lingered for 10–15+ years</div></div>
+      <div class="vi"><div class="vt">NPAs Kept Accumulating</div><div class="vs">Banks had no fast-track mechanism</div></div>
+    </div>
+    <div class="chain" style="margin-top:10px;">
+      <div class="cn2" style="border-color:var(--red);background:rgba(158,16,16,0.07);color:var(--red);">Narasimham Committee</div>
+      <div class="ca2">→</div>
+      <div class="cn2" style="border-color:var(--amber);background:rgba(192,92,12,0.07);color:var(--amber);">Recommended Reform</div>
+      <div class="ca2">→</div>
+      <div class="cn2" style="border-color:var(--green);background:rgba(26,96,53,0.07);color:var(--green);">SARFAESI 2002</div>
+    </div>
+  </div>
+
+  <div class="pc cg">
+    <div class="pc-lbl">SARFAESI Full Form & Power</div>
+    <h3>⚡ What SARFAESI Gives Banks</h3>
+    <div style="padding:10px 12px;border-radius:9px;background:rgba(26,96,53,0.06);border:1.5px solid rgba(26,96,53,0.18);margin-bottom:10px;">
+      <div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--green);margin-bottom:4px;">FULL FORM</div>
+      <div style="font-size:11px;font-weight:700;line-height:1.6;color:var(--ink);">Securitisation and Reconstruction of Financial Assets and Enforcement of Security Interest Act</div>
+    </div>
+    <div class="callout cg">
+      <div class="ct">✅ Core Power: Recover without courts</div>
+      <div class="cb">Banks can seize & sell collateral directly — bypassing slow judicial process. Only for <strong>secured loans</strong>.</div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip no">❌ Unsecured loans NOT covered</span></div>
+  </div>
+</div>
+
+<!-- SARFAESI 3 PROCESSES -->
+<div class="mc m2">
+  <svg id="svgSARF" viewBox="0 0 1340 190" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc cr">
+    <div class="pc-lbl">Process 1 — Most Important</div>
+    <h3>🏠 Security Enforcement</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--red);">1</div><div class="step-line"></div></div>
+        <div class="step-content"><div class="step-title">Loan Becomes NPA</div><div class="step-sub">90+ days of default</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--amber);">2</div><div class="step-line"></div></div>
+        <div class="step-content"><div class="step-title">Bank Issues 60-Day Notice</div><div class="step-sub">Formal demand to borrower</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--green);">3</div></div>
+        <div class="step-content"><div class="step-title">If No Repayment → Seize & Sell</div><div class="step-sub">Take possession of collateral, sell directly</div></div>
+      </div>
+    </div>
+    <div class="callout cr2" style="margin-top:8px;">
+      <div class="ct">⚠️ Only for secured loans</div>
+      <div class="cb">Collateral must exist. Unsecured debt excluded.</div>
+    </div>
+  </div>
+
+  <div class="pc cb">
+    <div class="pc-lbl">Process 2</div>
+    <h3>🏢 Asset Reconstruction</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">ARC Buys Bad Loans</div><div class="vs">Asset Reconstruction Company purchases rights</div></div>
+      <div class="vi"><div class="vt">Bank Gets Clean</div><div class="vs">NPA removed from bank's books</div></div>
+      <div class="vi"><div class="vt">ARC Recovers Over Time</div><div class="vs">Specialist recovery from distressed assets</div></div>
+    </div>
+    <div class="chain" style="margin-top:10px;">
+      <div class="cn2" style="border-color:var(--blue);background:rgba(22,46,122,0.07);color:var(--blue);font-size:9px;">Bank (NPA)</div>
+      <div class="ca2">→</div>
+      <div class="cn2" style="border-color:var(--teal);background:rgba(10,88,96,0.07);color:var(--teal);font-size:9px;">Sells to ARC</div>
+      <div class="ca2">→</div>
+      <div class="cn2" style="border-color:var(--green);background:rgba(26,96,53,0.07);color:var(--green);font-size:9px;">ARC Recovers</div>
+    </div>
+  </div>
+
+  <div class="pc cp">
+    <div class="pc-lbl">Process 3</div>
+    <h3>📊 Securitisation</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Convert Loans to Securities</div><div class="vs">Pool loans → issue tradable instruments</div></div>
+      <div class="vi"><div class="vt">Transfer Risk</div><div class="vs">Sell to investors, bank gets cash</div></div>
+      <div class="vi"><div class="vt">Liquidity Creation</div><div class="vs">Illiquid loans become market instruments</div></div>
+    </div>
+    <div class="chain" style="margin-top:10px;">
+      <div class="cn2" style="border-color:var(--purple);background:rgba(88,22,128,0.07);color:var(--purple);font-size:9px;">Loan Pool</div>
+      <div class="ca2">→</div>
+      <div class="cn2" style="border-color:var(--sky);background:rgba(18,78,112,0.07);color:var(--sky);font-size:9px;">Securities Issued</div>
+      <div class="ca2">→</div>
+      <div class="cn2" style="border-color:var(--green);background:rgba(26,96,53,0.07);color:var(--green);font-size:9px;">Sold to Market</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: NPA CRISIS -->
+<div class="sl">③ NPA Crisis — How India Got Here (Post 2008)</div>
+<div class="mc m3">
+  <svg id="svgNPA" viewBox="0 0 1340 170" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc crs">
+    <div class="pc-lbl">Root Causes of NPA Crisis</div>
+    <h3>🔴 Why NPAs Surged After 2008</h3>
+    <div class="fg">
+      <div class="fb"><div class="fi">💥</div><div class="ft">Credit Boom 2000s</div><div class="fs">Reckless lending in growth era</div></div>
+      <div class="fb"><div class="fi">🌍</div><div class="ft">Global Financial Crisis</div><div class="fs">2008 shock hit exporters</div></div>
+      <div class="fb"><div class="fi">🏗️</div><div class="ft">Infrastructure Stress</div><div class="fs">Stalled projects, no cash flow</div></div>
+      <div class="fb"><div class="fi">📋</div><div class="ft">Poor Lending Decisions</div><div class="fs">Political pressure, weak appraisal</div></div>
+    </div>
+    <div class="callout cr2" style="margin-top:10px;">
+      <div class="ct">⚠️ By 2013: NPA Crisis Peaked</div>
+      <div class="cb">PSBs had massive stressed assets — capital depleted, credit flow choked</div>
+    </div>
+  </div>
+
+  <div class="pc cg">
+    <div class="pc-lbl">NPA Definition + Response Tools</div>
+    <h3>🛠️ Measures Taken</h3>
+    <div class="sr">
+      <div class="sb"><div class="sn" style="color:var(--red);">90</div><div class="ss">Days Overdue</div><div class="sl2">NPA THRESHOLD</div></div>
+      <div class="sb"><div class="sn" style="color:var(--amber);font-size:14px;">4 Tools</div><div class="ss">Available</div><div class="sl2">RESOLUTION</div></div>
+    </div>
+    <div class="vl" style="margin-top:8px;">
+      <div class="vi"><div class="vt">SARFAESI — Seize Assets</div><div class="vs">Direct enforcement on secured collateral</div></div>
+      <div class="vi"><div class="vt">ARC — Buy Bad Loans</div><div class="vs">Transfer NPA to specialist recovery firm</div></div>
+      <div class="vi"><div class="vt">IBC 2016 — Insolvency</div><div class="vs">Time-bound creditor-driven resolution</div></div>
+      <div class="vi"><div class="vt">Bad Bank (NARCL) — 2021</div><div class="vs">Centralized NPA aggregator</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: BAD BANK -->
+<div class="sl">④ Bad Bank — NARCL Model (2021)</div>
+<div class="mc m4">
+  <svg id="svgBadBank" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cn">
+    <div class="pc-lbl">NARCL Structure</div>
+    <h3>🏦 Bad Bank — How It's Built</h3>
+    <div class="sr">
+      <div class="sb"><div class="sn" style="color:var(--blue);">51%</div><div class="ss">PSBs Own</div><div class="sl2">PUBLIC SECTOR</div></div>
+      <div class="sb"><div class="sn" style="color:var(--green);">49%</div><div class="ss">Private Own</div><div class="sl2">PRIVATE LENDERS</div></div>
+    </div>
+    <div class="vl" style="margin-top:8px;">
+      <div class="vi"><div class="vt">NARCL — Aggregator</div><div class="vs">National Asset Reconstruction Company Ltd. — Acquires NPAs</div></div>
+      <div class="vi"><div class="vt">IDRCL — Resolver</div><div class="vs">India Debt Resolution Company Ltd. — Manages & recovers</div></div>
+    </div>
+    <div class="callout cb2">
+      <div class="ct">⚡ Two-entity model</div>
+      <div class="cb">NARCL buys the NPA. IDRCL handles actual recovery strategy.</div>
+    </div>
+  </div>
+
+  <div class="pc ca">
+    <div class="pc-lbl">How Bad Bank Works — Example</div>
+    <h3>💡 NARCL Deal Mechanics (₹1000 Cr NPA)</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--red);">1</div><div class="step-line"></div></div>
+        <div class="step-content"><div class="step-title">SBI has ₹1,000 Cr NPA</div><div class="step-sub">Stuck, cannot recover internally</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--amber);">2</div><div class="step-line"></div></div>
+        <div class="step-content"><div class="step-title">NARCL Estimates Recovery = ₹300 Cr</div><div class="step-sub">Values stressed asset at discount</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--gold);">3</div><div class="step-line"></div></div>
+        <div class="step-content"><div class="step-title">Pays ₹45 Cr Cash (15%)</div><div class="step-sub">Immediate cash to bank</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--blue);">4</div><div class="step-line"></div></div>
+        <div class="step-content"><div class="step-title">₹255 Cr as Security Receipts (85%)</div><div class="step-sub">SRs redeemed if recovery succeeds</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--green);">5</div></div>
+        <div class="step-content"><div class="step-title">Govt Guarantees SRs if Recovery Fails</div><div class="step-sub">Sovereign backstop protects banks</div></div>
+      </div>
+    </div>
+    <div class="callout cr2" style="margin-top:8px;">
+      <div class="ct">⚠️ Critical Insight for UPSC</div>
+      <div class="cb">Bad Bank does NOT eliminate NPAs from the economy — it only <strong>shifts them</strong> from bank books to NARCL</div>
+    </div>
+  </div>
+</div>
+
+<!-- BAD BANK PRO/CON -->
+<div class="g2">
+  <div class="pc cg">
+    <div class="pc-lbl">Why Bad Bank — Benefits</div>
+    <h3>✅ What NARCL Achieves</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;">
+      <span class="chip ok">✅ Cleans bank balance sheets</span>
+      <span class="chip ok">✅ Frees capital for fresh lending</span>
+      <span class="chip ok">✅ Specialist recovery focus</span>
+      <span class="chip ok">✅ Govt guarantee as safety net</span>
+      <span class="chip ok">✅ Speeds up resolution</span>
+      <span class="chip ok">✅ Aggregates large NPAs</span>
+    </div>
+  </div>
+  <div class="pc cr">
+    <div class="pc-lbl">The Fundamental Limitation</div>
+    <h3>⚠️ What NARCL Does NOT Do</h3>
+    <div class="callout cr2">
+      <div class="ct">🔴 Doesn't Reduce Economy-Wide NPAs</div>
+      <div class="cb">The loan is just <strong>shifted</strong> from PSB books → NARCL books. Total stressed assets in the financial system remain same. Only the holder changes.</div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip no">❌ Moral hazard risk</span>
+      <span class="chip no">❌ Taxpayer burden (guarantees)</span>
+      <span class="chip no">❌ May reduce lending discipline</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: RBI CIRCULAR 2019 -->
+<div class="sl">⑤ RBI Circular (June 2019) — Resolution Framework</div>
+<div class="mc m5">
+  <svg id="svgRBI" viewBox="0 0 1340 180" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cb">
+    <div class="pc-lbl">RBI June 2019 Circular</div>
+    <h3>📋 NPA Resolution Process</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--red);">1</div><div class="step-line"></div></div>
+        <div class="step-content"><div class="step-title">Borrower Defaults</div><div class="step-sub">Any amount, any type of loan</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--amber);">2</div><div class="step-line"></div></div>
+        <div class="step-content"><div class="step-title">Banks Review Within 30 Days</div><div class="step-sub">Mandatory review period starts</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--blue);">3</div><div class="step-line"></div></div>
+        <div class="step-content"><div class="step-title">Inter-Creditor Agreement (ICA) Signed</div><div class="step-sub">All lenders bound by majority decision</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--purple);">4</div><div class="step-line"></div></div>
+        <div class="step-content"><div class="step-title">ICA Decision Binding If: 75% by value + 60% by number</div><div class="step-sub">Super-majority needed to bind all creditors</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num"><div class="step-circle" style="background:var(--green);">5</div></div>
+        <div class="step-content"><div class="step-title">Resolution Plan (RP) in 180 Days</div><div class="step-sub">Implement agreed resolution within window</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <div class="pc ca">
+      <div class="pc-lbl">ICA Voting Thresholds — Key Numbers</div>
+      <h3>🗳️ Inter-Creditor Agreement Rules</h3>
+      <div class="sr">
+        <div class="sb"><div class="sn" style="color:var(--amber);">75%</div><div class="ss">By Value</div><div class="sl2">LENDER VOTE</div></div>
+        <div class="sb"><div class="sn" style="color:var(--blue);">60%</div><div class="ss">By Number</div><div class="sl2">LENDER COUNT</div></div>
+        <div class="sb"><div class="sn" style="color:var(--green);">180</div><div class="ss">Days to Implement</div><div class="sl2">RP DEADLINE</div></div>
+      </div>
+      <div class="callout ca3" style="margin-top:8px;">
+        <div class="ct">⚡ Both conditions required</div>
+        <div class="cb">Must cross both 75% value AND 60% number thresholds for ICA to be binding on all</div>
+      </div>
+    </div>
+
+    <div class="pc cp">
+      <div class="pc-lbl">Penalty for Delay</div>
+      <h3>⚠️ Provisioning Penalties</h3>
+      <div class="vl">
+        <div class="vi"><div class="vt">Extra 20% Provisioning</div><div class="vs">If resolution plan not implemented in 180 days</div></div>
+        <div class="vi"><div class="vt">Further +15% Provisioning</div><div class="vs">If delayed beyond 365 days total</div></div>
+        <div class="vi"><div class="vt">Provision Reversed if IBC Used</div><div class="vs">If case moved to NCLT under IBC, penalty reverses</div></div>
+      </div>
+      <div class="callout cr2" style="margin-top:8px;">
+        <div class="ct">💡 Incentive Design</div>
+        <div class="cb">Penalties nudge banks toward timely resolution — or push case to IBC</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: BANKING REGULATION ACT + SC JUDGMENT -->
+<div class="sl">⑥ Banking Regulation Act (2017) + Supreme Court (2019)</div>
+
+<div class="g2">
+  <div class="pc csk">
+    <div class="pc-lbl">Banking Regulation Act Amendment — 2017</div>
+    <h3>🏛️ Govt Empowers RBI to Initiate IBC</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Central Govt Can Authorize RBI</div><div class="vs">To direct banks to start insolvency under IBC 2016</div></div>
+      <div class="vi"><div class="vt">RBI Can Issue Directions</div><div class="vs">For resolution of specific stressed assets</div></div>
+      <div class="vi"><div class="vt">Section 35AA — Key Provision</div><div class="vs">Requires Central Govt authorization for case-specific directions</div></div>
+    </div>
+    <div class="callout cb2" style="margin-top:8px;">
+      <div class="ct">⚡ Backbone of RBI's NPA Powers</div>
+      <div class="cb">2017 amendment gave RBI tools to push cases into IBC proactively</div>
+    </div>
+  </div>
+
+  <div class="pc cr">
+    <div class="pc-lbl">Supreme Court — 2 April 2019</div>
+    <h3>⚖️ Landmark SC Judgment</h3>
+    <div class="vl">
+      <div class="vi">
+        <div class="vt" style="color:var(--red);">❌ RBI Struck Down</div>
+        <div class="vs">Cannot issue general circular directing all banks to resolve all NPAs uniformly</div>
+      </div>
+      <div class="vi">
+        <div class="vt">✅ Must Have Govt Authorization</div>
+        <div class="vs">Under Section 35AA — Central Govt must specifically authorize</div>
+      </div>
+      <div class="vi">
+        <div class="vt">✅ Must Be Case-Specific</div>
+        <div class="vs">Directions must name specific stressed account(s)</div>
+      </div>
+    </div>
+    <div class="callout cr2" style="margin-top:8px;">
+      <div class="ct">🔴 Impact: RBI's Feb 2018 Circular Struck Down</div>
+      <div class="cb">RBI had issued blanket circular — SC said general directions not permissible under S.35AA</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: PRELIMS FACTS -->
+<div class="sl">⑦ High-Probability Prelims Facts 🔥</div>
+
+<div class="mc m1">
+  <svg id="svgFacts" viewBox="0 0 1340 170" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cn">
+    <div class="pc-lbl">Must-Know Facts Table</div>
+    <h3>📊 Exam-Critical Points</h3>
+    <table class="tbl">
+      <thead><tr><th>Item</th><th>Key Fact</th></tr></thead>
+      <tbody>
+        <tr><td>SARFAESI Enacted</td><td>2002 — recovery without courts</td></tr>
+        <tr><td>Applies To</td><td>Only secured loans (not unsecured)</td></tr>
+        <tr><td>NPA Definition</td><td>&gt; 90 days overdue</td></tr>
+        <tr><td>SARFAESI Notice</td><td>60-day notice before seizure</td></tr>
+        <tr><td>NARCL Setup</td><td>2021 — India's Bad Bank</td></tr>
+        <tr><td>NARCL Ownership</td><td>51% PSBs + 49% private</td></tr>
+        <tr><td>NARCL Payment</td><td>15% cash + 85% security receipts</td></tr>
+        <tr><td>SR Backstop</td><td>Govt guarantee on security receipts</td></tr>
+        <tr><td>ICA Threshold</td><td>75% by value + 60% by number</td></tr>
+        <tr><td>RP Timeline</td><td>180 days (RBI Circular 2019)</td></tr>
+        <tr><td>Delay Penalty</td><td>+20% provisioning after 180 days</td></tr>
+        <tr><td>Banking Reg. Act</td><td>Amended 2017 — RBI gets IBC powers</td></tr>
+        <tr><td>SC Judgment</td><td>2 April 2019 — RBI needs Govt auth.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pc ca">
+    <div class="pc-lbl">Concept Comparisons — Exam Traps</div>
+    <h3>🎯 UPSC Distinguisher Points</h3>
+    <div class="vl">
+      <div class="vi">
+        <div class="vt">SARFAESI vs IBC</div>
+        <div class="vs">SARFAESI = asset seizure by banks; IBC = insolvency resolution by NCLT with CoC vote</div>
+      </div>
+      <div class="vi">
+        <div class="vt">ARC vs Bad Bank (NARCL)</div>
+        <div class="vs">ARC = private; NARCL = government-promoted; NARCL has sovereign guarantee on SRs</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Bad Bank Shifts vs Solves NPAs</div>
+        <div class="vs">NARCL only transfers NPA — economy-wide stressed assets remain same</div>
+      </div>
+      <div class="vi">
+        <div class="vt">ICA 75%+60% vs CIRP CoC 66%</div>
+        <div class="vs">RBI framework needs 75% value + 60% number; IBC CoC needs only 66% by value</div>
+      </div>
+      <div class="vi">
+        <div class="vt">Section 35AA vs 35AB</div>
+        <div class="vs">35AA = Govt authorizes RBI for specific cases; 35AB = RBI can issue general directions</div>
+      </div>
+      <div class="vi">
+        <div class="vt">NARCL vs IDRCL</div>
+        <div class="vs">NARCL acquires the NPA; IDRCL manages & resolves it — two-entity bad bank model</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="ks">
+  <div class="ks-ico">🏦</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Connecting Thread</div>
+    <div class="ks-body">
+      When a bank loan goes bad, India has a <strong style="color:#f5e0a0;">layered response system</strong>: SARFAESI (seize collateral) → ARC (sell to specialist) → NARCL/Bad Bank (centralize & shift NPAs) → RBI Circular framework (inter-creditor coordination) → IBC (insolvency via NCLT). The 2017 Banking Regulation Act gave RBI legal authority to push cases into IBC, but the 2019 Supreme Court judgment limited this to case-specific, Govt-authorized directions only. The goal throughout: <strong style="color:#f5e0a0;">clean bank balance sheets → restore credit flow → financial stability.</strong>
+    </div>
+    <div class="ks-pills">
+      <span class="kp">⚡ SARFAESI 2002</span>
+      <span class="kp">🏢 ARC Model</span>
+      <span class="kp">🏦 NARCL 2021</span>
+      <span class="kp">📋 15% Cash + 85% SRs</span>
+      <span class="kp">🗳️ ICA 75%+60%</span>
+      <span class="kp">⚖️ SC 2019 S.35AA</span>
+      <span class="kp">🔄 Shift ≠ Solve</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function addDefs(svg){let d=svg.querySelector('defs');if(!d){d=el('defs',{});svg.insertBefore(d,svg.firstChild);}return d;}
+
+function rct(svg,x,y,w,h,fill,stroke,rx,shadow){
+  rx=rx||9;
+  if(shadow){svg.appendChild(el('rect',{x:x+2,y:y+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));}
+  const r=el('rect',{x,y,width:w,height:h,rx,ry:rx,fill,stroke:stroke||'rgba(255,255,255,0.18)','stroke-width':'1.5'});
+  svg.appendChild(r);return r;
+}
+function txt(svg,x,y,text,size,weight,fill,anchor,font){
+  const t=el('text',{x,y,'text-anchor':anchor||'middle','dominant-baseline':'middle',
+    'font-size':size||11,'font-weight':weight||'400',
+    'font-family':font||'Inter,sans-serif',fill:fill||'#14100a'});
+  t.textContent=text;svg.appendChild(t);return t;
+}
+function arrMarker(svg,id,color){
+  const defs=addDefs(svg);
+  const m=el('marker',{id,markerWidth:'8',markerHeight:'8',refX:'7',refY:'4',orient:'auto'});
+  m.appendChild(el('path',{d:'M0,1 L0,7 L7,4 z',fill:color}));
+  defs.appendChild(m);
+}
+function arrow(svg,x1,y1,x2,y2,color,dash,w){
+  const id='a'+Math.random().toString(36).slice(2,8);
+  arrMarker(svg,id,color||'#aaa');
+  svg.appendChild(el('path',{d:`M${x1},${y1} L${x2},${y2}`,stroke:color||'#aaa',
+    'stroke-width':w||2,fill:'none','stroke-dasharray':dash||'none','marker-end':`url(#${id})`}));
+}
+function curve(svg,x1,y1,x2,y2,color,dash,w){
+  const mx=(x1+x2)/2;
+  svg.appendChild(el('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color||'#aaa','stroke-width':w||1.8,'stroke-dasharray':dash||'none',fill:'none',opacity:'0.8'}));
+}
+function node(svg,cx,cy,w,h,fill,lines,sub,emoji,tc){
+  tc=tc||'#fff';h=h||52;
+  rct(svg,cx-w/2,cy-h/2,w,h,fill,'rgba(255,255,255,0.15)',9,true);
+  let sy=cy-(lines.length-1)*7.5-(sub?5:0)-(emoji?10:0);
+  if(emoji){txt(svg,cx,sy,emoji,14,'400',tc);sy+=18;}
+  lines.forEach((l,i)=>txt(svg,cx,sy+i*15,l,10.5,'700',tc));
+  if(sub)txt(svg,cx,sy+lines.length*15,sub,8.5,'400',tc==='#fff'?'rgba(255,255,255,0.6)':'rgba(0,0,0,0.4)','middle','DM Mono,monospace');
+}
+
+// ─── MASTER FLOW ─────────────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const steps=[
+    {x:70,  label:'Loan\nDisbursed',   fill:'#124e70', emoji:'💰', sub:'Bank lends'},
+    {x:218, label:'Default\nOccurs',   fill:'#9e1010', emoji:'⚠️', sub:'Borrower fails'},
+    {x:366, label:'NPA\nDeclared',     fill:'#7a0e0e', emoji:'🔴', sub:'90+ days'},
+    {x:514, label:'SARFAESI\n60-day',  fill:'#8a2810', emoji:'🏠', sub:'Notice issued'},
+    {x:662, label:'ARC Buys\nBad Loan',fill:'#b8820a', emoji:'📋', sub:'Asset sold'},
+    {x:810, label:'NARCL\nBad Bank',   fill:'#162e7a', emoji:'🏦', sub:'2021'},
+    {x:958, label:'RBI\nCircular',     fill:'#0a5860', emoji:'📊', sub:'ICA 75%+60%'},
+    {x:1106,label:'IBC\nTriggered',    fill:'#581680', emoji:'⚖️', sub:'NCLT'},
+    {x:1270,label:'Resolution\nor Liq',fill:'#1a6035', emoji:'✅', sub:'Final outcome'},
+  ];
+
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:130,fill:'rgba(245,242,235,0.5)'}));
+  svg.appendChild(el('line',{x1:30,y1:65,x2:1310,y2:65,stroke:'#dccfaa','stroke-width':'2'}));
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      arrow(svg,s.x+56,65,nx-56,65,s.fill+'cc','none',2);
+    }
+    svg.appendChild(el('circle',{cx:s.x,cy:65,r:6,fill:s.fill,stroke:'#fff','stroke-width':'2'}));
+    const above=i%2===0;
+    const by=above?24:103;
+    svg.appendChild(el('line',{x1:s.x,y1:above?35:71,x2:s.x,y2:above?59:72,stroke:s.fill+'88','stroke-width':'1.5','stroke-dasharray':'3 2'}));
+    const lines=s.label.split('\n');
+    node(svg,s.x,by,126,40,s.fill,lines,s.sub,s.emoji);
+  });
+  txt(svg,670,116,'FULL ECOSYSTEM: LOAN DEFAULT → NPA TOOLS → BAD BANK → RBI FRAMEWORK → IBC',8,'500','rgba(90,70,30,0.45)','middle','DM Mono,monospace');
+})();
+
+// ─── SARFAESI 3 PROCESSES ────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgSARF');
+  svg.setAttribute('viewBox','0 0 1340 190');
+
+  // Central
+  node(svg,670,95,220,58,'#0c1c38',['SARFAESI Act 2002','Three Processes'],'Recovery without courts','⚡');
+
+  const procs=[
+    {x:170,y:55,  fill:'#9e1010', lines:['Security','Enforcement'], sub:'Seize & sell collateral', emoji:'🏠'},
+    {x:170,y:145, fill:'#8a2810', lines:['Asset','Reconstruction'],  sub:'ARC buys bad loans', emoji:'🏢'},
+    {x:1170,y:55, fill:'#162e7a', lines:['Securitisation'],           sub:'Loans → securities', emoji:'📊'},
+    {x:1170,y:145,fill:'#581680', lines:['60-Day','Notice'],          sub:'Before enforcement', emoji:'📋'},
+  ];
+
+  procs.forEach(p=>{
+    const fromX=p.x<670?560:780;
+    const dy=p.y<95?-12:12;
+    curve(svg,fromX,95+dy,p.x+(p.x<670?80:-80),p.y,p.fill+'77','4 3',1.8);
+    node(svg,p.x,p.y,150,54,p.fill,p.lines,p.sub,p.emoji);
+  });
+
+  // key rule badges
+  rct(svg,560,155,220,26,'rgba(158,16,16,0.08)','rgba(158,16,16,0.2)',5);
+  txt(svg,670,168,'⚠️  Only for SECURED loans',9,'700','#9e1010','middle','DM Mono,monospace');
+
+  txt(svg,670,182,'THREE POWERS UNDER SARFAESI: ENFORCE SECURITY · RECONSTRUCT ASSETS · SECURITISE',8,'500','rgba(90,70,30,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── NPA CRISIS TIMELINE ─────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgNPA');
+  svg.setAttribute('viewBox','0 0 1340 170');
+
+  const events=[
+    {x:100, y:40,  fill:'#162e7a', label:['2000s','Credit Boom'],  sub:'Banks over-lend', emoji:'📈'},
+    {x:280, y:130, fill:'#9e1010', label:['2008','GFC Hit'],       sub:'Global crisis', emoji:'💥'},
+    {x:460, y:40,  fill:'#8a2810', label:['2011–13','NPAs Rise'],  sub:'Infra collapse', emoji:'📉'},
+    {x:640, y:130, fill:'#581680', label:['SARFAESI','Used'],      sub:'Asset seizure', emoji:'🏠'},
+    {x:820, y:40,  fill:'#0a5860', label:['ARC','Buys NPAs'],      sub:'Asset recon.', emoji:'🏢'},
+    {x:1000,y:130, fill:'#1a6035', label:['IBC 2016','Enacted'],   sub:'Insolvency law', emoji:'⚖️'},
+    {x:1180,y:40,  fill:'#b8820a', label:['NARCL 2021','Bad Bank'],sub:'Centralized',   emoji:'🏦'},
+  ];
+
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:170,fill:'rgba(245,242,235,0.4)'}));
+
+  // zigzag timeline line
+  const pts=events.map(e=>`${e.x},${e.y}`).join(' L');
+  svg.appendChild(el('polyline',{points:pts,stroke:'#dccfaa','stroke-width':'2',fill:'none','stroke-dasharray':'6 3'}));
+
+  events.forEach(e=>{
+    svg.appendChild(el('circle',{cx:e.x,cy:e.y,r:7,fill:e.fill,stroke:'#fff','stroke-width':'2'}));
+    const lines=e.label;
+    node(svg,e.x,e.y+(e.y<85?-40:40),140,46,e.fill,lines,e.sub,e.emoji);
+  });
+  txt(svg,670,160,'NPA CRISIS TIMELINE: CREDIT BOOM → GFC → PEAK STRESS → SARFAESI → ARC → IBC → BAD BANK',8,'500','rgba(90,70,30,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── BAD BANK MECHANICS ─────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgBadBank');
+  svg.setAttribute('viewBox','0 0 1340 200');
+
+  // SBI NPA Box
+  node(svg,130,100,200,62,'#9e1010',['SBI NPA','₹1,000 Cr'],'Stressed asset','🔴');
+
+  // NARCL
+  node(svg,470,100,200,62,'#162e7a',['NARCL','Buys at ₹300 Cr'],'Bad bank values','🏦');
+
+  // Payment split
+  node(svg,800,55, 200,52,'#1a6035',['Cash: ₹45 Cr','(15%)'],'Immediate payment','💵');
+  node(svg,800,148,200,52,'#b8820a',['SRs: ₹255 Cr','(85%)'],'Security receipts','📋');
+
+  // Govt guarantee
+  node(svg,1130,148,180,52,'#0c1c38',['Govt','Guarantees SRs'],'If recovery fails','🛡️');
+
+  // IDRCL
+  node(svg,800,100,0,0,'',[],'','');  // invisible spacer
+  // Actually put IDRCL below NARCL
+  rct(svg,370,155,200,28,'rgba(22,46,122,0.1)','rgba(22,46,122,0.3)',6);
+  txt(svg,470,169,'IDRCL — Manages Recovery',9,'700','#162e7a','middle');
+
+  // Arrows
+  arrow(svg,230,100,370,100,'#9e1010cc','none',2);
+  arrow(svg,570,80,700,60,'#1a6035cc','none',2);
+  arrow(svg,570,115,700,148,'#b8820acc','none',2);
+  arrow(svg,900,148,1040,148,'#0c1c3888','none',2);
+
+  // Labels on arrows
+  txt(svg,300,88,'Sells NPA',8.5,'600','#9e1010','middle','DM Mono,monospace');
+  txt(svg,640,50,'15%',9,'800','#1a6035','middle','DM Mono,monospace');
+  txt(svg,640,140,'85%',9,'800','#b8820a','middle','DM Mono,monospace');
+  txt(svg,970,138,'if failed',8.5,'600','#0c1c38','middle','DM Mono,monospace');
+
+  txt(svg,670,190,'BAD BANK DEAL: SBI SELLS NPA → NARCL PAYS 15% CASH + 85% SRs → GOVT GUARANTEE IF RECOVERY FAILS',8,'500','rgba(90,70,30,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── RBI CIRCULAR FLOW ──────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgRBI');
+  svg.setAttribute('viewBox','0 0 1340 180');
+
+  const steps=[
+    {x:100,  fill:'#9e1010', lines:['Default'],       sub:'Any amount', emoji:'⚠️'},
+    {x:290,  fill:'#8a2810', lines:['30-Day','Review'],sub:'Banks review', emoji:'📋'},
+    {x:490,  fill:'#162e7a', lines:['ICA','Signed'],   sub:'All lenders bound', emoji:'🤝'},
+    {x:700,  fill:'#581680', lines:['75% Value','+ 60% No.'],sub:'ICA binding', emoji:'🗳️'},
+    {x:910,  fill:'#0a5860', lines:['RP in','180 Days'],sub:'Implement plan', emoji:'⏱️'},
+    {x:1100, fill:'#1a6035', lines:['Resolution'],     sub:'Problem solved', emoji:'✅'},
+    {x:1100, fill:'#9e1010', lines:['Penalty'],        sub:'+20% provision', emoji:'⚠️'},
+  ];
+
+  // Main flow nodes (first 6)
+  for(let i=0;i<6;i++){
+    if(i<5) arrow(svg,steps[i].x+58,80,steps[i+1].x-58,80,steps[i].fill+'cc','none',2);
+    node(svg,steps[i].x,80,114,58,steps[i].fill,steps[i].lines,steps[i].sub,steps[i].emoji);
+  }
+
+  // Branch from step 5 (180 days) — success or failure
+  curve(svg,968,68,1100,40,'#1a6035cc','none',1.8);
+  curve(svg,968,92,1100,130,'#9e1010cc','none',1.8);
+
+  // Success
+  rct(svg,1040,20,150,38,'#1a6035','rgba(255,255,255,0.2)',8,true);
+  txt(svg,1115,39,'✅ Resolution','10','700','#fff');
+  // Penalty
+  rct(svg,1040,110,150,38,'#9e1010','rgba(255,255,255,0.2)',8,true);
+  txt(svg,1115,129,'⚠️ +20% Provision','10','700','#fff');
+
+  txt(svg,670,58,'YES →',8,'700','#1a6035','middle','DM Mono,monospace');
+  txt(svg,670,108,'DELAY →',8,'700','#9e1010','middle','DM Mono,monospace');
+
+  txt(svg,620,168,'RBI JUNE 2019: DEFAULT → 30-DAY REVIEW → ICA (75%+60%) → RP IN 180 DAYS → RESOLUTION OR PENALTY',8,'500','rgba(90,70,30,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── FACTS GRID ─────────────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgFacts');
+  svg.setAttribute('viewBox','0 0 1340 170');
+
+  const facts=[
+    {label:'SARFAESI',       val:'2002',      color:'#9e1010'},
+    {label:'No Court Needed',val:'Secured',   color:'#8a2810'},
+    {label:'NPA Threshold',  val:'90 Days',   color:'#7a0e0e'},
+    {label:'NARCL Founded',  val:'2021',      color:'#162e7a'},
+    {label:'PSB Ownership',  val:'51%',       color:'#0a5860'},
+    {label:'Cash Payment',   val:'15%',       color:'#1a6035'},
+    {label:'Security Recpts',val:'85%',       color:'#b8820a'},
+    {label:'ICA Value Vote', val:'75%',       color:'#581680'},
+    {label:'ICA Count Vote', val:'60%',       color:'#124e70'},
+    {label:'RP Deadline',    val:'180 Days',  color:'#0a5860'},
+    {label:'Delay Penalty',  val:'+20%',      color:'#9e1010'},
+    {label:'SC Judgment',    val:'Apr 2019',  color:'#162e7a'},
+  ];
+
+  const cols=12, cw=1340/cols;
+  facts.forEach((f,i)=>{
+    const cx=i*cw+cw/2, cy=85;
+    rct(svg,i*cw+6,8,cw-12,154,f.color+'10',f.color+'30',8);
+    rct(svg,i*cw+6,8,cw-12,4,f.color,'none',2);
+    txt(svg,cx,cy-16,f.val,18,'700',f.color);
+    txt(svg,cx,cy+16,f.label,8,'600','#14100a','middle','DM Mono,monospace');
+  });
+})();
+</script>
+</body>
+</html>

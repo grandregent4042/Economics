@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDI · FPI · Financial Markets — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ee;--surface:#ffffff;--surface2:#f0ece3;--border:#e0d8c8;
+  --ink:#1a1612;--muted:#8a7d65;--accent:#c8941a;--accent2:#1a4a8a;
+  --green:#1a6a3a;--red:#b01a1a;--purple:#5a1a8a;--teal:#0a607a;
+  --amber:#d46a10;--sky:#1a5878;--gold:#b87c10;
+  --shadow:0 2px 16px rgba(0,0,0,0.07);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;background:
+  radial-gradient(ellipse 800px 600px at 10% 5%,rgba(200,148,26,0.07) 0%,transparent 60%),
+  radial-gradient(ellipse 600px 800px at 90% 90%,rgba(26,74,138,0.06) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 28px 100px;}
+
+/* HEADER */
+.header{text-align:center;padding:52px 20px 24px;}
+.header-eye{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,54px);line-height:1.08;color:var(--ink);font-weight:800;}
+.header h1 em{font-style:italic;color:var(--accent);}
+.header-sub{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1.5px;}
+.header-rule{width:100px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--accent2));border-radius:4px;margin:16px auto 0;}
+
+/* SECTION LABEL */
+.sec{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px;}
+.g21{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4,.g5{grid-template-columns:1fr 1fr;}.g21{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g5,.g21{grid-template-columns:1fr;}}
+
+/* PANEL CARD */
+.pc{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;transition:box-shadow .22s,transform .22s;}
+.pc:hover{box-shadow:0 8px 32px rgba(0,0,0,0.10);transform:translateY(-2px);}
+.pc::after{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.c-gold::after{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.c-blue::after{background:var(--accent2);}
+.pc.c-green::after{background:var(--green);}
+.pc.c-red::after{background:var(--red);}
+.pc.c-purple::after{background:var(--purple);}
+.pc.c-teal::after{background:var(--teal);}
+.pc.c-amber::after{background:var(--amber);}
+.pc.c-sky::after{background:var(--sky);}
+.pc.c-ink::after{background:var(--ink);}
+.pc-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:13px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:8px 11px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.vi strong{display:block;font-weight:700;font-size:11px;margin-bottom:1px;}
+.vi span{font-size:9.5px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:9.5px;font-weight:700;margin:2px;font-family:'IBM Plex Mono',monospace;letter-spacing:.4px;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.blue{background:rgba(26,74,138,0.11);color:var(--accent2);}
+.pill.green{background:rgba(26,106,58,0.11);color:var(--green);}
+.pill.red{background:rgba(176,26,26,0.11);color:var(--red);}
+.pill.amber{background:rgba(212,106,16,0.11);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.11);color:var(--purple);}
+.pill.teal{background:rgba(10,96,122,0.11);color:var(--teal);}
+
+/* CHIP */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'IBM Plex Mono',monospace;}
+.chip.ok{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.25);color:var(--green);}
+.chip.bad{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.22);color:var(--red);}
+.chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.22);color:var(--gold);}
+
+/* STAT */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;padding:12px 10px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--surface2);}
+.stat-n{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-l{font-size:9px;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-s{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:8px;font-size:10.5px;font-weight:700;border:1.5px solid;}
+.farr{font-size:18px;color:var(--muted);}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 11px;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(200,180,140,0.04);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:22px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:40px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 14px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10.5px;font-family:'IBM Plex Mono',monospace;}
+
+/* TRAP BOX */
+.trap{background:rgba(176,26,26,0.04);border:1.5px solid rgba(176,26,26,0.18);border-radius:12px;padding:14px 16px;margin:14px 0;}
+.trap-title{font-size:11px;font-weight:700;color:var(--red);margin-bottom:8px;font-family:'IBM Plex Mono',monospace;letter-spacing:1px;}
+
+/* MAP CARD */
+.mc{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.m1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc.m2::before{background:linear-gradient(90deg,var(--accent2),var(--purple),var(--teal));}
+.mc.m3::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.mc.m4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--sky));}
+.mc svg{display:block;width:100%;}
+
+/* BADGE */
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:9px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
+
+/* ROUTE TAG */
+.rtag{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:3px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eye">Indian Economy · Foreign Investment · UPSC Prelims</div>
+  <h1>FDI · FPI · <em>Financial Markets</em></h1>
+  <div class="header-sub">Foreign Investment · Retail FDI · Depository Receipts · Short Selling · Market Terms</div>
+  <div class="header-rule"></div>
+</div>
+
+<!-- ══════════ SECTION 1: MASTER FLOW ══════════ -->
+<div class="sec">① Master Flow</div>
+<div class="mc m1">
+<svg viewBox="0 0 1340 100" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<rect width="1340" height="100" fill="#faf7f0"/>
+<!-- arrows -->
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#b87c10" opacity="0.6"/>
+  </marker>
+</defs>
+<!-- connector lines -->
+<line x1="158" y1="50" x2="230" y2="50" stroke="#b87c10" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.7"/>
+<line x1="376" y1="50" x2="448" y2="50" stroke="#b87c10" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.7"/>
+<line x1="594" y1="50" x2="666" y2="50" stroke="#b87c10" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.7"/>
+<line x1="812" y1="50" x2="884" y2="50" stroke="#b87c10" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.7"/>
+<line x1="1030" y1="50" x2="1102" y2="50" stroke="#b87c10" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.7"/>
+
+<!-- nodes -->
+<rect x="8" y="18" width="148" height="64" rx="10" fill="#1a1612" opacity=".97"/>
+<text x="82" y="42" text-anchor="middle" font-size="14" font-weight="700" fill="#f5e8c0">🌍 Foreign</text>
+<text x="82" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#f5e8c0">Investment</text>
+<text x="82" y="73" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="#c8b880">FDI + FPI + Others</text>
+
+<rect x="228" y="18" width="148" height="64" rx="10" fill="#1a4a8a"/>
+<text x="302" y="42" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">📥 Entry</text>
+<text x="302" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Routes</text>
+<text x="302" y="73" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.6)">Auto / Govt (FEMA)</text>
+
+<rect x="446" y="18" width="148" height="64" rx="10" fill="#b87c10"/>
+<text x="520" y="42" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">🏪 Retail</text>
+<text x="520" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">FDI Rules</text>
+<text x="520" y="73" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.65)">Single / Multi / E-Com</text>
+
+<rect x="664" y="18" width="148" height="64" rx="10" fill="#5a1a8a"/>
+<text x="738" y="42" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">📜 Depository</text>
+<text x="738" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Receipts</text>
+<text x="738" y="73" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.6)">GDR · ADR · IDR</text>
+
+<rect x="882" y="18" width="148" height="64" rx="10" fill="#0a607a"/>
+<text x="956" y="42" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">📊 Market</text>
+<text x="956" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Mechanisms</text>
+<text x="956" y="73" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.6)">Short/Long · Options</text>
+
+<rect x="1100" y="18" width="232" height="64" rx="10" fill="#1a6a3a"/>
+<text x="1216" y="42" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">📈 Capital Account</text>
+<text x="1216" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">of BOP</text>
+<text x="1216" y="73" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.6)">SEBI + RBI + FEMA</text>
+</svg>
+</div>
+
+<!-- ══════════ SECTION 2: FDI vs FPI COMPARISON ══════════ -->
+<div class="sec">② FDI vs FPI — Core Distinction</div>
+
+<div class="mc m2" style="margin-bottom:22px;">
+<svg viewBox="0 0 1340 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<rect width="1340" height="260" fill="#faf7f0"/>
+<defs>
+  <marker id="arr2" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+    <path d="M0,1 L0,6 L6,3.5 z" fill="#888" opacity="0.6"/>
+  </marker>
+</defs>
+
+<!-- Central hub -->
+<rect x="560" y="104" width="220" height="52" rx="12" fill="#1a1612"/>
+<text x="670" y="127" text-anchor="middle" font-size="13" font-weight="700" fill="#f5e8c0">🌐 Foreign Capital</text>
+<text x="670" y="146" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="#c8b880">Into India's Economy</text>
+
+<!-- FDI LEFT SIDE -->
+<rect x="24" y="20" width="200" height="66" rx="11" fill="#1a4a8a"/>
+<text x="124" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">🏭 FDI</text>
+<text x="124" y="63" text-anchor="middle" font-size="11" fill="#dde8ff">Foreign Direct Investment</text>
+<text x="124" y="78" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.55)">Controlling Ownership</text>
+
+<!-- FDI attributes -->
+<rect x="24" y="108" width="200" height="130" rx="11" fill="rgba(26,74,138,0.06)" stroke="rgba(26,74,138,0.2)" stroke-width="1.5"/>
+<text x="44" y="130" font-size="10.5" font-weight="700" fill="#1a4a8a">Physical assets</text>
+<text x="44" y="147" font-size="10.5" font-weight="700" fill="#1a4a8a">Long-term capital</text>
+<text x="44" y="164" font-size="10.5" font-weight="700" fill="#1a4a8a">Brings tech + skills</text>
+<text x="44" y="181" font-size="10.5" font-weight="700" fill="#1a4a8a">Primary market</text>
+<text x="44" y="198" font-size="10.5" font-weight="700" fill="#1a4a8a">Not speculative</text>
+<text x="44" y="215" font-size="10.5" font-weight="700" fill="#1a4a8a">Hard entry/exit</text>
+<text x="44" y="232" font-size="10.5" font-weight="700" fill="#1a4a8a">Capital Account · BOP</text>
+
+<!-- FDI example tag -->
+<rect x="24" y="242" width="200" height="16" rx="5" fill="#1a4a8a" opacity="0.15"/>
+<text x="124" y="253" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="#1a4a8a">eg: Toyota plant in India</text>
+
+<!-- FPI RIGHT SIDE -->
+<rect x="1116" y="20" width="200" height="66" rx="11" fill="#b01a1a"/>
+<text x="1216" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">📊 FPI</text>
+<text x="1216" y="63" text-anchor="middle" font-size="11" fill="#ffdde0">Foreign Portfolio Investor</text>
+<text x="1216" y="78" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.55)">No Control</text>
+
+<!-- FPI attributes -->
+<rect x="1116" y="108" width="200" height="130" rx="11" fill="rgba(176,26,26,0.06)" stroke="rgba(176,26,26,0.2)" stroke-width="1.5"/>
+<text x="1136" y="130" font-size="10.5" font-weight="700" fill="#b01a1a">Financial assets</text>
+<text x="1136" y="147" font-size="10.5" font-weight="700" fill="#b01a1a">Short-term capital</text>
+<text x="1136" y="164" font-size="10.5" font-weight="700" fill="#b01a1a">Speculative</text>
+<text x="1136" y="181" font-size="10.5" font-weight="700" fill="#b01a1a">Secondary market</text>
+<text x="1136" y="198" font-size="10.5" font-weight="700" fill="#b01a1a">Capital gains motive</text>
+<text x="1136" y="215" font-size="10.5" font-weight="700" fill="#b01a1a">Easy entry/exit</text>
+<text x="1136" y="232" font-size="10.5" font-weight="700" fill="#b01a1a">FII + QFI merged here</text>
+
+<rect x="1116" y="242" width="200" height="16" rx="5" fill="#b01a1a" opacity="0.15"/>
+<text x="1216" y="253" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="#b01a1a">eg: Buying shares, G-Secs</text>
+
+<!-- Connecting lines -->
+<path d="M226,53 C400,53 360,130 558,130" stroke="#1a4a8a" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#arr2)" opacity="0.5"/>
+<path d="M1114,53 C940,53 980,130 782,130" stroke="#b01a1a" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#arr2)" opacity="0.5"/>
+
+<!-- KEY RULE - center bottom -->
+<rect x="480" y="185" width="380" height="50" rx="11" fill="rgba(184,124,16,0.09)" stroke="rgba(184,124,16,0.3)" stroke-width="1.5"/>
+<text x="670" y="208" text-anchor="middle" font-size="11" font-weight="700" fill="#b87c10">⚡ THE KEY RULE</text>
+<text x="670" y="226" text-anchor="middle" font-size="10" fill="#8a6010">Foreign stake &gt;10% → Treated as FDI (Control-based)</text>
+</svg>
+</div>
+
+<!-- ══════════ SECTION 3: FDI ROUTES ══════════ -->
+<div class="sec">③ FDI Routes in India (FEMA 1999)</div>
+
+<div class="g2">
+  <div class="pc c-blue">
+    <div class="pc-lbl">Route 1</div>
+    <h3>🟢 Automatic Route</h3>
+    <div class="vlist">
+      <div class="vi"><strong>No Prior Approval</strong><span>Most sectors eligible</span></div>
+      <div class="vi"><strong>Investor Files with RBI</strong><span>Post-facto reporting only</span></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip ok">✅ Manufacturing</span>
+      <span class="chip ok">✅ Telecom</span>
+      <span class="chip ok">✅ Single-brand retail</span>
+    </div>
+  </div>
+  <div class="pc c-amber">
+    <div class="pc-lbl">Route 2</div>
+    <h3>🔴 Government Route</h3>
+    <div class="vlist">
+      <div class="vi"><strong>Prior Approval Required</strong><span>Cabinet/DPIIT approval needed</span></div>
+      <div class="vi"><strong>Land-border countries (China)</strong><span>ALL investment requires approval</span></div>
+      <div class="vi"><strong>Bangladesh & Pakistan</strong><span>Citizens not allowed via FDI</span></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip bad">❗ Defence</span>
+      <span class="chip bad">❗ Media</span>
+      <span class="chip bad">❗ Multi-brand retail</span>
+    </div>
+    <div style="margin-top:10px;padding:8px 11px;background:rgba(212,106,16,0.07);border-radius:8px;border:1px dashed rgba(212,106,16,0.3);">
+      <span style="font-size:10px;font-weight:700;color:var(--amber);">📍 Portal: Foreign Investment Facilitation Portal (FIFP) — Managed by DPIIT</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 4: RETAIL FDI ══════════ -->
+<div class="sec">④ Retail FDI — Exam Favourite</div>
+
+<div class="mc m3" style="margin-bottom:20px;">
+<svg viewBox="0 0 1340 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<rect width="1340" height="180" fill="#faf7f0"/>
+<defs>
+  <marker id="arr3" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+    <path d="M0,1 L0,6 L6,3.5 z" fill="#b87c10" opacity="0.5"/>
+  </marker>
+</defs>
+
+<!-- Root -->
+<rect x="550" y="14" width="240" height="50" rx="11" fill="#1a1612"/>
+<text x="670" y="38" text-anchor="middle" font-size="14" font-weight="700" fill="#f5e8c0">🏪 Retail FDI</text>
+<text x="670" y="55" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="#c8b880">Three Track System</text>
+
+<!-- Branch lines -->
+<path d="M620,64 C550,85 350,90 280,95" stroke="#b87c10" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.5" marker-end="url(#arr3)"/>
+<path d="M670,64 L670,90" stroke="#b87c10" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.5" marker-end="url(#arr3)"/>
+<path d="M720,64 C790,85 990,90 1060,95" stroke="#b87c10" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.5" marker-end="url(#arr3)"/>
+
+<!-- Single Brand -->
+<rect x="44" y="93" width="232" height="74" rx="11" fill="#1a6a3a"/>
+<text x="160" y="116" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">🏷️ Single Brand</text>
+<text x="160" y="133" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">Up to 100% FDI</text>
+<text x="160" y="149" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.6)">30% local sourcing</text>
+<text x="160" y="162" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.5)">Apple · IKEA · H&amp;M</text>
+
+<!-- Multi Brand -->
+<rect x="550" y="93" width="240" height="74" rx="11" fill="#b87c10"/>
+<text x="670" y="116" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">🏬 Multi Brand</text>
+<text x="670" y="133" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">Up to 51% FDI</text>
+<text x="670" y="149" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.6)">State approval required</text>
+<text x="670" y="162" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.5)">Not fully open</text>
+
+<!-- E-Commerce -->
+<rect x="1064" y="93" width="268" height="74" rx="11" fill="#1a4a8a"/>
+<text x="1198" y="116" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">🛒 E-Commerce</text>
+<text x="1198" y="133" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)">100% Marketplace ✅</text>
+<text x="1198" y="149" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.6)">Inventory model ❌</text>
+<text x="1198" y="162" text-anchor="middle" font-size="8.5" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.5)">Amazon · Flipkart (marketplace)</text>
+</svg>
+</div>
+
+<!-- ══════════ SECTION 5: FDI INSTRUMENTS ══════════ -->
+<div class="sec">⑤ FDI Instruments — Depository Receipts</div>
+
+<div class="g4">
+  <div class="pc c-purple">
+    <div class="pc-lbl">Instrument 1</div>
+    <h3>🔄 FCCBs</h3>
+    <div class="vlist">
+      <div class="vi"><strong>Debt instrument</strong><span>Foreign Currency Convertible Bonds</span></div>
+      <div class="vi"><strong>Convertible to equity</strong><span>Treated as FDI when converted</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip neu">Bond → Equity</span></div>
+  </div>
+  <div class="pc c-teal">
+    <div class="pc-lbl">Instrument 2</div>
+    <h3>🌍 GDR</h3>
+    <div class="vlist">
+      <div class="vi"><strong>Global Depository Receipt</strong><span>Indian company raises money abroad</span></div>
+      <div class="vi"><strong>Listed in Europe</strong><span>Luxembourg/London exchanges</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip neu">India → Europe</span></div>
+  </div>
+  <div class="pc c-blue">
+    <div class="pc-lbl">Instrument 3</div>
+    <h3>🇺🇸 ADR</h3>
+    <div class="vlist">
+      <div class="vi"><strong>American Depository Receipt</strong><span>Listed in US markets</span></div>
+      <div class="vi"><strong>Dollar-denominated</strong><span>NYSE / NASDAQ listed</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip neu">India → USA</span></div>
+  </div>
+  <div class="pc c-gold">
+    <div class="pc-lbl">Instrument 4</div>
+    <h3>🇮🇳 IDR</h3>
+    <div class="vlist">
+      <div class="vi"><strong>Indian Depository Receipt</strong><span>Foreign company raises money in India</span></div>
+      <div class="vi"><strong>Reverse flow</strong><span>Listed on Indian exchanges</span></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip neu">Foreign → India</span></div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 6: WHERE FDI NOT ALLOWED ══════════ -->
+<div class="sec">⑥ Sectors Where FDI is NOT Allowed</div>
+
+<div class="pc c-red" style="margin-bottom:20px;">
+  <div class="pc-lbl">Prohibited Sectors</div>
+  <h3>🚫 FDI Banned — Complete List</h3>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+    <span style="padding:6px 14px;border-radius:8px;background:rgba(176,26,26,0.08);border:1.5px solid rgba(176,26,26,0.2);font-size:11px;font-weight:700;color:var(--red);">⚛️ Atomic Energy</span>
+    <span style="padding:6px 14px;border-radius:8px;background:rgba(176,26,26,0.08);border:1.5px solid rgba(176,26,26,0.2);font-size:11px;font-weight:700;color:var(--red);">🎰 Lottery & Gambling</span>
+    <span style="padding:6px 14px;border-radius:8px;background:rgba(176,26,26,0.08);border:1.5px solid rgba(176,26,26,0.2);font-size:11px;font-weight:700;color:var(--red);">📝 Chit Funds</span>
+    <span style="padding:6px 14px;border-radius:8px;background:rgba(176,26,26,0.08);border:1.5px solid rgba(176,26,26,0.2);font-size:11px;font-weight:700;color:var(--red);">🏦 Nidhi Company</span>
+    <span style="padding:6px 14px;border-radius:8px;background:rgba(176,26,26,0.08);border:1.5px solid rgba(176,26,26,0.2);font-size:11px;font-weight:700;color:var(--red);">🚬 Tobacco Mfg.</span>
+    <span style="padding:6px 14px;border-radius:8px;background:rgba(176,26,26,0.08);border:1.5px solid rgba(176,26,26,0.2);font-size:11px;font-weight:700;color:var(--red);">🏠 Real Estate Business</span>
+    <span style="padding:6px 14px;border-radius:8px;background:rgba(176,26,26,0.08);border:1.5px solid rgba(176,26,26,0.2);font-size:11px;font-weight:700;color:var(--red);">🌾 Agriculture (most)</span>
+  </div>
+  <div style="margin-top:10px;font-size:10px;color:var(--muted);font-family:'IBM Plex Mono',monospace;">⚠️ Real estate development projects (housing etc.) are allowed; pure real estate business is not</div>
+</div>
+
+<!-- ══════════ SECTION 7: SHORT / LONG SELLING ══════════ -->
+<div class="sec">⑦ Short Selling & Long Selling</div>
+
+<div class="mc m4" style="margin-bottom:20px;">
+<svg viewBox="0 0 1340 230" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<rect width="1340" height="230" fill="#faf7f0"/>
+<defs>
+  <marker id="arr4" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+    <path d="M0,1 L0,6 L6,3.5 z" fill="#0a607a" opacity="0.5"/>
+  </marker>
+</defs>
+
+<!-- Root -->
+<rect x="530" y="12" width="280" height="50" rx="12" fill="#0a607a"/>
+<text x="670" y="35" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">📊 Market Selling Mechanisms</text>
+<text x="670" y="52" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="rgba(255,255,255,0.6)">Regulated by SEBI</text>
+
+<!-- Lines -->
+<path d="M595,62 C450,75 280,80 180,90" stroke="#0a607a" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.5" marker-end="url(#arr4)"/>
+<path d="M745,62 C890,75 1060,80 1160,90" stroke="#b01a1a" stroke-width="1.5" fill="none" stroke-dasharray="4 3" opacity="0.5" marker-end="url(#arr4)"/>
+
+<!-- SHORT SELLING BOX -->
+<rect x="24" y="88" width="310" height="128" rx="12" fill="#1a4a8a"/>
+<text x="179" y="113" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">📉 Short Selling</text>
+<text x="179" y="130" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Borrow → Sell High → Buy Low → Profit</text>
+<text x="44" y="152" font-size="10" fill="rgba(255,255,255,0.8)">• Retail: intraday only (square off same day)</text>
+<text x="44" y="168" font-size="10" fill="rgba(255,255,255,0.8)">• Institutional: allowed with disclosure</text>
+<text x="44" y="184" font-size="10" fill="rgba(255,255,255,0.8)">• Borrowed via SLBM</text>
+<rect x="44" y="196" width="270" height="16" rx="6" fill="rgba(176,26,26,0.6)"/>
+<text x="179" y="207" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="#fff">❌ NAKED SHORT SELLING — PROHIBITED</text>
+
+<!-- LONG SELLING BOX -->
+<rect x="1006" y="88" width="310" height="128" rx="12" fill="#1a6a3a"/>
+<text x="1161" y="113" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">📈 Long Selling</text>
+<text x="1161" y="130" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Buy First → Hold → Sell Later at Higher Price</text>
+<text x="1026" y="152" font-size="10" fill="rgba(255,255,255,0.8)">• Common retail investor method</text>
+<text x="1026" y="168" font-size="10" fill="rgba(255,255,255,0.8)">• No borrowing required</text>
+<text x="1026" y="184" font-size="10" fill="rgba(255,255,255,0.8)">• No disclosure requirement</text>
+<rect x="1044" y="196" width="230" height="16" rx="6" fill="rgba(26,74,138,0.4)"/>
+<text x="1159" y="207" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="#fff">✅ Standard Investment Approach</text>
+
+<!-- SLBM BOX CENTER -->
+<rect x="478" y="100" width="384" height="118" rx="12" fill="rgba(10,96,122,0.07)" stroke="rgba(10,96,122,0.3)" stroke-width="1.5"/>
+<text x="670" y="126" text-anchor="middle" font-size="12" font-weight="700" fill="#0a607a">🔄 SLBM</text>
+<text x="670" y="143" text-anchor="middle" font-size="10" fill="#0a607a">Securities Lending &amp; Borrowing Mechanism</text>
+<text x="670" y="160" text-anchor="middle" font-size="9.5" fill="var(--muted)">Enables borrowing for short selling</text>
+<text x="670" y="177" text-anchor="middle" font-size="9.5" fill="var(--muted)">SEBI regulated · NSCCL managed</text>
+
+<!-- Options call-out -->
+<rect x="494" y="190" width="352" height="22" rx="7" fill="rgba(90,26,138,0.12)" stroke="rgba(90,26,138,0.2)" stroke-width="1"/>
+<text x="670" y="204" text-anchor="middle" font-size="9" font-family="IBM Plex Mono" fill="#5a1a8a">📞 Call = Right to BUY · 📤 Put = Right to SELL · Loss = Premium Only</text>
+</svg>
+</div>
+
+<!-- ══════════ SECTION 8: KEY MARKET TERMS ══════════ -->
+<div class="sec">⑧ Key Market Terms — Prelims Rapid Fire</div>
+
+<div class="g3" style="margin-bottom:20px;">
+  <div class="pc c-gold">
+    <div class="pc-lbl">Price Concepts</div>
+    <h3>📊 Market Movements</h3>
+    <div class="vlist">
+      <div class="vi"><strong>🐂 Bull Market</strong><span>Rising prices · Investor optimism</span></div>
+      <div class="vi"><strong>🐻 Bear Market</strong><span>Falling prices · Pessimism</span></div>
+      <div class="vi"><strong>🔵 Blue-chip</strong><span>Strong, stable company stock</span></div>
+      <div class="vi"><strong>⚡ Circuit Breaker</strong><span>Stops extreme market volatility</span></div>
+      <div class="vi"><strong>📐 Beta</strong><span>&gt;1 = more volatile than market</span></div>
+    </div>
+  </div>
+  <div class="pc c-blue">
+    <div class="pc-lbl">Instruments</div>
+    <h3>📜 Securities Types</h3>
+    <div class="vlist">
+      <div class="vi"><strong>🪙 Gilt-edged Securities</strong><span>Govt bonds — virtually risk-free</span></div>
+      <div class="vi"><strong>🏢 Market Cap</strong><span>Price × Shares outstanding</span></div>
+      <div class="vi"><strong>📋 IPO</strong><span>First-time share issue to public</span></div>
+      <div class="vi"><strong>💼 OFS</strong><span>Promoters sell existing shares</span></div>
+      <div class="vi"><strong>🛡️ CDS</strong><span>Credit Default Swap — transfers credit risk</span></div>
+    </div>
+  </div>
+  <div class="pc c-purple">
+    <div class="pc-lbl">Risk & Derivatives</div>
+    <h3>🔢 Options & Risk</h3>
+    <div class="vlist">
+      <div class="vi"><strong>📞 Call Option</strong><span>Right to BUY at strike price</span></div>
+      <div class="vi"><strong>📤 Put Option</strong><span>Right to SELL at strike price</span></div>
+      <div class="vi"><strong>💰 Loss = Premium only</strong><span>Options buyer's max loss capped</span></div>
+      <div class="vi"><strong>🔐 CDS Buyer</strong><span>Pays premium · Gets protection</span></div>
+      <div class="vi"><strong>⚠️ CDS Seller</strong><span>Takes credit risk · Earns premium</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 9: REGULATORS ══════════ -->
+<div class="sec">⑨ Regulatory Framework</div>
+
+<div class="mc m2" style="margin-bottom:22px;">
+<svg viewBox="0 0 1340 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'DM Sans',sans-serif;">
+<rect width="1340" height="160" fill="#faf7f0"/>
+<defs>
+  <marker id="arr5" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+    <path d="M0,1 L0,6 L6,3.5 z" fill="#888" opacity="0.5"/>
+  </marker>
+</defs>
+
+<!-- SEBI -->
+<rect x="24" y="30" width="270" height="112" rx="12" fill="#1a6a3a"/>
+<text x="159" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">⚖️ SEBI</text>
+<text x="159" y="75" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Securities &amp; Exchange Board of India</text>
+<text x="44" y="97" font-size="9.5" fill="rgba(255,255,255,0.8)">• Regulates stock markets</text>
+<text x="44" y="112" font-size="9.5" fill="rgba(255,255,255,0.8)">• Governs short selling, FPI registration</text>
+<text x="44" y="127" font-size="9.5" fill="rgba(255,255,255,0.8)">• Oversees IPO, OFS, derivatives</text>
+
+<!-- RBI -->
+<rect x="348" y="30" width="270" height="112" rx="12" fill="#b87c10"/>
+<text x="483" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">🏦 RBI</text>
+<text x="483" y="75" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Reserve Bank of India</text>
+<text x="368" y="97" font-size="9.5" fill="rgba(255,255,255,0.8)">• External flows under FEMA</text>
+<text x="368" y="112" font-size="9.5" fill="rgba(255,255,255,0.8)">• FDI/FPI reporting &amp; monitoring</text>
+<text x="368" y="127" font-size="9.5" fill="rgba(255,255,255,0.8)">• Capital Account management</text>
+
+<!-- DPIIT -->
+<rect x="672" y="30" width="270" height="112" rx="12" fill="#1a4a8a"/>
+<text x="807" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">🏛️ DPIIT</text>
+<text x="807" y="75" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Dept. for Promotion of Industry &amp; IT</text>
+<text x="692" y="97" font-size="9.5" fill="rgba(255,255,255,0.8)">• FDI Policy formulation</text>
+<text x="692" y="112" font-size="9.5" fill="rgba(255,255,255,0.8)">• Manages FIFP portal</text>
+<text x="692" y="127" font-size="9.5" fill="rgba(255,255,255,0.8)">• Govt Route approvals</text>
+
+<!-- FEMA -->
+<rect x="996" y="30" width="320" height="112" rx="12" fill="#5a1a8a"/>
+<text x="1156" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">📋 FEMA 1999</text>
+<text x="1156" y="75" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">Foreign Exchange Management Act</text>
+<text x="1016" y="97" font-size="9.5" fill="rgba(255,255,255,0.8)">• Governs all FDI/FPI routes</text>
+<text x="1016" y="112" font-size="9.5" fill="rgba(255,255,255,0.8)">• Replaced FERA (more liberal)</text>
+<text x="1016" y="127" font-size="9.5" fill="rgba(255,255,255,0.8)">• Civil (not criminal) violations</text>
+</svg>
+</div>
+
+<!-- ══════════ SECTION 10: PRELIMS TRAPS ══════════ -->
+<div class="sec">⑩ 5 Prelims Traps — Must Know</div>
+
+<div class="trap">
+  <div class="trap-title">🎯 PRELIMS TRAPS — These Are the Exact Questions That Fool Students</div>
+  <div class="g5" style="margin-bottom:0;">
+    <div style="padding:12px;border-radius:10px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.18);">
+      <div style="font-size:18px;text-align:center;margin-bottom:6px;">🕳️</div>
+      <div style="font-size:11px;font-weight:700;color:var(--red);text-align:center;margin-bottom:4px;">TRAP 1</div>
+      <div style="font-size:10.5px;text-align:center;font-weight:600;">FDI &gt;10% stake = Control-based, not just ownership %</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(26,74,138,0.06);border:1.5px solid rgba(26,74,138,0.18);">
+      <div style="font-size:18px;text-align:center;margin-bottom:6px;">🏪</div>
+      <div style="font-size:11px;font-weight:700;color:var(--accent2);text-align:center;margin-bottom:4px;">TRAP 2</div>
+      <div style="font-size:10.5px;text-align:center;font-weight:600;">Single-brand retail = 100% FDI, Multi-brand = only 51%</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.18);">
+      <div style="font-size:18px;text-align:center;margin-bottom:6px;">🛒</div>
+      <div style="font-size:11px;font-weight:700;color:var(--green);text-align:center;margin-bottom:4px;">TRAP 3</div>
+      <div style="font-size:10.5px;text-align:center;font-weight:600;">Marketplace model allowed, Inventory-based model NOT</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.18);">
+      <div style="font-size:18px;text-align:center;margin-bottom:6px;">📉</div>
+      <div style="font-size:11px;font-weight:700;color:var(--red);text-align:center;margin-bottom:4px;">TRAP 4</div>
+      <div style="font-size:10.5px;text-align:center;font-weight:600;">Naked short selling is BANNED in India (SEBI rule)</div>
+    </div>
+    <div style="padding:12px;border-radius:10px;background:rgba(184,124,16,0.06);border:1.5px solid rgba(184,124,16,0.2);">
+      <div style="font-size:18px;text-align:center;margin-bottom:6px;">📊</div>
+      <div style="font-size:11px;font-weight:700;color:var(--gold);text-align:center;margin-bottom:4px;">TRAP 5</div>
+      <div style="font-size:10.5px;text-align:center;font-weight:600;">FDI reflected in Capital Account of BOP (not Current)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ KEYSTONE ══════════ -->
+<div class="keystone">
+  <div class="keystone-icon">🌐</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Big Picture Connection</div>
+    <div class="keystone-sub">
+      <strong style="color:#f5d78a;">FDI = Stable, long-term, transformational capital (controls assets).</strong> &nbsp;
+      <strong style="color:#f5d78a;">FPI = Market-sensitive, short-term, speculative capital (no control).</strong><br>
+      Retail FDI rules protect domestic players. E-commerce rules prevent inventory monopolies.
+      SEBI regulates market stability. RBI handles external flows under FEMA 1999.
+      All foreign investment ultimately flows through India's Capital Account of BOP.
+    </div>
+    <div class="kpills">
+      <span class="kpill">🏭 FDI = Control</span>
+      <span class="kpill">📊 FPI = No Control</span>
+      <span class="kpill">🏪 Retail FDI Rules</span>
+      <span class="kpill">📜 FEMA 1999</span>
+      <span class="kpill">⚖️ SEBI + RBI</span>
+      <span class="kpill">💰 Capital Account BOP</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+</body>
+</html>

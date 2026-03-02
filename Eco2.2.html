@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Securities → Bond Market — UPSC Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ee;--paper:#fdfaf3;--ink:#1a1612;
+  --gold:#b8860b;--gold2:#d4a017;--gold-lt:#fdf3d0;
+  --rust:#c0441a;--rust-lt:#fdf0eb;
+  --navy:#1b3358;--navy-lt:#e8eef7;
+  --forest:#1a5c3a;--forest-lt:#e6f4ec;
+  --plum:#5c1a5c;--plum-lt:#f4e6f4;
+  --teal:#0d6875;--teal-lt:#e6f5f7;
+  --slate:#3a4a5c;--muted:#8a7a60;
+  --border:#e0d5b8;--border2:#d0c5a0;
+  --shadow:rgba(26,22,18,0.08);
+}
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+/* paper texture overlay */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.page{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 28px 120px;}
+
+/* ═══ HEADER ═══ */
+.hero{
+  text-align:center;padding:56px 20px 32px;
+  position:relative;
+}
+.hero-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:4px;color:var(--gold);
+  text-transform:uppercase;margin-bottom:14px;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,5.5vw,64px);
+  line-height:1.05;font-weight:700;
+  color:var(--ink);
+}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{
+  margin-top:10px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:1.5px;color:var(--muted);
+}
+.hero-rule{
+  width:120px;height:3px;margin:18px auto 0;
+  background:linear-gradient(90deg,var(--rust),var(--gold),var(--navy));
+  border-radius:3px;
+}
+
+/* ═══ SECTION DIVIDERS ═══ */
+.sec-div{
+  display:flex;align-items:center;gap:16px;
+  margin:40px 0 20px;
+}
+.sec-div-line{flex:1;height:1px;background:var(--border2);}
+.sec-div-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;letter-spacing:3px;color:var(--gold);
+  text-transform:uppercase;white-space:nowrap;
+  padding:4px 10px;border:1px solid var(--border2);
+  border-radius:4px;background:var(--paper);
+}
+
+/* ═══ GRIDS ═══ */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:1000px){.g4,.g5{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:800px){.g3,.g4,.g5{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.g2,.g3,.g4,.g5{grid-template-columns:1fr;}}
+
+/* ═══ PANEL CARDS ═══ */
+.card{
+  background:var(--paper);
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  position:relative;overflow:hidden;
+  transition:box-shadow .2s,transform .2s;
+}
+.card:hover{
+  box-shadow:0 8px 32px var(--shadow);
+  transform:translateY(-2px);
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  border-radius:14px 14px 0 0;
+}
+.card.gold::before{background:linear-gradient(90deg,var(--rust),var(--gold));}
+.card.navy::before{background:var(--navy);}
+.card.forest::before{background:var(--forest);}
+.card.rust::before{background:var(--rust);}
+.card.plum::before{background:var(--plum);}
+.card.teal::before{background:var(--teal);}
+.card.slate::before{background:var(--slate);}
+.card.ink::before{background:var(--ink);}
+
+.card-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;letter-spacing:2px;color:var(--muted);
+  text-transform:uppercase;margin-bottom:7px;
+}
+.card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:700;
+  line-height:1.3;margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+
+/* ═══ MAP CARD (SVG wrapper) ═══ */
+.map-card{
+  background:var(--paper);
+  border:1.5px solid var(--border);
+  border-radius:18px;overflow:hidden;
+  margin-bottom:20px;position:relative;
+}
+.map-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;
+}
+.map-card.m-gold::before{background:linear-gradient(90deg,var(--rust),var(--gold),var(--navy));}
+.map-card.m-navy::before{background:linear-gradient(90deg,var(--navy),var(--plum),var(--teal));}
+.map-card.m-forest::before{background:linear-gradient(90deg,var(--forest),var(--teal),var(--navy));}
+.map-card.m-rust::before{background:linear-gradient(90deg,var(--rust),var(--gold));}
+.map-card.m-plum::before{background:linear-gradient(90deg,var(--plum),var(--navy));}
+.map-card svg{display:block;width:100%;}
+
+/* ═══ PILLS & CHIPS ═══ */
+.pill{
+  display:inline-flex;align-items:center;
+  padding:3px 10px;border-radius:20px;
+  font-size:10px;font-weight:700;margin:2px;
+  font-family:'JetBrains Mono',monospace;
+}
+.pill.gold{background:rgba(184,134,11,0.1);color:var(--gold);}
+.pill.navy{background:rgba(27,51,88,0.1);color:var(--navy);}
+.pill.forest{background:rgba(26,92,58,0.1);color:var(--forest);}
+.pill.rust{background:rgba(192,68,26,0.1);color:var(--rust);}
+.pill.plum{background:rgba(92,26,92,0.1);color:var(--plum);}
+.pill.teal{background:rgba(13,104,117,0.1);color:var(--teal);}
+
+.chip{
+  display:inline-block;padding:4px 10px;
+  border-radius:7px;font-size:10px;font-weight:700;
+  border:1.5px solid;margin:2px;
+  font-family:'JetBrains Mono',monospace;
+}
+.chip.ok{background:rgba(26,92,58,0.07);border-color:rgba(26,92,58,0.2);color:var(--forest);}
+.chip.bad{background:rgba(192,68,26,0.07);border-color:rgba(192,68,26,0.2);color:var(--rust);}
+.chip.neu{background:rgba(184,134,11,0.07);border-color:rgba(184,134,11,0.2);color:var(--gold);}
+
+/* ═══ STAT BOX ═══ */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{
+  flex:1;padding:12px;border-radius:10px;
+  border:1.5px solid var(--border);background:var(--bg);
+  text-align:center;
+}
+.stat-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:700;line-height:1;
+}
+.stat-lbl{
+  font-family:'JetBrains Mono',monospace;
+  font-size:8px;color:var(--muted);margin-top:3px;
+}
+
+/* ═══ V-LIST ═══ */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{
+  padding:9px 12px;border-radius:9px;
+  background:var(--bg);border:1px solid var(--border);
+  font-size:11px;
+}
+.vt{font-weight:700;margin-bottom:2px;}
+.vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ═══ FLOW CHAIN ═══ */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{
+  padding:6px 12px;border-radius:8px;
+  font-size:10px;font-weight:700;
+  border:1.5px solid;white-space:nowrap;
+}
+.fa{font-size:16px;color:var(--muted);}
+
+/* ═══ CALLOUT ═══ */
+.callout{
+  padding:11px 14px;border-radius:9px;
+  background:var(--forest-lt);
+  border:1.5px solid rgba(26,92,58,0.2);margin:8px 0;
+}
+.callout.warn{background:var(--rust-lt);border-color:rgba(192,68,26,0.2);}
+.callout.info{background:var(--navy-lt);border-color:rgba(27,51,88,0.2);}
+.callout-t{font-size:11px;font-weight:700;color:var(--forest);margin-bottom:3px;}
+.callout.warn .callout-t{color:var(--rust);}
+.callout.info .callout-t{color:var(--navy);}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ═══ KEYSTONE ═══ */
+.keystone{
+  background:var(--ink);color:#f5e8c0;
+  border-radius:18px;padding:28px 34px;
+  margin:24px 0;
+  display:flex;align-items:center;gap:24px;
+  flex-wrap:wrap;
+}
+.ks-icon{font-size:40px;flex:0 0 auto;}
+.ks-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-style:italic;margin-bottom:6px;
+}
+.ks-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.ks-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{
+  padding:4px 12px;border-radius:20px;
+  background:rgba(255,255,255,0.1);
+  font-size:10px;font-family:'JetBrains Mono',monospace;
+}
+
+/* ═══ TABLE ═══ */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{
+  background:var(--ink);color:#f5e8c0;
+  padding:9px 12px;text-align:left;
+  font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;
+}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+.ctable td{
+  padding:9px 12px;border-bottom:1px solid var(--border);
+  vertical-align:top;line-height:1.5;
+}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,134,11,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--rust);}
+
+/* ═══ COMPARE ROW ═══ */
+.cmp{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;
+}
+.cmp-side{padding:16px;border-radius:12px;border:2px solid;}
+.cmp-side.left{border-color:var(--navy);background:var(--navy-lt);}
+.cmp-side.right{border-color:var(--forest);background:var(--forest-lt);}
+.cmp-title{font-size:12px;font-weight:800;margin-bottom:8px;}
+.cmp-side.left .cmp-title{color:var(--navy);}
+.cmp-side.right .cmp-title{color:var(--forest);}
+
+/* ═══ PHASE ROW ═══ */
+.phase-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{
+  padding:18px;border-radius:12px;border:2px solid;
+  text-align:center;
+}
+.phase-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:700;
+}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+
+/* ═══ MARKET LEVEL BLOCKS ═══ */
+.mkt-block{
+  padding:14px 18px;border-radius:11px;
+  border:1.5px solid;margin-bottom:10px;
+}
+
+/* ═══ INVERSE RULE BOX ═══ */
+.rule-box{
+  padding:16px 20px;border-radius:12px;
+  background:var(--ink);color:#f5e8c0;
+  margin:12px 0;text-align:center;
+}
+.rule-box .rb-main{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-style:italic;
+  margin-bottom:4px;
+}
+.rule-box .rb-sub{
+  font-size:9px;font-family:'JetBrains Mono',monospace;
+  color:rgba(245,232,192,0.6);
+}
+
+/* ═══ IMPACT CHAIN ═══ */
+.ic{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:10px 0;}
+.ic-node{
+  padding:7px 12px;border-radius:8px;
+  font-size:10px;font-weight:700;
+  white-space:nowrap;border:1.5px solid;
+}
+.ic-arr{font-size:16px;color:var(--muted);margin:0 4px;flex:0 0 auto;}
+
+/* ═══ BAR ═══ */
+.bar-section{display:flex;flex-direction:column;gap:10px;margin:12px 0;}
+.bar-item{display:flex;align-items:center;gap:12px;}
+.bar-lbl{font-size:10px;font-weight:700;width:100px;flex:0 0 100px;text-align:right;font-family:'JetBrains Mono',monospace;}
+.bar-track{flex:1;background:var(--bg);border-radius:6px;height:24px;overflow:hidden;border:1px solid var(--border);}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:9px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#fff;}
+.bar-val{font-size:11px;font-weight:800;width:50px;flex:0 0 50px;font-family:'JetBrains Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">Indian Economy · Capital Markets · UPSC Prelims</div>
+  <h1>Securities → <em>Bond Market</em></h1>
+  <div class="hero-sub">Securities → G-Secs → Bond Market → Global Bond Index → Corporate Bonds</div>
+  <div class="hero-rule"></div>
+</div>
+
+<!-- ════════════════════════════════════
+     SECTION 1: MASTER FLOW
+════════════════════════════════════ -->
+<div class="sec-div"><div class="sec-div-line"></div><div class="sec-div-label">① Master Flow — The Big Picture</div><div class="sec-div-line"></div></div>
+
+<div class="map-card m-gold">
+<svg viewBox="0 0 1320 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<defs>
+  <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#b8860b" opacity="0.7"/>
+  </marker>
+  <marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#1b3358" opacity="0.7"/>
+  </marker>
+</defs>
+<!-- BG -->
+<rect width="1320" height="110" fill="rgba(253,250,243,0.6)"/>
+<!-- Connecting lines -->
+<line x1="148" y1="55" x2="192" y2="55" stroke="#b8860b" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+<line x1="310" y1="55" x2="354" y2="55" stroke="#b8860b" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+<line x1="472" y1="55" x2="516" y2="55" stroke="#b8860b" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+<line x1="634" y1="55" x2="678" y2="55" stroke="#b8860b" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+<line x1="796" y1="55" x2="840" y2="55" stroke="#1b3358" stroke-width="2" opacity="0.5" marker-end="url(#arr2)"/>
+<line x1="958" y1="55" x2="1002" y2="55" stroke="#1b3358" stroke-width="2" opacity="0.5" marker-end="url(#arr2)"/>
+<line x1="1120" y1="55" x2="1164" y2="55" stroke="#1a5c3a" stroke-width="2" opacity="0.5" marker-end="url(#arr)"/>
+
+<!-- Node helper macro — using rect+text manually -->
+<!-- N1: Company -->
+<rect x="10" y="22" width="138" height="66" rx="10" fill="#b8860b"/>
+<text x="79" y="46" text-anchor="middle" font-size="18" fill="#fff">🏭</text>
+<text x="79" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Company</text>
+<text x="79" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Needs Capital</text>
+
+<!-- N2: Issues Securities -->
+<rect x="200" y="22" width="138" height="66" rx="10" fill="#c0441a"/>
+<text x="269" y="46" text-anchor="middle" font-size="18" fill="#fff">📄</text>
+<text x="269" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Issues Securities</text>
+<text x="269" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Equity or Debt</text>
+
+<!-- N3: Bond/Equity -->
+<rect x="362" y="22" width="138" height="66" rx="10" fill="#1b3358"/>
+<text x="431" y="46" text-anchor="middle" font-size="18" fill="#fff">⚖️</text>
+<text x="431" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Equity vs Debt</text>
+<text x="431" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Ownership vs Loan</text>
+
+<!-- N4: Bond Price ↔ Rate -->
+<rect x="524" y="22" width="138" height="66" rx="10" fill="#5c1a5c"/>
+<text x="593" y="46" text-anchor="middle" font-size="18" fill="#fff">📉</text>
+<text x="593" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Price vs Rate</text>
+<text x="593" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Inverse Relationship</text>
+
+<!-- N5: G-Secs -->
+<rect x="686" y="22" width="138" height="66" rx="10" fill="#0d6875"/>
+<text x="755" y="46" text-anchor="middle" font-size="18" fill="#fff">🏛️</text>
+<text x="755" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Govt Securities</text>
+<text x="755" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Risk-Free · RBI</text>
+
+<!-- N6: Bond Market -->
+<rect x="848" y="22" width="138" height="66" rx="10" fill="#1b3358"/>
+<text x="917" y="46" text-anchor="middle" font-size="18" fill="#fff">📊</text>
+<text x="917" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Bond Market</text>
+<text x="917" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Primary + Secondary</text>
+
+<!-- N7: Global Index -->
+<rect x="1010" y="22" width="138" height="66" rx="10" fill="#3a4a5c"/>
+<text x="1079" y="46" text-anchor="middle" font-size="18" fill="#fff">🌍</text>
+<text x="1079" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Global Bond Index</text>
+<text x="1079" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">FAR · Euroclear</text>
+
+<!-- N8: Corporate Bonds -->
+<rect x="1172" y="22" width="138" height="66" rx="10" fill="#1a5c3a"/>
+<text x="1241" y="46" text-anchor="middle" font-size="18" fill="#fff">🏢</text>
+<text x="1241" y="64" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Corporate Bonds</text>
+<text x="1241" y="78" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.65)" font-family="JetBrains Mono">Deepen Market</text>
+</svg>
+</div>
+
+<!-- ════════════════════════════════════
+     SECTION 2: WHAT ARE SECURITIES
+════════════════════════════════════ -->
+<div class="sec-div"><div class="sec-div-line"></div><div class="sec-div-label">② What Are Securities?</div><div class="sec-div-line"></div></div>
+
+<div class="map-card m-gold">
+<svg viewBox="0 0 1320 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<rect width="1320" height="200" fill="rgba(253,250,243,0.5)"/>
+
+<!-- Central Node -->
+<rect x="510" y="70" width="300" height="72" rx="12" fill="#1a1612"/>
+<text x="660" y="100" text-anchor="middle" font-size="16" fill="#f5e8c0" font-family="Cormorant Garamond" font-weight="700" font-style="italic">Securities</text>
+<text x="660" y="118" text-anchor="middle" font-size="10" fill="rgba(245,232,192,0.7)">Tradable Financial Instruments</text>
+<text x="660" y="133" text-anchor="middle" font-size="10" fill="rgba(245,232,192,0.7)">that Promise Future Return</text>
+
+<!-- NOT securities (left top) -->
+<rect x="60" y="14" width="200" height="60" rx="10" fill="rgba(192,68,26,0.1)" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="160" y="38" text-anchor="middle" font-size="13" fill="#c0441a">❌ Bank Passbook</text>
+<text x="160" y="56" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">NOT TRADABLE</text>
+<line x1="260" y1="44" x2="510" y2="100" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+<!-- NOT securities (left btm) -->
+<rect x="60" y="126" width="200" height="60" rx="10" fill="rgba(192,68,26,0.1)" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="160" y="150" text-anchor="middle" font-size="13" fill="#c0441a">❌ FD Certificate</text>
+<text x="160" y="168" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">NOT TRADABLE</text>
+<line x1="260" y1="156" x2="510" y2="112" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+<!-- EQUITY (right top) -->
+<rect x="1050" y="14" width="230" height="80" rx="10" fill="rgba(27,51,88,0.1)" stroke="#1b3358" stroke-width="2"/>
+<text x="1165" y="38" text-anchor="middle" font-size="13" fill="#1b3358" font-weight="700">✔ Share / Equity</text>
+<text x="1165" y="55" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">OWNERSHIP · DIVIDEND</text>
+<text x="1165" y="72" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">VOTING RIGHTS</text>
+<line x1="1050" y1="54" x2="810" y2="96" stroke="#1b3358" stroke-width="2" opacity="0.4"/>
+
+<!-- DEBT (right btm) -->
+<rect x="1050" y="120" width="230" height="80" rx="10" fill="rgba(26,92,58,0.1)" stroke="#1a5c3a" stroke-width="2"/>
+<text x="1165" y="144" text-anchor="middle" font-size="13" fill="#1a5c3a" font-weight="700">✔ Bond / Debt</text>
+<text x="1165" y="161" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">LOAN · FIXED INTEREST</text>
+<text x="1165" y="178" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">PRINCIPAL AT MATURITY</text>
+<line x1="1050" y1="160" x2="810" y2="116" stroke="#1a5c3a" stroke-width="2" opacity="0.4"/>
+
+<!-- Split label -->
+<text x="660" y="185" text-anchor="middle" font-size="8" fill="rgba(26,22,18,0.3)" font-family="JetBrains Mono" letter-spacing="2">SECURITIES = EQUITY + DEBT (BONDS)</text>
+</svg>
+</div>
+
+<!-- ════════════════════════════════════
+     SECTION 3: EQUITY vs DEBT DEEP DIVE
+════════════════════════════════════ -->
+<div class="sec-div"><div class="sec-div-line"></div><div class="sec-div-label">③ Equity vs Debt — Deep Dive</div><div class="sec-div-line"></div></div>
+
+<div class="cmp">
+  <div class="cmp-side left">
+    <div class="cmp-title">📈 Equity Security (Share)</div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Represents Ownership</div><div class="vs">Shareholder = part-owner of company</div></div>
+      <div class="vitem"><div class="vt">Return = Dividend + Capital Gain</div><div class="vs">Not fixed — depends on profit</div></div>
+      <div class="vitem"><div class="vt">Has Voting Rights</div><div class="vs">AGM, board decisions</div></div>
+      <div class="vitem"><div class="vt">On Liability Side of Balance Sheet</div><div class="vs">Shareholders' equity</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip neu">Last in liquidation queue</span></div>
+  </div>
+  <div class="cmp-side right">
+    <div class="cmp-title" style="color:var(--forest);">📋 Debt Security (Bond)</div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Represents a Loan to Company</div><div class="vs">Bondholder = creditor, not owner</div></div>
+      <div class="vitem"><div class="vt">Return = Fixed Interest (Coupon)</div><div class="vs">Predetermined, regular payments</div></div>
+      <div class="vitem"><div class="vt">No Voting Rights</div><div class="vs">No say in company operations</div></div>
+      <div class="vitem"><div class="vt">Principal Returned at Maturity</div><div class="vs">Par/face value redeemed</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip ok">Priority in liquidation</span></div>
+  </div>
+</div>
+
+<!-- Bond Price vs Interest Rule -->
+<div class="rule-box">
+  <div class="rb-main">🔑 Bond Price & Interest Rate — The Core Inverse Rule</div>
+  <div style="display:flex;justify-content:center;gap:24px;margin:12px 0;flex-wrap:wrap;">
+    <div style="padding:10px 20px;background:rgba(192,68,26,0.25);border-radius:8px;font-size:13px;font-weight:800;border:1px solid rgba(192,68,26,0.4);">Interest Rate ↑ → Bond Price ↓</div>
+    <div style="padding:10px 20px;background:rgba(26,92,58,0.25);border-radius:8px;font-size:13px;font-weight:800;border:1px solid rgba(26,92,58,0.4);">Interest Rate ↓ → Bond Price ↑</div>
+  </div>
+  <div class="rb-sub">WHY: If market rate = 12% but your bond pays 10%, no one buys at full price. Price falls until Yield = 10/Price aligns with market.</div>
+  <div style="margin-top:10px;padding:8px 16px;background:rgba(255,255,255,0.1);border-radius:8px;font-size:11px;font-family:'JetBrains Mono',monospace;">
+    YIELD = Coupon / Market Price &nbsp;|&nbsp; ∴ Yield ∝ 1/Price
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     SECTION 4: GOVERNMENT SECURITIES
+════════════════════════════════════ -->
+<div class="sec-div"><div class="sec-div-line"></div><div class="sec-div-label">④ Government Securities (G-Sec) — Full Map</div><div class="sec-div-line"></div></div>
+
+<div class="map-card m-navy">
+<svg viewBox="0 0 1320 330" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<rect width="1320" height="330" fill="rgba(253,250,243,0.5)"/>
+
+<!-- Central G-Sec Node -->
+<rect x="480" y="120" width="360" height="76" rx="13" fill="#1b3358"/>
+<text x="660" y="148" text-anchor="middle" font-size="20" fill="#f5e8c0" font-family="Cormorant Garamond" font-weight="700" font-style="italic">Government Securities</text>
+<text x="660" y="167" text-anchor="middle" font-size="10" fill="rgba(245,232,192,0.7)">Tradable Debt · Central + State Govt</text>
+<text x="660" y="182" text-anchor="middle" font-size="10" fill="rgba(245,232,192,0.7)">✔ Risk-Free &nbsp;|&nbsp; ✔ Issued via RBI e-Kuber</text>
+
+<!-- === LEFT BRANCH TYPES === -->
+<!-- T-Bills -->
+<rect x="20" y="20" width="220" height="86" rx="10" fill="rgba(192,68,26,0.08)" stroke="#c0441a" stroke-width="1.5"/>
+<text x="130" y="44" text-anchor="middle" font-size="16" fill="#c0441a" font-weight="800">T-Bills</text>
+<text x="130" y="60" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">SHORT TERM &lt; 1 YEAR</text>
+<text x="130" y="75" text-anchor="middle" font-size="9" fill="#1a1612">Zero coupon · Issued at discount</text>
+<text x="130" y="90" text-anchor="middle" font-size="9" fill="#1a1612">₹98 issued → ₹100 redeemed</text>
+<line x1="240" y1="63" x2="480" y2="152" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.5"/>
+
+<!-- CMBs -->
+<rect x="20" y="132" width="220" height="72" rx="10" fill="rgba(92,26,92,0.08)" stroke="#5c1a5c" stroke-width="1.5"/>
+<text x="130" y="154" text-anchor="middle" font-size="15" fill="#5c1a5c" font-weight="800">CMBs</text>
+<text x="130" y="170" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">CASH MGMT BILLS &lt;91 DAYS</text>
+<text x="130" y="186" text-anchor="middle" font-size="9" fill="#1a1612">Temporary cash mismatch</text>
+<line x1="240" y1="168" x2="480" y2="158" stroke="#5c1a5c" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.5"/>
+
+<!-- Dated Securities -->
+<rect x="20" y="230" width="220" height="88" rx="10" fill="rgba(27,51,88,0.08)" stroke="#1b3358" stroke-width="1.5"/>
+<text x="130" y="252" text-anchor="middle" font-size="15" fill="#1b3358" font-weight="800">Dated Securities</text>
+<text x="130" y="269" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">LONG TERM 5–40 YEARS</text>
+<text x="130" y="285" text-anchor="middle" font-size="9" fill="#1a1612">Fixed / Floating / Inflation-indexed</text>
+<text x="130" y="300" text-anchor="middle" font-size="9" fill="#1b3358" font-weight="700">✔ Qualify for SLR</text>
+<line x1="240" y1="274" x2="480" y2="170" stroke="#1b3358" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.5"/>
+
+<!-- === RIGHT BRANCH === -->
+<!-- SDLs -->
+<rect x="1080" y="20" width="220" height="80" rx="10" fill="rgba(26,92,58,0.08)" stroke="#1a5c3a" stroke-width="1.5"/>
+<text x="1190" y="44" text-anchor="middle" font-size="15" fill="#1a5c3a" font-weight="800">SDLs</text>
+<text x="1190" y="60" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">STATE DEV. LOANS</text>
+<text x="1190" y="75" text-anchor="middle" font-size="9" fill="#1a1612">State Govts · Long term · SLR</text>
+<line x1="1080" y1="60" x2="840" y2="150" stroke="#1a5c3a" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.5"/>
+
+<!-- Special Bonds -->
+<rect x="1080" y="126" width="220" height="120" rx="10" fill="rgba(184,134,11,0.08)" stroke="#b8860b" stroke-width="1.5"/>
+<text x="1190" y="150" text-anchor="middle" font-size="14" fill="#b8860b" font-weight="800">Special Bonds</text>
+<text x="1190" y="168" text-anchor="middle" font-size="9" fill="#1a1612">🛢️ Oil Bonds</text>
+<text x="1190" y="183" text-anchor="middle" font-size="9" fill="#1a1612">🌾 Fertiliser Bonds</text>
+<text x="1190" y="198" text-anchor="middle" font-size="9" fill="#1a1612">🏦 Bank Recap Bonds</text>
+<text x="1190" y="213" text-anchor="middle" font-size="9" fill="#b8860b" font-weight="700">🥇 Sovereign Gold Bonds</text>
+<text x="1190" y="230" text-anchor="middle" font-size="8" fill="#8a7a60" font-family="JetBrains Mono">LINKED TO GOLD PRICE</text>
+<line x1="1080" y1="186" x2="840" y2="158" stroke="#b8860b" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.5"/>
+
+<!-- Retail Direct at bottom -->
+<rect x="480" y="240" width="360" height="76" rx="12" fill="rgba(13,104,117,0.08)" stroke="#0d6875" stroke-width="2"/>
+<text x="660" y="263" text-anchor="middle" font-size="14" fill="#0d6875" font-weight="800">🏠 Retail Direct Scheme</text>
+<text x="660" y="280" text-anchor="middle" font-size="9" fill="#1a1612">Open RDG Account → Buy G-Secs directly</text>
+<text x="660" y="295" text-anchor="middle" font-size="9" fill="#1a1612">T-Bills · Dated Secs · SDLs · SGBs &nbsp;|&nbsp; No Auction Bidding</text>
+<line x1="660" y1="240" x2="660" y2="196" stroke="#0d6875" stroke-width="2" stroke-dasharray="5 4" opacity="0.5"/>
+</svg>
+</div>
+
+<!-- ════════════════════════════════════
+     SECTION 5: G-SEC MARKET STRUCTURE
+════════════════════════════════════ -->
+<div class="sec-div"><div class="sec-div-line"></div><div class="sec-div-label">⑤ G-Sec Market — Primary & Secondary</div><div class="sec-div-line"></div></div>
+
+<div class="g2">
+  <div class="card navy">
+    <div class="card-eyebrow">Primary Market</div>
+    <h3>🏦 Government Issues Bonds</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Auction via RBI (e-Kuber Platform)</div><div class="vs">Uniform or multiple price auctions</div></div>
+      <div class="vitem"><div class="vt">Participants</div><div class="vs">Banks, Primary Dealers, FPIs, Insurance</div></div>
+      <div class="vitem"><div class="vt">Retail Direct — Direct access</div><div class="vs">No bidding required, guaranteed allotment</div></div>
+    </div>
+    <div class="callout info" style="margin-top:10px;">
+      <div class="callout-t">🖥️ e-Kuber</div>
+      <div class="callout-b">RBI's Core Banking Solution — handles all G-Sec auctions electronically.</div>
+    </div>
+  </div>
+  <div class="card teal">
+    <div class="card-eyebrow">Secondary Market</div>
+    <h3>📊 Trading Happens Here</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">NDS-OM</div><div class="vs">Negotiated Dealing System — Order Matching (RBI)</div></div>
+      <div class="vitem"><div class="vt">Stock Exchanges</div><div class="vs">BSE / NSE — retail-accessible</div></div>
+      <div class="vitem"><div class="vt">Price Discovery</div><div class="vs">Bond prices adjust to market yields</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-t">✔ Liquidity Platform</div>
+      <div class="callout-b">Allows bonds to be bought/sold before maturity. Key for institutional portfolio management.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     SECTION 6: GLOBAL BOND INDEX
+════════════════════════════════════ -->
+<div class="sec-div"><div class="sec-div-line"></div><div class="sec-div-label">⑥ Global Bond Index & FAR — India Goes Global</div><div class="sec-div-line"></div></div>
+
+<div class="map-card m-plum">
+<svg viewBox="0 0 1320 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<rect width="1320" height="240" fill="rgba(253,250,243,0.5)"/>
+
+<!-- Central: Global Bond Index -->
+<rect x="490" y="84" width="340" height="72" rx="12" fill="#3a4a5c"/>
+<text x="660" y="108" text-anchor="middle" font-size="18" fill="#f5e8c0" font-family="Cormorant Garamond" font-weight="700" font-style="italic">🌍 Global Bond Index</text>
+<text x="660" y="127" text-anchor="middle" font-size="10" fill="rgba(245,232,192,0.75)">Indian G-Secs Included → Foreign Investors Auto-Invest</text>
+<text x="660" y="142" text-anchor="middle" font-size="9" fill="rgba(245,232,192,0.55)" font-family="JetBrains Mono">FAR ROUTE · EUROCLEAR · JP MORGAN / BLOOMBERG</text>
+
+<!-- BENEFITS (left 3) -->
+<rect x="20" y="14" width="200" height="65" rx="9" fill="rgba(26,92,58,0.09)" stroke="#1a5c3a" stroke-width="1.5"/>
+<text x="120" y="36" text-anchor="middle" font-size="13" fill="#1a5c3a" font-weight="700">↓ Govt Borrowing Cost</text>
+<text x="120" y="52" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">MORE DEMAND → LOWER YIELD</text>
+<text x="120" y="66" text-anchor="middle" font-size="9" fill="#1a1612">Saves fiscal resources</text>
+<line x1="220" y1="46" x2="490" y2="110" stroke="#1a5c3a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+<rect x="20" y="106" width="200" height="65" rx="9" fill="rgba(26,92,58,0.09)" stroke="#1a5c3a" stroke-width="1.5"/>
+<text x="120" y="127" text-anchor="middle" font-size="13" fill="#1a5c3a" font-weight="700">↑ Liquidity</text>
+<text x="120" y="143" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">FOREIGN CAPITAL INFLOW</text>
+<text x="120" y="157" text-anchor="middle" font-size="9" fill="#1a1612">Deeper bond markets</text>
+<line x1="220" y1="138" x2="490" y2="132" stroke="#1a5c3a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+<rect x="20" y="196" width="200" height="38" rx="9" fill="rgba(26,92,58,0.09)" stroke="#1a5c3a" stroke-width="1.5"/>
+<text x="120" y="213" text-anchor="middle" font-size="13" fill="#1a5c3a" font-weight="700">↓ Bond Yields</text>
+<text x="120" y="228" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">PRICE ↑ = YIELD ↓</text>
+<line x1="220" y1="215" x2="490" y2="150" stroke="#1a5c3a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+<!-- RISKS (right 2) -->
+<rect x="1100" y="30" width="200" height="70" rx="9" fill="rgba(192,68,26,0.09)" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="1200" y="52" text-anchor="middle" font-size="13" fill="#c0441a" font-weight="700">⚠ Capital Outflow Risk</text>
+<text x="1200" y="68" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">EXCHANGE RATE VOLATILITY</text>
+<text x="1200" y="82" text-anchor="middle" font-size="9" fill="#1a1612">If FPIs exit suddenly</text>
+<line x1="1100" y1="65" x2="830" y2="118" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+<rect x="1100" y="130" width="200" height="70" rx="9" fill="rgba(192,68,26,0.09)" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="1200" y="153" text-anchor="middle" font-size="13" fill="#c0441a" font-weight="700">⚠ External Shocks</text>
+<text x="1200" y="169" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">GLOBAL RATE CHANGES</text>
+<text x="1200" y="183" text-anchor="middle" font-size="9" fill="#1a1612">Fed rate hikes spill over</text>
+<line x1="1100" y1="165" x2="830" y2="148" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+<!-- Labels -->
+<text x="120" y="10" text-anchor="middle" font-size="8" fill="rgba(26,92,58,0.6)" font-family="JetBrains Mono" letter-spacing="2">BENEFITS</text>
+<text x="1200" y="22" text-anchor="middle" font-size="8" fill="rgba(192,68,26,0.6)" font-family="JetBrains Mono" letter-spacing="2">RISKS</text>
+</svg>
+</div>
+
+<div class="g2">
+  <div class="card gold">
+    <div class="card-eyebrow">Fully Accessible Route (FAR)</div>
+    <h3>🔓 No Caps on Foreign Investment</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Earlier: Cap on FPI in Indian bonds</div><div class="vs">Restricted foreign holding limits</div></div>
+      <div class="vitem"><div class="vt">Now: FAR Bonds — No limits</div><div class="vs">Approval restrictions removed for specific G-Secs</div></div>
+      <div class="vitem"><div class="vt">Managed by RBI — FMRD</div><div class="vs">Financial Markets Regulation Dept.</div></div>
+      <div class="vitem"><div class="vt">International Settlement: Euroclear</div><div class="vs">Global clearing & settlement platform</div></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;">
+      <span class="pill gold">JP Morgan GBI-EM</span>
+      <span class="pill navy">Bloomberg</span>
+      <span class="pill forest">Euroclear</span>
+    </div>
+  </div>
+  <div class="card slate">
+    <div class="card-eyebrow">Impact Chain</div>
+    <h3>📈 Index Inclusion → What Happens</h3>
+    <div class="ic">
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(184,134,11,0.08);color:var(--gold);">Index Inclusion</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--navy);background:rgba(27,51,88,0.08);color:var(--navy);">FPI Auto-Buy</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--forest);background:rgba(26,92,58,0.08);color:var(--forest);">Demand ↑</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(13,104,117,0.08);color:var(--teal);">Yield ↓</div>
+    </div>
+    <div class="ic">
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(13,104,117,0.08);color:var(--teal);">Yield ↓</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--forest);background:rgba(26,92,58,0.08);color:var(--forest);">Borrow Cheaper</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(184,134,11,0.08);color:var(--gold);">Fiscal Savings</div>
+    </div>
+    <div class="callout warn" style="margin-top:10px;">
+      <div class="callout-t">⚠️ But: Sudden FPI Exit → Rupee Depreciation + Market Stress</div>
+      <div class="callout-b">Currency risk and contagion from global monetary tightening.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     SECTION 7: CORPORATE BOND MARKET
+════════════════════════════════════ -->
+<div class="sec-div"><div class="sec-div-line"></div><div class="sec-div-label">⑦ Corporate Bond Market in India</div><div class="sec-div-line"></div></div>
+
+<div class="map-card m-forest">
+<svg viewBox="0 0 1320 260" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<rect width="1320" height="260" fill="rgba(253,250,243,0.5)"/>
+
+<!-- Central -->
+<rect x="490" y="94" width="340" height="72" rx="12" fill="#1a5c3a"/>
+<text x="660" y="119" text-anchor="middle" font-size="18" fill="#f5e8c0" font-family="Cormorant Garamond" font-weight="700" font-style="italic">🏢 Corporate Bond Market</text>
+<text x="660" y="138" text-anchor="middle" font-size="10" fill="rgba(245,232,192,0.75)">Debt Issued by Companies · Reduces Bank Dependence</text>
+<text x="660" y="153" text-anchor="middle" font-size="9" fill="rgba(245,232,192,0.55)" font-family="JetBrains Mono">INFRASTRUCTURE FINANCING · CAPITAL MARKET DEPTH</text>
+
+<!-- WHY IMPORTANT (top left 3) -->
+<rect x="14" y="14" width="210" height="64" rx="9" fill="rgba(26,92,58,0.09)" stroke="#1a5c3a" stroke-width="1.5"/>
+<text x="119" y="35" text-anchor="middle" font-size="12" fill="#1a5c3a" font-weight="700">Reduces Bank Dependency</text>
+<text x="119" y="51" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">DIRECT MARKET FINANCING</text>
+<text x="119" y="65" text-anchor="middle" font-size="9" fill="#1a1612">Companies → Investors directly</text>
+<line x1="224" y1="46" x2="490" y2="116" stroke="#1a5c3a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+<rect x="14" y="104" width="210" height="64" rx="9" fill="rgba(26,92,58,0.09)" stroke="#1a5c3a" stroke-width="1.5"/>
+<text x="119" y="123" text-anchor="middle" font-size="12" fill="#1a5c3a" font-weight="700">Supports Infra Financing</text>
+<text x="119" y="139" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">LONG TERM CAPITAL</text>
+<text x="119" y="153" text-anchor="middle" font-size="9" fill="#1a1612">Roads, ports, energy projects</text>
+<line x1="224" y1="136" x2="490" y2="136" stroke="#1a5c3a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+<rect x="14" y="194" width="210" height="58" rx="9" fill="rgba(26,92,58,0.09)" stroke="#1a5c3a" stroke-width="1.5"/>
+<text x="119" y="213" text-anchor="middle" font-size="12" fill="#1a5c3a" font-weight="700">Deepens Capital Market</text>
+<text x="119" y="229" text-anchor="middle" font-size="9" fill="#8a7a60" font-family="JetBrains Mono">MORE INSTRUMENTS</text>
+<text x="119" y="243" text-anchor="middle" font-size="9" fill="#1a1612">Investor diversification</text>
+<line x1="224" y1="223" x2="490" y2="152" stroke="#1a5c3a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
+
+<!-- WEAKNESS (right 5) -->
+<rect x="1096" y="8" width="208" height="56" rx="9" fill="rgba(192,68,26,0.08)" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="1200" y="28" text-anchor="middle" font-size="11" fill="#c0441a" font-weight="700">Few High-Rated Companies</text>
+<text x="1200" y="44" text-anchor="middle" font-size="8" fill="#8a7a60" font-family="JetBrains Mono">LIMITED INVESTIBLE UNIVERSE</text>
+<text x="1200" y="57" text-anchor="middle" font-size="8" fill="#1a1612">AAA/AA+ issuers very few</text>
+<line x1="1096" y1="32" x2="830" y2="110" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+
+<rect x="1096" y="82" width="208" height="50" rx="9" fill="rgba(192,68,26,0.08)" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="1200" y="101" text-anchor="middle" font-size="11" fill="#c0441a" font-weight="700">Transparency Issues</text>
+<text x="1200" y="117" text-anchor="middle" font-size="8" fill="#8a7a60" font-family="JetBrains Mono">PRICE DISCOVERY WEAK</text>
+<text x="1200" y="128" text-anchor="middle" font-size="8" fill="#1a1612">OTC trades, limited reporting</text>
+<line x1="1096" y1="107" x2="830" y2="130" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+
+<rect x="1096" y="150" width="208" height="50" rx="9" fill="rgba(192,68,26,0.08)" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="1200" y="169" text-anchor="middle" font-size="11" fill="#c0441a" font-weight="700">Costly Public Issuance</text>
+<text x="1200" y="185" text-anchor="middle" font-size="8" fill="#8a7a60" font-family="JetBrains Mono">PRIVATE PLACEMENTS DOMINATE</text>
+<text x="1200" y="196" text-anchor="middle" font-size="8" fill="#1a1612">High compliance costs</text>
+<line x1="1096" y1="175" x2="830" y2="150" stroke="#c0441a" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+
+<rect x="1096" y="218" width="208" height="36" rx="9" fill="rgba(92,26,92,0.08)" stroke="#5c1a5c" stroke-width="1.5"/>
+<text x="1200" y="234" text-anchor="middle" font-size="11" fill="#5c1a5c" font-weight="700">✔ IBC 2016 Helped</text>
+<text x="1200" y="248" text-anchor="middle" font-size="8" fill="#8a7a60" font-family="JetBrains Mono">INSOLVENCY RESOLUTION</text>
+<line x1="1096" y1="236" x2="830" y2="162" stroke="#5c1a5c" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+
+<!-- Labels -->
+<text x="119" y="10" text-anchor="middle" font-size="8" fill="rgba(26,92,58,0.6)" font-family="JetBrains Mono" letter-spacing="2">WHY IT MATTERS</text>
+<text x="1200" y="6" text-anchor="middle" font-size="8" fill="rgba(192,68,26,0.6)" font-family="JetBrains Mono" letter-spacing="2">WEAKNESSES</text>
+</svg>
+</div>
+
+<!-- Govt steps -->
+<div class="card forest">
+  <div class="card-eyebrow">Government Steps to Strengthen Corporate Bonds</div>
+  <h3>🔧 Reform Measures</h3>
+  <div class="g4" style="margin-bottom:0;">
+    <div style="padding:12px;background:var(--forest-lt);border-radius:9px;border:1px solid rgba(26,92,58,0.2);text-align:center;">
+      <div style="font-size:18px;margin-bottom:4px;">📈</div>
+      <div style="font-size:11px;font-weight:700;color:var(--forest);">FPI Limit → 15%</div>
+      <div style="font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;">Raised corporate bond cap</div>
+    </div>
+    <div style="padding:12px;background:var(--navy-lt);border-radius:9px;border:1px solid rgba(27,51,88,0.2);text-align:center;">
+      <div style="font-size:18px;margin-bottom:4px;">📋</div>
+      <div style="font-size:11px;font-weight:700;color:var(--navy);">Investor Charter</div>
+      <div style="font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;">Investor rights framework</div>
+    </div>
+    <div style="padding:12px;background:var(--gold-lt);border-radius:9px;border:1px solid rgba(184,134,11,0.2);text-align:center;">
+      <div style="font-size:18px;margin-bottom:4px;">🛡️</div>
+      <div style="font-size:11px;font-weight:700;color:var(--gold);">Backstop Facility</div>
+      <div style="font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;">Govt buys inv-grade bonds in stress</div>
+    </div>
+    <div style="padding:12px;background:var(--plum-lt);border-radius:9px;border:1px solid rgba(92,26,92,0.2);text-align:center;">
+      <div style="font-size:18px;margin-bottom:4px;">⚖️</div>
+      <div style="font-size:11px;font-weight:700;color:var(--plum);">IBC 2016</div>
+      <div style="font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;">Stronger bankruptcy laws</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     SECTION 8: QUICK REVISION TABLE
+════════════════════════════════════ -->
+<div class="sec-div"><div class="sec-div-line"></div><div class="sec-div-label">⑧ Quick Revision — Prelims-Ready Table</div><div class="sec-div-line"></div></div>
+
+<div class="card ink" style="background:var(--paper);">
+<table class="ctable">
+  <thead>
+    <tr>
+      <th>Concept</th>
+      <th>Type / Nature</th>
+      <th>Key Point</th>
+      <th>Duration / Feature</th>
+      <th>Platform / Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Equity</td>
+      <td><span class="pill navy">Ownership</span></td>
+      <td>Dividend + Capital Gain | Voting Rights</td>
+      <td>No maturity</td>
+      <td>Stock Exchange</td>
+    </tr>
+    <tr>
+      <td>Debt / Bond</td>
+      <td><span class="pill forest">Loan to Issuer</span></td>
+      <td>Fixed coupon + Principal at maturity</td>
+      <td>Defined tenure</td>
+      <td>Bond Market</td>
+    </tr>
+    <tr>
+      <td>Bond Price ↔ Rate</td>
+      <td><span class="pill rust">Inverse</span></td>
+      <td>Rate ↑ → Price ↓ | Yield = Coupon/Price</td>
+      <td>Always applicable</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>T-Bills</td>
+      <td><span class="pill gold">G-Sec</span></td>
+      <td>Zero coupon · Issued at discount · Money market</td>
+      <td>&lt; 1 year</td>
+      <td>RBI e-Kuber</td>
+    </tr>
+    <tr>
+      <td>CMBs</td>
+      <td><span class="pill gold">G-Sec</span></td>
+      <td>Cash Management Bills · Temp mismatch</td>
+      <td>&lt; 91 days</td>
+      <td>RBI e-Kuber</td>
+    </tr>
+    <tr>
+      <td>Dated Securities</td>
+      <td><span class="pill navy">G-Sec · SLR</span></td>
+      <td>Fixed/Floating/Inflation-indexed</td>
+      <td>5–40 years</td>
+      <td>RBI + NSE/BSE</td>
+    </tr>
+    <tr>
+      <td>SDL</td>
+      <td><span class="pill forest">State G-Sec · SLR</span></td>
+      <td>State Development Loans</td>
+      <td>Long term</td>
+      <td>RBI</td>
+    </tr>
+    <tr>
+      <td>SGB</td>
+      <td><span class="pill gold">Special Bond</span></td>
+      <td>Sovereign Gold Bond · Linked to gold price</td>
+      <td>8 years (exit at 5)</td>
+      <td>RBI</td>
+    </tr>
+    <tr>
+      <td>Retail Direct Scheme</td>
+      <td><span class="pill teal">Retail Access</span></td>
+      <td>RDG Account → Direct G-Sec purchase · No auction</td>
+      <td>All tenures</td>
+      <td>RBI Portal</td>
+    </tr>
+    <tr>
+      <td>NDS-OM</td>
+      <td><span class="pill navy">Secondary Market</span></td>
+      <td>Negotiated Dealing System — Order Matching</td>
+      <td>Continuous trading</td>
+      <td>RBI</td>
+    </tr>
+    <tr>
+      <td>FAR</td>
+      <td><span class="pill plum">FPI Access</span></td>
+      <td>Fully Accessible Route — No foreign cap on select G-Secs</td>
+      <td>Ongoing</td>
+      <td>RBI FMRD</td>
+    </tr>
+    <tr>
+      <td>Global Bond Index</td>
+      <td><span class="pill rust">International</span></td>
+      <td>FPI auto-invest → lower yield · volatility risk</td>
+      <td>—</td>
+      <td>JP Morgan / Euroclear</td>
+    </tr>
+    <tr>
+      <td>Corporate Bond</td>
+      <td><span class="pill forest">Private Debt</span></td>
+      <td>Company debt · Weaker than G-Sec market</td>
+      <td>Varies</td>
+      <td>SEBI / NSE / BSE</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ════════════════════════════════════
+     SECTION 9: FINAL CONCEPT FLOW
+════════════════════════════════════ -->
+<div class="sec-div"><div class="sec-div-line"></div><div class="sec-div-label">⑨ Final Concept Flow — Connecting Everything</div><div class="sec-div-line"></div></div>
+
+<div class="map-card m-gold">
+<svg viewBox="0 0 1320 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;">
+<defs>
+  <marker id="farr" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+    <path d="M0,0 L0,8 L10,4 z" fill="#b8860b" opacity="0.8"/>
+  </marker>
+</defs>
+<rect width="1320" height="190" fill="rgba(253,250,243,0.5)"/>
+
+<!-- ROW 1 nodes (top layer) -->
+<!-- 1 -->
+<rect x="10" y="20" width="148" height="72" rx="10" fill="#b8860b"/>
+<text x="84" y="48" text-anchor="middle" font-size="17" fill="#fff">🏭</text>
+<text x="84" y="66" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Company Needs</text>
+<text x="84" y="81" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">CAPITAL REQUIREMENT</text>
+
+<!-- arrow -->
+<path d="M158,56 L176,56" stroke="#b8860b" stroke-width="2.5" opacity="0.6" marker-end="url(#farr)"/>
+
+<!-- 2 -->
+<rect x="178" y="20" width="148" height="72" rx="10" fill="#c0441a"/>
+<text x="252" y="48" text-anchor="middle" font-size="17" fill="#fff">📄</text>
+<text x="252" y="66" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Equity or Debt</text>
+<text x="252" y="81" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">ISSUES SECURITIES</text>
+
+<!-- arrow -->
+<path d="M326,56 L344,56" stroke="#b8860b" stroke-width="2.5" opacity="0.6" marker-end="url(#farr)"/>
+
+<!-- 3 -->
+<rect x="346" y="20" width="148" height="72" rx="10" fill="#5c1a5c"/>
+<text x="420" y="48" text-anchor="middle" font-size="17" fill="#fff">📉</text>
+<text x="420" y="66" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Bond Pricing</text>
+<text x="420" y="81" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">INVERSE TO INTEREST</text>
+
+<!-- arrow -->
+<path d="M494,56 L512,56" stroke="#b8860b" stroke-width="2.5" opacity="0.6" marker-end="url(#farr)"/>
+
+<!-- 4 -->
+<rect x="514" y="20" width="148" height="72" rx="10" fill="#1b3358"/>
+<text x="588" y="48" text-anchor="middle" font-size="17" fill="#fff">🏛️</text>
+<text x="588" y="66" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Govt Issues G-Secs</text>
+<text x="588" y="81" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">RBI MANAGES</text>
+
+<!-- arrow -->
+<path d="M662,56 L680,56" stroke="#b8860b" stroke-width="2.5" opacity="0.6" marker-end="url(#farr)"/>
+
+<!-- 5 -->
+<rect x="682" y="20" width="148" height="72" rx="10" fill="#0d6875"/>
+<text x="756" y="48" text-anchor="middle" font-size="17" fill="#fff">🏠</text>
+<text x="756" y="66" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Retail Invests</text>
+<text x="756" y="81" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">DIRECT GILT A/C</text>
+
+<!-- arrow -->
+<path d="M830,56 L848,56" stroke="#1b3358" stroke-width="2.5" opacity="0.6" marker-end="url(#farr)"/>
+
+<!-- 6 -->
+<rect x="850" y="20" width="148" height="72" rx="10" fill="#3a4a5c"/>
+<text x="924" y="48" text-anchor="middle" font-size="17" fill="#fff">🌍</text>
+<text x="924" y="66" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Global Index</text>
+<text x="924" y="81" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">FOREIGN INFLOW ↑</text>
+
+<!-- arrow -->
+<path d="M998,56 L1016,56" stroke="#1b3358" stroke-width="2.5" opacity="0.6" marker-end="url(#farr)"/>
+
+<!-- 7 -->
+<rect x="1018" y="20" width="148" height="72" rx="10" fill="#1a5c3a"/>
+<text x="1092" y="48" text-anchor="middle" font-size="17" fill="#fff">🏢</text>
+<text x="1092" y="66" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Corp Bonds</text>
+<text x="1092" y="81" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">MARKET DEEPENS</text>
+
+<!-- arrow -->
+<path d="M1166,56 L1184,56" stroke="#1a5c3a" stroke-width="2.5" opacity="0.6" marker-end="url(#farr)"/>
+
+<!-- 8 -->
+<rect x="1186" y="20" width="124" height="72" rx="10" fill="#b8860b"/>
+<text x="1248" y="48" text-anchor="middle" font-size="17" fill="#fff">🚀</text>
+<text x="1248" y="66" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">Economy</text>
+<text x="1248" y="81" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.6)" font-family="JetBrains Mono">GROWS STRONG</text>
+
+<!-- Bottom annotation -->
+<rect x="10" y="110" width="1300" height="70" rx="10" fill="rgba(26,22,18,0.04)" stroke="rgba(26,22,18,0.08)" stroke-width="1.5"/>
+<text x="660" y="132" text-anchor="middle" font-size="11" fill="rgba(26,22,18,0.5)" font-family="JetBrains Mono" letter-spacing="1">CORE EXAM LOGIC FLOW</text>
+<text x="660" y="153" text-anchor="middle" font-size="12" fill="#1a1612" font-weight="600" font-family="Cormorant Garamond" font-style="italic">Company needs money → Issues Equity or Debt → Debt traded as bonds → Bond price inversely linked to interest rate</text>
+<text x="660" y="171" text-anchor="middle" font-size="12" fill="#1a1612" font-weight="600" font-family="Cormorant Garamond" font-style="italic">→ Govt issues G-Secs via RBI → Retail invests directly → Global Index inclusion → Corporate bond market deepens economy</text>
+</svg>
+</div>
+
+<!-- ════════════════════════════════════
+     KEYSTONE
+════════════════════════════════════ -->
+<div class="keystone">
+  <div class="ks-icon">🔗</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Connecting Thread</div>
+    <div class="ks-sub">Securities enable capital formation. Govt bonds (G-Secs) are the risk-free benchmark that anchors all bond pricing. <strong style="color:#f5d78a;">When G-Secs enter global bond indices, foreign capital flows in, borrowing costs fall, and deeper markets enable corporate bond growth — all interconnected through the interest rate–price inverse relationship.</strong></div>
+    <div class="ks-pills">
+      <span class="kpill">📉 Inverse Yield Rule</span>
+      <span class="kpill">🏛️ Risk-Free Benchmark</span>
+      <span class="kpill">🌍 Global Integration</span>
+      <span class="kpill">🏢 Corporate Depth</span>
+      <span class="kpill">💰 Fiscal Efficiency</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>

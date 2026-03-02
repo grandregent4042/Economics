@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Financial System — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0d0c0a; --paper:#faf8f2; --cream:#f2ede0;
+  --gold:#b8890a; --amber:#d46a10; --teal:#0a6a5a;
+  --blue:#1a3a8a; --purple:#6a1a9a; --red:#b81a1a;
+  --green:#0a6a3a; --muted:#8a7a60; --border:#ddd0b0;
+  --card:#fffdf6; --card2:#f4f0e3;
+  --sky:#0a4a6a; --rose:#8a1040; --navy:#0a1848;
+  --olive:#5a6010; --maroon:#6a1020;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 1000px 600px at 0% 0%,rgba(184,137,10,0.07) 0%,transparent 55%),
+  radial-gradient(ellipse 700px 900px at 100% 100%,rgba(26,58,138,0.06) 0%,transparent 55%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1420px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:48px 16px 22px;}
+.hdr-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Libre Baskerville',serif;font-size:clamp(26px,4.5vw,50px);line-height:1.1;}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr-sub{margin-top:9px;font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1.5px;}
+.hdr::after{content:'';display:block;width:110px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--teal),var(--blue),var(--purple));margin:16px auto 0;border-radius:3px;}
+
+/* SECTION LABEL */
+.sl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:12px;}
+.sl::before,.sl::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px;}
+@media(max-width:1060px){.g4,.g5{grid-template-columns:1fr 1fr 1fr;}}
+@media(max-width:800px){.g3,.g4,.g5{grid-template-columns:1fr 1fr;}}
+@media(max-width:540px){.g2,.g3,.g4,.g5{grid-template-columns:1fr;}}
+
+/* PANEL CARD */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,137,10,0.1);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.cg::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.cb::before{background:var(--blue);}
+.pc.ct::before{background:var(--teal);}
+.pc.cgn::before{background:var(--green);}
+.pc.cr::before{background:var(--red);}
+.pc.cp::before{background:var(--purple);}
+.pc.cs::before{background:var(--sky);}
+.pc.ca::before{background:var(--amber);}
+.pc.cn::before{background:var(--navy);}
+.pc.co::before{background:var(--olive);}
+.pc.cm::before{background:var(--maroon);}
+.pc-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:7px;}
+.pc h3{font-family:'Libre Baskerville',serif;font-size:14.5px;margin-bottom:11px;display:flex;align-items:center;gap:7px;line-height:1.35;}
+
+/* MAP CARD */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:26px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.m1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--teal));}
+.mc.m2::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.mc.m3::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc.m4::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.mc.m5::before{background:linear-gradient(90deg,var(--purple),var(--sky));}
+.mc.m6::before{background:linear-gradient(90deg,var(--navy),var(--blue));}
+.mc svg{display:block;width:100%;}
+
+/* VLIST */
+.vl{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:8px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pg{background:rgba(184,137,10,0.12);color:var(--gold);}
+.pb{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pt{background:rgba(10,106,90,0.12);color:var(--teal);}
+.pr{background:rgba(184,26,26,0.12);color:var(--red);}
+.pp{background:rgba(106,26,154,0.12);color:var(--purple);}
+.pgn{background:rgba(10,106,58,0.12);color:var(--green);}
+.ps{background:rgba(10,74,106,0.12);color:var(--sky);}
+.pa{background:rgba(212,106,16,0.12);color:var(--amber);}
+
+/* CHIPS */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.yes{background:rgba(10,106,58,0.06);border-color:rgba(10,106,58,0.2);color:var(--green);}
+.no{background:rgba(184,26,26,0.06);border-color:rgba(184,26,26,0.2);color:var(--red);}
+.neu{background:rgba(184,137,10,0.07);border-color:rgba(184,137,10,0.2);color:var(--gold);}
+
+/* STAT BOX */
+.sr{display:flex;gap:10px;margin:10px 0;}
+.sb{flex:1;padding:11px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.snum{font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;line-height:1;}
+.slb{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.ssub{font-size:10px;color:var(--ink);font-weight:700;margin-top:3px;}
+
+/* IMPACT CHAIN */
+.ic{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin:8px 0;}
+.icn{padding:5px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;white-space:nowrap;}
+.ia{font-size:14px;color:var(--muted);flex:0 0 auto;}
+
+/* CALLOUT */
+.co{padding:11px 14px;border-radius:10px;border:1.5px solid;margin:8px 0;}
+.co-t{font-size:11px;font-weight:700;margin-bottom:3px;}
+.co-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* TABLE */
+.ct{width:100%;border-collapse:collapse;font-size:11px;}
+.ct th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ct td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ct tr:last-child td{border-bottom:none;}
+.ct tr:nth-child(even) td{background:rgba(184,137,10,0.02);}
+.ct td:first-child{font-weight:700;color:var(--amber);font-family:'DM Mono',monospace;font-size:10px;}
+.tag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:9px;font-weight:700;font-family:'DM Mono',monospace;}
+.tok{background:#d4edda;color:#155724;}
+.tno{background:#f8d7da;color:#721c24;}
+.tna{background:#fff3cd;color:#856404;}
+
+/* KEYSTONE */
+.ks{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:24px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.ks-i{font-size:40px;flex:0 0 auto;}
+.ks-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.ks-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.ks-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'DM Mono',monospace;}
+
+/* FEAT GRID */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.fi2{padding:9px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.fi2 .fe{font-size:15px;margin-bottom:3px;}
+.fi2 .ft{font-size:10px;font-weight:700;}
+.fi2 .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* TIER BOX */
+.tier{display:flex;flex-direction:column;gap:6px;margin:8px 0;}
+.tier-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.tier-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;font-family:'DM Mono',monospace;flex:0 0 24px;color:#fff;}
+.tier-text{font-size:11px;font-weight:700;}
+.tier-sub{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* OWNERSHIP BAR */
+.own-bar{display:flex;height:28px;border-radius:8px;overflow:hidden;margin:10px 0;border:1px solid var(--border);}
+.own-seg{display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;font-family:'DM Mono',monospace;color:#fff;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.anim{animation:fadeUp 0.5s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr anim">
+  <div class="hdr-tag">Indian Economy · Banking · Financial Institutions · UPSC Prelims</div>
+  <h1>Indian Financial System — <em>Mind Map</em></h1>
+  <div class="hdr-sub">Banks · NBFCs · AIFIs · Cooperative Banks · Niche Banks · Credit Infrastructure</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sl">Master Flow — The Big Picture</div>
+<div class="mc m1">
+  <svg id="svgMaster" viewBox="0 0 1380 110" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- ══ SECTION 1: BANKS vs NBFCs ══ -->
+<div class="sl">① Banks vs NBFIs — The Core Distinction</div>
+
+<div class="mc m2">
+  <svg id="svgBankNbfc" viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cb">
+    <div class="pc-lbl">Banks — Core Powers</div>
+    <h3>🏦 What Makes a Bank Special</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">✅ Accept Demand Deposits</div><div class="vs">Can take deposits repayable on demand</div></div>
+      <div class="vi"><div class="vt">✅ Issue Cheques on Themselves</div><div class="vs">Payment instrument unique to banks</div></div>
+      <div class="vi"><div class="vt">✅ Part of Payment System</div><div class="vs">Interbank clearing, NEFT, RTGS</div></div>
+      <div class="vi"><div class="vt">✅ CRR & SLR Compliance</div><div class="vs">Regulated reserve ratios to RBI</div></div>
+    </div>
+    <div class="co" style="border-color:rgba(26,58,138,0.25);background:rgba(26,58,138,0.05);margin-top:8px;">
+      <div class="co-t" style="color:var(--blue);">📌 Legal Basis</div>
+      <div class="co-b">Banking Regulation Act, 1949 + RBI Act, 1934</div>
+    </div>
+  </div>
+
+  <div class="pc cr">
+    <div class="pc-lbl">NBFCs — What They CANNOT Do</div>
+    <h3>⚠️ NBFC Limitations</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">❌ Cannot Accept Demand Deposits</div><div class="vs">Key distinction from banks</div></div>
+      <div class="vi"><div class="vt">❌ Cannot Issue Cheques</div><div class="vs">No cheque-issuing facility</div></div>
+      <div class="vi"><div class="vt">❌ Not Part of Payment System</div><div class="vs">No interbank clearing access</div></div>
+      <div class="vi"><div class="vt">✅ Can Do Loans, Investment, Leasing</div><div class="vs">Registered under Companies Act</div></div>
+    </div>
+    <div class="co" style="border-color:rgba(184,26,26,0.25);background:rgba(184,26,26,0.05);margin-top:8px;">
+      <div class="co-t" style="color:var(--red);">⚠️ Must Register with RBI — Except Exempt Entities</div>
+      <div class="co-b">VC (SEBI), Insurance (IRDAI), Chit Funds, Nidhi Companies are exempt</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: BANK CLASSIFICATION ══ -->
+<div class="sl">② Classification of Banks — Full Taxonomy</div>
+
+<div class="mc m3">
+  <svg id="svgBankTree" viewBox="0 0 1380 280" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- Commercial Banks detail -->
+<div class="g4">
+  <div class="pc cb">
+    <div class="pc-lbl">Public Sector Banks</div>
+    <h3>🏛️ PSBs</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Govt > 51% ownership</div><div class="vs">SBI, PNB, BOI etc.</div></div>
+      <div class="vi"><div class="vt">Largest network</div><div class="vs">Priority sector lending focus</div></div>
+    </div>
+    <span class="chip neu" style="margin-top:6px;">SCHEDULED</span>
+  </div>
+  <div class="pc cgn">
+    <div class="pc-lbl">Private Sector Banks</div>
+    <h3>🏢 Private Banks</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Private ownership</div><div class="vs">HDFC, ICICI, Axis etc.</div></div>
+      <div class="vi"><div class="vt">Tech-driven, urban focus</div><div class="vs">Profit-maximizing approach</div></div>
+    </div>
+    <span class="chip neu" style="margin-top:6px;">SCHEDULED</span>
+  </div>
+  <div class="pc cs">
+    <div class="pc-lbl">Foreign Banks</div>
+    <h3>🌐 Foreign Banks</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">HQ abroad, branch in India</div><div class="vs">Citibank, Standard Chartered</div></div>
+      <div class="vi"><div class="vt">RBI regulated</div><div class="vs">Limited retail presence</div></div>
+    </div>
+    <span class="chip neu" style="margin-top:6px;">SCHEDULED</span>
+  </div>
+  <div class="pc ca">
+    <div class="pc-lbl">RRBs · LABs</div>
+    <h3>🌾 Rural & Local</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">RRB: Est. 1975 · Rural</div><div class="vs">50:15:35 ownership ratio</div></div>
+      <div class="vi"><div class="vt">LAB: Est. 1996 · 2–3 districts</div><div class="vs">Non-scheduled</div></div>
+    </div>
+    <span class="chip neu" style="margin-top:6px;">RURAL FOCUS</span>
+  </div>
+</div>
+
+<!-- Scheduled vs Non-Scheduled -->
+<div class="g2">
+  <div class="pc cg">
+    <div class="pc-lbl">Scheduled Banks</div>
+    <h3>📋 Scheduled Bank Criteria</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Listed in 2nd Schedule of RBI Act 1934</div><div class="vs">Official recognition by RBI</div></div>
+      <div class="vi"><div class="vt">Min. paid-up capital: ₹5 crore</div><div class="vs">Minimum capital threshold</div></div>
+      <div class="vi"><div class="vt">Must maintain CRR with RBI</div><div class="vs">Mandatory reserve compliance</div></div>
+      <div class="vi"><div class="vt">Eligible for RBI borrowing facilities</div><div class="vs">Access to repo, MSF windows</div></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;">
+      <span class="chip yes">✅ Full forex dealings</span>
+      <span class="chip yes">✅ RBI refinance access</span>
+    </div>
+  </div>
+  <div class="pc cr">
+    <div class="pc-lbl">Non-Scheduled Banks</div>
+    <h3>⚠️ Non-Scheduled Limitations</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Not in 2nd Schedule of RBI Act</div><div class="vs">No official RBI listing</div></div>
+      <div class="vi"><div class="vt">Limited operations only</div><div class="vs">Cannot do full banking activities</div></div>
+      <div class="vi"><div class="vt">No full forex dealings</div><div class="vs">Restricted foreign exchange access</div></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;">
+      <span class="chip no">❌ No RBI emergency credit</span>
+      <span class="chip no">❌ Limited scope</span>
+    </div>
+    <div style="margin-top:8px;padding:8px 10px;background:rgba(212,106,16,0.07);border-radius:8px;border:1px solid rgba(212,106,16,0.2);font-size:10px;">
+      <strong>Example:</strong> Local Area Banks (LABs) are non-scheduled
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: COOPERATIVE BANKS ══ -->
+<div class="sl">③ Cooperative Banks — Structure & Regulation</div>
+
+<div class="mc m4">
+  <svg id="svgCoop" viewBox="0 0 1380 220" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cp">
+    <div class="pc-lbl">Urban Cooperative Banks (UCB)</div>
+    <h3>🏙️ Urban Co-op Banks</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Located in urban & semi-urban areas</div><div class="vs">Serve small borrowers, traders</div></div>
+      <div class="vi"><div class="vt">Dual Regulation</div><div class="vs">RBI (banking) + Registrar of Cooperative Societies (admin)</div></div>
+    </div>
+    <div class="co" style="border-color:rgba(106,26,154,0.25);background:rgba(106,26,154,0.05);margin-top:8px;">
+      <div class="co-t" style="color:var(--purple);">⚖️ Dual Regulation Challenge</div>
+      <div class="co-b">RBI controls banking operations · State Registrar controls management · Creates coordination gaps</div>
+    </div>
+  </div>
+
+  <div class="pc cgn">
+    <div class="pc-lbl">Rural Cooperative Banks — 3-Tier</div>
+    <h3>🌾 Rural Co-op Hierarchy</h3>
+    <div class="tier">
+      <div class="tier-item">
+        <div class="tier-num" style="background:var(--blue);">1</div>
+        <div><div class="tier-text">State Cooperative Banks (SCB)</div><div class="tier-sub">State level · Apex body</div></div>
+      </div>
+      <div class="tier-item">
+        <div class="tier-num" style="background:var(--teal);">2</div>
+        <div><div class="tier-text">District Central Cooperative Banks (DCCB)</div><div class="tier-sub">District level · Intermediary</div></div>
+      </div>
+      <div class="tier-item">
+        <div class="tier-num" style="background:var(--amber);">3</div>
+        <div><div class="tier-text">Primary Agricultural Credit Societies (PACS)</div><div class="tier-sub">Village level · Grassroots</div></div>
+      </div>
+    </div>
+    <div class="co" style="border-color:rgba(184,26,26,0.25);background:rgba(184,26,26,0.05);margin-top:6px;">
+      <div class="co-t" style="color:var(--red);">⚠️ PACS NOT regulated by RBI!</div>
+      <div class="co-b">PACS are outside Banking Regulation Act — regulated only by state cooperative registrar</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: RRBs & LABs ══ -->
+<div class="sl">④ Regional Rural Banks & Local Area Banks</div>
+
+<div class="g2">
+  <div class="pc ca">
+    <div class="pc-lbl">Regional Rural Banks (RRBs) 🔥</div>
+    <h3>🌾 RRBs — Key Numbers</h3>
+    <div class="sr">
+      <div class="sb"><div class="snum" style="color:var(--blue);">1975</div><div class="ssub">Year Est.</div><div class="slb">BY STATUTE</div></div>
+      <div class="sb"><div class="snum" style="color:var(--amber);">75%</div><div class="ssub">PSL Lending</div><div class="slb">MANDATORY</div></div>
+    </div>
+    <!-- Ownership bar -->
+    <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);margin:10px 0 4px;">OWNERSHIP STRUCTURE</div>
+    <div class="own-bar">
+      <div class="own-seg" style="width:50%;background:var(--blue);">Centre 50%</div>
+      <div class="own-seg" style="width:15%;background:var(--teal);">State 15%</div>
+      <div class="own-seg" style="width:35%;background:var(--amber);">Sponsor Bank 35%</div>
+    </div>
+    <div class="vl" style="margin-top:8px;">
+      <div class="vi"><div class="vt">Supervised by NABARD</div><div class="vs">Refinance + policy guidance</div></div>
+      <div class="vi"><div class="vt">Serve rural/semi-urban areas</div><div class="vs">Priority sector focus</div></div>
+    </div>
+  </div>
+
+  <div class="pc cs">
+    <div class="pc-lbl">Local Area Banks (LABs)</div>
+    <h3>📍 Local Area Banks</h3>
+    <div class="sr">
+      <div class="sb"><div class="snum" style="color:var(--sky);">1996</div><div class="ssub">Year Est.</div><div class="slb">SETUP</div></div>
+      <div class="sb"><div class="snum" style="color:var(--amber);">2–3</div><div class="ssub">Districts</div><div class="slb">CONTIGUOUS</div></div>
+    </div>
+    <div class="vl" style="margin-top:8px;">
+      <div class="vi"><div class="vt">Non-scheduled banks</div><div class="vs">Limited scope, smaller operations</div></div>
+      <div class="vi"><div class="vt">2–3 contiguous districts only</div><div class="vs">Hyper-local banking focus</div></div>
+      <div class="vi"><div class="vt">Promote rural savings & credit</div><div class="vs">Small depositors, local entrepreneurs</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: AIFIs ══ -->
+<div class="sl">⑤ All India Financial Institutions (AIFIs) — Long-Term Finance</div>
+
+<div class="mc m5">
+  <svg id="svgAIFI" viewBox="0 0 1380 190" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc cgn">
+    <div class="pc-lbl">NABARD · Est. 1982</div>
+    <h3>🌾 Agriculture & Rural</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Agriculture + Rural Dev.</div><div class="vs">Apex development bank for rural</div></div>
+      <div class="vi"><div class="vt">Refinance to RRBs & Coops</div><div class="vs">Indirect — NO direct retail loans</div></div>
+      <div class="vi"><div class="vt">Supervises RRBs</div><div class="vs">Policy + inspection role</div></div>
+    </div>
+    <span class="chip no" style="margin-top:6px;">❌ No direct retail loans</span>
+  </div>
+  <div class="pc cb">
+    <div class="pc-lbl">NHB · Est. 1988</div>
+    <h3>🏠 Housing Finance</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Promotes housing finance</div><div class="vs">Apex for housing sector</div></div>
+      <div class="vi"><div class="vt">Refinance to HFCs</div><div class="vs">Indirect lending model</div></div>
+    </div>
+    <span class="chip no" style="margin-top:6px;">❌ No direct retail</span>
+  </div>
+  <div class="pc ca">
+    <div class="pc-lbl">EXIM Bank · Est. 1982</div>
+    <h3>🌐 Export-Import Finance</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Promotes exports & imports</div><div class="vs">International trade finance</div></div>
+      <div class="vi"><div class="vt">Export credit & guarantees</div><div class="vs">Supports Indian exporters</div></div>
+    </div>
+    <span class="chip yes" style="margin-top:6px;">✅ Direct lending</span>
+  </div>
+  <div class="pc ct">
+    <div class="pc-lbl">SIDBI · Est. 1990</div>
+    <h3>🏭 MSME Finance</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Promotes MSMEs</div><div class="vs">Small & medium enterprise apex</div></div>
+      <div class="vi"><div class="vt">Refinance support</div><div class="vs">Via banks and financial institutions</div></div>
+    </div>
+    <span class="chip neu" style="margin-top:6px;">DIRECT + INDIRECT</span>
+  </div>
+</div>
+
+<!-- MUDRA & NaBFID -->
+<div class="g2">
+  <div class="pc cg">
+    <div class="pc-lbl">MUDRA — Micro Enterprises</div>
+    <h3>💼 MUDRA Loan Categories</h3>
+    <div class="tier">
+      <div class="tier-item">
+        <div class="tier-num" style="background:var(--green);">S</div>
+        <div><div class="tier-text">Shishu — up to ₹50,000</div><div class="tier-sub">Infant stage enterprises</div></div>
+      </div>
+      <div class="tier-item">
+        <div class="tier-num" style="background:var(--amber);">K</div>
+        <div><div class="tier-text">Kishor — ₹50,000 to ₹5 lakh</div><div class="tier-sub">Growing enterprises</div></div>
+      </div>
+      <div class="tier-item">
+        <div class="tier-num" style="background:var(--red);">T</div>
+        <div><div class="tier-text">Tarun — ₹5 lakh to ₹10 lakh</div><div class="tier-sub">Established micro enterprises</div></div>
+      </div>
+    </div>
+    <span class="chip no" style="margin-top:6px;">❌ No direct lending — via banks/NBFCs</span>
+  </div>
+  <div class="pc cn">
+    <div class="pc-lbl">NaBFID — Infrastructure DFI</div>
+    <h3 style="color:#f5e8c0;">🏗️ NaBFID</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt" style="color:var(--ink);">Development Finance Institution</div><div class="vs">Established for infrastructure</div></div>
+      <div class="vi"><div class="vt" style="color:var(--ink);">Long-term infra financing</div><div class="vs">Roads, ports, energy projects</div></div>
+      <div class="vi"><div class="vt" style="color:var(--ink);">Reduces bank-infra mismatch</div><div class="vs">Banks give short-term, infra needs long-term</div></div>
+    </div>
+    <div class="ic" style="margin-top:8px;">
+      <div class="icn" style="border-color:#b8890a;background:rgba(184,137,10,0.1);color:#b8890a;font-size:9px;">Long-term bonds</div>
+      <div class="ia">→</div>
+      <div class="icn" style="border-color:#0a6a3a;background:rgba(10,106,58,0.1);color:#0a6a3a;font-size:9px;">Fund Infra</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: NBFCs ══ -->
+<div class="sl">⑥ NBFCs — Types, Rules & Special Variants</div>
+
+<div class="mc m6">
+  <svg id="svgNBFC" viewBox="0 0 1380 200" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc cr">
+    <div class="pc-lbl">NBFC-MFI — Microfinance</div>
+    <h3>🤝 Microfinance Institutions</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Collateral-free loans</div><div class="vs">No security required from borrower</div></div>
+      <div class="vi"><div class="vt">Low-income households only</div><div class="vs">Annual income ≤ ₹3 lakh</div></div>
+      <div class="vi"><div class="vt">Group lending model</div><div class="vs">SHG-based disbursement</div></div>
+    </div>
+    <div class="sr" style="margin-top:8px;">
+      <div class="sb"><div class="snum" style="color:var(--red);">₹3L</div><div class="ssub">Income Limit</div><div class="slb">PER YEAR</div></div>
+    </div>
+  </div>
+  <div class="pc cp">
+    <div class="pc-lbl">NBFC-P2P — Peer to Peer (2017)</div>
+    <h3>💻 P2P Lending Platform</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Platform model — connects lenders/borrowers</div><div class="vs">Marketplace, not a lender itself</div></div>
+      <div class="vi"><div class="vt">❌ Cannot lend own funds</div><div class="vs">Only intermediary role</div></div>
+      <div class="vi"><div class="vt">❌ Cannot raise deposits</div><div class="vs">No deposit-taking allowed</div></div>
+      <div class="vi"><div class="vt">Must use escrow account</div><div class="vs">Funds flow via escrow only</div></div>
+      <div class="vi"><div class="vt">₹50 lakh aggregate limit</div><div class="vs">Per lender across all P2P platforms</div></div>
+    </div>
+    <div class="ic" style="margin-top:8px;">
+      <div class="icn" style="border-color:var(--purple);background:rgba(106,26,154,0.07);color:var(--purple);font-size:9px;">Lender</div>
+      <div class="ia">→</div>
+      <div class="icn" style="border-color:var(--sky);background:rgba(10,74,106,0.07);color:var(--sky);font-size:9px;">P2P Platform</div>
+      <div class="ia">→</div>
+      <div class="icn" style="border-color:var(--teal);background:rgba(10,106,90,0.07);color:var(--teal);font-size:9px;">Borrower</div>
+    </div>
+  </div>
+  <div class="pc ca">
+    <div class="pc-lbl">NBFCs Exempt from RBI Reg.</div>
+    <h3>⚠️ RBI Registration Exempt</h3>
+    <div class="fg">
+      <div class="fi2"><div class="fe">📈</div><div class="ft">Venture Capital</div><div class="fs">Regulated by SEBI</div></div>
+      <div class="fi2"><div class="fe">🛡️</div><div class="ft">Insurance Companies</div><div class="fs">Regulated by IRDAI</div></div>
+      <div class="fi2"><div class="fe">🔄</div><div class="ft">Chit Funds</div><div class="fs">State govt regulated</div></div>
+      <div class="fi2"><div class="fe">💰</div><div class="ft">Nidhi Companies</div><div class="fs">MCA regulated</div></div>
+    </div>
+    <div class="co" style="border-color:rgba(212,106,16,0.25);background:rgba(212,106,16,0.05);margin-top:8px;">
+      <div class="co-b">These have their own sector-specific regulators — RBI registration NOT needed</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 7: NICHE BANKS ══ -->
+<div class="sl">⑦ Niche Banks — Payment Banks & Small Finance Banks (2015)</div>
+
+<div class="mc m2">
+  <svg id="svgNiche" viewBox="0 0 1380 160" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cs">
+    <div class="pc-lbl">Payment Banks · Est. 2015</div>
+    <h3>📱 Payment Banks</h3>
+    <div class="sr">
+      <div class="sb"><div class="snum" style="color:var(--sky);">₹2L</div><div class="ssub">Deposit Limit</div><div class="slb">PER CUSTOMER</div></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin:10px 0;">
+      <span class="chip yes">✅ Accept deposits (≤ ₹2L)</span>
+      <span class="chip yes">✅ Remittance services</span>
+      <span class="chip yes">✅ ATM/debit cards</span>
+      <span class="chip no">❌ CANNOT lend</span>
+      <span class="chip no">❌ No credit cards</span>
+      <span class="chip no">❌ No NRI deposits</span>
+    </div>
+    <div class="co" style="border-color:rgba(10,74,106,0.25);background:rgba(10,74,106,0.05);">
+      <div class="co-t" style="color:var(--sky);">🎯 Target: Financial Inclusion</div>
+      <div class="co-b">Migrant workers, low-income households, small merchants — digital-first banking</div>
+    </div>
+  </div>
+
+  <div class="pc cgn">
+    <div class="pc-lbl">Small Finance Banks · Est. 2015</div>
+    <h3>🏦 Small Finance Banks</h3>
+    <div class="sr">
+      <div class="sb"><div class="snum" style="color:var(--green);">75%</div><div class="ssub">PSL Lending</div><div class="slb">MANDATORY</div></div>
+      <div class="sb"><div class="snum" style="color:var(--teal);">50%</div><div class="ssub">Loans ≤ ₹25L</div><div class="slb">SMALL LOANS</div></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin:10px 0;">
+      <span class="chip yes">✅ Accept deposits</span>
+      <span class="chip yes">✅ Can lend (PSL focus)</span>
+      <span class="chip yes">✅ Full bank license</span>
+      <span class="chip yes">✅ MSME, farmers, unbanked</span>
+    </div>
+    <div class="co" style="border-color:rgba(10,106,58,0.25);background:rgba(10,106,58,0.05);">
+      <div class="co-t" style="color:var(--green);">🎯 Target: Credit to Excluded Segments</div>
+      <div class="co-b">Serve small businesses, marginal farmers, micro industries — sectors banks avoid</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 8: CREDIT INFRASTRUCTURE ══ -->
+<div class="sl">⑧ Credit Infrastructure — CIC, Primary Dealers</div>
+
+<div class="g2">
+  <div class="pc cg">
+    <div class="pc-lbl">Credit Information Companies · CIC Act 2005</div>
+    <h3>📊 Credit Bureaus in India</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+      <div style="padding:10px;border-radius:9px;background:var(--card2);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:18px;margin-bottom:3px;">🔵</div>
+        <div style="font-size:11px;font-weight:800;">CIBIL</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">TransUnion</div>
+      </div>
+      <div style="padding:10px;border-radius:9px;background:var(--card2);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:18px;margin-bottom:3px;">🟢</div>
+        <div style="font-size:11px;font-weight:800;">Equifax</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">International</div>
+      </div>
+      <div style="padding:10px;border-radius:9px;background:var(--card2);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:18px;margin-bottom:3px;">🟠</div>
+        <div style="font-size:11px;font-weight:800;">Experian</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">International</div>
+      </div>
+      <div style="padding:10px;border-radius:9px;background:var(--card2);border:1px solid var(--border);text-align:center;">
+        <div style="font-size:18px;margin-bottom:3px;">🔴</div>
+        <div style="font-size:11px;font-weight:800;">CRIF High Mark</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;">MFI focused</div>
+      </div>
+    </div>
+    <div class="co" style="border-color:rgba(184,137,10,0.25);background:rgba(184,137,10,0.05);">
+      <div class="co-t" style="color:var(--gold);">📌 Regulated by RBI · CIC Act 2005</div>
+      <div class="co-b">Provide credit scores → Banks use to assess loan risk → Better credit = lower interest rate</div>
+    </div>
+  </div>
+  <div class="pc cb">
+    <div class="pc-lbl">Primary Dealers (PDs)</div>
+    <h3>📄 Primary Dealers</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Registered with RBI</div><div class="vs">Specialized market intermediaries</div></div>
+      <div class="vi"><div class="vt">Buy govt securities — primary market</div><div class="vs">Underwrite govt debt issuance</div></div>
+      <div class="vi"><div class="vt">Trade in secondary market</div><div class="vs">Provide liquidity to G-sec market</div></div>
+    </div>
+    <div class="ic" style="margin-top:8px;">
+      <div class="icn" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);font-size:9px;">Govt Issues Bonds</div>
+      <div class="ia">→</div>
+      <div class="icn" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);font-size:9px;">PDs Underwrite</div>
+      <div class="ia">→</div>
+      <div class="icn" style="border-color:var(--green);background:rgba(10,106,58,0.07);color:var(--green);font-size:9px;">Market Trading</div>
+    </div>
+    <div class="co" style="border-color:rgba(26,58,138,0.25);background:rgba(26,58,138,0.05);">
+      <div class="co-t" style="color:var(--blue);">💡 Critical for Govt Debt Market</div>
+      <div class="co-b">Without PDs, govt bond auctions would face under-subscription risk</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 9: PRELIMS TABLE ══ -->
+<div class="sl">⑨ Quick Reference — All Key Numbers & Facts</div>
+
+<div class="pc cn" style="margin-bottom:20px;">
+  <div class="pc-lbl">Master Facts Table — Prelims Ready</div>
+  <h3 style="color:#f5e8c0;">📋 High-Probability Prelims Points</h3>
+  <table class="ct">
+    <thead><tr><th>Institution</th><th>Year</th><th>Key Role</th><th>Critical Fact</th></tr></thead>
+    <tbody>
+      <tr><td>NABARD</td><td>1982</td><td>Agriculture & Rural Finance</td><td>Supervises RRBs · NO direct retail loans</td></tr>
+      <tr><td>EXIM Bank</td><td>1982</td><td>Export-Import Finance</td><td>Trade finance, export credit, guarantees</td></tr>
+      <tr><td>NHB</td><td>1988</td><td>Housing Finance</td><td>Refinance to HFCs · Indirect model</td></tr>
+      <tr><td>SIDBI</td><td>1990</td><td>MSME Finance</td><td>Refinance + direct lending to MSMEs</td></tr>
+      <tr><td>RRBs</td><td>1975</td><td>Rural Banking</td><td>50:15:35 (Centre:State:Sponsor) · 75% PSL</td></tr>
+      <tr><td>LABs</td><td>1996</td><td>Local 2–3 districts</td><td>Non-scheduled · Hyper-local scope</td></tr>
+      <tr><td>Payment Banks</td><td>2015</td><td>Financial Inclusion</td><td>Max deposit ₹2 lakh · NO lending</td></tr>
+      <tr><td>Small Finance Banks</td><td>2015</td><td>Credit to excluded</td><td>75% PSL · 50% loans ≤ ₹25 lakh</td></tr>
+      <tr><td>CIC Act</td><td>2005</td><td>Credit Bureaus</td><td>CIBIL, Equifax, Experian, CRIF · RBI regulated</td></tr>
+      <tr><td>NBFC-P2P</td><td>2017</td><td>Peer-to-Peer lending</td><td>₹50L limit · Escrow · NO deposits</td></tr>
+      <tr><td>PACS</td><td>—</td><td>Village credit cooperative</td><td>NOT regulated by RBI — outside Banking Reg. Act</td></tr>
+      <tr><td>Scheduled Banks</td><td>—</td><td>2nd Schedule RBI Act 1934</td><td>Min ₹5 crore paid-up capital · CRR mandatory</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TRAPS -->
+<div class="g2">
+  <div class="pc cgn">
+    <div class="pc-lbl">✅ What's True — Remember These</div>
+    <h3>✅ Key Affirmatives</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip yes">✅ Banks accept demand deposits</span>
+      <span class="chip yes">✅ PACS outside RBI regulation</span>
+      <span class="chip yes">✅ RRB = 50:15:35 ownership</span>
+      <span class="chip yes">✅ Payment banks deposit limit ₹2L</span>
+      <span class="chip yes">✅ SFB → 75% PSL</span>
+      <span class="chip yes">✅ NABARD supervises RRBs</span>
+      <span class="chip yes">✅ P2P uses escrow account</span>
+      <span class="chip yes">✅ CRR must be maintained with RBI</span>
+    </div>
+  </div>
+  <div class="pc cr">
+    <div class="pc-lbl">⚠️ Exam Traps — Commonly Wrong</div>
+    <h3>⚠️ Statement Traps</h3>
+    <div class="vl">
+      <div class="vi">
+        <div class="vt">❌ "NBFCs can issue cheques"</div>
+        <div style="font-size:11px;margin-top:2px;padding:4px 8px;background:rgba(10,106,58,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ Only banks can issue cheques on themselves</div>
+      </div>
+      <div class="vi">
+        <div class="vt">❌ "NABARD gives direct loans to farmers"</div>
+        <div style="font-size:11px;margin-top:2px;padding:4px 8px;background:rgba(10,106,58,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ NABARD provides refinance only — not direct</div>
+      </div>
+      <div class="vi">
+        <div class="vt">❌ "Payment Banks can give loans"</div>
+        <div style="font-size:11px;margin-top:2px;padding:4px 8px;background:rgba(10,106,58,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ Payment Banks CANNOT lend at all</div>
+      </div>
+      <div class="vi">
+        <div class="vt">❌ "P2P platforms can raise deposits"</div>
+        <div style="font-size:11px;margin-top:2px;padding:4px 8px;background:rgba(10,106,58,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ P2P cannot raise deposits or give credit guarantee</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="ks">
+  <div class="ks-i">🏦</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Big Picture — Indian Financial System</div>
+    <div class="ks-sub">
+      Banks (accept deposits, issue cheques) + NBFCs (lend, invest, lease — NO deposits) form the financial system. Banks → Commercial (PSB/Private/Foreign/RRB/LAB) + Cooperative (UCB + 3-tier rural). AIFIs (NABARD, NHB, EXIM, SIDBI) provide <strong style="color:#f5d78a;">long-term sectoral finance via refinance</strong>. Niche banks (Payment Banks = no lending, Small Finance Banks = PSL-focused) enhance inclusion. CICs provide credit data; PDs support govt debt market.
+    </div>
+    <div class="ks-pills">
+      <span class="kp">🏦 Banks = Deposits</span>
+      <span class="kp">⚠️ NBFCs = No Deposits</span>
+      <span class="kp">🌾 NABARD 1982</span>
+      <span class="kp">📍 RRB 50:15:35</span>
+      <span class="kp">📱 PB = No Lending</span>
+      <span class="kp">75% SFB PSL</span>
+      <span class="kp">⚠️ PACS ≠ RBI</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function txt(p,x,y,s,sz,fill,wt,anchor,fam){
+  const t=el('text',{x,y,'text-anchor':anchor||'middle','dominant-baseline':'middle','font-size':sz||11,'font-weight':wt||'600','font-family':fam||'Plus Jakarta Sans,sans-serif',fill:fill||'#fff'});
+  t.textContent=s;p.appendChild(t);return t;
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,rx){
+  rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.22)','stroke-width':'1.5'}));
+  const arr=Array.isArray(lines)?lines:[lines];
+  let ty=y-(arr.length-1)*7-(sub?5:0)-(emoji?10:0);
+  if(emoji){txt(g,x,ty-8,emoji,14,'#fff','400');ty+=14;}
+  arr.forEach((l,i)=>txt(g,x,ty+i*14.5,l,10.5,'#fff','700'));
+  if(sub)txt(g,x,ty+arr.length*14.5,sub,8,'rgba(255,255,255,0.5)','400','middle','DM Mono,monospace');
+  svg.appendChild(g);
+}
+function curve(svg,x1,y1,x2,y2,col,dash){
+  svg.appendChild(el('path',{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,
+    stroke:col||'#b8890a','stroke-width':'1.8',fill:'none','stroke-dasharray':dash?'5 4':'none',opacity:'0.7'}));
+}
+function arrow(svg,x1,y1,x2,y2,col){
+  const id='ar'+Math.random().toString(36).slice(2,7);
+  let d=svg.querySelector('defs');if(!d){d=el('defs',{});svg.insertBefore(d,svg.firstChild);}
+  const m=el('marker',{id,markerWidth:'7',markerHeight:'7',refX:'5',refY:'3.5',orient:'auto'});
+  m.appendChild(el('polygon',{points:'0 0,7 3.5,0 7',fill:col||'#b8890a'}));
+  d.appendChild(m);
+  svg.appendChild(el('line',{x1,y1,x2,y2,stroke:col||'#b8890a','stroke-width':'2','marker-end':`url(#${id})`,opacity:'0.82'}));
+}
+function lbl(svg,x,y,t,col){
+  txt(svg,x,y,t,8,col||'rgba(120,100,60,0.42)','500','middle','DM Mono,monospace');
+}
+
+/* ── MASTER FLOW ── */
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:110,fill:'rgba(250,245,238,0.3)'}));
+  const steps=[
+    {x:95,  fill:'#0d1848', label:['Financial','System'],    sub:'Banks + NBFIs',        emoji:'🏦'},
+    {x:270, fill:'#1a3a8a', label:['Commercial','Banks'],    sub:'PSB+Pvt+Foreign',     emoji:'🏛️'},
+    {x:445, fill:'#6a1a9a', label:['Cooperative','Banks'],   sub:'UCB + 3-tier Rural',  emoji:'🤝'},
+    {x:620, fill:'#d46a10', label:['RRBs & LABs'],           sub:'Rural & Local',       emoji:'🌾'},
+    {x:795, fill:'#0a6a3a', label:['AIFIs'],                 sub:'NABARD/NHB/EXIM/SIDBI',emoji:'🏗️'},
+    {x:970, fill:'#b81a1a', label:['NBFCs'],                 sub:'Non-Banking Finance',  emoji:'💼'},
+    {x:1145,fill:'#0a4a6a', label:['Niche Banks'],           sub:'Payment + SFB',       emoji:'📱'},
+    {x:1300,fill:'#5a6010', label:['CIC & PDs'],             sub:'Credit infra',        emoji:'📊'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) arrow(svg,s.x+74,55,steps[i+1].x-74,55,s.fill+'99');
+  });
+  steps.forEach(s=>node(svg,s.x,55,136,66,s.fill,s.label,s.sub,s.emoji));
+  lbl(svg,690,100,'MASTER FLOW: FINANCIAL SYSTEM STRUCTURE → BANKS → CO-OPS → RURAL → AIFIs → NBFCs → NICHE BANKS → CREDIT INFRA');
+})();
+
+/* ── BANKS vs NBFC SVG ── */
+(()=>{
+  const svg=document.getElementById('svgBankNbfc');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:200,fill:'rgba(250,248,243,0.3)'}));
+
+  // Two root nodes side by side
+  node(svg,350,55,260,56,'#1a3a8a',['BANKS'],'Accept deposits · Issue cheques','🏦');
+  node(svg,1030,55,260,56,'#b81a1a',['NBFCs'],'No deposits · No cheques','💼');
+
+  // VS circle
+  svg.appendChild(el('circle',{cx:690,cy:55,r:26,fill:'#f2ede0',stroke:' #ddd0b0','stroke-width':'2'}));
+  txt(svg,690,55,'VS',11,'#8a7a60','800');
+
+  const bankFeat=[
+    {x:120, y:148, fill:'#1a3a8a', label:['Demand','Deposits'],    sub:'Repayable on demand', emoji:'💰'},
+    {x:270, y:148, fill:'#0a4a6a', label:['Issue','Cheques'],       sub:'Unique bank power',   emoji:'📝'},
+    {x:420, y:148, fill:'#0a6a5a', label:['Payment','System'],      sub:'NEFT, RTGS access',   emoji:'⚡'},
+    {x:570, y:148, fill:'#0a6a3a', label:['CRR & SLR'],             sub:'Mandatory reserves',  emoji:'🔒'},
+  ];
+  const nbfcFeat=[
+    {x:820, y:148, fill:'#b81a1a', label:['Loans &','Investment'],  sub:'Core NBFC activity',  emoji:'💸'},
+    {x:970, y:148, fill:'#a03000', label:['Leasing &','Hire-Purch.'],sub:'Asset finance',       emoji:'🚗'},
+    {x:1120,y:148, fill:'#6a1a9a', label:['No Demand','Deposits'],  sub:'Key restriction',     emoji:'🚫'},
+    {x:1270,y:148, fill:'#0a4a6a', label:['Must Reg.','with RBI'],  sub:'(Exempt: VC/Insurance)',emoji:'📋'},
+  ];
+  [...bankFeat].forEach(n=>{curve(svg,350,83,n.x,n.y-30,'#1a3a8a44',true);node(svg,n.x,n.y,136,56,n.fill,n.label,n.sub,n.emoji);});
+  [...nbfcFeat].forEach(n=>{curve(svg,1030,83,n.x,n.y-30,'#b81a1a44',true);node(svg,n.x,n.y,136,56,n.fill,n.label,n.sub,n.emoji);});
+  lbl(svg,690,192,'CORE DIFFERENCE: BANKS = ACCEPT DEMAND DEPOSITS + ISSUE CHEQUES · NBFCs = NEITHER');
+})();
+
+/* ── BANK TAXONOMY TREE ── */
+(()=>{
+  const svg=document.getElementById('svgBankTree');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:280,fill:'rgba(250,248,243,0.3)'}));
+
+  node(svg,690,44,220,54,'#0d1848',['Indian Banking System'],'Commercial + Cooperative','🏦');
+
+  // Two main branches
+  node(svg,340,120,200,50,'#1a3a8a',['Commercial Banks'],'Profit-based', '🏛️');
+  node(svg,1040,120,200,50,'#6a1a9a',['Cooperative Banks'],'Member-based','🤝');
+
+  curve(svg,690,71,340,95,'#1a3a8a66',true);
+  curve(svg,690,71,1040,95,'#6a1a9a66',true);
+
+  // Commercial sub-types (row)
+  const comm=[
+    {x:80,  fill:'#1a3a8a', label:['PSBs'],           sub:'Govt>51%',         emoji:'🏛️'},
+    {x:220, fill:'#0a6a5a', label:['Private Banks'],   sub:'Pvt ownership',    emoji:'🏢'},
+    {x:360, fill:'#0a4a6a', label:['Foreign Banks'],   sub:'HQ abroad',        emoji:'🌐'},
+    {x:500, fill:'#d46a10', label:['RRBs'],            sub:'Rural · 1975',     emoji:'🌾'},
+    {x:620, fill:'#b8890a', label:['LABs'],            sub:'Local · 1996',     emoji:'📍'},
+  ];
+  comm.forEach(n=>{
+    curve(svg,340,145,n.x,198,'#1a3a8a44',true);
+    node(svg,n.x,218,120,46,n.fill,[n.label],n.sub,n.emoji);
+  });
+
+  // Cooperative sub-types (row)
+  const coop=[
+    {x:830,  fill:'#6a1a9a', label:['UCBs'],           sub:'Urban dual-reg',    emoji:'🏙️'},
+    {x:980,  fill:'#0a6a3a', label:['SCBs'],           sub:'State apex tier-1', emoji:'①'},
+    {x:1120, fill:'#0a6a5a', label:['DCCBs'],          sub:'District tier-2',   emoji:'②'},
+    {x:1260, fill:'#d46a10', label:['PACS'],           sub:'Village ⚠️ No RBI', emoji:'③'},
+  ];
+  coop.forEach(n=>{
+    curve(svg,1040,145,n.x,198,'#6a1a9a44',true);
+    node(svg,n.x,218,118,46,n.fill,[n.label],n.sub,n.emoji);
+  });
+
+  // Scheduled vs Non-Scheduled label
+  svg.appendChild(el('rect',{x:8,y:254,width:650,height:18,rx:6,ry:6,fill:'rgba(26,58,138,0.08)',stroke:'rgba(26,58,138,0.2)','stroke-width':'1'}));
+  txt(svg,333,263,'SCHEDULED: 2nd Schedule RBI Act · Min ₹5cr · CRR required',9,'#1a3a8a','700','middle','DM Mono,monospace');
+
+  svg.appendChild(el('rect',{x:720,y:254,width:654,height:18,rx:6,ry:6,fill:'rgba(184,26,26,0.07)',stroke:'rgba(184,26,26,0.2)','stroke-width':'1'}));
+  txt(svg,1047,263,'⚠️ PACS NOT under RBI · Exempt from Banking Regulation Act',9,'#b81a1a','700','middle','DM Mono,monospace');
+})();
+
+/* ── COOPERATIVE BANKS ── */
+(()=>{
+  const svg=document.getElementById('svgCoop');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:220,fill:'rgba(250,248,243,0.3)'}));
+
+  // Left: UCB
+  node(svg,290,55,260,54,'#6a1a9a',['Urban Cooperative Banks (UCBs)'],'Dual regulation model','🏙️');
+  const ucbItems=[
+    {x:120,y:148,fill:'#6a1a9a',label:['Urban &','Semi-urban'],sub:'Small borrowers',emoji:'🏘️'},
+    {x:290,y:148,fill:'#1a3a8a',label:['RBI Regulates','Banking'],sub:'BR Act',       emoji:'🏦'},
+    {x:460,y:148,fill:'#0a6070',label:['Registrar','Co-op Soc.'],sub:'Admin/management',emoji:'⚖️'},
+  ];
+  ucbItems.forEach(n=>{curve(svg,290,82,n.x,n.y-26,'#6a1a9a44',true);node(svg,n.x,n.y,152,50,n.fill,[n.label],n.sub,n.emoji);});
+
+  // Separator
+  svg.appendChild(el('line',{x1:690,y1:20,x2:690,y2:200,stroke:'rgba(200,180,140,0.2)','stroke-width':'1.5','stroke-dasharray':'6 4'}));
+
+  // Right: Rural 3-tier
+  node(svg,1040,55,280,54,'#0a6a3a',['Rural Cooperative Banks'],'3-Tier Pyramid Structure','🌾');
+  const tiers=[
+    {x:800, y:140, fill:'#1a3a8a', label:['SCBs'],       sub:'Tier 1 · State apex',  emoji:'🏛️', note:'Top'},
+    {x:1040,y:148, fill:'#0a6a5a', label:['DCCBs'],      sub:'Tier 2 · District',    emoji:'🏢', note:'Mid'},
+    {x:1260,y:140, fill:'#d46a10', label:['PACS ⚠️'],    sub:'Tier 3 · Village',     emoji:'🌾', note:'Base'},
+  ];
+  // pyramid arrows (down cascade)
+  arrow(svg,800+70,140,1040-70,148,'#1a3a8a66');
+  arrow(svg,1040+70,148,1260-70,140,'#0a6a5a66');
+  tiers.forEach(n=>{curve(svg,1040,82,n.x,n.y-26,'#0a6a3a44',true);node(svg,n.x,n.y,148,48,n.fill,[n.label],n.sub,n.emoji);});
+
+  svg.appendChild(el('rect',{x:1135,y:182,width:250,height:18,rx:6,ry:6,fill:'rgba(184,26,26,0.08)',stroke:'rgba(184,26,26,0.2)','stroke-width':'1'}));
+  txt(svg,1260,191,'⚠️ PACS NOT regulated by RBI',9,'#b81a1a','700','middle','DM Mono,monospace');
+
+  lbl(svg,690,210,'UCB = DUAL REGULATION (RBI + REGISTRAR) · RURAL = 3-TIER: SCB→DCCB→PACS · PACS OUTSIDE BANKING REG. ACT');
+})();
+
+/* ── AIFIs SVG ── */
+(()=>{
+  const svg=document.getElementById('svgAIFI');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:190,fill:'rgba(250,248,243,0.3)'}));
+
+  node(svg,690,50,280,52,'#0d1848',['All India Financial Institutions'],'Long-term development finance · RBI regulated','🏗️');
+
+  const afis=[
+    {x:145, fill:'#0a6a3a', label:['NABARD','1982'],      sub:'Agri+Rural · No direct loans', emoji:'🌾'},
+    {x:390, fill:'#1a3a8a', label:['NHB','1988'],         sub:'Housing finance refinance',    emoji:'🏠'},
+    {x:635, fill:'#d46a10', label:['EXIM Bank','1982'],   sub:'Export-Import finance',        emoji:'🌐'},
+    {x:880, fill:'#0a6a5a', label:['SIDBI','1990'],       sub:'MSME refinance+direct',       emoji:'🏭'},
+    {x:1100,fill:'#b8890a', label:['MUDRA'],              sub:'Micro · Via banks · Shishu/K/T',emoji:'💼'},
+    {x:1280,fill:'#0a1848', label:['NaBFID'],             sub:'Infrastructure DFI',          emoji:'🏗️'},
+  ];
+  afis.forEach(n=>{
+    curve(svg,690,76,n.x,135,'#0d184866',true);
+    node(svg,n.x,155,168,56,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  // Year badges on top
+  [{x:145,y:110,yr:'1982',c:'#0a6a3a'},{x:390,y:110,yr:'1988',c:'#1a3a8a'},{x:635,y:110,yr:'1982',c:'#d46a10'},{x:880,y:110,yr:'1990',c:'#0a6a5a'}].forEach(b=>{
+    svg.appendChild(el('rect',{x:b.x-22,y:b.y-11,width:44,height:22,rx:11,ry:11,fill:b.c}));
+    txt(svg,b.x,b.y,b.yr,9,'#fff','800','middle','DM Mono,monospace');
+  });
+
+  lbl(svg,690,182,'ALL 4 AIFIs REGULATED BY RBI · NABARD = NO DIRECT RETAIL · MUDRA = VIA BANKS/NBFCs · NaBFID = INFRA DFI');
+})();
+
+/* ── NBFC SVG ── */
+(()=>{
+  const svg=document.getElementById('svgNBFC');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:200,fill:'rgba(250,248,243,0.3)'}));
+
+  node(svg,690,50,250,52,'#b81a1a',['Non-Banking Financial Companies'],'Registered under Companies Act · Must register RBI','💼');
+
+  const types=[
+    {x:130, fill:'#b81a1a', label:['NBFC-MFI'],         sub:'Micro · Collateral-free · ≤₹3L',emoji:'🤝'},
+    {x:330, fill:'#6a1a9a', label:['NBFC-P2P','2017'],  sub:'Platform · ₹50L limit · Escrow', emoji:'💻'},
+    {x:530, fill:'#0a4a6a', label:['NBFC-AFC'],         sub:'Asset Finance · Hire-purchase',   emoji:'🚗'},
+    {x:730, fill:'#0a6a3a', label:['NBFC-ND'],          sub:'Non-Deposit taking NBFCs',         emoji:'📋'},
+    {x:940, fill:'#b8890a', label:['NBFC-D'],           sub:'Deposit-taking (restricted)',      emoji:'💰'},
+    {x:1120,fill:'#0a6070', label:['NBFC-Infra'],       sub:'Infrastructure finance companies', emoji:'🏗️'},
+    {x:1280,fill:'#5a6010', label:['Exempt NBFCs'],     sub:'VC/Insurance/Chit/Nidhi',          emoji:'⚠️'},
+  ];
+  types.forEach(n=>{
+    curve(svg,690,76,n.x,148,'#b81a1a44',true);
+    node(svg,n.x,162,162,50,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  // Exempt highlight
+  svg.appendChild(el('rect',{x:1197,y:100,width:164,height:18,rx:6,ry:6,fill:'rgba(212,106,16,0.1)',stroke:'rgba(212,106,16,0.3)','stroke-width':'1'}));
+  txt(svg,1279,109,'NOT UNDER RBI REG.',8,'#d46a10','700','middle','DM Mono,monospace');
+
+  lbl(svg,690,192,'NBFCs: LOANS · INVESTMENT · LEASING · HIRE PURCHASE · KEY: NO DEMAND DEPOSITS · NO CHEQUES ON THEMSELVES');
+})();
+
+/* ── NICHE BANKS SVG ── */
+(()=>{
+  const svg=document.getElementById('svgNiche');
+  svg.appendChild(el('rect',{x:0,y:0,width:1380,height:160,fill:'rgba(250,248,243,0.3)'}));
+
+  // Payment Banks flow
+  node(svg,280,80,200,52,'#0a4a6a',['Payment Banks','Est. 2015'],'No lending · ₹2L limit','📱');
+  const pb=[
+    {x:50,  fill:'#0a4a6a', label:['✅ Accept','Deposits'],sub:'Up to ₹2L',        emoji:'💰'},
+    {x:185, fill:'#0a6070', label:['✅ Remittance'],        sub:'Money transfer',   emoji:'📲'},
+    {x:320, fill:'#b81a1a', label:['❌ No Lending'],        sub:'Cannot give loans',emoji:'🚫'},
+    {x:455, fill:'#b81a1a', label:['❌ No Credit','Cards'], sub:'No credit products',emoji:'🚫'},
+  ];
+  pb.forEach(n=>{curve(svg,280,106,n.x,132,'#0a4a6a44',true);node(svg,n.x,145,120,26,n.fill,[n.label],n.sub,null);});
+
+  // Separator
+  svg.appendChild(el('line',{x1:580,y1:20,x2:580,y2:140,stroke:'rgba(200,180,140,0.2)','stroke-width':'1.5','stroke-dasharray':'6 4'}));
+
+  // SFB flow
+  node(svg,1000,80,230,52,'#0a6a3a',['Small Finance Banks','Est. 2015'],'75% PSL · Can lend','🏦');
+  const sfb=[
+    {x:640, fill:'#0a6a3a', label:['✅ Accept','Deposits'],sub:'Full deposits',      emoji:'💰'},
+    {x:775, fill:'#0a6a5a', label:['✅ Can Lend'],         sub:'PSL focus',          emoji:'📋'},
+    {x:910, fill:'#d46a10', label:['75% PSL'],             sub:'Mandatory priority', emoji:'⭐'},
+    {x:1070,fill:'#0a4a6a', label:['50% Loans','≤₹25L'],  sub:'Small ticket',       emoji:'📉'},
+    {x:1220,fill:'#6a1a9a', label:['Serve Excluded'],      sub:'MSME · Farmers',     emoji:'🤝'},
+  ];
+  sfb.forEach(n=>{curve(svg,1000,106,n.x,132,'#0a6a3a44',true);node(svg,n.x,145,120,26,n.fill,[n.label],n.sub,null);});
+
+  lbl(svg,690,154,'PAYMENT BANKS: NO LENDING · ₹2L LIMIT · INCLUSION · SMALL FINANCE BANKS: 75% PSL · FULL BANKING LICENCE');
+})();
+</script>
+</body>
+</html>

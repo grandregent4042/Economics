@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBC 2016 — Insolvency & Bankruptcy Code Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f6f3ec;--ink:#16120c;--muted:#7a6e58;--border:#ddd0b0;
+  --card:#fffef8;--card2:#f0ebe0;
+  --gold:#b8870a;--amber:#c86010;--green:#1a6438;--blue:#173880;
+  --purple:#5c1888;--teal:#0a5c6a;--red:#a81418;--sky:#145870;
+  --navy:#0c1e3c;--rose:#8a2040;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);}
+body::before{content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 1000px 500px at 5% 0%,rgba(168,20,24,0.05) 0%,transparent 55%),
+    radial-gradient(ellipse 700px 700px at 95% 100%,rgba(23,56,128,0.05) 0%,transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 28px 120px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:52px 20px 24px;}
+.hdr-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Lora',serif;font-size:clamp(28px,4.5vw,54px);line-height:1.1;}
+.hdr h1 em{font-style:italic;color:var(--amber);}
+.hdr-desc{margin-top:10px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1.2px;}
+.hdr::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--red),var(--amber),var(--blue));margin:18px auto 0;border-radius:4px;}
+
+/* SECTION LABELS */
+.sl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--amber);text-transform:uppercase;
+  margin:40px 0 16px;display:flex;align-items:center;gap:14px;}
+.sl::before,.sl::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:18px;}
+.g1x2{display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:18px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1,.g1x2{grid-template-columns:1fr;}}
+@media(max-width:600px){.g2,.g3,.g4,.g2x1,.g1x2{grid-template-columns:1fr;}}
+
+/* CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 24px rgba(168,20,24,0.08);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.cr::before{background:var(--red);}
+.pc.ca::before{background:var(--amber);}
+.pc.cg::before{background:var(--green);}
+.pc.cb::before{background:var(--blue);}
+.pc.cp::before{background:var(--purple);}
+.pc.ct::before{background:var(--teal);}
+.pc.csk::before{background:var(--sky);}
+.pc.cgo::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.cn::before{background:var(--navy);}
+.pc-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Lora',serif;font-size:15px;margin-bottom:12px;line-height:1.3;}
+
+/* MAP CARD */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;position:relative;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.mc.m1::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.m2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc.m3::before{background:linear-gradient(90deg,var(--teal),var(--green));}
+.mc.m4::before{background:linear-gradient(90deg,var(--navy),var(--blue));}
+.mc.m5::before{background:linear-gradient(90deg,var(--rose),var(--red),var(--amber));}
+.mc svg{display:block;width:100%;}
+
+/* VLIST */
+.vl{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:8px 11px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* FEAT GRID */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.fb{padding:10px;border-radius:8px;background:var(--card2);border:1px solid var(--border);}
+.fb .fi{font-size:17px;margin-bottom:4px;}
+.fb .ft{font-size:11px;font-weight:700;}
+.fb .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* STAT ROW */
+.sr{display:flex;gap:10px;margin:10px 0;}
+.sb{flex:1;padding:12px 8px;border-radius:10px;border:1.5px solid var(--border);background:var(--card2);text-align:center;}
+.sn{font-family:'Lora',serif;font-size:24px;font-weight:700;line-height:1;}
+.sl2{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.ss{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* CHIPS */
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(26,100,56,0.07);border-color:rgba(26,100,56,0.2);color:var(--green);}
+.chip.no{background:rgba(168,20,24,0.07);border-color:rgba(168,20,24,0.2);color:var(--red);}
+.chip.nn{background:rgba(184,135,10,0.07);border-color:rgba(184,135,10,0.2);color:var(--gold);}
+
+/* PILL */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:600;margin:2px;font-family:'DM Mono',monospace;}
+.pil-r{background:rgba(168,20,24,0.1);color:var(--red);}
+.pil-b{background:rgba(23,56,128,0.1);color:var(--blue);}
+.pil-g{background:rgba(26,100,56,0.1);color:var(--green);}
+.pil-a{background:rgba(200,96,16,0.1);color:var(--amber);}
+.pil-p{background:rgba(92,24,136,0.1);color:var(--purple);}
+.pil-t{background:rgba(10,92,106,0.1);color:var(--teal);}
+
+/* CHAIN */
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:4px;padding:6px 0;margin:8px 0;}
+.cn2{padding:6px 11px;border-radius:7px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ca2{font-size:16px;color:var(--muted);flex:0 0 auto;margin:0 2px;}
+
+/* CALLOUT */
+.callout{padding:11px 13px;border-radius:9px;margin:8px 0;}
+.callout .ct{font-size:11px;font-weight:700;margin-bottom:3px;}
+.callout .cb{font-size:10px;color:var(--muted);line-height:1.5;}
+.callout.cg{background:rgba(26,100,56,0.06);border:1.5px solid rgba(26,100,56,0.18);}
+.callout.cg .ct{color:var(--green);}
+.callout.cr2{background:rgba(168,20,24,0.06);border:1.5px solid rgba(168,20,24,0.18);}
+.callout.cr2 .ct{color:var(--red);}
+.callout.cb2{background:rgba(23,56,128,0.06);border:1.5px solid rgba(23,56,128,0.18);}
+.callout.cb2 .ct{color:var(--blue);}
+.callout.ca3{background:rgba(200,96,16,0.06);border:1.5px solid rgba(200,96,16,0.18);}
+.callout.ca3 .ct{color:var(--amber);}
+
+/* KEYSTONE */
+.ks{background:var(--navy);color:#e8d4a0;border-radius:16px;padding:26px 32px;margin:24px 0;display:flex;align-items:flex-start;gap:22px;flex-wrap:wrap;}
+.ks-ico{font-size:40px;flex:0 0 auto;padding-top:2px;}
+.ks-title{font-family:'Lora',serif;font-size:21px;font-style:italic;margin-bottom:7px;color:#f5e0a0;}
+.ks-body{font-size:12px;color:#b0a068;line-height:1.8;}
+.ks-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.08);font-size:10px;font-family:'DM Mono',monospace;color:#c8aa60;letter-spacing:.5px;}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:11px;}
+.tbl th{background:var(--navy);color:#fff;padding:9px 11px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.tbl td{padding:9px 11px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:nth-child(even) td{background:rgba(184,135,10,0.03);}
+.tbl td:first-child{font-weight:700;color:var(--amber);}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;align-items:stretch;gap:0;}
+.step-num{display:flex;flex-direction:column;align-items:center;flex:0 0 36px;}
+.step-circle{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex:0 0 28px;color:#fff;}
+.step-line{flex:1;width:2px;background:var(--border);margin:2px auto;}
+.step:last-child .step-line{display:none;}
+.step-content{flex:1;padding:0 0 14px 12px;}
+.step-title{font-size:12px;font-weight:700;margin-bottom:3px;}
+.step-sub{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* PHASE BOXES */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phases{grid-template-columns:1fr;}}
+.phase{padding:18px 14px;border-radius:12px;border:2px solid;text-align:center;}
+.ph-num{font-family:'Lora',serif;font-size:30px;font-weight:700;}
+.ph-title{font-size:12px;font-weight:700;margin:5px 0 3px;}
+.ph-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-bottom:8px;}
+.ph-body{font-size:10px;color:var(--muted);line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-sup">Indian Economy · Insolvency Law · UPSC Prelims</div>
+  <h1>Insolvency & Bankruptcy Code — <em>IBC 2016</em></h1>
+  <div class="hdr-desc">NPA → SARFAESI → ARC → Bad Bank → IBC → CIRP / Pre-Pack → Resolution / Liquidation</div>
+</div>
+
+<!-- SECTION 0: MASTER FLOW -->
+<div class="sl">① Master Concept Chain — The Big Picture</div>
+<div class="mc m1">
+  <svg id="svgMaster" viewBox="0 0 1340 120" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- WHY IBC -->
+<div class="sl">② Why IBC Was Needed — The Problem</div>
+<div class="g2">
+  <div class="pc cr">
+    <div class="pc-lbl">Before IBC — The Mess</div>
+    <h3>⚠️ Fragmented Legal Framework</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Multiple Conflicting Laws</div><div class="vs">DRT + Company Law Board + SARFAESI all overlapping</div></div>
+      <div class="vi"><div class="vt">Massive Delays</div><div class="vs">Cases dragged on for 10–15 years in courts</div></div>
+      <div class="vi"><div class="vt">Poor Recovery Rates</div><div class="vs">Creditors recovered &lt;25% of dues on average</div></div>
+      <div class="vi"><div class="vt">Debtor-Controlled Process</div><div class="vs">Promoters stayed in charge during resolution</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip no">❌ No single unified insolvency law</span>
+    </div>
+  </div>
+
+  <div class="pc cg">
+    <div class="pc-lbl">IBC 2016 — The Solution</div>
+    <h3>✅ Unified Insolvency Framework</h3>
+    <div class="sr">
+      <div class="sb"><div class="sn" style="color:var(--red);">May</div><div class="ss">2016</div><div class="sl2">ENACTED</div></div>
+      <div class="sb"><div class="sn" style="color:var(--amber);">₹1Cr</div><div class="ss">Default Threshold</div><div class="sl2">TRIGGER LIMIT</div></div>
+      <div class="sb"><div class="sn" style="color:var(--green);">330</div><div class="ss">Days Max</div><div class="sl2">TIME LIMIT</div></div>
+    </div>
+    <div class="fg" style="margin-top:8px;">
+      <div class="fb"><div class="fi">⏱️</div><div class="ft">Time-bound Resolution</div><div class="fs">180+90 day limit</div></div>
+      <div class="fb"><div class="fi">📈</div><div class="ft">Maximize Asset Value</div><div class="fs">Economic rationale</div></div>
+      <div class="fb"><div class="fi">🏦</div><div class="ft">Creditor-Driven</div><div class="fs">Big shift from debtor control</div></div>
+      <div class="fb"><div class="fi">🌐</div><div class="ft">Ease of Business</div><div class="fs">Improve India's ranking</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY DEFINITIONS -->
+<div class="g2" style="margin-bottom:18px;">
+  <div class="pc cb">
+    <div class="pc-lbl">Core Definitions</div>
+    <h3>📖 Insolvency vs Bankruptcy</h3>
+    <div class="vl">
+      <div class="vi">
+        <div class="vt">💰 Insolvency</div>
+        <div class="vs">Financial state — unable to pay debts as they fall due</div>
+        <div style="margin-top:6px;font-size:11px;color:var(--amber);">→ A condition, not a legal status</div>
+      </div>
+      <div class="vi">
+        <div class="vt">⚖️ Bankruptcy</div>
+        <div class="vs">Legal declaration of insolvency + formal liquidation process</div>
+        <div style="margin-top:6px;font-size:11px;color:var(--red);">→ A legal outcome following insolvency</div>
+      </div>
+    </div>
+    <div class="chain" style="margin-top:10px;">
+      <div class="cn2" style="border-color:var(--amber);background:rgba(200,96,16,0.08);color:var(--amber);">Cannot Pay Debts</div>
+      <div class="ca2">→</div>
+      <div class="cn2" style="border-color:var(--blue);background:rgba(23,56,128,0.08);color:var(--blue);">Insolvency</div>
+      <div class="ca2">→</div>
+      <div class="cn2" style="border-color:var(--red);background:rgba(168,20,24,0.08);color:var(--red);">Bankruptcy (Legal)</div>
+    </div>
+  </div>
+
+  <div class="pc ca">
+    <div class="pc-lbl">Who Can Trigger IBC?</div>
+    <h3>🔔 Initiation of CIRP</h3>
+    <div class="fg" style="margin-top:4px;">
+      <div class="fb"><div class="fi">🏦</div><div class="ft">Financial Creditor</div><div class="fs">Banks, NBFCs, bondholders</div></div>
+      <div class="fb"><div class="fi">🏢</div><div class="ft">Operational Creditor</div><div class="fs">Vendors, employees, govt.</div></div>
+      <div class="fb"><div class="fi">🏭</div><div class="ft">Corporate Debtor</div><div class="fs">Company itself can apply</div></div>
+      <div class="fb"><div class="fi">📋</div><div class="ft">Regulator (FSP)</div><div class="fs">RBI for banks/NBFCs</div></div>
+    </div>
+    <div class="callout ca3" style="margin-top:10px;">
+      <div class="ct">⚡ Key Threshold</div>
+      <div class="cb">Default must exceed <strong>₹1 crore</strong> to apply to NCLT</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: CIRP FLOW -->
+<div class="sl">③ CIRP Process — Step by Step</div>
+<div class="mc m2">
+  <svg id="svgCIRP" viewBox="0 0 1340 180" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <!-- STEP BY STEP -->
+  <div class="pc cb">
+    <div class="pc-lbl">CIRP Steps</div>
+    <h3>🔄 Corporate Insolvency Resolution Process</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num"><div class="step-circle" style="background:var(--red);">1</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Default Occurs</div><div class="step-sub">Borrower fails to repay debt &gt; ₹1 crore</div></div></div>
+      <div class="step"><div class="step-num"><div class="step-circle" style="background:var(--amber);">2</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Application to NCLT</div><div class="step-sub">Creditor/Debtor files petition</div></div></div>
+      <div class="step"><div class="step-num"><div class="step-circle" style="background:var(--gold);">3</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">NCLT Admits Case</div><div class="step-sub">14 days to admit or reject</div></div></div>
+      <div class="step"><div class="step-num"><div class="step-circle" style="background:var(--blue);">4</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Insolvency Professional (IP) Appointed</div><div class="step-sub">Takes over management from promoter</div></div></div>
+      <div class="step"><div class="step-num"><div class="step-circle" style="background:var(--purple);">5</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Committee of Creditors (CoC) Formed</div><div class="step-sub">Only financial creditors; they decide fate</div></div></div>
+      <div class="step"><div class="step-num"><div class="step-circle" style="background:var(--teal);">6</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Resolution Plans Invited</div><div class="step-sub">Bidders submit restructuring proposals</div></div></div>
+      <div class="step"><div class="step-num"><div class="step-circle" style="background:var(--green);">7</div></div><div class="step-content"><div class="step-title">CoC Votes — 66% needed</div><div class="step-sub">Approved → Resolution | Rejected → Liquidation</div></div></div>
+    </div>
+  </div>
+
+  <!-- TIMELINE + COC -->
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <div class="pc ca">
+      <div class="pc-lbl">Timeline — Critical Numbers</div>
+      <h3>⏱️ CIRP Time Limits</h3>
+      <div class="sr">
+        <div class="sb"><div class="sn" style="color:var(--blue);">180</div><div class="ss">Base Days</div><div class="sl2">INITIAL LIMIT</div></div>
+        <div class="sb"><div class="sn" style="color:var(--amber);">+90</div><div class="ss">Extension</div><div class="sl2">IF NEEDED</div></div>
+        <div class="sb"><div class="sn" style="color:var(--red);">330</div><div class="ss">Max Days</div><div class="sl2">HARD CEILING</div></div>
+      </div>
+      <div class="callout cr2" style="margin-top:8px;">
+        <div class="ct">⚠️ Beyond 330 days</div>
+        <div class="cb">Mandatory liquidation — no further extensions allowed</div>
+      </div>
+    </div>
+
+    <div class="pc cp">
+      <div class="pc-lbl">Committee of Creditors — CoC</div>
+      <h3>🏦 Who Decides the Company's Fate?</h3>
+      <div class="vl">
+        <div class="vi"><div class="vt">Only Financial Creditors</div><div class="vs">Banks, NBFCs, bondholders — NOT operational creditors</div></div>
+        <div class="vi"><div class="vt">66% Vote Required</div><div class="vs">By value of debt (not headcount) for approval</div></div>
+        <div class="vi"><div class="vt">NCLT Cannot Interfere</div><div class="vs">Commercial decisions are CoC's sole domain</div></div>
+      </div>
+      <div style="margin-top:8px;">
+        <span class="chip nn">⚡ UPSC Hot Point: CoC ≠ all creditors — only financial ones</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: 4 PILLARS -->
+<div class="sl">④ Four Pillars of IBC — Institutions</div>
+<div class="mc m3">
+  <svg id="svgPillars" viewBox="0 0 1340 190" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc cb">
+    <div class="pc-lbl">Pillar 1</div>
+    <h3>👩‍⚖️ Insolvency Professionals (IP)</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Take Over Management</div><div class="vs">Replaces board during CIRP</div></div>
+      <div class="vi"><div class="vt">Run Day-to-Day Ops</div><div class="vs">As Interim Resolution Professional</div></div>
+      <div class="vi"><div class="vt">Invite Resolution Plans</div><div class="vs">From prospective buyers</div></div>
+    </div>
+  </div>
+  <div class="pc cp">
+    <div class="pc-lbl">Pillar 2</div>
+    <h3>💾 Information Utilities</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Centralised Data Store</div><div class="vs">Financial records of debtors</div></div>
+      <div class="vi"><div class="vt">Verify Claims Quickly</div><div class="vs">Reduces disputes over amounts</div></div>
+      <div class="vi"><div class="vt">NeSL — Key Utility</div><div class="vs">National E-Governance Services Ltd.</div></div>
+    </div>
+  </div>
+  <div class="pc cr">
+    <div class="pc-lbl">Pillar 3</div>
+    <h3>⚖️ Adjudicating Authorities</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">NCLT → Corporates</div><div class="vs">National Company Law Tribunal</div></div>
+      <div class="vi"><div class="vt">DRT → Individuals</div><div class="vs">Debt Recovery Tribunal</div></div>
+      <div class="vi"><div class="vt">NCLAT / DRAT → Appeals</div><div class="vs">Appellate bodies above NCLT/DRT</div></div>
+    </div>
+  </div>
+  <div class="pc cg">
+    <div class="pc-lbl">Pillar 4</div>
+    <h3>🏛️ IBBI — The Regulator</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Insolvency & Bankruptcy Board</div><div class="vs">Apex regulator for IBC</div></div>
+      <div class="vi"><div class="vt">Regulate IPs & IPAs</div><div class="vs">Register, monitor professionals</div></div>
+      <div class="vi"><div class="vt">Make Regulations</div><div class="vs">Frame rules under IBC</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: CIRP vs PIRP comparison + SPECIAL PROVISIONS -->
+<div class="sl">⑤ CIRP vs Pre-Pack (PIRP) — Key Comparison</div>
+<div class="mc m4">
+  <svg id="svgCompare" viewBox="0 0 1340 170" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cb">
+    <div class="pc-lbl">CIRP — Standard Process</div>
+    <h3>🏛️ Corporate Insolvency Resolution Process</h3>
+    <table class="tbl">
+      <thead><tr><th>Feature</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Initiated by</td><td>Creditor OR Debtor</td></tr>
+        <tr><td>Management</td><td>Transferred to Resolution Professional</td></tr>
+        <tr><td>Default threshold</td><td>&gt; ₹1 crore</td></tr>
+        <tr><td>Timeline</td><td>180 days (+ 90 ext. = max 330)</td></tr>
+        <tr><td>Process type</td><td>Public, court-driven</td></tr>
+        <tr><td>Suitable for</td><td>All corporate debtors</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pc cp">
+    <div class="pc-lbl">PIRP — Pre-Packaged Insolvency</div>
+    <h3>🚀 Pre-Pack for MSMEs (Faster Route)</h3>
+    <table class="tbl">
+      <thead><tr><th>Feature</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Initiated by</td><td>Only the Debtor</td></tr>
+        <tr><td>Management</td><td>Stays with debtor (supervised)</td></tr>
+        <tr><td>Default threshold</td><td>&lt; ₹1 crore (MSME focused)</td></tr>
+        <tr><td>Timeline</td><td>120 days (faster)</td></tr>
+        <tr><td>Process type</td><td>Informal negotiation first</td></tr>
+        <tr><td>Suitable for</td><td>MSMEs specifically</td></tr>
+      </tbody>
+    </table>
+    <div class="callout cg" style="margin-top:10px;">
+      <div class="ct">✅ Pre-Pack = Informal deal first, then court approval</div>
+      <div class="cb">Reduces disruption to MSME operations during resolution</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: SPECIAL PROVISIONS -->
+<div class="sl">⑥ Special Provisions — FSPs, Swiss Challenge & Protection</div>
+
+<div class="g3">
+  <div class="pc csk">
+    <div class="pc-lbl">Section 227 — Financial Service Providers</div>
+    <h3>🏦 IBC & Banks/NBFCs</h3>
+    <div class="callout cr2">
+      <div class="ct">⚠️ Originally: IBC Did NOT Apply</div>
+      <div class="cb">Banks, insurance cos., financial service providers were excluded</div>
+    </div>
+    <div class="vl" style="margin-top:8px;">
+      <div class="vi"><div class="vt">Section 227 — Extension</div><div class="vs">Government can notify FSPs to come under IBC</div></div>
+      <div class="vi"><div class="vt">NBFCs &gt; ₹500 Cr assets</div><div class="vs">Now covered under special framework</div></div>
+      <div class="vi"><div class="vt">Only RBI Can Trigger</div><div class="vs">Regulator initiates, not creditors</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip nn">⚡ Example: DHFL Case</span></div>
+  </div>
+
+  <div class="pc ca">
+    <div class="pc-lbl">Swiss Challenge Method</div>
+    <h3>🏆 Swiss Challenge — Open Bidding</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num"><div class="step-circle" style="background:var(--amber);">1</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Resolution Plan Submitted</div><div class="step-sub">Base plan from initial bidder</div></div></div>
+      <div class="step"><div class="step-num"><div class="step-circle" style="background:var(--gold);">2</div><div class="step-line"></div></div><div class="step-content"><div class="step-title">Plan Doesn't Fully Recover Dues</div><div class="step-sub">Haircut for creditors required</div></div></div>
+      <div class="step"><div class="step-num"><div class="step-circle" style="background:var(--green);">3</div></div><div class="step-content"><div class="step-title">Open Bidding Triggered</div><div class="step-sub">New bidders can challenge and offer better deal</div></div></div>
+    </div>
+    <div class="callout cg" style="margin-top:8px;">
+      <div class="ct">✅ Forces better recovery for creditors</div>
+      <div class="cb">Competitive pressure improves final outcome</div>
+    </div>
+  </div>
+
+  <div class="pc cg">
+    <div class="pc-lbl">Protections Under IBC</div>
+    <h3>🛡️ Worker & Creditor Safeguards</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Workers Get Priority</div><div class="vs">24 months salary secured before other creditors</div></div>
+      <div class="vi"><div class="vt">Promoter Disqualification</div><div class="vs">Willful defaulters barred from bidding</div></div>
+      <div class="vi"><div class="vt">Section 29A Restrictions</div><div class="vs">Related parties & NPAs disqualified as bidders</div></div>
+      <div class="vi"><div class="vt">Moratorium Period</div><div class="vs">Legal proceedings frozen during CIRP</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="chip ok">✅ Protects workers</span>
+      <span class="chip no">❌ Disqualifies defaulters</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: RESOLUTION / LIQUIDATION -->
+<div class="sl">⑦ Resolution vs Liquidation — End Outcomes</div>
+<div class="mc m5">
+  <svg id="svgOutcome" viewBox="0 0 1340 160" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cg">
+    <div class="pc-lbl">Resolution — Company Survives</div>
+    <h3>✅ Approved Resolution Plan</h3>
+    <div class="fg">
+      <div class="fb"><div class="fi">🔄</div><div class="ft">Restructuring</div><div class="fs">Debt terms changed</div></div>
+      <div class="fb"><div class="fi">🔗</div><div class="ft">Merger/Acquisition</div><div class="fs">New owner takes over</div></div>
+      <div class="fb"><div class="fi">💵</div><div class="ft">Sale of Business</div><div class="fs">Sold as going concern</div></div>
+      <div class="fb"><div class="fi">👥</div><div class="ft">Change of Ownership</div><div class="fs">New promoter installed</div></div>
+    </div>
+    <div class="chain" style="margin-top:10px;">
+      <div class="cn2" style="border-color:var(--blue);background:rgba(23,56,128,0.07);color:var(--blue);">CoC 66% Vote</div>
+      <div class="ca2">→</div>
+      <div class="cn2" style="border-color:var(--green);background:rgba(26,100,56,0.07);color:var(--green);">NCLT Approves</div>
+      <div class="ca2">→</div>
+      <div class="cn2" style="border-color:var(--teal);background:rgba(10,92,106,0.07);color:var(--teal);">Company Lives</div>
+    </div>
+  </div>
+
+  <div class="pc cr">
+    <div class="pc-lbl">Liquidation — Company Winds Up</div>
+    <h3>⚠️ When Resolution Fails</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">No Viable Resolution Plan</div><div class="vs">Within 330-day window</div></div>
+      <div class="vi"><div class="vt">CoC Rejects All Plans</div><div class="vs">Or CoC votes for liquidation</div></div>
+      <div class="vi"><div class="vt">Liquidation Waterfall</div><div class="vs">Secured creditors → Workers → Unsecured → Equity</div></div>
+    </div>
+    <div class="callout cr2" style="margin-top:8px;">
+      <div class="ct">⚠️ Priority Waterfall in Liquidation</div>
+      <div class="cb">Insolvency costs → Secured creditors → Workers (24m wages) → Unsecured → Govt. dues → Equity holders</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: PRELIMS FACTS -->
+<div class="sl">⑧ High-Probability Prelims Facts 🔥</div>
+<div class="mc m1">
+  <svg id="svgFacts" viewBox="0 0 1340 170" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc cn">
+    <div class="pc-lbl">Must-Know Numbers</div>
+    <h3>📊 Key Facts Table</h3>
+    <table class="tbl">
+      <thead><tr><th>Item</th><th>Value</th><th>Context</th></tr></thead>
+      <tbody>
+        <tr><td>IBC Enacted</td><td>May 2016</td><td>Replaced multiple old laws</td></tr>
+        <tr><td>Default Threshold</td><td>₹1 crore</td><td>Raised from ₹1 lakh in 2020</td></tr>
+        <tr><td>CIRP Base Timeline</td><td>180 days</td><td>Initial period</td></tr>
+        <tr><td>CIRP Extension</td><td>+90 days</td><td>One-time extension</td></tr>
+        <tr><td>CIRP Maximum</td><td>330 days</td><td>Incl. legal proceedings</td></tr>
+        <tr><td>CoC Approval Vote</td><td>66%</td><td>By value of debt</td></tr>
+        <tr><td>PIRP Timeline</td><td>120 days</td><td>Pre-pack (MSME)</td></tr>
+        <tr><td>Worker Protection</td><td>24 months</td><td>Wages secured</td></tr>
+        <tr><td>FSP Asset Threshold</td><td>₹500 crore</td><td>NBFCs covered (S.227)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pc ca">
+    <div class="pc-lbl">UPSC Usually Asks — Quick Map</div>
+    <h3>🎯 Exam-Focused Points</h3>
+    <div class="vl">
+      <div class="vi"><div class="vt">Who Can Initiate IBC?</div><div class="vs">Financial creditor / Operational creditor / Debtor itself</div></div>
+      <div class="vi"><div class="vt">Who Votes in CoC?</div><div class="vs">Only financial creditors (not operational creditors)</div></div>
+      <div class="vi"><div class="vt">Which Body Regulates IBC?</div><div class="vs">IBBI — Insolvency & Bankruptcy Board of India</div></div>
+      <div class="vi"><div class="vt">Which Court Handles Corporate Cases?</div><div class="vs">NCLT (Individuals → DRT)</div></div>
+      <div class="vi"><div class="vt">Does IBC Apply to Banks?</div><div class="vs">Not directly; FSPs need Section 227 notification</div></div>
+      <div class="vi"><div class="vt">What is Swiss Challenge?</div><div class="vs">Open bidding when resolution plan has haircut</div></div>
+      <div class="vi"><div class="vt">CIRP vs PIRP Difference?</div><div class="vs">PIRP is debtor-only, 120 days, MSME-focused, mgmt. stays</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="ks">
+  <div class="ks-ico">⚖️</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea</div>
+    <div class="ks-body">
+      IBC 2016 fundamentally shifted India's insolvency landscape from a <strong style="color:#f5e0a0;">debtor-friendly, multi-forum, slow system → to a creditor-driven, time-bound, single-window process.</strong> The chain: Loan default → NPA → SARFAESI → if unresolved → IBC → CIRP or Pre-Pack → Resolution (company survives) OR Liquidation (assets distributed). Every institution — NCLT, IBBI, CoC, IP — plays a specific non-overlapping role.
+    </div>
+    <div class="ks-pills">
+      <span class="kp">⏱️ Time-bound 330 Days</span>
+      <span class="kp">🏦 Creditor-Driven</span>
+      <span class="kp">⚖️ NCLT + IBBI</span>
+      <span class="kp">💡 Pre-Pack for MSMEs</span>
+      <span class="kp">🏆 Swiss Challenge</span>
+      <span class="kp">🛡️ Worker Priority</span>
+      <span class="kp">🏦 Section 227 FSPs</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function rct(svg,x,y,w,h,fill,stroke,rx,shadow){
+  rx=rx||9;
+  if(shadow){const s=el('rect',{x:x+2,y:y+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'});svg.appendChild(s);}
+  const r=el('rect',{x,y,width:w,height:h,rx,ry:rx,fill,stroke:stroke||'rgba(255,255,255,0.18)','stroke-width':'1.5'});
+  svg.appendChild(r);return r;
+}
+function txt(svg,x,y,text,size,weight,fill,anchor,font){
+  const t=el('text',{x,y,'text-anchor':anchor||'middle','dominant-baseline':'middle',
+    'font-size':size||11,'font-weight':weight||'400',
+    'font-family':font||'Plus Jakarta Sans,sans-serif',fill:fill||'#16120c'});
+  t.textContent=text;svg.appendChild(t);return t;
+}
+function arrow(svg,x1,y1,x2,y2,color,dash,w,id){
+  color=color||'#aaa';w=w||2;
+  let defs=svg.querySelector('defs');
+  if(!defs){defs=el('defs',{});svg.insertBefore(defs,svg.firstChild);}
+  const mid=`arrmid${id||Math.random().toString(36).slice(2)}`;
+  const m=el('marker',{id:mid,markerWidth:'8',markerHeight:'8',refX:'7',refY:'4',orient:'auto'});
+  const mp=el('path',{d:'M0,1 L0,7 L7,4 z',fill:color});
+  m.appendChild(mp);defs.appendChild(m);
+  const p=el('path',{d:`M${x1},${y1} L${x2},${y2}`,stroke:color,'stroke-width':w,fill:'none',
+    'stroke-dasharray':dash||'none','marker-end':`url(#${mid})`});
+  svg.appendChild(p);
+}
+function curve(svg,x1,y1,x2,y2,color,dash,w){
+  const mx=(x1+x2)/2;
+  const p=el('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color||'#aaa','stroke-width':w||1.8,'stroke-dasharray':dash||'none',fill:'none',opacity:'0.75'});
+  svg.appendChild(p);
+}
+function node(svg,cx,cy,w,h,fill,lines,sub,emoji,tc){
+  tc=tc||'#fff';h=h||52;
+  rct(svg,cx-w/2,cy-h/2,w,h,fill,'rgba(255,255,255,0.15)',9,true);
+  let startY=cy-(lines.length-1)*7.5-(sub?5:0)-(emoji?10:0);
+  if(emoji){txt(svg,cx,startY,emoji,14,'400',tc);startY+=18;}
+  lines.forEach((l,i)=>txt(svg,cx,startY+i*15,l,10.5,'700',tc));
+  if(sub)txt(svg,cx,startY+lines.length*15,sub,8.5,'400',tc==='#fff'?'rgba(255,255,255,0.6)':'rgba(0,0,0,0.4)','middle','DM Mono,monospace');
+}
+
+// ─── MASTER FLOW ───────────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const steps=[
+    {x:75,  label:'Loan\nGiven',      fill:'#175880', emoji:'💰', sub:'Bank disburses'},
+    {x:230, label:'Default\nOccurs',  fill:'#a81418', emoji:'⚠️', sub:'Borrower fails'},
+    {x:385, label:'NPA\nDeclared',    fill:'#8a1010', emoji:'🔴', sub:'90+ days overdue'},
+    {x:540, label:'SARFAESI\nAction', fill:'#b86010', emoji:'🏢', sub:'Asset seizure'},
+    {x:695, label:'ARC /\nBad Bank',  fill:'#b8870a', emoji:'🏦', sub:'Stressed asset sale'},
+    {x:850, label:'IBC\nTriggered',   fill:'#5c1888', emoji:'⚖️', sub:'NCLT application'},
+    {x:1010,label:'CIRP /\nPre-Pack', fill:'#1a6438', emoji:'🔄', sub:'Resolution process'},
+    {x:1165,label:'Resolution\nor Liq.', fill:'#173880', emoji:'✅', sub:'Final outcome'},
+    {x:1295,label:'Recovery\nComplete',fill:'#0a5c6a', emoji:'🎯', sub:'Creditors paid'},
+  ];
+
+  // background
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:120,fill:'rgba(248,244,238,0.4)'}));
+
+  // horizontal base line
+  svg.appendChild(el('line',{x1:30,y1:60,x2:1310,y2:60,stroke:'#ddd0b0','stroke-width':'2'}));
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      arrow(svg,s.x+63,60,nx-63,60,s.fill,'none',2,`ms${i}`);
+    }
+    // dot on line
+    svg.appendChild(el('circle',{cx:s.x,cy:60,r:6,fill:s.fill,stroke:'#fff','stroke-width':'2'}));
+    // label box - alternate above/below
+    const above=i%2===0;
+    const by=above?22:95;
+    svg.appendChild(el('line',{x1:s.x,y1:above?33:72,x2:s.x,y2:above?54:67,stroke:s.fill+'88','stroke-width':'1.5','stroke-dasharray':'3 2'}));
+    const lines=s.label.split('\n');
+    node(svg,s.x,by,128,42,s.fill,lines,s.sub,s.emoji);
+  });
+
+  txt(svg,670,110,'FULL CONCEPT CHAIN: FROM LOAN DISBURSEMENT → DEFAULT → RECOVERY',8,'500','rgba(100,80,40,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── CIRP FLOW ───────────────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgCIRP');
+  svg.setAttribute('viewBox','0 0 1340 180');
+
+  const steps=[
+    {x:80,  label:['Default','Occurs'],  fill:'#a81418', emoji:'⚠️', sub:'₹1Cr+'},
+    {x:240, label:['Apply to','NCLT'],   fill:'#b86010', emoji:'📋', sub:'Petition filed'},
+    {x:400, label:['NCLT','Admits'],     fill:'#b8870a', emoji:'⚖️', sub:'14 day window'},
+    {x:560, label:['IP','Appointed'],    fill:'#175880', emoji:'👤', sub:'Takes over mgmt.'},
+    {x:720, label:['CoC','Formed'],      fill:'#5c1888', emoji:'🏦', sub:'Financial creds only'},
+    {x:880, label:['Plans','Invited'],   fill:'#0a5c6a', emoji:'📨', sub:'Bidders submit'},
+    {x:1040,label:['CoC Vote','66%'],    fill:'#1a6438', emoji:'🗳️', sub:'Approval threshold'},
+  ];
+
+  // branching outcome
+  const resX=1200, resYup=55, resYdn=125;
+
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      const mid=`cp${i}`;
+      arrow(svg,s.x+65,90,nx-65,90,s.fill+'cc','none',2,mid);
+    }
+    node(svg,s.x,90,128,60,s.fill,s.label,s.sub,s.emoji);
+  });
+
+  // Branch from last step
+  curve(svg,1103,75,1200,55,'#1a6438cc','none',2);
+  curve(svg,1103,105,1200,125,'#a81418cc','none',2);
+
+  // Resolution node
+  rct(svg,1200-65,55-22,130,44,'#1a6438','rgba(255,255,255,0.2)',9,true);
+  txt(svg,1200,55,'✅ Resolution','11','700','#fff');
+  txt(svg,1200,67,'Company Survives','9','400','rgba(255,255,255,0.6)','middle','DM Mono,monospace');
+
+  // Liquidation node
+  rct(svg,1200-65,125-22,130,44,'#a81418','rgba(255,255,255,0.2)',9,true);
+  txt(svg,1200,125,'❌ Liquidation','11','700','#fff');
+  txt(svg,1200,137,'Assets Distributed','9','400','rgba(255,255,255,0.6)','middle','DM Mono,monospace');
+
+  txt(svg,670,170,'CIRP FLOW: APPLICATION → IP → CoC → RESOLUTION PLAN → OUTCOME',8,'500','rgba(100,80,40,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── 4 PILLARS ───────────────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgPillars');
+  svg.setAttribute('viewBox','0 0 1340 190');
+
+  // Central hub
+  node(svg,670,95,200,58,'#0c1e3c',['IBC 2016','Four Pillars'],'Institutional Framework','⚖️');
+
+  const pillars=[
+    {x:160, y:60,  fill:'#173880', lines:['Insolvency','Professionals'], sub:'IP — Manages CIRP', emoji:'👩‍⚖️'},
+    {x:160, y:140, fill:'#5c1888', lines:['Information','Utilities'],    sub:'NeSL — Data store', emoji:'💾'},
+    {x:1180,y:60,  fill:'#a81418', lines:['Adjudicating','Authority'],   sub:'NCLT / DRT', emoji:'🏛️'},
+    {x:1180,y:140, fill:'#1a6438', lines:['IBBI'],                        sub:'Regulator of IBC', emoji:'🏢'},
+  ];
+
+  pillars.forEach(p=>{
+    const fromX=p.x<670?570:770;
+    const dy=p.y<95?-10:10;
+    curve(svg,fromX,95+dy,p.x+(p.x<670?80:-80),p.y,p.fill+'66','4 3',1.8);
+    node(svg,p.x,p.y,150,54,p.fill,p.lines,p.sub,p.emoji);
+  });
+
+  // Side labels
+  rct(svg,10,50,100,80,'rgba(23,56,128,0.06)','rgba(23,56,128,0.15)',8);
+  txt(svg,60,80,'Process\nActors',9,'700','#173880','middle');
+  rct(svg,1230,50,100,80,'rgba(168,20,24,0.06)','rgba(168,20,24,0.15)',8);
+  txt(svg,1280,80,'Oversight\n& Law',9,'700','#a81418','middle');
+
+  txt(svg,670,180,'4 PILLARS: IPs + INFORMATION UTILITIES + ADJUDICATING AUTHORITY + IBBI',8,'500','rgba(100,80,40,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── COMPARE CIRP vs PIRP ─────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgCompare');
+  svg.setAttribute('viewBox','0 0 1340 170');
+
+  // Two columns
+  const leftX=340, rightX=1000, midX=670, topY=40, botY=130;
+
+  // Headers
+  node(svg,leftX,topY,260,52,'#173880',['CIRP'],'Standard Process — All Corporates','🏛️');
+  node(svg,rightX,topY,260,52,'#5c1888',['PIRP / Pre-Pack'],'MSME-Focused Route','🚀');
+  node(svg,midX,topY,160,40,'#0c1e3c',['vs'],'Comparison','⚖️');
+
+  // Comparison rows
+  const rows=[
+    {label:'Initiated By', l:'Creditor OR Debtor', r:'Only Debtor', lc:'#173880', rc:'#5c1888'},
+    {label:'Management',   l:'Transferred to IP',   r:'Stays with Debtor', lc:'#a81418', rc:'#1a6438'},
+    {label:'Timeline',     l:'180+90 (max 330d)',   r:'120 days', lc:'#b86010', rc:'#1a6438'},
+    {label:'Threshold',    l:'> ₹1 crore',          r:'< ₹1 crore (MSME)', lc:'#b86010', rc:'#0a5c6a'},
+  ];
+
+  const startY=90, rowH=20;
+  rows.forEach((row,i)=>{
+    const y=startY+i*rowH-(rows.length-1)*rowH/2;
+    // label tag
+    rct(svg,midX-55,y-9,110,18,'rgba(12,30,60,0.07)','rgba(12,30,60,0.1)',4);
+    txt(svg,midX,y,row.label,8,'700','#0c1e3c','middle','DM Mono,monospace');
+    // left value
+    rct(svg,leftX+90,y-9,180,18,row.lc+'18',row.lc+'44',4);
+    txt(svg,leftX+180,y,row.l,9,'600',row.lc,'middle');
+    // right value
+    rct(svg,rightX-270,y-9,180,18,row.rc+'18',row.rc+'44',4);
+    txt(svg,rightX-180,y,row.r,9,'600',row.rc,'middle');
+    // connecting lines
+    svg.appendChild(el('line',{x1:leftX+90,y1:y,x2:midX-55,y2:y,stroke:row.lc+'55','stroke-width':'1','stroke-dasharray':'3 2'}));
+    svg.appendChild(el('line',{x1:midX+55,y1:y,x2:rightX-270,y2:y,stroke:row.rc+'55','stroke-width':'1','stroke-dasharray':'3 2'}));
+  });
+
+  // Bottom connector lines from headers to rows
+  svg.appendChild(el('line',{x1:leftX,y1:topY+26,x2:leftX,y2:startY-rows.length*rowH/2,stroke:'#17388055','stroke-width':'1.5','stroke-dasharray':'4 3'}));
+  svg.appendChild(el('line',{x1:rightX,y1:topY+26,x2:rightX,y2:startY-rows.length*rowH/2,stroke:'#5c188855','stroke-width':'1.5','stroke-dasharray':'4 3'}));
+
+  txt(svg,670,162,'CIRP = PUBLIC COURT-DRIVEN vs PIRP = INFORMAL MSME-FRIENDLY ROUTE',8,'500','rgba(100,80,40,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── OUTCOME FLOW ─────────────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgOutcome');
+  svg.setAttribute('viewBox','0 0 1340 160');
+
+  // Decision point
+  node(svg,430,80,200,60,'#0c1e3c',['CoC Vote','≥ 66% Required?'],'Approval threshold','🗳️');
+
+  // Yes path
+  arrow(svg,530,65,650,50,'#1a6438aa','none',2,'oa');
+  node(svg,760,45,200,52,'#1a6438',['Approved','Resolution Plan'],'NCLT confirms','✅');
+  arrow(svg,860,45,960,45,'#0a5c6a','none',2,'ob');
+  node(svg,1060,45,150,52,'#0a5c6a',['Company\nSurvives'],'New management','🏭');
+  txt(svg,595,35,'YES →',10,'700','#1a6438');
+
+  // No path
+  arrow(svg,530,95,650,115,'#a81418aa','none',2,'oc');
+  node(svg,760,120,200,52,'#a81418',['Rejected /','No Plan'],  'Within 330 days','❌');
+  arrow(svg,860,120,960,120,'#8a1010','none',2,'od');
+  node(svg,1060,120,150,52,'#8a1010',['Liquidation\nOrdered'],'Assets sold','💀');
+  txt(svg,595,125,'NO →',10,'700','#a81418');
+
+  // Left: Trigger
+  node(svg,130,80,200,60,'#5c1888',['CIRP/PIRP','Process Runs'],'Resolution period','🔄');
+  arrow(svg,230,80,330,80,'#5c1888','none',2,'oe');
+
+  txt(svg,670,152,'OUTCOME DEPENDS ON CoC VOTE → 66% YES = RESOLUTION | BELOW = LIQUIDATION',8,'500','rgba(100,80,40,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── FACTS GRID ───────────────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgFacts');
+  svg.setAttribute('viewBox','0 0 1340 170');
+
+  const facts=[
+    {label:'IBC Enacted',      val:'May 2016',  color:'#a81418'},
+    {label:'Default Threshold',val:'₹1 Crore',  color:'#b86010'},
+    {label:'CIRP Base',        val:'180 Days',  color:'#b8870a'},
+    {label:'Extension',        val:'+90 Days',  color:'#175880'},
+    {label:'Max Timeline',     val:'330 Days',  color:'#5c1888'},
+    {label:'CoC Vote Needed',  val:'66%',       color:'#0a5c6a'},
+    {label:'PIRP Timeline',    val:'120 Days',  color:'#1a6438'},
+    {label:'Worker Protection',val:'24 Months', color:'#173880'},
+    {label:'FSP Threshold',    val:'₹500 Cr',   color:'#8a1010'},
+  ];
+
+  const cols=9, cw=1340/cols, ch=170;
+  facts.forEach((f,i)=>{
+    const cx=i*cw+cw/2, cy=ch/2;
+    rct(svg,i*cw+8,10,cw-16,ch-20,f.color+'10',f.color+'30',9);
+    // Coloured accent bar on top
+    rct(svg,i*cw+8,10,cw-16,4,f.color,'none',2);
+    txt(svg,cx,cy-18,f.val,20,'700',f.color);
+    txt(svg,cx,cy+14,f.label,8.5,'600','#16120c','middle','DM Mono,monospace');
+  });
+})();
+</script>
+</body>
+</html>

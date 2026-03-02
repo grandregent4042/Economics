@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Banking — History, Reforms & Governance</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ee;--ink:#1a1610;--muted:#7a6e5c;--border:#ddd4b8;
+  --card:#fffdf6;--card2:#f2ede0;
+  --gold:#b8860b;--gold-lt:#f5dfa0;--amber:#c96a10;
+  --green:#1d6b3a;--blue:#1a3a7a;--purple:#5c1e8a;
+  --teal:#0a6068;--red:#a81818;--sky:#1a5874;
+  --navy:#0e2040;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 10% 5%,rgba(184,134,11,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 600px 600px at 90% 90%,rgba(26,58,122,0.06) 0%,transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:56px 20px 24px;position:relative;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:0.9;}
+.header h1{font-family:'Libre Baskerville',serif;font-size:clamp(28px,4.5vw,52px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--amber);}
+.header-desc{margin-top:10px;font-size:13px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue));margin:18px auto 0;border-radius:4px;}
+
+/* ── SECTION LABELS ── */
+.sec-label{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);
+  text-transform:uppercase;margin:40px 0 16px;display:flex;align-items:center;gap:14px;
+}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── CARD ── */
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.card.c-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.card.c-amber::before{background:var(--amber);}
+.card.c-green::before{background:var(--green);}
+.card.c-blue::before{background:var(--blue);}
+.card.c-purple::before{background:var(--purple);}
+.card.c-teal::before{background:var(--teal);}
+.card.c-red::before{background:var(--red);}
+.card.c-sky::before{background:var(--sky);}
+.card.c-navy::before{background:var(--navy);}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.card h3{font-family:'Libre Baskerville',serif;font-size:15px;margin-bottom:12px;line-height:1.3;}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.g1x2{display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:18px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:18px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g1x2,.g2x1{grid-template-columns:1fr;}}
+@media(max-width:600px){.g2,.g3,.g4,.g1x2,.g2x1{grid-template-columns:1fr;}}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;margin:2px;font-family:'DM Mono',monospace;}
+.pill.pg{background:rgba(184,134,11,0.12);color:var(--gold);}
+.pill.pa{background:rgba(201,106,16,0.12);color:var(--amber);}
+.pill.pk{background:rgba(29,107,58,0.12);color:var(--green);}
+.pill.pb{background:rgba(26,58,122,0.12);color:var(--blue);}
+.pill.pp{background:rgba(92,30,138,0.12);color:var(--purple);}
+.pill.pt{background:rgba(10,96,104,0.12);color:var(--teal);}
+.pill.pr{background:rgba(168,24,24,0.12);color:var(--red);}
+.pill.ps{background:rgba(26,88,116,0.12);color:var(--sky);}
+
+/* ── CHIP ── */
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(29,107,58,0.07);border-color:rgba(29,107,58,0.2);color:var(--green);}
+.chip.no{background:rgba(168,24,24,0.07);border-color:rgba(168,24,24,0.2);color:var(--red);}
+.chip.nn{background:rgba(184,134,11,0.07);border-color:rgba(184,134,11,0.2);color:var(--gold);}
+
+/* ── STAT ROW ── */
+.srow{display:flex;gap:10px;margin:10px 0;}
+.sbox{flex:1;padding:12px 8px;border-radius:10px;border:1.5px solid var(--border);background:var(--card2);text-align:center;}
+.snum{font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;line-height:1;}
+.slbl{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.ssub{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* ── MAP CARD ── */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;position:relative;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.mc.m1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc.m2::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.mc.m3::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.mc.m4::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.mc.m5::before{background:linear-gradient(90deg,var(--sky),var(--blue));}
+.mc svg{display:block;width:100%;}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:8px 11px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* ── FEAT GRID ── */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.fi-box{padding:10px;border-radius:8px;background:var(--card2);border:1px solid var(--border);}
+.fi-box .fi{font-size:17px;margin-bottom:4px;}
+.fi-box .ft{font-size:11px;font-weight:700;}
+.fi-box .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* ── DARK KEYSTONE ── */
+.keystone{background:var(--navy);color:#e8d8a0;border-radius:16px;padding:24px 30px;margin:20px 0;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.ks-icon{font-size:38px;flex:0 0 auto;padding-top:3px;}
+.ks-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:6px;color:#f5e8b0;}
+.ks-body{font-size:12px;color:#b8a868;line-height:1.8;}
+.ks-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.08);font-size:10px;font-family:'DM Mono',monospace;color:#d4c080;letter-spacing:0.5px;}
+
+/* ── PHASE ── */
+.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0;}
+@media(max-width:700px){.phases{grid-template-columns:1fr 1fr;}}
+.phase{padding:16px 14px;border-radius:12px;border:2px solid;text-align:center;}
+.ph-num{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;}
+.ph-title{font-size:12px;font-weight:700;margin:4px 0;}
+.ph-sub{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-bottom:8px;}
+.ph-body{font-size:10px;color:var(--muted);line-height:1.6;}
+
+/* ── CALLOUT ── */
+.callout{padding:11px 13px;border-radius:9px;background:rgba(29,107,58,0.06);border:1.5px solid rgba(29,107,58,0.18);margin:8px 0;}
+.callout-t{font-size:11px;font-weight:700;color:var(--green);margin-bottom:3px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ── IMPACT CHAIN ── */
+.ichain{display:flex;align-items:center;flex-wrap:wrap;gap:4px;padding:6px 0;margin:8px 0;}
+.icn{padding:6px 11px;border-radius:7px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.iarr{font-size:16px;color:var(--muted);flex:0 0 auto;margin:0 2px;}
+
+/* ── TABLE ── */
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--navy);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctbl td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(184,134,11,0.03);}
+.ctbl td:first-child{font-weight:700;color:var(--amber);}
+
+/* ── FOCUS BOX ── */
+.focus{background:rgba(168,24,24,0.05);border:1.5px solid rgba(168,24,24,0.18);border-radius:10px;padding:12px 14px;margin:8px 0;font-size:11px;font-weight:700;color:var(--red);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Economy · Banking System · UPSC Prelims</div>
+  <h1>History of Indian Banking — <em>Reforms & Governance</em></h1>
+  <div class="header-desc">Presidency Banks → Imperial Bank → SBI → Nationalization → Committees → FSIB</div>
+</div>
+
+<!-- SECTION 0: MASTER TIMELINE FLOW -->
+<div class="sec-label">① Master Timeline — Big Picture</div>
+
+<div class="mc m1">
+<svg id="svgTimeline" viewBox="0 0 1320 140" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- SECTION 1: EARLY BANKING -->
+<div class="sec-label">② Early Banking — The Foundation (Pre-Independence)</div>
+
+<div class="g2">
+  <div class="card c-gold">
+    <div class="card-label">Presidency Banks (British Era)</div>
+    <h3>🏛️ Three Founding Banks</h3>
+    <div class="srow">
+      <div class="sbox"><div class="snum" style="color:var(--amber);font-size:16px;">1806</div><div class="ssub">Bank of Bengal</div><div class="slbl">First President Bank</div></div>
+      <div class="sbox"><div class="snum" style="color:var(--gold);font-size:16px;">1840</div><div class="ssub">Bank of Bombay</div><div class="slbl">Second Presidency</div></div>
+      <div class="sbox"><div class="snum" style="color:var(--amber);font-size:16px;">1843</div><div class="ssub">Bank of Madras</div><div class="slbl">Third Presidency</div></div>
+    </div>
+    <div class="ichain" style="margin-top:12px;">
+      <div class="icn" style="border-color:var(--gold);background:rgba(184,134,11,0.08);color:var(--gold);">3 Presidency Banks</div>
+      <div class="iarr">→</div>
+      <div class="icn" style="border-color:var(--amber);background:rgba(201,106,16,0.1);color:var(--amber);font-weight:800;">Merged 1921</div>
+      <div class="iarr">→</div>
+      <div class="icn" style="border-color:var(--blue);background:rgba(26,58,122,0.08);color:var(--blue);">Imperial Bank of India</div>
+    </div>
+    <div class="callout" style="border-color:rgba(201,106,16,0.2);background:rgba(201,106,16,0.05);">
+      <div class="callout-t" style="color:var(--amber);">⚡ Key Role of Imperial Bank</div>
+      <div class="callout-b">Until RBI was created in 1935, Imperial Bank performed some central bank functions.</div>
+    </div>
+  </div>
+
+  <div class="card c-blue">
+    <div class="card-label">Post-Independence Problem (1947+)</div>
+    <h3>⚠️ Why Government Had to Act</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Banks Served Only Big Industry</div><div class="vs">Agriculture & small industries completely neglected</div></div>
+      <div class="vi"><div class="vt">Rural India Had No Access</div><div class="vs">Branch network concentrated in cities only</div></div>
+      <div class="vi"><div class="vt">Development Goals Ignored</div><div class="vs">Private banks prioritised profit over nation-building</div></div>
+    </div>
+    <div style="margin-top:12px;">
+      <div class="ichain">
+        <div class="icn" style="border-color:var(--red);background:rgba(168,24,24,0.07);color:var(--red);">Problem Identified</div>
+        <div class="iarr">→</div>
+        <div class="icn" style="border-color:var(--blue);background:rgba(26,58,122,0.08);color:var(--blue);">Imperial Bank → SBI (1955)</div>
+        <div class="iarr">→</div>
+        <div class="icn" style="border-color:var(--green);background:rgba(29,107,58,0.07);color:var(--green);">Nationalisation</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: SBI + NATIONALISATION -->
+<div class="sec-label">③ SBI Formation & Nationalisation (1955–1980)</div>
+
+<div class="mc m2">
+<svg id="svgNat" viewBox="0 0 1320 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="card c-green">
+    <div class="card-label">1955 — SBI Formation</div>
+    <h3>🏦 Imperial Bank → SBI</h3>
+    <div class="srow">
+      <div class="sbox"><div class="snum" style="color:var(--green);">1955</div><div class="slbl">YEAR FORMED</div></div>
+      <div class="sbox"><div class="snum" style="color:var(--teal);font-size:14px;">Act of<br>Parliament</div><div class="slbl">LEGAL BASIS</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><div class="vt">Expand Rural Banking</div><div class="vs">Branches in villages & small towns</div></div>
+      <div class="vi"><div class="vt">Support Development Goals</div><div class="vs">Priority sector finance</div></div>
+    </div>
+  </div>
+
+  <div class="card c-amber">
+    <div class="card-label">1969 — First Nationalisation</div>
+    <h3>🏛️ 14 Banks Nationalised</h3>
+    <div class="srow">
+      <div class="sbox"><div class="snum" style="color:var(--amber);">14</div><div class="ssub">Banks Taken</div><div class="slbl">DEPOSITS >₹50CR</div></div>
+      <div class="sbox"><div class="snum" style="color:var(--red);font-size:14px;">Indira<br>Gandhi</div><div class="slbl">PM WHO DECIDED</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><div class="vt">Commanding Heights of Economy</div><div class="vs">Govt. control over credit flow</div></div>
+      <div class="vi"><div class="vt">Expand Branch Network</div><div class="vs">Rural penetration goal</div></div>
+      <div class="vi"><div class="vt">Priority Sector Lending</div><div class="vs">Agriculture, MSMEs, poor</div></div>
+    </div>
+  </div>
+
+  <div class="card c-red">
+    <div class="card-label">1980 — Second Nationalisation</div>
+    <h3>🏛️ 6 More Banks Nationalised</h3>
+    <div class="srow">
+      <div class="sbox"><div class="snum" style="color:var(--red);">6</div><div class="ssub">More Banks</div><div class="slbl">SECOND PHASE</div></div>
+      <div class="sbox"><div class="snum" style="color:var(--amber);">92%</div><div class="ssub">PSB Share</div><div class="slbl">PUBLIC SECTOR</div></div>
+    </div>
+    <div class="focus">
+      ⚠️ Result: Banks became inefficient, unprofitable, politically influenced, burdened by directed lending. By 1991 → Financial crisis.
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: COMMITTEES MIND MAP -->
+<div class="sec-label">④ Reform Committees — The Turning Point</div>
+
+<div class="mc m3">
+<svg id="svgComm" viewBox="0 0 1320 340" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- Detailed Committee Cards -->
+<div class="g2" style="margin-top:0;">
+  <div class="card c-blue">
+    <div class="card-label">Narasimham Committee I — 1991</div>
+    <h3>📋 First Financial Sector Reforms</h3>
+    <div style="margin-bottom:10px;padding:8px 11px;border-radius:8px;background:rgba(26,58,122,0.06);border:1.5px dashed rgba(26,58,122,0.2);">
+      <span style="font-size:10px;color:var(--blue);font-weight:700;">Trigger: 1991 Balance of Payments Crisis</span>
+    </div>
+    <div class="fg">
+      <div class="fi-box"><div class="fi">📉</div><div class="ft">Reduce SLR to 25%</div><div class="fs">Free up bank funds</div></div>
+      <div class="fi-box"><div class="fi">📊</div><div class="ft">Deregulate Interest Rates</div><div class="fs">Market-determined</div></div>
+      <div class="fi-box"><div class="fi">🏢</div><div class="ft">Set up ARCs</div><div class="fs">Asset Reconstruction Cos.</div></div>
+      <div class="fi-box"><div class="fi">⚖️</div><div class="ft">RBI — Sole Regulator</div><div class="fs">Avoid conflicts</div></div>
+      <div class="fi-box"><div class="fi">🏦</div><div class="ft">Phase Out Directed Credit</div><div class="fs">Market efficiency</div></div>
+      <div class="fi-box"><div class="fi">💪</div><div class="ft">Large Strong Banks</div><div class="fs">Global competition</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip ok">✅ Goal: Make banking competitive & efficient</span></div>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-label">Narasimham Committee II — 1997</div>
+    <h3>📋 Strengthen Banking System</h3>
+    <div style="margin-bottom:10px;padding:8px 11px;border-radius:8px;background:rgba(92,30,138,0.06);border:1.5px dashed rgba(92,30,138,0.2);">
+      <span style="font-size:10px;color:var(--purple);font-weight:700;">Focus: Structural strengthening of PSBs</span>
+    </div>
+    <div class="fg">
+      <div class="fi-box"><div class="fi">🏛️</div><div class="ft">Greater PSB Autonomy</div><div class="fs">Less govt. interference</div></div>
+      <div class="fi-box"><div class="fi">📈</div><div class="ft">Capital Adequacy Norms</div><div class="fs">Raise CRAR standards</div></div>
+      <div class="fi-box"><div class="fi">🔗</div><div class="ft">Merge Strong Banks</div><div class="fs">Consolidate sector</div></div>
+      <div class="fi-box"><div class="fi">📉</div><div class="ft">Reduce Govt. Stake</div><div class="fs">Below 51% stake</div></div>
+      <div class="fi-box"><div class="fi">⚖️</div><div class="ft">RBI Not Own Banks</div><div class="fs">Conflict of interest fix</div></div>
+      <div class="fi-box"><div class="fi">🔍</div><div class="ft">Supervisory Reforms</div><div class="fs">Prudential regulation</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip ok">✅ Many reforms eventually implemented</span></div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="card c-teal">
+    <div class="card-label">Nachiket Mor Committee — 2013</div>
+    <h3>📋 Financial Inclusion</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Every Adult — Full Service Account</div><div class="vs">Universal banking access mandate</div></div>
+      <div class="vi"><div class="vt">Aadhaar-Based Account Opening</div><div class="vs">Digital identity for financial inclusion</div></div>
+      <div class="vi"><div class="vt">15-Min Walking Distance</div><div class="vs">Banking access for all citizens</div></div>
+      <div class="vi"><div class="vt">Products for Poor & Small Business</div><div class="vs">Micro credit, micro savings products</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip ok">✅ Influenced Jan Dhan Yojana</span>
+      <span class="chip ok">✅ Enabled Payment Banks</span>
+    </div>
+  </div>
+
+  <div class="card c-sky">
+    <div class="card-label">P.J. Nayak Committee — 2014</div>
+    <h3>📋 PSB Governance Reforms</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Create Bank Investment Company (BIC)</div><div class="vs">Hold all govt stakes in PSBs</div></div>
+      <div class="vi"><div class="vt">Transfer Govt. Stake to BIC</div><div class="vs">Arm's length governance</div></div>
+      <div class="vi"><div class="vt">Reduce Govt. Holding Below 50%</div><div class="vs">True commercial autonomy</div></div>
+      <div class="vi"><div class="vt">Professional Management</div><div class="vs">Merit-based leadership</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip nn">⚡ Led to: Banks Board Bureau (BBB)</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: INSTITUTIONS -->
+<div class="sec-label">⑤ Key Institutions — BBB → FSIB</div>
+
+<div class="mc m4">
+<svg id="svgInst" viewBox="0 0 1320 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="card c-gold">
+    <div class="card-label">Banks Board Bureau (BBB) — 2016</div>
+    <h3>🏢 Transitional Governance Body</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Select PSB Top Management</div><div class="vs">MD, CEO, Executive Directors</div></div>
+      <div class="vi"><div class="vt">Improve PSB Governance</div><div class="vs">Professional board oversight</div></div>
+      <div class="vi"><div class="vt">Created as BIC Precursor</div><div class="vs">Temporary until full reform</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <div class="ichain">
+        <div class="icn" style="border-color:var(--gold);background:rgba(184,134,11,0.07);color:var(--gold);">BBB (2016)</div>
+        <div class="iarr">→</div>
+        <div class="icn" style="border-color:var(--red);background:rgba(168,24,24,0.07);color:var(--red);font-size:9px;">Replaced 2022</div>
+        <div class="iarr">→</div>
+        <div class="icn" style="border-color:var(--green);background:rgba(29,107,58,0.08);color:var(--green);font-weight:800;">FSIB</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card c-green">
+    <div class="card-label">FSIB — Financial Services Institutions Bureau (2022) 🔥</div>
+    <h3>🏢 Current Governance Body</h3>
+    <div class="srow">
+      <div class="sbox"><div class="snum" style="color:var(--green);font-size:14px;">1 July<br>2022</div><div class="slbl">ESTABLISHED</div></div>
+      <div class="sbox"><div class="snum" style="color:var(--teal);font-size:11px;">PSBs +<br>FIs + Insurers</div><div class="slbl">COVERS</div></div>
+    </div>
+    <div class="fg">
+      <div class="fi-box"><div class="fi">👔</div><div class="ft">Appoint WTDs & Chairpersons</div><div class="fs">Recommend top leadership</div></div>
+      <div class="fi-box"><div class="fi">📐</div><div class="ft">Advise Governance Structure</div><div class="fs">Board composition</div></div>
+      <div class="fi-box"><div class="fi">📊</div><div class="ft">Performance Appraisal</div><div class="fs">Top management evaluation</div></div>
+      <div class="fi-box"><div class="fi">💾</div><div class="ft">Build Performance Database</div><div class="fs">Track banking leaders</div></div>
+    </div>
+    <div style="margin-top:8px;font-size:11px;color:var(--muted);">Covers: <span class="pill pk">PSBs</span> <span class="pill pt">NABARD</span> <span class="pill pt">SIDBI</span> <span class="pill pt">EXIM Bank</span> <span class="pill pk">Insurers</span></div>
+  </div>
+</div>
+
+<!-- SECTION 5: CONCEPTS TABLE -->
+<div class="sec-label">⑥ Monetary Concepts — CRR & SLR</div>
+
+<div class="card c-navy" style="margin-bottom:18px;">
+  <h3>📊 CRR vs SLR — Key Reserve Requirements</h3>
+  <table class="ctbl" style="margin-top:12px;">
+    <thead><tr><th>Concept</th><th>Full Form</th><th>What Banks Do</th><th>Interest Earned</th><th>Pre-1991 Impact</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>CRR</td>
+        <td>Cash Reserve Ratio</td>
+        <td>Keep portion of deposits with RBI as cash</td>
+        <td style="color:var(--red);">❌ No interest paid</td>
+        <td>Very high → Drained profitability</td>
+      </tr>
+      <tr>
+        <td>SLR</td>
+        <td>Statutory Liquidity Ratio</td>
+        <td>Keep portion in approved govt. securities</td>
+        <td style="color:var(--green);">✅ Low interest paid</td>
+        <td>Was very high → Forced into govt bonds, less loans</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="focus" style="margin-top:12px;">
+    ⚠️ Before 1991: Very high CRR + SLR meant banks had little money left to lend freely → Inefficiency → Crisis. Narasimham I recommended reducing SLR to 25%.
+  </div>
+</div>
+
+<!-- SECTION 6: HIGH-PROB PRELIMS TABLE -->
+<div class="sec-label">⑦ High Probability Prelims Facts 🔥</div>
+
+<div class="mc m5">
+<svg id="svgFacts" viewBox="0 0 1320 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="card c-amber">
+    <div class="card-label">Must-Know Dates & Numbers</div>
+    <h3>📅 Chronological Facts</h3>
+    <table class="ctbl">
+      <thead><tr><th>Year</th><th>Event</th><th>Key Number</th></tr></thead>
+      <tbody>
+        <tr><td>1806/40/43</td><td>Presidency Banks founded</td><td>3 Banks</td></tr>
+        <tr><td>1921</td><td>Merger → Imperial Bank</td><td>3 → 1</td></tr>
+        <tr><td>1935</td><td>RBI established</td><td>—</td></tr>
+        <tr><td>1955</td><td>Imperial Bank → SBI</td><td>1 Giant PSB</td></tr>
+        <tr><td>1969</td><td>First Nationalisation</td><td>14 Banks</td></tr>
+        <tr><td>1980</td><td>Second Nationalisation</td><td>6 Banks</td></tr>
+        <tr><td>1991</td><td>Narasimham Committee I</td><td>BoP Crisis</td></tr>
+        <tr><td>1997</td><td>Narasimham Committee II</td><td>Strengthen</td></tr>
+        <tr><td>2013</td><td>Nachiket Mor Committee</td><td>Inclusion</td></tr>
+        <tr><td>2014</td><td>P.J. Nayak Committee</td><td>Governance</td></tr>
+        <tr><td>2016</td><td>Banks Board Bureau</td><td>BBB</td></tr>
+        <tr><td>2022</td><td>FSIB replaces BBB</td><td>1 July</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card c-purple">
+    <div class="card-label">Committee → Key Recommendation Mapping</div>
+    <h3>🧩 Committee Quick Map</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Narasimham I (1991)</div><div class="vs">Reduce SLR, ARC, RBI as sole regulator, deregulate interest</div></div>
+      <div class="vi"><div class="vt">Narasimham II (1997)</div><div class="vs">Capital adequacy, bank mergers, PSB autonomy, RBI not own banks</div></div>
+      <div class="vi"><div class="vt">Nachiket Mor (2013)</div><div class="vs">Universal accounts, Aadhaar banking, 15-min access, Payment Banks</div></div>
+      <div class="vi"><div class="vt">P.J. Nayak (2014)</div><div class="vs">Bank Investment Company (BIC), reduce govt. stake, professional mgmt.</div></div>
+      <div class="vi"><div class="vt">BBB / FSIB</div><div class="vs">Select & appoint top management of PSBs, governance oversight</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="ks-icon">🏦</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Connecting Thread</div>
+    <div class="ks-body">
+      India moved from colonial banking (serving British interests) → nationalized banking (serving development goals) → inefficient over-controlled banking → liberal market-oriented reforms (1991) → governance & inclusion reforms (2013–2022). The challenge now: <strong style="color:#f5d78a;">Making PSBs efficient, well-governed, and financially inclusive simultaneously.</strong>
+    </div>
+    <div class="ks-pills">
+      <span class="kp">🏦 Colonial → National</span>
+      <span class="kp">📜 Nationalization Logic</span>
+      <span class="kp">⚡ 1991 Crisis Catalyst</span>
+      <span class="kp">📋 Committee Reforms</span>
+      <span class="kp">👩 Financial Inclusion</span>
+      <span class="kp">🏢 Governance via FSIB</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v] of Object.entries(attrs)) e.setAttribute(k,v);
+  return e;
+}
+function txt(svg,x,y,text,size,weight,fill,anchor,font){
+  const t=el('text',{x,y,'text-anchor':anchor||'middle','dominant-baseline':'middle',
+    'font-size':size||11,'font-weight':weight||'400','font-family':font||'Outfit,sans-serif',fill:fill||'#1a1610'});
+  t.textContent=text;svg.appendChild(t);return t;
+}
+function rect(svg,x,y,w,h,fill,stroke,rx,shadow){
+  if(shadow){
+    const s=el('rect',{x:x+2,y:y+3,width:w,height:h,rx:rx||8,ry:rx||8,fill:'rgba(0,0,0,0.09)'});
+    svg.appendChild(s);
+  }
+  const r=el('rect',{x,y,width:w,height:h,rx:rx||8,ry:rx||8,fill,stroke:stroke||'rgba(255,255,255,0.2)','stroke-width':'1.5'});
+  svg.appendChild(r);return r;
+}
+function line(svg,x1,y1,x2,y2,stroke,w,dash){
+  const l=el('line',{x1,y1,x2,y2,stroke:stroke||'#aaa','stroke-width':w||1.5,'stroke-dasharray':dash||'none'});
+  svg.appendChild(l);return l;
+}
+function path(svg,d,stroke,w,dash,fill){
+  const p=el('path',{d,stroke:stroke||'#aaa','stroke-width':w||1.5,'stroke-dasharray':dash||'none',fill:fill||'none'});
+  svg.appendChild(p);return p;
+}
+function nodeBox(svg,cx,cy,w,h,fill,lines,sub,emoji,tc){
+  tc=tc||'#fff';
+  rect(svg,cx-w/2,cy-h/2,w,h,fill,'rgba(255,255,255,0.15)',9,true);
+  let startY=cy-(lines.length-1)*7-(sub?5:0)-(emoji?10:0);
+  if(emoji){txt(svg,cx,startY,emoji,14,'400',tc);startY+=18;}
+  lines.forEach((l,i)=>txt(svg,cx,startY+i*15,l,10.5,'700',tc));
+  if(sub)txt(svg,cx,startY+lines.length*15,sub,8.5,'400',tc==='#fff'?'rgba(255,255,255,0.6)':'rgba(0,0,0,0.45)','middle','DM Mono,monospace');
+}
+function curve(svg,x1,y1,x2,y2,color,dash,w){
+  const mx=(x1+x2)/2;
+  path(svg,`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,color||'#aaa',w||1.8,dash||'none');
+}
+
+// ─── TIMELINE ───────────────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgTimeline');
+  svg.setAttribute('viewBox','0 0 1320 140');
+
+  const events=[
+    {x:80,  year:'1806–1843', label:'Presidency\nBanks', fill:'#7a4010', emoji:'🏛️'},
+    {x:240, year:'1921', label:'Imperial\nBank', fill:'#b87c0b', emoji:'🏦'},
+    {x:400, year:'1935', label:'RBI\nFounded', fill:'#1a3a7a', emoji:'⚖️'},
+    {x:560, year:'1955', label:'SBI\nFounded', fill:'#1d6b3a', emoji:'🟢'},
+    {x:720, year:'1969', label:'14 Banks\nNationalised', fill:'#a81818', emoji:'🔴'},
+    {x:880, year:'1980', label:'6 More\nNationalised', fill:'#8a1010', emoji:'🔴'},
+    {x:1040, year:'1991', label:'Narasimham\nReforms I', fill:'#5c1e8a', emoji:'⚡'},
+    {x:1200, year:'1997–2022', label:'More Reforms\n& FSIB', fill:'#0a6068', emoji:'🚀'},
+  ];
+
+  // Timeline bar
+  rect(svg,40,65,1240,6,'#e0d0a0','none',3);
+  // Gradient fill
+  const grad=el('linearGradient',{id:'tg',x1:'0',y1:'0',x2:'1',y2:'0'});
+  grad.appendChild(Object.assign(el('stop',{'offset':'0%','stop-color':'#b87c0b'}),{}));
+  grad.appendChild(Object.assign(el('stop',{'offset':'100%','stop-color':'#0a6068'}),{}));
+  let defs=el('defs',{});defs.appendChild(grad);svg.insertBefore(defs,svg.firstChild);
+  rect(svg,40,65,1240,6,'url(#tg)','none',3);
+
+  events.forEach((ev,i)=>{
+    const above=i%2===0;
+    const ey=above?25:105;
+    // dot
+    const dot=el('circle',{cx:ev.x,cy:68,r:7,fill:ev.fill,stroke:'#fff','stroke-width':'2'});
+    svg.appendChild(dot);
+    // connector
+    line(svg,ev.x,above?35:75,ev.x,above?58:72,ev.fill,1.5,'4 3');
+    // box
+    const lines=ev.label.split('\n');
+    nodeBox(svg,ev.x,ey,140,50,ev.fill,lines,ev.year,ev.emoji);
+  });
+
+  txt(svg,660,128,'PRE-INDEPENDENCE →→→→ POST-INDEPENDENCE →→→→ REFORMS ERA',9,'500','rgba(120,100,60,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── NATIONALISATION FLOW ───────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgNat');
+  svg.setAttribute('viewBox','0 0 1320 200');
+
+  const W=1320;
+
+  // Central theme
+  rect(svg,W/2-140,80,280,56,'#0e2040','rgba(255,255,255,0.1)',10,true);
+  txt(svg,W/2,98,'Nationalisation Goals','13','700','#f5e8a0');
+  txt(svg,W/2,118,'Why Government Took Over Banks','10','400','rgba(240,220,150,0.7)');
+
+  const leftNodes=[
+    {x:130,y:40, fill:'#1d6b3a', lines:['Priority Sector'], sub:'Agri, MSME, poor', emoji:'🌾'},
+    {x:130,y:110, fill:'#1a3a7a', lines:['Rural Expansion'], sub:'Branch network', emoji:'🏘️'},
+    {x:130,y:170, fill:'#5c1e8a', lines:['Control Credit'], sub:'Commanding heights', emoji:'⚙️'},
+  ];
+  const rightNodes=[
+    {x:1190,y:40,  fill:'#b87c0b', lines:['Cheap Loans'], sub:'Dev. finance', emoji:'💸'},
+    {x:1190,y:110, fill:'#c96a10', lines:['Reduce Inequality'], sub:'Social objective', emoji:'⚖️'},
+    {x:1190,y:170, fill:'#a81818', lines:['Employment'], sub:'PSB jobs', emoji:'👷'},
+  ];
+
+  [...leftNodes,...rightNodes].forEach(n=>{
+    const fromX=n.x<W/2?W/2-140:W/2+140;
+    const fy=108;
+    path(svg,`M${fromX},${fy} C${(fromX+n.x)/2},${fy} ${(fromX+n.x)/2},${n.y} ${n.x+(n.x<W/2?65:-65)},${n.y}`,
+      n.fill+'88',1.5,'5 3');
+    nodeBox(svg,n.x,n.y,124,44,n.fill,n.lines,n.sub,n.emoji);
+  });
+
+  // Side banners
+  rect(svg,10,55,75,90,'rgba(168,24,24,0.08)','rgba(168,24,24,0.2)',8);
+  txt(svg,47,100,'⚠️\nPre-1969\nProblems',9,'700','#a81818','middle');
+
+  rect(svg,1235,55,75,90,'rgba(10,96,104,0.08)','rgba(10,96,104,0.2)',8);
+  txt(svg,1272,80,'Post-1980',9,'700','#0a6068','middle');
+  txt(svg,1272,96,'92% PSB',9,'700','#0a6068','middle');
+  txt(svg,1272,112,'dominance',9,'400','#0a6068','middle');
+})();
+
+// ─── COMMITTEES MIND MAP ─────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgComm');
+  svg.setAttribute('viewBox','0 0 1320 340');
+
+  // Central node
+  nodeBox(svg,660,170,220,60,'#0e2040',['Banking Reform','Committees'],'1991 → 2014','📋','#f5e8a0');
+
+  const committees=[
+    {x:180, y:70, fill:'#1a3a7a', label:['Narasimham I'], sub:'1991 · Efficiency', emoji:'⚡',
+     recs:['Reduce SLR','Deregulate rates','Set up ARCs','RBI sole regulator']},
+    {x:180, y:230, fill:'#5c1e8a', label:['Narasimham II'], sub:'1997 · Strengthen', emoji:'💪',
+     recs:['Raise CRAR','Bank mergers','PSB autonomy','Reduce govt stake']},
+    {x:1140, y:70, fill:'#0a6068', label:['Nachiket Mor'], sub:'2013 · Inclusion', emoji:'🌍',
+     recs:['Universal accounts','Aadhaar banking','15-min access','Payment Banks']},
+    {x:1140, y:230, fill:'#1a5874', label:['P.J. Nayak'], sub:'2014 · Governance', emoji:'🏛️',
+     recs:['BIC creation','Reduce govt stake','Profess. mgmt.','BBB forerunner']},
+  ];
+
+  committees.forEach(c=>{
+    const fromX=c.x<660?550:770;
+    const cy2=170+(c.y<170?-25:25);
+    curve(svg,fromX,cy2,c.x+(c.x<660?70:-70),c.y,c.fill+'66','none',1.8);
+
+    // main node
+    nodeBox(svg,c.x,c.y,134,52,c.fill,c.label,c.sub,c.emoji);
+
+    // recommendation sub-nodes
+    c.recs.forEach((r,i)=>{
+      const subX=c.x+(c.x<660?-145:145);
+      const rows=[-67,-22,22,67];
+      const subY=c.y+rows[i];
+      line(svg,c.x+(c.x<660?-67:67),c.y+(c.y<170?-10:10)+(i-1.5)*16,subX+(c.x<660?55:-55),subY,c.fill+'55',1,'4 3');
+      rect(svg,subX-(c.x<660?130:0),subY-14,130,28,c.fill+'15',c.fill+'40',5);
+      txt(svg,subX+(c.x<660?-65:65),subY,r,9.5,'600',c.fill,'middle');
+    });
+  });
+
+  txt(svg,660,326,'Central hub connects to 4 reform committees — arrows show direction of influence',9,'400','rgba(120,100,60,0.45)','middle','DM Mono,monospace');
+})();
+
+// ─── INSTITUTIONS FLOW ──────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgInst');
+  svg.setAttribute('viewBox','0 0 1320 160');
+
+  const nodes=[
+    {x:120,  label:['P.J. Nayak','Committee'], sub:'2014', fill:'#1a5874', emoji:'📋'},
+    {x:340,  label:['BIC Proposed'], sub:'Bank Investment Company', fill:'#b87c0b', emoji:'🏢'},
+    {x:560,  label:['Banks Board','Bureau (BBB)'], sub:'Interim step 2016', fill:'#c96a10', emoji:'🏛️'},
+    {x:780,  label:['Top Mgmt.','Selected'], sub:'PSB leadership', fill:'#5c1e8a', emoji:'👔'},
+    {x:1000, label:['BBB Replaced'], sub:'1 July 2022', fill:'#a81818', emoji:'🔄'},
+    {x:1200, label:['FSIB Created'], sub:'Full powers', fill:'#1d6b3a', emoji:'✅'},
+  ];
+
+  nodes.forEach((n,i)=>{
+    if(i<nodes.length-1){
+      const nx=nodes[i+1].x;
+      const arr=el('path',{d:`M${n.x+78},80 L${nx-78},80`,stroke:n.fill+'88','stroke-width':'2',fill:'none','marker-end':`url(#arr${i})`});
+      svg.appendChild(arr);
+      let defs=svg.querySelector('defs');
+      if(!defs){defs=el('defs',{});svg.insertBefore(defs,svg.firstChild);}
+      const m=el('marker',{id:`arr${i}`,markerWidth:'8',markerHeight:'8',refX:'7',refY:'4',orient:'auto'});
+      const p=el('path',{d:'M0,0 L0,8 L8,4 z',fill:n.fill+'88'});
+      m.appendChild(p);defs.appendChild(m);
+    }
+    nodeBox(svg,n.x,80,150,70,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  txt(svg,660,148,'P.J. Nayak → BBB (interim governance body) → FSIB (2022, permanent)',9,'500','rgba(120,100,60,0.4)','middle','DM Mono,monospace');
+})();
+
+// ─── FACTS DIAGRAM ───────────────────────────────────────────
+(function(){
+  const svg=document.getElementById('svgFacts');
+  svg.setAttribute('viewBox','0 0 1320 200');
+
+  // 3-row grid of fact pills
+  const facts=[
+    {label:'Imperial Bank',     val:'1921',   color:'#b87c0b'},
+    {label:'SBI Founded',       val:'1955',   color:'#1d6b3a'},
+    {label:'14 Banks Nat.',     val:'1969',   color:'#a81818'},
+    {label:'6 Banks Nat.',      val:'1980',   color:'#8a1010'},
+    {label:'Narasimham I',      val:'1991',   color:'#5c1e8a'},
+    {label:'ARC Recommended',   val:'Nara-I', color:'#1a3a7a'},
+    {label:'Narasimham II',     val:'1997',   color:'#0a6068'},
+    {label:'Nachiket Mor',      val:'2013',   color:'#1a5874'},
+    {label:'P.J. Nayak',        val:'2014',   color:'#c96a10'},
+    {label:'BBB Created',       val:'2016',   color:'#b87c0b'},
+    {label:'FSIB Replaces BBB', val:'2022',   color:'#1d6b3a'},
+    {label:'CRR/SLR High Before','val':'1991', color:'#a81818'},
+  ];
+
+  const cols=6, rows=2;
+  const cw=1320/cols, ch=90;
+  facts.forEach((f,i)=>{
+    const col=i%cols, row=Math.floor(i/cols);
+    const cx=col*cw+cw/2, cy=row*ch+ch/2+10;
+    rect(svg,cx-cw/2+8,cy-ch/2+8,cw-16,ch-16,f.color+'12',f.color+'35',9,false);
+    txt(svg,cx,cy-12,f.val,22,'700',f.color);
+    txt(svg,cx,cy+14,f.label,9.5,'600','#1a1610','middle','DM Mono,monospace');
+  });
+})();
+</script>
+</body>
+</html>

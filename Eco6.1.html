@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Economy 1947–2014 · Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f7f4ee;
+  --paper:#fffcf5;
+  --ink:#1a1510;
+  --muted:#8a7a62;
+  --border:#e0d8c8;
+  --card:#ffffff;
+  --gold:#c4922a;
+  --gold-lt:#f5e4be;
+  --amber:#d4640a;
+  --rust:#b03010;
+  --navy:#1c3a6e;
+  --forest:#1a5c38;
+  --teal:#0c5c6c;
+  --plum:#582070;
+  --sky:#1a4e78;
+  --sienna:#8a3820;
+  --sage:#3a5a40;
+  --crimson:#9c1a1a;
+  --warm:#f0e8d8;
+  --accent-line:#c4922a;
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* Grain overlay */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;
+}
+
+/* Background pattern */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 1200px 800px at 10% 0%, rgba(196,146,42,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 900px 900px at 90% 100%, rgba(28,58,110,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 600px 400px at 50% 50%, rgba(196,146,42,0.03) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+.page{max-width:1320px;margin:0 auto;padding:0 28px 120px;position:relative;z-index:1;}
+
+/* ── HEADER ── */
+.header{
+  text-align:center;
+  padding:60px 20px 36px;
+  position:relative;
+}
+.header-eyebrow{
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:5px;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+.header h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,6vw,64px);
+  font-weight:700;
+  line-height:1.05;
+  color:var(--ink);
+}
+.header h1 em{
+  font-style:italic;
+  color:var(--gold);
+}
+.header-sub{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+  font-family:'DM Mono',monospace;
+  letter-spacing:1.5px;
+}
+.header-rule{
+  display:flex;align-items:center;gap:16px;
+  margin:20px auto 0;max-width:600px;
+}
+.header-rule::before,.header-rule::after{content:'';flex:1;height:1px;background:var(--border);}
+.header-rule-diamond{
+  width:8px;height:8px;background:var(--gold);
+  transform:rotate(45deg);flex:0 0 auto;
+}
+
+/* ── SECTION LABELS ── */
+.sec{
+  display:flex;align-items:center;gap:14px;
+  margin:48px 0 20px;
+}
+.sec-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px;font-weight:700;
+  color:var(--gold-lt);
+  line-height:1;
+  flex:0 0 auto;
+  text-shadow:0 1px 0 rgba(196,146,42,0.2);
+}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;
+  color:var(--ink);
+  line-height:1.2;
+}
+.sec-sub{
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:2.5px;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin-top:2px;
+}
+.sec::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+
+/* ── GRID LAYOUTS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g2r{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2r{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g2r{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:18px 20px;
+  position:relative;
+  overflow:hidden;
+}
+.pc::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  border-radius:14px 14px 0 0;
+}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.navy::before{background:var(--navy);}
+.pc.rust::before{background:var(--rust);}
+.pc.forest::before{background:var(--forest);}
+.pc.teal::before{background:var(--teal);}
+.pc.plum::before{background:var(--plum);}
+.pc.sky::before{background:var(--sky);}
+.pc.crimson::before{background:var(--crimson);}
+.pc.sienna::before{background:var(--sienna);}
+.pc.sage::before{background:var(--sage);}
+.pc.ink::before{background:var(--ink);}
+
+.pc-tag{
+  font-family:'DM Mono',monospace;
+  font-size:8px;letter-spacing:2.5px;
+  color:var(--muted);text-transform:uppercase;
+  margin-bottom:5px;
+}
+.pc h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:600;
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+  line-height:1.3;
+}
+
+/* ── ITEMS / ROWS ── */
+.ilist{display:flex;flex-direction:column;gap:7px;}
+.irow{
+  display:flex;align-items:flex-start;gap:9px;
+  padding:8px 10px;
+  border-radius:8px;
+  background:var(--warm);
+  border:1px solid var(--border);
+  font-size:11px;
+  line-height:1.5;
+}
+.irow-icon{font-size:14px;flex:0 0 18px;padding-top:1px;}
+.irow-body{}
+.irow-title{font-weight:700;color:var(--ink);}
+.irow-sub{font-size:9.5px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* ── PILLS ── */
+.pill{
+  display:inline-flex;align-items:center;
+  padding:3px 10px;border-radius:20px;
+  font-size:10px;font-weight:600;margin:2px;
+  font-family:'DM Mono',monospace;
+}
+.pill.gold{background:rgba(196,146,42,0.12);color:var(--gold);}
+.pill.navy{background:rgba(28,58,110,0.1);color:var(--navy);}
+.pill.rust{background:rgba(176,48,16,0.1);color:var(--rust);}
+.pill.forest{background:rgba(26,92,56,0.1);color:var(--forest);}
+.pill.teal{background:rgba(12,92,108,0.1);color:var(--teal);}
+.pill.plum{background:rgba(88,32,112,0.1);color:var(--plum);}
+.pill.crimson{background:rgba(156,26,26,0.1);color:var(--crimson);}
+.pill.sage{background:rgba(58,90,64,0.1);color:var(--sage);}
+
+/* ── CHIP BADGES ── */
+.chip{
+  display:inline-block;padding:4px 10px;border-radius:6px;
+  font-size:9.5px;font-weight:700;border:1.5px solid;
+  margin:2px;font-family:'DM Mono',monospace;
+}
+.chip.good{background:rgba(26,92,56,0.06);border-color:rgba(26,92,56,0.2);color:var(--forest);}
+.chip.bad{background:rgba(156,26,26,0.06);border-color:rgba(156,26,26,0.2);color:var(--crimson);}
+.chip.neu{background:rgba(196,146,42,0.08);border-color:rgba(196,146,42,0.25);color:var(--gold);}
+
+/* ── STAT BOX ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{
+  flex:1;padding:12px 10px;border-radius:10px;
+  border:1.5px solid var(--border);
+  text-align:center;background:var(--warm);
+}
+.stat-n{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:700;line-height:1;
+}
+.stat-l{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-s{font-size:10px;font-weight:700;margin-top:3px;}
+
+/* ── FLOW ROW ── */
+.flow{
+  display:flex;align-items:center;
+  flex-wrap:wrap;gap:6px;
+  padding:10px 0;margin:8px 0;
+}
+.fn{
+  padding:6px 13px;border-radius:8px;
+  font-size:10.5px;font-weight:600;
+  border:1.5px solid;
+  background:var(--warm);
+}
+.fa{color:var(--muted);font-size:18px;flex:0 0 auto;}
+
+/* ── MAP WRAPPERS ── */
+.mapwrap{
+  background:var(--card);
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  margin-bottom:20px;
+  position:relative;
+}
+.mapwrap::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;
+}
+.mapwrap.mv1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--forest));}
+.mapwrap.mv2::before{background:linear-gradient(90deg,var(--navy),var(--plum),var(--teal));}
+.mapwrap.mv3::before{background:linear-gradient(90deg,var(--rust),var(--amber),var(--gold));}
+.mapwrap.mv4::before{background:linear-gradient(90deg,var(--forest),var(--teal),var(--navy));}
+.mapwrap.mv5::before{background:linear-gradient(90deg,var(--sky),var(--teal),var(--forest));}
+.mapwrap svg{display:block;width:100%;}
+
+/* ── KEYSTONE ── */
+.keystone{
+  background:var(--ink);color:#f0e4c0;
+  border-radius:16px;padding:28px 36px;
+  margin:28px 0;
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  position:relative;overflow:hidden;
+}
+.keystone::before{
+  content:'';position:absolute;
+  top:-60px;right:-60px;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(196,146,42,0.15),transparent 70%);
+}
+.ks-icon{font-size:38px;flex:0 0 auto;position:relative;}
+.ks-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-style:italic;
+  margin-bottom:6px;
+  color:#f0e4c0;
+}
+.ks-body{font-size:12px;color:#c8b880;line-height:1.7;position:relative;}
+.ks-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{
+  padding:4px 13px;border-radius:20px;
+  background:rgba(255,255,255,0.08);
+  font-size:10px;font-family:'DM Mono',monospace;
+  letter-spacing:0.3px;color:#e0d0a0;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* ── PHASE TIMELINE ── */
+.timeline{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:0;margin:20px 0;
+  border:1.5px solid var(--border);
+  border-radius:14px;overflow:hidden;
+}
+@media(max-width:800px){.timeline{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.timeline{grid-template-columns:1fr;}}
+.tphase{
+  padding:18px 14px;
+  border-right:1px solid var(--border);
+  position:relative;
+  background:var(--card);
+  transition:background 0.2s;
+}
+.tphase:last-child{border-right:none;}
+.tphase:hover{background:var(--warm);}
+.tphase-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:11px;font-weight:600;
+  color:var(--muted);
+  margin-bottom:4px;
+  font-family:'DM Mono',monospace;
+  font-size:8px;letter-spacing:2px;text-transform:uppercase;
+}
+.tphase-year{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:700;
+  line-height:1;
+  margin-bottom:6px;
+}
+.tphase-title{font-size:11px;font-weight:700;margin-bottom:4px;}
+.tphase-items{font-size:9.5px;color:var(--muted);line-height:1.7;font-family:'DM Mono',monospace;}
+.tphase-dot{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:8px;height:8px;border-radius:50%;
+  margin-bottom:-4px;z-index:1;
+}
+
+/* ── VS / COMPARE ── */
+.vs-wrap{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  gap:12px;align-items:start;margin:10px 0;
+}
+.vs-center{
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:700;
+  color:var(--muted);padding-top:8px;
+}
+.vs-col{}
+.vs-head{
+  font-size:12px;font-weight:700;
+  padding:8px 12px;border-radius:7px;
+  margin-bottom:7px;text-align:center;
+}
+.vs-item{
+  padding:7px 10px;border-radius:7px;
+  font-size:10.5px;margin-bottom:5px;
+  border:1px solid var(--border);
+  background:var(--warm);
+}
+
+/* ── CALLOUT ── */
+.callout{
+  padding:12px 15px;border-radius:10px;
+  background:rgba(26,92,56,0.06);
+  border:1.5px solid rgba(26,92,56,0.2);
+  margin:10px 0;
+}
+.callout-t{font-size:11px;font-weight:700;color:var(--forest);margin-bottom:3px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.6;}
+
+/* ── SPIDER LEGEND ── */
+.legend{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin:10px 0;
+}
+
+/* ── IMPACT CHAIN ── */
+.ic{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.ic-n{
+  padding:6px 12px;border-radius:7px;
+  font-size:10px;font-weight:700;
+  border:1.5px solid;white-space:nowrap;
+}
+.ic-a{font-size:16px;color:var(--muted);}
+
+/* ── LABEL ROW inside SVGs ── */
+.svg-label{
+  fill:rgba(130,110,80,0.45);
+  font-family:'DM Mono',monospace;
+  font-size:8px;letter-spacing:2px;
+}
+
+/* ── SCROLL ANIMATION ── */
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ══════════ HEADER ══════════ -->
+<div class="header reveal">
+  <div class="header-eyebrow">UPSC Prelims · Indian Economy · Revision Mind Map</div>
+  <h1>Indian Economy<br><em>1947 – 2014</em></h1>
+  <div class="header-sub">Colonial Legacy → Mixed Economy → Planning → License Raj → 1991 Reforms</div>
+  <div class="header-rule"><div class="header-rule-diamond"></div></div>
+</div>
+
+<!-- ══════════ MASTER FLOW ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">◈</span>
+  <div>
+    <div class="sec-title">Master Flow — The Big Picture</div>
+    <div class="sec-sub">From colonial exploitation to liberalisation</div>
+  </div>
+</div>
+
+<div class="mapwrap mv1 reveal">
+  <svg id="svgMaster" viewBox="0 0 1280 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══════════ SECTION 1: BRITISH IMPACT ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">01</span>
+  <div>
+    <div class="sec-title">Impact of British Rule</div>
+    <div class="sec-sub">The colonial economy & its consequences</div>
+  </div>
+</div>
+
+<div class="mapwrap mv3 reveal">
+  <svg id="svgBritish" viewBox="0 0 1280 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3 reveal">
+  <div class="pc rust">
+    <div class="pc-tag">British Policy 1</div>
+    <h3>📦 Supplier of Raw Materials</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">↑</div><div class="irow-body"><div class="irow-title">Exports: Cotton, Jute, Minerals</div><div class="irow-sub">Raw goods only — no value addition</div></div></div>
+      <div class="irow"><div class="irow-icon">↓</div><div class="irow-body"><div class="irow-title">Imports: British Finished Goods</div><div class="irow-sub">Dumped into Indian markets</div></div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip bad">❌ Indian handicrafts destroyed</span></div>
+  </div>
+
+  <div class="pc crimson">
+    <div class="pc-tag">British Policy 2</div>
+    <h3>🏦 Drain of Wealth</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">💸</div><div class="irow-body"><div class="irow-title">Indian Surplus → Britain</div><div class="irow-sub">Systematic extraction of revenue</div></div></div>
+      <div class="irow"><div class="irow-icon">📉</div><div class="irow-body"><div class="irow-title">Savings ≈ 3% of GDP</div><div class="irow-sub">Before independence</div></div></div>
+      <div class="irow"><div class="irow-icon">🌾</div><div class="irow-body"><div class="irow-title">High Land Revenue</div><div class="irow-sub">Crushing burden on peasants</div></div></div>
+    </div>
+  </div>
+
+  <div class="pc sienna">
+    <div class="pc-tag">British Policy 3</div>
+    <h3>🏭 No Industrial Protection</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">🇬🇧</div><div class="irow-body"><div class="irow-title">Britain Protected Its Industries</div><div class="irow-sub">Tariff walls for British goods</div></div></div>
+      <div class="irow"><div class="irow-icon">⚖️</div><div class="irow-body"><div class="irow-title">India Forced into Free Trade</div><div class="irow-sub">Infant industries got no support</div></div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip bad">❌ No heavy industry base</span></div>
+  </div>
+</div>
+
+<!-- At Independence snapshot -->
+<div class="pc ink reveal" style="margin-bottom:20px;">
+  <div class="pc-tag">India at Independence — 1947 Snapshot</div>
+  <h3 style="font-family:'Cormorant Garamond',serif;font-size:18px;margin-bottom:12px;">📸 What British Rule Left Behind</h3>
+  <div class="g4" style="margin-bottom:0;">
+    <div class="stat"><div class="stat-n" style="color:var(--rust);">84%</div><div class="stat-s">Illiteracy</div><div class="stat-l">AT INDEPENDENCE</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--crimson);">3%</div><div class="stat-s">Savings/GDP</div><div class="stat-l">VERY LOW CAPITAL</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--sienna);">0</div><div class="stat-s">Heavy Industries</div><div class="stat-l">ABSENT COMPLETELY</div></div>
+    <div class="stat"><div class="stat-n" style="color:var(--gold);">∞</div><div class="stat-s">Poverty</div><div class="stat-l">WIDESPREAD</div></div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 2: MODEL CHOICE ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">02</span>
+  <div>
+    <div class="sec-title">The Model Choice — Mixed Economy</div>
+    <div class="sec-sub">Capitalism vs. Socialism vs. Mixed Economy</div>
+  </div>
+</div>
+
+<div class="mapwrap mv2 reveal">
+  <svg id="svgModel" viewBox="0 0 1280 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3 reveal">
+  <div class="pc crimson">
+    <div class="pc-tag">Rejected Option A</div>
+    <h3>❌ Pure Capitalism</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">⚠️</div><div class="irow-body"><div class="irow-title">Why Rejected</div><div class="irow-sub">Fear of extreme inequality & exploitation</div></div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip bad">Market failures likely</span></div>
+  </div>
+  <div class="pc plum">
+    <div class="pc-tag">Rejected Option B</div>
+    <h3>❌ Full Socialism (USSR Model)</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">⚠️</div><div class="irow-body"><div class="irow-title">Why Rejected</div><div class="irow-sub">Too rigid; stifles enterprise & innovation</div></div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip bad">No market incentives</span></div>
+  </div>
+  <div class="pc forest">
+    <div class="pc-tag">Chosen Model ✓</div>
+    <h3>✅ Mixed Economy</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">🏛️</div><div class="irow-body"><div class="irow-title">State + Market coexist</div><div class="irow-sub">Public sector for strategic areas</div></div></div>
+      <div class="irow"><div class="irow-icon">🎯</div><div class="irow-body"><div class="irow-title">Goals: Growth + Equity + Self-reliance</div><div class="irow-sub">Modernization without exploitation</div></div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip good">India's path 1947–1991</span></div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 3: PLANNING ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">03</span>
+  <div>
+    <div class="sec-title">Planning Commission & Five-Year Plans</div>
+    <div class="sec-sub">Objectives, types, and the great strategy debate</div>
+  </div>
+</div>
+
+<div class="g2r reveal">
+  <div class="pc navy">
+    <div class="pc-tag">Planning Architecture</div>
+    <h3>📊 The Planning Framework</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">🏛️</div><div class="irow-body"><div class="irow-title">Planning Commission (1950)</div><div class="irow-sub">Advisory body under PM — coordinated 5-yr plans</div></div></div>
+      <div class="irow"><div class="irow-icon">📋</div><div class="irow-body"><div class="irow-title">Five-Year Plans Started</div><div class="irow-sub">Soviet-style planning adapted for India</div></div></div>
+    </div>
+    <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:12px;">
+      <div style="font-size:11px;font-weight:700;margin-bottom:8px;">4 Core Objectives</div>
+      <div class="legend">
+        <span class="pill navy">📈 Growth</span>
+        <span class="pill teal">🔬 Modernization</span>
+        <span class="pill forest">🛡️ Self-reliance</span>
+        <span class="pill gold">⚖️ Equity</span>
+      </div>
+    </div>
+    <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:12px;">
+      <div style="font-size:11px;font-weight:700;margin-bottom:8px;">Planning Types</div>
+      <div class="irow" style="margin-bottom:5px;"><div class="irow-icon">⚙️</div><div class="irow-body"><div class="irow-title">Imperative Planning (USSR model)</div><div class="irow-sub">Strict state control, mandatory targets</div></div></div>
+      <div class="irow"><div class="irow-icon">🧭</div><div class="irow-body"><div class="irow-title">Indicative Planning</div><div class="irow-sub">Guidance-based, market retained</div></div></div>
+      <div style="margin-top:8px;"><span class="chip neu">India: mix, became more controlled over time</span></div>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-tag">Five-Year Plans — Key Ones</div>
+    <h3>📅 Plan Highlights</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">1️⃣</div><div class="irow-body"><div class="irow-title">1st Plan (1951–56)</div><div class="irow-sub">Agriculture & rehabilitation focus</div></div></div>
+      <div class="irow"><div class="irow-icon">2️⃣</div><div class="irow-body"><div class="irow-title">2nd Plan (1956–61)</div><div class="irow-sub">Heavy industries — Mahalanobis model</div></div></div>
+      <div class="irow"><div class="irow-icon">🏗️</div><div class="irow-body"><div class="irow-title">Steel Plants Built</div><div class="irow-sub">Bhilai, Durgapur, Rourkela (Soviet/British/German aided)</div></div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip neu">📌 Abolished 2015 → NITI Aayog</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 4: DEBATE ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">04</span>
+  <div>
+    <div class="sec-title">The Great Strategy Debate</div>
+    <div class="sec-sub">Bombay School vs. Calcutta School (Mahalanobis)</div>
+  </div>
+</div>
+
+<div class="mapwrap mv4 reveal">
+  <svg id="svgDebate" viewBox="0 0 1280 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="pc navy reveal" style="margin-bottom:20px;">
+  <div class="pc-tag">The Debate & Decision</div>
+  <h3>🏆 Government Chose: Mahalanobis (Calcutta) Model</h3>
+  <div class="vs-wrap">
+    <div class="vs-col">
+      <div class="vs-head" style="background:rgba(212,106,16,0.1);color:var(--amber);">🟢 Bombay School</div>
+      <div class="vs-item">Consumer goods focus</div>
+      <div class="vs-item">Labour-intensive industries</div>
+      <div class="vs-item">Quick returns, surplus labour use</div>
+      <div class="vs-item">Agriculture-led growth</div>
+      <div style="margin-top:6px;"><span class="chip bad">❌ Not chosen</span></div>
+    </div>
+    <div class="vs-center">vs</div>
+    <div class="vs-col">
+      <div class="vs-head" style="background:rgba(28,58,110,0.1);color:var(--navy);">🔵 Calcutta / Mahalanobis</div>
+      <div class="vs-item">Heavy/capital goods industry focus</div>
+      <div class="vs-item">Public sector dominance</div>
+      <div class="vs-item">Long-term industrial base</div>
+      <div class="vs-item">Import substitution strategy</div>
+      <div style="margin-top:6px;"><span class="chip good">✅ CHOSEN — 2nd Plan onward</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 5: IPR ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">05</span>
+  <div>
+    <div class="sec-title">Industrial Policy Resolutions</div>
+    <div class="sec-sub">IPR 1948 vs IPR 1956 — Key Prelims Distinction</div>
+  </div>
+</div>
+
+<div class="mapwrap mv5 reveal">
+  <svg id="svgIPR" viewBox="0 0 1280 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2 reveal">
+  <div class="pc teal">
+    <div class="pc-tag">IPR 1948</div>
+    <h3>📜 Industrial Policy Resolution 1948</h3>
+    <div style="margin-bottom:10px;"><span class="chip neu">🏛️ Beginning of Mixed Economy</span></div>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">1</div><div class="irow-body"><div class="irow-title">State Monopoly</div><div class="irow-sub">Defence, Railways, Atomic Energy</div></div></div>
+      <div class="irow"><div class="irow-icon">2</div><div class="irow-body"><div class="irow-title">Basic Industries</div><div class="irow-sub">Coal, Steel — Public sector dominant</div></div></div>
+      <div class="irow"><div class="irow-icon">3</div><div class="irow-body"><div class="irow-title">Regulated Industries</div><div class="irow-sub">Cement, Chemicals — Govt control</div></div></div>
+      <div class="irow"><div class="irow-icon">4</div><div class="irow-body"><div class="irow-title">Private Sector</div><div class="irow-sub">Rest open to private enterprise</div></div></div>
+    </div>
+  </div>
+
+  <div class="pc plum">
+    <div class="pc-tag">IPR 1956</div>
+    <h3>📜 Industrial Policy Resolution 1956</h3>
+    <div style="margin-bottom:10px;"><span class="chip bad">Declared "Socialistic Pattern of Society"</span></div>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">A</div><div class="irow-body"><div class="irow-title">Schedule A — 17 Industries</div><div class="irow-sub">Reserved exclusively for public sector</div></div></div>
+      <div class="irow"><div class="irow-icon">B</div><div class="irow-body"><div class="irow-title">Schedule B</div><div class="irow-sub">State will set up, private can supplement</div></div></div>
+      <div class="irow"><div class="irow-icon">C</div><div class="irow-body"><div class="irow-title">Schedule C</div><div class="irow-sub">Left to private sector</div></div></div>
+      <div class="irow"><div class="irow-icon">📈</div><div class="irow-body"><div class="irow-title">Expanded Govt Role</div><div class="irow-sub">More socialist vs 1948</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 6: LICENSE RAJ ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">06</span>
+  <div>
+    <div class="sec-title">License Raj — IDR Act 1951</div>
+    <div class="sec-sub">Government control of industry entry, capacity & location</div>
+  </div>
+</div>
+
+<div class="mapwrap mv3 reveal">
+  <svg id="svgLicense" viewBox="0 0 1280 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2 reveal">
+  <div class="pc rust">
+    <div class="pc-tag">IDR Act 1951 — What It Controlled</div>
+    <h3>🔒 The Five Controls</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">🚪</div><div class="irow-body"><div class="irow-title">Entry into Industry</div><div class="irow-sub">Need government licence to start a firm</div></div></div>
+      <div class="irow"><div class="irow-icon">📦</div><div class="irow-body"><div class="irow-title">Production Capacity</div><div class="irow-sub">Max output set by licence</div></div></div>
+      <div class="irow"><div class="irow-icon">📍</div><div class="irow-body"><div class="irow-title">Location of Plant</div><div class="irow-sub">Cannot set up factory without approval</div></div></div>
+      <div class="irow"><div class="irow-icon">⚙️</div><div class="irow-body"><div class="irow-title">Technology Used</div><div class="irow-sub">Technology imports regulated</div></div></div>
+      <div class="irow"><div class="irow-icon">🌐</div><div class="irow-body"><div class="irow-title">Imports</div><div class="irow-sub">Import licences needed</div></div></div>
+    </div>
+  </div>
+
+  <div class="pc crimson">
+    <div class="pc-tag">Consequences of License Raj</div>
+    <h3>⚠️ Unintended Consequences</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">🤝</div><div class="irow-body"><div class="irow-title">Bureaucrat–Politician–Business Nexus</div><div class="irow-sub">Corruption flourished in licence granting</div></div></div>
+      <div class="irow"><div class="irow-icon">📉</div><div class="irow-body"><div class="irow-title">Reduced Competition</div><div class="irow-sub">Monopolies formed, no efficiency pressure</div></div></div>
+      <div class="irow"><div class="irow-icon">🐢</div><div class="irow-body"><div class="irow-title">Slow Growth ("Hindu Rate of Growth")</div><div class="irow-sub">~3.5% GDP growth for decades</div></div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip bad">❌ Root cause of 1991 crisis</span></div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 7: PUBLIC SECTOR ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">07</span>
+  <div>
+    <div class="sec-title">Why Large Public Sector?</div>
+    <div class="sec-sub">The economic rationale & its mixed outcomes</div>
+  </div>
+</div>
+
+<div class="g3 reveal">
+  <div class="pc sky">
+    <div class="pc-tag">Economic Justification</div>
+    <h3>🏗️ The "Big Push" Theory</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">🔗</div><div class="irow-body"><div class="irow-title">Coordination Problem</div><div class="irow-sub">Multiple sectors must grow together — only state can coordinate</div></div></div>
+      <div class="irow"><div class="irow-icon">🏗️</div><div class="irow-body"><div class="irow-title">Build Infrastructure First</div><div class="irow-sub">Private sector won't invest without basic infra</div></div></div>
+      <div class="irow"><div class="irow-icon">⚙️</div><div class="irow-body"><div class="irow-title">Capital Goods Foundation</div><div class="irow-sub">Heavy industry is the backbone of all manufacturing</div></div></div>
+    </div>
+  </div>
+
+  <div class="pc forest">
+    <div class="pc-tag">What Was Built — Gains</div>
+    <h3>✅ PSU Success Stories</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">✈️</div><div class="irow-body"><div class="irow-title">HAL</div><div class="irow-sub">Built aerospace/defence industrial base</div></div></div>
+      <div class="irow"><div class="irow-icon">💊</div><div class="irow-body"><div class="irow-title">IDPL</div><div class="irow-sub">Built pharmaceutical foundation</div></div></div>
+      <div class="irow"><div class="irow-icon">⚡</div><div class="irow-body"><div class="irow-title">BHEL, SAIL, ONGC…</div><div class="irow-sub">Steel, energy, heavy engineering</div></div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip good">✅ Industrial base created</span></div>
+  </div>
+
+  <div class="pc rust">
+    <div class="pc-tag">Failures & Problems</div>
+    <h3>❌ PSU Weaknesses</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">📉</div><div class="irow-body"><div class="irow-title">Inefficiency</div><div class="irow-sub">No competition = no pressure to improve</div></div></div>
+      <div class="irow"><div class="irow-icon">💸</div><div class="irow-body"><div class="irow-title">Losses & Subsidies</div><div class="irow-sub">Chronic "sick" public sector units</div></div></div>
+      <div class="irow"><div class="irow-icon">🌍</div><div class="irow-body"><div class="irow-title">Import Substitution</div><div class="irow-sub">Less global trade → less growth</div></div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip bad">❌ Weak poverty reduction</span></div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 8: MIXED ASSESSMENT ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">08</span>
+  <div>
+    <div class="sec-title">Outcomes of Socialist Model — A Mixed Story</div>
+    <div class="sec-sub">What worked, what failed</div>
+  </div>
+</div>
+
+<div class="mapwrap mv2 reveal">
+  <svg id="svgBalance" viewBox="0 0 1280 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2 reveal">
+  <div class="pc forest">
+    <div class="pc-tag">Gains of Planning Era</div>
+    <h3>✅ What Was Achieved</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;">
+      <span class="chip good">✅ Industrial base built</span>
+      <span class="chip good">✅ Steel & heavy machinery capacity</span>
+      <span class="chip good">✅ Infrastructure growth</span>
+      <span class="chip good">✅ Self-reliance in many sectors</span>
+      <span class="chip good">✅ Atomic energy programme</span>
+      <span class="chip good">✅ Green Revolution (agriculture)</span>
+    </div>
+    <div class="callout">
+      <div class="callout-t">🌟 Key Achievement</div>
+      <div class="callout-b">India went from zero industrial base to a diversified economy with steel, chemicals, aerospace, pharmaceuticals by 1980s.</div>
+    </div>
+  </div>
+
+  <div class="pc crimson">
+    <div class="pc-tag">Failures of Planning Era</div>
+    <h3>❌ What Failed</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;">
+      <span class="chip bad">❌ Overregulation & inefficiency</span>
+      <span class="chip bad">❌ Import substitution → isolation</span>
+      <span class="chip bad">❌ Low productivity</span>
+      <span class="chip bad">❌ Poverty fluctuated — no trickle-down</span>
+      <span class="chip bad">❌ Agriculture remained weak</span>
+      <span class="chip bad">❌ No strong primary education focus</span>
+    </div>
+    <div class="callout" style="background:rgba(156,26,26,0.06);border-color:rgba(156,26,26,0.2);">
+      <div class="callout-t" style="color:var(--crimson);">📌 The "Hindu Rate of Growth" ≈ 3.5% / year</div>
+      <div class="callout-b">Far below potential. By late 1980s, fiscal deficit ballooned, BoP crisis inevitable.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 9: 1991 REFORMS ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">09</span>
+  <div>
+    <div class="sec-title">1991 Reforms — LPG</div>
+    <div class="sec-sub">The watershed moment: BoP crisis → liberalisation</div>
+  </div>
+</div>
+
+<div class="pc navy reveal" style="margin-bottom:20px;">
+  <div class="pc-tag">1991 Balance of Payments Crisis → Reform</div>
+  <h3>🔄 Liberalisation, Privatisation, Globalisation (LPG)</h3>
+  <div class="ic">
+    <div class="ic-n" style="border-color:var(--crimson);background:rgba(156,26,26,0.07);color:var(--crimson);">BoP Crisis 1991</div>
+    <div class="ic-a">→</div>
+    <div class="ic-n" style="border-color:var(--rust);background:rgba(176,48,16,0.07);color:var(--rust);">IMF Conditionality</div>
+    <div class="ic-a">→</div>
+    <div class="ic-n" style="border-color:var(--gold);background:rgba(196,146,42,0.07);color:var(--gold);">LPG Reforms</div>
+    <div class="ic-a">→</div>
+    <div class="ic-n" style="border-color:var(--forest);background:rgba(26,92,56,0.07);color:var(--forest);">High Growth Era</div>
+  </div>
+  <div class="g3" style="margin:12px 0 0;">
+    <div style="padding:12px;border-radius:9px;background:var(--warm);border:1.5px solid var(--border);">
+      <div style="font-size:11px;font-weight:700;margin-bottom:6px;color:var(--gold);">📂 Liberalisation</div>
+      <div class="ilist">
+        <div class="irow"><div class="irow-icon">🔓</div><div class="irow-body"><div class="irow-title">End of License Raj</div><div class="irow-sub">Deregulation of industry</div></div></div>
+        <div class="irow"><div class="irow-icon">🌐</div><div class="irow-body"><div class="irow-title">Trade Liberalisation</div><div class="irow-sub">Reduced tariffs & quotas</div></div></div>
+      </div>
+    </div>
+    <div style="padding:12px;border-radius:9px;background:var(--warm);border:1.5px solid var(--border);">
+      <div style="font-size:11px;font-weight:700;margin-bottom:6px;color:var(--navy);">🏭 Privatisation</div>
+      <div class="ilist">
+        <div class="irow"><div class="irow-icon">📉</div><div class="irow-body"><div class="irow-title">Reduced PSU Dominance</div><div class="irow-sub">Disinvestment began</div></div></div>
+        <div class="irow"><div class="irow-icon">🏪</div><div class="irow-body"><div class="irow-title">Private Sector Expanded</div><div class="irow-sub">Telecom, aviation, banking</div></div></div>
+      </div>
+    </div>
+    <div style="padding:12px;border-radius:9px;background:var(--warm);border:1.5px solid var(--border);">
+      <div style="font-size:11px;font-weight:700;margin-bottom:6px;color:var(--teal);">🌍 Globalisation</div>
+      <div class="ilist">
+        <div class="irow"><div class="irow-icon">💹</div><div class="irow-body"><div class="irow-title">FDI & FII Opened</div><div class="irow-sub">Foreign investment welcomed</div></div></div>
+        <div class="irow"><div class="irow-icon">💻</div><div class="irow-body"><div class="irow-title">IT & Services Boom</div><div class="irow-sub">India's new growth engine</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 10: TIMELINE ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">10</span>
+  <div>
+    <div class="sec-title">Historical Timeline — Key Events</div>
+    <div class="sec-sub">Colonial legacy to 2014</div>
+  </div>
+</div>
+
+<div class="mapwrap mv1 reveal">
+  <svg id="svgTimeline" viewBox="0 0 1280 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="timeline reveal">
+  <div class="tphase">
+    <div class="tphase-num">Phase I</div>
+    <div class="tphase-year" style="color:var(--rust);">1947</div>
+    <div class="tphase-title">Independence</div>
+    <div class="tphase-items">Mixed Economy<br>IPR 1948<br>84% illiteracy</div>
+    <div class="tphase-dot" style="background:var(--rust);"></div>
+  </div>
+  <div class="tphase">
+    <div class="tphase-num">Phase II</div>
+    <div class="tphase-year" style="color:var(--navy);">1950s</div>
+    <div class="tphase-title">Planning Era</div>
+    <div class="tphase-items">Planning Commission<br>IPR 1956<br>2nd Five-Year Plan<br>Mahalanobis Model</div>
+    <div class="tphase-dot" style="background:var(--navy);"></div>
+  </div>
+  <div class="tphase">
+    <div class="tphase-num">Phase III</div>
+    <div class="tphase-year" style="color:var(--plum);">1960–80</div>
+    <div class="tphase-title">Controlled Growth</div>
+    <div class="tphase-items">License Raj<br>IDR Act dominance<br>Hindu Rate ~3.5%<br>Green Revolution</div>
+    <div class="tphase-dot" style="background:var(--plum);"></div>
+  </div>
+  <div class="tphase">
+    <div class="tphase-num">Phase IV</div>
+    <div class="tphase-year" style="color:var(--crimson);">1991</div>
+    <div class="tphase-title">BoP Crisis</div>
+    <div class="tphase-items">Forex reserves ↓<br>Gold pledged<br>IMF loan<br>LPG reforms</div>
+    <div class="tphase-dot" style="background:var(--crimson);"></div>
+  </div>
+  <div class="tphase">
+    <div class="tphase-num">Phase V</div>
+    <div class="tphase-year" style="color:var(--forest);">1991–2014</div>
+    <div class="tphase-title">High Growth</div>
+    <div class="tphase-items">IT boom<br>FDI inflows<br>8–9% growth years<br>NITI Aayog 2015</div>
+    <div class="tphase-dot" style="background:var(--forest);"></div>
+  </div>
+</div>
+
+<!-- ══════════ QUICK REVISION ══════════ -->
+<div class="sec reveal">
+  <span class="sec-num">★</span>
+  <div>
+    <div class="sec-title">Prelims Quick Revision Points</div>
+    <div class="sec-sub">High-yield facts for exam day</div>
+  </div>
+</div>
+
+<div class="g2 reveal">
+  <div class="pc gold">
+    <div class="pc-tag">Must-Know Concepts</div>
+    <h3>📌 Key Theory Terms</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">💧</div><div class="irow-body"><div class="irow-title">Drain of Wealth Theory</div><div class="irow-sub">Dadabhai Naoroji — systematic extraction by British</div></div></div>
+      <div class="irow"><div class="irow-icon">📊</div><div class="irow-body"><div class="irow-title">Mahalanobis Model</div><div class="irow-sub">2nd Plan — Heavy Industry → Capital Goods strategy</div></div></div>
+      <div class="irow"><div class="irow-icon">🏭</div><div class="irow-body"><div class="irow-title">Import Substitution Industrialisation (ISI)</div><div class="irow-sub">Make locally what was imported — reduce FX outflow</div></div></div>
+      <div class="irow"><div class="irow-icon">🌊</div><div class="irow-body"><div class="irow-title">Trickle-Down Theory (Criticized)</div><div class="irow-sub">Growth at top does NOT automatically reach poor</div></div></div>
+      <div class="irow"><div class="irow-icon">💪</div><div class="irow-body"><div class="irow-title">Big Push Theory</div><div class="irow-sub">Large scale investment needed to escape poverty trap</div></div></div>
+    </div>
+  </div>
+
+  <div class="pc navy">
+    <div class="pc-tag">Must-Know Distinctions</div>
+    <h3>⚡ Quick Recall — Differences</h3>
+    <div class="ilist">
+      <div class="irow"><div class="irow-icon">📜</div><div class="irow-body"><div class="irow-title">IPR 1948 vs IPR 1956</div><div class="irow-sub">1948: Mixed economy start | 1956: "Socialist Pattern" → 17 industries for public sector</div></div></div>
+      <div class="irow"><div class="irow-icon">🏙️</div><div class="irow-body"><div class="irow-title">Bombay vs Calcutta School</div><div class="irow-sub">Consumer goods (quick) vs Heavy industry (long-term)</div></div></div>
+      <div class="irow"><div class="irow-icon">📋</div><div class="irow-body"><div class="irow-title">Imperative vs Indicative Planning</div><div class="irow-sub">Mandatory control vs advisory/guidance-based</div></div></div>
+      <div class="irow"><div class="irow-icon">🔄</div><div class="irow-body"><div class="irow-title">Planning Commission vs NITI Aayog</div><div class="irow-sub">1950: top-down planning | 2015: think-tank, cooperative federalism</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ KEYSTONE ══════════ -->
+<div class="keystone reveal">
+  <div class="ks-icon">🇮🇳</div>
+  <div style="flex:1;position:relative;">
+    <div class="ks-title">The Core Connecting Story</div>
+    <div class="ks-body">
+      British rule created a <strong style="color:#f5d78a;">backward, de-industrialised economy.</strong> Independent India chose a middle path — the Mixed Economy — but implemented it with heavy state control, the Mahalanobis heavy-industry model, and the License Raj. This built an industrial base but at the cost of efficiency, competition, and poverty alleviation. By 1991, the model had run its course. The <strong style="color:#f5d78a;">BoP crisis forced LPG reforms</strong> — and India's high-growth era began.
+    </div>
+    <div class="ks-pills">
+      <span class="kpill">Colonial Legacy</span>
+      <span class="kpill">Mixed Economy</span>
+      <span class="kpill">Mahalanobis Model</span>
+      <span class="kpill">License Raj</span>
+      <span class="kpill">Hindu Rate of Growth</span>
+      <span class="kpill">1991 LPG Reforms</span>
+    </div>
+  </div>
+</div>
+
+<!-- ONE-LINE FLOW -->
+<div class="mapwrap mv1 reveal" style="margin-top:20px;">
+  <div style="padding:20px 24px;">
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:12px;">One-Line Flow — The Complete Story</div>
+    <div class="flow" style="flex-wrap:wrap;justify-content:center;">
+      <div class="fn" style="border-color:var(--rust);color:var(--rust);">🏴 Colonial Exploitation</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--sienna);color:var(--sienna);">📉 Backward Economy</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--gold);color:var(--gold);">⚖️ Mixed Economy Choice</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--navy);color:var(--navy);">🏭 Heavy Industry Strategy</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--plum);color:var(--plum);">🔒 License Raj</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--crimson);color:var(--crimson);">📉 BoP Crisis 1991</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--forest);color:var(--forest);">🚀 LPG Reforms</div>
+      <div class="fa">→</div>
+      <div class="fn" style="border-color:var(--teal);color:var(--teal);">📈 High Growth Era</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v]of Object.entries(attrs))e.setAttribute(k,v);
+  return e;
+}
+function text(svg,x,y,txt,opts={}){
+  const t=el('text',{x,y,'text-anchor':opts.anchor||'middle','dominant-baseline':opts.base||'middle',
+    'font-size':opts.size||11,'font-weight':opts.w||'400','font-family':opts.font||'Outfit,sans-serif',
+    fill:opts.fill||'#1a1510',...(opts.extra||{})});
+  t.textContent=txt;svg.appendChild(t);return t;
+}
+function rect(svg,x,y,w,h,opts={}){
+  const r=el('rect',{x,y,width:w,height:h,rx:opts.rx||8,ry:opts.rx||8,fill:opts.fill||'#fff',
+    stroke:opts.stroke||'#e0d8c8','stroke-width':opts.sw||1.5,...(opts.extra||{})});
+  svg.appendChild(r);return r;
+}
+function curve(svg,x1,y1,x2,y2,opts={}){
+  const mx=(x1+x2)/2;
+  const p=el('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:opts.stroke||'#c4922a','stroke-width':opts.sw||1.5,fill:'none',
+    'stroke-dasharray':opts.dash||'none',opacity:opts.opacity||0.5});
+  svg.appendChild(p);return p;
+}
+function line(svg,x1,y1,x2,y2,opts={}){
+  const p=el('path',{d:`M${x1},${y1} L${x2},${y2}`,stroke:opts.stroke||'#c4922a',
+    'stroke-width':opts.sw||1.5,fill:'none',opacity:opts.opacity||0.5,
+    'stroke-dasharray':opts.dash||'none','marker-end':opts.arrow?`url(#arr${opts.arrid||''})`:'none'});
+  svg.appendChild(p);
+}
+function arrow(svg,id,color){
+  let defs=svg.querySelector('defs');
+  if(!defs){defs=el('defs',{});svg.insertBefore(defs,svg.firstChild);}
+  const m=el('marker',{id,markerWidth:'8',markerHeight:'8',refX:'6',refY:'4',orient:'auto'});
+  m.appendChild(el('path',{d:'M0,0 L0,8 L8,4 z',fill:color||'#c4922a'}));
+  defs.appendChild(m);
+}
+function node(svg,cx,cy,w,h,opts={}){
+  // shadow
+  rect(svg,cx-w/2+2,cy-h/2+3,w,h,{rx:opts.rx||10,fill:'rgba(0,0,0,0.07)',stroke:'none','stroke-width':0});
+  // main rect
+  rect(svg,cx-w/2,cy-h/2,w,h,{rx:opts.rx||10,fill:opts.fill||'#1a1510',
+    stroke:'rgba(255,255,255,0.15)',sw:1.5});
+  // top accent bar
+  if(opts.accent){
+    rect(svg,cx-w/2,cy-h/2,w,3,{rx:0,fill:opts.accent,stroke:'none','stroke-width':0});
+    // round top corners
+    rect(svg,cx-w/2,cy-h/2,w,6,{rx:opts.rx||10,fill:opts.accent,stroke:'none','stroke-width':0});
+    rect(svg,cx-w/2,cy-h/2+3,w,3,{rx:0,fill:opts.accent,stroke:'none','stroke-width':0});
+  }
+  // emoji
+  let ty=cy-(opts.lines||[]).length*7.5-(opts.sub?5:0)-(opts.emoji?10:0);
+  if(opts.emoji){
+    text(svg,cx,ty,opts.emoji,{size:15,fill:'rgba(255,255,255,0.9)',base:'middle'});
+    ty+=17;
+  }
+  // lines
+  (opts.lines||[]).forEach((l,i)=>{
+    text(svg,cx,ty+i*14,l,{size:10.5,w:'700',fill:opts.textCol||'#fff',base:'middle'});
+  });
+  // sub
+  if(opts.sub){
+    text(svg,cx,ty+(opts.lines||[]).length*14+2,opts.sub,
+      {size:8,fill:'rgba(255,255,255,0.5)',base:'middle',font:'DM Mono,monospace',
+       extra:{'letter-spacing':'0.3px'}});
+  }
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const bg=el('rect',{x:0,y:0,width:1280,height:110,fill:'rgba(247,244,238,0.4)'});svg.appendChild(bg);
+  const steps=[
+    {x:90,label:'Colonial\nExploitation',sub:'Pre-1947',fill:'#8a3820',emoji:'🏴'},
+    {x:255,label:'Mixed Economy\nAdopted',sub:'1947',fill:'#1a3a6e',emoji:'⚖️'},
+    {x:420,label:'Planning\nEra Begins',sub:'1950',fill:'#1c3a6e',emoji:'📊'},
+    {x:585,label:'Heavy Industry\nStrategy',sub:'1956',fill:'#582070',emoji:'🏭'},
+    {x:750,label:'License Raj\nPeak',sub:'1960–80',fill:'#9c1a1a',emoji:'🔒'},
+    {x:915,label:'BoP Crisis\n& LPG',sub:'1991',fill:'#c4922a',emoji:'💥'},
+    {x:1080,label:'High Growth\nDecade',sub:'2000s',fill:'#1a5c38',emoji:'📈'},
+    {x:1210,label:'2014',sub:'New era',fill:'#0c5c6c',emoji:'🇮🇳'},
+  ];
+  arrow(svg,'arrm','#c4922a');
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      line(svg,s.x+62,55,steps[i+1].x-62,55,{stroke:s.fill,sw:2,opacity:0.4,arrow:true,arrid:'m'});
+    }
+    const lines=s.label.split('\n');
+    node(svg,s.x,55,118,68,{fill:s.fill,lines,sub:s.sub,emoji:s.emoji,rx:9});
+  });
+  text(svg,640,12,'ONE-LINE STORY: HOW INDIA BUILT & TRANSFORMED ITS ECONOMY',
+    {size:8,fill:'rgba(138,122,98,0.45)',font:'DM Mono,monospace',extra:{'letter-spacing':'2'}});
+})();
+
+// ── BRITISH SVG ──
+(function(){
+  const svg=document.getElementById('svgBritish');
+  const bg=el('rect',{x:0,y:0,width:1280,height:240,fill:'rgba(247,244,238,0.3)'});svg.appendChild(bg);
+
+  // Center root
+  node(svg,640,120,210,58,{fill:'#1a1510',lines:['British Colonial','Economy (Pre-1947)'],emoji:'🏴',rx:12});
+
+  const left=[
+    {x:150,y:55,fill:'#8a3820',lines:['Raw Material','Supplier'],sub:'Exports: Cotton, Jute, Minerals',emoji:'📦'},
+    {x:150,y:150,fill:'#9c1a1a',lines:['Drain of','Wealth'],sub:'Surplus → Britain',emoji:'💸'},
+    {x:150,y:220,fill:'#7a4010',lines:['No Industrial','Protection'],sub:'Infant industries unsupported',emoji:'🏭'},
+  ];
+  const right=[
+    {x:1130,y:55,fill:'#5a2010',lines:['Handicrafts','Destroyed'],sub:'British finished goods flooded India',emoji:'🎨'},
+    {x:1130,y:150,fill:'#6a2828',lines:['Agriculture','Dominant'],sub:'But backward & exploited',emoji:'🌾'},
+    {x:1130,y:220,fill:'#4a1a60',lines:['Foreign Capital','Dominance'],sub:'Banks, trade, railways',emoji:'💰'},
+  ];
+
+  left.forEach(n=>{
+    curve(svg,535,120,n.x+80,n.y,{stroke:n.fill,sw:1.5,opacity:0.35,dash:'4 3'});
+    node(svg,n.x,n.y,155,50,{...n,rx:9});
+  });
+  right.forEach(n=>{
+    curve(svg,745,120,n.x-80,n.y,{stroke:n.fill,sw:1.5,opacity:0.35,dash:'4 3'});
+    node(svg,n.x,n.y,155,50,{...n,rx:9});
+  });
+
+  // Bottom label
+  text(svg,640,232,'RESULT AT INDEPENDENCE: BACKWARD AGRICULTURE · NO HEAVY INDUSTRY · 84% ILLITERACY · WIDESPREAD POVERTY',
+    {size:8,fill:'rgba(138,90,70,0.5)',font:'DM Mono,monospace',extra:{'letter-spacing':'0.5'}});
+})();
+
+// ── MODEL CHOICE SVG ──
+(function(){
+  const svg=document.getElementById('svgModel');
+  const bg=el('rect',{x:0,y:0,width:1280,height:220,fill:'rgba(247,244,238,0.3)'});svg.appendChild(bg);
+
+  node(svg,640,90,230,60,{fill:'#1a1510',lines:['Model Choice:','What Path For India?'],emoji:'🤔',rx:12});
+
+  const rejects=[
+    {x:180,y:90,fill:'#9c1a1a',lines:['❌ Pure','Capitalism'],sub:'Inequality feared',emoji:'💼'},
+    {x:1100,y:90,fill:'#582070',lines:['❌ Soviet-Style','Socialism'],sub:'Too rigid & controlling',emoji:'⚙️'},
+  ];
+  const chosen={x:640,y:185,fill:'#1a5c38',lines:['✅ Mixed Economy'],sub:'State + Market coexist',emoji:'⚖️'};
+
+  rejects.forEach(n=>{
+    curve(svg,n.x>640?535:745,90,n.x+(n.x<640?80:-80),90,{stroke:n.fill,sw:1.5,opacity:0.4,dash:'5 4'});
+    node(svg,n.x,n.y,180,56,{...n,rx:9});
+  });
+
+  // arrow down to chosen
+  line(svg,640,122,640,162,{stroke:'#1a5c38',sw:2,opacity:0.6,arrow:true,arrid:'m2'});
+  arrow(svg,'arrm2','#1a5c38');
+  node(svg,chosen.x,chosen.y,260,50,{...chosen,rx:10,accent:'#1a5c38'});
+
+  // Goals
+  const goals=[
+    {x:300,y:185,label:'Growth',color:'#c4922a',emoji:'📈'},
+    {x:430,y:185,label:'Modernization',color:'#1c3a6e',emoji:'🔬'},
+    {x:850,y:185,label:'Self-reliance',color:'#0c5c6c',emoji:'🛡️'},
+    {x:980,y:185,label:'Equity',color:'#582070',emoji:'⚖️'},
+  ];
+  goals.forEach(g=>{
+    curve(svg,640,185,g.x,185,{stroke:g.color,sw:1.2,opacity:0.3,dash:'3 3'});
+    rect(svg,g.x-60,170,120,30,{rx:6,fill:g.color+'18',stroke:g.color+'40',sw:1.2});
+    text(svg,g.x,185,`${g.emoji} ${g.label}`,{size:9.5,w:'700',fill:g.color});
+  });
+})();
+
+// ── DEBATE SVG ──
+(function(){
+  const svg=document.getElementById('svgDebate');
+  const bg=el('rect',{x:0,y:0,width:1280,height:200,fill:'rgba(247,244,238,0.3)'});svg.appendChild(bg);
+
+  node(svg,640,100,200,56,{fill:'#1a1510',lines:['The Great','Strategy Debate'],emoji:'⚔️',rx:12});
+
+  // Bombay
+  const bom=[
+    {x:120,y:55,fill:'#8a4010',lines:['Consumer Goods'],sub:'Labour-intensive'},
+    {x:120,y:110,fill:'#8a4010',lines:['Quick Returns'],sub:'Surplus labour use'},
+    {x:120,y:165,fill:'#8a4010',lines:['Agriculture Led'],sub:'Bombay School'},
+  ];
+  bom.forEach(n=>{
+    curve(svg,538,100,n.x+82,n.y,{stroke:'#d4640a',sw:1.4,opacity:0.3,dash:'4 3'});
+    node(svg,n.x,n.y,158,38,{...n,rx:7,textCol:'#fff'});
+  });
+  text(svg,120,198,'🟢 BOMBAY SCHOOL — Quick gains',{size:9,fill:'rgba(212,100,10,0.6)',font:'DM Mono,monospace'});
+
+  // Calcutta / Mahalanobis
+  const cal=[
+    {x:1160,y:55,fill:'#1c3a6e',lines:['Heavy Industries'],sub:'Capital goods focus'},
+    {x:1160,y:110,fill:'#1c3a6e',lines:['Public Sector Led'],sub:'State builds first'},
+    {x:1160,y:165,fill:'#1c3a6e',lines:['Long-Term Growth'],sub:'Mahalanobis Model'},
+  ];
+  cal.forEach(n=>{
+    curve(svg,742,100,n.x-82,n.y,{stroke:'#1c3a6e',sw:1.4,opacity:0.3,dash:'4 3'});
+    node(svg,n.x,n.y,158,38,{...n,rx:7,textCol:'#fff'});
+  });
+  text(svg,1160,198,'🔵 CALCUTTA SCHOOL — Long-term',{size:9,fill:'rgba(28,58,110,0.6)',font:'DM Mono,monospace'});
+
+  // Government chose arrow + badge
+  arrow(svg,'arrchose','#1a5c38');
+  line(svg,742,100,900,100,{stroke:'#1a5c38',sw:2,opacity:0.6,arrow:true,arrid:'chose'});
+  rect(svg,900,84,140,32,{rx:7,fill:'#1a5c38',stroke:'none'});
+  text(svg,970,100,'✅ Govt Chose →',{size:9.5,w:'700',fill:'#fff'});
+})();
+
+// ── IPR SVG ──
+(function(){
+  const svg=document.getElementById('svgIPR');
+  const bg=el('rect',{x:0,y:0,width:1280,height:190,fill:'rgba(247,244,238,0.3)'});svg.appendChild(bg);
+
+  // Timeline line
+  const ln=el('line',{x1:100,y1:95,x2:1180,y2:95,stroke:'#c4922a',
+    'stroke-width':'2',opacity:'0.3'});
+  svg.appendChild(ln);
+
+  const events=[
+    {x:180,fill:'#8a3820',year:'1947',label:'Independence',sub:'Colonial economy ends'},
+    {x:380,fill:'#0c5c6c',year:'1948',label:'IPR 1948',sub:'Mixed Economy begins'},
+    {x:580,fill:'#1c3a6e',year:'1950',label:'Planning Comm.',sub:'5-Year Plans start'},
+    {x:780,fill:'#582070',year:'1956',label:'IPR 1956',sub:'Socialist pattern declared'},
+    {x:980,fill:'#9c1a1a',year:'1951–91',label:'License Raj',sub:'IDR Act controls all'},
+    {x:1150,fill:'#1a5c38',year:'1991',label:'LPG Reforms',sub:'End of License Raj'},
+  ];
+  arrow(svg,'arrtime','#c4922a');
+  line(svg,1180,95,1200,95,{stroke:'#c4922a',sw:2,opacity:0.4,arrow:true,arrid:'time'});
+
+  events.forEach((e,i)=>{
+    const up=i%2===0;
+    const cy=up?42:148;
+    const lineY=up?65:125;
+    line(svg,e.x,lineY,e.x,95,{stroke:e.fill,sw:1.5,opacity:0.5});
+    // dot
+    svg.appendChild(el('circle',{cx:e.x,cy:95,r:5,fill:e.fill}));
+    // card
+    node(svg,e.x,cy,148,45,{fill:e.fill,lines:[e.label],sub:`${e.year} · ${e.sub}`,rx:8,emoji:'',textCol:'#fff'});
+  });
+
+  text(svg,640,183,'POLICY EVOLUTION: MIXED ECONOMY → SOCIALIST PATTERN → DEREGULATION',
+    {size:8,fill:'rgba(138,122,98,0.45)',font:'DM Mono,monospace',extra:{'letter-spacing':'1'}});
+})();
+
+// ── LICENSE RAJ SVG ──
+(function(){
+  const svg=document.getElementById('svgLicense');
+  const bg=el('rect',{x:0,y:0,width:1280,height:200,fill:'rgba(247,244,238,0.3)'});svg.appendChild(bg);
+
+  node(svg,640,100,210,58,{fill:'#8a3820',lines:['License Raj','IDR Act 1951'],emoji:'🔒',rx:12});
+
+  const controls=[
+    {x:140,y:60,fill:'#7a2010',lines:['Entry into','Industry'],sub:'Licence needed to start',emoji:'🚪'},
+    {x:350,y:35,fill:'#6a2818',lines:['Production','Capacity'],sub:'Max output set',emoji:'📦'},
+    {x:560,y:60,fill:'#5a2016',lines:['Plant Location'],sub:'Govt must approve',emoji:'📍'},
+    {x:840,y:35,fill:'#4a1810',lines:['Technology'],sub:'Imports regulated',emoji:'⚙️'},
+    {x:1060,y:60,fill:'#3a1008',lines:['Import Control'],sub:'Licence required',emoji:'🌐'},
+  ];
+
+  const results=[
+    {x:250,y:175,fill:'#9c1a1a',lines:['Bureaucrat-Business Nexus'],sub:'Corruption in licence granting',emoji:'🤝'},
+    {x:640,y:175,fill:'#582070',lines:['Reduced Competition'],sub:'Monopolies formed',emoji:'📉'},
+    {x:1020,y:175,fill:'#1c3a6e',lines:['Hindu Rate ~3.5%/yr'],sub:'Decades of slow growth',emoji:'🐢'},
+  ];
+
+  controls.forEach(n=>{
+    curve(svg,n.x>640?742:538,100,n.x+(n.x<640?82:-82),n.y,{stroke:n.fill,sw:1.4,opacity:0.3,dash:'4 3'});
+    node(svg,n.x,n.y,160,44,{...n,rx:8});
+  });
+  results.forEach(n=>{
+    curve(svg,640,130,n.x,n.y-22,{stroke:n.fill,sw:1.4,opacity:0.25,dash:'3 3'});
+    node(svg,n.x,n.y,220,40,{...n,rx:8});
+  });
+
+  text(svg,640,10,'IDR ACT 1951 → CONTROLLED ENTRY · CAPACITY · LOCATION · TECHNOLOGY · IMPORTS',
+    {size:8,fill:'rgba(138,80,50,0.5)',font:'DM Mono,monospace',extra:{'letter-spacing':'0.5'}});
+})();
+
+// ── BALANCE SVG ──
+(function(){
+  const svg=document.getElementById('svgBalance');
+  const bg=el('rect',{x:0,y:0,width:1280,height:200,fill:'rgba(247,244,238,0.3)'});svg.appendChild(bg);
+
+  node(svg,640,100,220,58,{fill:'#1a1510',lines:['Socialist Model','Outcomes'],emoji:'⚖️',rx:12});
+
+  const gains=[
+    {x:110,y:50,fill:'#1a5c38',lines:['Industrial Base Built'],sub:'Steel, chemicals, aerospace'},
+    {x:110,y:120,fill:'#0c5c6c',lines:['Infrastructure Growth'],sub:'Roads, power, ports'},
+    {x:110,y:185,fill:'#1a4e78',lines:['Self-reliance Achieved'],sub:'Many sectors indigenous'},
+  ];
+  const fails=[
+    {x:1160,y:50,fill:'#9c1a1a',lines:['PSU Inefficiency'],sub:'No competition pressure'},
+    {x:1160,y:120,fill:'#8a3820',lines:['Poverty Persistent'],sub:'No trickle-down effect'},
+    {x:1160,y:185,fill:'#582070',lines:['BoP Crisis 1991'],sub:'Fiscal deficit ballooned'},
+  ];
+
+  gains.forEach(n=>{
+    curve(svg,528,100,n.x+90,n.y,{stroke:n.fill,sw:1.4,opacity:0.3,dash:'4 3'});
+    node(svg,n.x,n.y,170,40,{...n,rx:7});
+  });
+  fails.forEach(n=>{
+    curve(svg,752,100,n.x-90,n.y,{stroke:n.fill,sw:1.4,opacity:0.3,dash:'4 3'});
+    node(svg,n.x,n.y,170,40,{...n,rx:7});
+  });
+
+  text(svg,200,200,'✅ GAINS',{size:8.5,fill:'rgba(26,92,56,0.5)',font:'DM Mono,monospace',extra:{'letter-spacing':'2'}});
+  text(svg,1080,200,'❌ FAILURES',{size:8.5,fill:'rgba(156,26,26,0.5)',font:'DM Mono,monospace',extra:{'letter-spacing':'2'}});
+})();
+
+// ── TIMELINE SVG ──
+(function(){
+  const svg=document.getElementById('svgTimeline');
+  const bg=el('rect',{x:0,y:0,width:1280,height:130,fill:'rgba(247,244,238,0.4)'});svg.appendChild(bg);
+
+  const W=1280,px=80,py=65;
+  const years=[1947,1950,1956,1965,1975,1984,1991,2000,2014];
+  const total=2014-1947;
+  const toX=y=>px+(y-1947)/total*(W-px*2);
+
+  // main line
+  line(svg,px,py,W-px,py,{stroke:'#c4922a',sw:2.5,opacity:0.35});
+
+  const events=[
+    {y:1947,label:'Independence',fill:'#8a3820',up:true},
+    {y:1950,label:'Planning Comm.',fill:'#1c3a6e',up:false},
+    {y:1951,label:'IDR Act',fill:'#9c1a1a',up:true},
+    {y:1956,label:'IPR 1956',fill:'#582070',up:false},
+    {y:1966,label:'Green Revolution',fill:'#1a5c38',up:true},
+    {y:1980,label:'Sick PSUs Peak',fill:'#6a2828',up:false},
+    {y:1991,label:'LPG Reforms',fill:'#c4922a',up:true},
+    {y:2000,label:'IT Boom',fill:'#0c5c6c',up:false},
+    {y:2014,label:'New Era',fill:'#1a4e78',up:true},
+  ];
+
+  events.forEach(e=>{
+    const x=toX(e.y);
+    svg.appendChild(el('circle',{cx:x,cy:py,r:6,fill:e.fill,stroke:'#fff','stroke-width':'2'}));
+    const labelY=e.up?py-26:py+26;
+    const lineY1=e.up?py-8:py+8;
+    line(svg,x,lineY1,x,labelY+(e.up?-4:4),{stroke:e.fill,sw:1.5,opacity:0.4});
+    text(svg,x,labelY,e.label,{size:8.5,w:'700',fill:e.fill,font:'Outfit,sans-serif'});
+    text(svg,x,labelY+(e.up?-12:12),e.y.toString(),{size:7.5,fill:'rgba(138,122,98,0.7)',
+      font:'DM Mono,monospace'});
+  });
+
+  text(svg,640,12,'INDIA\'S ECONOMIC TIMELINE: 1947 → 2014',
+    {size:8,fill:'rgba(138,122,98,0.4)',font:'DM Mono,monospace',extra:{'letter-spacing':'3'}});
+})();
+
+// ── SCROLL REVEAL ──
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>{observer.observe(el);});
+// immediately show first few
+setTimeout(()=>{
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    if(i<3)el.classList.add('visible');
+  });
+},100);
+</script>
+</body>
+</html>

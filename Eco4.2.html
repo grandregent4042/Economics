@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget Classification · Deficits — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,500&family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0d0c0a;--paper:#f4f0e4;--cream:#fdfaf2;
+  --gold:#8c5e02;--goldb:#c8920a;
+  --amber:#b04a06;--green:#155428;--blue:#0e286a;
+  --purple:#3e0e6c;--teal:#085260;--red:#7e1010;
+  --sky:#0c4260;--olive:#3c4810;--slate:#202c38;
+  --muted:#6a5c44;--border:#d0c090;--card:#fdfaf2;--card2:#ece6d0;
+  --rev:#0e286a;--cap:#155428;--def:#7e1010;
+}
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 1000px 600px at 0% 0%,rgba(140,94,2,0.08) 0%,transparent 60%),
+    radial-gradient(ellipse 900px 900px at 100% 100%,rgba(14,40,106,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse 600px 400px at 50% 50%,rgba(21,84,40,0.04) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:52px 20px 30px;}
+.eyebrow{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:5px;color:var(--goldb);text-transform:uppercase;margin-bottom:14px;}
+.hdr h1{font-family:'Lora',serif;font-size:clamp(28px,5vw,52px);line-height:1.05;font-weight:700;}
+.hdr h1 em{font-style:italic;color:var(--amber);}
+.hdr-sub{margin-top:10px;font-size:10.5px;color:var(--muted);font-family:'Fira Code',monospace;letter-spacing:1.5px;}
+.hdr-rule{width:130px;height:4px;background:linear-gradient(90deg,var(--blue),var(--goldb),var(--green));margin:18px auto 0;border-radius:4px;}
+.hdr-pills{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px;}
+.hp{padding:5px 14px;border-radius:20px;font-size:9px;font-weight:600;font-family:'Fira Code',monospace;border:1.5px solid;}
+.hp.b{background:rgba(14,40,106,0.08);border-color:rgba(14,40,106,0.25);color:var(--blue);}
+.hp.g{background:rgba(21,84,40,0.08);border-color:rgba(21,84,40,0.25);color:var(--green);}
+.hp.r{background:rgba(126,16,16,0.08);border-color:rgba(126,16,16,0.25);color:var(--red);}
+.hp.a{background:rgba(176,74,6,0.08);border-color:rgba(176,74,6,0.25);color:var(--amber);}
+.hp.go{background:rgba(140,94,2,0.08);border-color:rgba(140,94,2,0.25);color:var(--gold);}
+
+/* SECTION LABEL */
+.sec{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:4px;color:var(--goldb);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:20px;}
+.g13{display:grid;grid-template-columns:1fr 3fr;gap:18px;margin-bottom:20px;}
+.g31{display:grid;grid-template-columns:3fr 1fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g13,.g31{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g13,.g31{grid-template-columns:1fr;}}
+
+/* CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--goldb));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.olive::before{background:var(--olive);}
+.pc.slate::before{background:var(--slate);}
+.pc-label{font-family:'Fira Code',monospace;font-size:8.5px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Lora',serif;font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;font-weight:700;}
+
+/* MAP CARDS */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:22px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.m1::before{background:linear-gradient(90deg,var(--blue),var(--goldb),var(--green));}
+.mc.m2::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.mc.m3::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.mc.m4::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--goldb));}
+.mc.m5::before{background:linear-gradient(90deg,var(--red),var(--purple));}
+.mc svg{display:block;width:100%;}
+
+/* PILLS/CHIPS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9px;font-weight:700;margin:2px;font-family:'Fira Code',monospace;}
+.pill.blue{background:rgba(14,40,106,0.10);color:var(--blue);}
+.pill.green{background:rgba(21,84,40,0.10);color:var(--green);}
+.pill.red{background:rgba(126,16,16,0.10);color:var(--red);}
+.pill.amber{background:rgba(176,74,6,0.10);color:var(--amber);}
+.pill.gold{background:rgba(140,94,2,0.10);color:var(--gold);}
+.pill.teal{background:rgba(8,82,96,0.10);color:var(--teal);}
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:9px;font-weight:700;border:1.5px solid;margin:2px;font-family:'Fira Code',monospace;}
+.chip.ok{background:rgba(21,84,40,0.07);border-color:rgba(21,84,40,0.25);color:var(--green);}
+.chip.ng{background:rgba(126,16,16,0.07);border-color:rgba(126,16,16,0.25);color:var(--red);}
+.chip.warn{background:rgba(176,74,6,0.07);border-color:rgba(176,74,6,0.25);color:var(--amber);}
+.chip.neu{background:rgba(140,94,2,0.07);border-color:rgba(140,94,2,0.25);color:var(--gold);}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vi{padding:9px 12px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:1px;}
+.vi .vs{font-size:8.5px;color:var(--muted);font-family:'Fira Code',monospace;}
+
+/* STAT */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;padding:11px 8px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-n{font-family:'Lora',serif;font-size:24px;font-weight:700;line-height:1;}
+.stat-s{font-size:10px;font-weight:700;margin-top:3px;}
+.stat-l{font-size:8px;font-family:'Fira Code',monospace;color:var(--muted);margin-top:2px;letter-spacing:1px;}
+
+/* FORMULA */
+.formula{background:linear-gradient(135deg,rgba(14,40,106,0.06),rgba(62,14,108,0.04));border:2px solid rgba(14,40,106,0.2);border-radius:13px;padding:16px 20px;text-align:center;margin:12px 0;}
+.formula-eq{font-family:'Lora',serif;font-size:17px;color:var(--blue);font-weight:700;line-height:1.4;}
+.formula-label{font-size:8px;font-family:'Fira Code',monospace;color:var(--muted);margin-top:6px;letter-spacing:2px;}
+
+.formula.green{background:linear-gradient(135deg,rgba(21,84,40,0.06),rgba(8,82,96,0.04));border-color:rgba(21,84,40,0.2);}
+.formula.green .formula-eq{color:var(--green);}
+.formula.red{background:linear-gradient(135deg,rgba(126,16,16,0.06),rgba(176,74,6,0.04));border-color:rgba(126,16,16,0.2);}
+.formula.red .formula-eq{color:var(--red);}
+.formula.amber{background:linear-gradient(135deg,rgba(176,74,6,0.06),rgba(140,94,2,0.04));border-color:rgba(176,74,6,0.2);}
+.formula.amber .formula-eq{color:var(--amber);}
+
+/* CALLOUT */
+.callout{padding:11px 14px;border-radius:9px;background:rgba(21,84,40,0.06);border:1.5px solid rgba(21,84,40,0.2);margin:8px 0;}
+.callout-t{font-size:10px;font-weight:700;color:var(--green);margin-bottom:2px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.55;}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f0e4b0;border-radius:18px;padding:26px 32px;margin:22px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.kt{font-family:'Lora',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.ks{font-size:11px;color:#b8a060;line-height:1.75;}
+.kpills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 13px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:9.5px;font-family:'Fira Code',monospace;}
+
+/* TABLE */
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;font-family:'Fira Code',monospace;font-size:8px;letter-spacing:1.5px;}
+.ctbl td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(140,94,2,0.03);}
+.ctbl td:first-child{font-weight:700;font-size:10px;}
+
+/* DEFICIT METER */
+.deficit-strip{display:flex;border-radius:10px;overflow:hidden;height:34px;margin:12px 0;border:1.5px solid var(--border);}
+.ds-seg{display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;font-family:'Fira Code',monospace;color:#fff;letter-spacing:0.5px;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;}
+.farr{font-size:16px;color:var(--muted);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.pc,.mc{animation:fadeUp 0.4s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="eyebrow">UPSC Economy · Union Budget · High Yield Prelims</div>
+  <h1>Budget Classification<br><em>& Deficit Accounting</em></h1>
+  <div class="hdr-sub">Revenue vs Capital · Fiscal · Primary · Effective Revenue · Article 112</div>
+  <div class="hdr-rule"></div>
+  <div class="hdr-pills">
+    <span class="hp b">Revenue Account</span>
+    <span class="hp g">Capital Account</span>
+    <span class="hp r">Fiscal Deficit</span>
+    <span class="hp a">Primary Deficit</span>
+    <span class="hp go">Effective Rev. Deficit</span>
+    <span class="hp r">Revenue Deficit</span>
+    <span class="hp b">Article 112</span>
+  </div>
+</div>
+
+<!-- MASTER FLOW -->
+<div class="sec">Master Flow — The Big Picture</div>
+<div class="mc m1">
+  <svg id="svgMaster" viewBox="0 0 1360 148" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- SECTION 1: REVENUE vs CAPITAL SPLIT -->
+<div class="sec">① The Core Split — Revenue vs Capital (Article 112)</div>
+
+<div class="mc m1">
+  <svg id="svgSplit" viewBox="0 0 1360 250" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Revenue Account</div>
+    <h3>📋 Day-to-Day Income & Expenses</h3>
+    <div class="formula">
+      <div class="formula-eq">Current income/spending = Revenue</div>
+      <div class="formula-label">NO ASSET CREATION · NO LIABILITY</div>
+    </div>
+    <div class="g2" style="margin-bottom:0;gap:10px;">
+      <div>
+        <div style="font-size:9px;font-weight:700;color:var(--blue);margin-bottom:6px;font-family:'Fira Code',monospace;">💰 REVENUE RECEIPTS</div>
+        <div class="vlist">
+          <div class="vi"><div class="vt">Tax Revenue</div><div class="vs">Direct + Indirect taxes</div></div>
+          <div class="vi"><div class="vt">Non-Tax Revenue</div><div class="vs">Dividends, fees, fines, interest</div></div>
+        </div>
+        <div style="margin-top:6px;padding:8px 10px;border-radius:7px;background:rgba(14,40,106,0.07);border:1px solid rgba(14,40,106,0.18);font-size:9.5px;">
+          ❌ No liability created<br>❌ No assets reduced<br>❌ Not repayable
+        </div>
+      </div>
+      <div>
+        <div style="font-size:9px;font-weight:700;color:var(--amber);margin-bottom:6px;font-family:'Fira Code',monospace;">💸 REVENUE EXPENDITURE</div>
+        <div class="vlist">
+          <div class="vi"><div class="vt">Salaries, Pensions</div><div class="vs">Normal govt. functioning</div></div>
+          <div class="vi"><div class="vt">Interest Payments</div><div class="vs">On past borrowings</div></div>
+          <div class="vi"><div class="vt">Subsidies, Grants</div><div class="vs">Day-to-day transfers</div></div>
+        </div>
+        <div style="margin-top:6px;padding:8px 10px;border-radius:7px;background:rgba(176,74,6,0.07);border:1px solid rgba(176,74,6,0.18);font-size:9.5px;">
+          ❌ No asset created<br>❌ No liability reduced
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">Capital Account</div>
+    <h3>🏗️ Assets & Liabilities</h3>
+    <div class="formula green">
+      <div class="formula-eq">Assets or loans affected = Capital</div>
+      <div class="formula-label">CREATES/REDUCES ASSETS · CHANGES LIABILITIES</div>
+    </div>
+    <div class="g2" style="margin-bottom:0;gap:10px;">
+      <div>
+        <div style="font-size:9px;font-weight:700;color:var(--green);margin-bottom:6px;font-family:'Fira Code',monospace;">💰 CAPITAL RECEIPTS</div>
+        <div class="vlist">
+          <div class="vi"><div class="vt">Market Borrowing</div><div class="vs">Creates liability ✅</div></div>
+          <div class="vi"><div class="vt">Disinvestment</div><div class="vs">Reduces assets ✅</div></div>
+          <div class="vi"><div class="vt">Recovery of Loans</div><div class="vs">Reduces assets ✅</div></div>
+        </div>
+        <div style="margin-top:6px;padding:8px 10px;border-radius:7px;background:rgba(21,84,40,0.07);border:1px solid rgba(21,84,40,0.18);font-size:9.5px;">
+          ✅ Creates liability OR<br>✅ Reduces assets
+        </div>
+      </div>
+      <div>
+        <div style="font-size:9px;font-weight:700;color:var(--teal);margin-bottom:6px;font-family:'Fira Code',monospace;">🏗️ CAPITAL EXPENDITURE</div>
+        <div class="vlist">
+          <div class="vi"><div class="vt">Roads, Machinery</div><div class="vs">Creates assets ✅</div></div>
+          <div class="vi"><div class="vt">Loans to States</div><div class="vs">Creates assets ✅</div></div>
+          <div class="vi"><div class="vt">Share purchases</div><div class="vs">Reduces liabilities ✅</div></div>
+        </div>
+        <div style="margin-top:6px;padding:8px 10px;border-radius:7px;background:rgba(8,82,96,0.07);border:1px solid rgba(8,82,96,0.18);font-size:9.5px;">
+          ✅ Creates assets OR<br>✅ Reduces liabilities
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick Decision Table -->
+<div class="pc slate" style="margin-bottom:20px;">
+  <div class="pc-label">Quick Classification Rule</div>
+  <h3>⚡ If It Affects → Then It Is...</h3>
+  <table class="ctbl">
+    <thead><tr><th>Transaction</th><th>Revenue or Capital?</th><th>Receipt or Expenditure?</th><th>Why?</th></tr></thead>
+    <tbody>
+      <tr><td style="color:var(--amber);">Salary paid</td><td><span class="chip ng">Revenue</span></td><td>Expenditure</td><td>No asset created</td></tr>
+      <tr><td style="color:var(--amber);">Dividend from PSU received</td><td><span class="chip ok">Revenue</span></td><td>Receipt</td><td>No liability; regular income</td></tr>
+      <tr><td style="color:var(--blue);">Borrowing from market</td><td><span class="chip warn">Capital</span></td><td>Receipt</td><td>Creates liability</td></tr>
+      <tr><td style="color:var(--blue);">Building a road</td><td><span class="chip warn">Capital</span></td><td>Expenditure</td><td>Creates durable asset</td></tr>
+      <tr><td style="color:var(--amber);">Interest payment on past debt</td><td><span class="chip ng">Revenue</span></td><td>Expenditure</td><td>No asset/liability change</td></tr>
+      <tr><td style="color:var(--blue);">Disinvestment of PSU</td><td><span class="chip warn">Capital</span></td><td>Receipt</td><td>Reduces govt's assets</td></tr>
+      <tr><td style="color:var(--blue);">Loan to states</td><td><span class="chip warn">Capital</span></td><td>Expenditure</td><td>Creates financial asset</td></tr>
+      <tr><td style="color:var(--amber);">Normal grant to states</td><td><span class="chip ng">Revenue</span></td><td>Expenditure</td><td>No asset creation</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SECTION 2: RECEIPTS DEEP DIVE -->
+<div class="sec">② Revenue Receipts — Detailed Breakdown</div>
+
+<div class="mc m2">
+  <svg id="svgReceipts" viewBox="0 0 1360 230" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Tax Revenue</div>
+    <h3>🏛️ Direct + Indirect Taxes</h3>
+    <div class="vlist">
+      <div class="vi" style="background:rgba(14,40,106,0.06);border-color:rgba(14,40,106,0.2);">
+        <div class="vt" style="color:var(--blue);">📊 Direct Tax</div>
+        <div class="vs">Income Tax · Corporate Tax · Wealth Tax</div>
+      </div>
+      <div class="vi" style="background:rgba(14,40,106,0.06);border-color:rgba(14,40,106,0.2);">
+        <div class="vt" style="color:var(--blue);">🛒 Indirect Tax</div>
+        <div class="vs">GST · Customs · Excise (pre-GST)</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;border-radius:8px;background:rgba(14,40,106,0.06);border:1.5px dashed rgba(14,40,106,0.25);">
+      <span style="font-size:10px;font-weight:700;color:var(--blue);">⚡ Key: Tax revenue is non-redeemable — does not need to be repaid</span>
+    </div>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">Non-Tax Revenue</div>
+    <h3>💡 Other Govt. Income</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">💰 Interest on loans</div><div class="vs">From states, PSUs, foreign govts</div></div>
+      <div class="vi"><div class="vt">📈 Dividends from PSUs</div><div class="vs">ONGC, Coal India, banks</div></div>
+      <div class="vi"><div class="vt">📋 Fees & Charges</div><div class="vs">Passport, visa, admin fees</div></div>
+      <div class="vi"><div class="vt">⚖️ Fines & Penalties</div><div class="vs">Regulatory fines</div></div>
+      <div class="vi"><div class="vt">🌍 Foreign Grants</div><div class="vs">From international bodies</div></div>
+    </div>
+  </div>
+
+  <div class="pc green">
+    <div class="pc-label">Capital Receipts</div>
+    <h3>🏦 Borrowings & Asset Sales</h3>
+    <div class="vlist">
+      <div class="vi" style="background:rgba(21,84,40,0.06);border-color:rgba(21,84,40,0.2);">
+        <div class="vt" style="color:var(--green);">🏦 Market Borrowing</div>
+        <div class="vs">G-Secs, T-bills — main source</div>
+      </div>
+      <div class="vi"><div class="vt">💼 External Loans</div><div class="vs">World Bank, ADB, IMF</div></div>
+      <div class="vi"><div class="vt">🏛️ Small Savings</div><div class="vs">PPF, NSC, Post Office</div></div>
+      <div class="vi"><div class="vt">🏭 Disinvestment</div><div class="vs">Selling PSU shares</div></div>
+      <div class="vi"><div class="vt">🔄 Loan Recovery</div><div class="vs">States repaying loans</div></div>
+    </div>
+    <div class="callout" style="margin-top:8px;background:rgba(126,16,16,0.06);border-color:rgba(126,16,16,0.2);">
+      <div class="callout-t" style="color:var(--red);">⚠️ Prelims Trap</div>
+      <div class="callout-b"><strong>Borrowing = Capital Receipt</strong> — but it is EXCLUDED when calculating fiscal deficit.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: DEFICITS -->
+<div class="sec">③ Deficits — The Real Game</div>
+
+<div class="mc m4">
+  <svg id="svgDeficits" viewBox="0 0 1360 230" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- Revenue Deficit -->
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc red">
+    <div class="pc-label">Deficit 1 of 4</div>
+    <h3>📉 Revenue Deficit</h3>
+    <div class="formula red">
+      <div class="formula-eq">Revenue Deficit = Revenue Expenditure − Revenue Receipts</div>
+      <div class="formula-label">WHEN GOVT SPENDS MORE ON CONSUMPTION THAN IT EARNS</div>
+    </div>
+    <div class="vlist">
+      <div class="vi" style="background:rgba(126,16,16,0.06);border-color:rgba(126,16,16,0.2);">
+        <div class="vt" style="color:var(--red);">⚠️ Why Dangerous?</div>
+        <div class="vs">Forces govt to cut capital spending for operations</div>
+      </div>
+      <div class="vi"><div class="vt">📉 Impact 1</div><div class="vs">Less money for roads, infra, development</div></div>
+      <div class="vi"><div class="vt">📉 Impact 2</div><div class="vs">Borrowing for current consumption = debt trap</div></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;">
+      <span class="chip ng">❌ No asset created from deficit</span>
+      <span class="chip ng">❌ Reduces growth potential</span>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Deficit 2 of 4 — MOST IMPORTANT</div>
+    <h3>💥 Fiscal Deficit</h3>
+    <div class="formula">
+      <div class="formula-eq">Fiscal Deficit = Total Expenditure − Total Receipts (excl. borrowings)</div>
+      <div class="formula-label">= TOTAL BORROWING BY GOVERNMENT THIS YEAR</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n" style="color:var(--blue);">Total</div>
+        <div class="stat-s">Expenditure</div>
+        <div class="stat-l">REV + CAPITAL</div>
+      </div>
+      <div class="stat" style="background:rgba(126,16,16,0.06);">
+        <div class="stat-n" style="color:var(--red);">−</div>
+        <div class="stat-s">Total Receipts</div>
+        <div class="stat-l">EXC. BORROWING</div>
+      </div>
+      <div class="stat" style="background:rgba(14,40,106,0.06);">
+        <div class="stat-n" style="color:var(--blue);">=FD</div>
+        <div class="stat-s">Fiscal Deficit</div>
+        <div class="stat-l">ALL BORROWING</div>
+      </div>
+    </div>
+    <div class="callout" style="background:rgba(126,16,16,0.06);border-color:rgba(126,16,16,0.2);">
+      <div class="callout-t" style="color:var(--red);">⚠️ #1 Prelims Trap</div>
+      <div class="callout-b">Borrowing is <strong>included in</strong> capital receipts, but <strong>excluded</strong> when computing fiscal deficit. FD literally equals how much the govt must borrow.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Primary + Effective -->
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc purple">
+    <div class="pc-label">Deficit 3 of 4</div>
+    <h3>🔮 Primary Deficit</h3>
+    <div class="formula" style="background:rgba(62,14,108,0.06);border-color:rgba(62,14,108,0.2);">
+      <div class="formula-eq" style="color:var(--purple);">Primary Deficit = Fiscal Deficit − Interest Payments</div>
+      <div class="formula-label">CURRENT YEAR STRESS WITHOUT PAST DEBT BURDEN</div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">📊 What it shows</div><div class="vs">If FD exists even after removing inherited debt cost</div></div>
+      <div class="vi"><div class="vt">🎯 Purpose</div><div class="vs">Measure PRESENT fiscal stress, not historical</div></div>
+      <div class="vi"><div class="vt">✅ Primary Deficit = 0</div><div class="vs">Means govt borrows ONLY to pay past interest</div></div>
+    </div>
+    <div style="margin-top:10px;padding:10px 12px;border-radius:8px;background:rgba(62,14,108,0.07);border:1.5px dashed rgba(62,14,108,0.25);">
+      <span style="font-size:10px;font-weight:700;color:var(--purple);">Interest payments = Revenue Expenditure (not Capital!)</span>
+    </div>
+  </div>
+
+  <div class="pc amber">
+    <div class="pc-label">Deficit 4 of 4 — Special Concept</div>
+    <h3>🌟 Effective Revenue Deficit</h3>
+    <div class="formula amber">
+      <div class="formula-eq">ERD = Revenue Deficit − Grants for Capital Asset Creation</div>
+      <div class="formula-label">TRUER PICTURE OF CONSUMPTION DEFICIT</div>
+    </div>
+    <div class="callout" style="background:rgba(176,74,6,0.06);border-color:rgba(176,74,6,0.2);">
+      <div class="callout-t" style="color:var(--amber);">🔑 Why It Exists</div>
+      <div class="callout-b">Some grants to states are technically <em>revenue expenditure</em> but create physical assets (MGNREGA roads, PMAY homes). These are deducted from revenue deficit to show the "true" consumption deficit.</div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Example: Grant for PMAY construction</div><div class="vs">Classified as revenue exp → but creates housing asset</div></div>
+      <div class="vi"><div class="vt">ERD removes this to show real waste</div><div class="vs">More accurate fiscal health indicator</div></div>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="chip warn">⚠️ Effective Capital Exp = CapEx + Such Grants</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: DEFICIT CHAIN -->
+<div class="sec">④ Deficit Hierarchy — How They Connect</div>
+
+<div class="mc m5">
+  <svg id="svgChain" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="pc slate" style="margin-bottom:20px;">
+  <div class="pc-label">The Deficit Stack — Visual Breakdown</div>
+  <h3>📊 Fiscal Deficit Contains Everything</h3>
+  <div style="margin:14px 0;">
+    <!-- FD Strip -->
+    <div style="font-size:9px;font-family:'Fira Code',monospace;color:var(--muted);margin-bottom:6px;letter-spacing:1.5px;">FISCAL DEFICIT (100%)</div>
+    <div class="deficit-strip">
+      <div class="ds-seg" style="flex:3;background:var(--red);">Interest Payments</div>
+      <div class="ds-seg" style="flex:5;background:var(--blue);">Primary Deficit</div>
+    </div>
+    <!-- Primary Deficit label -->
+    <div style="display:flex;gap:10px;margin:6px 0;">
+      <div style="flex:3;text-align:center;font-size:8.5px;font-family:'Fira Code',monospace;color:var(--red);">→ Interest Pymt (Revenue Exp)</div>
+      <div style="flex:5;text-align:center;font-size:8.5px;font-family:'Fira Code',monospace;color:var(--blue);">→ Primary Deficit (current year stress)</div>
+    </div>
+    <!-- Revenue Deficit Strip -->
+    <div style="font-size:9px;font-family:'Fira Code',monospace;color:var(--muted);margin-bottom:6px;margin-top:12px;letter-spacing:1.5px;">FISCAL DEFICIT = Revenue Deficit + Capital Borrowing for Dev.</div>
+    <div class="deficit-strip">
+      <div class="ds-seg" style="flex:4;background:var(--red);">Revenue Deficit</div>
+      <div class="ds-seg" style="flex:6;background:var(--green);">Capital Borrowing (Asset Creation)</div>
+    </div>
+    <div style="display:flex;gap:10px;margin:6px 0;">
+      <div style="flex:4;text-align:center;font-size:8.5px;font-family:'Fira Code',monospace;color:var(--red);">↑ Bad — consumption funded by debt</div>
+      <div style="flex:6;text-align:center;font-size:8.5px;font-family:'Fira Code',monospace;color:var(--green);">↑ Acceptable — assets created</div>
+    </div>
+    <!-- ERD Strip -->
+    <div style="font-size:9px;font-family:'Fira Code',monospace;color:var(--muted);margin-bottom:6px;margin-top:12px;letter-spacing:1.5px;">REVENUE DEFICIT → EFFECTIVE REVENUE DEFICIT</div>
+    <div class="deficit-strip">
+      <div class="ds-seg" style="flex:3;background:var(--amber);">Effective Revenue Deficit</div>
+      <div class="ds-seg" style="flex:2;background:var(--teal);">Grants for Capital Assets</div>
+    </div>
+    <div style="display:flex;gap:10px;margin:6px 0;">
+      <div style="flex:3;text-align:center;font-size:8.5px;font-family:'Fira Code',monospace;color:var(--amber);">↑ True consumption deficit</div>
+      <div style="flex:2;text-align:center;font-size:8.5px;font-family:'Fira Code',monospace;color:var(--teal);">↑ Grant → but creates assets</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: DEFICIT FINANCING -->
+<div class="sec">⑤ Deficit Financing — How Govt Manages Deficit</div>
+
+<div class="mc m3">
+  <svg id="svgFinancing" viewBox="0 0 1360 175" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Method 1</div>
+    <h3>📜 Market Borrowing</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Government Securities (G-Secs)</div><div class="vs">Long-term bonds sold to banks/public</div></div>
+      <div class="vi"><div class="vt">Treasury Bills (T-Bills)</div><div class="vs">Short-term — 91, 182, 364 days</div></div>
+      <div class="vi"><div class="vt">External Borrowings</div><div class="vs">World Bank, IMF, bilateral</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip ok">✅ Most common — transparent</span></div>
+  </div>
+
+  <div class="pc amber">
+    <div class="pc-label">Method 2</div>
+    <h3>🏦 Small Savings + Others</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">PPF, NSC, Kisan Vikas Patra</div><div class="vs">Citizens save → govt borrows</div></div>
+      <div class="vi"><div class="vt">Provident Funds</div><div class="vs">Employee PF contributions pooled</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip neu">💡 Domestic — no forex risk</span></div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">Method 3 — Dangerous</div>
+    <h3>🖨️ Printing Money (Monetisation)</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">RBI prints new currency</div><div class="vs">To directly finance govt deficit</div></div>
+      <div class="vi"><div class="vt">Ad hoc T-bills to RBI</div><div class="vs">Old method — discontinued</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip ng">❌ Causes inflation</span><span class="chip ng">❌ Currency depreciation</span></div>
+    <div class="callout" style="margin-top:8px;background:rgba(126,16,16,0.06);border-color:rgba(126,16,16,0.2);">
+      <div class="callout-t" style="color:var(--red);">India Stopped This</div>
+      <div class="callout-b">Ad hoc T-bills system ended in 1994. Now RBI uses WMA (Ways and Means Advances) instead — a short-term credit facility.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: FORMULAE SUMMARY -->
+<div class="sec">⑥ All Formulas — One Place</div>
+
+<div class="g2">
+  <div class="pc slate">
+    <div class="pc-label">Deficit Formulas</div>
+    <h3>📐 The Master Equations</h3>
+    <div class="vlist">
+      <div class="vi" style="background:rgba(126,16,16,0.06);border-color:rgba(126,16,16,0.2);padding:12px 14px;">
+        <div class="vt" style="color:var(--red);font-size:12px;">Revenue Deficit</div>
+        <div style="font-family:'Lora',serif;font-size:14px;color:var(--red);margin:4px 0;font-weight:700;">= Rev. Expenditure − Rev. Receipts</div>
+        <div class="vs">Surplus of consumption spending over income</div>
+      </div>
+      <div class="vi" style="background:rgba(14,40,106,0.06);border-color:rgba(14,40,106,0.2);padding:12px 14px;">
+        <div class="vt" style="color:var(--blue);font-size:12px;">Fiscal Deficit</div>
+        <div style="font-family:'Lora',serif;font-size:14px;color:var(--blue);margin:4px 0;font-weight:700;">= Total Exp − Total Receipts (excl. borrowing)</div>
+        <div class="vs">= Total Borrowing of Govt this year</div>
+      </div>
+      <div class="vi" style="background:rgba(62,14,108,0.06);border-color:rgba(62,14,108,0.2);padding:12px 14px;">
+        <div class="vt" style="color:var(--purple);font-size:12px;">Primary Deficit</div>
+        <div style="font-family:'Lora',serif;font-size:14px;color:var(--purple);margin:4px 0;font-weight:700;">= Fiscal Deficit − Interest Payments</div>
+        <div class="vs">Present stress; excludes past debt burden</div>
+      </div>
+      <div class="vi" style="background:rgba(176,74,6,0.06);border-color:rgba(176,74,6,0.2);padding:12px 14px;">
+        <div class="vt" style="color:var(--amber);font-size:12px;">Effective Revenue Deficit</div>
+        <div style="font-family:'Lora',serif;font-size:14px;color:var(--amber);margin:4px 0;font-weight:700;">= Revenue Deficit − Grants for Capital Assets</div>
+        <div class="vs">Truer consumption deficit</div>
+      </div>
+      <div class="vi" style="background:rgba(21,84,40,0.06);border-color:rgba(21,84,40,0.2);padding:12px 14px;">
+        <div class="vt" style="color:var(--green);font-size:12px;">Effective Capital Expenditure</div>
+        <div style="font-family:'Lora',serif;font-size:14px;color:var(--green);margin:4px 0;font-weight:700;">= Capital Exp + Grants for Capital Assets</div>
+        <div class="vs">True investment in asset creation</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-label">Prelims Quick Hits</div>
+    <h3>🎯 High-Probability Points</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;">
+      <span class="chip ok">✅ Borrowing = Capital Receipt</span>
+      <span class="chip ok">✅ FD = Total Borrowing</span>
+      <span class="chip ok">✅ Interest = Revenue Expenditure</span>
+      <span class="chip ok">✅ Loans to states = Capital Expenditure</span>
+      <span class="chip ok">✅ Disinvestment = Capital Receipt</span>
+      <span class="chip ng">❌ Revenue exp ≠ Asset creation</span>
+      <span class="chip ng">❌ FD includes borrowing in receipts</span>
+      <span class="chip warn">⚠️ ERD: Some grants create assets</span>
+      <span class="chip warn">⚠️ Primary deficit = FD − Interest</span>
+      <span class="chip warn">⚠️ Tax = Non-redeemable</span>
+    </div>
+    <div class="callout">
+      <div class="callout-t">🧠 Memory Hook for Deficits</div>
+      <div class="callout-b"><strong>RFPE</strong> — Revenue → Fiscal → Primary → Effective<br>Each one <em>peels off a layer</em>: Revenue is the gross; Fiscal is the borrowing total; Primary removes interest; Effective removes asset-creating grants.</div>
+    </div>
+    <div style="margin-top:10px;padding:12px;border-radius:10px;background:rgba(140,94,2,0.07);border:1.5px solid rgba(140,94,2,0.22);">
+      <div style="font-size:10px;font-weight:700;color:var(--goldb);margin-bottom:6px;font-family:'Fira Code',monospace;">ARTICLE 112 LINK</div>
+      <div style="font-size:11px;line-height:1.6;color:var(--muted);">Article 112 mandates the Annual Financial Statement (Union Budget), which must show <strong>revenue and capital accounts separately</strong>. This is the constitutional basis for the entire classification.</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div style="font-size:38px;">📊</div>
+  <div style="flex:1;">
+    <div class="kt">The Connecting Thread</div>
+    <div class="ks">Article 112 mandates separating Revenue and Capital accounts. <strong style="color:#e8d070;">Revenue items</strong> (no asset/liability change) vs <strong style="color:#e8d070;">Capital items</strong> (assets/liabilities affected). When Revenue Expenditure exceeds Revenue Receipts → <strong style="color:#e8d070;">Revenue Deficit</strong>. Total borrowing needed = <strong style="color:#e8d070;">Fiscal Deficit</strong>. Remove interest from FD → <strong style="color:#e8d070;">Primary Deficit</strong> (today's stress). Remove asset-creating grants from Revenue Deficit → <strong style="color:#e8d070;">Effective Revenue Deficit</strong>. Deficit financed via borrowing (market or RBI) — printing money causes inflation.</div>
+    <div class="kpills">
+      <span class="kp">📋 Revenue = No Asset</span>
+      <span class="kp">🏗️ Capital = Asset/Liability</span>
+      <span class="kp">💥 FD = Total Borrowing</span>
+      <span class="kp">🔮 PD = FD − Interest</span>
+      <span class="kp">🌟 ERD = RD − Asset Grants</span>
+      <span class="kp">⚠️ Borrowing ∈ Cap. Receipt</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+function curve(svg,x1,y1,x2,y2,col,dash,w){
+  const mx=(x1+x2)/2;
+  svg.appendChild(el('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:col||'#b09060','stroke-width':w||2,fill:'none','stroke-dasharray':dash?'5 4':'none',opacity:'0.65'}));
+}
+function line(svg,x1,y1,x2,y2,col,w){
+  svg.appendChild(el('line',{x1,y1,x2,y2,stroke:col||'#b09060','stroke-width':w||2,opacity:'0.7'}));
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,rx){
+  rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'}));
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let ty=y-(lines.length-1)*7.2-(sub?5:0)-(emoji?11:0);
+  if(emoji){
+    const et=el('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:'#fff'});
+    et.textContent=emoji;g.appendChild(et);ty+=18;
+  }
+  lines.forEach((l,i)=>{
+    const t=el('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:'#fff'});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'8','font-family':'Fira Code,monospace',fill:'rgba(255,255,255,0.52)'});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+function arrowhead(svg,x,y,dir){
+  // dir: 'r'=right
+  svg.appendChild(el('polygon',{points:`${x-6},${y-4} ${x},${y} ${x-6},${y+4}`,fill:'rgba(140,94,2,0.55)'}));
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:148,fill:'rgba(244,240,228,0.4)'}));
+  const steps=[
+    {x:80,  fill:'#0e286a', e:'📋', lines:['Article 112'],          sub:'Revenue-Capital split mandated'},
+    {x:250, fill:'#155428', e:'💰', lines:['Revenue','Receipts'],   sub:'Tax + Non-tax (non-redeemable)'},
+    {x:420, fill:'#0e286a', e:'💸', lines:['Revenue','Expenditure'],sub:'Salaries, subsidies, interest'},
+    {x:590, fill:'#155428', e:'🏗️', lines:['Capital','Receipts'],   sub:'Borrowing, disinvestment'},
+    {x:760, fill:'#155428', e:'🏛️', lines:['Capital','Expenditure'],sub:'Roads, loans to states'},
+    {x:940, fill:'#7e1010', e:'📉', lines:['Revenue Deficit'],      sub:'Rev Exp > Rev Receipts'},
+    {x:1110,fill:'#0e286a', e:'💥', lines:['Fiscal Deficit'],       sub:'= Total borrowing'},
+    {x:1290,fill:'#3e0e6c', e:'🔮', lines:['Primary','Deficit'],    sub:'FD minus interest payment'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      svg.appendChild(el('line',{x1:s.x+72,y1:74,x2:nx-72,y2:74,stroke:'rgba(140,94,2,0.4)','stroke-width':'2.5'}));
+      svg.appendChild(el('polygon',{points:`${nx-76},70 ${nx-70},74 ${nx-76},78`,fill:'rgba(140,94,2,0.55)'}));
+    }
+  });
+  steps.forEach(s=>node(svg,s.x,74,136,74,s.fill,s.lines,s.sub,s.e));
+  const t=el('text',{x:680,y:18,'text-anchor':'middle','font-size':'9','font-family':'Fira Code,monospace','letter-spacing':'3',fill:'rgba(120,90,20,0.45)'});
+  t.textContent='MASTER: ARTICLE 112 → REV/CAP SPLIT → RECEIPTS → EXPENDITURE → DEFICITS';
+  svg.appendChild(t);
+})();
+
+// ── REVENUE vs CAPITAL SPLIT ──
+(function(){
+  const svg=document.getElementById('svgSplit');
+  // Root
+  node(svg,680,44,280,56,'#0d0c0a',['Budget (Article 112)'],'Revenue + Capital must be separate','📊',13);
+
+  // Two main branches
+  node(svg,300,130,230,56,'#0e286a',['REVENUE','ACCOUNT'],'Day-to-day income & expenses','📋');
+  node(svg,1060,130,230,56,'#155428',['CAPITAL','ACCOUNT'],'Assets & liabilities','🏗️');
+
+  curve(svg,545,72,415,103,'rgba(14,40,106,0.5)',false,2.5);
+  curve(svg,815,72,945,103,'rgba(21,84,40,0.5)',false,2.5);
+
+  // Revenue sub-nodes
+  const rev=[
+    {x:100,y:215,f:'#0e286a',l:['Revenue','Receipts'],s:'Tax + Non-tax',e:'💰'},
+    {x:300,y:215,f:'#3e0e6c',l:['Revenue','Expenditure'],s:'Salaries, subsidies',e:'💸'},
+    {x:500,y:215,f:'#7e1010',l:['Revenue','Deficit'],s:'If exp > receipts',e:'📉'},
+  ];
+  rev.forEach(n=>{
+    curve(svg,300,158,n.x,192,'rgba(14,40,106,0.4)',true,1.5);
+    node(svg,n.x,n.y,178,52,n.f,n.l,n.s,n.e);
+  });
+
+  // Capital sub-nodes
+  const cap=[
+    {x:840,y:215,f:'#155428',l:['Capital','Receipts'],s:'Borrowing, disinvestment',e:'🏦'},
+    {x:1060,y:215,f:'#085260',l:['Capital','Expenditure'],s:'Roads, loans to states',e:'🏗️'},
+    {x:1270,y:215,f:'#0c4260',l:['Fiscal','Deficit'],s:'Total borrowing',e:'💥'},
+  ];
+  cap.forEach(n=>{
+    curve(svg,1060,158,n.x,192,'rgba(21,84,40,0.4)',true,1.5);
+    node(svg,n.x,n.y,178,52,n.f,n.l,n.s,n.e);
+  });
+
+  const t=el('text',{x:680,y:242,'text-anchor':'middle','font-size':'8.5','font-family':'Fira Code,monospace','letter-spacing':'2',fill:'rgba(100,80,20,0.45)'});
+  t.textContent='REVENUE ACCOUNT → REVENUE DEFICIT | CAPITAL ACCOUNT → FISCAL DEFICIT'; svg.appendChild(t);
+})();
+
+// ── RECEIPTS BREAKDOWN ──
+(function(){
+  const svg=document.getElementById('svgReceipts');
+  // Two dual-tree halves
+  const W=1360, colW=680;
+  svg.setAttribute('viewBox',`0 0 ${W} 230`);
+
+  // Left: Revenue Receipts
+  const lrx=colW/2, lry=44;
+  node(svg,lrx,lry,260,52,'#0e286a',['Revenue Receipts'],'Non-redeemable income','💰');
+  const rrev=[
+    {fill:'#0e286a',l:['Direct Tax'],s:'Income, corporate tax',e:'📊'},
+    {fill:'#0e286a',l:['Indirect Tax'],s:'GST, customs',e:'🛒'},
+    {fill:'#085260',l:['Non-Tax Revenue'],s:'Dividends, fees, fines',e:'💡'},
+    {fill:'#3e0e6c',l:['Foreign Grants'],s:'From int\'l bodies',e:'🌍'},
+  ];
+  const lCols=4, lCellW=colW/lCols, lStartY=150;
+  rrev.forEach((n,i)=>{
+    const cx=lCellW*i+lCellW/2, cy=lStartY;
+    const path=el('path',{d:`M${lrx},${lry+26} C${lrx},${(lry+26+cy-26)/2} ${cx},${(lry+26+cy-26)/2} ${cx},${cy-26}`,
+      stroke:'#0e286a44','stroke-width':'1.5',fill:'none','stroke-dasharray':'4 3'});
+    svg.appendChild(path);
+    node(svg,cx,cy,lCellW-18,52,n.fill,n.l,n.s,n.e);
+  });
+
+  svg.appendChild(el('line',{x1:colW,y1:10,x2:colW,y2:220,stroke:'rgba(200,180,120,0.2)','stroke-width':'1.5','stroke-dasharray':'6 4'}));
+
+  // Right: Capital Receipts
+  const rrx=colW+colW/2, rry=44;
+  node(svg,rrx,rry,260,52,'#155428',['Capital Receipts'],'Creates liability / reduces assets','🏦');
+  const rcap=[
+    {fill:'#155428',l:['Market Borrowing'],s:'G-Secs, T-Bills',e:'📜'},
+    {fill:'#085260',l:['External Loans'],s:'World Bank, ADB',e:'🌐'},
+    {fill:'#3c4810',l:['Disinvestment'],s:'PSU share sale',e:'🏭'},
+    {fill:'#0c4260',l:['Loan Recovery'],s:'States repay loans',e:'🔄'},
+  ];
+  const rCols=4, rCellW=colW/rCols, rStartY=150;
+  rcap.forEach((n,i)=>{
+    const cx=colW+rCellW*i+rCellW/2, cy=rStartY;
+    const path=el('path',{d:`M${rrx},${rry+26} C${rrx},${(rry+26+cy-26)/2} ${cx},${(rry+26+cy-26)/2} ${cx},${cy-26}`,
+      stroke:'#15542844','stroke-width':'1.5',fill:'none','stroke-dasharray':'4 3'});
+    svg.appendChild(path);
+    node(svg,cx,cy,rCellW-18,52,n.fill,n.l,n.s,n.e);
+  });
+
+  const tl=el('text',{x:colW/2,y:218,'text-anchor':'middle','font-size':'8','font-family':'Fira Code,monospace',fill:'rgba(14,40,106,0.45)','letter-spacing':'2'});
+  tl.textContent='REVENUE RECEIPTS'; svg.appendChild(tl);
+  const tr=el('text',{x:colW+colW/2,y:218,'text-anchor':'middle','font-size':'8','font-family':'Fira Code,monospace',fill:'rgba(21,84,40,0.45)','letter-spacing':'2'});
+  tr.textContent='CAPITAL RECEIPTS'; svg.appendChild(tr);
+})();
+
+// ── DEFICITS SVG ──
+(function(){
+  const svg=document.getElementById('svgDeficits');
+  // 4 deficit nodes in a 2x2 grid-ish balance
+  node(svg,680,44,300,54,'#0d0c0a',['Deficits — When Exp > Income'],'4 types, each measuring different stress','📉',13);
+
+  const defs=[
+    {x:200,y:155,f:'#7e1010',l:['Revenue','Deficit'],s:'Rev Exp − Rev Receipts',e:'📉'},
+    {x:540,y:155,f:'#0e286a',l:['Fiscal','Deficit'],s:'Total Exp − Receipts (excl borr.)',e:'💥'},
+    {x:880,y:155,f:'#3e0e6c',l:['Primary','Deficit'],s:'Fiscal Deficit − Interest',e:'🔮'},
+    {x:1200,y:155,f:'#b04a06',l:['Effective Rev.','Deficit'],s:'RD − Grants for Cap. Assets',e:'🌟'},
+  ];
+  defs.forEach((n,i)=>{
+    curve(svg,680,71,n.x,128,'rgba(126,16,16,0.35)',false,2);
+    node(svg,n.x,n.y,240,56,n.f,n.l,n.s,n.e);
+  });
+
+  // Relationship arrows between deficits
+  // RD ⊂ FD: arrow from RD to FD
+  svg.appendChild(el('line',{x1:320,y1:158,x2:418,y2:158,stroke:'rgba(126,16,16,0.4)','stroke-width':'1.5','stroke-dasharray':'4 3'}));
+  svg.appendChild(el('polygon',{points:'414,154 420,158 414,162',fill:'rgba(126,16,16,0.4)'}));
+  // FD → PD
+  svg.appendChild(el('line',{x1:660,y1:158,x2:758,y2:158,stroke:'rgba(14,40,106,0.4)','stroke-width':'1.5','stroke-dasharray':'4 3'}));
+  svg.appendChild(el('polygon',{points:'754,154 760,158 754,162',fill:'rgba(14,40,106,0.4)'}));
+  // RD → ERD
+  svg.appendChild(el('path',{d:'M200,183 Q200,210 1200,210 L1200,183',stroke:'rgba(176,74,6,0.3)','stroke-width':'1.5',fill:'none','stroke-dasharray':'5 4'}));
+
+  const t=el('text',{x:680,y:224,'text-anchor':'middle','font-size':'9','font-family':'Fira Code,monospace','letter-spacing':'2',fill:'rgba(100,80,20,0.45)'});
+  t.textContent='FD ⊃ RD | FD = PD + Interest | ERD = RD − Asset-creating Grants'; svg.appendChild(t);
+})();
+
+// ── DEFICIT HIERARCHY CHAIN ──
+(function(){
+  const svg=document.getElementById('svgChain');
+  const steps=[
+    {x:80,  fill:'#0e286a', e:'💰', lines:['Revenue','Receipts'],     sub:'Tax + Non-tax'},
+    {x:260, fill:'#7e1010', e:'💸', lines:['Revenue','Expenditure'],  sub:'Salaries, interest, subsidies'},
+    {x:460, fill:'#7e1010', e:'📉', lines:['Revenue Deficit'],        sub:'If Rev Exp > Rev Receipts'},
+    {x:650, fill:'#0e286a', e:'💥', lines:['Fiscal Deficit'],         sub:'= Total borrowing needed'},
+    {x:850, fill:'#3e0e6c', e:'🔮', lines:['Primary Deficit'],        sub:'FD minus interest payments'},
+    {x:1050,fill:'#b04a06', e:'🌟', lines:['Eff. Rev. Deficit'],      sub:'RD minus asset-creating grants'},
+    {x:1240,fill:'#155428', e:'🏗️', lines:['Eff. Capital Exp.'],     sub:'CapEx + asset-creating grants'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      svg.appendChild(el('line',{x1:s.x+80,y1:100,x2:nx-80,y2:100,stroke:'rgba(140,94,2,0.4)','stroke-width':'2.5'}));
+      svg.appendChild(el('polygon',{points:`${nx-84},96 ${nx-78},100 ${nx-84},104`,fill:'rgba(140,94,2,0.55)'}));
+    }
+  });
+  steps.forEach(s=>node(svg,s.x,100,148,74,s.fill,s.lines,s.sub,s.e));
+  const t=el('text',{x:680,y:18,'text-anchor':'middle','font-size':'8.5','font-family':'Fira Code,monospace','letter-spacing':'3',fill:'rgba(120,90,20,0.45)'});
+  t.textContent='DEFICIT CHAIN: RECEIPTS → EXPENDITURE → REV DEFICIT → FISCAL → PRIMARY → ERD → EFF. CAPEX';
+  svg.appendChild(t);
+})();
+
+// ── DEFICIT FINANCING ──
+(function(){
+  const svg=document.getElementById('svgFinancing');
+  node(svg,680,44,280,52,'#0d0c0a',['Deficit Financing'],'How govt covers the gap','🏦',12);
+
+  const items=[
+    {x:130,y:130,f:'#0e286a',l:['Market Borrowing'],s:'G-Secs + T-Bills',e:'📜'},
+    {x:360,y:130,f:'#155428',l:['Small Savings'],s:'PPF, NSC, Kisan VP',e:'🏦'},
+    {x:590,y:130,f:'#085260',l:['External Loans'],s:'World Bank, ADB',e:'🌐'},
+    {x:820,y:130,f:'#3e0e6c',l:['Provident Funds'],s:'Employee PF pool',e:'💼'},
+    {x:1060,y:130,f:'#b04a06',l:['RBI (WMA)'],s:'Short-term credit facility',e:'🏛️'},
+    {x:1270,y:130,f:'#7e1010',l:['Monetisation (Old)'],s:'Printing — discontinued 1994',e:'🖨️'},
+  ];
+  items.forEach(n=>{
+    curve(svg,680,70,n.x,104,'rgba(140,94,2,0.35)',false,2);
+    node(svg,n.x,n.y,185,52,n.f,n.l,n.s,n.e);
+  });
+  const t=el('text',{x:680,y:172,'text-anchor':'middle','font-size':'8.5','font-family':'Fira Code,monospace','letter-spacing':'2',fill:'rgba(100,80,20,0.45)'});
+  t.textContent='MAIN: MARKET BORROWING (G-SECS/T-BILLS) · MONETISATION DISCONTINUED 1994 · WMA REPLACES AD HOC T-BILLS';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>

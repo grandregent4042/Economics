@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NITI Aayog → Industry 4.0 — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#12100e;--paper:#f8f5ef;--gold:#b87c10;
+  --amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;--border:#ddd0b0;
+  --card:#fffdf5;--card2:#f2ede0;--sky:#1a5878;--saffron:#e8600a;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 900px 500px at 10% 5%,rgba(184,124,16,0.06) 0%,transparent 60%),
+             radial-gradient(ellipse 700px 700px at 90% 95%,rgba(26,58,138,0.05) 0%,transparent 60%);
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 24px 100px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:40px 16px 22px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,48px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--saffron);}
+.header-sub{margin-top:8px;font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--saffron),var(--gold),var(--green));margin:14px auto 0;border-radius:4px;}
+
+/* ── SECTION LABEL ── */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:28px 0 12px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.saffron::before{background:var(--saffron);}
+.pc.amber::before{background:var(--amber);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;line-height:1.3;}
+
+/* ── CHIPS ── */
+.chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.sol{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.chip.prob{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.chip.blue{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+
+/* ── STATS ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* ── FEAT GRID ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:4px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* ── PHASE ── */
+.phase-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0 20px;}
+@media(max-width:900px){.phase-row{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:800;}
+.phase-title{font-size:12px;font-weight:800;margin:4px 0;}
+.phase-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:8px;}
+
+/* ── FLOW ── */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:700;border:1.5px solid;}
+.fa{font-size:16px;color:var(--muted);}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.keystone-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* ══════════════════════════════════
+   MASTER FLOW BAR
+══════════════════════════════════ */
+.master-bar{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:24px;position:relative;}
+.master-bar::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--saffron),var(--gold),var(--green));}
+.flow-strip{display:flex;align-items:center;justify-content:center;gap:0;padding:24px 20px 20px;overflow-x:auto;flex-wrap:nowrap;background:rgba(250,245,238,0.4);}
+.fs-node{flex:0 0 auto;min-width:128px;max-width:148px;display:flex;flex-direction:column;align-items:center;text-align:center;
+  border-radius:12px;border:1.5px solid rgba(255,255,255,0.2);box-shadow:2px 3px 12px rgba(0,0,0,0.15);padding:12px 10px;}
+.fs-node .e{font-size:20px;margin-bottom:6px;}
+.fs-node .t{font-size:11px;font-weight:800;color:#fff;}
+.fs-node .s{font-size:8px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.55);margin-top:3px;}
+.fs-arr{font-size:22px;color:var(--gold);flex:0 0 auto;padding:0 4px;opacity:0.8;}
+
+/* ══════════════════════════════════
+   MIND MAP — CSS GRID 3×3 + center
+   Uses a 3-col × 3-row grid.
+   Center cell spans 1×1.
+   Spokes fill outer cells.
+   SVG lines drawn by JS reading getBoundingClientRect.
+══════════════════════════════════ */
+.mm-section{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:24px;position:relative;}
+.mm-section::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;border-radius:20px 20px 0 0;}
+.mm-section.c1::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mm-section.c2::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mm-section.c3::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mm-section.c4::before{background:linear-gradient(90deg,var(--purple),var(--sky));}
+.mm-section.c5::before{background:linear-gradient(90deg,var(--sky),var(--green));}
+
+/* SVG connector layer */
+.mm-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible;}
+
+/* The grid layout */
+.mm-grid{
+  display:grid;
+  gap:12px;
+  padding:20px;
+  position:relative;
+  z-index:3;
+}
+/* 3-col layout: left spokes | center | right spokes */
+.mm-grid.cols3{grid-template-columns:1fr 1fr 1fr;}
+/* 5-col layout for wider maps */
+.mm-grid.cols5{grid-template-columns:1fr 1fr 1fr 1fr 1fr;}
+
+/* NODE cards */
+.mn{
+  border-radius:10px;
+  border:1.5px solid rgba(255,255,255,0.2);
+  box-shadow:2px 3px 8px rgba(0,0,0,0.18);
+  padding:10px 12px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;line-height:1.35;
+  min-height:68px;
+}
+.mn .e{font-size:15px;margin-bottom:4px;}
+.mn .t{font-size:10.5px;font-weight:800;color:#fff;font-family:'Nunito',sans-serif;}
+.mn .s{font-size:8.5px;font-family:'DM Mono',monospace;color:rgba(255,255,255,0.6);margin-top:3px;}
+.mn.hub{border-radius:14px;border:2px solid rgba(255,255,255,0.32);box-shadow:0 4px 20px rgba(0,0,0,0.22);min-height:80px;}
+.mn.hub .t{font-size:13px;font-family:'Playfair Display',serif;}
+/* invisible spacer */
+.mn.empty{background:transparent!important;border:none!important;box-shadow:none!important;pointer-events:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Economy · UPSC Prelims &amp; Mains · Policy Flow</div>
+  <h1>NITI Aayog → Make in India → <em>Industry 4.0</em></h1>
+  <div class="header-sub">Planning Commission Abolished · Policy Think Tank · Manufacturing Push · Digital Transformation · Future Jobs</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec-label">Master Flow — The Full Connected Picture</div>
+<div class="master-bar">
+  <div class="flow-strip">
+    <div class="fs-node" style="background:#e8600a;"><div class="e">🏛️</div><div class="t">NITI Aayog</div><div class="s">2015 · Think Tank</div></div>
+    <div class="fs-arr">→</div>
+    <div class="fs-node" style="background:#1a3a8a;"><div class="e">🏭</div><div class="t">Manufacturing Need</div><div class="s">Jobs for unskilled</div></div>
+    <div class="fs-arr">→</div>
+    <div class="fs-node" style="background:#1a6a3a;"><div class="e">🇮🇳</div><div class="t">Make in India</div><div class="s">Sept 2014 · 27 sectors</div></div>
+    <div class="fs-arr">→</div>
+    <div class="fs-node" style="background:#b87c10;"><div class="e">⚠️</div><div class="t">Challenges</div><div class="s">Labour · Land · Power</div></div>
+    <div class="fs-arr">→</div>
+    <div class="fs-node" style="background:#5a1a8a;"><div class="e">🤖</div><div class="t">Industry 4.0</div><div class="s">AI · IoT · Robotics</div></div>
+    <div class="fs-arr">→</div>
+    <div class="fs-node" style="background:#0a6070;"><div class="e">🎓</div><div class="t">Skilling Need</div><div class="s">Re-skill workforce</div></div>
+    <div class="fs-arr">→</div>
+    <div class="fs-node" style="background:#1a5878;"><div class="e">🚀</div><div class="t">Future Strategy</div><div class="s">Mfg+Services+Tech</div></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 1: NITI AAYOG ══ -->
+<div class="sec-label">① NITI Aayog (2015) — India's Policy Think Tank</div>
+
+<!--
+  Layout (3 cols × 4 rows):
+  [L1][T1][R1]
+  [L2][CTR][R2]
+  [L3][B1][R3]
+  [L4][B2][R4]
+-->
+<div class="mm-section c1" id="sec-niti">
+  <svg class="mm-svg" id="svg-niti"></svg>
+  <div class="mm-grid cols3">
+    <div class="mn" id="n-l1" style="background:#1a3a8a;"><div class="e">🤝</div><div class="t">Cooperative Federalism</div><div class="s">PM + CMs as equals</div></div>
+    <div class="mn" id="n-t1" style="background:#5a1a8a;"><div class="e">👥</div><div class="t">Governing Council</div><div class="s">PM chairs + all CMs</div></div>
+    <div class="mn" id="n-r1" style="background:#d46a10;"><div class="e">🎯</div><div class="t">Aspirational Districts</div><div class="s">112 backward districts</div></div>
+
+    <div class="mn" id="n-l2" style="background:#1a5878;"><div class="e">⬆️</div><div class="t">Bottom-Up Planning</div><div class="s">States design programmes</div></div>
+    <div class="mn hub" id="n-hub" style="background:#e8600a;"><div class="e">🏛️</div><div class="t">NITI Aayog</div><div class="s">Replaced Planning Commission · 2015</div></div>
+    <div class="mn" id="n-r2" style="background:#7a4010;"><div class="e">🏥</div><div class="t">Health &amp; Edu Index</div><div class="s">Outcome-based ranking</div></div>
+
+    <div class="mn" id="n-l3" style="background:#0a6070;"><div class="e">💸</div><div class="t">No Fund Allocation</div><div class="s">Unlike Planning Commission</div></div>
+    <div class="mn" id="n-b1" style="background:#b87c10;"><div class="e">📊</div><div class="t">SDG India Index</div><div class="s">State-wise SDG tracking</div></div>
+    <div class="mn" id="n-r3" style="background:#b01a1a;"><div class="e">📋</div><div class="t">Policy Advice Only</div><div class="s">Not an execution body</div></div>
+
+    <div class="mn" id="n-l4" style="background:#4a3060;"><div class="e">📅</div><div class="t">5-Year Plans Abolished</div><div class="s">Replaced by NTFAP</div></div>
+    <div class="mn" id="n-b2" style="background:#1a6a3a;"><div class="e">💡</div><div class="t">Atal Innovation Mission</div><div class="s">Startups + Tinkering Labs</div></div>
+    <div class="mn" id="n-r4" style="background:#2a5880;"><div class="e">✅</div><div class="t">Outcome-Based Planning</div><div class="s">Results, not inputs</div></div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">⭐ Very Important for Prelims</div>
+    <h3>⚖️ Planning Commission vs NITI Aayog</h3>
+    <table class="ctable">
+      <thead><tr><th>Planning Commission</th><th>NITI Aayog</th></tr></thead>
+      <tbody>
+        <tr><td>Allocated funds to states</td><td style="color:var(--green);font-weight:700;">No fund allocation power</td></tr>
+        <tr><td>Top-down approach</td><td style="color:var(--green);font-weight:700;">Bottom-up approach</td></tr>
+        <tr><td>States had limited role</td><td style="color:var(--green);font-weight:700;">PM + CMs in Governing Council</td></tr>
+        <tr><td>Rigid 5-year plans</td><td style="color:var(--green);font-weight:700;">Flexible, outcome-based</td></tr>
+        <tr><td>Allocation-driven</td><td style="color:var(--green);font-weight:700;">Monitoring + Policy Advice</td></tr>
+      </tbody>
+    </table>
+    <div style="margin-top:10px;padding:9px 12px;border-radius:8px;background:rgba(26,58,138,0.06);border:1.5px dashed rgba(26,58,138,0.25);font-size:10px;">
+      🔑 <strong>Key Idea:</strong> NITI Aayog = Think Tank. Focus = Policy Advice + Monitoring + Outcome-based planning.
+    </div>
+  </div>
+  <div class="pc saffron">
+    <div class="pc-label">Key Initiatives — Prelims Favourites</div>
+    <h3>🚀 NITI Aayog Programmes</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🎯 Aspirational Districts Programme</div><div class="vs">Uplift 112 backward districts — convergence of schemes</div></div>
+      <div class="vitem"><div class="vt">💡 Atal Innovation Mission (AIM)</div><div class="vs">Startup ecosystem · Atal Tinkering Labs in schools</div></div>
+      <div class="vitem"><div class="vt">📊 SDG India Index</div><div class="vs">Tracks state-wise progress on all 17 SDGs</div></div>
+      <div class="vitem"><div class="vt">🏥 Health Index</div><div class="vs">Annual ranking of states on health outcomes</div></div>
+      <div class="vitem"><div class="vt">🏫 School Education Quality Index (SEQI)</div><div class="vs">Outcome-based school ranking across states</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: MANUFACTURING ══ -->
+<div class="sec-label">② Manufacturing in India — The Jobs Problem</div>
+
+<!--
+  Layout (3 cols × 3 rows):
+  [L1][T ][R1]
+  [L2][CTR][R2]
+  [L3][B ][R3]
+-->
+<div class="mm-section c2" id="sec-mfg">
+  <svg class="mm-svg" id="svg-mfg"></svg>
+  <div class="mm-grid cols3">
+    <div class="mn" id="m-l1" style="background:#1a3a8a;"><div class="e">💼</div><div class="t">Services: ~54% GDP</div><div class="s">Needs skilled labour</div></div>
+    <div class="mn" id="m-t"  style="background:#b87c10;"><div class="e">⚖️</div><div class="t">Balance Needed</div><div class="s">Mfg + Human Capital</div></div>
+    <div class="mn" id="m-r1" style="background:#b01a1a;"><div class="e">🌍</div><div class="t">Slow Global Demand</div><div class="s">Export-led mfg harder</div></div>
+
+    <div class="mn" id="m-l2" style="background:#d46a10;"><div class="e">🏭</div><div class="t">Mfg: ~16% GDP</div><div class="s">Target → 25%</div></div>
+    <div class="mn hub" id="m-hub" style="background:#7a4010;"><div class="e">🏭</div><div class="t">Manufacturing in India</div><div class="s">The Employment Challenge</div></div>
+    <div class="mn" id="m-r2" style="background:#5a1a8a;"><div class="e">🇨🇳</div><div class="t">China Dominates</div><div class="s">Mfg share captured</div></div>
+
+    <div class="mn" id="m-l3" style="background:#1a6a3a;"><div class="e">🌾</div><div class="t">Agri: ~18% GDP</div><div class="s">Surplus unskilled labour</div></div>
+    <div class="mn" id="m-b"  style="background:#1a5878;"><div class="e">🔄</div><div class="t">Farmers → Factories</div><div class="s">Classic structural path</div></div>
+    <div class="mn" id="m-r3" style="background:#0a6070;"><div class="e">🤖</div><div class="t">Automation Threat</div><div class="s">Factory jobs replaced</div></div>
+  </div>
+</div>
+
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">GDP Structure Post-1991</div>
+    <h3>📊 Sectoral Share</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);">54%</div><div class="stat-sub">Services</div><div class="stat-label">SKILLED LABOUR</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">16%</div><div class="stat-sub">Mfg.</div><div class="stat-label">TARGET: 25%</div></div>
+    </div>
+    <div style="padding:9px 12px;border-radius:8px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.15);font-size:10px;margin-top:8px;">
+      ⚠️ India has huge unskilled labour but Services need skilled workers → Manufacturing gap = unemployment
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Classic Development Path</div>
+    <h3>🌾 → 🏭 Structural Shift</h3>
+    <div class="flow" style="flex-direction:column;align-items:flex-start;">
+      <div class="fn" style="border-color:var(--green);color:var(--green);">🌾 Farmers</div>
+      <div class="fa" style="transform:rotate(90deg);margin-left:18px;">→</div>
+      <div class="fn" style="border-color:var(--amber);color:var(--amber);">🏭 Factories</div>
+      <div class="fa" style="transform:rotate(90deg);margin-left:18px;">→</div>
+      <div class="fn" style="border-color:var(--blue);color:var(--blue);">💰 Higher Incomes</div>
+      <div class="fa" style="transform:rotate(90deg);margin-left:18px;">→</div>
+      <div class="fn" style="border-color:var(--purple);color:var(--purple);">🏙️ Urbanisation</div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">New Constraints</div>
+    <h3>⚠️ Why It's Harder Now</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🌍 Slow Global Demand</div><div class="vs">Export-led mfg harder than 1970s</div></div>
+      <div class="vitem"><div class="vt">🇨🇳 China Already Dominates</div><div class="vs">Captured global mfg share decisively</div></div>
+      <div class="vitem"><div class="vt">📉 Global Mfg Share Shrinking</div><div class="vs">Automation replacing factory jobs</div></div>
+    </div>
+    <div style="margin-top:8px;padding:8px 10px;border-radius:8px;background:rgba(184,124,16,0.07);border:1.5px dashed var(--gold);font-size:10px;">
+      💡 India must balance: <strong>Manufacturing + Human Capital</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: MAKE IN INDIA ══ -->
+<div class="sec-label">③ Make in India (2014) — The Manufacturing Mission</div>
+
+<!--
+  Layout (5 cols × 2 rows):
+  [G1][G2][CTR][C1][C2]
+  [G3][G4][CTR][C3][C4] — center spans 2 rows
+  Extra row for 2 more items:
+  [T1][T2][   ][T3][T4]
+-->
+<div class="mm-section c3" id="sec-mii">
+  <svg class="mm-svg" id="svg-mii"></svg>
+  <div class="mm-grid" style="grid-template-columns:1fr 1fr 1.2fr 1fr 1fr;grid-template-rows:auto auto auto;">
+    <!-- Row 1 -->
+    <div class="mn" id="mi-g1" style="background:#1a6a3a;"><div class="e">📈</div><div class="t">Target: 25% GDP</div><div class="s">Mfg share goal</div></div>
+    <div class="mn" id="mi-g2" style="background:#d46a10;"><div class="e">🏗️</div><div class="t">27 Sectors</div><div class="s">Make in India 2.0</div></div>
+    <div class="mn hub" id="mi-hub" style="background:#1a6a3a;grid-row:1/3;display:flex;align-items:center;"><div class="e">🇮🇳</div><div class="t">Make in India</div><div class="s">Sept 2014 · Global Mfg Hub</div></div>
+    <div class="mn" id="mi-c1" style="background:#b01a1a;"><div class="e">📜</div><div class="t">Complex Labour Laws</div><div class="s">Rigid hiring/firing</div></div>
+    <div class="mn" id="mi-c2" style="background:#7a4010;"><div class="e">🌏</div><div class="t">Land Acquisition</div><div class="s">Delays stall projects</div></div>
+    <!-- Row 2 -->
+    <div class="mn" id="mi-g3" style="background:#0a6070;"><div class="e">👷</div><div class="t">100 Million Jobs</div><div class="s">Employment target</div></div>
+    <div class="mn" id="mi-g4" style="background:#5a1a8a;"><div class="e">🛡️</div><div class="t">Defence Corridors</div><div class="s">UP + Tamil Nadu</div></div>
+    <!-- hub continues here (grid-row:1/3) -->
+    <div class="mn" id="mi-c3" style="background:#b87c10;"><div class="e">⚡</div><div class="t">Expensive Electricity</div><div class="s">High tariffs hurt</div></div>
+    <div class="mn" id="mi-c4" style="background:#1a5878;"><div class="e">🛣️</div><div class="t">Poor Transport</div><div class="s">Logistics cost 14% GDP</div></div>
+    <!-- Row 3: bottom row spanning full width -->
+    <div class="mn" id="mi-b1" style="background:#1a3a8a;"><div class="e">🎯</div><div class="t">12–14% Growth</div><div class="s">Mfg rate target</div></div>
+    <div class="mn" id="mi-b2" style="background:#4a3060;"><div class="e">🔧</div><div class="t">Domestic Value Add</div><div class="s">Reduce imports</div></div>
+    <div class="mn empty"></div>
+    <div class="mn" id="mi-b3" style="background:#006050;"><div class="e">⚡</div><div class="t">Low Labour Productivity</div><div class="s">Below China/Vietnam</div></div>
+    <div class="mn" id="mi-b4" style="background:#2a3060;"><div class="e">🏭</div><div class="t">Small Factory Size</div><div class="s">MSMEs lack scale</div></div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Targets — Very Important for Prelims</div>
+    <h3>🎯 Make in India Quantified Goals</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">25%</div><div class="stat-sub">GDP Share</div><div class="stat-label">MFG TARGET</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--amber);">100M</div><div class="stat-sub">Jobs</div><div class="stat-label">NEW JOBS</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--blue);">12–14%</div><div class="stat-sub">Growth</div><div class="stat-label">MFG RATE</div></div>
+    </div>
+    <div style="margin-top:10px;">
+      <div style="font-size:11px;font-weight:800;margin-bottom:6px;">📋 Make in India 2.0 — 27 Sectors include:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">
+        <span class="chip neu">Electronics</span><span class="chip neu">Pharma</span><span class="chip neu">Defence</span>
+        <span class="chip neu">Automobiles</span><span class="chip neu">Textiles</span><span class="chip neu">Aviation</span>
+        <span class="chip neu">Chemicals</span><span class="chip neu">+20 more</span>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;border-radius:8px;background:rgba(26,58,138,0.06);border:1.5px solid rgba(26,58,138,0.15);">
+      <div style="font-size:11px;font-weight:800;color:var(--blue);margin-bottom:4px;">🏭 Defence Industrial Corridors</div>
+      <span class="chip blue">📍 Uttar Pradesh</span><span class="chip blue">📍 Tamil Nadu</span>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Major Challenges</div>
+    <h3>🚧 What's Holding India Back</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">⚡ Low Labour Productivity</div><div class="vs">Output per worker far below China/Vietnam</div></div>
+      <div class="vitem"><div class="vt">🏭 Small Factory Size</div><div class="vs">MSMEs too small for scale economies</div></div>
+      <div class="vitem"><div class="vt">📜 Complicated Labour Laws</div><div class="vs">Rigid hiring/firing rules deter large factories</div></div>
+      <div class="vitem"><div class="vt">💡 Expensive Electricity</div><div class="vs">Power costs hurt global competitiveness</div></div>
+      <div class="vitem"><div class="vt">🛣️ Poor Transport Infrastructure</div><div class="vs">Logistics cost = 14% GDP (global avg 8%)</div></div>
+      <div class="vitem"><div class="vt">🌏 Land Acquisition Delays</div><div class="vs">SEZs and industrial parks stalled</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: INDUSTRIAL REVOLUTIONS ══ -->
+<div class="sec-label">④ Industrial Revolutions — Timeline to Industry 4.0</div>
+<div class="phase-row">
+  <div class="phase-box" style="border-color:var(--muted);background:rgba(122,106,80,0.04);">
+    <div class="phase-num" style="color:var(--muted);">1st</div>
+    <div class="phase-title">Steam &amp; Mechanization</div>
+    <div class="phase-sub" style="color:var(--muted);">1765</div>
+    <div style="font-size:26px;margin:8px 0;">♨️</div>
+    <div style="font-size:10px;color:var(--muted);line-height:1.7;">Steam engine · Textile mills · Mechanized production</div>
+  </div>
+  <div class="phase-box" style="border-color:var(--amber);background:rgba(212,106,16,0.04);">
+    <div class="phase-num" style="color:var(--amber);">2nd</div>
+    <div class="phase-title">Electricity &amp; Mass Production</div>
+    <div class="phase-sub" style="color:var(--muted);">1870</div>
+    <div style="font-size:26px;margin:8px 0;">⚡</div>
+    <div style="font-size:10px;color:var(--muted);line-height:1.7;">Electricity networks · Assembly lines · Steel &amp; chemicals</div>
+  </div>
+  <div class="phase-box" style="border-color:var(--blue);background:rgba(26,58,138,0.04);">
+    <div class="phase-num" style="color:var(--blue);">3rd</div>
+    <div class="phase-title">Electronics &amp; Automation</div>
+    <div class="phase-sub" style="color:var(--muted);">1969</div>
+    <div style="font-size:26px;margin:8px 0;">💻</div>
+    <div style="font-size:10px;color:var(--muted);line-height:1.7;">Electronics &amp; IT · CNC machines · Early automation</div>
+  </div>
+  <div class="phase-box" style="border-color:var(--purple);background:rgba(90,26,138,0.05);box-shadow:0 0 0 3px rgba(90,26,138,0.1);">
+    <div class="phase-num" style="color:var(--purple);">4th</div>
+    <div class="phase-title">Digitalization</div>
+    <div class="phase-sub" style="color:var(--purple);font-weight:700;">PRESENT — Industry 4.0</div>
+    <div style="font-size:26px;margin:8px 0;">🤖</div>
+    <div style="font-size:10px;color:var(--muted);line-height:1.7;">AI · IoT · Big Data · Cyber-physical systems · Smart factories</div>
+    <span class="pill purple" style="margin-top:8px;">Current Era</span>
+  </div>
+</div>
+
+<!-- Industry 4.0 Mind Map -->
+<div class="mm-section c4" id="sec-i40">
+  <svg class="mm-svg" id="svg-i40"></svg>
+  <div class="mm-grid cols3">
+    <div class="mn" id="i-l1" style="background:#5a1a8a;"><div class="e">🧠</div><div class="t">Artificial Intelligence</div><div class="s">Decision + prediction</div></div>
+    <div class="mn" id="i-t1" style="background:#4a2070;"><div class="e">🦾</div><div class="t">Robotics</div><div class="s">Automated arms &amp; lines</div></div>
+    <div class="mn" id="i-r1" style="background:#2a2a6a;"><div class="e">💻</div><div class="t">India: Strong IT Sector</div><div class="s">Software talent base</div></div>
+
+    <div class="mn" id="i-l2" style="background:#1a3a8a;"><div class="e">📊</div><div class="t">Big Data Analytics</div><div class="s">Data-driven production</div></div>
+    <div class="mn hub" id="i-hub" style="background:#5a1a8a;"><div class="e">🤖</div><div class="t">Industry 4.0</div><div class="s">4th Industrial Revolution</div></div>
+    <div class="mn" id="i-r2" style="background:#7a4010;"><div class="e">🔧</div><div class="t">MSMEs Not Automated</div><div class="s">Most still manual</div></div>
+
+    <div class="mn" id="i-l3" style="background:#0a6070;"><div class="e">🌐</div><div class="t">Internet of Things</div><div class="s">Machines talk to each other</div></div>
+    <div class="mn" id="i-b1" style="background:#b01a1a;"><div class="e">⚠️</div><div class="t">Re-Skilling Challenge</div><div class="s">Automation → job loss risk</div></div>
+    <div class="mn" id="i-r3" style="background:#1a6a3a;"><div class="e">🏙️</div><div class="t">Smart Cities Link</div><div class="s">Digital infra connects</div></div>
+
+    <div class="mn" id="i-l4" style="background:#1a5878;"><div class="e">🔗</div><div class="t">Cyber-Physical Systems</div><div class="s">Digital twins of plants</div></div>
+    <div class="mn" id="i-b2" style="background:#d46a10;"><div class="e">🏭</div><div class="t">GE Smart Factory, Pune</div><div class="s">India's 4.0 model example</div></div>
+    <div class="mn" id="i-r4" style="background:#3a1060;"><div class="e">☁️</div><div class="t">Cloud Computing</div><div class="s">Real-time data + storage</div></div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="pc purple">
+    <div class="pc-label">Industry 4.0 — Technologies</div>
+    <h3>🤖 What It Includes</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🧠</div><div class="ft">Artificial Intelligence</div><div class="fs">Decision-making, pattern recognition</div></div>
+      <div class="feat"><div class="fi">📊</div><div class="ft">Big Data Analytics</div><div class="fs">Data-driven production decisions</div></div>
+      <div class="feat"><div class="fi">🦾</div><div class="ft">Robotics</div><div class="fs">Automated manufacturing arms</div></div>
+      <div class="feat"><div class="fi">🌐</div><div class="ft">Internet of Things</div><div class="fs">Machines talking to each other</div></div>
+      <div class="feat"><div class="fi">🔗</div><div class="ft">Cyber-Physical Systems</div><div class="fs">Digital twins of physical units</div></div>
+      <div class="feat"><div class="fi">☁️</div><div class="ft">Cloud Computing</div><div class="fs">Real-time data + storage</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;border-radius:8px;background:rgba(90,26,138,0.06);border:1.5px dashed rgba(90,26,138,0.25);font-size:10px;">
+      🏭 <strong>Smart Factories:</strong> Machines self-monitor, self-correct, communicate → minimal human intervention
+    </div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">India &amp; Industry 4.0</div>
+    <h3>🇮🇳 India's Position &amp; Challenges</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">✅ Strong IT Sector Advantage</div><div class="vs">Software + engineering talent base already exists</div></div>
+      <div class="vitem"><div class="vt">⚠️ MSMEs Not Automated</div><div class="vs">Most small factories still manually operated</div></div>
+      <div class="vitem"><div class="vt">🏙️ Smart Cities Mission Link</div><div class="vs">Digital infra connects to Industry 4.0 goals</div></div>
+      <div class="vitem"><div class="vt">🏭 GE Smart Factory — Pune</div><div class="vs">India's first Industry 4.0 model factory (real example)</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;border-radius:8px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.15);">
+      <div style="font-size:11px;font-weight:800;color:var(--red);margin-bottom:4px;">⚠️ Core Challenge</div>
+      <div style="font-size:10px;">Automation <strong>reduces traditional factory jobs</strong> → massive re-skilling needed</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: FUTURE JOBS ══ -->
+<div class="sec-label">⑤ The Big Question — Where Will Jobs Come From?</div>
+
+<div class="mm-section c5" id="sec-jobs">
+  <svg class="mm-svg" id="svg-jobs"></svg>
+  <div class="mm-grid cols3">
+    <div class="mn" id="j-l1" style="background:#b01a1a;"><div class="e">❌</div><div class="t">Old: Export Factories</div><div class="s">Single-engine model (saturated)</div></div>
+    <div class="mn" id="j-t"  style="background:#b87c10;"><div class="e">📈</div><div class="t">Gig Economy Growing</div><div class="s">New service layer emerging</div></div>
+    <div class="mn" id="j-r1" style="background:#1a6a3a;"><div class="e">🏭</div><div class="t">Manufacturing</div><div class="s">High-value selective sectors</div></div>
+
+    <div class="mn" id="j-l2" style="background:#7a0a0a;"><div class="e">🌍</div><div class="t">China Did This Already</div><div class="s">Model now globally saturated</div></div>
+    <div class="mn hub" id="j-hub" style="background:#1a5878;"><div class="e">🚀</div><div class="t">Future Job Strategy</div><div class="s">Multi-pillar approach</div></div>
+    <div class="mn" id="j-r2" style="background:#1a3a8a;"><div class="e">🎓</div><div class="t">Skill Development</div><div class="s">PMKVY · ITIs · Re-skilling</div></div>
+
+    <div class="mn" id="j-l3" style="background:#8a1a1a;"><div class="e">🤖</div><div class="t">Automation Rising</div><div class="s">Traditional jobs disappearing</div></div>
+    <div class="mn" id="j-b"  style="background:#0a6070;"><div class="e">🏪</div><div class="t">MSME Support</div><div class="s">Biggest employer base</div></div>
+    <div class="mn" id="j-r3" style="background:#5a1a8a;"><div class="e">💻</div><div class="t">Digital Services</div><div class="s">GCC boom · IT exports</div></div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">Old vs New Reality</div>
+    <h3>🔄 The Shift in Job Strategy</h3>
+    <div class="g2" style="margin-bottom:0;">
+      <div style="padding:10px;border-radius:9px;background:rgba(176,26,26,0.06);border:1.5px solid rgba(176,26,26,0.15);">
+        <div style="font-size:11px;font-weight:800;color:var(--red);margin-bottom:6px;">❌ Old Model</div>
+        <div class="flow" style="flex-direction:column;align-items:flex-start;gap:4px;">
+          <div class="fn" style="border-color:var(--red);color:var(--red);font-size:9px;">Export manufacturing</div>
+          <div class="fa" style="transform:rotate(90deg);margin-left:10px;">→</div>
+          <div class="fn" style="border-color:var(--red);color:var(--red);font-size:9px;">Mass factory jobs</div>
+          <div class="fa" style="transform:rotate(90deg);margin-left:10px;">→</div>
+          <div class="fn" style="border-color:var(--red);color:var(--red);font-size:9px;">GDP growth</div>
+        </div>
+      </div>
+      <div style="padding:10px;border-radius:9px;background:rgba(26,106,58,0.06);border:1.5px solid rgba(26,106,58,0.15);">
+        <div style="font-size:11px;font-weight:800;color:var(--green);margin-bottom:6px;">✅ New Reality</div>
+        <div style="display:flex;flex-wrap:wrap;gap:4px;">
+          <span class="chip sol">Automation rising</span>
+          <span class="chip sol">Services trade faster</span>
+          <span class="chip sol">Gig economy expanding</span>
+          <span class="chip sol">MSMEs creating jobs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">India's Future Strategy — Multi-Pillar</div>
+    <h3>🎯 Where Jobs Will Actually Come From</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">🏭 Manufacturing (Selective)</div><div class="vs">Electronics, pharma, defence — high-value with PLI</div></div>
+      <div class="vitem"><div class="vt">🎓 Skill Development</div><div class="vs">Re-skilling for Industry 4.0 — PMKVY, ITIs</div></div>
+      <div class="vitem"><div class="vt">💻 Digital Services</div><div class="vs">GCC boom, IT exports — India's existing strength</div></div>
+      <div class="vitem"><div class="vt">🏪 MSME Support</div><div class="vs">Small businesses = India's biggest employer base</div></div>
+      <div class="vitem"><div class="vt">📚 Human Capital Investment</div><div class="vs">Education quality → labour productivity → growth</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🔥</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Full Connected Flow — For Rapid Revision</div>
+    <div class="keystone-sub">
+      <strong style="color:#f5d78a;">NITI Aayog</strong> (Policy think tank, cooperative federalism, no fund allocation) →
+      identifies need for <strong style="color:#f5d78a;">Manufacturing</strong> (mass jobs for unskilled, 16% → 25% GDP) →
+      <strong style="color:#f5d78a;">Make in India</strong> (27 sectors, Defence corridors, 100M jobs) →
+      faces <strong style="color:#f5d78a;">domestic &amp; global challenges</strong> →
+      <strong style="color:#f5d78a;">Industry 4.0</strong> transforms factories (AI, IoT, robotics) →
+      creates <strong style="color:#f5d78a;">re-skilling challenge</strong> →
+      Future = <strong style="color:#f5d78a;">Manufacturing + Services + Digital + MSME + Human Capital</strong>
+    </div>
+    <div class="keystone-pills">
+      <span class="kpill">🏛️ NITI = Think Tank</span>
+      <span class="kpill">🏭 Mfg = Jobs</span>
+      <span class="kpill">🇮🇳 Make in India</span>
+      <span class="kpill">🤖 Industry 4.0</span>
+      <span class="kpill">🎓 Skills = Future</span>
+      <span class="kpill">🏪 MSMEs = Now</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+// Draw SVG connector lines between hub and all spoke nodes
+// Uses getBoundingClientRect after full page load — reliable
+function drawLines(svgId, hubId, spokeIds, colors) {
+  const svg = document.getElementById(svgId);
+  const hub = document.getElementById(hubId);
+  if (!svg || !hub) return;
+
+  const section = svg.closest('.mm-section');
+  const sRect = section.getBoundingClientRect();
+  const W = sRect.width, H = sRect.height;
+
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('width', W);
+  svg.setAttribute('height', H);
+
+  const hRect = hub.getBoundingClientRect();
+  const hcx = hRect.left + hRect.width/2 - sRect.left;
+  const hcy = hRect.top  + hRect.height/2 - sRect.top;
+
+  spokeIds.forEach((sid, idx) => {
+    const spoke = document.getElementById(sid);
+    if (!spoke) return;
+    const sR = spoke.getBoundingClientRect();
+    const scx = sR.left + sR.width/2 - sRect.left;
+    const scy = sR.top  + sR.height/2 - sRect.top;
+
+    // Direction vector hub→spoke
+    const dx = scx - hcx, dy = scy - hcy;
+    const dist = Math.sqrt(dx*dx + dy*dy) || 1;
+    const ux = dx/dist, uy = dy/dist;
+
+    // Start/end on box edges
+    const x1 = hcx + ux * (hRect.width/2  + 3);
+    const y1 = hcy + uy * (hRect.height/2 + 3);
+    const x2 = scx - ux * (sR.width/2  + 3);
+    const y2 = scy - uy * (sR.height/2 + 3);
+
+    const col = (colors && colors[idx]) || 'rgba(184,124,16,0.4)';
+    const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d', `M${x1},${y1} L${x2},${y2}`);
+    p.setAttribute('stroke', col);
+    p.setAttribute('stroke-width','1.8');
+    p.setAttribute('fill','none');
+    p.setAttribute('stroke-dasharray','5 4');
+    p.setAttribute('opacity','0.65');
+    svg.appendChild(p);
+  });
+}
+
+window.addEventListener('load', () => {
+  // NITI AAYOG
+  drawLines('svg-niti','n-hub',
+    ['n-l1','n-t1','n-r1','n-l2','n-r2','n-l3','n-b1','n-r3','n-l4','n-b2','n-r4'],
+    ['rgba(26,58,138,.5)','rgba(90,26,138,.5)','rgba(212,106,16,.5)',
+     'rgba(26,88,120,.5)','rgba(122,64,16,.5)',
+     'rgba(10,96,112,.5)','rgba(184,124,16,.5)','rgba(176,26,26,.5)',
+     'rgba(74,48,96,.5)','rgba(26,106,58,.5)','rgba(42,88,128,.5)']
+  );
+  // MANUFACTURING
+  drawLines('svg-mfg','m-hub',
+    ['m-l1','m-t','m-r1','m-l2','m-r2','m-l3','m-b','m-r3'],
+    ['rgba(26,58,138,.5)','rgba(184,124,16,.5)','rgba(176,26,26,.5)',
+     'rgba(212,106,16,.5)','rgba(90,26,138,.5)',
+     'rgba(26,106,58,.5)','rgba(26,88,120,.5)','rgba(10,96,112,.5)']
+  );
+  // MAKE IN INDIA
+  drawLines('svg-mii','mi-hub',
+    ['mi-g1','mi-g2','mi-c1','mi-c2','mi-g3','mi-g4','mi-c3','mi-c4','mi-b1','mi-b2','mi-b3','mi-b4'],
+    ['rgba(26,106,58,.5)','rgba(212,106,16,.5)','rgba(176,26,26,.5)','rgba(122,64,16,.5)',
+     'rgba(10,96,112,.5)','rgba(90,26,138,.5)','rgba(184,124,16,.5)','rgba(26,88,120,.5)',
+     'rgba(26,58,138,.5)','rgba(74,48,96,.5)','rgba(0,96,80,.5)','rgba(42,48,96,.5)']
+  );
+  // INDUSTRY 4.0
+  drawLines('svg-i40','i-hub',
+    ['i-l1','i-t1','i-r1','i-l2','i-r2','i-l3','i-b1','i-r3','i-l4','i-b2','i-r4'],
+    ['rgba(90,26,138,.5)','rgba(74,32,112,.5)','rgba(42,42,106,.5)',
+     'rgba(26,58,138,.5)','rgba(122,64,16,.5)',
+     'rgba(10,96,112,.5)','rgba(176,26,26,.5)','rgba(26,106,58,.5)',
+     'rgba(26,88,120,.5)','rgba(212,106,16,.5)','rgba(58,16,96,.5)']
+  );
+  // FUTURE JOBS
+  drawLines('svg-jobs','j-hub',
+    ['j-l1','j-t','j-r1','j-l2','j-r2','j-l3','j-b','j-r3'],
+    ['rgba(176,26,26,.5)','rgba(184,124,16,.5)','rgba(26,106,58,.5)',
+     'rgba(122,10,10,.5)','rgba(26,58,138,.5)',
+     'rgba(138,26,26,.5)','rgba(10,96,112,.5)','rgba(90,26,138,.5)']
+  );
+});
+</script>
+</body>
+</html>

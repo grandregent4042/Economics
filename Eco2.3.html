@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Markets — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f1117;--paper:#f7f5f0;--cream:#fffdf8;
+  --gold:#c4922a;--gold-lt:#f5e4b5;--amber:#e07b1a;
+  --green:#1e7a44;--blue:#1a3e8a;--purple:#6b20a8;
+  --teal:#0b7080;--red:#b82020;--sky:#1a608a;
+  --muted:#7a6e5a;--border:#ddd4be;--card:#fffcf4;
+  --card2:#f3ede0;--shadow:rgba(0,0,0,0.07);
+}
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;}
+
+/* ── NOISE TEXTURE ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:52px 16px 24px;position:relative;}
+.header-sup{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:.8;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(28px,4.5vw,52px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--gold);}
+.header-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;}
+.header::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue),var(--green));margin:16px auto 0;border-radius:4px;}
+
+/* ── SECTION LABELS ── */
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:3.5px;color:var(--gold);text-transform:uppercase;margin:38px 0 16px;display:flex;align-items:center;gap:14px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:1000px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;transition:box-shadow .22s,transform .22s;}
+.pc:hover{box-shadow:0 8px 32px var(--shadow);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* ── MAP CARD ── */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc5::before{background:linear-gradient(90deg,var(--sky),var(--purple));}
+.map-card svg{display:block;width:100%;}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;margin:2px 2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(196,146,42,0.13);color:var(--gold);}
+.pill.green{background:rgba(30,122,68,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,62,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(224,123,26,0.12);color:var(--amber);}
+.pill.purple{background:rgba(107,32,168,0.12);color:var(--purple);}
+.pill.teal{background:rgba(11,112,128,0.12);color:var(--teal);}
+.pill.red{background:rgba(184,32,32,0.11);color:var(--red);}
+.pill.sky{background:rgba(26,96,138,0.12);color:var(--sky);}
+
+/* ── STAT BOXES ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px 8px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-label{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-sub{font-size:10px;color:var(--ink);font-weight:700;margin-top:2px;}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:9px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;line-height:1.4;}
+.vitem .vt{font-weight:700;margin-bottom:2px;}
+.vitem .vs{font-size:9.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── CHIPS ── */
+.chip{display:inline-block;padding:3px 10px;border-radius:7px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.ok{background:rgba(30,122,68,.08);border-color:rgba(30,122,68,.2);color:var(--green);}
+.chip.bad{background:rgba(184,32,32,.07);border-color:rgba(184,32,32,.2);color:var(--red);}
+.chip.neu{background:rgba(196,146,42,.08);border-color:rgba(196,146,42,.2);color:var(--gold);}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(196,146,42,.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;}
+.tag.y{background:#d4edda;color:#155724;}
+.tag.n{background:#f8d7da;color:#721c24;}
+.tag.o{background:#fff3cd;color:#856404;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:22px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.keystone-icon{font-size:38px;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11.5px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 14px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10.5px;font-family:'JetBrains Mono',monospace;}
+
+/* ── FLOW ── */
+.flow-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:6px 0;}
+.fnode{padding:7px 14px;border-radius:9px;font-size:11px;font-weight:700;border:1.5px solid;}
+.farr{font-size:18px;color:var(--muted);}
+
+/* ── CALLOUT ── */
+.callout{padding:12px 15px;border-radius:10px;background:rgba(30,122,68,.06);border:1.5px solid rgba(30,122,68,.2);margin:8px 0;}
+.callout-t{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ── FEAT GRID ── */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.fi-box{padding:10px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.fi-icon{font-size:17px;margin-bottom:4px;}
+.fi-title{font-size:11px;font-weight:800;}
+.fi-sub{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-top:2px;}
+
+/* ── ANIMATE ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.animate-in{animation:fadeUp .6s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══ HEADER ══ -->
+<div class="header animate-in">
+  <div class="header-sup">UPSC Prelims · Indian Economy · Complete Flow</div>
+  <h1>Financial Markets — <em>Mind Map</em></h1>
+  <div class="header-sub">Capital Market → Money Market → Companies → Deposits → NRI Accounts</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec-label">① Master Flow — The Big Picture</div>
+<div class="map-card mc1 animate-in">
+  <svg id="svgMaster" viewBox="0 0 1320 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ FINANCIAL MARKET SPLIT ══ -->
+<div class="sec-label">② Financial Market — Capital vs Money</div>
+<div class="map-card mc2">
+  <svg id="svgSplit" viewBox="0 0 1320 340" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══ CAPITAL & MONEY MARKET DETAIL PANELS ══ -->
+<div class="g2">
+  <!-- Capital Market -->
+  <div class="pc blue">
+    <div class="pc-label">Capital Market · Long Term &gt; 1 Year</div>
+    <h3>📊 Capital Market Breakdown</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🔹 Primary Market</div>
+        <div class="vs">Securities created for first time · IPO happens here · Company ↔ Investor</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔹 Secondary Market</div>
+        <div class="vs">Already issued securities traded · Investors ↔ Investors · BSE / NSE</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(184,32,32,.06);border-radius:8px;border:1px dashed var(--red);">
+      <span style="font-size:10px;font-weight:800;color:var(--red);">⚠️ Company does NOT get money in secondary market</span>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill blue">Equity (Shares)</span>
+      <span class="pill blue">Long-Term Bonds</span>
+      <span class="pill blue">IPO</span>
+      <span class="pill blue">BSE / NSE</span>
+    </div>
+  </div>
+
+  <!-- Money Market -->
+  <div class="pc teal">
+    <div class="pc-label">Money Market · Short Term &lt; 1 Year</div>
+    <h3>💵 Money Market Instruments</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">📞 Call / Notice Money</div><div class="vs">1–14 days · Overnight funds · Unsecured</div></div>
+      <div class="vitem"><div class="vt">📄 Treasury Bills</div><div class="vs">Issued by RBI / Govt · &lt; 1 year · Highly liquid</div></div>
+      <div class="vitem"><div class="vt">🏦 Certificate of Deposit (CD)</div><div class="vs">Issued by BANKS · Tradable · Unsecured</div></div>
+      <div class="vitem"><div class="vt">🏢 Commercial Paper (CP)</div><div class="vs">Issued by Companies / NBFCs / PSUs · 7 days–1 yr · Unsecured promissory note</div></div>
+      <div class="vitem"><div class="vt">📋 Cash Mgmt Bills</div><div class="vs">&lt; 91 days · Short-term govt. liquidity</div></div>
+      <div class="vitem"><div class="vt">🔄 Repos</div><div class="vs">Short-term borrowing with securities as collateral</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CP vs CD QUICK COMPARE ══ -->
+<div class="pc gold" style="margin-bottom:20px;">
+  <div class="pc-label">Critical Prelims Distinction</div>
+  <h3>⚡ CP vs CD — Quick Differentiation</h3>
+  <div class="g2" style="margin-bottom:0;">
+    <div style="padding:14px;border-radius:11px;background:rgba(107,32,168,.06);border:1.5px solid rgba(107,32,168,.2);">
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--purple);margin-bottom:8px;">Commercial Paper (CP)</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Issued By</div><div class="vs">Companies, NBFCs, PSUs — NOT banks</div></div>
+        <div class="vitem"><div class="vt">Nature</div><div class="vs">Unsecured promissory note</div></div>
+        <div class="vitem"><div class="vt">Tenure</div><div class="vs">7 days to 1 year</div></div>
+      </div>
+    </div>
+    <div style="padding:14px;border-radius:11px;background:rgba(11,112,128,.06);border:1.5px solid rgba(11,112,128,.2);">
+      <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--teal);margin-bottom:8px;">Certificate of Deposit (CD)</div>
+      <div class="vlist">
+        <div class="vitem"><div class="vt">Issued By</div><div class="vs">BANKS only</div></div>
+        <div class="vitem"><div class="vt">Nature</div><div class="vs">Unsecured, tradable</div></div>
+        <div class="vitem"><div class="vt">Tenure</div><div class="vs">Up to 1 year</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ COMPANIES ══ -->
+<div class="sec-label">③ Types of Company</div>
+<div class="map-card mc3">
+  <svg id="svgCompany" viewBox="0 0 1320 320" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc amber">
+    <div class="pc-label">Classification 1</div>
+    <h3>🏛️ Govt vs Non-Govt</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Government Company</div><div class="vs">≥ 51% shares held by Govt · Includes subsidiaries</div></div>
+      <div class="vitem"><div class="vt">Non-Government Company</div><div class="vs">Govt holding &lt; 49%</div></div>
+    </div>
+    <div class="callout" style="border-color:rgba(224,123,26,.3);background:rgba(224,123,26,.06);">
+      <div class="callout-t" style="color:var(--amber);">🔥 Prelims Point</div>
+      <div class="callout-b">Govt company = ≥ 51% govt holding — exact threshold for exam</div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Classification 2</div>
+    <h3>🔒 Private Company</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Max Members</div><div class="vs">200 members maximum</div></div>
+      <div class="vitem"><div class="vt">Shares</div><div class="vs">NOT freely transferable</div></div>
+      <div class="vitem"><div class="vt">Public Funding</div><div class="vs">Cannot raise money from public</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="pill blue">Restricted Transfer</span><span class="pill blue">No IPO</span></div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Classification 3</div>
+    <h3>🌐 Public Company</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Listed Public</div><div class="vs">Shares listed on stock exchange → BSE/NSE</div></div>
+      <div class="vitem"><div class="vt">Unlisted Public</div><div class="vs">Public company but not listed</div></div>
+      <div class="vitem"><div class="vt">IPO Route</div><div class="vs">Private → Public via IPO in primary market</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="pill green">Can Raise Public Funds</span></div>
+  </div>
+</div>
+
+<!-- ══ DEPOSITS ══ -->
+<div class="sec-label">④ Bank Accounts & Deposits</div>
+<div class="map-card mc4">
+  <svg id="svgDeposits" viewBox="0 0 1320 310" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <!-- Demand Deposits -->
+  <div class="pc sky">
+    <div class="pc-label">Demand Deposits — Withdraw Anytime</div>
+    <h3>🏦 Current & Savings Accounts</h3>
+    <div class="g2" style="margin-bottom:0;gap:10px;">
+      <div style="padding:13px;border-radius:11px;background:rgba(26,96,138,.06);border:1.5px solid rgba(26,96,138,.2);">
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--sky);margin-bottom:7px;">Current Account</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">For Businesses</div></div>
+          <div class="vitem"><div class="vt">No transaction limit</div></div>
+          <div class="vitem" style="background:rgba(184,32,32,.07);border-color:rgba(184,32,32,.2);"><div class="vt" style="color:var(--red);">❌ No Interest</div></div>
+          <div class="vitem"><div class="vt">High Liquidity</div><div class="vs">Cheque facility available</div></div>
+        </div>
+      </div>
+      <div style="padding:13px;border-radius:11px;background:rgba(30,122,68,.06);border:1.5px solid rgba(30,122,68,.2);">
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--green);margin-bottom:7px;">Savings Account</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">For Individuals</div></div>
+          <div class="vitem"><div class="vt">Limited transactions</div></div>
+          <div class="vitem" style="background:rgba(30,122,68,.07);border-color:rgba(30,122,68,.2);"><div class="vt" style="color:var(--green);">✅ Earns Interest</div></div>
+          <div class="vitem"><div class="vt">Moderate Liquidity</div><div class="vs">Cheque facility available</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Time Deposits -->
+  <div class="pc purple">
+    <div class="pc-label">Time Deposits — Fixed Maturity · No Cheque Facility</div>
+    <h3>🔐 FD & RD Accounts</h3>
+    <div class="g2" style="margin-bottom:0;gap:10px;">
+      <div style="padding:13px;border-radius:11px;background:rgba(107,32,168,.06);border:1.5px solid rgba(107,32,168,.2);">
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--purple);margin-bottom:7px;">Fixed Deposit (FD)</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">Lump sum deposit</div></div>
+          <div class="vitem"><div class="vt">Fixed interest rate</div></div>
+          <div class="vitem"><div class="vt">Premature withdrawal</div><div class="vs">With penalty</div></div>
+          <div class="vitem"><div class="vt">Tenure</div><div class="vs">7 days – 10 years</div></div>
+        </div>
+      </div>
+      <div style="padding:13px;border-radius:11px;background:rgba(196,146,42,.07);border:1.5px solid rgba(196,146,42,.2);">
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--gold);margin-bottom:7px;">Recurring Deposit (RD)</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">Monthly instalments</div></div>
+          <div class="vitem"><div class="vt">Good for salaried</div></div>
+          <div class="vitem"><div class="vt">Maturity</div><div class="vs">6 months – 10 years</div></div>
+          <div class="vitem"><div class="vt">Small periodic savings</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NRI ACCOUNTS ══ -->
+<div class="sec-label">⑤ NRI Accounts — Very Important for Prelims 🔥</div>
+<div class="map-card mc5">
+  <svg id="svgNRI" viewBox="0 0 1320 290" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc teal">
+    <div class="pc-label">NRI Account Type 1</div>
+    <h3>💱 FCNR Account</h3>
+    <div class="stat-row" style="margin-bottom:12px;">
+      <div class="stat-box"><div class="stat-num" style="color:var(--teal);font-size:20px;">Foreign</div><div class="stat-sub">Currency</div><div class="stat-label">MAINTAINED IN</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);font-size:20px;">Full</div><div class="stat-sub">Repatriable</div><div class="stat-label">TRANSFER OUT</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Currency</div><div class="vs">Foreign currency (USD, GBP, EUR, etc.)</div></div>
+      <div class="vitem"><div class="vt">Account Type</div><div class="vs">Term deposit ONLY (no savings/current)</div></div>
+      <div class="vitem" style="background:rgba(30,122,68,.07);border-color:rgba(30,122,68,.2);"><div class="vt" style="color:var(--green);">✅ Tax-free interest &amp; principal</div></div>
+      <div class="vitem" style="background:rgba(30,122,68,.07);border-color:rgba(30,122,68,.2);"><div class="vt" style="color:var(--green);">✅ Fully repatriable</div></div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">NRI Account Type 2</div>
+    <h3>🏠 NRE Account</h3>
+    <div class="stat-row" style="margin-bottom:12px;">
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);font-size:20px;">₹</div><div class="stat-sub">Rupee</div><div class="stat-label">CURRENCY</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);font-size:20px;">Full</div><div class="stat-sub">Repatriable</div><div class="stat-label">TRANSFER OUT</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Currency</div><div class="vs">Indian Rupee</div></div>
+      <div class="vitem"><div class="vt">Account Types</div><div class="vs">Current / Savings / FD / RD — All types</div></div>
+      <div class="vitem" style="background:rgba(30,122,68,.07);border-color:rgba(30,122,68,.2);"><div class="vt" style="color:var(--green);">✅ Tax-free interest</div></div>
+      <div class="vitem" style="background:rgba(30,122,68,.07);border-color:rgba(30,122,68,.2);"><div class="vt" style="color:var(--green);">✅ Fully repatriable</div></div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">NRI Account Type 3</div>
+    <h3>🔴 NRO Account</h3>
+    <div class="stat-row" style="margin-bottom:12px;">
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);font-size:20px;">₹</div><div class="stat-sub">Rupee</div><div class="stat-label">CURRENCY</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);font-size:20px;">Ltd.</div><div class="stat-sub">Repatriable</div><div class="stat-label">TRANSFER OUT</div></div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Currency</div><div class="vs">Indian Rupee</div></div>
+      <div class="vitem"><div class="vt">Purpose</div><div class="vs">Indian income — rent, pension, dividends</div></div>
+      <div class="vitem" style="background:rgba(184,32,32,.07);border-color:rgba(184,32,32,.2);"><div class="vt" style="color:var(--red);">❌ Interest is TAXABLE</div></div>
+      <div class="vitem" style="background:rgba(184,32,32,.07);border-color:rgba(184,32,32,.2);"><div class="vt" style="color:var(--red);">⚠️ Limited repatriability</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NRI COMPARISON TABLE ══ -->
+<div class="pc gold" style="margin-bottom:20px;">
+  <div class="pc-label">Prelims Ready — Comparison Table</div>
+  <h3>📊 FCNR vs NRE vs NRO — Complete Comparison</h3>
+  <div style="overflow-x:auto;border-radius:10px;border:1.5px solid var(--border);">
+    <table class="ctable">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>FCNR</th>
+          <th>NRE</th>
+          <th>NRO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Currency</td><td>🌍 Foreign Currency</td><td>₹ Indian Rupee</td><td>₹ Indian Rupee</td></tr>
+        <tr><td>Account Types</td><td>Term Deposit Only</td><td>All Types (CA/SA/FD/RD)</td><td>All Types (CA/SA/FD/RD)</td></tr>
+        <tr><td>Tax on Interest</td><td><span class="tag y">Tax-Free</span></td><td><span class="tag y">Tax-Free</span></td><td><span class="tag n">Taxable</span></td></tr>
+        <tr><td>Repatriation</td><td><span class="tag y">Fully Repatriable</span></td><td><span class="tag y">Fully Repatriable</span></td><td><span class="tag o">Limited</span></td></tr>
+        <tr><td>Best For</td><td>Foreign earnings parking</td><td>Foreign income remittance</td><td>Indian domestic income</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ HIGH PROBABILITY PRELIMS POINTS ══ -->
+<div class="sec-label">⑥ High Probability Prelims Points 🔥</div>
+
+<div class="map-card mc1" style="margin-bottom:18px;">
+  <svg id="svgPoints" viewBox="0 0 1320 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc amber">
+    <div class="pc-label">Market Type</div>
+    <h3>📅 Tenure Rules</h3>
+    <div class="vlist">
+      <div class="vitem" style="background:rgba(26,62,138,.07);border-color:rgba(26,62,138,.2);"><div class="vt" style="color:var(--blue);">Capital Market = &gt; 1 year</div></div>
+      <div class="vitem" style="background:rgba(11,112,128,.07);border-color:rgba(11,112,128,.2);"><div class="vt" style="color:var(--teal);">Money Market = &lt; 1 year</div></div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Instrument Issuer</div>
+    <h3>🏢 Who Issues What</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">CP → Companies / NBFCs / PSUs</div></div>
+      <div class="vitem"><div class="vt">CD → Banks only</div></div>
+      <div class="vitem"><div class="vt">Call Money = overnight, unsecured</div></div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Company Rule</div>
+    <h3>🏛️ Govt Company</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">≥ 51% govt holding = Govt Company</div></div>
+      <div class="vitem"><div class="vt">Private Co. max 200 members</div></div>
+      <div class="vitem"><div class="vt">IPO = Private → Public route</div></div>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">NRI Key Facts</div>
+    <h3>🔑 NRI Account Rules</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">FCNR = foreign currency only</div></div>
+      <div class="vitem"><div class="vt">NRO interest = TAXABLE</div></div>
+      <div class="vitem"><div class="vt">NRE + FCNR = Tax-free</div></div>
+      <div class="vitem"><div class="vt">Current A/c = No interest</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ KEYSTONE ══ -->
+<div class="keystone">
+  <div class="keystone-icon">💡</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Concept Flow</div>
+    <div class="keystone-sub">Financial markets split into <strong style="color:#f5d78a;">capital market (long-term &gt;1yr)</strong> and <strong style="color:#f5d78a;">money market (short-term &lt;1yr)</strong>. Companies issue securities through primary markets (IPO) and secondary markets (BSE/NSE). People store money as demand deposits (current/savings) or time deposits (FD/RD). NRIs have three options: FCNR (foreign currency, tax-free), NRE (rupee, tax-free, fully repatriable), NRO (rupee, taxable, limited repatriation).</div>
+    <div class="kpills">
+      <span class="kpill">📈 Capital vs Money</span>
+      <span class="kpill">🏦 CP ≠ CD Issuer</span>
+      <span class="kpill">🔐 Demand vs Time</span>
+      <span class="kpill">💱 FCNR = Foreign</span>
+      <span class="kpill">❌ NRO = Taxable</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v] of Object.entries(attrs)) e.setAttribute(k,v);
+  return e;
+}
+
+function curve(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=el('path',{
+    d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color||'#999','stroke-width':w||2,fill:'none',
+    'stroke-dasharray':dashed?'5 4':'none',opacity:'0.6'
+  });
+  svg.appendChild(p);
+}
+
+function vline(svg,x1,y1,x2,y2,color,dashed,w){
+  const p=el('path',{
+    d:`M${x1},${y1} L${x2},${y2}`,
+    stroke:color||'#999','stroke-width':w||1.5,fill:'none',
+    'stroke-dasharray':dashed?'5 4':'none',opacity:'0.5'
+  });
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,txc,rx){
+  txc=txc||'#fff'; rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  // shadow
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  // body
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  
+  let startY = y - (lines.length-1)*7.5;
+  if(emoji){ startY -= 10; }
+  if(sub){ startY -= 6; }
+  
+  if(emoji){
+    const em=el('text',{x,y:startY,'text-anchor':'middle','dominant-baseline':'middle','font-size':'15',fill:txc});
+    em.textContent=emoji; g.appendChild(em); startY+=18;
+  }
+  lines.forEach((line,i)=>{
+    const t=el('text',{x,y:startY+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Outfit,sans-serif',fill:txc});
+    t.textContent=line; g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x,y:startY+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'JetBrains Mono,monospace',fill:txc==='#fff'?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.42)'});
+    s.textContent=sub; g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+function label(svg,x,y,text,color,size,mono){
+  const t=el('text',{x,y,'text-anchor':'middle','font-size':size||9,'font-family':mono?'JetBrains Mono,monospace':'Outfit,sans-serif','letter-spacing':mono?'1.5':'0',fill:color||'rgba(120,100,60,0.5)'});
+  t.textContent=text;
+  svg.appendChild(t);
+}
+
+// ─── MASTER FLOW ───
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(el('rect',{x:0,y:0,width:1320,height:120,fill:'rgba(250,245,238,0.4)'}));
+  
+  const steps=[
+    {x:85, label:'Financial\nMarket', sub:'Buyers & Sellers', fill:'#0f1117', emoji:'🏛️'},
+    {x:255, label:'Capital\nMarket', sub:'> 1 Year', fill:'#1a3e8a', emoji:'📊'},
+    {x:425, label:'Money\nMarket', sub:'< 1 Year', fill:'#0b7080', emoji:'💵'},
+    {x:595, label:'Types of\nCompany', sub:'Govt / Private / Public', fill:'#e07b1a', emoji:'🏢'},
+    {x:765, label:'Demand\nDeposits', sub:'Current & Savings', fill:'#1a608a', emoji:'🏦'},
+    {x:940, label:'Time\nDeposits', sub:'FD & RD', fill:'#6b20a8', emoji:'🔐'},
+    {x:1110, label:'NRI\nAccounts', sub:'FCNR · NRE · NRO', fill:'#c4922a', emoji:'✈️'},
+    {x:1255, label:'Prelims\nReady!', sub:'High Prob Points', fill:'#1e7a44', emoji:'🔥'},
+  ];
+  
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      curve(svg, s.x+72, 60, nx-72, 60, '#c4922a', false, 2);
+    }
+  });
+  steps.forEach(s=>{
+    node(svg, s.x, 60, 138, 70, s.fill, s.label.split('\n'), s.sub, s.emoji);
+  });
+  
+  label(svg, 660, 14, 'MASTER FLOW — FINANCIAL MARKETS COMPLETE JOURNEY', 'rgba(120,100,60,0.4)', 8.5, true);
+})();
+
+// ─── CAPITAL vs MONEY MARKET SPLIT ───
+(()=>{
+  const svg=document.getElementById('svgSplit');
+  const W=1320, H=340;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+  
+  // Root
+  node(svg, W/2, 50, 240, 56, '#0f1117', ['Financial Market'], 'Buyers & Sellers Trade Securities', '🏛️');
+  
+  // Two branches
+  curve(svg, W/2-80, 78, 340, 128, '#1a3e8a', false, 2.5);
+  curve(svg, W/2+80, 78, W-340, 128, '#0b7080', false, 2.5);
+  
+  // Capital Market node
+  node(svg, 340, 150, 200, 56, '#1a3e8a', ['Capital Market'], '> 1 Year (Long Term)', '📊');
+  // Money Market node
+  node(svg, W-340, 150, 200, 56, '#0b7080', ['Money Market'], '< 1 Year (Short Term)', '💵');
+  
+  // Capital sub-branches
+  vline(svg, 250, 178, 160, 230, '#1a3e8a55', true, 1.8);
+  vline(svg, 340, 178, 340, 230, '#1a3e8a55', true, 1.8);
+  vline(svg, 430, 178, 510, 230, '#1a3e8a55', true, 1.8);
+  node(svg, 150, 255, 165, 52, '#1a3e8a', ['Primary', 'Market'], 'IPO · New Securities', '🔵');
+  node(svg, 340, 255, 165, 52, '#2a5aaa', ['Secondary', 'Market'], 'BSE / NSE Trading', '🔄');
+  node(svg, 520, 255, 165, 52, '#3a70c0', ['Equity &', 'Bonds'], 'Shares + Long Debt', '📈');
+  
+  // Money sub-branches
+  vline(svg, W-430, 178, W-560, 230, '#0b708055', true, 1.8);
+  vline(svg, W-340, 178, W-340, 230, '#0b708055', true, 1.8);
+  vline(svg, W-250, 178, W-180, 230, '#0b708055', true, 1.8);
+  node(svg, W-565, 255, 150, 52, '#0b7080', ['Call/Treasury', 'Bills'], '< 14 days · Liquid', '📞');
+  node(svg, W-340, 255, 150, 52, '#1a8090', ['CP & CD'], 'Companies / Banks', '📄');
+  node(svg, W-175, 255, 150, 52, '#2a90a0', ['Repos &', 'CMBs'], 'Short-term borrowing', '🔁');
+  
+  // Section labels
+  label(svg, 340, 320, 'CAPITAL MARKET — LONG TERM FUNDING', '#1a3e8a55', 8.5, true);
+  label(svg, W-340, 320, 'MONEY MARKET — SHORT TERM LIQUIDITY', '#0b708055', 8.5, true);
+})();
+
+// ─── COMPANIES ───
+(()=>{
+  const svg=document.getElementById('svgCompany');
+  const W=1320, H=320;
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+  
+  // Root — centred
+  node(svg, W/2, 44, 220, 52, '#0f1117', ['Types of Company'], 'Legal Classification', '🏢');
+  
+  // Level 1: Govt (left) and Non-Govt (right) — well apart
+  const govtX = 220, nonGovtX = W-220;
+  curve(svg, W/2-90, 70, govtX+100, 128, '#e07b1a', false, 2);
+  curve(svg, W/2+90, 70, nonGovtX-100, 128, '#1a3e8a', false, 2);
+  node(svg, govtX,    140, 210, 52, '#e07b1a', ['Government', 'Company'], '≥ 51% Govt Shares', '🏛️');
+  node(svg, nonGovtX, 140, 210, 52, '#1a3e8a', ['Non-Govt', 'Company'], 'Govt < 49% holding', '🏗️');
+  
+  // Level 2: Private, Listed Public, Unlisted Public — evenly spaced at bottom
+  const privX = 330, listX = W/2, unlistX = W-330;
+  const lvl2Y = 255;
+
+  curve(svg, W/2-30, 70, privX+100, lvl2Y-28, '#1e7a44', false, 2);
+  curve(svg, W/2,    70, listX,     lvl2Y-28, '#6b20a8', false, 2);
+  curve(svg, W/2+30, 70, unlistX-100, lvl2Y-28, '#b82020', false, 2);
+
+  node(svg, privX,   lvl2Y, 210, 56, '#1e7a44', ['Private', 'Company'], 'Max 200 · No Public Raise', '🔒');
+  node(svg, listX,   lvl2Y, 210, 56, '#6b20a8', ['Listed Public', 'Company'], 'BSE / NSE', '🌐');
+  node(svg, unlistX, lvl2Y, 210, 56, '#b82020', ['Unlisted Public', 'Company'], 'Not on Exchange', '📋');
+  
+  // IPO dotted arrow: Private → Listed Public
+  const ipoArrow=el('path',{d:`M${privX+105},${lvl2Y} Q${(privX+listX)/2},${lvl2Y+32} ${listX-105},${lvl2Y}`,stroke:'#c4922a','stroke-width':'2',fill:'none','stroke-dasharray':'7 4',opacity:'0.75'});
+  svg.appendChild(ipoArrow);
+  label(svg, (privX+listX)/2, lvl2Y+46, 'Private → Public via IPO (Primary Market)', '#c4922a88', 9, true);
+})();
+
+// ─── DEPOSITS ───
+(()=>{
+  const svg=document.getElementById('svgDeposits');
+  const W=1320, H=310;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+  
+  // Root
+  node(svg, W/2, 44, 220, 52, '#0f1117', ['Bank Deposits'], 'How You Store Money', '🏦');
+  
+  // Two main branches
+  curve(svg, W/2-80, 70, 350, 120, '#1a608a', false, 2.5);
+  curve(svg, W/2+80, 70, W-350, 120, '#6b20a8', false, 2.5);
+  
+  node(svg, 350, 140, 200, 52, '#1a608a', ['Demand', 'Deposits'], 'Withdraw Anytime', '💳');
+  node(svg, W-350, 140, 200, 52, '#6b20a8', ['Time', 'Deposits'], 'Fixed Maturity', '⏰');
+  
+  // Demand sub-branches
+  vline(svg, 260, 166, 180, 218, '#1a608a55', true, 1.8);
+  vline(svg, 440, 166, 520, 218, '#1a608a55', true, 1.8);
+  node(svg, 170, 240, 185, 58, '#1a608a', ['Current', 'Account'], 'Business · No Interest', '🏪');
+  node(svg, 530, 240, 185, 58, '#2a70aa', ['Savings', 'Account'], 'Individuals · Earns Interest', '💰');
+  
+  // Time sub-branches
+  vline(svg, W-440, 166, W-520, 218, '#6b20a855', true, 1.8);
+  vline(svg, W-260, 166, W-180, 218, '#6b20a855', true, 1.8);
+  node(svg, W-530, 240, 185, 58, '#6b20a8', ['Fixed Deposit', '(FD)'], '7 days – 10 years', '🔒');
+  node(svg, W-170, 240, 185, 58, '#c4922a', ['Recurring Deposit', '(RD)'], '6 months – 10 yrs', '📅');
+  
+  // Labels row
+  label(svg, 350, 302, 'DEMAND DEPOSITS — NO MATURITY · CHEQUE FACILITY', '#1a608a55', 8.5, true);
+  label(svg, W-350, 302, 'TIME DEPOSITS — FIXED MATURITY · NO CHEQUE FACILITY', '#6b20a855', 8.5, true);
+})();
+
+// ─── NRI ACCOUNTS ───
+(()=>{
+  const svg=document.getElementById('svgNRI');
+  const W=1320, H=290;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+  
+  // Root
+  node(svg, W/2, 44, 230, 52, '#0f1117', ['NRI Accounts'], 'Non-Resident Indian Banking', '✈️');
+  
+  const branches=[
+    {x:230, fill:'#0b7080', label:['FCNR', 'Account'], sub:'Foreign Currency', emoji:'💱'},
+    {x:660, fill:'#1e7a44', label:['NRE', 'Account'], sub:'Rupee · Tax-Free', emoji:'🟢'},
+    {x:1090, fill:'#b82020', label:['NRO', 'Account'], sub:'Rupee · Taxable', emoji:'🔴'},
+  ];
+  
+  branches.forEach(b=>{
+    curve(svg, W/2, 70, b.x, 118, b.fill+'99', false, 2);
+    node(svg, b.x, 140, 200, 56, b.fill, b.label, b.sub, b.emoji);
+  });
+  
+  // FCNR details
+  const fcnrDetails=[
+    {y:215, fill:'#0b7080', text:'Foreign Currency', sub:'USD / EUR / GBP'},
+    {y:265, fill:'#0a5060', text:'Term Deposit ONLY', sub:'No Current / Savings'},
+  ];
+  fcnrDetails.forEach(d=>{
+    vline(svg, 230, 168, 230, d.y-22, d.fill+'55', true, 1.5);
+    node(svg, 230, d.y, 195, 40, d.fill, [d.text], d.sub, null);
+  });
+  
+  // NRE details
+  const nreDetails=[
+    {x:560, y:230, fill:'#1e7a44', text:'All Account Types', sub:'CA / SA / FD / RD'},
+    {x:760, y:230, fill:'#158a3a', text:'Tax-Free + Full Repatriation', sub:'Best for foreign income'},
+  ];
+  vline(svg, 620, 168, 610, 210, '#1e7a4455', true, 1.5);
+  vline(svg, 700, 168, 710, 210, '#1e7a4455', true, 1.5);
+  nreDetails.forEach(d=>{
+    node(svg, d.x, d.y, 188, 40, d.fill, [d.text], d.sub, null);
+  });
+  
+  // NRO details
+  const nroDetails=[
+    {x:990, y:230, fill:'#b82020', text:'Taxable Interest', sub:'Unlike NRE/FCNR'},
+    {x:1190, y:230, fill:'#982020', text:'Limited Repatriation', sub:'Indian income only'},
+  ];
+  vline(svg, 1050, 168, 1040, 210, '#b8202055', true, 1.5);
+  vline(svg, 1130, 168, 1140, 210, '#b8202055', true, 1.5);
+  nroDetails.forEach(d=>{
+    node(svg, d.x, d.y, 188, 40, d.fill, [d.text], d.sub, null);
+  });
+  
+  // Comparison bar at bottom
+  const barY=282;
+  label(svg, W/2, barY, 'FCNR: FOREIGN CURRENCY · NRE: RUPEE TAX-FREE · NRO: RUPEE TAXABLE — KEY EXAM DISTINCTION', '#c4922a66', 8.5, true);
+})();
+
+// ─── PRELIMS POINTS FLOW ───
+(()=>{
+  const svg=document.getElementById('svgPoints');
+  const W=1320, H=160;
+  svg.appendChild(el('rect',{x:0,y:0,width:W,height:H,fill:'rgba(250,245,238,0.35)'}));
+  
+  const points=[
+    {x:80,  fill:'#1a3e8a', label:['Capital Market'], sub:'> 1 Year', emoji:'📊'},
+    {x:230, fill:'#0b7080', label:['Money Market'],   sub:'< 1 Year', emoji:'💵'},
+    {x:385, fill:'#6b20a8', label:['CP = Companies'], sub:'Unsecured Note', emoji:'🏢'},
+    {x:540, fill:'#0b7080', label:['CD = Banks'],     sub:'Tradable', emoji:'🏦'},
+    {x:695, fill:'#e07b1a', label:['Govt Co. = 51%'], sub:'Govt holding', emoji:'🏛️'},
+    {x:850, fill:'#1a608a', label:['Current A/c'],   sub:'No Interest', emoji:'❌'},
+    {x:1005,fill:'#1e7a44', label:['Savings A/c'],   sub:'Earns Interest', emoji:'✅'},
+    {x:1160,fill:'#b82020', label:['NRO = Taxable'],  sub:'Interest taxed', emoji:'🔴'},
+    {x:1275,fill:'#c4922a', label:['FCNR Foreign'],   sub:'Currency', emoji:'💱'},
+  ];
+  
+  points.forEach((p,i)=>{
+    if(i<points.length-1){
+      vline(svg, p.x+62, 80, points[i+1].x-62, 80, '#c4922a44', false, 1.5);
+    }
+    node(svg, p.x, 80, 118, 68, p.fill, p.label, p.sub, p.emoji);
+  });
+  
+  label(svg, W/2, 148, 'HIGH PROBABILITY PRELIMS POINTS — MEMORISE THESE', '#c4922a55', 8.5, true);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India's Tax System — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f4f1ea;
+  --paper:#fffefb;
+  --ink:#1a1612;
+  --muted:#7a6e5f;
+  --border:#e0d8cc;
+  --card:#ffffff;
+  --card2:#f8f4ed;
+
+  --gold:#c47f00;
+  --gold-lt:#fff3cc;
+  --amber:#d96b0a;
+  --amber-lt:#fff0e0;
+  --green:#1a6b3a;
+  --green-lt:#e8f5ee;
+  --blue:#1a3a7a;
+  --blue-lt:#e8edf8;
+  --purple:#5a1a8a;
+  --purple-lt:#f2e8fa;
+  --teal:#0a607a;
+  --teal-lt:#e6f4f8;
+  --red:#b01a1a;
+  --red-lt:#fceaea;
+  --sky:#1a5870;
+  --sky-lt:#e8f2f7;
+  --rose:#8a1a4a;
+  --rose-lt:#faeef4;
+}
+
+body{
+  font-family:'Outfit',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    radial-gradient(ellipse 1200px 600px at 10% 5%,rgba(196,127,0,0.04) 0%,transparent 60%),
+    radial-gradient(ellipse 800px 800px at 90% 95%,rgba(26,58,122,0.04) 0%,transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+.wrap{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:0 28px 120px;}
+
+/* HEADER */
+.header{text-align:center;padding:52px 16px 28px;position:relative;}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:12px;}
+.header-eyebrow::before,.header-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold);opacity:0.4;}
+.header h1{font-family:'Libre Baskerville',serif;font-size:clamp(28px,4.5vw,54px);font-style:italic;line-height:1.1;color:var(--ink);}
+.header h1 span{font-style:normal;color:var(--gold);}
+.header-sub{margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;}
+.header-rule{display:flex;align-items:center;gap:16px;margin:20px auto 0;width:fit-content;}
+.header-rule-line{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--border));}
+.header-rule-diamond{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);}
+
+/* SECTION LABELS */
+.sec{display:flex;align-items:center;gap:14px;margin:40px 0 16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+.sec-num{background:var(--gold);color:#fff;padding:2px 8px;border-radius:4px;font-size:9px;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px;}
+.g2x1{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:18px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g2x1{grid-template-columns:1fr;}}
+@media(max-width:620px){.g2,.g3,.g4,.g2x1{grid-template-columns:1fr;}}
+
+/* CARDS */
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:18px;position:relative;overflow:hidden;transition:box-shadow 0.25s,transform 0.25s;}
+.card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.07);transform:translateY(-2px);}
+.card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.card.c-gold::after{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.card.c-blue::after{background:var(--blue);}
+.card.c-green::after{background:var(--green);}
+.card.c-purple::after{background:var(--purple);}
+.card.c-red::after{background:var(--red);}
+.card.c-teal::after{background:var(--teal);}
+.card.c-amber::after{background:var(--amber);}
+.card.c-sky::after{background:var(--sky);}
+.card.c-rose::after{background:var(--rose);}
+
+.card-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.card h3{font-family:'Libre Baskerville',serif;font-size:15px;margin-bottom:11px;line-height:1.3;display:flex;align-items:center;gap:7px;}
+
+/* LIST ITEMS */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vi{padding:8px 11px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:11px;line-height:1.4;}
+.vi strong{display:block;font-size:11px;font-weight:700;margin-bottom:1px;}
+.vi span{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 8px;border-radius:20px;font-size:9.5px;font-weight:600;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:var(--gold-lt);color:var(--gold);border:1px solid rgba(196,127,0,0.2);}
+.pill.green{background:var(--green-lt);color:var(--green);border:1px solid rgba(26,107,58,0.2);}
+.pill.blue{background:var(--blue-lt);color:var(--blue);border:1px solid rgba(26,58,122,0.2);}
+.pill.amber{background:var(--amber-lt);color:var(--amber);border:1px solid rgba(217,107,10,0.2);}
+.pill.red{background:var(--red-lt);color:var(--red);border:1px solid rgba(176,26,26,0.2);}
+.pill.purple{background:var(--purple-lt);color:var(--purple);border:1px solid rgba(90,26,138,0.2);}
+.pill.teal{background:var(--teal-lt);color:var(--teal);border:1px solid rgba(10,96,122,0.2);}
+.pill.sky{background:var(--sky-lt);color:var(--sky);border:1px solid rgba(26,88,112,0.2);}
+
+/* STAT */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;text-align:center;padding:12px 8px;background:var(--card2);border-radius:10px;border:1px solid var(--border);}
+.stat-n{font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;line-height:1;}
+.stat-t{font-size:9.5px;font-weight:600;margin-top:3px;}
+.stat-s{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);margin-top:2px;}
+
+/* CHIP */
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;border:1.5px solid;margin:2px;}
+.chip.ok{background:var(--green-lt);border-color:rgba(26,107,58,0.25);color:var(--green);}
+.chip.warn{background:var(--red-lt);border-color:rgba(176,26,26,0.25);color:var(--red);}
+.chip.neu{background:var(--gold-lt);border-color:rgba(196,127,0,0.25);color:var(--gold);}
+
+/* MAP CARD (SVG wrapper) */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px;position:relative;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.map-card.mc-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.map-card.mc-blue::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.map-card.mc-green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.map-card.mc-red::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.map-card.mc-purple::before{background:linear-gradient(90deg,var(--purple),var(--sky));}
+.map-card svg{display:block;width:100%;}
+
+/* FLOW ROW */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.fn{padding:7px 13px;border-radius:8px;font-size:11px;font-weight:600;border:1.5px solid;}
+.fa{font-size:18px;color:var(--muted);}
+
+/* CALLOUT */
+.callout{padding:11px 14px;border-radius:10px;margin:8px 0;font-size:11px;line-height:1.5;}
+.callout-title{font-size:10.5px;font-weight:700;margin-bottom:3px;}
+.callout.g{background:var(--green-lt);border:1.5px solid rgba(26,107,58,0.2);color:var(--ink);}
+.callout.g .callout-title{color:var(--green);}
+.callout.b{background:var(--blue-lt);border:1.5px solid rgba(26,58,122,0.2);}
+.callout.b .callout-title{color:var(--blue);}
+.callout.a{background:var(--amber-lt);border:1.5px solid rgba(217,107,10,0.2);}
+.callout.a .callout-title{color:var(--amber);}
+.callout.r{background:var(--red-lt);border:1.5px solid rgba(176,26,26,0.2);}
+.callout.r .callout-title{color:var(--red);}
+.callout.p{background:var(--purple-lt);border:1.5px solid rgba(90,26,138,0.2);}
+.callout.p .callout-title{color:var(--purple);}
+
+/* KEYSTONE */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:20px 0;display:flex;align-items:flex-start;gap:22px;}
+.keystone-icon{font-size:36px;flex:0 0 auto;margin-top:2px;}
+.keystone-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:6px;color:#f5d78a;}
+.keystone-body{font-size:11px;color:#c8b870;line-height:1.7;}
+.kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.kpill{padding:3px 11px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'JetBrains Mono',monospace;letter-spacing:0.3px;}
+
+/* TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 12px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:1.5px;}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(196,127,0,0.025);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+
+/* COMPARISON BANDS */
+.cband{display:flex;gap:0;border-radius:12px;overflow:hidden;border:1.5px solid var(--border);margin:10px 0;}
+.cband-col{flex:1;padding:14px 12px;}
+.cband-title{font-size:11px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+
+/* EXAMPLE BOX */
+.eg{padding:10px 14px;border-radius:8px;background:var(--card2);border:1.5px dashed var(--border);margin:8px 0;font-size:11px;line-height:1.6;}
+.eg-label{font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+
+/* ANIM */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.card,.map-card,.keystone,.cband,.eg{animation:fadeUp 0.5s ease both;}
+
+/* BAR CHART */
+.bar-chart{display:flex;flex-direction:column;gap:8px;margin:10px 0;}
+.bc-row{display:flex;align-items:center;gap:10px;}
+.bc-label{font-size:10px;font-weight:600;width:80px;flex:0 0 80px;text-align:right;font-family:'JetBrains Mono',monospace;}
+.bc-track{flex:1;background:var(--card2);border-radius:5px;height:22px;overflow:hidden;border:1px solid var(--border);}
+.bc-fill{height:100%;border-radius:5px;display:flex;align-items:center;padding-left:8px;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;color:#fff;}
+.bc-val{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;width:44px;flex:0 0 44px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">Indian Economy · Taxation · UPSC Prelims</div>
+  <h1>India's <span>Tax System</span> — Mind Map</h1>
+  <div class="header-sub">Classification → Direct Taxes → Indirect Taxes → Digital Levies → Global Reforms</div>
+  <div class="header-rule">
+    <div class="header-rule-line" style="background:linear-gradient(90deg,transparent,var(--border));"></div>
+    <div class="header-rule-diamond"></div>
+    <div class="header-rule-line" style="background:linear-gradient(90deg,var(--border),transparent);"></div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 1: MASTER FLOW ══════════ -->
+<div class="sec"><span class="sec-num">0</span> Master Flow — The Big Picture</div>
+
+<div class="map-card mc-gold">
+  <svg id="svgMaster" viewBox="0 0 1280 120" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══════════ SECTION 1: CLASSIFICATION ══════════ -->
+<div class="sec"><span class="sec-num">1</span> Basic Classification of Taxes</div>
+
+<!-- 1A: Progressive / Proportional / Regressive -->
+<div class="map-card mc-gold" style="margin-bottom:16px;">
+  <svg id="svgClass1" viewBox="0 0 1280 220" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="card c-gold">
+    <div class="card-label">Type A</div>
+    <h3>📈 Progressive Tax</h3>
+    <p style="font-size:11px;line-height:1.6;color:var(--muted);margin-bottom:8px;">Tax rate <strong>increases</strong> as income increases.</p>
+    <div class="eg"><div class="eg-label">Example</div>Personal Income Tax — the more you earn, the higher % you pay.</div>
+    <span class="pill gold">Fair to lower income</span>
+  </div>
+  <div class="card c-blue">
+    <div class="card-label">Type B</div>
+    <h3>➡️ Proportional Tax</h3>
+    <p style="font-size:11px;line-height:1.6;color:var(--muted);margin-bottom:8px;">Same fixed percentage for <strong>all income levels</strong>.</p>
+    <div class="eg"><div class="eg-label">Example</div>Flat 20% on all corporate profits regardless of size.</div>
+    <span class="pill blue">Neutral impact</span>
+  </div>
+  <div class="card c-red">
+    <div class="card-label">Type C</div>
+    <h3>📉 Regressive Tax</h3>
+    <p style="font-size:11px;line-height:1.6;color:var(--muted);margin-bottom:8px;">Burden is <strong>heavier on poor</strong> — same ₹ = higher % of poor person's income.</p>
+    <div class="eg"><div class="eg-label">Classic Example</div>Bread ₹25 (₹5 GST). Rich & poor pay same ₹5 — but poor pays 10× higher % of income.</div>
+    <span class="chip warn">⚠ All Indirect Taxes are Regressive</span>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="card c-amber">
+    <div class="card-label">Production vs Consumption</div>
+    <h3>🏭 Origin vs Destination Tax</h3>
+    <div class="cband">
+      <div class="cband-col" style="background:var(--amber-lt);">
+        <div class="cband-title" style="color:var(--amber);">🏭 Origin / Production</div>
+        <p style="font-size:11px;color:var(--muted);">Tax collected where goods are <strong>produced</strong>. Pre-GST Central Excise followed this.</p>
+      </div>
+      <div class="cband-col" style="background:var(--green-lt);border-left:1.5px solid var(--border);">
+        <div class="cband-title" style="color:var(--green);">🛒 Destination / Consumption</div>
+        <p style="font-size:11px;color:var(--muted);">Tax goes where goods are <strong>consumed</strong>. GST is destination-based — revenue to consuming state.</p>
+        <span class="chip ok">✅ GST = Destination</span>
+      </div>
+    </div>
+  </div>
+  <div class="card c-teal">
+    <div class="card-label">Specific vs Ad-Valorem</div>
+    <h3>⚖️ How Tax is Calculated</h3>
+    <div class="vlist">
+      <div class="vi"><strong>📦 Specific Tax</strong><span>Fixed amount per unit — e.g. ₹10 per litre of fuel</span></div>
+      <div class="vi"><strong>💹 Ad-Valorem Tax</strong><span>Percentage of value — e.g. 10% of product price (most GST slabs work this way)</span></div>
+    </div>
+    <div class="callout a" style="margin-top:8px;"><div class="callout-title">💡 Memory Aid</div><em>Ad Valorem</em> = "according to value" (Latin). GST is ad-valorem.</div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 2: DIRECT vs INDIRECT ══════════ -->
+<div class="sec"><span class="sec-num">2</span> Direct vs Indirect Taxes</div>
+
+<div class="map-card mc-blue">
+  <svg id="svgDirInd" viewBox="0 0 1280 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="card c-blue">
+    <div class="card-label">Direct Tax</div>
+    <h3>🏛️ Paid Directly to Government</h3>
+    <div class="callout b"><div class="callout-title">Key Feature</div>Burden CANNOT be shifted to someone else. Payer = bearer.</div>
+    <div class="vlist">
+      <div class="vi"><strong>💼 Personal Income Tax</strong><span>On salary, rent, interest</span></div>
+      <div class="vi"><strong>🏢 Corporate Tax</strong><span>On company profits</span></div>
+      <div class="vi"><strong>📊 Capital Gains Tax</strong><span>Profit from selling shares/property</span></div>
+      <div class="vi"><strong>📈 STT</strong><span>Securities Transaction Tax — on buying/selling shares</span></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip ok">✅ Progressive in nature</span>
+      <span class="chip ok">✅ CBDT administers</span>
+    </div>
+  </div>
+  <div class="card c-amber">
+    <div class="card-label">Indirect Tax</div>
+    <h3>🔄 Collected by Intermediary</h3>
+    <div class="callout a"><div class="callout-title">Key Feature</div>Burden CAN be shifted. Seller collects, consumer pays.</div>
+    <div class="vlist">
+      <div class="vi"><strong>🧾 GST</strong><span>Goods & Services Tax — destination-based</span></div>
+      <div class="vi"><strong>🛳️ Customs Duty</strong><span>On imports/exports at border</span></div>
+      <div class="vi"><strong>📄 Stamp Duty</strong><span>State subject — on legal documents</span></div>
+      <div class="vi"><strong>🏠 Excise Duty</strong><span>On manufacture (petrol/alcohol still outside GST)</span></div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip warn">⚠ Regressive in effect</span>
+      <span class="chip ok">✅ CBIC administers</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 3: DIRECT TAXES ══════════ -->
+<div class="sec"><span class="sec-num">3</span> Direct Taxes — Deep Dive</div>
+
+<!-- Income Tax Regimes -->
+<div class="map-card mc-blue" style="margin-bottom:16px;">
+  <svg id="svgIT" viewBox="0 0 1280 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card c-green">
+    <div class="card-label">New Regime — Default</div>
+    <h3>🆕 New Income Tax Slabs</h3>
+    <div class="callout g"><div class="callout-title">Up to ₹7 Lakh → Zero Tax</div>Rebate under Sec 87A. No exemptions allowed.</div>
+    <table class="ctable" style="margin-top:8px;">
+      <thead><tr><th>Income Range</th><th>Tax Rate</th></tr></thead>
+      <tbody>
+        <tr><td>0 – ₹3L</td><td>Nil</td></tr>
+        <tr><td>₹3L – ₹6L</td><td>5%</td></tr>
+        <tr><td>₹6L – ₹9L</td><td>10%</td></tr>
+        <tr><td>₹9L – ₹12L</td><td>15%</td></tr>
+        <tr><td>₹12L – ₹15L</td><td>20%</td></tr>
+        <tr><td>Above ₹15L</td><td>30%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card c-purple">
+    <div class="card-label">Old Regime — Optional</div>
+    <h3>📜 Old Income Tax Regime</h3>
+    <div class="callout p"><div class="callout-title">Exemptions Allowed</div>PPF, NPS, HRA, LTA, Section 80C deductions etc.</div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><strong>Different slab structure</strong><span>Generally higher rates but more deductions</span></div>
+      <div class="vi"><strong>Beneficial for high deductions</strong><span>If exemptions &gt; ₹3.75L, old regime saves tax</span></div>
+      <div class="vi"><strong>Must be explicitly opted</strong><span>New regime is default from FY 2023-24</span></div>
+    </div>
+    <div class="callout r" style="margin-top:8px;"><div class="callout-title">⚠️ Key Prelims Fact</div>New Regime = DEFAULT. No exemptions. Old Regime = Optional. With exemptions.</div>
+  </div>
+</div>
+
+<!-- Corporate Tax + MAT -->
+<div class="g3">
+  <div class="card c-teal">
+    <div class="card-label">Corporate Tax</div>
+    <h3>🏢 Corporate Income Tax</h3>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-n" style="color:var(--red);">34.94%</div><div class="stat-t">With Exemptions</div><div class="stat-s">EFFECTIVE RATE</div></div>
+      <div class="stat"><div class="stat-n" style="color:var(--green);">25.17%</div><div class="stat-t">Without Exemptions</div><div class="stat-s">EFFECTIVE RATE</div></div>
+    </div>
+    <div class="vi" style="margin-top:6px;"><strong>Tax on company profits</strong><span>Two options: claim exemptions (higher rate) or skip exemptions (lower rate)</span></div>
+  </div>
+  <div class="card c-amber">
+    <div class="card-label">MAT — Introduced 1987</div>
+    <h3>🔐 Minimum Alternate Tax</h3>
+    <div class="callout a"><div class="callout-title">The Problem It Solved</div>Companies showed profit but paid ZERO tax using exemptions.</div>
+    <div class="vlist" style="margin-top:6px;">
+      <div class="vi"><strong>Solution: Pay HIGHER of:</strong><span>Normal Tax  OR  15% of Book Profit (+ surcharge + cess)</span></div>
+      <div class="vi"><strong>Book Profit</strong><span>Profit as per company accounts (P&amp;L), not tax books</span></div>
+    </div>
+    <span class="chip ok">✅ Prevents Zero-Tax Profit Companies</span>
+  </div>
+  <div class="card c-sky">
+    <div class="card-label">Capital Gains + STT + DDT</div>
+    <h3>📊 Other Direct Taxes</h3>
+    <div class="vlist">
+      <div class="vi"><strong>📉 Capital Gains Tax</strong><span>Profit from sale of shares, bonds, property, gold. STCG vs LTCG.</span></div>
+      <div class="vi"><strong>📈 STT (Securities Transaction Tax)</strong><span>On buying/selling listed shares. Both buyer &amp; seller pay.</span></div>
+      <div class="vi"><strong>❌ DDT Abolished 2019-20</strong><span>Dividend Distribution Tax removed. Now dividend taxed in shareholder's hands.</span></div>
+    </div>
+    <span class="chip warn">⚠ DDT Abolished = Key Prelims Fact</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 4: PRE-GST & VAT ══════════ -->
+<div class="sec"><span class="sec-num">4</span> VAT, ITC & Pre-GST Indirect Tax System</div>
+
+<div class="map-card mc-green">
+  <svg id="svgVAT" viewBox="0 0 1280 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2" style="margin-bottom:14px;">
+  <div class="card c-green">
+    <div class="card-label">VAT Concept</div>
+    <h3>🔄 Value Added Tax — The ITC Chain</h3>
+    <div class="callout g"><div class="callout-title">VAT = Tax only on Value Addition</div>Prevents cascading (tax-on-tax) through Input Tax Credit.</div>
+    <div class="eg" style="margin-top:8px;">
+      <div class="eg-label">Step-by-Step Example (10% VAT)</div>
+      <strong>A → B:</strong> A adds ₹100, pays ₹10 VAT<br>
+      <strong>B → C:</strong> B adds ₹200 more, total ₹300. VAT on ₹300 = ₹30. But B already paid ₹10.<br>
+      <strong>B pays only ₹20</strong> (₹30 − ₹10 ITC)<br>
+      👉 <strong>ITC = Input Tax Credit</strong> — prevents tax-on-tax
+    </div>
+    <span class="chip ok">✅ GST inherited this ITC principle</span>
+  </div>
+  <div class="card c-amber">
+    <div class="card-label">Pre-GST System (Before July 1, 2017)</div>
+    <h3>🏛️ Old Indirect Tax Structure</h3>
+    <div class="cband">
+      <div class="cband-col" style="background:var(--blue-lt);">
+        <div class="cband-title" style="color:var(--blue);">🏛️ Central Taxes</div>
+        <div class="vlist">
+          <div class="vi"><strong>Excise Duty</strong><span>On manufactured goods</span></div>
+          <div class="vi"><strong>Customs Duty</strong><span>Imports/exports</span></div>
+          <div class="vi"><strong>Service Tax</strong><span>On services</span></div>
+          <div class="vi"><strong>CST</strong><span>Central Sales Tax (inter-state) — Origin-based ⚠</span></div>
+        </div>
+      </div>
+      <div class="cband-col" style="background:var(--amber-lt);border-left:1.5px solid var(--border);">
+        <div class="cband-title" style="color:var(--amber);">🗺️ State Taxes</div>
+        <div class="vlist">
+          <div class="vi"><strong>VAT</strong><span>Replaced Sales Tax</span></div>
+          <div class="vi"><strong>Entry Tax</strong><span>On goods entering state</span></div>
+          <div class="vi"><strong>Luxury Tax</strong><span>Hotels, etc.</span></div>
+          <div class="vi"><strong>Stamp Duty</strong><span>Legal documents — still outside GST</span></div>
+        </div>
+      </div>
+    </div>
+    <span class="chip warn">⚠ CST = Origin-based (Prelims trap!)</span>
+    <span class="chip ok" style="margin-left:4px;">✅ GST = Destination-based</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 5: DIGITAL + GLOBAL ══════════ -->
+<div class="sec"><span class="sec-num">5</span> Equalization Levy & Global Minimum Tax</div>
+
+<div class="map-card mc-purple">
+  <svg id="svgDigital" viewBox="0 0 1280 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="card c-purple">
+    <div class="card-label">Equalization Levy — "Google Tax" — 2016</div>
+    <h3>🌐 Taxing Foreign Digital Giants</h3>
+    <div class="callout p"><div class="callout-title">Why Introduced?</div>Foreign digital companies (Google, Amazon) earn from India without physical presence — and escape Indian tax.</div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><strong>When does it apply?</strong><span>Company has NO permanent establishment in India, but earns from digital ads / e-commerce in India</span></div>
+      <div class="vi"><strong>6% on Digital Advertising Revenue</strong><span>e.g. Google Ads revenue from Indian businesses</span></div>
+      <div class="vi"><strong>2% on E-commerce Revenue</strong><span>e.g. Amazon selling to Indian customers</span></div>
+    </div>
+    <div class="callout r" style="margin-top:8px;"><div class="callout-title">⚠️ Crucial Prelims Fact</div>Equalization Levy is <strong>NOT Income Tax</strong>. It is charged on <strong>Revenue</strong>, not profit. Separate from Income Tax Act.</div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill purple">Not Income Tax</span>
+      <span class="pill purple">On Revenue</span>
+      <span class="pill purple">6% Ads / 2% E-comm</span>
+    </div>
+  </div>
+  <div class="card c-sky">
+    <div class="card-label">GMCT — Global Minimum Corporate Tax</div>
+    <h3>🌍 OECD's 15% Global Floor</h3>
+    <div class="callout b"><div class="callout-title">The Problem</div>Multinational companies shift profits to tax havens (Ireland, Cayman Islands) where corporate tax is 0–5%.</div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><strong>Solution: Minimum 15%</strong><span>OECD/G20 agreed: no country can tax MNCs below 15%</span></div>
+      <div class="vi"><strong>Pillar 1 — Reallocation</strong><span>Tax rights shift to market countries where users/consumers are</span></div>
+      <div class="vi"><strong>Pillar 2 — 15% Floor</strong><span>If any country taxes below 15%, home country can top-up the tax</span></div>
+    </div>
+    <div class="callout g" style="margin-top:8px;"><div class="callout-title">🔗 Connection to Equalization Levy</div>Once GMCT is fully implemented, India may remove Equalization Levy — as digital giants will pay 15% globally anyway.</div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill sky">15% Global Floor</span>
+      <span class="pill sky">Pillar 1 + 2</span>
+      <span class="pill sky">Eq. Levy → May Go</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 6: STATE TAXES ══════════ -->
+<div class="sec"><span class="sec-num">6</span> State-Level Taxes</div>
+
+<div class="g3">
+  <div class="card c-rose">
+    <div class="card-label">Land Revenue</div>
+    <h3>🌾 Land Revenue</h3>
+    <p style="font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:8px;">Oldest form of tax in India. Levied by states on agricultural land.</p>
+    <span class="pill amber">State Subject</span>
+    <span class="pill amber">Direct Tax</span>
+  </div>
+  <div class="card c-teal">
+    <div class="card-label">Property Tax</div>
+    <h3>🏘️ Property Tax</h3>
+    <p style="font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:8px;">Levied by <strong>municipalities</strong> (ULBs). Based on property value or area.</p>
+    <div class="callout g" style="margin-top:4px;"><div class="callout-title">Property Tax Funds</div>Roads · Parks · Local schools · Civic services</div>
+    <span class="pill teal">ULB / Municipal</span>
+  </div>
+  <div class="card c-amber">
+    <div class="card-label">Stamp Duty</div>
+    <h3>📄 Stamp Duty</h3>
+    <p style="font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:8px;">On legal documents — property registration, agreements, etc. State subject, remains outside GST.</p>
+    <div class="vi"><strong>Key: Still outside GST</strong><span>Not subsumed in GST unlike most indirect taxes</span></div>
+    <span class="chip warn">⚠ Prelims: State subject, outside GST</span>
+  </div>
+</div>
+
+<!-- ══════════ SECTION 7: CONNECTED FLOW ══════════ -->
+<div class="sec"><span class="sec-num">7</span> Full Connected Flow — Everything Linked</div>
+
+<div class="map-card mc-gold">
+  <svg id="svgConnected" viewBox="0 0 1280 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Outfit',sans-serif;"></svg>
+</div>
+
+<!-- ══════════ SECTION 8: PRELIMS HOTLIST ══════════ -->
+<div class="sec"><span class="sec-num">8</span> Most Probable Prelims Questions — Hot Topics</div>
+
+<div class="g4">
+  <div class="card c-gold">
+    <div class="card-label">🔥 Hot Topic 1</div>
+    <h3 style="font-size:13px;">Progressive vs Regressive</h3>
+    <p style="font-size:10.5px;color:var(--muted);">All indirect taxes → regressive in <em>effect</em>. Bread example.</p>
+    <span class="chip ok">✅ High Frequency</span>
+  </div>
+  <div class="card c-red">
+    <div class="card-label">🔥 Hot Topic 2</div>
+    <h3 style="font-size:13px;">Equalization Levy ≠ Income Tax</h3>
+    <p style="font-size:10.5px;color:var(--muted);">Not under Income Tax Act. On revenue. 6% ads, 2% e-commerce.</p>
+    <span class="chip warn">⚠ Common Trap</span>
+  </div>
+  <div class="card c-green">
+    <div class="card-label">🔥 Hot Topic 3</div>
+    <h3 style="font-size:13px;">GST = Destination-based</h3>
+    <p style="font-size:10.5px;color:var(--muted);">Revenue goes to consuming state. CST was origin-based (trap!).</p>
+    <span class="chip ok">✅ High Frequency</span>
+  </div>
+  <div class="card c-blue">
+    <div class="card-label">🔥 Hot Topic 4</div>
+    <h3 style="font-size:13px;">GMCT = 15% Floor</h3>
+    <p style="font-size:10.5px;color:var(--muted);">OECD Pillar 1 + 2. Once applied, Equalization Levy may be removed.</p>
+    <span class="chip ok">✅ Current Affairs</span>
+  </div>
+  <div class="card c-amber">
+    <div class="card-label">🔥 Hot Topic 5</div>
+    <h3 style="font-size:13px;">MAT — Book Profit</h3>
+    <p style="font-size:10.5px;color:var(--muted);">Pay higher of normal tax OR 15% of book profit. Introduced 1987.</p>
+    <span class="chip ok">✅ Classic Question</span>
+  </div>
+  <div class="card c-purple">
+    <div class="card-label">🔥 Hot Topic 6</div>
+    <h3 style="font-size:13px;">DDT Abolished 2019-20</h3>
+    <p style="font-size:10.5px;color:var(--muted);">Dividend now taxed in <em>shareholder's hands</em>, not company.</p>
+    <span class="chip warn">⚠ Post-2019 change</span>
+  </div>
+  <div class="card c-teal">
+    <div class="card-label">🔥 Hot Topic 7</div>
+    <h3 style="font-size:13px;">ITC Prevents Cascading</h3>
+    <p style="font-size:10.5px;color:var(--muted);">VAT/GST ITC chain stops tax-on-tax. Core GST concept.</p>
+    <span class="chip ok">✅ High Frequency</span>
+  </div>
+  <div class="card c-sky">
+    <div class="card-label">🔥 Hot Topic 8</div>
+    <h3 style="font-size:13px;">Stamp Duty = Outside GST</h3>
+    <p style="font-size:10.5px;color:var(--muted);">State subject. Not subsumed in GST unlike most indirect taxes.</p>
+    <span class="chip warn">⚠ Common Trap</span>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">⚡</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Thread</div>
+    <div class="keystone-body">
+      Income earned → <strong style="color:#f5d78a;">Direct Tax</strong> (progressive, non-shiftable) → Personal IT / Corporate Tax / Capital Gains<br>
+      Goods/Services consumed → <strong style="color:#f5d78a;">Indirect Tax</strong> (regressive in effect, shiftable) → GST / Customs<br>
+      Foreign digital income → <strong style="color:#f5d78a;">Equalization Levy</strong> (not income tax, on revenue)<br>
+      Global profit-shifting → <strong style="color:#f5d78a;">GMCT 15%</strong> (Pillar 1 + 2, may replace Equalization Levy)<br>
+      Tax Revenue → Govt Receipts → Budget → <strong style="color:#f5d78a;">Fiscal Policy</strong>
+    </div>
+    <div class="kpills">
+      <span class="kpill">📈 Direct = Progressive</span>
+      <span class="kpill">🔄 Indirect = Regressive</span>
+      <span class="kpill">🌐 Equalization ≠ Income Tax</span>
+      <span class="kpill">🌍 GMCT = 15%</span>
+      <span class="kpill">✅ GST = Destination</span>
+      <span class="kpill">🔐 MAT = Book Profit</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,attrs){
+  const el=document.createElementNS(NS,tag);
+  for(const [k,v] of Object.entries(attrs)) el.setAttribute(k,v);
+  return el;
+}
+function txt(svg,x,y,text,opts={}){
+  const t=se('text',{x,y,'text-anchor':opts.anchor||'middle','dominant-baseline':opts.base||'middle',
+    'font-size':opts.size||'11','font-weight':opts.weight||'600','font-family':opts.mono?'JetBrains Mono,monospace':'Outfit,sans-serif',
+    fill:opts.fill||'#fff','letter-spacing':opts.ls||'0',...(opts.opacity?{opacity:opts.opacity}:{})});
+  text.split('\n').forEach((line,i)=>{
+    if(i===0){t.textContent=line;}
+    else{
+      const ts=se('tspan',{x,dy:'14','text-anchor':opts.anchor||'middle'});
+      ts.textContent=line; t.appendChild(ts);
+    }
+  });
+  svg.appendChild(t); return t;
+}
+function pill(svg,x,y,w,h,fill,text,textFill,rx=6){
+  const g=document.createElementNS(NS,'g');
+  const s=se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.1)'});
+  const r=se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.2'});
+  g.appendChild(s);g.appendChild(r);
+  const lines=text.split('\n');
+  const startY=y-(lines.length-1)*7;
+  lines.forEach((ln,i)=>{
+    const t=se('text',{x,y:startY+i*14,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'10','font-weight':'700','font-family':'Outfit,sans-serif',fill:textFill||'#fff'});
+    t.textContent=ln; g.appendChild(t);
+  });
+  svg.appendChild(g); return g;
+}
+function sub(svg,x,y,text,fill='rgba(255,255,255,0.5)'){
+  const t=se('text',{x,y,'text-anchor':'middle','dominant-baseline':'middle',
+    'font-size':'8','font-family':'JetBrains Mono,monospace',fill,'letter-spacing':'0.5'});
+  t.textContent=text; svg.appendChild(t); return t;
+}
+function arrow(svg,x1,y1,x2,y2,color='#ccc',dashed=false,w=1.5){
+  const d=`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`;
+  const p=se('path',{d,stroke:color,'stroke-width':w,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+function line(svg,x1,y1,x2,y2,color='#ccc',dashed=false,w=1.5){
+  svg.appendChild(se('line',{x1,y1,x2,y2,stroke:color,'stroke-width':w,'stroke-dasharray':dashed?'5 4':'none',opacity:'0.6'}));
+}
+function dot(svg,x,y,r=4,fill='#fff'){
+  svg.appendChild(se('circle',{cx:x,cy:y,r,fill,stroke:'rgba(0,0,0,0.1)','stroke-width':'1'}));
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(se('rect',{x:0,y:0,width:1280,height:120,fill:'rgba(248,244,237,0.3)'}));
+  const steps=[
+    {x:82, label:'Taxes\nClassified', sub:'Type & Nature', fill:'#c47f00', emoji:'📋'},
+    {x:242, label:'Direct\nTaxes', sub:'Income, Corp, CG', fill:'#1a3a7a', emoji:'🏛️'},
+    {x:402, label:'Indirect\nTaxes', sub:'GST, Customs', fill:'#d96b0a', emoji:'🔄'},
+    {x:562, label:'VAT &\nITC Chain', sub:'No cascading', fill:'#1a6b3a', emoji:'🔗'},
+    {x:722, label:'Pre-GST\nSystem', sub:'Excise, CST, VAT', fill:'#0a607a', emoji:'🏚️'},
+    {x:882, label:'Equalization\nLevy', sub:'Not Income Tax', fill:'#5a1a8a', emoji:'🌐'},
+    {x:1042, label:'Global Min\nTax (GMCT)', sub:'15% Floor', fill:'#1a5870', emoji:'🌍'},
+    {x:1198, label:'Fiscal\nPolicy', sub:'Budget & Revenue', fill:'#b87c10', emoji:'⚖️'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) arrow(svg,s.x+74,60,steps[i+1].x-74,60,'#c47f00',false,1.5);
+  });
+  steps.forEach(s=>{
+    const lines=s.label.split('\n');
+    pill(svg,s.x,60,140,62,s.fill,(s.emoji?s.emoji+' ':'')+lines[0]+'\n'+lines[1],'#fff',10);
+    sub(svg,s.x,96,s.sub,'rgba(100,80,40,0.5)');
+  });
+  txt(svg,640,14,'MASTER FLOW: FROM CLASSIFICATION → TAX TYPES → ITC → DIGITAL LEVIES → FISCAL POLICY',
+    {size:'8',mono:true,fill:'rgba(120,90,30,0.45)',ls:'2'});
+})();
+
+// ── CLASSIFICATION MINDMAP ──
+(function(){
+  const svg=document.getElementById('svgClass1');
+  svg.appendChild(se('rect',{x:0,y:0,width:1280,height:220,fill:'rgba(248,244,237,0.3)'}));
+  // Center
+  pill(svg,640,110,200,54,'#1a1612','📊 Tax Classification\nby Nature','#f5e8c0',12);
+  // Left branch: Progressive/Proportional/Regressive
+  const left=[
+    {x:190,y:55,fill:'#1a6b3a',label:'📈 Progressive',sub:'Rate↑ as Income↑'},
+    {x:190,y:110,fill:'#5a1a8a',label:'➡️ Proportional',sub:'Same % all incomes'},
+    {x:190,y:165,fill:'#b01a1a',label:'📉 Regressive',sub:'Burden on poor (indirect)'},
+  ];
+  left.forEach(n=>{
+    arrow(svg,542,110,n.x+100,n.y,'#1a6b3a55',true,1.4);
+    pill(svg,n.x,n.y,180,44,n.fill,n.label,'#fff',8);
+    sub(svg,n.x,n.y+26,n.sub,'rgba(255,255,255,0.45)');
+  });
+  // Right branch: Specific/Ad-valorem, Origin/Destination
+  const right=[
+    {x:1080,y:55,fill:'#0a607a',label:'📦 Specific Tax',sub:'Fixed ₹ per unit'},
+    {x:1080,y:110,fill:'#d96b0a',label:'💹 Ad-Valorem',sub:'% of value (GST)'},
+    {x:1080,y:165,fill:'#c47f00',label:'🗺️ Origin vs Destination',sub:'GST = Destination'},
+  ];
+  right.forEach(n=>{
+    arrow(svg,738,110,n.x-96,n.y,'#d96b0a55',true,1.4);
+    pill(svg,n.x,n.y,200,44,n.fill,n.label,'#fff',8);
+    sub(svg,n.x,n.y+26,n.sub,'rgba(255,255,255,0.45)');
+  });
+  // Labels
+  txt(svg,190,14,'INCIDENCE',{size:'8',mono:true,fill:'rgba(26,107,58,0.5)',ls:'3'});
+  txt(svg,1080,14,'CALCULATION METHOD + BASIS',{size:'8',mono:true,fill:'rgba(217,107,10,0.5)',ls:'3'});
+})();
+
+// ── DIRECT vs INDIRECT ──
+(function(){
+  const svg=document.getElementById('svgDirInd');
+  svg.appendChild(se('rect',{x:0,y:0,width:1280,height:200,fill:'rgba(248,244,237,0.3)'}));
+  pill(svg,640,100,180,52,'#1a1612','💰 All Taxes\nin India','#f5e8c0',10);
+  // Direct taxes spread
+  const direct=[
+    {x:160,y:55,fill:'#1a3a7a',label:'Personal\nIncome Tax',sub:'Salary, rent, interest'},
+    {x:160,y:120,fill:'#0a607a',label:'Corporate\nTax',sub:'Company profits'},
+    {x:160,y:170,fill:'#5a1a8a',label:'Capital Gains\n+ STT',sub:'Shares, property, bonds'},
+  ];
+  direct.forEach(n=>{
+    const path=se('path',{d:`M${549},100 C${350},100 ${350},${n.y} ${n.x+100},${n.y}`,
+      stroke:'#1a3a7a55','stroke-width':'1.4',fill:'none','stroke-dasharray':'5 3'});
+    svg.appendChild(path);
+    pill(svg,n.x,n.y,188,44,n.fill,n.label,'#fff',8);
+    sub(svg,n.x,n.y+26,n.sub,'rgba(255,255,255,0.45)');
+  });
+  // Indirect taxes spread
+  const indirect=[
+    {x:1100,y:50,fill:'#d96b0a',label:'GST',sub:'Destination-based'},
+    {x:1100,y:100,fill:'#c47f00',label:'Customs Duty',sub:'Imports/exports'},
+    {x:1100,y:150,fill:'#7a4010',label:'Stamp Duty',sub:'State subject, outside GST'},
+    {x:1100,y:185,fill:'#1a6b3a',label:'Excise (residual)',sub:'Petrol/alcohol'},
+  ];
+  indirect.forEach(n=>{
+    const path=se('path',{d:`M${729},100 C${930},100 ${930},${n.y} ${n.x-96},${n.y}`,
+      stroke:'#d96b0a55','stroke-width':'1.4',fill:'none','stroke-dasharray':'5 3'});
+    svg.appendChild(path);
+    pill(svg,n.x,n.y,188,38,n.fill,n.label,'#fff',8);
+    sub(svg,n.x,n.y+22,n.sub,'rgba(255,255,255,0.45)');
+  });
+  // Labels
+  svg.appendChild(se('rect',{x:20,y:5,width:140,height:24,rx:5,ry:5,fill:'#1a3a7a15',stroke:'#1a3a7a44','stroke-width':'1'}));
+  txt(svg,90,17,'DIRECT TAXES',{size:'9',mono:true,fill:'#1a3a7a',ls:'2'});
+  svg.appendChild(se('rect',{x:1000,y:5,width:160,height:24,rx:5,ry:5,fill:'#d96b0a15',stroke:'#d96b0a44','stroke-width':'1'}));
+  txt(svg,1080,17,'INDIRECT TAXES',{size:'9',mono:true,fill:'#d96b0a',ls:'2'});
+})();
+
+// ── INCOME TAX REGIMES ──
+(function(){
+  const svg=document.getElementById('svgIT');
+  svg.appendChild(se('rect',{x:0,y:0,width:1280,height:240,fill:'rgba(248,244,237,0.3)'}));
+  pill(svg,640,120,200,54,'#1a1612','💼 Personal Income Tax\nTwo Regimes','#f5e8c0',10);
+  // New regime (left)
+  const newR=[
+    {x:150,y:55,fill:'#1a6b3a',label:'Zero Tax\nup to ₹7L',sub:'Rebate u/s 87A'},
+    {x:150,y:115,fill:'#0a607a',label:'5%–30%\nSlabs',sub:'3L to 15L+ range'},
+    {x:150,y:175,fill:'#5a1a8a',label:'No Exemptions\nAllowed',sub:'No 80C, HRA, etc.'},
+    {x:150,y:220,fill:'#1a3a7a',label:'DEFAULT\nRegime',sub:'From FY 2023-24'},
+  ];
+  newR.forEach(n=>{
+    const path=se('path',{d:`M${541},120 C${340},120 ${340},${n.y} ${n.x+100},${n.y}`,
+      stroke:'#1a6b3a55','stroke-width':'1.4',fill:'none','stroke-dasharray':'5 3'});
+    svg.appendChild(path);
+    pill(svg,n.x,n.y,194,40,n.fill,n.label,'#fff',8);
+    sub(svg,n.x,n.y+23,n.sub,'rgba(255,255,255,0.45)');
+  });
+  // Old regime (right)
+  const oldR=[
+    {x:1120,y:55,fill:'#b01a1a',label:'Exemptions\nAllowed',sub:'PPF, NPS, HRA, 80C'},
+    {x:1120,y:115,fill:'#7a4a10',label:'Different\nSlabs',sub:'Higher rates, more deductions'},
+    {x:1120,y:175,fill:'#4a1a5a',label:'OPTIONAL\nRegime',sub:'Must be explicitly opted'},
+    {x:1120,y:220,fill:'#1a4870',label:'Better if\nDeductions >₹3.75L',sub:'High deduction earners'},
+  ];
+  oldR.forEach(n=>{
+    const path=se('path',{d:`M${739},120 C${940},120 ${940},${n.y} ${n.x-100},${n.y}`,
+      stroke:'#b01a1a55','stroke-width':'1.4',fill:'none','stroke-dasharray':'5 3'});
+    svg.appendChild(path);
+    pill(svg,n.x,n.y,194,40,n.fill,n.label,'#fff',8);
+    sub(svg,n.x,n.y+23,n.sub,'rgba(255,255,255,0.45)');
+  });
+  svg.appendChild(se('rect',{x:15,y:5,width:120,height:22,rx:4,fill:'#1a6b3a15',stroke:'#1a6b3a44','stroke-width':'1'}));
+  txt(svg,75,16,'NEW REGIME',{size:'8.5',mono:true,fill:'#1a6b3a',ls:'2'});
+  svg.appendChild(se('rect',{x:1060,y:5,width:120,height:22,rx:4,fill:'#b01a1a15',stroke:'#b01a1a44','stroke-width':'1'}));
+  txt(svg,1120,16,'OLD REGIME',{size:'8.5',mono:true,fill:'#b01a1a',ls:'2'});
+})();
+
+// ── VAT / ITC ──
+(function(){
+  const svg=document.getElementById('svgVAT');
+  svg.appendChild(se('rect',{x:0,y:0,width:1280,height:200,fill:'rgba(248,244,237,0.3)'}));
+  // ITC chain as a flow
+  const nodes=[
+    {x:120,y:100,fill:'#1a6b3a',label:'Producer A',sub:'Adds ₹100\nPays ₹10 VAT'},
+    {x:380,y:100,fill:'#0a607a',label:'Seller B',sub:'Adds ₹200 more\nVAT on ₹300=₹30\nPays only ₹20 (ITC)'},
+    {x:640,y:100,fill:'#5a1a8a',label:'Retailer C',sub:'Adds more value\nClaims ITC from B'},
+    {x:900,y:100,fill:'#1a3a7a',label:'Consumer',sub:'Pays total VAT\nembedded in price'},
+    {x:1170,y:100,fill:'#c47f00',label:'Tax Authority',sub:'Gets sum of all\nvalue-additions only'},
+  ];
+  nodes.forEach((n,i)=>{
+    if(i<nodes.length-1){
+      const w1=i===1?105:90;
+      line(svg,n.x+w1,100,nodes[i+1].x-w1,100,'#1a6b3a66',false,2);
+      dot(svg,n.x+w1,100,3,'#1a6b3a');
+      dot(svg,nodes[i+1].x-w1,100,3,'#1a6b3a');
+    }
+    const lns=n.label.split('\n');
+    pill(svg,n.x,100,i===1||i===2?200:170,70,n.fill,n.label,'#fff',10);
+    const sublines=n.sub.split('\n');
+    sublines.forEach((sl,si)=>{
+      sub(svg,n.x,56+si*11,sl,'rgba(255,255,255,0.5)');
+    });
+  });
+  // ITC label
+  txt(svg,640,18,'ITC CHAIN: Tax only on Value Addition at each stage → No Tax-on-Tax (Cascading)',
+    {size:'9',mono:true,fill:'rgba(26,107,58,0.55)',ls:'1.5'});
+  // Annotation
+  svg.appendChild(se('rect',{x:280,y:148,width:320,height:36,rx:6,fill:'rgba(26,107,58,0.07)',stroke:'rgba(26,107,58,0.2)','stroke-width':'1.2'}));
+  txt(svg,440,162,'ITC = Input Tax Credit',{size:'10',fill:'#1a6b3a',weight:'700'});
+  txt(svg,440,177,'Seller claims back tax already paid upstream',{size:'9',fill:'rgba(26,107,58,0.7)',mono:true});
+})();
+
+// ── DIGITAL + GLOBAL ──
+(function(){
+  const svg=document.getElementById('svgDigital');
+  svg.appendChild(se('rect',{x:0,y:0,width:1280,height:190,fill:'rgba(248,244,237,0.3)'}));
+  pill(svg,640,95,200,54,'#1a1612','🌐 Taxing the\nDigital Economy','#f5e8c0',10);
+  // Left: Equalization Levy
+  const eq=[
+    {x:165,y:45,fill:'#5a1a8a',label:'Introduced\n2016',sub:'"Google Tax"'},
+    {x:165,y:100,fill:'#7a1a6a',label:'NOT Income\nTax',sub:'Charged on Revenue'},
+    {x:165,y:155,fill:'#3a1a7a',label:'6% Ads\n2% E-commerce',sub:'Foreign digital cos.'},
+  ];
+  eq.forEach(n=>{
+    arrow(svg,542,95,n.x+100,n.y,'#5a1a8a55',true,1.4);
+    pill(svg,n.x,n.y,188,44,n.fill,n.label,'#fff',8);
+    sub(svg,n.x,n.y+26,n.sub,'rgba(255,255,255,0.45)');
+  });
+  // Right: GMCT
+  const gm=[
+    {x:1110,y:45,fill:'#1a5870',label:'15% Global\nMinimum',sub:'OECD/G20 agreed'},
+    {x:1110,y:100,fill:'#1a3a7a',label:'Pillar 1\n+ Pillar 2',sub:'Market country rights'},
+    {x:1110,y:155,fill:'#0a607a',label:'May replace\nEq. Levy',sub:'Once fully applied'},
+  ];
+  gm.forEach(n=>{
+    arrow(svg,738,95,n.x-96,n.y,'#1a587055',true,1.4);
+    pill(svg,n.x,n.y,188,44,n.fill,n.label,'#fff',8);
+    sub(svg,n.x,n.y+26,n.sub,'rgba(255,255,255,0.45)');
+  });
+  svg.appendChild(se('rect',{x:18,y:5,width:180,height:22,rx:4,fill:'#5a1a8a15',stroke:'#5a1a8a44','stroke-width':'1'}));
+  txt(svg,108,16,'EQUALIZATION LEVY',{size:'8.5',mono:true,fill:'#5a1a8a',ls:'2'});
+  svg.appendChild(se('rect',{x:1060,y:5,width:180,height:22,rx:4,fill:'#1a587015',stroke:'#1a587044','stroke-width':'1'}));
+  txt(svg,1150,16,'GMCT — GLOBAL TAX',{size:'8.5',mono:true,fill:'#1a5870',ls:'2'});
+  // connection arrow between the two
+  svg.appendChild(se('path',{d:'M265,155 C400,155 400,175 540,175 C680,175 680,175 740,175 C880,175 880,155 1022,155',
+    stroke:'rgba(196,127,0,0.35)','stroke-width':'1.5',fill:'none','stroke-dasharray':'6 4'}));
+  txt(svg,640,182,'→ GMCT replacing Equalization Levy once global framework is live →',
+    {size:'8',mono:true,fill:'rgba(196,127,0,0.45)',ls:'1'});
+})();
+
+// ── CONNECTED FLOW ──
+(function(){
+  const svg=document.getElementById('svgConnected');
+  svg.appendChild(se('rect',{x:0,y:0,width:1280,height:280,fill:'rgba(248,244,237,0.3)'}));
+  txt(svg,640,20,'FULL CONNECTED FLOW',{size:'8',mono:true,fill:'rgba(120,90,30,0.4)',ls:'4'});
+
+  // Row 1: Income sources
+  const row1=[
+    {x:120,y:70,fill:'#1a3a7a',label:'💼 Salary\nRent Interest',sub:'Income earned'},
+    {x:330,y:70,fill:'#1a6b3a',label:'🏢 Company\nProfit',sub:'Corporate income'},
+    {x:540,y:70,fill:'#5a1a8a',label:'📈 Capital\nGains',sub:'Share/property sale'},
+    {x:750,y:70,fill:'#d96b0a',label:'🛒 Purchase of\nGoods & Services',sub:'Consumption'},
+    {x:960,y:70,fill:'#5a1a8a',label:'💻 Digital\nRevenue',sub:'Foreign co. from India'},
+    {x:1160,y:70,fill:'#1a5870',label:'🏭 Profits in\nTax Havens',sub:'MNC profit shift'},
+  ];
+  row1.forEach(n=>{ pill(svg,n.x,n.y,190,50,n.fill,n.label,'#fff',9); sub(svg,n.x,n.y+30,n.sub,'rgba(255,255,255,0.42)');});
+
+  // Arrows down
+  [
+    {fx:120,fy:96,tx:120,ty:158},{fx:330,fy:96,tx:330,ty:158},{fx:540,fy:96,tx:540,ty:158},
+    {fx:750,fy:96,tx:750,ty:158},{fx:960,fy:96,tx:960,ty:158},{fx:1160,fy:96,tx:1160,ty:158},
+  ].forEach(a=>line(svg,a.fx,a.fy,a.tx,a.ty,'rgba(120,90,30,0.35)',false,1.5));
+
+  // Row 2: Tax types
+  const row2=[
+    {x:120,y:175,fill:'#1a3a7a',label:'Personal IT',sub:'Direct Tax'},
+    {x:330,y:175,fill:'#0a607a',label:'Corporate Tax\n+ MAT',sub:'Direct Tax'},
+    {x:540,y:175,fill:'#1a5870',label:'Capital Gains\nTax + STT',sub:'Direct Tax'},
+    {x:750,y:175,fill:'#d96b0a',label:'GST / Customs\n/ Stamp Duty',sub:'Indirect Tax'},
+    {x:960,y:175,fill:'#5a1a8a',label:'Equalization\nLevy (6%/2%)',sub:'Not Income Tax!'},
+    {x:1160,y:175,fill:'#1a5870',label:'GMCT 15%\nFloor',sub:'Global Minimum'},
+  ];
+  row2.forEach(n=>{ pill(svg,n.x,n.y,190,50,n.fill,n.label,'#fff',9); sub(svg,n.x,n.y+30,n.sub,'rgba(255,255,255,0.42)');});
+
+  // Convergence arrows to final node
+  row2.forEach(n=>{
+    const path=se('path',{d:`M${n.x},${n.y+26} C${n.x},${244} ${640},${244} ${640},${252}`,
+      stroke:'rgba(196,127,0,0.3)','stroke-width':'1.3',fill:'none','stroke-dasharray':'4 3'});
+    svg.appendChild(path);
+  });
+
+  // Final box
+  pill(svg,640,262,360,32,'#1a1612','⚖️ Government Revenue → Budget → Fiscal Policy','#f5d78a',8);
+})();
+</script>
+</body>
+</html>

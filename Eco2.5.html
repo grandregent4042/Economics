@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monetary Policy — UPSC Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=DM+Mono:wght@300;400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f5f1ea;--paper:#fffdf8;--ink:#14110d;--ink2:#3a2f22;
+  --muted:#8a7a60;--border:#ddd0b0;--card:#fffdf5;--card2:#f0ebe0;
+  --gold:#b87c10;--amber:#d46a10;--green:#1a6a3a;--blue:#1a3a8a;
+  --purple:#5a1a8a;--teal:#0a6070;--red:#b01a1a;--sky:#1a5878;
+  --rose:#8a1a3a;--olive:#4a6010;
+  --shadow:rgba(20,17,13,0.1);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 1000px 600px at 10% 5%, rgba(184,124,16,0.055) 0%,transparent 65%),
+    radial-gradient(ellipse 800px 800px at 90% 95%, rgba(26,58,138,0.045) 0%,transparent 65%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 24px 120px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:50px 20px 22px;border-bottom:1.5px solid var(--border);margin-bottom:36px;}
+.hdr-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,4.5vw,50px);line-height:1.1;color:var(--ink);}
+.header h1 em{font-style:italic;color:var(--amber);}
+.hdr-sub{margin-top:8px;font-size:12px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.hdr-rule{display:flex;align-items:center;gap:16px;max-width:600px;margin:18px auto 0;}
+.hdr-rule span{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.hdr-rule i{font-style:normal;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--gold);}
+
+/* ── SECTION LABEL ── */
+.sec{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin:40px 0 16px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px;}
+.g23{display:grid;grid-template-columns:2fr 3fr;gap:18px;margin-bottom:20px;}
+.g32{display:grid;grid-template-columns:3fr 2fr;gap:18px;margin-bottom:20px;}
+@media(max-width:1000px){.g3,.g4,.g5{grid-template-columns:1fr 1fr;}.g23,.g32{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g5,.g23,.g32{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 8px 32px var(--shadow);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.rose::before{background:var(--rose);}
+.pc.olive::before{background:var(--olive);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15.5px;margin-bottom:11px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* ── MAP CARDS ── */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.a::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--olive));}
+.mc.b::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc.c::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.d::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc.e::before{background:linear-gradient(90deg,var(--sky),var(--rose),var(--purple));}
+.mc.f::before{background:linear-gradient(90deg,var(--red),var(--rose),var(--purple));}
+.mc svg{display:block;width:100%;}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,0.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,0.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,0.12);color:var(--blue);}
+.pill.amber{background:rgba(212,106,16,0.12);color:var(--amber);}
+.pill.purple{background:rgba(90,26,138,0.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,0.12);color:var(--teal);}
+.pill.red{background:rgba(176,26,26,0.12);color:var(--red);}
+.pill.sky{background:rgba(26,88,120,0.12);color:var(--sky);}
+
+/* ── CHIPS ── */
+.chip{display:inline-block;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(26,106,58,0.07);border-color:rgba(26,106,58,0.2);color:var(--green);}
+.chip.bad{background:rgba(176,26,26,0.07);border-color:rgba(176,26,26,0.2);color:var(--red);}
+.chip.neu{background:rgba(184,124,16,0.07);border-color:rgba(184,124,16,0.2);color:var(--gold);}
+.chip.blue{background:rgba(26,58,138,0.07);border-color:rgba(26,58,138,0.2);color:var(--blue);}
+
+/* ── STAT ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px 10px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;line-height:1;}
+.stat-sub{font-size:10px;font-weight:700;margin-top:3px;}
+.stat-label{font-size:8.5px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;letter-spacing:1px;}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:8px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* ── RATE BADGE ── */
+.rate-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 10px;border-radius:12px;border:2px solid;text-align:center;background:var(--card2);}
+.rate-val{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;line-height:1;}
+.rate-name{font-size:10px;font-weight:800;margin-top:4px;}
+.rate-sub{font-size:8.5px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+
+/* ── IMPACT CHAIN ── */
+.ic{display:flex;align-items:center;flex-wrap:wrap;padding:5px 0;margin:8px 0;gap:0;}
+.ic-node{padding:6px 11px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;white-space:nowrap;}
+.ic-arr{font-size:13px;color:var(--muted);flex:0 0 auto;margin:0 3px;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:26px 32px;margin:24px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:38px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11.5px;color:#c8b880;line-height:1.7;}
+.kpills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:11px;font-family:'DM Mono',monospace;}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,0.025);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+
+/* ── CALLOUT ── */
+.callout{padding:10px 14px;border-radius:9px;margin:8px 0;}
+.callout-title{font-size:11px;font-weight:800;margin-bottom:3px;}
+.callout-body{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* ── CORRIDOR BOX ── */
+.corridor{display:flex;flex-direction:column;gap:0;border-radius:12px;overflow:hidden;border:1.5px solid var(--border);margin:10px 0;}
+.corridor-item{padding:10px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);}
+.corridor-item:last-child{border-bottom:none;}
+.corridor-label{font-size:11px;font-weight:800;}
+.corridor-val{font-family:'DM Mono',monospace;font-size:11px;font-weight:700;}
+
+/* ── COMPARE SPLIT ── */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:12px;overflow:hidden;border:1.5px solid var(--border);}
+.compare-side{padding:14px 16px;}
+.compare-l{background:rgba(26,106,58,0.04);border-right:1px solid var(--border);}
+.compare-r{background:rgba(176,26,26,0.04);}
+.compare-title{font-size:12px;font-weight:800;margin-bottom:8px;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.pc,.mc,.keystone{animation:fadeUp .45s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ══════ HEADER ══════ -->
+<div class="header">
+  <div class="hdr-sup">Indian Economy · RBI · UPSC Prelims</div>
+  <h1>Monetary Policy — <em>Mind Map</em></h1>
+  <div class="hdr-sub">MPC → Inflation Target → Policy Rates → CRR/SLR → OMO → MSS → Sterilization</div>
+  <div class="hdr-rule"><span></span><i>COMPLETE CHAPTER</i><span></span></div>
+</div>
+
+<!-- ══════ SECTION 0: MASTER FLOW ══════ -->
+<div class="sec">Master Flow — 30-Second Revision</div>
+<div class="mc a">
+  <svg id="svgMaster" viewBox="0 0 1340 100" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══════ SECTION 1: WHAT IS MONETARY POLICY ══════ -->
+<div class="sec">① What Is Monetary Policy & Its Objectives</div>
+
+<div class="mc b" style="margin-bottom:20px;">
+  <svg id="svgObj" viewBox="0 0 1340 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">Definition</div>
+    <h3>🏛️ Monetary Policy</h3>
+    <div class="callout" style="background:rgba(184,124,16,0.07);border:1.5px solid rgba(184,124,16,0.2);">
+      <div class="callout-title" style="color:var(--gold);">Core Definition</div>
+      <div class="callout-body" style="font-size:11px;font-weight:600;color:var(--ink2);">Process by which <strong>RBI controls money supply and credit</strong> in the economy to achieve macroeconomic goals.</div>
+    </div>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="pill gold">Lender of Last Resort</span>
+      <span class="pill gold">RBI as Regulator</span>
+      <span class="pill gold">Price Stability</span>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Primary Objective</div>
+    <h3>🎯 Price Stability</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Inflation Target = 4% ± 2%</div><div class="vs">Band: 2% floor to 6% ceiling</div></div>
+      <div class="vitem"><div class="vt">Based on CPI (Combined)</div><div class="vs">Not WPI — very important distinction</div></div>
+      <div class="vitem"><div class="vt">5-Year Review Cycle</div><div class="vs">Govt decides in consultation with RBI</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(176,26,26,0.06);border-radius:8px;border:1px dashed var(--red);font-size:10px;font-weight:700;color:var(--red);">
+      ⚠️ Failure = Inflation &gt;6% OR &lt;2% for 3 consecutive quarters → RBI must report to Govt
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Other Objectives</div>
+    <h3>⚖️ Secondary Goals</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">📈 Economic Growth</div><div class="vs">Support real GDP expansion</div></div>
+      <div class="vitem"><div class="vt">🏦 Financial Stability</div><div class="vs">Prevent banking sector crises</div></div>
+      <div class="vitem"><div class="vt">💱 Exchange Rate</div><div class="vs">Orderly forex market conditions</div></div>
+      <div class="vitem"><div class="vt">💳 Credit Allocation</div><div class="vs">Priority sector lending</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 2: MPC ══════ -->
+<div class="sec">② Monetary Policy Committee (MPC) — 2016</div>
+
+<div class="mc c" style="margin-bottom:20px;">
+  <svg id="svgMPC" viewBox="0 0 1340 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g23">
+  <div class="pc purple">
+    <div class="pc-label">MPC Composition</div>
+    <h3>👥 6-Member Committee</h3>
+    <div class="compare" style="margin-bottom:10px;">
+      <div class="compare-side compare-l">
+        <div class="compare-title" style="color:var(--blue);">🏛️ RBI Members (3)</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">RBI Governor</div><div class="vs">Chairperson + Casting Vote</div></div>
+          <div class="vitem"><div class="vt">Deputy Governor</div><div class="vs">In-charge Monetary Policy</div></div>
+          <div class="vitem"><div class="vt">RBI Officer</div><div class="vs">Nominated by Central Board</div></div>
+        </div>
+      </div>
+      <div class="compare-side compare-r">
+        <div class="compare-title" style="color:var(--amber);">🏛️ Govt Members (3)</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">External Members</div><div class="vs">Experts nominated by Govt</div></div>
+          <div class="vitem"><div class="vt">4-Year Term</div><div class="vs">Not eligible for re-appointment</div></div>
+          <div class="vitem"><div class="vt">Academic/Expert</div><div class="vs">Economics background</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">MPC Key Facts</div>
+    <h3>📋 Critical Prelims Details</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--purple);">6</div>
+        <div class="stat-sub">Total Members</div>
+        <div class="stat-label">3 RBI + 3 GOVT</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">6×</div>
+        <div class="stat-sub">Meetings/Year</div>
+        <div class="stat-label">MIN. 4 REQUIRED</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">4%</div>
+        <div class="stat-sub">Inflation Target</div>
+        <div class="stat-label">± 2% BAND</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">🗳️ MPC Decides Only Repo Rate</div><div class="vs">Not CRR, SLR or other tools</div></div>
+      <div class="vitem"><div class="vt">⚖️ Decision is Binding on RBI</div><div class="vs">Governor cannot override committee decision</div></div>
+      <div class="vitem"><div class="vt">🏛️ Formed in 2016</div><div class="vs">Under amended RBI Act 1934</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 3: POLICY CORRIDOR ══════ -->
+<div class="sec">③ Policy Rates & LAF Corridor</div>
+
+<div class="mc d" style="margin-bottom:20px;">
+  <svg id="svgCorridor" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc red">
+    <div class="pc-label">Floor Rate</div>
+    <div class="rate-badge" style="border-color:var(--red);background:rgba(176,26,26,0.06);">
+      <div class="rate-val" style="color:var(--red);">SDF</div>
+      <div class="rate-name">Standing Deposit Facility</div>
+      <div class="rate-sub">= Repo − 0.25%</div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Introduced: 2022</div><div class="vs">New floor of LAF corridor</div></div>
+      <div class="vitem"><div class="vt">No Collateral Needed</div><div class="vs">RBI absorbs excess liquidity</div></div>
+    </div>
+    <span class="chip bad" style="margin-top:8px;">Absorbs Liquidity</span>
+  </div>
+  <div class="pc gold">
+    <div class="pc-label">Policy Rate</div>
+    <div class="rate-badge" style="border-color:var(--gold);background:rgba(184,124,16,0.08);">
+      <div class="rate-val" style="color:var(--gold);">REPO</div>
+      <div class="rate-name">Repurchase Rate</div>
+      <div class="rate-sub">MPC sets this rate</div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Overnight Lending</div><div class="vs">RBI lends to banks vs. G-secs</div></div>
+      <div class="vitem"><div class="vt">Center of LAF Corridor</div><div class="vs">Benchmark policy signal</div></div>
+    </div>
+    <span class="chip neu" style="margin-top:8px;">Policy Signal Rate</span>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Ceiling Rate</div>
+    <div class="rate-badge" style="border-color:var(--green);background:rgba(26,106,58,0.06);">
+      <div class="rate-val" style="color:var(--green);">MSF</div>
+      <div class="rate-name">Marginal Standing Facility</div>
+      <div class="rate-sub">= Repo + 0.25%</div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Banks Borrow Overnight</div><div class="vs">By dipping into SLR holdings</div></div>
+      <div class="vitem"><div class="vt">Safety Valve</div><div class="vs">Emergency liquidity for banks</div></div>
+    </div>
+    <span class="chip ok" style="margin-top:8px;">Injects Liquidity</span>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Legacy Rates</div>
+    <div class="rate-badge" style="border-color:var(--teal);background:rgba(10,96,112,0.06);">
+      <div class="rate-val" style="color:var(--teal);">Bank Rate</div>
+      <div class="rate-name">= MSF Rate</div>
+      <div class="rate-sub">Penalty calculations</div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">Reverse Repo</div><div class="vs">RBI borrows from banks — now replaced by SDF</div></div>
+      <div class="vitem"><div class="vt">Bank Rate = MSF Rate</div><div class="vs">Used for penalty calculations today</div></div>
+    </div>
+    <span class="chip blue" style="margin-top:8px;">Historical Context</span>
+  </div>
+</div>
+
+<!-- ══════ SECTION 4: RESERVE REQUIREMENTS ══════ -->
+<div class="sec">④ Reserve Requirements — CRR & SLR</div>
+
+<div class="mc e" style="margin-bottom:20px;">
+  <svg id="svgReserves" viewBox="0 0 1340 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc red">
+    <div class="pc-label">Cash Reserve Ratio</div>
+    <h3>🏦 CRR — Kept with RBI</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">NDTL</div>
+        <div class="stat-sub">Base for Calculation</div>
+        <div class="stat-label">NET DEMAND & TIME LIAB.</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--red);">0%</div>
+        <div class="stat-sub">Interest Earned</div>
+        <div class="stat-label">NO RETURN ON CRR</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">📍 Kept With RBI in Cash</div><div class="vs">Physical cash reserves, NOT with banks</div></div>
+      <div class="vitem"><div class="vt">🔴 No Interest Paid by RBI</div><div class="vs">Pure liquidity immobilization</div></div>
+      <div class="vitem"><div class="vt">⬆️ Higher CRR → Less Money to Lend</div><div class="vs">Directly controls money creation</div></div>
+    </div>
+    <div class="ic" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.07);color:var(--red);">CRR ↑</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);">Banks lend less</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);">Money supply ↓</div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Statutory Liquidity Ratio</div>
+    <h3>📋 SLR — Kept with Banks</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">NDTL</div>
+        <div class="stat-sub">Base for Calculation</div>
+        <div class="stat-label">SAME BASE AS CRR</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--amber);">40%</div>
+        <div class="stat-sub">Statutory Ceiling</div>
+        <div class="stat-label">MAXIMUM LIMIT</div>
+      </div>
+    </div>
+    <div class="vlist" style="margin-top:10px;">
+      <div class="vitem"><div class="vt">📍 Kept with Banks Themselves</div><div class="vs">In liquid assets: G-secs, gold, cash</div></div>
+      <div class="vitem"><div class="vt">✅ Earns Interest via G-secs</div><div class="vs">Unlike CRR — banks earn returns</div></div>
+      <div class="vitem"><div class="vt">🔒 Ceiling = 40% of NDTL</div><div class="vs">RBI can raise/lower within this limit</div></div>
+    </div>
+    <table class="ctable" style="margin-top:10px;">
+      <thead><tr><th>FACTOR</th><th>CRR</th><th>SLR</th></tr></thead>
+      <tbody>
+        <tr><td>Kept With</td><td>RBI</td><td>Banks</td></tr>
+        <tr><td>Form</td><td>Cash Only</td><td>G-secs, Gold, Cash</td></tr>
+        <tr><td>Interest</td><td>❌ None</td><td>✅ Earns returns</td></tr>
+        <tr><td>Ceiling</td><td>No limit</td><td>40%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════ SECTION 5: OMO & MSS ══════ -->
+<div class="sec">⑤ Open Market Operations (OMO) & Market Stabilization Scheme (MSS)</div>
+
+<div class="mc f" style="margin-bottom:20px;">
+  <svg id="svgOMO" viewBox="0 0 1340 190" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc olive">
+    <div class="pc-label">Open Market Operations</div>
+    <h3>📊 OMO — Buy/Sell G-Secs</h3>
+    <div class="compare" style="margin-bottom:10px;">
+      <div class="compare-side compare-l">
+        <div class="compare-title" style="color:var(--green);">🟢 RBI Buys Securities</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">Injects Liquidity</div><div class="vs">Money enters banking system</div></div>
+          <div class="vitem"><div class="vt">Expansionary Effect</div><div class="vs">Money supply ↑</div></div>
+        </div>
+        <span class="chip ok" style="margin-top:6px;">Dovish Action</span>
+      </div>
+      <div class="compare-side compare-r">
+        <div class="compare-title" style="color:var(--red);">🔴 RBI Sells Securities</div>
+        <div class="vlist">
+          <div class="vitem"><div class="vt">Absorbs Liquidity</div><div class="vs">Money leaves banking system</div></div>
+          <div class="vitem"><div class="vt">Contractionary Effect</div><div class="vs">Money supply ↓</div></div>
+        </div>
+        <span class="chip bad" style="margin-top:6px;">Hawkish Action</span>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Type 1: Outright OMO</div><div class="vs">Permanent — securities not returned</div></div>
+      <div class="vitem"><div class="vt">Type 2: LAF OMO</div><div class="vs">Temporary — repo/reverse repo based</div></div>
+    </div>
+  </div>
+
+  <div class="pc rose">
+    <div class="pc-label">Market Stabilization Scheme — 2004 🔥</div>
+    <h3>🛡️ MSS — Sterilization Tool</h3>
+    <div style="padding:12px;border-radius:10px;background:rgba(138,26,58,0.07);border:1.5px solid rgba(138,26,58,0.2);margin-bottom:10px;">
+      <div style="font-size:11px;font-weight:800;color:var(--rose);margin-bottom:5px;">The Problem MSS Solves:</div>
+      <div class="ic" style="flex-direction:column;align-items:flex-start;gap:6px;">
+        <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.07);color:var(--red);">Large Capital Inflow (FII, FDI)</div>
+        <div style="padding-left:16px;font-size:10px;color:var(--muted);">↓</div>
+        <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);">RBI prints Rupees to buy dollars</div>
+        <div style="padding-left:16px;font-size:10px;color:var(--muted);">↓</div>
+        <div class="ic-node" style="border-color:var(--purple);background:rgba(90,26,138,0.07);color:var(--purple);">Money Supply ↑ → Inflation Risk</div>
+      </div>
+    </div>
+    <div class="callout" style="background:rgba(26,106,58,0.07);border:1.5px solid rgba(26,106,58,0.2);">
+      <div class="callout-title" style="color:var(--green);">✅ MSS Solution:</div>
+      <div class="callout-body">RBI issues <strong>special govt. securities</strong> → absorbs surplus liquidity → funds kept in <strong>separate MSS account</strong> with RBI (not used for spending).</div>
+    </div>
+    <div style="margin-top:8px;padding:8px 12px;background:rgba(26,58,138,0.07);border-radius:8px;border:1px solid rgba(26,58,138,0.2);font-size:10px;font-weight:700;color:var(--blue);">
+      📌 MSS = Sterilization = Neutralize inflationary impact of capital inflows
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 6: LTRO & TLTRO ══════ -->
+<div class="sec">⑥ LTRO, TLTRO & Liquidity Adjustment Facility</div>
+
+<div class="g3">
+  <div class="pc teal">
+    <div class="pc-label">LAF Framework</div>
+    <h3>🔄 Liquidity Adjustment Facility</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Daily Liquidity Management</div><div class="vs">Core framework for short-term rates</div></div>
+      <div class="vitem"><div class="vt">Corridor: SDF → Repo → MSF</div><div class="vs">Floor to ceiling rate structure</div></div>
+    </div>
+    <div class="corridor" style="margin-top:10px;">
+      <div class="corridor-item" style="background:rgba(26,106,58,0.06);">
+        <span class="corridor-label" style="color:var(--green);">🟢 MSF (Ceiling)</span>
+        <span class="corridor-val" style="color:var(--green);">Repo + 0.25%</span>
+      </div>
+      <div class="corridor-item" style="background:rgba(184,124,16,0.06);">
+        <span class="corridor-label" style="color:var(--gold);">⭐ REPO (Center)</span>
+        <span class="corridor-val" style="color:var(--gold);">Policy Rate</span>
+      </div>
+      <div class="corridor-item" style="background:rgba(176,26,26,0.06);">
+        <span class="corridor-label" style="color:var(--red);">🔴 SDF (Floor)</span>
+        <span class="corridor-val" style="color:var(--red);">Repo − 0.25%</span>
+      </div>
+    </div>
+    <div style="margin-top:8px;font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);">Previously: Reverse Repo was floor (replaced by SDF in 2022)</div>
+  </div>
+  <div class="pc sky">
+    <div class="pc-label">Long-Term Repo Operations</div>
+    <h3>📅 LTRO</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">RBI Lends Long-Term Funds</div><div class="vs">At repo rate (not overnight)</div></div>
+      <div class="vitem"><div class="vt">Improves Rate Transmission</div><div class="vs">Repo cuts reach economy faster</div></div>
+      <div class="vitem"><div class="vt">Boosts Long-Term Credit</div><div class="vs">Banks can lend at lower rates</div></div>
+    </div>
+    <div class="ic" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--sky);background:rgba(26,88,120,0.07);color:var(--sky);font-size:10px;">LTRO</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);font-size:10px;">Banks borrow cheap</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);font-size:10px;">Credit ↑</div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Targeted LTRO</div>
+    <h3>🎯 TLTRO</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Sector-Specific Funding</div><div class="vs">e.g. MSMEs, NBFCs, specific industries</div></div>
+      <div class="vitem"><div class="vt">Used During COVID-19</div><div class="vs">To channel credit to stressed sectors</div></div>
+      <div class="vitem"><div class="vt">Conditions Apply</div><div class="vs">Banks must invest in targeted sectors</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(90,26,138,0.07);border-radius:8px;border:1px dashed var(--purple);font-size:10px;color:var(--purple);font-weight:700;">
+      🔥 TLTRO = LTRO + Sector Targeting
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 7: EXPANSIONARY vs CONTRACTIONARY ══════ -->
+<div class="sec">⑦ Expansionary vs Contractionary Policy</div>
+
+<div class="mc a" style="margin-bottom:20px;">
+  <svg id="svgPolicy" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Expansionary · Easy Money · Dovish</div>
+    <h3>🟢 Increase Money Supply</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">↓</div><div class="stat-sub">Repo Rate</div><div class="stat-label">CHEAPER LOANS</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">↓</div><div class="stat-sub">CRR</div><div class="stat-label">MORE LENDABLE FUNDS</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green);">BUY</div><div class="stat-sub">OMO</div><div class="stat-label">INJECT LIQUIDITY</div></div>
+    </div>
+    <div class="ic" style="margin-top:12px;">
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,0.07);color:var(--green);">Repo ↓</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);">Loans cheap</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,0.07);color:var(--blue);">Credit ↑</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--olive);background:rgba(74,96,16,0.07);color:var(--olive);">Growth ↑</div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(26,106,58,0.07);border-radius:8px;border:1px solid rgba(26,106,58,0.2);font-size:11px;font-weight:700;color:var(--green);">
+      📍 Used During: Recession / Slow Growth / Deflationary Pressure
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">Contractionary · Tight Money · Hawkish</div>
+    <h3>🔴 Decrease Money Supply</h3>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">↑</div><div class="stat-sub">Repo Rate</div><div class="stat-label">COSTLIER LOANS</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">↑</div><div class="stat-sub">CRR</div><div class="stat-label">LESS LENDABLE FUNDS</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red);">SELL</div><div class="stat-sub">OMO</div><div class="stat-label">ABSORB LIQUIDITY</div></div>
+    </div>
+    <div class="ic" style="margin-top:12px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(176,26,26,0.07);color:var(--red);">Repo ↑</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(212,106,16,0.07);color:var(--amber);">Loans costly</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--purple);background:rgba(90,26,138,0.07);color:var(--purple);">Credit ↓</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--teal);background:rgba(10,96,112,0.07);color:var(--teal);">Inflation ↓</div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(176,26,26,0.07);border-radius:8px;border:1px solid rgba(176,26,26,0.2);font-size:11px;font-weight:700;color:var(--red);">
+      📍 Used During: High Inflation / Overheating Economy
+    </div>
+  </div>
+</div>
+
+<!-- ══════ SECTION 8: QUICK REVISION ══════ -->
+<div class="sec">⑧ High-Probability Prelims Points</div>
+
+<div class="g3">
+  <div class="pc gold">
+    <div class="pc-label">MPC & Target</div>
+    <h3>🔥 Must-Know Facts</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip ok">✅ Inflation Target = 4% ± 2%</span>
+      <span class="chip ok">✅ Based on CPI Combined</span>
+      <span class="chip ok">✅ MPC = 6 members (3+3)</span>
+      <span class="chip ok">✅ Governor has Casting Vote</span>
+      <span class="chip ok">✅ Meets 6 times/year</span>
+      <span class="chip ok">✅ MPC decides ONLY Repo Rate</span>
+      <span class="chip ok">✅ Valid till March 2026</span>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Rates & Tools</div>
+    <h3>🔥 Rate Relationships</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip ok">✅ Repo = Policy Rate</span>
+      <span class="chip ok">✅ SDF = Repo − 0.25%</span>
+      <span class="chip ok">✅ MSF = Repo + 0.25%</span>
+      <span class="chip ok">✅ Bank Rate = MSF Rate</span>
+      <span class="chip ok">✅ SDF introduced 2022</span>
+      <span class="chip ok">✅ SDF: No collateral</span>
+      <span class="chip ok">✅ Corridor: SDF–Repo–MSF</span>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Reserves & Operations</div>
+    <h3>🔥 Common Trap Questions</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <span class="chip ok">✅ CRR → With RBI (no interest)</span>
+      <span class="chip ok">✅ SLR → With Banks (earns interest)</span>
+      <span class="chip ok">✅ SLR Ceiling = 40%</span>
+      <span class="chip ok">✅ OMO Buy = Inject liquidity</span>
+      <span class="chip ok">✅ MSS introduced 2004</span>
+      <span class="chip ok">✅ MSS = Sterilization tool</span>
+      <span class="chip ok">✅ Sterilization = Capital inflow offset</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ KEYSTONE ══════ -->
+<div class="keystone">
+  <div class="keystone-icon">🏛️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Story</div>
+    <div class="keystone-sub">
+      RBI controls money → <strong style="color:#f5d78a;">MPC sets Repo Rate</strong> → Repo affects all lending rates → <strong style="color:#f5d78a;">CRR & SLR</strong> control how much banks can lend from deposits → <strong style="color:#f5d78a;">OMO</strong> buys/sells securities to manage daily liquidity → <strong style="color:#f5d78a;">MSS sterilizes</strong> capital inflows to prevent inflation → All tools combine into either <strong style="color:#f5d78a;">Expansionary (Dovish)</strong> or <strong style="color:#f5d78a;">Contractionary (Hawkish)</strong> policy stance.
+    </div>
+    <div class="kpills">
+      <span class="kpill">🎯 4% ± 2% CPI Target</span>
+      <span class="kpill">👥 MPC = 6 Members</span>
+      <span class="kpill">📊 SDF–Repo–MSF Corridor</span>
+      <span class="kpill">🏦 CRR vs SLR</span>
+      <span class="kpill">🔄 OMO Liquidity</span>
+      <span class="kpill">🛡️ MSS 2004</span>
+      <span class="kpill">🟢🔴 Dove vs Hawk</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(t,a){const e=document.createElementNS(NS,t);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,col,dash,w){
+  const mx=(x1+x2)/2;
+  svg.appendChild(se('path',{
+    d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:col||'#bbb','stroke-width':w||1.8,
+    fill:'none','stroke-dasharray':dash?'5 4':'none',opacity:'0.65'
+  }));
+}
+
+function line(svg,x1,y1,x2,y2,col,dash,w){
+  svg.appendChild(se('line',{x1,y1,x2,y2,stroke:col||'#bbb','stroke-width':w||1.8,'stroke-dasharray':dash?'5 4':'none',opacity:'0.65'}));
+}
+
+function getDefs(svg){
+  let d=svg.querySelector('defs');
+  if(!d){d=se('defs',{});svg.insertBefore(d,svg.firstChild);}
+  return d;
+}
+
+function arrow(svg,x1,y1,x2,y2,col){
+  const id='a'+Math.random().toString(36).slice(2,6);
+  const m=se('marker',{id,markerWidth:'8',markerHeight:'8',refX:'7',refY:'3',orient:'auto'});
+  m.appendChild(se('path',{d:'M0,0 L0,6 L8,3 z',fill:col||'#aaa'}));
+  getDefs(svg).appendChild(m);
+  svg.appendChild(se('path',{d:`M${x1},${y1} L${x2},${y2}`,stroke:col||'#aaa','stroke-width':'2',fill:'none','marker-end':`url(#${id})`}));
+}
+
+function arrowCurve(svg,x1,y1,x2,y2,col){
+  const id='ac'+Math.random().toString(36).slice(2,6);
+  const m=se('marker',{id,markerWidth:'8',markerHeight:'8',refX:'7',refY:'3',orient:'auto'});
+  m.appendChild(se('path',{d:'M0,0 L0,6 L8,3 z',fill:col||'#aaa'}));
+  getDefs(svg).appendChild(m);
+  const mx=(x1+x2)/2;
+  svg.appendChild(se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,stroke:col||'#aaa','stroke-width':'2',fill:'none',opacity:'0.75','marker-end':`url(#${id})`}));
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,tc,rx){
+  tc=tc||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.2)','stroke-width':'1.5'}));
+  let ty=y;
+  const lh=15, total=(emoji?18:0)+lines.length*lh+(sub?13:0);
+  ty=y-total/2+8;
+  if(emoji){
+    const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:tc});
+    em.textContent=emoji;g.appendChild(em);ty+=18;
+  }
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*lh,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:tc});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){
+    const s=se('text',{x,y:ty+lines.length*lh,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:tc==='#fff'?'rgba(255,255,255,0.52)':'rgba(0,0,0,0.42)'});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+function label(svg,x,y,text,col,fs,ls){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':fs||'9','font-family':'DM Mono,monospace',fill:col||'rgba(120,100,60,0.45)','letter-spacing':ls||'2'});
+  t.textContent=text;svg.appendChild(t);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const W=1340;
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:100,fill:'rgba(248,245,238,0.4)'}));
+  const steps=[
+    {x:75,  fill:'#b01a1a', label:'RBI Controls',   sub:'Money & Credit',   emoji:'🏛️'},
+    {x:225, fill:'#b87c10', label:'MPC Sets',        sub:'Repo Rate (6×/yr)',emoji:'👥'},
+    {x:375, fill:'#1a3a8a', label:'Policy Rates',    sub:'SDF–Repo–MSF',    emoji:'📊'},
+    {x:525, fill:'#5a1a8a', label:'CRR & SLR',       sub:'Reserve Controls', emoji:'🏦'},
+    {x:675, fill:'#0a6070', label:'OMO',              sub:'Buy/Sell G-secs',  emoji:'🔄'},
+    {x:825, fill:'#8a1a3a', label:'MSS',              sub:'Sterilization',    emoji:'🛡️'},
+    {x:985, fill:'#1a6a3a', label:'Expansionary',    sub:'Dovish · Growth',  emoji:'🟢'},
+    {x:1145,fill:'#b01a1a', label:'Contractionary',  sub:'Hawkish · Inflation↓',emoji:'🔴'},
+    {x:1280,fill:'#1a5878', label:'Price Stable',    sub:'4% ± 2% CPI',     emoji:'🎯'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const x1=s.x+56,x2=steps[i+1].x-56;
+      arrowCurve(svg,x1,50,x2,50,'rgba(180,155,80,0.55)');
+    }
+    node(svg,s.x,50,106,64,s.fill,[s.label],s.sub,s.emoji,'#fff',8);
+  });
+  label(svg,W/2,96,'MASTER FLOW: RBI → MPC → RATES → RESERVES → OMO → MSS → POLICY OUTCOME','rgba(100,80,40,0.4)','8.5','2.5');
+})();
+
+// ─── OBJECTIVES RADIAL ───
+(function(){
+  const svg=document.getElementById('svgObj');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:190,fill:'rgba(248,245,238,0.3)'}));
+  node(svg,670,95,200,58,'#14110d',['Monetary Policy','Objectives'],'RBI Core Goals','🏛️');
+
+  const items=[
+    {x:100, y:55,  fill:'#1a6a3a', label:['Price Stability'],     sub:'Primary objective',    emoji:'🎯'},
+    {x:290, y:40,  fill:'#b87c10', label:['4% ± 2% CPI'],         sub:'Inflation target band',emoji:'📊'},
+    {x:100, y:148, fill:'#1a3a8a', label:['Economic Growth'],     sub:'Secondary goal',       emoji:'📈'},
+    {x:290, y:155, fill:'#5a1a8a', label:['Financial Stability'], sub:'Banking system safety',emoji:'🏦'},
+    {x:1240,y:55,  fill:'#d46a10', label:['CPI Combined'],         sub:'Benchmark used (not WPI)',emoji:'📋'},
+    {x:1055,y:40,  fill:'#0a6070', label:['5-Year Review'],        sub:'Govt sets target',     emoji:'🗓️'},
+    {x:1240,y:148, fill:'#b01a1a', label:['Failure Triggers'],    sub:'>6% or <2% for 3Qs',  emoji:'⚠️'},
+    {x:1055,y:155, fill:'#1a5878', label:['Forex Stability'],     sub:'Orderly markets',      emoji:'💱'},
+  ];
+  items.forEach(n=>{
+    const cx=n.x<670?582:758;
+    arrowCurve(svg,cx,95,n.x+(n.x<670?88:-88),n.y,'rgba(180,150,80,0.35)');
+    node(svg,n.x,n.y,172,52,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+})();
+
+// ─── MPC DIAGRAM ───
+(function(){
+  const svg=document.getElementById('svgMPC');
+  svg.appendChild(se('rect',{x:0,y:0,width:1340,height:180,fill:'rgba(248,245,238,0.3)'}));
+  // Center: MPC
+  node(svg,670,90,190,56,'#5a1a8a',['MPC','Monetary Policy Committee'],'Formed 2016 · 6 Members','👥');
+
+  // 3 RBI members on left
+  const rbi=[
+    {x:140, y:50,  fill:'#1a3a8a', label:['RBI Governor'],    sub:'Chair + Casting Vote',      emoji:'⭐'},
+    {x:140, y:110, fill:'#1a5878', label:['Deputy Governor'], sub:'Monetary Policy in-charge',  emoji:'🏛️'},
+    {x:140, y:165, fill:'#0a6070', label:['RBI Officer'],     sub:'Nominated by Central Board', emoji:'🔖'},
+  ];
+  // 3 Govt members on right
+  const govt=[
+    {x:1200,y:50,  fill:'#d46a10', label:['External Expert 1'],sub:'Govt nominated, 4-yr term', emoji:'🎓'},
+    {x:1200,y:110, fill:'#b87c10', label:['External Expert 2'],sub:'Economics background',      emoji:'📊'},
+    {x:1200,y:165, fill:'#8a6010', label:['External Expert 3'],sub:'Not re-eligible',           emoji:'📋'},
+  ];
+  // Key facts top
+  const facts=[
+    {x:380, y:30,  fill:'#1a6a3a', label:['Meets 6×/year'],   sub:'Min 4 mandated',     emoji:'📅'},
+    {x:550, y:25,  fill:'#b01a1a', label:['Binding Decision'],sub:'Cannot be overridden',emoji:'⚖️'},
+    {x:790, y:25,  fill:'#5a1a8a', label:['Only Repo Rate'],  sub:'MPC decides this',   emoji:'💹'},
+    {x:960, y:30,  fill:'#0a6070', label:['Majority Vote'],   sub:'4 of 6 to decide',   emoji:'🗳️'},
+  ];
+
+  rbi.forEach(n=>{
+    arrowCurve(svg,576,90,n.x+88,n.y,'#1a3a8a55');
+    node(svg,n.x,n.y,170,48,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+  govt.forEach(n=>{
+    arrowCurve(svg,764,90,n.x-88,n.y,'#d46a1055');
+    node(svg,n.x,n.y,170,48,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+  facts.forEach(n=>{
+    node(svg,n.x,n.y,160,44,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+
+  label(svg,670,176,'MPC: 3 RBI MEMBERS (LEFT) + 3 GOVERNMENT-NOMINATED MEMBERS (RIGHT) = 6 TOTAL','rgba(100,80,40,0.4)','8.5','1.5');
+})();
+
+// ─── CORRIDOR DIAGRAM ───
+(function(){
+  const svg=document.getElementById('svgCorridor');
+  const W=1340,H=200;
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:H,fill:'rgba(248,245,238,0.3)'}));
+
+  // Visual corridor bar (center)
+  const bx=480,by=30,bw=380,bh=140;
+
+  // Gradient defs
+  const defs=getDefs(svg);
+  const g=se('linearGradient',{id:'corrGrad',x1:'0',y1:'0',x2:'0',y2:'1'});
+  g.appendChild(se('stop',{offset:'0%','stop-color':'#1a6a3a','stop-opacity':'0.15'}));
+  g.appendChild(se('stop',{offset:'50%','stop-color':'#b87c10','stop-opacity':'0.12'}));
+  g.appendChild(se('stop',{offset:'100%','stop-color':'#b01a1a','stop-opacity':'0.15'}));
+  defs.appendChild(g);
+
+  // Corridor zones
+  svg.appendChild(se('rect',{x:bx,y:by,width:bw,height:bh/3,rx:4,fill:'rgba(26,106,58,0.12)',stroke:'rgba(26,106,58,0.2)','stroke-width':'1'}));
+  svg.appendChild(se('rect',{x:bx,y:by+bh/3,width:bw,height:bh/3,rx:0,fill:'rgba(184,124,16,0.12)',stroke:'rgba(184,124,16,0.2)','stroke-width':'1'}));
+  svg.appendChild(se('rect',{x:bx,y:by+2*bh/3,width:bw,height:bh/3,rx:4,fill:'rgba(176,26,26,0.12)',stroke:'rgba(176,26,26,0.2)','stroke-width':'1'}));
+
+  // Labels inside corridor
+  function corrLabel(x,y,text,val,col){
+    const t1=se('text',{x,y:''+y,'text-anchor':'middle','font-size':'12','font-weight':'800','font-family':'Nunito,sans-serif',fill:col});
+    t1.textContent=text;svg.appendChild(t1);
+    const t2=se('text',{x,y:''+(y+14),'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace',fill:col,opacity:'0.75'});
+    t2.textContent=val;svg.appendChild(t2);
+  }
+  corrLabel(bx+bw/2, by+bh/6+4, 'MSF (Ceiling)', 'Repo + 0.25%', '#1a6a3a');
+  corrLabel(bx+bw/2, by+bh/2+4, 'REPO (Policy Rate)', 'MPC Decision', '#b87c10');
+  corrLabel(bx+bw/2, by+5*bh/6+4, 'SDF (Floor)', 'Repo − 0.25%', '#b01a1a');
+
+  // Bracket lines
+  svg.appendChild(se('line',{x1:bx+bw+10,y1:by,x2:bx+bw+10,y2:by+bh,stroke:'#888','stroke-width':'1.5'}));
+  svg.appendChild(se('line',{x1:bx+bw+10,y1:by+bh/2,x2:bx+bw+22,y2:by+bh/2,stroke:'#888','stroke-width':'1.5'}));
+  label(svg,bx+bw+80,by+bh/2,'LAF CORRIDOR','rgba(100,80,40,0.6)','8','2');
+
+  // Left side detail nodes
+  const lefts=[
+    {x:200,y:50,  fill:'#b01a1a', label:['SDF — 2022'],         sub:'No collateral required',  emoji:'🔴'},
+    {x:200,y:100, fill:'#b87c10', label:['Repo Rate'],           sub:'Overnight vs G-secs',     emoji:'⭐'},
+    {x:200,y:150, fill:'#1a6a3a', label:['MSF Rate'],            sub:'Banks dip into SLR',      emoji:'🟢'},
+  ];
+  lefts.forEach((n,i)=>{
+    line(svg,n.x+84,n.y,bx,by+i*bh/3+bh/6,'rgba(150,130,80,0.35)',true,1.5);
+    node(svg,n.x,n.y,158,48,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+
+  // Right side: absorbs/injects
+  const rights=[
+    {x:1060,y:50, fill:'#1a6a3a', label:['Inject Liquidity'],   sub:'Banks borrow from RBI',   emoji:'💉'},
+    {x:1060,y:100,fill:'#b87c10', label:['Rate Transmission'],  sub:'Repo moves all rates',    emoji:'📡'},
+    {x:1060,y:150,fill:'#b01a1a', label:['Absorb Liquidity'],   sub:'RBI absorbs surplus cash',emoji:'🧲'},
+  ];
+  rights.forEach((n,i)=>{
+    line(svg,bx+bw,by+i*bh/3+bh/6,n.x-84,n.y,'rgba(150,130,80,0.35)',true,1.5);
+    node(svg,n.x,n.y,158,48,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+
+  label(svg,W/2,192,'LAF CORRIDOR: SDF (FLOOR) — REPO (CENTER / POLICY RATE) — MSF (CEILING)','rgba(100,80,40,0.4)','8.5','2');
+})();
+
+// ─── RESERVES DIAGRAM ───
+(function(){
+  const svg=document.getElementById('svgReserves');
+  const W=1340,H=180;
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:H,fill:'rgba(248,245,238,0.3)'}));
+
+  // Center split
+  node(svg,W/2,90,200,56,'#14110d',['Reserve','Requirements'],'Fractional Banking','🏦');
+
+  // CRR branch (left)
+  const crrItems=[
+    {x:120, y:40,  fill:'#b01a1a', label:['CRR'],              sub:'Cash Reserve Ratio',     emoji:'💵'},
+    {x:120, y:95,  fill:'#8a1a1a', label:['Kept with RBI'],    sub:'Physical cash, no return',emoji:'🏛️'},
+    {x:120, y:150, fill:'#6a1010', label:['Controls Credit'],  sub:'Money creation check',   emoji:'🔒'},
+  ];
+  // SLR branch (right)
+  const slrItems=[
+    {x:1220,y:40,  fill:'#d46a10', label:['SLR'],              sub:'Statutory Liquidity Ratio',emoji:'📋'},
+    {x:1220,y:95,  fill:'#a04a10', label:['Kept with Banks'],  sub:'G-secs, gold, cash',      emoji:'🏦'},
+    {x:1220,y:150, fill:'#7a3a10', label:['Ceiling = 40%'],   sub:'Earns interest (unlike CRR)',emoji:'📈'},
+  ];
+  // NDTL top center
+  node(svg,W/2,25,240,36,'#1a3a8a',['NDTL = Net Demand & Time Liabilities'],'Base for both CRR and SLR calculation','');
+
+  crrItems.forEach((n,i)=>{
+    arrowCurve(svg,570,90,n.x+84,n.y,'#b01a1a55');
+    node(svg,n.x,n.y,162,48,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+  slrItems.forEach((n,i)=>{
+    arrowCurve(svg,770,90,n.x-84,n.y,'#d46a1055');
+    node(svg,n.x,n.y,162,48,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+
+  // midpoint comparison badge
+  const compItems=[
+    {x:430,y:50, fill:'rgba(176,26,26,0.08)', border:'#b01a1a', text:'CRR ↑ → Money ↓', col:'#b01a1a'},
+    {x:430,y:90, fill:'rgba(176,26,26,0.08)', border:'#b01a1a', text:'Higher CRR = tighter policy', col:'#b01a1a'},
+    {x:910,y:50, fill:'rgba(26,106,58,0.08)', border:'#1a6a3a', text:'SLR ↑ → Less lending', col:'#1a6a3a'},
+    {x:910,y:90, fill:'rgba(26,106,58,0.08)', border:'#1a6a3a', text:'SLR = Liquidity buffer', col:'#1a6a3a'},
+  ];
+  compItems.forEach(c=>{
+    const w=170,h=28;
+    svg.appendChild(se('rect',{x:c.x-w/2,y:c.y-h/2,width:w,height:h,rx:7,fill:c.fill,stroke:c.border,'stroke-width':'1'}));
+    const t=se('text',{x:c.x,y:c.y,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'700','font-family':'Nunito,sans-serif',fill:c.col});
+    t.textContent=c.text;svg.appendChild(t);
+  });
+
+  label(svg,W/2,175,'CRR: KEPT WITH RBI (NO INTEREST) ← VS → SLR: KEPT WITH BANKS IN G-SECS/GOLD (EARNS INTEREST)','rgba(100,80,40,0.4)','8.5','1.5');
+})();
+
+// ─── OMO & MSS ───
+(function(){
+  const svg=document.getElementById('svgOMO');
+  const W=1340,H=190;
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:H,fill:'rgba(248,245,238,0.3)'}));
+
+  // Two root nodes side by side
+  node(svg,335,95,200,56,'#4a6010',['Open Market','Operations (OMO)'],'RBI Buys/Sells G-secs','📊');
+  node(svg,1005,95,200,56,'#8a1a3a',['Market Stabilization','Scheme (MSS 2004)'],'Sterilization Tool','🛡️');
+
+  // OMO children
+  const omoL=[
+    {x:80,  y:45,  fill:'#1a6a3a', label:['OMO Buy'],         sub:'Injects liquidity',    emoji:'🟢'},
+    {x:80,  y:145, fill:'#b01a1a', label:['OMO Sell'],        sub:'Absorbs liquidity',    emoji:'🔴'},
+    {x:210, y:20,  fill:'#0a6070', label:['Outright OMO'],    sub:'Permanent transfer',   emoji:'♾️'},
+    {x:210, y:170, fill:'#5a1a8a', label:['LAF OMO'],         sub:'Repo/Rev-repo based',  emoji:'🔄'},
+  ];
+  omoL.forEach(n=>{
+    arrowCurve(svg,235,95,n.x+78,n.y,'rgba(74,96,16,0.45)');
+    node(svg,n.x,n.y,148,44,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+
+  // MSS chain (right side)
+  const mssChain=[
+    {x:720,  y:45,  fill:'#b01a1a', label:['Capital Inflow'],    sub:'FII/FDI in large amounts',  emoji:'💰'},
+    {x:720,  y:115, fill:'#d46a10', label:['RBI Prints ₹'],      sub:'Buys foreign currency',     emoji:'🖨️'},
+    {x:720,  y:170, fill:'#b87c10', label:['Money Supply ↑'],    sub:'Inflation risk created',    emoji:'🔺'},
+    {x:1220, y:45,  fill:'#1a6a3a', label:['Special G-secs'],   sub:'MSS securities issued',     emoji:'📋'},
+    {x:1220, y:115, fill:'#1a6a3a', label:['Liquidity Absorbed'],sub:'Surplus money withdrawn',  emoji:'🧲'},
+    {x:1220, y:170, fill:'#1a5878', label:['Separate Account'], sub:'MSS funds not for spending',emoji:'🏛️'},
+  ];
+
+  // Arrows for problem chain
+  for(let i=0;i<2;i++) arrowCurve(svg,720,45+i*70+22,720,45+(i+1)*70-22,'rgba(184,26,26,0.5)');
+  mssChain.slice(0,3).forEach(n=>{
+    arrowCurve(svg,905,95,n.x+74,n.y,'rgba(138,26,58,0.4)');
+    node(svg,n.x,n.y,144,44,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+  // Arrows for solution chain
+  for(let i=0;i<2;i++) arrowCurve(svg,1220,45+i*70+22,1220,45+(i+1)*70-22,'rgba(26,106,58,0.5)');
+  mssChain.slice(3).forEach(n=>{
+    arrowCurve(svg,1105,95,n.x-74,n.y,'rgba(26,106,58,0.4)');
+    node(svg,n.x,n.y,144,44,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+
+  // Problem → Solution arrow
+  arrowCurve(svg,800,95,930,95,'rgba(80,60,20,0.5)');
+  const mid=se('rect',{x:840,y:82,width:52,height:26,rx:6,fill:'rgba(184,124,16,0.15)',stroke:'rgba(184,124,16,0.4)','stroke-width':'1'});
+  svg.appendChild(mid);
+  const mt=se('text',{x:866,y:95,'text-anchor':'middle','dominant-baseline':'middle','font-size':'9','font-weight':'800','font-family':'DM Mono,monospace',fill:'#b87c10'});
+  mt.textContent='SOLVED BY';svg.appendChild(mt);
+
+  label(svg,335,185,'OMO: BUY = INJECT LIQUIDITY | SELL = ABSORB LIQUIDITY','rgba(74,96,16,0.5)','8.5','2');
+  label(svg,1005,185,'MSS 2004: STERILIZATION = NEUTRALIZE INFLATIONARY IMPACT OF CAPITAL INFLOWS','rgba(138,26,58,0.5)','8.5','1.5');
+})();
+
+// ─── EXPANSIONARY vs CONTRACTIONARY ───
+(function(){
+  const svg=document.getElementById('svgPolicy');
+  const W=1340,H=200;
+  svg.appendChild(se('rect',{x:0,y:0,width:W,height:H,fill:'rgba(248,245,238,0.3)'}));
+
+  // Center divider
+  node(svg,W/2,100,210,58,'#14110d',['Policy','Stance'],'Dovish vs Hawkish','⚖️');
+  svg.appendChild(se('line',{x1:W/2,y1:10,x2:W/2,y2:190,stroke:'rgba(200,180,140,0.3)','stroke-width':'1','stroke-dasharray':'5 3'}));
+
+  // LEFT: Expansionary
+  const exp=[
+    {x:110, y:45,  fill:'#1a6a3a', label:['Repo ↓'],           sub:'Cheaper borrowing',     emoji:'⬇️'},
+    {x:110, y:100, fill:'#0a6070', label:['CRR ↓'],             sub:'More funds to lend',    emoji:'⬇️'},
+    {x:110, y:155, fill:'#1a3a8a', label:['OMO Buy'],           sub:'Inject liquidity',      emoji:'🟢'},
+    {x:290, y:30,  fill:'#2a8a4a', label:['SLR ↓'],            sub:'Banks lend more',       emoji:'📉'},
+    {x:290, y:80,  fill:'#1a5878', label:['LTRO'],              sub:'Long-term cheap funds', emoji:'📅'},
+    {x:290, y:155, fill:'#3a6a1a', label:['Growth ↑'],         sub:'Expansionary outcome',  emoji:'📈'},
+  ];
+  // RIGHT: Contractionary
+  const con=[
+    {x:1230,y:45,  fill:'#b01a1a', label:['Repo ↑'],           sub:'Costlier borrowing',    emoji:'⬆️'},
+    {x:1230,y:100, fill:'#8a1a1a', label:['CRR ↑'],            sub:'Less funds to lend',    emoji:'⬆️'},
+    {x:1230,y:155, fill:'#b01a5a', label:['OMO Sell'],         sub:'Absorb liquidity',      emoji:'🔴'},
+    {x:1055,y:30,  fill:'#d46a10', label:['SLR ↑'],            sub:'Banks hold more',       emoji:'📈'},
+    {x:1055,y:80,  fill:'#b87c10', label:['MSS Issue'],        sub:'Sterilize surplus',     emoji:'🛡️'},
+    {x:1055,y:155, fill:'#b03010', label:['Inflation ↓'],      sub:'Contractionary result', emoji:'📉'},
+  ];
+
+  // Context badges
+  const badge=(x,y,text,col)=>{
+    const w=160,h=28;
+    svg.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:7,fill:'rgba(255,255,255,0.6)',stroke:col,'stroke-width':'1.5'}));
+    const t=se('text',{x,y,'text-anchor':'middle','dominant-baseline':'middle','font-size':'10','font-weight':'800','font-family':'Nunito,sans-serif',fill:col});
+    t.textContent=text;svg.appendChild(t);
+  };
+  badge(200,185,'RECESSION/SLOW GROWTH','#1a6a3a');
+  badge(1140,185,'HIGH INFLATION','#b01a1a');
+
+  exp.forEach(n=>{
+    arrowCurve(svg,575,100,n.x+74,n.y,'rgba(26,106,58,0.4)');
+    node(svg,n.x,n.y,152,46,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+  con.forEach(n=>{
+    arrowCurve(svg,765,100,n.x-74,n.y,'rgba(176,26,26,0.4)');
+    node(svg,n.x,n.y,152,46,n.fill,[n.label[0]],n.sub,n.emoji,'#fff',9);
+  });
+
+  // Labels at top
+  label(svg,280,14,'🟢 EXPANSIONARY · EASY MONEY · DOVISH','rgba(26,106,58,0.6)','9.5','1.5');
+  label(svg,1060,14,'🔴 CONTRACTIONARY · TIGHT MONEY · HAWKISH','rgba(176,26,26,0.6)','9.5','1.5');
+})();
+</script>
+</body>
+</html>

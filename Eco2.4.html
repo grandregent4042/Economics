@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Supply — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0e0c;
+  --paper:#faf8f3;
+  --cream:#f2ede0;
+  --gold:#c8890a;
+  --gold-lt:#f7e8b0;
+  --amber:#e07010;
+  --teal:#0a7a6a;
+  --blue:#1a4a8a;
+  --purple:#6a1a9a;
+  --red:#c01a1a;
+  --green:#0a7040;
+  --muted:#8a7a60;
+  --border:#ddd0b0;
+  --card:#fffdf7;
+  --card2:#f5f0e4;
+  --sky:#0a5878;
+  --rose:#a02040;
+}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 800px 600px at 10% 0%, rgba(200,137,10,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 600px 800px at 90% 100%, rgba(26,74,138,0.06) 0%, transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+}
+.wrap{position:relative;z-index:1;max-width:1380px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+.hdr{text-align:center;padding:48px 16px 24px;position:relative;}
+.hdr-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Libre Baskerville',serif;font-size:clamp(28px,4.5vw,52px);line-height:1.1;color:var(--ink);}
+.hdr h1 em{font-style:italic;color:var(--gold);}
+.hdr-sub{margin-top:10px;font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1.5px;}
+.hdr::after{content:'';display:block;width:100px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--teal));margin:16px auto 0;border-radius:3px;}
+
+/* SECTION LABELS */
+.slabel{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:36px 0 16px;display:flex;align-items:center;gap:14px;}
+.slabel::before,.slabel::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px;}
+@media(max-width:1000px){.g3,.g4,.g5{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g5{grid-template-columns:1fr;}}
+
+/* PANEL CARDS */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.c-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.c-blue::before{background:var(--blue);}
+.pc.c-teal::before{background:var(--teal);}
+.pc.c-green::before{background:var(--green);}
+.pc.c-red::before{background:var(--red);}
+.pc.c-purple::before{background:var(--purple);}
+.pc.c-sky::before{background:var(--sky);}
+.pc.c-amber::before{background:var(--amber);}
+.pc-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:7px;}
+.pc h3{font-family:'Libre Baskerville',serif;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.35;}
+
+/* SVG MAP CARD */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:28px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.mc-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--teal));}
+.mc.mc-blue::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.mc.mc-green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.mc.mc-red::before{background:linear-gradient(90deg,var(--red),var(--amber));}
+.mc svg{display:block;width:100%;}
+
+/* VLIST */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vi{padding:8px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:2px;}
+.vi .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* PILLS */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.pg{background:rgba(200,137,10,0.12);color:var(--gold);}
+.pill.pb{background:rgba(26,74,138,0.12);color:var(--blue);}
+.pill.pt{background:rgba(10,122,106,0.12);color:var(--teal);}
+.pill.pr{background:rgba(192,26,26,0.12);color:var(--red);}
+.pill.pp{background:rgba(106,26,154,0.12);color:var(--purple);}
+.pill.pgn{background:rgba(10,112,64,0.12);color:var(--green);}
+
+/* CHIPS */
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.yes{background:rgba(10,112,64,0.06);border-color:rgba(10,112,64,0.2);color:var(--green);}
+.chip.no{background:rgba(192,26,26,0.06);border-color:rgba(192,26,26,0.2);color:var(--red);}
+.chip.neu{background:rgba(200,137,10,0.07);border-color:rgba(200,137,10,0.2);color:var(--gold);}
+
+/* STAT BOX */
+.srow{display:flex;gap:10px;margin:10px 0;}
+.sbox{flex:1;padding:12px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.snum{font-family:'Libre Baskerville',serif;font-size:28px;font-weight:700;line-height:1;}
+.slbl{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.ssub{font-size:11px;color:var(--ink);font-weight:700;margin-top:3px;}
+
+/* FORMULA BOX */
+.formula{background:var(--cream);border:2px solid var(--border);border-radius:12px;padding:14px 18px;margin:10px 0;text-align:center;}
+.formula .ftop{font-family:'Libre Baskerville',serif;font-size:14px;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:6px;display:inline-block;min-width:140px;}
+.formula .fbot{font-family:'Libre Baskerville',serif;font-size:14px;}
+.formula .flabel{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);margin-top:6px;letter-spacing:1px;}
+.formula .feq{font-family:'Libre Baskerville',serif;font-size:20px;font-weight:700;color:var(--amber);margin:4px 0;}
+
+/* IMPACT CHAIN */
+.ichain{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.in{padding:6px 12px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;}
+.ia{font-size:16px;color:var(--muted);}
+
+/* TABLE */
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctbl td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(200,137,10,0.025);}
+.ctbl td:first-child{font-weight:700;color:var(--amber);font-family:'DM Mono',monospace;}
+
+/* KEYSTONE */
+.ks{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:24px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.ks-icon{font-size:40px;flex:0 0 auto;}
+.ks-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.ks-sub{font-size:11px;color:#c8b880;line-height:1.7;}
+.ks-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:10px;font-family:'DM Mono',monospace;}
+
+/* BADGE STRIP */
+.bstrip{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}
+
+/* NUMBERED STEP */
+.steps{display:flex;flex-direction:column;gap:10px;}
+.step{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-radius:10px;background:var(--card2);border:1px solid var(--border);}
+.sn{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;font-family:'DM Mono',monospace;flex:0 0 28px;color:#fff;}
+.sc{font-size:11px;line-height:1.5;}
+.sc strong{font-weight:700;}
+
+/* CALLOUT */
+.callout{padding:12px 14px;border-radius:10px;border:1.5px solid;margin:8px 0;}
+.callout-t{font-size:11px;font-weight:700;margin-bottom:3px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+
+/* DIVIDER */
+.divl{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0;}
+
+/* M-BADGE */
+.mbadge{display:inline-block;padding:6px 14px;border-radius:8px;font-family:'DM Mono',monospace;font-size:11px;font-weight:700;margin:3px;}
+
+/* ANIMATE */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.anim{animation:fadeUp 0.5s ease both;}
+
+/* COMPARISON TABLE */
+.ctab-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;}
+.ctab-cell{padding:10px 13px;font-size:11px;border-bottom:1px solid var(--border);}
+.ctab-cell:nth-child(odd){border-right:1px solid var(--border);background:rgba(26,74,138,0.03);}
+.ctab-cell.hd{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;font-weight:700;background:var(--cream)!important;color:var(--muted);}
+.ctab-cell:last-child,.ctab-cell:nth-last-child(2){border-bottom:none;}
+
+/* NARROW vs BROAD */
+.spectrum{margin:14px 0;position:relative;}
+.spec-bar{height:16px;border-radius:8px;background:linear-gradient(90deg,var(--blue),var(--teal),var(--green),var(--amber),var(--red));margin-bottom:8px;position:relative;}
+.spec-labels{display:flex;justify-content:space-between;font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);}
+.spec-ticks{display:flex;position:relative;height:24px;}
+.spec-tick{position:absolute;display:flex;flex-direction:column;align-items:center;transform:translateX(-50%);}
+.spec-tick .tick-dot{width:10px;height:10px;border-radius:50%;border:2px solid #fff;margin-bottom:3px;}
+.spec-tick .tick-lbl{font-family:'DM Mono',monospace;font-size:9px;font-weight:700;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr anim">
+  <div class="hdr-tag">Indian Economy · RBI · UPSC Prelims</div>
+  <h1>Money Supply — <em>Mind Map</em></h1>
+  <div class="hdr-sub">Monetary Base → RBI Balance Sheet → Demonetization → Money Creation → Money Multiplier</div>
+</div>
+
+<!-- ── MASTER FLOW ── -->
+<div class="slabel">Master Flow — The Big Picture</div>
+<div class="mc mc-gold">
+  <svg id="svgMaster" viewBox="0 0 1340 110" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<!-- ── SECTION 1: WHAT IS MONEY? ── -->
+<div class="slabel">① What Is Money Supply?</div>
+
+<div class="g2">
+  <div class="pc c-gold">
+    <div class="pc-lbl">Components of Money</div>
+    <h3>💰 What Counts as Money?</h3>
+    <div class="srow">
+      <div class="sbox">
+        <div class="snum" style="color:var(--amber);">🪙</div>
+        <div class="ssub">Coins + ₹1 Note</div>
+        <div class="slbl">ISSUED BY GOVT.</div>
+      </div>
+      <div class="sbox">
+        <div class="snum" style="color:var(--blue);">📄</div>
+        <div class="ssub">All Other Notes</div>
+        <div class="slbl">ISSUED BY RBI</div>
+      </div>
+      <div class="sbox">
+        <div class="snum" style="color:var(--teal);">🏦</div>
+        <div class="ssub">Bank Deposits</div>
+        <div class="slbl">INCLUDED IN MS</div>
+      </div>
+    </div>
+    <div class="callout" style="border-color:rgba(200,137,10,0.25);background:rgba(200,137,10,0.05);">
+      <div class="callout-t" style="color:var(--gold);">🔑 RBI = Sole Currency Authority</div>
+      <div class="callout-b">All notes (except ₹1 note & coins) issued exclusively by RBI. Printed on note: <em>"I promise to pay…"</em> — RBI guarantees value.</div>
+    </div>
+    <div class="bstrip" style="margin-top:8px;">
+      <span class="chip neu">Fiat Money</span>
+      <span class="chip neu">Legal Tender</span>
+      <span class="chip neu">No Intrinsic Value</span>
+    </div>
+  </div>
+
+  <div class="pc c-red">
+    <div class="pc-lbl">What Is NOT Included</div>
+    <h3>❌ Excluded from Money Supply</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">❌ Inter-bank deposits</div><div class="vs">Bank-to-bank transactions excluded</div></div>
+      <div class="vi"><div class="vt">❌ Cash with RBI</div><div class="vs">Not in public circulation</div></div>
+      <div class="vi"><div class="vt">❌ Cash with Government</div><div class="vs">Treasury holdings excluded</div></div>
+    </div>
+    <div class="callout" style="border-color:rgba(192,26,26,0.25);background:rgba(192,26,26,0.05);margin-top:10px;">
+      <div class="callout-t" style="color:var(--red);">📌 Key Principle</div>
+      <div class="callout-b">Only <strong>money held by the public</strong> counts in money supply measures.</div>
+    </div>
+    <div style="margin-top:8px;">
+      <div style="padding:9px 13px;background:rgba(200,137,10,0.07);border-radius:9px;border:1px solid var(--border);font-size:11px;">
+        💡 <strong>Govt Tax Example:</strong> If Govt collects ₹50 & keeps with RBI → Money Supply ↓ and Monetary Base ↓ (money leaves public hands)
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 2: MEASURES ── -->
+<div class="slabel">② Measures of Money Supply (M1 → M4)</div>
+
+<div class="mc mc-blue">
+  <svg id="svgMeasures" viewBox="0 0 1340 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g4">
+  <div class="pc c-blue">
+    <div class="pc-lbl">M1 — Most Liquid</div>
+    <h3>💧 Narrow Money</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Currency with public</div><div class="vs">Notes + coins in hands</div></div>
+      <div class="vi"><div class="vt">Demand deposits</div><div class="vs">Current + savings in banks</div></div>
+    </div>
+    <span class="mbadge" style="background:rgba(26,74,138,0.1);color:var(--blue);margin-top:8px;display:inline-block;">🔵 HIGHEST LIQUIDITY</span>
+  </div>
+  <div class="pc c-teal">
+    <div class="pc-lbl">M2</div>
+    <h3>📮 M1 + Post Office</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">M1 (all of above)</div><div class="vs">Full M1 included</div></div>
+      <div class="vi"><div class="vt">+ Post Office savings</div><div class="vs">Savings deposits at PO</div></div>
+    </div>
+    <span class="mbadge" style="background:rgba(10,122,106,0.1);color:var(--teal);margin-top:8px;display:inline-block;">NARROW MONEY</span>
+  </div>
+  <div class="pc c-amber" style="border-color:var(--amber);">
+    <div class="pc-lbl">M3 — Most Important ⭐</div>
+    <h3>🏦 Broad Money</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">M1 (all of above)</div><div class="vs">Full M1 included</div></div>
+      <div class="vi"><div class="vt">+ Time deposits with banks</div><div class="vs">FDs, term deposits</div></div>
+    </div>
+    <div style="margin-top:8px;padding:7px 10px;background:rgba(224,112,16,0.08);border-radius:8px;border:1px solid rgba(224,112,16,0.2);font-size:10px;font-weight:700;color:var(--amber);">
+      📌 "Aggregate Monetary Resources" — RBI's primary measure
+    </div>
+  </div>
+  <div class="pc c-purple">
+    <div class="pc-lbl">M4 — Least Liquid</div>
+    <h3>📪 M3 + All PO</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">M3 (all of above)</div><div class="vs">Full M3 included</div></div>
+      <div class="vi"><div class="vt">+ Total PO deposits</div><div class="vs">All post office deposits</div></div>
+    </div>
+    <span class="mbadge" style="background:rgba(106,26,154,0.1);color:var(--purple);margin-top:8px;display:inline-block;">BROAD MONEY</span>
+  </div>
+</div>
+
+<div class="pc c-gold" style="margin-bottom:20px;">
+  <div class="pc-lbl">Liquidity Spectrum</div>
+  <h3>📊 M1 → M4: Liquidity Decreases, Coverage Increases</h3>
+  <div class="spectrum">
+    <div class="spec-bar"></div>
+    <div class="spec-ticks">
+      <div class="spec-tick" style="left:5%"><div class="tick-dot" style="background:var(--blue)"></div><div class="tick-lbl" style="color:var(--blue)">M1</div></div>
+      <div class="spec-tick" style="left:35%"><div class="tick-dot" style="background:var(--teal)"></div><div class="tick-lbl" style="color:var(--teal)">M2</div></div>
+      <div class="spec-tick" style="left:65%"><div class="tick-dot" style="background:var(--amber)"></div><div class="tick-lbl" style="color:var(--amber)">M3</div></div>
+      <div class="spec-tick" style="left:93%"><div class="tick-dot" style="background:var(--red)"></div><div class="tick-lbl" style="color:var(--red)">M4</div></div>
+    </div>
+    <div class="spec-labels"><span>← Most Liquid (M1 & M2 = Narrow)</span><span>(M3 & M4 = Broad) Least Liquid →</span></div>
+  </div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;">
+    <span class="pill pb">RBI Uses M1 & M3</span>
+    <span class="pill pg">M3 = Aggregate Monetary Resources</span>
+    <span class="pill pt">M1 = Most Common Policy Target</span>
+  </div>
+</div>
+
+<!-- ── SECTION 3: MONETARY BASE ── -->
+<div class="slabel">③ Monetary Base (M0) — High Powered Money</div>
+
+<div class="mc mc-green">
+  <svg id="svgM0" viewBox="0 0 1340 150" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc c-green">
+    <div class="pc-lbl">M0 Definition</div>
+    <h3>⚡ Monetary Base Components</h3>
+    <div class="formula" style="margin-bottom:12px;">
+      <div style="font-family:'Libre Baskerville',serif;font-size:13px;font-weight:700;color:var(--ink);">Monetary Base (M0) =</div>
+      <div style="margin-top:8px;font-size:12px;line-height:2;">
+        <span style="display:block;padding:4px 10px;background:rgba(10,112,64,0.08);border-radius:6px;margin:3px 0;">📄 Currency with Public</span>
+        <span style="color:var(--muted);font-size:16px;">+</span>
+        <span style="display:block;padding:4px 10px;background:rgba(10,112,64,0.08);border-radius:6px;margin:3px 0;">💵 Currency with Banks (Vault Cash)</span>
+        <span style="color:var(--muted);font-size:16px;">+</span>
+        <span style="display:block;padding:4px 10px;background:rgba(10,112,64,0.08);border-radius:6px;margin:3px 0;">🏛️ Deposits of Banks with RBI</span>
+      </div>
+    </div>
+    <div class="bstrip">
+      <span class="chip neu">Also: Reserve Money</span>
+      <span class="chip neu">Also: Base Money</span>
+      <span class="chip neu">Also: High Powered Money</span>
+    </div>
+  </div>
+
+  <div class="pc c-teal">
+    <div class="pc-lbl">Key Relationship</div>
+    <h3>🔗 M0 vs Money Supply</h3>
+    <div class="ctab-grid">
+      <div class="ctab-cell hd">Monetary Base (M0)</div>
+      <div class="ctab-cell hd">Money Supply (M1–M4)</div>
+      <div class="ctab-cell">Created by RBI directly</div>
+      <div class="ctab-cell">Created through banking system</div>
+      <div class="ctab-cell">Smaller in size</div>
+      <div class="ctab-cell">Larger (multiple of M0)</div>
+      <div class="ctab-cell">RBI controls directly</div>
+      <div class="ctab-cell">Influenced by cdr & rdr</div>
+      <div class="ctab-cell">Source of all money</div>
+      <div class="ctab-cell">Result of money creation</div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;background:rgba(10,122,106,0.07);border-radius:9px;border:1px solid rgba(10,122,106,0.2);font-size:11px;font-weight:700;color:var(--teal);">
+      📌 M0 ≠ Money Supply — But Monetary Base <em>creates</em> Money Supply
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 4: MONEY CREATION ── -->
+<div class="slabel">④ Money Creation — Fractional Reserve Banking</div>
+
+<div class="mc mc-red">
+  <svg id="svgCreate" viewBox="0 0 1340 180" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc c-sky">
+    <div class="pc-lbl">Step 1 — RBI Injects Money</div>
+    <h3>🏛️ RBI Buys Govt Bonds</h3>
+    <div class="ichain">
+      <div class="in" style="border-color:var(--sky);background:rgba(10,88,120,0.07);color:var(--sky);">RBI Buys ₹H Bonds</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--green);background:rgba(10,112,64,0.07);color:var(--green);">Prints ₹H Notes</div>
+    </div>
+    <div class="srow" style="margin-top:4px;">
+      <div class="sbox"><div class="snum" style="color:var(--sky);">H</div><div class="ssub">Money Supply</div><div class="slbl">INITIAL = H</div></div>
+      <div class="sbox"><div class="snum" style="color:var(--amber);">H</div><div class="ssub">Monetary Base</div><div class="slbl">INITIAL = H</div></div>
+    </div>
+    <span class="chip yes" style="margin-top:4px;">Bond purchase → MS increases</span>
+  </div>
+
+  <div class="pc c-gold">
+    <div class="pc-lbl">Step 2 — Key Ratios</div>
+    <h3>📐 CDR & RDR</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vt">CDR — Currency Deposit Ratio</div>
+        <div style="font-size:11px;margin-top:4px;color:var(--ink);">= Currency held by public ÷ Deposits</div>
+        <div class="vs">Behaviour of the <strong>public</strong> — how much they keep as cash vs. bank</div>
+      </div>
+      <div class="vi">
+        <div class="vt">RDR — Reserve Deposit Ratio</div>
+        <div style="font-size:11px;margin-top:4px;color:var(--ink);">= Reserves ÷ Deposits = CRR + SLR</div>
+        <div class="vs">Set by <strong>RBI policy</strong> — how much banks keep vs. lend</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;padding:8px 10px;background:rgba(200,137,10,0.07);border-radius:8px;border:1px solid var(--border);font-size:10px;">
+      <strong>Example:</strong> cdr = 1 (half cash, half bank) · rdr = 0.2 (keep 20%, lend 80%)
+    </div>
+  </div>
+
+  <div class="pc c-amber">
+    <div class="pc-lbl">Step 3 — Fractional Reserve</div>
+    <h3>🔄 The Creation Loop</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="sn" style="background:var(--blue);">1</div>
+        <div class="sc">Person deposits ₹1000 in bank</div>
+      </div>
+      <div class="step">
+        <div class="sn" style="background:var(--teal);">2</div>
+        <div class="sc">Bank keeps 20% (₹200) as reserve</div>
+      </div>
+      <div class="step">
+        <div class="sn" style="background:var(--amber);">3</div>
+        <div class="sc">Bank lends out ₹800 as loan</div>
+      </div>
+      <div class="step">
+        <div class="sn" style="background:var(--green);">4</div>
+        <div class="sc">Loan becomes someone's deposit → loop repeats</div>
+      </div>
+    </div>
+    <span class="chip yes" style="margin-top:6px;">Money supply expands beyond base!</span>
+  </div>
+</div>
+
+<!-- ── SECTION 5: MONEY MULTIPLIER ── -->
+<div class="slabel">⑤ Money Multiplier Formula</div>
+
+<div class="mc mc-blue">
+  <svg id="svgMult" viewBox="0 0 1340 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc c-blue">
+    <div class="pc-lbl">The Formula</div>
+    <h3>🧮 Money Multiplier</h3>
+    <div class="formula">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:1px;">MONEY MULTIPLIER (MM) =</div>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="ftop">1 + cdr</div>
+        <div class="fbot">cdr + rdr</div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:rgba(26,74,138,0.06);border-radius:8px;">
+        <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);">With cdr=1, rdr=0.2:</div>
+        <div class="feq">(1+1) / (1+0.2) = 2/1.2 = <span style="color:var(--green);">5/3 ≈ 1.67</span></div>
+        <div style="font-size:11px;margin-top:4px;">Money Supply = <strong style="color:var(--amber);">(5/3) × Monetary Base</strong></div>
+      </div>
+    </div>
+  </div>
+  <div class="pc c-teal">
+    <div class="pc-lbl">Multiplier Behaviour</div>
+    <h3>📉 What Changes the Multiplier?</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vt">↑ CDR (public holds more cash)</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(192,26,26,0.06);border-radius:6px;color:var(--red);font-weight:700;">→ Money Multiplier ↓ (less deposited)</div>
+      </div>
+      <div class="vi">
+        <div class="vt">↑ RDR (banks keep more reserve)</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(192,26,26,0.06);border-radius:6px;color:var(--red);font-weight:700;">→ Money Multiplier ↓ (less lent)</div>
+      </div>
+      <div class="vi">
+        <div class="vt">↑ CRR (higher RBI mandate)</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(192,26,26,0.06);border-radius:6px;color:var(--red);font-weight:700;">→ RDR increases → Multiplier ↓</div>
+      </div>
+      <div class="vi">
+        <div class="vt">↑ SLR (more govt securities)</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(192,26,26,0.06);border-radius:6px;color:var(--red);font-weight:700;">→ RDR increases → Multiplier ↓</div>
+      </div>
+    </div>
+    <div style="margin-top:8px;padding:8px 10px;background:rgba(10,122,106,0.07);border-radius:8px;border:1px solid rgba(10,122,106,0.2);font-size:10px;font-weight:700;color:var(--teal);">
+      📌 RDR = CRR + SLR (both set by RBI policy)
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 6: CRR & SLR ── -->
+<div class="slabel">⑥ CRR vs SLR — Key Policy Tools</div>
+
+<div class="g2">
+  <div class="pc c-red">
+    <div class="pc-lbl">Cash Reserve Ratio</div>
+    <h3>🏛️ CRR — With RBI</h3>
+    <div class="srow">
+      <div class="sbox"><div class="snum" style="color:var(--red);">%</div><div class="ssub">% of deposits</div><div class="slbl">KEPT WITH RBI</div></div>
+      <div class="sbox"><div class="snum" style="color:var(--red);">0%</div><div class="ssub">Interest Paid</div><div class="slbl">NO RETURN</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><div class="vt">Mandatory cash reserve</div><div class="vs">Banks must park this % with RBI</div></div>
+      <div class="vi"><div class="vt">Direct liquidity control</div><div class="vs">↑ CRR = ↓ money creation capacity</div></div>
+    </div>
+    <div class="ichain" style="margin-top:8px;">
+      <div class="in" style="border-color:var(--red);background:rgba(192,26,26,0.07);color:var(--red);font-size:9px;">↑ CRR</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--amber);background:rgba(224,112,16,0.07);color:var(--amber);font-size:9px;">↑ RDR</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--red);background:rgba(192,26,26,0.07);color:var(--red);font-size:9px;">↓ MM</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--red);background:rgba(192,26,26,0.07);color:var(--red);font-size:9px;">↓ MS</div>
+    </div>
+  </div>
+
+  <div class="pc c-purple">
+    <div class="pc-lbl">Statutory Liquidity Ratio</div>
+    <h3>📊 SLR — With Bank (in Govt. Securities)</h3>
+    <div class="srow">
+      <div class="sbox"><div class="snum" style="color:var(--purple);">%</div><div class="ssub">% of deposits</div><div class="slbl">IN GOVT. BONDS</div></div>
+      <div class="sbox"><div class="snum" style="color:var(--purple);">✓</div><div class="ssub">Bank Holds</div><div class="slbl">STAYS WITH BANK</div></div>
+    </div>
+    <div class="vlist" style="margin-top:8px;">
+      <div class="vi"><div class="vt">Invested in liquid assets</div><div class="vs">Govt. bonds, approved securities</div></div>
+      <div class="vi"><div class="vt">Funds govt. borrowing</div><div class="vs">Ensures bank solvency + stability</div></div>
+    </div>
+    <div class="ichain" style="margin-top:8px;">
+      <div class="in" style="border-color:var(--purple);background:rgba(106,26,154,0.07);color:var(--purple);font-size:9px;">↑ SLR</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--amber);background:rgba(224,112,16,0.07);color:var(--amber);font-size:9px;">↑ RDR</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--red);background:rgba(192,26,26,0.07);color:var(--red);font-size:9px;">↓ MM</div>
+      <div class="ia">→</div>
+      <div class="in" style="border-color:var(--red);background:rgba(192,26,26,0.07);color:var(--red);font-size:9px;">↓ MS</div>
+    </div>
+  </div>
+</div>
+
+<!-- CRR vs SLR Quick Comparison -->
+<div class="pc c-gold" style="margin-bottom:20px;">
+  <div class="pc-lbl">Quick Comparison</div>
+  <h3>⚖️ CRR vs SLR — Side by Side</h3>
+  <table class="ctbl">
+    <thead><tr><th>Feature</th><th>CRR</th><th>SLR</th></tr></thead>
+    <tbody>
+      <tr><td>Full Form</td><td>Cash Reserve Ratio</td><td>Statutory Liquidity Ratio</td></tr>
+      <tr><td>Where Kept</td><td>With RBI (cash)</td><td>With Bank (liquid assets)</td></tr>
+      <tr><td>Form</td><td>Cash only</td><td>Gold, Govt bonds, approved securities</td></tr>
+      <tr><td>Interest</td><td>None</td><td>Earns interest on govt bonds</td></tr>
+      <tr><td>Purpose</td><td>Liquidity control</td><td>Solvency + fund govt. borrowing</td></tr>
+      <tr><td>RDR impact</td><td>Part of RDR</td><td>Part of RDR</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ── SECTION 7: DEMONETIZATION ── -->
+<div class="slabel">⑦ Demonetization 2016 — Case Study</div>
+
+<div class="mc mc-red">
+  <svg id="svgDemo" viewBox="0 0 1340 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Plus Jakarta Sans',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc c-red">
+    <div class="pc-lbl">What Happened</div>
+    <h3>🚫 Notes Demonetized</h3>
+    <div class="srow">
+      <div class="sbox"><div class="snum" style="color:var(--red);">₹500</div><div class="ssub">& ₹1000 Notes</div><div class="slbl">DEMONETIZED 2016</div></div>
+    </div>
+    <div class="callout" style="border-color:rgba(192,26,26,0.25);background:rgba(192,26,26,0.05);margin-top:8px;">
+      <div class="callout-t" style="color:var(--red);">Accounting Impact</div>
+      <div class="callout-b">If notes <strong>not returned</strong> → RBI's liability permanently reduced (windfall for RBI balance sheet)</div>
+    </div>
+  </div>
+  <div class="pc c-amber">
+    <div class="pc-lbl">Short-Run Effects</div>
+    <h3>⚡ Immediate Impact</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">💸 Liquidity Crunch</div><div class="vs">Cash shortage, ATM queues</div></div>
+      <div class="vi"><div class="vt">📉 Money Supply Reduced</div><div class="vs">M1 fell sharply (less currency in public)</div></div>
+      <div class="vi"><div class="vt">🛒 Aggregate Demand Shock</div><div class="vs">Consumer spending collapsed</div></div>
+      <div class="vi"><div class="vt">📊 GDP Impact</div><div class="vs">Informal sector hit hard, slowdown</div></div>
+    </div>
+  </div>
+  <div class="pc c-teal">
+    <div class="pc-lbl">Monetary Base Effect</div>
+    <h3>📊 RBI Balance Sheet</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Liability side contracts</div><div class="vs">Notes outstanding = RBI liability</div></div>
+      <div class="vi"><div class="vt">If not returned → permanent reduction</div><div class="vs">RBI liability drops, reserve surplus</div></div>
+    </div>
+    <div class="callout" style="border-color:rgba(10,122,106,0.25);background:rgba(10,122,106,0.05);margin-top:8px;">
+      <div class="callout-t" style="color:var(--teal);">Long-Run Recovery</div>
+      <div class="callout-b">New notes printed → M0 restored → money supply eventually recovers</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 8: QUICK REVISION TABLE ── -->
+<div class="slabel">⑧ Quick Revision — All Concepts at a Glance</div>
+
+<div class="g2">
+  <div class="pc c-gold">
+    <div class="pc-lbl">Master Reference Table</div>
+    <h3>📋 Concept Cheatsheet</h3>
+    <table class="ctbl">
+      <thead><tr><th>Concept</th><th>Key Idea</th></tr></thead>
+      <tbody>
+        <tr><td>M1</td><td>Most liquid — currency + demand deposits</td></tr>
+        <tr><td>M3</td><td>Broad money — RBI's primary measure</td></tr>
+        <tr><td>M0</td><td>Monetary Base = High Powered Money</td></tr>
+        <tr><td>Money Multiplier</td><td>(1+cdr)/(cdr+rdr)</td></tr>
+        <tr><td>CDR</td><td>Public behaviour — cash vs bank</td></tr>
+        <tr><td>RDR</td><td>RBI regulation = CRR + SLR</td></tr>
+        <tr><td>CRR</td><td>Cash kept with RBI — no interest</td></tr>
+        <tr><td>SLR</td><td>Securities with bank — earns interest</td></tr>
+        <tr><td>Demonetization</td><td>Liquidity shock → MS falls short-run</td></tr>
+        <tr><td>Bond Purchase by RBI</td><td>→ Money supply increases</td></tr>
+        <tr><td>Tax Collection by Govt</td><td>→ Money supply decreases</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pc c-sky">
+    <div class="pc-lbl">Prelims Traps</div>
+    <h3>⚠️ Common Mistakes to Avoid</h3>
+    <div class="vlist">
+      <div class="vi">
+        <div class="vt">❌ "Coins are issued by RBI"</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(10,112,64,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ Coins + ₹1 note = Govt. of India</div>
+      </div>
+      <div class="vi">
+        <div class="vt">❌ "M0 = Money Supply"</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(10,112,64,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ M0 creates MS, not equal to it</div>
+      </div>
+      <div class="vi">
+        <div class="vt">❌ "M2 is the most important measure"</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(10,112,64,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ M3 (Aggregate Monetary Resources) is</div>
+      </div>
+      <div class="vi">
+        <div class="vt">❌ "CRR earns interest"</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(10,112,64,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ CRR earns 0% — SLR earns interest</div>
+      </div>
+      <div class="vi">
+        <div class="vt">❌ "Inter-bank deposits = money supply"</div>
+        <div style="font-size:11px;margin-top:3px;padding:4px 8px;background:rgba(10,112,64,0.06);border-radius:6px;color:var(--green);font-weight:700;">✅ EXCLUDED from all M measures</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="ks">
+  <div class="ks-icon">🏦</div>
+  <div style="flex:1;">
+    <div class="ks-title">The One-Line Story of Money</div>
+    <div class="ks-sub">
+      RBI prints money (M0) → Public deposits in banks → Banks keep fraction (CRR+SLR) & lend rest → Loans create more deposits → Money supply becomes a <strong style="color:#f5d78a;">multiple of base money</strong>.<br>
+      Higher CRR/SLR = smaller multiplier = less money created. Lower CDR (more banking) = larger multiplier = more money created.
+    </div>
+    <div class="ks-pills">
+      <span class="kp">M0 → Source</span>
+      <span class="kp">M3 → Measure</span>
+      <span class="kp">MM = (1+cdr)/(cdr+rdr)</span>
+      <span class="kp">CRR & SLR → Controls</span>
+      <span class="kp">Bond Buy → MS ↑</span>
+      <span class="kp">Tax → MS ↓</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs){
+  const e=document.createElementNS(NS,tag);
+  for(const[k,v] of Object.entries(attrs)) e.setAttribute(k,v);
+  return e;
+}
+function addText(svg,x,y,text,fontSize,fill,weight,anchor,family){
+  const t=el('text',{x,y,'text-anchor':anchor||'middle','dominant-baseline':'middle',
+    'font-size':fontSize||11,'font-weight':weight||'600','font-family':family||'Plus Jakarta Sans,sans-serif',fill:fill||'#fff'});
+  t.textContent=text; svg.appendChild(t); return t;
+}
+function node(svg,x,y,w,h,fill,label,sub,emoji,rx){
+  rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.25)','stroke-width':'1.5'}));
+  let ty=y+(emoji?-10:0)+(sub?-6:0);
+  if(emoji){
+    addText(g,x,ty-8,emoji,14,'#fff','400','middle');
+    ty+=12;
+  }
+  const lines=Array.isArray(label)?label:[label];
+  lines.forEach((l,i)=>addText(g,x,ty+i*14,l,11,'#fff','700','middle'));
+  if(sub) addText(g,x,ty+lines.length*14+2,sub,8.5,'rgba(255,255,255,0.55)','400','middle','DM Mono,monospace');
+  svg.appendChild(g);
+}
+function curve(svg,x1,y1,x2,y2,color,dashed){
+  const cx=(x1+x2)/2;
+  const p=el('path',{d:`M${x1},${y1} C${cx},${y1} ${cx},${y2} ${x2},${y2}`,
+    stroke:color||'#aaa','stroke-width':'2',fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.7'});
+  svg.appendChild(p);
+}
+function arrow(svg,x1,y1,x2,y2,color){
+  const id='arr'+Math.random().toString(36).slice(2,6);
+  let defs=svg.querySelector('defs');
+  if(!defs){defs=el('defs',{});svg.insertBefore(defs,svg.firstChild);}
+  const m=el('marker',{id,markerWidth:'7',markerHeight:'7',refX:'5',refY:'3.5',orient:'auto'});
+  m.appendChild(el('polygon',{points:'0 0, 7 3.5, 0 7',fill:color||'#aaa'}));
+  defs.appendChild(m);
+  svg.appendChild(el('line',{x1,y1,x2,y2,stroke:color||'#aaa','stroke-width':'2','marker-end':`url(#${id})`,opacity:'0.8'}));
+}
+function badge(svg,x,y,w,h,fill,text,textCol){
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:6,ry:6,fill}));
+  addText(g,x,y,text,9,textCol||'#fff','700','middle','DM Mono,monospace');
+  svg.appendChild(g);
+}
+
+/* ── MASTER FLOW ── */
+(()=>{
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:110,fill:'rgba(250,245,238,0.3)'}));
+  const steps=[
+    {x:80,  fill:'#c8890a', label:'RBI Prints', sub:'Creates M0',    emoji:'🏛️'},
+    {x:240, fill:'#1a4a8a', label:'Public Gets', sub:'Currency in hands',emoji:'👤'},
+    {x:400, fill:'#0a7a6a', label:'Deposits Bank',sub:'CDR determines %',emoji:'🏦'},
+    {x:560, fill:'#e07010', label:'Bank Keeps', sub:'CRR + SLR reserve',emoji:'🔒'},
+    {x:720, fill:'#6a1a9a', label:'Bank Lends',  sub:'Remaining 80%',  emoji:'💸'},
+    {x:880, fill:'#c01a1a', label:'New Deposit', sub:'Loan → deposit',  emoji:'🔄'},
+    {x:1040,fill:'#0a5878', label:'Multiplied MS',sub:'M0 × Multiplier',emoji:'📊'},
+    {x:1220,fill:'#0a7040', label:'M1/M2/M3/M4',sub:'Aggregate measures',emoji:'📈'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) arrow(svg,s.x+65,55,steps[i+1].x-65,55,'#b87c1088');
+  });
+  steps.forEach(s=>node(svg,s.x,55,118,62,s.fill,s.label,s.sub,s.emoji));
+  addText(svg,670,100,'RBI PRINTS MONEY → PUBLIC DEPOSITS → BANKS LEND → MULTIPLIED MONEY SUPPLY',8,'rgba(120,100,60,0.4)','500','middle','DM Mono,monospace');
+})();
+
+/* ── MEASURES SVG ── */
+(()=>{
+  const svg=document.getElementById('svgMeasures');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:200,fill:'rgba(250,248,243,0.3)'}));
+
+  // Root
+  node(svg,670,45,200,52,'#1a1208',['Money Supply','Measures'],'M1 through M4 — RBI Publishes','📊');
+
+  // Level 1: 4 Ms
+  const ms=[
+    {x:140, fill:'#1a4a8a', label:'M1', sub:'Most Liquid', emoji:'💧'},
+    {x:420, fill:'#0a7a6a', label:'M2', sub:'M1 + PO Savings', emoji:'📮'},
+    {x:920, fill:'#e07010', label:'M3 ⭐', sub:'Aggregate Monetary Res.', emoji:'🏦'},
+    {x:1200,fill:'#6a1a9a', label:'M4', sub:'Least Liquid', emoji:'📪'},
+  ];
+  ms.forEach(m=>{
+    curve(svg,670,72,m.x,108,'#c8890a44',true);
+    node(svg,m.x,132,180,52,m.fill,m.label,m.sub,m.emoji);
+  });
+
+  // Narrow/Broad labels
+  [
+    {x:280, y:175, w:240, fill:'#1a4a8a22', text:'← NARROW MONEY →', tc:'#1a4a8a'},
+    {x:1060,y:175, w:370, fill:'#e0701022', text:'←————— BROAD MONEY ————→', tc:'#e07010'},
+  ].forEach(b=>{
+    svg.appendChild(el('rect',{x:b.x-b.w/2,y:b.y-12,width:b.w,height:24,rx:6,ry:6,fill:b.fill}));
+    addText(svg,b.x,b.y,b.text,9,b.tc,'700','middle','DM Mono,monospace');
+  });
+
+  // Desc lines under M nodes
+  const descs=[
+    {x:140, y:180, text:'Currency + Demand Deposits'},
+    {x:420, y:180, text:'M1 + Post Office Savings'},
+    {x:920, y:180, text:'M1 + Time Deposits (FDs)'},
+    {x:1200,y:180, text:'M3 + Total PO Deposits'},
+  ];
+  descs.forEach(d=>addText(svg,d.x,d.y,d.text,9,'#8a7a60','500','middle','DM Mono,monospace'));
+})();
+
+/* ── M0 SVG ── */
+(()=>{
+  const svg=document.getElementById('svgM0');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:150,fill:'rgba(250,248,243,0.3)'}));
+
+  node(svg,670,75,210,56,'#0a7040',['Monetary Base M0','High Powered Money'],'Source of all money supply','⚡');
+
+  const parts=[
+    {x:170, fill:'#1a4a8a', label:'Currency with Public',   sub:'Notes+coins held outside banks'},
+    {x:540, fill:'#c8890a', label:'Currency with Banks',    sub:'Vault cash, ATM reserves'},
+    {x:900, fill:'#c01a1a', label:'Bank Deposits with RBI', sub:'CRR balances parked at RBI'},
+    {x:1200,fill:'#6a1a9a', label:'= Monetary Base',        sub:'Total = M0 (Reserve Money)'},
+  ];
+  const connects=[170,540,900];
+  connects.forEach(x=>curve(svg,670,104,x,115,'#0a704444',true));
+  curve(svg,900+80,75,1200-80,75,'#0a704488',false);
+  arrow(svg,902,75,1118,75,'#0a704488');
+
+  parts.slice(0,3).forEach(p=>node(svg,p.x,130,220,36,p.fill,p.label,p.sub,null,8));
+  node(svg,1200,75,190,50,parts[3].fill,parts[3].label,parts[3].sub,null);
+
+  addText(svg,540,14,'M0 ≠ MONEY SUPPLY — BUT M0 CREATES MONEY SUPPLY THROUGH BANKING',9,'rgba(120,100,60,0.45)','500','middle','DM Mono,monospace');
+})();
+
+/* ── MONEY CREATION SVG ── */
+(()=>{
+  const svg=document.getElementById('svgCreate');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:180,fill:'rgba(250,248,243,0.3)'}));
+
+  const flow=[
+    {x:95,  y:90, fill:'#0a5878', label:['RBI Buys','Bonds'],       sub:'Open Market Op.',   emoji:'📜'},
+    {x:270, y:90, fill:'#0a7040', label:['Prints ₹H','Notes'],      sub:'M0 = H',            emoji:'🖨️'},
+    {x:450, y:55, fill:'#1a4a8a', label:['Public Holds','(cdr×D)'], sub:'Currency portion',  emoji:'👤'},
+    {x:450, y:130,fill:'#c8890a', label:['Deposits D','in Banks'],   sub:'Deposit portion',   emoji:'🏦'},
+    {x:650, y:90, fill:'#e07010', label:['Bank Keeps','rdr × D'],    sub:'CRR+SLR reserve',  emoji:'🔒'},
+    {x:850, y:90, fill:'#c01a1a', label:['Bank Lends','(1-rdr)×D'], sub:'Goes back to public',emoji:'💸'},
+    {x:1050,y:90, fill:'#6a1a9a', label:['New Deposit','Created'],   sub:'Process repeats',  emoji:'🔄'},
+    {x:1240,y:90, fill:'#0a7040', label:['MS = MM×M0'],              sub:'Final money supply',emoji:'📊'},
+  ];
+
+  for(let i=0;i<flow.length-1;i++){
+    const s=flow[i], ns=flow[i+1];
+    if(i===1){
+      // branches
+      curve(svg,s.x+72,s.y,ns.x-72,flow[2].y,'#c8890a66',true);
+      curve(svg,s.x+72,s.y,ns.x-72,flow[3].y,'#c8890a66',true);
+    } else if(i===2||i===3){
+      if(i===3) curve(svg,ns.x+72,flow[2].y,flow[4].x-72,flow[4].y,'#e0701066',false);
+    } else {
+      curve(svg,s.x+70,s.y,ns.x-70,ns.y,'#c8890a66',false);
+    }
+  }
+  // arrow for last
+  arrow(svg,flow[6].x+72,flow[6].y,flow[7].x-72,flow[7].y,'#0a7040aa');
+
+  flow.forEach(f=>node(svg,f.x,f.y,140,58,f.fill,f.label,f.sub,f.emoji));
+
+  addText(svg,670,16,'FRACTIONAL RESERVE BANKING: EACH LOAN BECOMES A DEPOSIT, DEPOSIT CREATES NEW LOAN',8,'rgba(120,100,60,0.4)','500','middle','DM Mono,monospace');
+})();
+
+/* ── MULTIPLIER SVG ── */
+(()=>{
+  const svg=document.getElementById('svgMult');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:160,fill:'rgba(250,248,243,0.3)'}));
+
+  // Central formula display
+  node(svg,250,80,300,100,'#1a4a8a',['Money Multiplier','= (1+cdr)/(cdr+rdr)'],'Key relationship','🧮');
+
+  arrow(svg,402,80,540,80,'#1a4a8aaa');
+
+  const scenarios=[
+    {x:650, fill:'#0a7040', label:['cdr=1, rdr=0.2','MM = 5/3 ≈ 1.67'],  sub:'Example from notes', emoji:'📐'},
+    {x:870, fill:'#e07010', label:['↑ CRR → ↑ rdr','→ MM falls'],        sub:'Less credit creation',emoji:'📉'},
+    {x:1080,fill:'#c8890a', label:['↑ CDR → public','holds cash'],        sub:'Less banking → MM ↓',emoji:'💵'},
+    {x:1260,fill:'#0a7040', label:['MS = MM × M0'],                       sub:'Final relationship',emoji:'⚡'},
+  ];
+  scenarios.forEach((s,i)=>{
+    if(i<scenarios.length-1) arrow(svg,s.x+82,80,scenarios[i+1].x-82,80,'#c8890a88');
+    node(svg,s.x,80,148,80,s.fill,s.label,s.sub,s.emoji);
+  });
+
+  addText(svg,670,148,'MULTIPLIER DECREASES WHEN CRR/SLR INCREASES OR WHEN PUBLIC HOLDS MORE CASH',8,'rgba(120,100,60,0.4)','500','middle','DM Mono,monospace');
+})();
+
+/* ── DEMONETIZATION SVG ── */
+(()=>{
+  const svg=document.getElementById('svgDemo');
+  svg.appendChild(el('rect',{x:0,y:0,width:1340,height:130,fill:'rgba(250,248,243,0.3)'}));
+
+  const nodes=[
+    {x:120,  fill:'#c01a1a', label:['₹500+₹1000','Demonetized'],       sub:'Nov 8, 2016',           emoji:'🚫'},
+    {x:310,  fill:'#e07010', label:['Currency','with Public ↓'],        sub:'Sharp M1 fall',        emoji:'📉'},
+    {x:500,  fill:'#6a1a9a', label:['Money Supply','Contracts'],         sub:'M1 crash short-run',   emoji:'💸'},
+    {x:680,  fill:'#0a5878', label:['Demand Shock','Aggregate'],        sub:'Consumer spending ↓',  emoji:'🛒'},
+    {x:860,  fill:'#c8890a', label:['GDP Impact','Slowdown'],           sub:'Informal sector hurt',  emoji:'📊'},
+    {x:1050, fill:'#0a7040', label:['Notes Returned','→ RBI Liab.'],    sub:'Balance sheet effect', emoji:'🏛️'},
+    {x:1250, fill:'#1a4a8a', label:['New Notes','Printed'],             sub:'M0 restores slowly',   emoji:'🖨️'},
+  ];
+  nodes.forEach((n,i)=>{
+    if(i<nodes.length-1) arrow(svg,n.x+78,65,nodes[i+1].x-78,65,'#c01a1a66');
+  });
+  nodes.forEach(n=>node(svg,n.x,65,148,74,n.fill,n.label,n.sub,n.emoji));
+
+  addText(svg,670,118,'DEMONETIZATION = MONETARY CONTRACTION → AGGREGATE DEMAND SHOCK → GRADUAL RECOVERY AS NEW NOTES ISSUED',8,'rgba(120,100,60,0.4)','500','middle','DM Mono,monospace');
+})();
+</script>
+</body>
+</html>

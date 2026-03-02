@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategic Disinvestment — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0f0f;--bg:#f5f2eb;--bg2:#ece8de;--card:#fffdfa;
+  --gold:#b8860b;--amber:#c46200;--amber-lt:#fde8cc;
+  --green:#166534;--green-lt:#dcfce7;
+  --blue:#1e3a8a;--blue-lt:#dbeafe;
+  --teal:#0f766e;--teal-lt:#ccfbf1;
+  --red:#991b1b;--red-lt:#fee2e2;
+  --purple:#5b21b6;--purple-lt:#ede9fe;
+  --sky:#0369a1;--sky-lt:#e0f2fe;
+  --orange:#c2410c;--orange-lt:#ffedd5;
+  --border:#ddd6c0;--muted:#6b6450;
+  --shadow:rgba(15,15,15,0.07);
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background-image:
+    radial-gradient(ellipse 1000px 600px at 8% 5%,rgba(184,134,11,0.055) 0%,transparent 65%),
+    radial-gradient(ellipse 800px 800px at 92% 95%,rgba(22,101,52,0.04) 0%,transparent 65%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:54px 16px 30px;}
+.header-eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.header h1{font-family:'Libre Baskerville',serif;font-size:clamp(26px,4.2vw,52px);line-height:1.08;}
+.header h1 em{font-style:italic;color:var(--amber);}
+.header-sub{margin-top:10px;font-size:11.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:1.5px;}
+.header-rule{display:flex;align-items:center;gap:14px;margin:18px auto 0;max-width:520px;}
+.header-rule::before,.header-rule::after{content:'';flex:1;height:2px;}
+.header-rule::before{background:linear-gradient(90deg,transparent,var(--border));}
+.header-rule::after{background:linear-gradient(90deg,var(--border),transparent);}
+.header-rule span{width:8px;height:8px;background:var(--amber);border-radius:50%;}
+
+/* ── SECTION LABEL ── */
+.sec{display:flex;align-items:center;gap:14px;margin:38px 0 16px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;}
+.sec::before{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border));}
+.sec::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;margin-bottom:18px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:18px;}
+@media(max-width:1000px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:17px;position:relative;overflow:hidden;transition:box-shadow .25s,transform .2s;box-shadow:0 2px 10px var(--shadow);}
+.pc:hover{box-shadow:0 8px 30px var(--shadow);transform:translateY(-2px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.orange::before{background:var(--orange);}
+.pc.dark::before{background:var(--ink);}
+.pc-label{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc h3{font-family:'Libre Baskerville',serif;font-size:14.5px;margin-bottom:10px;display:flex;align-items:center;gap:6px;line-height:1.35;}
+
+/* ── MAP CARD ── */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;position:relative;margin-bottom:20px;box-shadow:0 2px 14px var(--shadow);}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;z-index:2;}
+.map-card.mc1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--green));}
+.map-card.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple));}
+.map-card.mc3::before{background:linear-gradient(90deg,var(--red),var(--orange),var(--amber));}
+.map-card.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.map-card.mc5::before{background:linear-gradient(90deg,var(--sky),var(--blue));}
+.map-card svg{display:block;width:100%;}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vitem{padding:8px 11px;border-radius:8px;background:var(--bg2);border:1px solid var(--border);font-size:11px;line-height:1.5;}
+.vitem .vt{font-weight:700;margin-bottom:1px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── PILLS / CHIPS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9.5px;font-weight:700;margin:2px;font-family:'JetBrains Mono',monospace;}
+.pill.gold{background:rgba(184,134,11,0.13);color:var(--gold);}
+.pill.green{background:var(--green-lt);color:var(--green);}
+.pill.blue{background:var(--blue-lt);color:var(--blue);}
+.pill.amber{background:var(--amber-lt);color:var(--amber);}
+.pill.purple{background:var(--purple-lt);color:var(--purple);}
+.pill.teal{background:var(--teal-lt);color:var(--teal);}
+.pill.red{background:var(--red-lt);color:var(--red);}
+.pill.sky{background:var(--sky-lt);color:var(--sky);}
+
+.chip{display:inline-block;padding:3px 9px;border-radius:7px;font-size:9.5px;font-weight:700;border:1.5px solid;margin:2px;font-family:'JetBrains Mono',monospace;}
+.chip.sol{background:rgba(22,101,52,0.06);border-color:rgba(22,101,52,0.28);color:var(--green);}
+.chip.prob{background:rgba(153,27,27,0.06);border-color:rgba(153,27,27,0.28);color:var(--red);}
+.chip.neu{background:rgba(184,134,11,0.07);border-color:rgba(184,134,11,0.28);color:var(--gold);}
+.chip.hot{background:rgba(196,98,0,0.07);border-color:rgba(196,98,0,0.28);color:var(--amber);}
+
+/* ── FEAT GRID ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px;}
+.feat{padding:9px 10px;border-radius:8px;background:var(--bg2);border:1px solid var(--border);}
+.feat .fi{font-size:16px;margin-bottom:3px;}
+.feat .ft{font-size:10.5px;font-weight:700;}
+.feat .fs{font-size:8.5px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── IMPACT CHAIN ── */
+.impact-chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;padding:5px 0;margin:7px 0;}
+.ic-node{padding:5px 10px;border-radius:7px;font-size:9.5px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:14px;color:var(--muted);margin:0 4px;flex:0 0 auto;}
+
+/* ── CALLOUT ── */
+.callout{padding:10px 13px;border-radius:9px;margin:8px 0;}
+.callout.green{background:rgba(22,101,52,0.06);border:1.5px solid rgba(22,101,52,0.2);}
+.callout.amber{background:rgba(196,98,0,0.06);border:1.5px solid rgba(196,98,0,0.2);}
+.callout.red{background:rgba(153,27,27,0.06);border:1.5px solid rgba(153,27,27,0.2);}
+.callout.blue{background:rgba(30,58,138,0.06);border:1.5px solid rgba(30,58,138,0.2);}
+.callout.gold{background:rgba(184,134,11,0.06);border:1.5px solid rgba(184,134,11,0.2);}
+.callout-title{font-size:10px;font-weight:800;margin-bottom:3px;}
+.callout.green .callout-title{color:var(--green);}
+.callout.amber .callout-title{color:var(--amber);}
+.callout.red .callout-title{color:var(--red);}
+.callout.blue .callout-title{color:var(--blue);}
+.callout.gold .callout-title{color:var(--gold);}
+.callout-body{font-size:9.5px;color:var(--muted);line-height:1.6;}
+
+/* ── STAT BOX ── */
+.stat-row{display:flex;gap:9px;margin:10px 0;}
+.stat-box{flex:1;padding:11px 9px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--bg2);}
+.stat-num{font-family:'Libre Baskerville',serif;font-size:22px;font-weight:700;line-height:1;}
+.stat-label{font-size:8px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#f0ead8;padding:8px 10px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:1px;}
+.ctable th:first-child{border-radius:6px 0 0 0;}
+.ctable th:last-child{border-radius:0 6px 0 0;}
+.ctable td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,134,11,0.03);}
+.ctable td:first-child{font-weight:700;color:var(--amber);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:8.5px;font-weight:700;}
+.tag.ok{background:#d1fae5;color:#065f46;}
+.tag.na{background:#fee2e2;color:#991b1b;}
+.tag.pt{background:#fef3c7;color:#92400e;}
+
+/* ── HBAND ── */
+.hband{background:linear-gradient(135deg,rgba(184,134,11,0.09),rgba(196,98,0,0.06));border:1.5px solid rgba(184,134,11,0.22);border-radius:11px;padding:13px 16px;margin:10px 0;font-size:11px;line-height:1.65;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f0ead8;border-radius:18px;padding:28px 32px;margin:22px 0;display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;box-shadow:0 4px 28px rgba(0,0,0,0.13);}
+.keystone-icon{font-size:38px;flex:0 0 auto;}
+.keystone-title{font-family:'Libre Baskerville',serif;font-size:20px;font-style:italic;margin-bottom:6px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.75;}
+.keystone-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
+.kpill{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.09);font-size:9.5px;font-family:'JetBrains Mono',monospace;}
+
+/* ── SECTOR BADGE ── */
+.sector-badge{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;border-radius:11px;background:var(--bg2);border:1.5px solid var(--border);margin:6px 0;}
+.sb-icon{font-size:22px;flex:0 0 auto;margin-top:1px;}
+.sb-num{font-family:'Libre Baskerville',serif;font-size:18px;font-weight:700;color:var(--amber);flex:0 0 auto;width:24px;}
+.sb-text .sb-title{font-size:11.5px;font-weight:700;margin-bottom:2px;}
+.sb-text .sb-sub{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+
+/* ── PHASE ROW ── */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.phase-box{padding:16px;border-radius:12px;border:2px solid;text-align:center;}
+.phase-num{font-family:'Libre Baskerville',serif;font-size:26px;font-weight:700;}
+.phase-title{font-size:12px;font-weight:700;margin:4px 0;}
+.phase-sub{font-size:8.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-bottom:8px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+.pc,.map-card,.keystone,.phase-box{animation:fadeUp .45s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ═══ HEADER ═══ -->
+<div class="header">
+  <div class="header-eyebrow">Indian Economy · PSU Policy · Privatisation · UPSC Prelims</div>
+  <h1>Strategic <em>Disinvestment</em></h1>
+  <div class="header-sub">Disinvestment → Strategic Sale → DIPAM → Sectors → Policy Framework</div>
+  <div class="header-rule"><span></span></div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec">Master Concept Flow</div>
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1380 110" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- ══ SECTION 1: DEFINITIONS ══ -->
+<div class="sec">① Disinvestment vs Strategic Disinvestment — Key Difference</div>
+
+<div class="map-card mc2">
+  <svg id="svgDefs" viewBox="0 0 1380 270" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc amber">
+    <div class="pc-label">Plain Disinvestment</div>
+    <h3>📉 Govt Sells Some Shares</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Government reduces stake in PSU</div><div class="vs">May still keep majority ownership</div></div>
+      <div class="vitem"><div class="vt">Management control stays with govt</div><div class="vs">Day-to-day operations unchanged</div></div>
+      <div class="vitem"><div class="vt">Done via IPO or direct sale</div><div class="vs">Stock market listing or bilateral deal</div></div>
+    </div>
+    <div class="callout amber" style="margin-top:10px;">
+      <div class="callout-title">Example</div>
+      <div class="callout-body">Govt sells 5–10% stake in Coal India via OFS — still retains 75%+ and management control.</div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip sol">✅ Partial ownership sale</span>
+      <span class="chip sol">✅ Govt retains control</span>
+    </div>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">Strategic Disinvestment 🔥</div>
+    <h3>🏭 Privatisation-Like Transfer</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Substantial portion sold (up to 50%+)</div><div class="vs">Significant majority stake transferred</div></div>
+      <div class="vitem"><div class="vt">Management control also transferred</div><div class="vs">Private buyer runs the company</div></div>
+      <div class="vitem"><div class="vt">Strategic private buyer selected</div><div class="vs">Not just financial investor</div></div>
+    </div>
+    <div class="callout red" style="margin-top:10px;">
+      <div class="callout-title">🔥 Key Prelims Fact</div>
+      <div class="callout-body">Strategic Disinvestment = Share sale + <strong>Management control transfer.</strong> It is essentially a form of <strong>privatisation.</strong></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip prob">🔴 Privatisation-like</span>
+      <span class="chip prob">🔴 Control given away</span>
+    </div>
+  </div>
+</div>
+
+<!-- Quick comparison table -->
+<div class="pc dark" style="margin-bottom:18px;background:rgba(15,15,15,0.03);border-color:rgba(15,15,15,0.15);">
+  <h3 style="font-family:'Libre Baskerville',serif;font-size:14.5px;margin-bottom:10px;">⚖️ Side-by-Side Comparison</h3>
+  <div style="overflow-x:auto;">
+    <table class="ctable">
+      <thead>
+        <tr><th>FEATURE</th><th>DISINVESTMENT</th><th>STRATEGIC DISINVESTMENT</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Stake Sold</td><td>Small / partial</td><td><span class="tag pt">Substantial (50%+)</span></td></tr>
+        <tr><td>Management Control</td><td><span class="tag ok">Stays with Govt</span></td><td><span class="tag na">Transferred to Private</span></td></tr>
+        <tr><td>Nature</td><td>Partial ownership sale</td><td><span class="tag na">Privatisation</span></td></tr>
+        <tr><td>Buyer Type</td><td>Public / market investors</td><td>Strategic private buyer</td></tr>
+        <tr><td>Profit ≠ Efficiency?</td><td>Less relevant</td><td><span class="tag pt">Core argument for this</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: WHO DECIDES ══ -->
+<div class="sec">② Who Decides — Institutional Framework</div>
+
+<div class="map-card mc3">
+  <svg id="svgInstitutions" viewBox="0 0 1380 260" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Nodal Agency</div>
+    <h3>🏛️ DIPAM</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Dept. of Investment &amp; Public Asset Mgmt.</div><div class="vs">Nodal agency for all disinvestment</div></div>
+      <div class="vitem"><div class="vt">Works with NITI Aayog</div><div class="vs">NITI identifies PSUs to disinvest</div></div>
+      <div class="vitem"><div class="vt">Under Ministry of Finance</div><div class="vs">Coordinates process end-to-end</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip sol">✅ Prelims: DIPAM = Nodal dept</span></div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Final Approver</div>
+    <h3>✅ CCEA</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Cabinet Committee on Economic Affairs</div><div class="vs">Highest level approval required</div></div>
+      <div class="vitem"><div class="vt">Approves each strategic sale</div><div class="vs">No strategic disinvestment without CCEA</div></div>
+    </div>
+    <div class="callout blue" style="margin-top:10px;">
+      <div class="callout-title">🔥 Approval Chain</div>
+      <div class="callout-body">NITI Aayog identifies → DIPAM coordinates → CCEA approves → Alternative Mechanism executes</div>
+    </div>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">Execution Body</div>
+    <h3>⚙️ Alternative Mechanism</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Inter-ministerial body</div><div class="vs">Decides mode of sale</div></div>
+      <div class="vitem"><div class="vt">Sets pricing &amp; timing</div><div class="vs">Transaction terms decided here</div></div>
+      <div class="vitem"><div class="vt">Buyer selection process</div><div class="vs">Evaluates &amp; selects strategic buyer</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip neu">🟡 Operational decisions</span></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: WHY DISINVEST ══ -->
+<div class="sec">③ Why Government Does Strategic Disinvestment</div>
+
+<div class="map-card mc4">
+  <svg id="svgWhy" viewBox="0 0 1380 240" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">Core Philosophy</div>
+    <h3>💡 "Govt Has No Business Being in Business"</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">🎯</div><div class="ft">Focus on Governance</div><div class="fs">Not running companies</div></div>
+      <div class="feat"><div class="fi">💰</div><div class="ft">Raise Revenue</div><div class="fs">Reduce fiscal deficit</div></div>
+      <div class="feat"><div class="fi">⚡</div><div class="ft">Improve Efficiency</div><div class="fs">Private mgmt better</div></div>
+      <div class="feat"><div class="fi">🔬</div><div class="ft">Bring Technology</div><div class="fs">Private capital &amp; tech</div></div>
+      <div class="feat"><div class="fi">🏆</div><div class="ft">Increase Competition</div><div class="fs">Consumer benefits</div></div>
+      <div class="feat"><div class="fi">🏗️</div><div class="ft">Create Private Space</div><div class="fs">Reduce state footprint</div></div>
+    </div>
+    <div class="hband" style="margin-top:10px;">
+      <strong>Proceeds used for:</strong> Social spending · Development schemes · Debt reduction
+    </div>
+  </div>
+
+  <div class="pc orange">
+    <div class="pc-label">Profit ≠ Efficiency Argument</div>
+    <h3>⚠️ Why Even Profitable PSUs Are Disinvested</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">Example: Coal India (Monopoly)</div>
+        <div class="vs">Govt decides price → No real competition → Profitable but inefficient</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">Monopoly + Price Control = Profit</div>
+        <div class="vs">Profit does NOT prove efficiency</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">If privatised → Competition enters</div>
+        <div class="vs">→ Prices fall → Consumer benefits</div>
+      </div>
+    </div>
+    <div class="impact-chain" style="margin-top:10px;">
+      <div class="ic-node" style="border-color:var(--red);background:rgba(153,27,27,0.07);color:var(--red);">Monopoly PSU</div>
+      <div class="ic-arr">≠</div>
+      <div class="ic-node" style="border-color:var(--amber);background:rgba(196,98,0,0.07);color:var(--amber);">Efficient</div>
+      <div class="ic-arr">→</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(22,101,52,0.07);color:var(--green);">Disinvest for Efficiency</div>
+    </div>
+    <div class="callout amber" style="margin-top:8px;">
+      <div class="callout-title">🔥 Key Prelims Argument</div>
+      <div class="callout-body">Profitability ≠ Efficiency. Even profitable PSUs can be disinvested to introduce competition and consumer welfare.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: STRATEGIC SECTORS ══ -->
+<div class="sec">④ Strategic vs Non-Strategic Sectors — The 4+1 Framework</div>
+
+<div class="map-card mc5">
+  <svg id="svgSectors" viewBox="0 0 1380 300" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <!-- Strategic Sectors -->
+  <div class="pc red">
+    <div class="pc-label">🔴 4 Strategic Sectors — Minimum PSU Presence Only</div>
+    <h3>🛡️ Strategic Sectors</h3>
+    <div style="margin-bottom:4px;font-size:9.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);">Govt RETAINS minimum PSUs · Rest privatized/merged/closed</div>
+    <div class="sector-badge">
+      <div class="sb-num">1</div>
+      <div class="fi" style="font-size:20px;margin-right:2px;">⚛️</div>
+      <div class="sb-text"><div class="sb-title">Atomic Energy, Space &amp; Defence</div><div class="sb-sub">National security — minimal private entry</div></div>
+    </div>
+    <div class="sector-badge">
+      <div class="sb-num">2</div>
+      <div class="fi" style="font-size:20px;margin-right:2px;">🚂</div>
+      <div class="sb-text"><div class="sb-title">Transport &amp; Telecommunications</div><div class="sb-sub">Infrastructure backbone of economy</div></div>
+    </div>
+    <div class="sector-badge">
+      <div class="sb-num">3</div>
+      <div class="fi" style="font-size:20px;margin-right:2px;">⚡</div>
+      <div class="sb-text"><div class="sb-title">Power, Petroleum, Coal &amp; Minerals</div><div class="sb-sub">Energy security — strategic resources</div></div>
+    </div>
+    <div class="sector-badge">
+      <div class="sb-num">4</div>
+      <div class="fi" style="font-size:20px;margin-right:2px;">🏦</div>
+      <div class="sb-text"><div class="sb-title">Banking, Insurance &amp; Financial Services</div><div class="sb-sub">Financial stability — systemic importance</div></div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip prob">🔴 Only min. PSU presence retained</span></div>
+  </div>
+
+  <!-- Non-Strategic -->
+  <div class="pc green">
+    <div class="pc-label">🟢 Non-Strategic Sectors — Privatize or Close</div>
+    <h3>🔓 Non-Strategic Sectors</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">All sectors outside the 4 strategic ones</div><div class="vs">PSUs will be privatized or closed down</div></div>
+      <div class="vitem"><div class="vt">If viable → Strategic disinvestment</div><div class="vs">Private buyer takes over management</div></div>
+      <div class="vitem"><div class="vt">If not viable → Closure</div><div class="vs">Wound up, assets liquidated</div></div>
+    </div>
+    <div class="callout green" style="margin-top:10px;">
+      <div class="callout-title">📌 Important Restriction</div>
+      <div class="callout-body">During strategic disinvestment: <strong>Other PSUs or State Govt PSUs CANNOT bid</strong> — otherwise inefficiencies just move within public sector.</div>
+    </div>
+    <div style="margin-top:10px;text-align:center;padding:14px;border-radius:10px;background:rgba(22,101,52,0.07);border:1.5px solid rgba(22,101,52,0.2);">
+      <div style="font-family:'Libre Baskerville',serif;font-size:24px;font-weight:700;color:var(--green);">Non-Strategic</div>
+      <div style="font-size:9.5px;font-family:'JetBrains Mono',monospace;color:var(--muted);margin-top:4px;">PRIVATIZE OR CLOSE</div>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:8px;flex-wrap:wrap;">
+        <span class="pill green">Viable → Sell</span>
+        <span class="pill red">Not Viable → Close</span>
+      </div>
+    </div>
+    <div style="margin-top:10px;"><span class="chip sol">✅ Private sector gets space</span></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: PROCESS FLOW ══ -->
+<div class="sec">⑤ Step-by-Step Process Flow</div>
+
+<div class="map-card mc1">
+  <svg id="svgProcess" viewBox="0 0 1380 160" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc blue">
+    <div class="pc-label">Stage 1 — Identify</div>
+    <h3>🔍 PSU Selection</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">NITI Aayog identifies PSUs</div><div class="vs">Based on sector &amp; viability</div></div>
+      <div class="vitem"><div class="vt">Strategic vs Non-strategic check</div><div class="vs">Which of 4 strategic sectors?</div></div>
+      <div class="vitem"><div class="vt">Recommendation to DIPAM</div><div class="vs">With rationale &amp; timing</div></div>
+    </div>
+  </div>
+  <div class="pc purple">
+    <div class="pc-label">Stage 2 — Approve</div>
+    <h3>✅ CCEA Clearance</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">DIPAM prepares proposal</div><div class="vs">Detailed plan for disinvestment</div></div>
+      <div class="vitem"><div class="vt">CCEA grants approval</div><div class="vs">Highest level cabinet committee</div></div>
+      <div class="vitem"><div class="vt">Mode &amp; structure decided</div><div class="vs">100% sale / partial / merger</div></div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">Stage 3 — Execute</div>
+    <h3>🤝 Sale Completion</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Alternative Mechanism acts</div><div class="vs">Inter-ministerial body executes</div></div>
+      <div class="vitem"><div class="vt">Buyer selection &amp; pricing</div><div class="vs">Competitive bidding process</div></div>
+      <div class="vitem"><div class="vt">Shares + management transferred</div><div class="vs">Private buyer takes control</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: PRELIMS HOTSHEET ══ -->
+<div class="sec">⑥ 🔥 High-Probability Prelims Facts</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Definition Facts</div>
+    <h3>📌 Core Definitions</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Strategic disinvestment = share sale + management transfer</div><div class="vs">Both conditions must be met</div></div>
+      <div class="vitem"><div class="vt">Strategic disinvestment = form of privatisation</div><div class="vs">Effectively same as privatisation</div></div>
+      <div class="vitem"><div class="vt">Profit ≠ Efficiency argument</div><div class="vs">Even profitable PSUs can be disinvested</div></div>
+    </div>
+  </div>
+  <div class="pc blue">
+    <div class="pc-label">Institutional Facts</div>
+    <h3>📌 Who Does What</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">DIPAM = Nodal department</div><div class="vs">Dept. of Investment &amp; Public Asset Mgmt.</div></div>
+      <div class="vitem"><div class="vt">NITI Aayog = Identifies PSUs</div><div class="vs">Makes recommendations</div></div>
+      <div class="vitem"><div class="vt">CCEA = Final approval body</div><div class="vs">Cabinet Committee on Economic Affairs</div></div>
+      <div class="vitem"><div class="vt">Alternative Mechanism = Executes</div><div class="vs">Pricing, buyer selection, timing</div></div>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Sector Facts</div>
+    <h3>📌 The 4 Strategic Sectors</h3>
+    <div style="display:flex;flex-direction:column;gap:5px;margin-top:6px;">
+      <span class="chip hot">1️⃣ Atomic Energy · Space · Defence</span>
+      <span class="chip hot">2️⃣ Transport · Telecom</span>
+      <span class="chip hot">3️⃣ Power · Petroleum · Coal · Minerals</span>
+      <span class="chip hot">4️⃣ Banking · Insurance · Financial Services</span>
+    </div>
+    <div class="callout amber" style="margin-top:10px;">
+      <div class="callout-title">🔥 Key Rules</div>
+      <div class="callout-body">Strategic sectors → only min. PSU retained · Non-strategic → privatize or close · Other PSUs cannot bid during strategic disinvestment.</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">🏭</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">
+      Govt wants to minimize its footprint in business → Identifies PSU (via NITI Aayog) → DIPAM coordinates → CCEA approves → Strategic buyer selected → <strong style="color:#f5d78a;">Shares + management transferred → Govt earns revenue → Efficiency improves → Competition increases → Consumer benefits.</strong> In 4 strategic sectors — only minimal PSU presence retained. In all others — privatize or close.
+    </div>
+    <div class="keystone-pills">
+      <span class="kpill">📌 DIPAM = Nodal</span>
+      <span class="kpill">✅ CCEA = Approves</span>
+      <span class="kpill">🔢 4 Strategic Sectors</span>
+      <span class="kpill">⚠️ Profit ≠ Efficiency</span>
+      <span class="kpill">🚫 Other PSUs Can't Bid</span>
+      <span class="kpill">🔄 = Privatisation</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a||{}))e.setAttribute(k,v);return e;}
+function addDefs(svg){let d=svg.querySelector('defs');if(!d){d=se('defs');svg.insertBefore(d,svg.firstChild);}return d;}
+function mkArrow(svg,id,color){
+  const d=addDefs(svg);
+  const m=se('marker',{id,markerWidth:'8',markerHeight:'6',refX:'7',refY:'3',orient:'auto'});
+  m.appendChild(se('path',{d:'M0,0 L0,6 L8,3 z',fill:color}));
+  d.appendChild(m);
+}
+function line(svg,x1,y1,x2,y2,color,markId,dashed){
+  svg.appendChild(se('path',{
+    d:`M${x1},${y1} L${x2},${y2}`,
+    stroke:color,'stroke-width':'2',fill:'none',
+    'stroke-dasharray':dashed?'5 4':'none',
+    'marker-end':markId?`url(#${markId})`:'none'
+  }));
+}
+function curve(svg,x1,y1,x2,y2,color,markId,dashed,w){
+  const mx=(x1+x2)/2;
+  svg.appendChild(se('path',{
+    d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color,'stroke-width':w||'1.8',fill:'none',
+    'stroke-dasharray':dashed?'4 3':'none',
+    'marker-end':markId?`url(#${markId})`:'none',opacity:dashed?'0.7':'1'
+  }));
+}
+
+function node(svg,x,y,w,h,fill,l1,l2,emoji,rx){
+  rx=rx||10;
+  const g=se('g');
+  // shadow
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  // main
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.22)','stroke-width':'1.5'}));
+
+  const parts=[];
+  if(emoji)parts.push({txt:emoji,size:14,em:true});
+  if(l1)parts.push({txt:l1,size:11,bold:true});
+  if(l2)parts.push({txt:l2,size:8.5,mono:true});
+
+  const lh=14;
+  const totalH=(parts.length-1)*lh;
+  let ty=y-totalH/2;
+
+  parts.forEach(p=>{
+    const t=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':p.size+'','font-weight':p.bold?'700':'400',
+      'font-family':p.mono?'JetBrains Mono,monospace':'Outfit,sans-serif',
+      fill:p.mono?'rgba(255,255,255,0.6)':'#fff'});
+    t.textContent=p.txt;g.appendChild(t);
+    ty+=lh;
+  });
+  svg.appendChild(g);
+}
+
+function lbl(svg,x,y,txt,col,fs,ls){
+  const t=se('text',{x,y,'text-anchor':'middle','font-size':fs||'9',
+    'font-family':'JetBrains Mono,monospace',fill:col||'rgba(107,100,80,0.5)',
+    'letter-spacing':ls||'2','font-weight':'600'});
+  t.textContent=txt;svg.appendChild(t);
+}
+
+// ─── MASTER FLOW ───
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:110,fill:'rgba(248,243,237,0.4)'}));
+  mkArrow(svg,'mA','#b8860b');
+  const steps=[
+    {x:75,  fill:'#c46200', l1:'PSU Identified',     l2:'NITI Aayog',        e:'🏭'},
+    {x:248, fill:'#1e3a8a', l1:'DIPAM Coordinates',  l2:'Nodal agency',      e:'🏛️'},
+    {x:421, fill:'#5b21b6', l1:'CCEA Approval',       l2:'Final clearance',  e:'✅'},
+    {x:594, fill:'#0f766e', l1:'Alt. Mechanism',      l2:'Mode & pricing',   e:'⚙️'},
+    {x:767, fill:'#166534', l1:'Buyer Selection',     l2:'Strategic private', e:'🤝'},
+    {x:940, fill:'#c2410c', l1:'Shares Transferred',  l2:'+Management ctrl', e:'📋'},
+    {x:1113,fill:'#b8860b', l1:'Revenue Raised',      l2:'Fiscal deficit ↓', e:'💰'},
+    {x:1295,fill:'#166534', l1:'Efficiency ↑',        l2:'Competition ↑',    e:'📈'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const p=se('path',{d:`M${s.x+86},55 L${steps[i+1].x-86},55`,stroke:'#b8860b','stroke-width':'2',fill:'none','marker-end':'url(#mA)'});
+      svg.appendChild(p);
+    }
+    node(svg,s.x,55,166,62,s.fill,s.l1,s.l2,s.e);
+  });
+  lbl(svg,690,14,'STRATEGIC DISINVESTMENT: COMPLETE PROCESS FLOW','rgba(107,100,80,0.45)','8.5','3');
+})();
+
+// ─── DEFINITIONS COMPARISON ───
+(function(){
+  const svg=document.getElementById('svgDefs');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:270,fill:'rgba(248,243,237,0.3)'}));
+  mkArrow(svg,'dA','#c46200');mkArrow(svg,'dB','#991b1b');
+
+  // Top: Disinvestment (left)
+  node(svg,345,55,270,56,'#c46200','Disinvestment','Govt sells some shares','📉');
+  // Top: Strategic (right)
+  node(svg,1035,55,270,56,'#991b1b','Strategic Disinvestment','Share + Management transfer','🏭');
+
+  // Features of Disinvestment
+  const leftFeat=[
+    {x:130,y:165, fill:'#0369a1', l1:'Partial stake sold',  l2:'Small % of shares'},
+    {x:345,y:165, fill:'#b8860b', l1:'Govt retains control',l2:'Management stays'},
+    {x:560,y:165, fill:'#166534', l1:'IPO or direct sale', l2:'Via market listing'},
+  ];
+  leftFeat.forEach((n,i)=>{
+    const p=se('path',{d:`M345,84 C345,124 ${n.x},124 ${n.x},141`,stroke:'#c4620055','stroke-width':'1.6',fill:'none','stroke-dasharray':'4 3'});
+    svg.appendChild(p);
+    node(svg,n.x,n.y,190,46,n.fill,n.l1,n.l2,null,8);
+  });
+
+  // Features of Strategic
+  const rightFeat=[
+    {x:820,y:165, fill:'#991b1b', l1:'50%+ stake sold',    l2:'Substantial portion'},
+    {x:1035,y:165,fill:'#5b21b6', l1:'Control transferred', l2:'Private buyer runs it'},
+    {x:1250,y:165,fill:'#c2410c', l1:'= Privatisation',     l2:'Essentially same thing'},
+  ];
+  rightFeat.forEach((n,i)=>{
+    const p=se('path',{d:`M1035,84 C1035,124 ${n.x},124 ${n.x},141`,stroke:'#991b1b55','stroke-width':'1.6',fill:'none','stroke-dasharray':'4 3'});
+    svg.appendChild(p);
+    node(svg,n.x,n.y,190,46,n.fill,n.l1,n.l2,null,8);
+  });
+
+  // VS divider
+  const vsBox=se('rect',{x:668,y:36,width:44,height:44,rx:22,ry:22,fill:'#f5f2eb',stroke:var_('border'),'stroke-width':'2'});
+  function var_(name){return getComputedStyle(document.documentElement).getPropertyValue('--'+name).trim()||'#ddd6c0';}
+  svg.appendChild(vsBox);
+  const vsT=se('text',{x:690,y:58,'text-anchor':'middle','dominant-baseline':'middle','font-size':'13','font-weight':'800','font-family':'Libre Baskerville,serif',fill:'#6b6450'});
+  vsT.textContent='VS';svg.appendChild(vsT);
+
+  // Bottom: consequence
+  node(svg,345,238,270,40,'#b8860b','Still a PSU','Govt-owned entity','',8);
+  node(svg,1035,238,270,40,'#991b1b','Now Privatised','Private entity runs it','',8);
+
+  lbl(svg,345,14,'DISINVESTMENT','#c4620088','9','3');
+  lbl(svg,1035,14,'STRATEGIC DISINVESTMENT 🔥','#991b1b88','9','3');
+})();
+
+// ─── INSTITUTIONS ───
+(function(){
+  const svg=document.getElementById('svgInstitutions');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:260,fill:'rgba(248,243,237,0.3)'}));
+  mkArrow(svg,'iA','#5b21b6');
+
+  // Flow chain at top
+  const chain=[
+    {x:120, fill:'#166534', l1:'NITI Aayog',        l2:'Identifies PSUs',   e:'🔍'},
+    {x:380, fill:'#1e3a8a', l1:'DIPAM',              l2:'Nodal Agency',      e:'🏛️'},
+    {x:640, fill:'#5b21b6', l1:'CCEA',               l2:'Final Approval',    e:'✅'},
+    {x:900, fill:'#0f766e', l1:'Alt. Mechanism',     l2:'Execution Body',    e:'⚙️'},
+    {x:1160,fill:'#c46200', l1:'Strategic Buyer',    l2:'Private company',   e:'🤝'},
+  ];
+  chain.forEach((c,i)=>{
+    if(i<chain.length-1){
+      const p=se('path',{d:`M${c.x+105},80 L${chain[i+1].x-105},80`,stroke:'#5b21b6','stroke-width':'2',fill:'none','marker-end':'url(#iA)'});
+      svg.appendChild(p);
+    }
+    node(svg,c.x,80,200,62,c.fill,c.l1,c.l2,c.e);
+  });
+
+  // Decision nodes below
+  const decisions=[
+    {x:340, y:200, fill:'#b8860b', l1:'Mode of Sale',      l2:'IPO / Direct / Auction'},
+    {x:640, y:200, fill:'#0369a1', l1:'Pricing',           l2:'Floor price set'},
+    {x:940, y:200, fill:'#991b1b', l1:'Buyer Evaluation',  l2:'Strategic criteria'},
+    {x:1200,y:200, fill:'#166534', l1:'Timing & Terms',    l2:'Contract finalization'},
+  ];
+  decisions.forEach(n=>{
+    curve(svg,900,112,n.x,176,'#0f766e44',null,true,1.5);
+    node(svg,n.x,n.y,210,42,n.fill,n.l1,n.l2,null,8);
+  });
+
+  lbl(svg,690,14,'INSTITUTIONAL FRAMEWORK: 2019 POLICY','rgba(107,100,80,0.5)','8.5','3');
+  lbl(svg,940,248,'ALT. MECHANISM DECIDES ALL OF THESE','rgba(15,118,110,0.5)','8.5','1.5');
+})();
+
+// ─── WHY DISINVEST ───
+(function(){
+  const svg=document.getElementById('svgWhy');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:240,fill:'rgba(248,243,237,0.3)'}));
+
+  // Central node
+  node(svg,690,120,220,60,'#b8860b','Why Disinvest?','Govt out of business','💡');
+
+  // Reasons around it
+  const reasons=[
+    {x:130,y:50,  fill:'#1e3a8a', l1:'Fiscal Revenue',     l2:'Reduce deficit',     e:'💰'},
+    {x:80, y:145, fill:'#991b1b', l1:'Efficiency via Pvt.', l2:'Private mgmt better',e:'⚡'},
+    {x:250,y:220, fill:'#0f766e', l1:'Technology &amp; Capital',l2:'Private sector brings', e:'🔬'},
+    {x:500,y:225, fill:'#5b21b6', l1:'Competition',         l2:'Consumer benefits',  e:'🏆'},
+    {x:880,y:225, fill:'#166534', l1:'Space for Private',   l2:'Reduce state footprint',e:'🔓'},
+    {x:1120,y:220,fill:'#c2410c', l1:'Social Spending',     l2:'Proceeds reinvested', e:'🏥'},
+    {x:1280,y:145,fill:'#0369a1', l1:'Governance Focus',    l2:'Govt = regulator only',e:'🎯'},
+    {x:1250,y:50, fill:'#b8860b', l1:'Profit ≠ Efficiency', l2:'Even good PSUs sold', e:'⚠️'},
+  ];
+
+  reasons.forEach(n=>{
+    const fx=n.x<690?598:782;
+    const fy=n.y<120?105:n.y>120?135:120;
+    curve(svg,fx,fy,n.x+(n.x<690?80:-80),n.y,`${n.fill}55`,null,true,1.6);
+    node(svg,n.x,n.y,190,48,n.fill,n.l1,n.l2,n.e,8);
+  });
+})();
+
+// ─── SECTORS ───
+(function(){
+  const svg=document.getElementById('svgSectors');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:300,fill:'rgba(248,243,237,0.3)'}));
+  mkArrow(svg,'sA','#991b1b');mkArrow(svg,'sB','#166534');
+
+  // Central divider concept
+  node(svg,690,70,200,54,'#0f0f0f','PSU Sectors','Strategic or Not?','🏭');
+
+  // Left branch: Strategic
+  node(svg,280,165,240,52,'#991b1b','🔴 Strategic Sectors','Minimum PSU presence only','');
+  curve(svg,594,70,400,138,'#991b1b','sA',false,2);
+
+  // Right branch: Non-strategic
+  node(svg,1090,165,240,52,'#166534','🟢 Non-Strategic','Privatize or Close','');
+  curve(svg,786,70,970,138,'#166534','sB',false,2);
+
+  // 4 strategic sectors below left
+  const stratSectors=[
+    {x:80, y:255, fill:'#c2410c', l1:'⚛️ Atomic Energy',  l2:'Space · Defence'},
+    {x:280,y:255, fill:'#991b1b', l1:'🚂 Transport',       l2:'Telecom'},
+    {x:480,y:255, fill:'#7c2d12', l1:'⚡ Power · Coal',    l2:'Petroleum · Minerals'},
+    {x:590,y:255, fill:'#713f12', l1:'🏦 Banking',         l2:'Insurance · Finance'},
+  ];
+  stratSectors.forEach((n,i)=>{
+    curve(svg,280,192,n.x,230,`${n.fill}55`,null,true,1.5);
+    node(svg,n.x,n.y,188,46,n.fill,n.l1,n.l2,null,8);
+  });
+
+  // Non-strategic outcomes
+  const nonStrat=[
+    {x:900,y:255,  fill:'#166534', l1:'Viable PSUs',   l2:'→ Strategic Disinvest'},
+    {x:1110,y:255, fill:'#0f766e', l1:'Not Viable',    l2:'→ Closure / Wind-up'},
+    {x:1320,y:255, fill:'#0369a1', l1:'No PSU bids',   l2:'Other PSUs excluded'},
+  ];
+  nonStrat.forEach(n=>{
+    curve(svg,1090,192,n.x,230,`${n.fill}55`,null,true,1.5);
+    node(svg,n.x,n.y,188,46,n.fill,n.l1,n.l2,null,8);
+  });
+
+  lbl(svg,280,20,'STRATEGIC SECTORS: 4 TYPES (Prelims must-know)','#991b1b88','8.5','2');
+  lbl(svg,1090,20,'NON-STRATEGIC: PRIVATIZE OR CLOSE','#16653488','8.5','2');
+})();
+
+// ─── PROCESS FLOW ───
+(function(){
+  const svg=document.getElementById('svgProcess');
+  svg.appendChild(se('rect',{x:0,y:0,width:1380,height:160,fill:'rgba(248,243,237,0.3)'}));
+  mkArrow(svg,'pA','#b8860b');
+
+  const steps=[
+    {x:80,  fill:'#166534', l1:'Govt Policy',     l2:'Minimize PSU presence', e:'📋'},
+    {x:260, fill:'#0369a1', l1:'NITI Identifies', l2:'PSU to disinvest',       e:'🔍'},
+    {x:440, fill:'#1e3a8a', l1:'DIPAM Prepares',  l2:'Proposal & plan',         e:'📄'},
+    {x:620, fill:'#5b21b6', l1:'CCEA Approves',   l2:'Cabinet clearance',       e:'✅'},
+    {x:800, fill:'#0f766e', l1:'Mechanism Acts',  l2:'Mode & pricing set',      e:'⚙️'},
+    {x:980, fill:'#c46200', l1:'Buyer Bids',      l2:'Strategic private only',  e:'🤝'},
+    {x:1160,fill:'#991b1b', l1:'Transfer Done',   l2:'Shares + control moved',  e:'🏭'},
+    {x:1320,fill:'#b8860b', l1:'Revenue + Eff.',  l2:'Proceeds + competition',  e:'📈'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const p=se('path',{d:`M${s.x+84},80 L${steps[i+1].x-84},80`,stroke:'#b8860b','stroke-width':'2',fill:'none','marker-end':'url(#pA)'});
+      svg.appendChild(p);
+    }
+    node(svg,s.x,80,162,62,s.fill,s.l1,s.l2,s.e,8);
+  });
+  lbl(svg,690,148,'COMPLETE PROCESS: IDENTIFY → APPROVE → EXECUTE → BENEFIT','rgba(107,100,80,0.45)','8.5','2');
+})();
+</script>
+</body>
+</html>

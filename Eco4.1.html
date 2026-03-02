@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Government Budgeting — Mind Map | UPSC</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,600&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#f3f0e6;--ink:#0e0c08;--muted:#6b6040;--border:#d4c490;
+  --card:#fefdf4;--card2:#eae5cf;
+  --gold:#8c6200;--amber:#9c4400;--green:#145020;--blue:#102068;
+  --purple:#40086a;--teal:#045058;--red:#820808;--sky:#084060;
+  --navy:#060e28;--olive:#485008;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;}
+.wrap{max-width:1400px;margin:0 auto;padding:0 24px 100px;}
+
+/* ── HEADER ── */
+.hdr{text-align:center;padding:52px 20px 20px;}
+.hdr-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Lora',serif;font-size:clamp(26px,4vw,52px);line-height:1.1;color:var(--ink);}
+.hdr h1 em{font-style:italic;color:var(--amber);}
+.hdr-sub{margin-top:10px;font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.hdr-bar{width:100px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--blue),var(--green));margin:16px auto 0;border-radius:4px;}
+
+/* ── SECTION LABELS ── */
+.sec{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);
+  text-transform:uppercase;margin:40px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:16px;}
+.g6{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:980px){.g3,.g4{grid-template-columns:1fr 1fr;}.g6{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:600px){.g2,.g3,.g4,.g6{grid-template-columns:1fr;}}
+
+/* ── BASE CARD ── */
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:13px;padding:16px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:13px 13px 0 0;}
+.card.c-gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.card.c-amber::before{background:var(--amber);}
+.card.c-green::before{background:var(--green);}
+.card.c-blue::before{background:var(--blue);}
+.card.c-purple::before{background:var(--purple);}
+.card.c-teal::before{background:var(--teal);}
+.card.c-red::before{background:var(--red);}
+.card.c-sky::before{background:var(--sky);}
+.card.c-navy::before{background:var(--navy);}
+.card.c-olive::before{background:var(--olive);}
+.card-tag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.card h3{font-family:'Lora',serif;font-size:15px;line-height:1.3;color:var(--ink);margin-bottom:10px;}
+
+/* ── ROWS ── */
+.row{display:flex;flex-direction:column;gap:6px;}
+.row-item{padding:7px 10px;border-radius:7px;background:var(--card2);border:1px solid var(--border);}
+.row-item .t{font-size:11px;font-weight:700;color:var(--ink);}
+.row-item .s{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:1px;}
+
+/* ── STAT BOXES ── */
+.stats{display:flex;gap:8px;margin:8px 0;}
+.stat{flex:1;padding:10px 6px;border-radius:9px;border:1.5px solid var(--border);background:var(--card2);text-align:center;}
+.stat-n{font-family:'Lora',serif;font-size:22px;font-weight:700;line-height:1;}
+.stat-l{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:2px;}
+.stat-t{font-size:10px;font-weight:700;color:var(--ink);margin-top:2px;}
+
+/* ── CHIPS ── */
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+.chip{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;border:1.5px solid;font-family:'DM Mono',monospace;}
+.chip.ok{background:rgba(20,80,32,0.08);border-color:rgba(20,80,32,0.22);color:var(--green);}
+.chip.no{background:rgba(130,8,8,0.08);border-color:rgba(130,8,8,0.22);color:var(--red);}
+.chip.nn{background:rgba(140,98,0,0.08);border-color:rgba(140,98,0,0.22);color:var(--gold);}
+.chip.bl{background:rgba(16,32,104,0.08);border-color:rgba(16,32,104,0.22);color:var(--blue);}
+
+/* ── CALLOUTS ── */
+.note{padding:9px 12px;border-radius:8px;margin-top:8px;}
+.note .nt{font-size:11px;font-weight:700;margin-bottom:2px;}
+.note .nb{font-size:10px;color:var(--muted);line-height:1.5;}
+.note.red{background:rgba(130,8,8,0.06);border:1.5px solid rgba(130,8,8,0.18);}
+.note.red .nt{color:var(--red);}
+.note.green{background:rgba(20,80,32,0.06);border:1.5px solid rgba(20,80,32,0.18);}
+.note.green .nt{color:var(--green);}
+.note.amber{background:rgba(156,68,0,0.06);border:1.5px solid rgba(156,68,0,0.18);}
+.note.amber .nt{color:var(--amber);}
+.note.blue{background:rgba(16,32,104,0.06);border:1.5px solid rgba(16,32,104,0.18);}
+.note.blue .nt{color:var(--blue);}
+.note.gold{background:rgba(140,98,0,0.06);border:1.5px solid rgba(140,98,0,0.2);}
+.note.gold .nt{color:var(--gold);}
+
+/* ── FLOW STRIP (master timeline) ── */
+.flow-strip{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:24px 20px;margin-bottom:16px;overflow-x:auto;}
+.flow-row{display:flex;align-items:center;gap:0;min-width:800px;}
+.flow-node{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;}
+.fn-box{padding:10px 8px;border-radius:10px;text-align:center;min-width:90px;position:relative;}
+.fn-emoji{font-size:18px;display:block;margin-bottom:4px;}
+.fn-title{font-size:10px;font-weight:700;color:#fff;line-height:1.3;}
+.fn-sub{font-size:8px;color:rgba(255,255,255,0.7);font-family:'DM Mono',monospace;margin-top:3px;}
+.flow-arr{font-size:22px;color:var(--border);flex:0 0 auto;margin:0 4px;align-self:flex-start;margin-top:22px;}
+
+/* ── HUB DIAGRAM — 3-column table layout ── */
+.hub-wrap{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:24px 20px;margin-bottom:16px;}
+.hub-grid{display:grid;grid-template-columns:1fr 180px 1fr;gap:0;align-items:center;}
+.hub-left,.hub-right{display:flex;flex-direction:column;gap:10px;}
+.hub-center{background:var(--navy);border-radius:14px;padding:20px 14px;text-align:center;margin:0 18px;}
+.hub-center .hc-emoji{font-size:26px;margin-bottom:8px;}
+.hub-center .hc-title{font-family:'Lora',serif;font-size:13px;color:#f0d88a;line-height:1.4;}
+.hub-center .hc-sub{font-size:8px;color:rgba(240,216,138,0.55);font-family:'DM Mono',monospace;margin-top:5px;}
+/* Each spoke row = box + connector line */
+.spoke-row{display:flex;align-items:center;gap:0;}
+.hub-left .spoke-row{flex-direction:row;}
+.hub-right .spoke-row{flex-direction:row-reverse;}
+.spoke-box{flex:1;padding:9px 12px;border-radius:9px;text-align:center;}
+.spoke-box .se{font-size:15px;margin-bottom:4px;}
+.spoke-box .st{font-size:10px;font-weight:700;color:#fff;line-height:1.3;}
+.spoke-box .ss{font-size:8px;color:rgba(255,255,255,0.65);font-family:'DM Mono',monospace;margin-top:2px;}
+.spoke-conn{width:36px;flex:0 0 36px;height:2px;background:var(--border);position:relative;}
+.spoke-conn::after{content:'›';position:absolute;right:-2px;top:-9px;font-size:16px;color:var(--border);}
+.hub-right .spoke-conn::after{content:'‹';left:-2px;right:auto;}
+
+/* ── SPLIT DIAGRAM (charged vs voted) ── */
+.split-wrap{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+.split-inner{display:grid;grid-template-columns:1fr 2px 1fr;gap:20px;align-items:start;}
+.split-div{background:var(--border);}
+.split-side h4{font-family:'Lora',serif;font-size:14px;padding:10px 14px;border-radius:10px;text-align:center;color:#fff;margin-bottom:12px;}
+.split-items{display:flex;flex-wrap:wrap;gap:6px;}
+.split-tag{padding:6px 10px;border-radius:8px;font-size:10px;font-weight:700;border:1.5px solid;}
+
+/* ── THREE FUNDS ── */
+.funds-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;}
+@media(max-width:700px){.funds-row{grid-template-columns:1fr;}}
+.fund-card{border-radius:14px;padding:20px;border:2px solid;}
+.fund-card .fc-icon{font-size:28px;margin-bottom:10px;}
+.fund-card .fc-title{font-family:'Lora',serif;font-size:15px;font-weight:700;margin-bottom:4px;}
+.fund-card .fc-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:12px;}
+.fund-card .fc-rows{display:flex;flex-direction:column;gap:5px;}
+.fund-card .fc-row{padding:6px 9px;border-radius:6px;font-size:10px;font-weight:600;}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;gap:10px;align-items:stretch;}
+.step-left{display:flex;flex-direction:column;align-items:center;width:28px;flex:0 0 28px;}
+.step-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;color:#fff;flex:0 0 26px;}
+.step-line{width:2px;flex:1;background:var(--border);margin:2px auto;}
+.step:last-child .step-line{display:none;}
+.step-body{flex:1;padding-bottom:12px;padding-top:2px;}
+.step-title{font-size:12px;font-weight:700;color:var(--ink);}
+.step-sub{font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:1px;}
+
+/* ── PROCEDURE TIMELINE ── */
+.proc-timeline{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;overflow-x:auto;}
+.proc-row{display:flex;align-items:flex-start;gap:0;min-width:700px;position:relative;}
+.proc-row::before{content:'';position:absolute;left:0;right:0;top:36px;height:2px;background:var(--border);}
+.proc-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:0;position:relative;}
+.proc-dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--card);margin:29px auto 8px;position:relative;z-index:1;}
+.proc-box{padding:9px 6px;border-radius:9px;text-align:center;width:90%;max-width:130px;}
+.proc-box .pb-title{font-size:10px;font-weight:700;color:#fff;line-height:1.3;}
+.proc-box .pb-sub{font-size:8px;color:rgba(255,255,255,0.65);font-family:'DM Mono',monospace;margin-top:2px;}
+.proc-step:nth-child(even) .proc-box{margin-top:0;}
+.proc-step:nth-child(odd) .proc-box{margin-top:0;}
+/* Alternate above/below */
+.proc-step.up{flex-direction:column-reverse;}
+.proc-step.up .proc-dot{margin:8px auto 8px;}
+.proc-step.up .proc-box{margin-bottom:8px;}
+
+/* ── FACTS GRID ── */
+.facts-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:900px){.facts-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:500px){.facts-grid{grid-template-columns:repeat(2,1fr);}}
+.fact-card{border-radius:10px;border:1.5px solid;padding:14px 8px;text-align:center;position:relative;overflow:hidden;}
+.fact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.fact-val{font-family:'Lora',serif;font-size:15px;font-weight:700;margin-top:4px;line-height:1.2;}
+.fact-lbl{font-size:8px;font-family:'DM Mono',monospace;margin-top:5px;color:var(--muted);}
+
+/* ── INSTITUTIONS — horizontal flow ── */
+.inst-flow{display:flex;align-items:stretch;gap:0;background:var(--card);
+  border:1.5px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+.inst-box{flex:1;border-radius:11px;padding:18px;text-align:center;}
+.inst-box .ib-title{font-family:'Lora',serif;font-size:20px;font-weight:700;margin-bottom:4px;}
+.inst-box .ib-sub{font-size:9px;font-family:'DM Mono',monospace;margin-bottom:12px;}
+.inst-box .ib-rows{display:flex;flex-direction:column;gap:5px;text-align:left;}
+.inst-box .ib-row{padding:6px 9px;border-radius:6px;font-size:10px;font-weight:600;}
+/* Arrow connector between boxes */
+.inst-connector{flex:0 0 64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0 4px;}
+.inst-connector .ic-label{font-size:8px;font-family:'DM Mono',monospace;color:var(--muted);text-align:center;line-height:1.3;}
+.inst-connector .ic-arrow{display:flex;align-items:center;gap:0;width:100%;}
+.inst-connector .ic-line{flex:1;height:2px;background:var(--border);}
+.inst-connector .ic-head{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid var(--border);}
+
+/* ── KEYSTONE ── */
+.ks{background:var(--navy);color:#e8d4a0;border-radius:16px;padding:28px 30px;margin:24px 0;
+  display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.ks-icon{font-size:40px;flex:0 0 auto;}
+.ks-title{font-family:'Lora',serif;font-size:21px;font-style:italic;color:#f5e0a0;margin-bottom:8px;}
+.ks-body{font-size:12px;color:#b0a068;line-height:1.9;}
+.ks-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.kp{padding:4px 12px;border-radius:20px;background:rgba(255,255,255,0.08);font-size:10px;
+  font-family:'DM Mono',monospace;color:#c8aa60;}
+
+/* ── TABLE ── */
+.tbl{width:100%;border-collapse:collapse;font-size:11px;}
+.tbl th{background:var(--navy);color:#fff;padding:8px 10px;text-align:left;
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--border);line-height:1.5;color:var(--ink);}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl tr:nth-child(even) td{background:rgba(140,98,0,0.03);}
+.tbl td:first-child{font-weight:700;color:var(--amber);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-tag">Indian Polity · Economy · UPSC Prelims</div>
+  <h1>Government <em>Budgeting</em> — Mind Map</h1>
+  <div class="hdr-sub">Article 112 → Receipts & Expenditure → Parliament Control → 3 Funds → Procedure</div>
+  <div class="hdr-bar"></div>
+</div>
+
+<!-- ① MASTER FLOW -->
+<div class="sec">① Master Story — Budget as Money Flow + Parliamentary Control</div>
+<div class="flow-strip">
+  <div class="flow-row">
+    <div class="flow-node">
+      <div class="fn-box" style="background:#155428;">
+        <span class="fn-emoji">💰</span>
+        <div class="fn-title">Govt Receives</div>
+        <div class="fn-sub">Taxes + Loans</div>
+      </div>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <div class="fn-box" style="background:#8c6200;">
+        <span class="fn-emoji">📋</span>
+        <div class="fn-title">Tax Proposed</div>
+        <div class="fn-sub">Finance Bill (Art.110)</div>
+      </div>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <div class="fn-box" style="background:#102068;">
+        <span class="fn-emoji">🗳️</span>
+        <div class="fn-title">Parliament Votes</div>
+        <div class="fn-sub">Lok Sabha only</div>
+      </div>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <div class="fn-box" style="background:#40086a;">
+        <span class="fn-emoji">💸</span>
+        <div class="fn-title">Spending Approved</div>
+        <div class="fn-sub">Demand for Grants</div>
+      </div>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <div class="fn-box" style="background:#045058;">
+        <span class="fn-emoji">📜</span>
+        <div class="fn-title">Appropriation Bill</div>
+        <div class="fn-sub">Art. 114 → CFI</div>
+      </div>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <div class="fn-box" style="background:#9c4400;">
+        <span class="fn-emoji">🏦</span>
+        <div class="fn-title">CFI Withdrawal</div>
+        <div class="fn-sub">Art. 266</div>
+      </div>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <div class="fn-box" style="background:#820808;">
+        <span class="fn-emoji">🔍</span>
+        <div class="fn-title">CAG Audits</div>
+        <div class="fn-sub">Reports excess</div>
+      </div>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-node">
+      <div class="fn-box" style="background:#060e28;">
+        <span class="fn-emoji">🏛️</span>
+        <div class="fn-title">PAC Reviews</div>
+        <div class="fn-sub">Parliament control</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ② CONSTITUTIONAL BASE -->
+<div class="sec">② Constitutional Foundation — The 6 Core Articles</div>
+<div class="hub-wrap">
+  <div class="hub-grid">
+    <div class="hub-left">
+      <div class="spoke-row">
+        <div class="spoke-box" style="background:#8c6200;">
+          <div class="se">📜</div>
+          <div class="st">Art. 112 — Budget</div>
+          <div class="ss">Annual Financial Statement</div>
+        </div>
+        <div class="spoke-conn"></div>
+      </div>
+      <div class="spoke-row">
+        <div class="spoke-box" style="background:#820808;">
+          <div class="se">⚖️</div>
+          <div class="st">Art. 265 — No Tax</div>
+          <div class="ss">Without Parliament law</div>
+        </div>
+        <div class="spoke-conn"></div>
+      </div>
+      <div class="spoke-row">
+        <div class="spoke-box" style="background:#102068;">
+          <div class="se">🏦</div>
+          <div class="st">Art. 266 — CFI</div>
+          <div class="ss">No withdrawal w/o vote</div>
+        </div>
+        <div class="spoke-conn"></div>
+      </div>
+    </div>
+    <div class="hub-center">
+      <div class="hc-emoji">⚖️</div>
+      <div class="hc-title">Constitution &amp; Budget Control</div>
+      <div class="hc-sub">Parliament is supreme</div>
+    </div>
+    <div class="hub-right">
+      <div class="spoke-row">
+        <div class="spoke-conn"></div>
+        <div class="spoke-box" style="background:#40086a;">
+          <div class="se">💰</div>
+          <div class="st">Art. 110 — Finance Bill</div>
+          <div class="ss">Money Bill · Taxes</div>
+        </div>
+      </div>
+      <div class="spoke-row">
+        <div class="spoke-conn"></div>
+        <div class="spoke-box" style="background:#045058;">
+          <div class="se">🔒</div>
+          <div class="st">Art. 113 — Charged</div>
+          <div class="ss">vs Voted expenditure</div>
+        </div>
+      </div>
+      <div class="spoke-row">
+        <div class="spoke-conn"></div>
+        <div class="spoke-box" style="background:#155428;">
+          <div class="se">📋</div>
+          <div class="st">Art. 114 — Approp. Bill</div>
+          <div class="ss">CFI withdrawal law</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="g4">
+  <div class="card c-gold">
+    <div class="card-tag">Art. 112</div>
+    <h3>📜 Annual Financial Statement = Budget</h3>
+    <div class="row-item"><div class="t">Estimate of Income &amp; Expenditure</div><div class="s">For full Financial Year — 1 April to 31 March</div></div>
+  </div>
+  <div class="card c-red">
+    <div class="card-tag">Art. 265</div>
+    <h3>⚖️ No Tax Without Law</h3>
+    <div class="row-item"><div class="t">Parliament Must Pass Finance Bill</div><div class="s">Every tax requires legislative authority — no executive discretion</div></div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-tag">Art. 266</div>
+    <h3>🏦 No Spending Without Approval</h3>
+    <div class="row-item"><div class="t">Consolidated Fund of India</div><div class="s">Not one rupee exits without Appropriation Bill passed by Parliament</div></div>
+  </div>
+  <div class="card c-green">
+    <div class="card-tag">Art. 110 + 114</div>
+    <h3>📋 Two Bills, Two Controls</h3>
+    <div class="row-item"><div class="t">🧾 Taxes → Finance Bill (Art.110)</div><div class="s">💸 Spending → Appropriation Bill (Art.114)</div></div>
+  </div>
+</div>
+
+<!-- ③ BUDGET TYPES -->
+<div class="sec">③ Types of Budget — Time-Based</div>
+<div class="g3">
+  <div class="card c-green">
+    <div class="card-tag">Standard</div>
+    <h3>📊 Full Budget</h3>
+    <div class="row">
+      <div class="row-item"><div class="t">Entire Year Estimates</div><div class="s">Income + expenditure for full FY</div></div>
+      <div class="row-item"><div class="t">Presented 1st Feb, 11 AM</div><div class="s">Changed from Feb 28 — in force since 2017</div></div>
+      <div class="row-item"><div class="t">Lok Sabha First</div><div class="s">Finance Minister reads speech in Lok Sabha</div></div>
+    </div>
+  </div>
+  <div class="card c-amber">
+    <div class="card-tag">Election Year</div>
+    <h3>🗳️ Interim Budget</h3>
+    <div class="row">
+      <div class="row-item"><div class="t">Temporary — During Elections</div><div class="s">Outgoing govt cannot make major policy</div></div>
+      <div class="row-item"><div class="t">Caretaker Nature</div><div class="s">Avoids big announcements — awaits new govt</div></div>
+    </div>
+    <div class="note amber"><div class="nt">⚠️ Different from Vote-on-Account</div><div class="nb">Interim Budget can include both revenue + expenditure proposals</div></div>
+  </div>
+  <div class="card c-blue">
+    <div class="card-tag">Temporary Spending Only</div>
+    <h3>⏱️ Vote-on-Account</h3>
+    <div class="stats">
+      <div class="stat"><div class="stat-n" style="color:#102068;">2</div><div class="stat-t">Months</div><div class="stat-l">DURATION</div></div>
+      <div class="stat"><div class="stat-n" style="color:#9c4400;">1/6th</div><div class="stat-t">of Total Exp.</div><div class="stat-l">USUAL LIMIT</div></div>
+    </div>
+    <div class="note red"><div class="nt">🔴 Expenditure Side ONLY</div><div class="nb">Cannot touch taxation. Only covers spending until full budget passes.</div></div>
+  </div>
+</div>
+
+<!-- ④ BUDGET THEMES -->
+<div class="sec">④ Budget by Theme — Zero-Based, Outcome, Gender</div>
+<div class="g3">
+  <div class="card c-navy">
+    <div class="card-tag">Zero-Based Budget</div>
+    <h3>🔢 Start from Scratch Every Year</h3>
+    <div class="row">
+      <div class="row-item"><div class="t">Every Expense Justified from ₹0</div><div class="s">No automatic carry-forward from previous year</div></div>
+      <div class="row-item"><div class="t">Contrast with Incremental Budget</div><div class="s">Normal budgets add % on last year's base</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding:8px 10px;background:var(--card2);border-radius:8px;border:1px solid var(--border);">
+      <span style="padding:4px 8px;border-radius:6px;background:#060e28;color:#f0d88a;font-size:10px;font-weight:700;">₹0 Base</span>
+      <span style="color:var(--muted);">→</span>
+      <span style="padding:4px 8px;border-radius:6px;background:#102068;color:#fff;font-size:10px;font-weight:700;">Justify All</span>
+      <span style="color:var(--muted);">→</span>
+      <span style="padding:4px 8px;border-radius:6px;background:#155428;color:#fff;font-size:10px;font-weight:700;">Allocate</span>
+    </div>
+  </div>
+  <div class="card c-teal">
+    <div class="card-tag">Outcome Budget</div>
+    <h3>🎯 Outlay → Outcome Focus</h3>
+    <div class="row">
+      <div class="row-item"><div class="t">Measure What Money Achieves</div><div class="s">Not just how much was spent — results matter</div></div>
+      <div class="row-item"><div class="t">Example — LPG Subsidy</div><div class="s">₹20,000 Cr outlay → Target: 9 Crore households reached</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:10px;padding:8px 10px;background:var(--card2);border-radius:8px;border:1px solid var(--border);">
+      <span style="padding:4px 8px;border-radius:6px;background:#045058;color:#fff;font-size:10px;font-weight:700;">💰 Outlay</span>
+      <span style="color:var(--muted);font-size:18px;">→</span>
+      <span style="padding:4px 8px;border-radius:6px;background:#155428;color:#fff;font-size:10px;font-weight:700;">🎯 Outcome</span>
+    </div>
+  </div>
+  <div class="card c-purple">
+    <div class="card-tag">Gender Budget — Since 2005-06</div>
+    <h3>👩 Two-Part Gender Framework</h3>
+    <div class="row">
+      <div class="row-item" style="border-left:3px solid var(--purple);">
+        <div class="t">Part A — 100% Women Schemes</div>
+        <div class="s">Schemes exclusively for women beneficiaries</div>
+      </div>
+      <div class="row-item" style="border-left:3px solid var(--blue);">
+        <div class="t">Part B — ≥30% Women Allocation</div>
+        <div class="s">Schemes where at least 30% benefits go to women</div>
+      </div>
+    </div>
+    <div class="chips"><span class="chip ok">✅ Started 2005-06</span><span class="chip bl">2 Parts</span></div>
+  </div>
+</div>
+
+<!-- ⑤ PROCEDURE -->
+<div class="sec">⑤ Budget Procedure — Step by Step</div>
+<div class="proc-timeline">
+  <div class="proc-row">
+    <div class="proc-step up">
+      <div class="proc-box" style="background:#9c4400;">
+        <div class="pb-title">1. Presentation</div>
+        <div class="pb-sub">Lok Sabha · 1st Feb · 11AM</div>
+      </div>
+      <div class="proc-dot" style="background:#9c4400;"></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-dot" style="background:#102068;"></div>
+      <div class="proc-box" style="background:#102068;">
+        <div class="pb-title">2. General Discussion</div>
+        <div class="pb-sub">BOTH Houses · No voting</div>
+      </div>
+    </div>
+    <div class="proc-step up">
+      <div class="proc-box" style="background:#40086a;">
+        <div class="pb-title">3. Demand for Grants</div>
+        <div class="pb-sub">Lok Sabha ONLY · Ministry-wise</div>
+      </div>
+      <div class="proc-dot" style="background:#40086a;"></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-dot" style="background:#045058;"></div>
+      <div class="proc-box" style="background:#045058;">
+        <div class="pb-title">4. DRSC Examines</div>
+        <div class="pb-sub">~24 committees · Pre-vote</div>
+      </div>
+    </div>
+    <div class="proc-step up">
+      <div class="proc-box" style="background:#820808;">
+        <div class="pb-title">5. Guillotine</div>
+        <div class="pb-sub">Speaker · All undiscussed at once</div>
+      </div>
+      <div class="proc-dot" style="background:#820808;"></div>
+    </div>
+    <div class="proc-step">
+      <div class="proc-dot" style="background:#155428;"></div>
+      <div class="proc-box" style="background:#155428;">
+        <div class="pb-title">6. Appropriation Bill</div>
+        <div class="pb-sub">Art. 114 · CFI withdrawal auth</div>
+      </div>
+    </div>
+    <div class="proc-step up">
+      <div class="proc-box" style="background:#9c4400;">
+        <div class="pb-title">7. Finance Bill</div>
+        <div class="pb-sub">Art. 110 · Within 75 days</div>
+      </div>
+      <div class="proc-dot" style="background:#9c4400;"></div>
+    </div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="card c-blue">
+    <div class="card-tag">Parliament Procedure</div>
+    <h3>🏛️ Step-by-Step Detail</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-left"><div class="step-num" style="background:#9c4400;">1</div><div class="step-line"></div></div>
+        <div class="step-body"><div class="step-title">Presentation in Lok Sabha</div><div class="step-sub">1st Feb, 11 AM · Finance Minister reads budget speech</div></div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num" style="background:#102068;">2</div><div class="step-line"></div></div>
+        <div class="step-body"><div class="step-title">General Discussion — Both Houses</div><div class="step-sub">Discussion ONLY — no voting in either house at this stage</div></div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num" style="background:#40086a;">3</div><div class="step-line"></div></div>
+        <div class="step-body"><div class="step-title">Demand for Grants — Lok Sabha Only</div><div class="step-sub">Ministry-wise voting · DRSC (~24 committees) examines each demand</div></div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num" style="background:#820808;">4</div><div class="step-line"></div></div>
+        <div class="step-body"><div class="step-title">Guillotine (Speaker's Power)</div><div class="step-sub">All undiscussed demands put to vote together — time discipline enforced</div></div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num" style="background:#155428;">5</div></div>
+        <div class="step-body"><div class="step-title">Appropriation + Finance Bills Passed</div><div class="step-sub">Finance Bill must pass within 75 days of presentation</div></div>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div class="card c-red">
+      <div class="card-tag">Rajya Sabha — Very Limited Role</div>
+      <h3>⚠️ Upper House CANNOT Vote on Grants</h3>
+      <div class="row">
+        <div class="row-item"><div class="t">Can Only Discuss — NOT Vote</div><div class="s">No vote on Demand for Grants — Lok Sabha exclusive power</div></div>
+        <div class="row-item"><div class="t">Money Bill Returns in 14 Days</div><div class="s">RS can suggest changes — LS can accept or reject them</div></div>
+      </div>
+      <div class="note red"><div class="nt">⚡ Classic UPSC Trap</div><div class="nb">RS discusses budget but has ZERO vote on spending demands</div></div>
+    </div>
+    <div class="card c-amber">
+      <div class="card-tag">Finance Bill vs Appropriation Bill</div>
+      <h3>📋 Two Budget Laws</h3>
+      <div class="row">
+        <div class="row-item" style="border-left:3px solid var(--amber);"><div class="t">Finance Bill (Art. 110) — Taxes</div><div class="s">Money Bill · 75 days deadline · GST rates via GST Council</div></div>
+        <div class="row-item" style="border-left:3px solid var(--blue);"><div class="t">Appropriation Bill (Art. 114) — Spending</div><div class="s">Authorizes CFI withdrawal · Money Bill · After Demand for Grants vote</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ CHARGED vs VOTED -->
+<div class="sec">⑥ Charged vs Voted Expenditure — Article 113</div>
+<div class="split-wrap">
+  <div class="split-inner">
+    <div class="split-side">
+      <h4 style="background:#820808;">🔒 Charged Expenditure — No Vote Required</h4>
+      <div class="split-items">
+        <span class="split-tag" style="background:rgba(130,8,8,0.08);border-color:rgba(130,8,8,0.25);color:#820808;">President Salary</span>
+        <span class="split-tag" style="background:rgba(130,8,8,0.08);border-color:rgba(130,8,8,0.25);color:#820808;">CAG Salary</span>
+        <span class="split-tag" style="background:rgba(130,8,8,0.08);border-color:rgba(130,8,8,0.25);color:#820808;">Supreme Court Judges</span>
+        <span class="split-tag" style="background:rgba(130,8,8,0.08);border-color:rgba(130,8,8,0.25);color:#820808;">Lok Sabha Speaker</span>
+        <span class="split-tag" style="background:rgba(130,8,8,0.08);border-color:rgba(130,8,8,0.25);color:#820808;">Election Commission</span>
+        <span class="split-tag" style="background:rgba(130,8,8,0.08);border-color:rgba(130,8,8,0.25);color:#820808;">Govt Debt Charges</span>
+      </div>
+      <div class="note red" style="margin-top:10px;"><div class="nt">Debated — but NOT voted</div><div class="nb">Cannot be reduced by Parliament. Paid from CFI automatically. Constitutional offices protected.</div></div>
+    </div>
+    <div class="split-div"></div>
+    <div class="split-side">
+      <h4 style="background:#155428;">✅ Voted Expenditure — Parliament Approves</h4>
+      <div class="split-items">
+        <span class="split-tag" style="background:rgba(21,84,40,0.08);border-color:rgba(21,84,40,0.25);color:#155428;">All Ministry Demands</span>
+        <span class="split-tag" style="background:rgba(21,84,40,0.08);border-color:rgba(21,84,40,0.25);color:#155428;">Welfare Schemes</span>
+        <span class="split-tag" style="background:rgba(21,84,40,0.08);border-color:rgba(21,84,40,0.25);color:#155428;">Defence Budget</span>
+        <span class="split-tag" style="background:rgba(21,84,40,0.08);border-color:rgba(21,84,40,0.25);color:#155428;">Social Sector (Health, Edu)</span>
+        <span class="split-tag" style="background:rgba(21,84,40,0.08);border-color:rgba(21,84,40,0.25);color:#155428;">Subsidies (Food, Fuel)</span>
+        <span class="split-tag" style="background:rgba(21,84,40,0.08);border-color:rgba(21,84,40,0.25);color:#155428;">Capital Outlay (Infra)</span>
+      </div>
+      <div class="note green" style="margin-top:10px;"><div class="nt">✅ Demand for Grants → Lok Sabha votes</div><div class="nb">Ministry-wise approval required. Subject to Guillotine if time runs out.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ SPECIAL GRANTS -->
+<div class="sec">⑦ Special Grants — Supplementary vs Excess</div>
+<div class="g2">
+  <div class="card c-green">
+    <div class="card-tag">Supplementary Demand for Grants</div>
+    <h3>➕ Extra Money — Same Year (Before Year Ends)</h3>
+    <div class="row">
+      <div class="row-item"><div class="t">When Additional Money Needed Mid-Year</div><div class="s">During the same financial year that is still running</div></div>
+      <div class="row-item"><div class="t">Presented to Parliament for Approval</div><div class="s">Same process as budget — requires Lok Sabha vote</div></div>
+      <div class="row-item"><div class="t">Withdrawal from CFI</div><div class="s">After Parliament approves supplementary demands</div></div>
+    </div>
+    <div class="chips"><span class="chip ok">✅ Before year-end</span><span class="chip ok">Parliament approves</span></div>
+  </div>
+  <div class="card c-red">
+    <div class="card-tag">Excess Grants</div>
+    <h3>⚠️ Overspending Already Done (After Year Ends)</h3>
+    <div class="row">
+      <div class="row-item"><div class="t">Spending Already Exceeded Approved Amount</div><div class="s">Happened without prior Parliament sanction — after the FY closes</div></div>
+      <div class="row-item"><div class="t">Reported by CAG</div><div class="s">Comptroller &amp; Auditor General audits and flags overspend</div></div>
+      <div class="row-item"><div class="t">Examined by Public Accounts Committee</div><div class="s">PAC scrutinizes CAG report on excess grants</div></div>
+    </div>
+    <div class="note red"><div class="nt">🔴 Key UPSC Distinction</div><div class="nb"><strong>Supplementary</strong> = Before year ends (pro-active) | <strong>Excess</strong> = After year ends (post-CAG audit)</div></div>
+  </div>
+</div>
+
+<!-- ⑧ THREE FUNDS -->
+<div class="sec">⑧ Three Government Funds — The Money Architecture</div>
+<div class="funds-row">
+  <div class="fund-card" style="background:rgba(140,98,0,0.06);border-color:rgba(140,98,0,0.3);">
+    <div class="fc-icon">🏦</div>
+    <div class="fc-title" style="color:#8c6200;">Consolidated Fund of India</div>
+    <div class="fc-sub" style="color:#8c6200;">Article 266 — The Main Vault</div>
+    <div class="fc-rows">
+      <div class="fc-row" style="background:rgba(140,98,0,0.08);color:#5a3e00;">All Tax Revenue enters here</div>
+      <div class="fc-row" style="background:rgba(140,98,0,0.08);color:#5a3e00;">Non-Tax Revenue (dividends, fees)</div>
+      <div class="fc-row" style="background:rgba(140,98,0,0.08);color:#5a3e00;">Loans Raised by Government</div>
+      <div class="fc-row" style="background:rgba(130,8,8,0.10);color:#820808;font-weight:800;">🔒 Parliament Approval Required</div>
+    </div>
+  </div>
+  <div class="fund-card" style="background:rgba(156,68,0,0.06);border-color:rgba(156,68,0,0.3);">
+    <div class="fc-icon">🚨</div>
+    <div class="fc-title" style="color:#9c4400;">Contingency Fund of India</div>
+    <div class="fc-sub" style="color:#9c4400;">Emergency Use — President Disposes</div>
+    <div class="fc-rows">
+      <div class="fc-row" style="background:rgba(156,68,0,0.08);color:#5e2800;">Urgent unforeseen expenses</div>
+      <div class="fc-row" style="background:rgba(156,68,0,0.08);color:#5e2800;">President uses directly — no prior vote</div>
+      <div class="fc-row" style="background:rgba(156,68,0,0.08);color:#5e2800;">Later recouped from CFI after approval</div>
+      <div class="fc-row" style="background:rgba(156,68,0,0.10);color:#9c4400;font-weight:800;">₹30,000 Crore Corpus (present)</div>
+    </div>
+  </div>
+  <div class="fund-card" style="background:rgba(4,80,88,0.06);border-color:rgba(4,80,88,0.3);">
+    <div class="fc-icon">🤝</div>
+    <div class="fc-title" style="color:#045058;">Public Account of India</div>
+    <div class="fc-sub" style="color:#045058;">Trustee Role — Not Govt's Own Money</div>
+    <div class="fc-rows">
+      <div class="fc-row" style="background:rgba(4,80,88,0.08);color:#023038;">Government acts as trustee</div>
+      <div class="fc-row" style="background:rgba(4,80,88,0.08);color:#023038;">Provident Fund deposits</div>
+      <div class="fc-row" style="background:rgba(4,80,88,0.08);color:#023038;">Small Savings &amp; Security Deposits</div>
+      <div class="fc-row" style="background:rgba(21,84,40,0.10);color:#155428;font-weight:800;">✅ No Parliamentary Approval Needed</div>
+    </div>
+  </div>
+</div>
+<div class="note gold" style="margin-bottom:16px;"><div class="nt">🔁 How the 3 Funds Connect</div><div class="nb">CFI = main vault (tax + loans, Parliament approval). Contingency = emergency bypass (President draws, Parliament restores later). Public Account = trustee money (not govt's — no approval needed). All three flow into and out of the government's financial system.</div></div>
+
+<!-- ⑨ INSTITUTIONS -->
+<div class="sec">⑨ Key Oversight Institutions</div>
+<div class="inst-flow">
+  <div class="inst-box" style="background:rgba(130,8,8,0.06);border:1.5px solid rgba(130,8,8,0.2);">
+    <div class="ib-title" style="color:#820808;">CAG</div>
+    <div class="ib-sub" style="color:#820808;">Comptroller &amp; Auditor General</div>
+    <div class="ib-rows">
+      <div class="ib-row" style="background:rgba(130,8,8,0.08);color:#520404;">🔍 Audits all Union + State accounts</div>
+      <div class="ib-row" style="background:rgba(130,8,8,0.08);color:#520404;">📋 Reports excess spending to Parliament</div>
+      <div class="ib-row" style="background:rgba(130,8,8,0.08);color:#520404;">🔒 CAG salary = Charged expenditure</div>
+      <div class="ib-row" style="background:rgba(130,8,8,0.08);color:#520404;">📊 Audit Report laid before Parliament</div>
+    </div>
+  </div>
+  <div class="inst-connector">
+    <div class="ic-label">Audit report sent to</div>
+    <div class="ic-arrow"><div class="ic-line"></div><div class="ic-head"></div></div>
+  </div>
+  <div class="inst-box" style="background:rgba(16,32,104,0.06);border:1.5px solid rgba(16,32,104,0.2);">
+    <div class="ib-title" style="color:#102068;">PAC</div>
+    <div class="ib-sub" style="color:#102068;">Public Accounts Committee</div>
+    <div class="ib-rows">
+      <div class="ib-row" style="background:rgba(16,32,104,0.08);color:#060e28;">📋 Examines CAG audit report</div>
+      <div class="ib-row" style="background:rgba(16,32,104,0.08);color:#060e28;">⏩ Post-facto control mechanism</div>
+      <div class="ib-row" style="background:rgba(16,32,104,0.08);color:#060e28;">👥 Members from both LS + RS</div>
+      <div class="ib-row" style="background:rgba(16,32,104,0.08);color:#060e28;">🔍 Scrutinizes excess grants</div>
+    </div>
+  </div>
+  <div class="inst-connector">
+    <div class="ic-label">Separately, before voting</div>
+    <div class="ic-arrow"><div class="ic-line"></div><div class="ic-head"></div></div>
+  </div>
+  <div class="inst-box" style="background:rgba(64,8,106,0.06);border:1.5px solid rgba(64,8,106,0.2);">
+    <div class="ib-title" style="color:#40086a;">DRSC</div>
+    <div class="ib-sub" style="color:#40086a;">~24 Departmental Committees</div>
+    <div class="ib-rows">
+      <div class="ib-row" style="background:rgba(64,8,106,0.08);color:#280548;">🔬 Examines each ministry demand</div>
+      <div class="ib-row" style="background:rgba(64,8,106,0.08);color:#280548;">⏮️ Pre-vote scrutiny only</div>
+      <div class="ib-row" style="background:rgba(64,8,106,0.08);color:#280548;">🏛️ ~24 committees total</div>
+      <div class="ib-row" style="background:rgba(64,8,106,0.08);color:#280548;">📑 Cover all major departments</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑩ PRELIMS FACTS -->
+<div class="sec">⑩ High-Probability Prelims Facts 🔥</div>
+<div class="facts-grid">
+  <div class="fact-card" style="border-color:rgba(140,98,0,0.3);background:rgba(140,98,0,0.06);">
+    <div class="fact-card::before" style="background:#8c6200;"></div>
+    <div style="font-size:14px;">📜</div>
+    <div class="fact-val" style="color:#8c6200;">Art. 112</div>
+    <div class="fact-lbl">BUDGET = ANNUAL FINANCIAL STATEMENT</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(130,8,8,0.3);background:rgba(130,8,8,0.06);">
+    <div style="font-size:14px;">⚖️</div>
+    <div class="fact-val" style="color:#820808;">Art. 265</div>
+    <div class="fact-lbl">NO TAX WITHOUT LAW</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(16,32,104,0.3);background:rgba(16,32,104,0.06);">
+    <div style="font-size:14px;">🏦</div>
+    <div class="fact-val" style="color:#102068;">Art. 266</div>
+    <div class="fact-lbl">CONSOLIDATED FUND + PUBLIC ACCOUNT</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(64,8,106,0.3);background:rgba(64,8,106,0.06);">
+    <div style="font-size:14px;">🔒</div>
+    <div class="fact-val" style="color:#40086a;">Art. 113</div>
+    <div class="fact-lbl">CHARGED VS VOTED EXPENDITURE</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(4,80,88,0.3);background:rgba(4,80,88,0.06);">
+    <div style="font-size:14px;">📋</div>
+    <div class="fact-val" style="color:#045058;">Art. 114</div>
+    <div class="fact-lbl">APPROPRIATION BILL</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(156,68,0,0.3);background:rgba(156,68,0,0.06);">
+    <div style="font-size:14px;">⏱️</div>
+    <div class="fact-val" style="color:#9c4400;">75 Days</div>
+    <div class="fact-lbl">FINANCE BILL DEADLINE</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(21,84,40,0.3);background:rgba(21,84,40,0.06);">
+    <div style="font-size:14px;">📅</div>
+    <div class="fact-val" style="color:#155428;">2 Months</div>
+    <div class="fact-lbl">VOTE-ON-ACCOUNT DURATION</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(72,80,8,0.3);background:rgba(72,80,8,0.06);">
+    <div style="font-size:14px;">🔢</div>
+    <div class="fact-val" style="color:#485008;">1/6th</div>
+    <div class="fact-lbl">VOTE-ON-ACCOUNT USUAL LIMIT</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(64,8,106,0.3);background:rgba(64,8,106,0.06);">
+    <div style="font-size:14px;">👩</div>
+    <div class="fact-val" style="color:#40086a;">2005-06</div>
+    <div class="fact-lbl">GENDER BUDGET STARTED</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(16,32,104,0.3);background:rgba(16,32,104,0.06);">
+    <div style="font-size:14px;">🌸</div>
+    <div class="fact-val" style="color:#102068;">100%</div>
+    <div class="fact-lbl">GENDER BUDGET PART A — WOMEN ONLY</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(4,80,88,0.3);background:rgba(4,80,88,0.06);">
+    <div style="font-size:14px;">📊</div>
+    <div class="fact-val" style="color:#045058;">≥30%</div>
+    <div class="fact-lbl">GENDER BUDGET PART B — MIN WOMEN</div>
+  </div>
+  <div class="fact-card" style="border-color:rgba(6,14,40,0.3);background:rgba(6,14,40,0.06);">
+    <div style="font-size:14px;">🔨</div>
+    <div class="fact-val" style="color:#060e28;">Speaker</div>
+    <div class="fact-lbl">WHO APPLIES GUILLOTINE</div>
+  </div>
+</div>
+
+<div class="g2">
+  <div class="card c-navy">
+    <div class="card-tag">Article Numbers — Must Know</div>
+    <h3>📜 Constitutional Provisions</h3>
+    <table class="tbl">
+      <thead><tr><th>Article</th><th>Provision</th></tr></thead>
+      <tbody>
+        <tr><td>Art. 112</td><td>Annual Financial Statement = Budget definition</td></tr>
+        <tr><td>Art. 265</td><td>No tax levied without authority of law</td></tr>
+        <tr><td>Art. 266</td><td>CFI + Public Account; no withdrawal without approval</td></tr>
+        <tr><td>Art. 110</td><td>Money Bill — Finance Bill definition</td></tr>
+        <tr><td>Art. 113</td><td>Charged vs Voted expenditure distinction</td></tr>
+        <tr><td>Art. 114</td><td>Appropriation Bill — withdrawals from CFI</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card c-amber">
+    <div class="card-tag">UPSC Traps — Most Tested</div>
+    <h3>🎯 Critical Exam Distinctions</h3>
+    <div class="row">
+      <div class="row-item" style="border-left:3px solid var(--red);"><div class="t">Vote-on-Account = Expenditure ONLY — no taxes</div><div class="s">2 months duration · 1/6th of total spending</div></div>
+      <div class="row-item" style="border-left:3px solid var(--amber);"><div class="t">Finance Bill = 75 days to pass after presentation</div><div class="s">Classified as Money Bill under Art. 110</div></div>
+      <div class="row-item" style="border-left:3px solid var(--blue);"><div class="t">Guillotine = Speaker forces vote on undiscussed demands</div><div class="s">Lok Sabha only — time management tool</div></div>
+      <div class="row-item" style="border-left:3px solid var(--red);"><div class="t">Rajya Sabha = Discusses ONLY — CANNOT vote on Demands</div><div class="s">Most classic UPSC trap — always tested</div></div>
+      <div class="row-item" style="border-left:3px solid var(--purple);"><div class="t">Supplementary = Before year-end · Excess = After (CAG reports)</div><div class="s">PAC examines Excess Grants post audit</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="ks">
+  <div class="ks-icon">📊</div>
+  <div style="flex:1;">
+    <div class="ks-title">The Core Connecting Idea — Budget as Democratic Control</div>
+    <div class="ks-body">
+      Budget is Parliament's supreme instrument of financial control. <strong style="color:#f5e0a0;">Tax proposed → Finance Bill (Art.110) → Parliament approves. Spending proposed → Demand for Grants (Lok Sabha only) → Appropriation Bill (Art.114) → CFI withdrawal (Art.266). Emergencies → Contingency Fund (President draws). Trustee money → Public Account (no approval needed).</strong> CAG audits all overspending → Reports → PAC scrutinizes. DRSC examines ministry demands before voting. Guillotine enforces time discipline. Rajya Sabha can only discuss — never vote on spending grants.
+    </div>
+    <div class="ks-pills">
+      <span class="kp">📜 Art. 112 = Budget</span>
+      <span class="kp">⚖️ Art. 265 No Tax w/o Law</span>
+      <span class="kp">🏦 Art. 266 CFI</span>
+      <span class="kp">💰 Finance Bill 75 Days</span>
+      <span class="kp">⚡ Guillotine = Speaker</span>
+      <span class="kp">🔍 CAG → PAC</span>
+      <span class="kp">🚨 Contingency = President</span>
+      <span class="kp">🤝 Public Account = Trustee</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+</body>
+</html>

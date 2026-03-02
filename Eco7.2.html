@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSME → PLI — Prelims Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=DM+Mono:wght@400;500&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0f0e0d;--paper:#f7f4ee;
+  --saffron:#d45a10;--gold:#b87c10;--gold-lt:#f5d78a;
+  --green:#1a6a3a;--blue:#1a3a8a;--purple:#5a1a8a;
+  --teal:#0a6070;--red:#b01a1a;--muted:#7a6a50;
+  --border:#ddd0b0;--card:#fffdf5;--card2:#f2ede0;
+  --indigo:#2a1a6a;
+}
+body{font-family:'Nunito',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 800px 500px at 10% 5%,rgba(212,90,16,.05) 0%,transparent 65%),
+             radial-gradient(ellipse 700px 700px at 90% 85%,rgba(26,58,138,.05) 0%,transparent 65%),
+             url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.022'/%3E%3C/svg%3E");
+}
+.wrap{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:0 22px 100px;}
+
+/* ── HEADER ── */
+.header{text-align:center;padding:44px 16px 22px;}
+.header-sup{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,50px);line-height:1.1;}
+.header h1 em{font-style:italic;color:var(--saffron);}
+.header-sub{margin-top:8px;font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;letter-spacing:1px;}
+.header::after{content:'';display:block;width:100px;height:4px;background:linear-gradient(90deg,var(--saffron),var(--gold),var(--green),var(--blue));margin:16px auto 0;border-radius:4px;}
+
+/* ── SEC LABEL ── */
+.sec-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin:32px 0 14px;display:flex;align-items:center;gap:12px;}
+.sec-label::before,.sec-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+
+/* ── PANEL CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:box-shadow .2s,transform .2s;}
+.pc:hover{box-shadow:0 6px 28px rgba(184,124,16,.1);transform:translateY(-1px);}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--saffron),var(--gold));}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.saffron::before{background:var(--saffron);}
+.pc.indigo::before{background:var(--indigo);}
+.pc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;}
+
+/* ── MAP CARD ── */
+.map-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:24px;}
+.map-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc1::before{background:linear-gradient(90deg,var(--saffron),var(--gold),var(--green));}
+.mc2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc3::before{background:linear-gradient(90deg,var(--red),var(--saffron),var(--gold));}
+.mc4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--blue));}
+.mc5::before{background:linear-gradient(90deg,var(--indigo),var(--blue));}
+.map-card svg{display:block;width:100%;}
+
+/* ── PILLS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;margin:2px;font-family:'DM Mono',monospace;}
+.pill.gold{background:rgba(184,124,16,.12);color:var(--gold);}
+.pill.green{background:rgba(26,106,58,.12);color:var(--green);}
+.pill.blue{background:rgba(26,58,138,.12);color:var(--blue);}
+.pill.saffron{background:rgba(212,90,16,.12);color:var(--saffron);}
+.pill.red{background:rgba(176,26,26,.12);color:var(--red);}
+.pill.purple{background:rgba(90,26,138,.12);color:var(--purple);}
+.pill.teal{background:rgba(10,96,112,.12);color:var(--teal);}
+
+/* ── STAT BOX ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat-box{flex:1;padding:12px;border-radius:11px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1;}
+.stat-label{font-size:9px;font-family:'DM Mono',monospace;color:var(--muted);margin-top:3px;}
+.stat-sub{font-size:10px;font-weight:700;margin-top:2px;}
+
+/* ── CHIP ── */
+.chip{display:inline-block;padding:3px 9px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;margin:2px;font-family:'DM Mono',monospace;}
+.chip.prob{background:rgba(176,26,26,.07);border-color:rgba(176,26,26,.2);color:var(--red);}
+.chip.sol{background:rgba(26,106,58,.07);border-color:rgba(26,106,58,.2);color:var(--green);}
+.chip.neu{background:rgba(184,124,16,.07);border-color:rgba(184,124,16,.2);color:var(--gold);}
+.chip.info{background:rgba(26,58,138,.07);border-color:rgba(26,58,138,.2);color:var(--blue);}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:7px;}
+.vitem{padding:8px 12px;border-radius:9px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vitem .vt{font-weight:800;margin-bottom:2px;}
+.vitem .vs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;}
+
+/* ── TABLE ── */
+.ctable{width:100%;border-collapse:collapse;font-size:11px;}
+.ctable th{background:var(--ink);color:#fff;padding:8px 10px;text-align:left;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable tr:nth-child(even) td{background:rgba(184,124,16,.03);}
+.ctable td:first-child{font-weight:700;color:var(--saffron);}
+
+/* ── IMPACT CHAIN ── */
+.impact-chain{display:flex;align-items:center;gap:0;flex-wrap:wrap;padding:6px 0;margin:8px 0;}
+.ic-node{padding:6px 12px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;border:1.5px solid;}
+.ic-arr{font-size:16px;color:var(--muted);flex:0 0 auto;margin:0 4px;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f5e8c0;border-radius:18px;padding:24px 30px;margin:20px 0;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.keystone-icon{font-size:36px;flex:0 0 auto;}
+.keystone-title{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;margin-bottom:5px;}
+.keystone-sub{font-size:11px;color:#c8b880;line-height:1.6;}
+.kpill{display:inline-block;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,.1);font-size:10px;font-family:'DM Mono',monospace;margin:3px;}
+
+/* ── FEAT GRID ── */
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.feat{padding:9px 11px;border-radius:9px;background:var(--card2);border:1px solid var(--border);}
+.feat .fi{font-size:15px;margin-bottom:3px;}
+.feat .ft{font-size:11px;font-weight:800;}
+.feat .fs{font-size:9px;color:var(--muted);font-family:'DM Mono',monospace;margin-top:2px;}
+
+/* ── PIE-LIKE BAR ── */
+.bar-row{display:flex;flex-direction:column;gap:8px;margin:8px 0;}
+.bar-item{display:flex;align-items:center;gap:8px;}
+.bar-lbl{font-size:10px;font-weight:700;width:100px;flex:0 0 100px;font-family:'DM Mono',monospace;text-align:right;}
+.bar-track{flex:1;background:var(--card2);border-radius:5px;height:20px;overflow:hidden;border:1px solid var(--border);}
+.bar-fill{height:100%;border-radius:5px;display:flex;align-items:center;padding:0 8px;font-size:9px;font-weight:800;font-family:'DM Mono',monospace;color:#fff;}
+.bar-val{font-size:10px;font-weight:800;width:42px;flex:0 0 42px;font-family:'DM Mono',monospace;}
+
+/* ── CALLOUT ── */
+.callout{padding:11px 14px;border-radius:10px;background:rgba(26,106,58,.06);border:1.5px solid rgba(26,106,58,.2);margin:8px 0;}
+.callout-t{font-size:11px;font-weight:800;color:var(--green);margin-bottom:3px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.5;}
+.callout.warn{background:rgba(176,26,26,.06);border-color:rgba(176,26,26,.2);}
+.callout.warn .callout-t{color:var(--red);}
+.callout.info{background:rgba(26,58,138,.06);border-color:rgba(26,58,138,.2);}
+.callout.info .callout-t{color:var(--blue);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-sup">Indian Economy · Industry · UPSC Prelims</div>
+  <h1>MSME → IIP → PLI — <em>Prelims Flow Map</em></h1>
+  <div class="header-sub">MSMEs · KVIC · Index of Industrial Production · Core Industries · PLI Scheme</div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec-label">Master Flow — The Connecting Thread</div>
+<div class="map-card mc1">
+  <svg id="svgMaster" viewBox="0 0 1360 130" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<!-- ══ SECTION 1: MSME OVERVIEW ══ -->
+<div class="sec-label">① MSME — Backbone of Indian Economy</div>
+
+<div class="map-card mc2">
+  <svg id="svgMSME" viewBox="0 0 1360 280" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <!-- Key Stats -->
+  <div class="pc saffron">
+    <div class="pc-label">Prelims Numbers</div>
+    <h3>📊 Critical Statistics</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--saffron);">30%</div>
+        <div class="stat-sub">of GDP</div>
+        <div class="stat-label">CONTRIBUTION</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--blue);">45%</div>
+        <div class="stat-sub">Manufacturing</div>
+        <div class="stat-label">OUTPUT SHARE</div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">40%</div>
+        <div class="stat-sub">of Exports</div>
+        <div class="stat-label">SHARE</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--purple);">11 Cr+</div>
+        <div class="stat-sub">Employed</div>
+        <div class="stat-label">WORKFORCE</div>
+      </div>
+    </div>
+    <div class="callout info" style="margin-top:10px;">
+      <div class="callout-t">ℹ️ More Key Facts</div>
+      <div class="callout-b">~6.34 crore MSMEs · ~90% informal<br>Labour-intensive · Low capital needed</div>
+    </div>
+  </div>
+
+  <!-- Classification Table -->
+  <div class="pc gold">
+    <div class="pc-label">MSMED Act 2006 — Revised</div>
+    <h3>📋 MSME Classification</h3>
+    <div class="callout warn" style="margin-bottom:10px;">
+      <div class="callout-t">⚠️ Prelims Trap</div>
+      <div class="callout-b">Export turnover is NOT counted in the turnover limit for classification.</div>
+    </div>
+    <table class="ctable">
+      <tr><th>Category</th><th>Investment</th><th>Turnover</th></tr>
+      <tr><td>Micro</td><td>&lt; ₹1 Cr</td><td>&lt; ₹5 Cr</td></tr>
+      <tr><td>Small</td><td>&lt; ₹10 Cr</td><td>&lt; ₹50 Cr</td></tr>
+      <tr><td>Medium</td><td>&lt; ₹50 Cr</td><td>&lt; ₹250 Cr</td></tr>
+    </table>
+    <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="pill gold">Manufacturing ✔</span>
+      <span class="pill gold">Services ✔</span>
+      <span class="pill blue">Both covered</span>
+    </div>
+  </div>
+
+  <!-- Problems -->
+  <div class="pc red">
+    <div class="pc-label">Why MSMEs Struggle</div>
+    <h3>⚠️ Major Problems</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">💳 Lack of Timely Credit</div><div class="vs">Banks hesitant for informal units</div></div>
+      <div class="vitem"><div class="vt">🏭 Old Technology</div><div class="vs">Low productivity, no upgradation</div></div>
+      <div class="vitem"><div class="vt">📉 No Economies of Scale</div><div class="vs">Small size = higher unit cost</div></div>
+      <div class="vitem"><div class="vt">👷 Skilled Labour Gap</div><div class="vs">Formal training absent</div></div>
+      <div class="vitem"><div class="vt">⏳ Delayed Payments</div><div class="vs">From large buyers to MSMEs</div></div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip prob">❌ Capital shortage</span><span class="chip prob">❌ Market access</span></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 2: GOVT SUPPORT ══ -->
+<div class="sec-label">② Government Support Schemes</div>
+
+<div class="map-card mc3">
+  <svg id="svgGovt" viewBox="0 0 1360 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Key Schemes</div>
+    <h3>🚀 MSME Support Ecosystem</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🔹 Udyam Registration</div>
+        <div class="vs">One-page online · Unique Udyam Number · Replaces Udyog Aadhar</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔹 RAMP Scheme</div>
+        <div class="vs">Credit + Tech + Delayed Payment + Greening MSMEs</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔹 ASPIRE</div>
+        <div class="vs">Rural innovation & startups promotion</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔹 CHAMPIONS Portal (2020)</div>
+        <div class="vs">ICT grievance redressal · Single-window support</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="chip sol">✅ 59-min loan approval</span>
+      <span class="chip sol">✅ ECGS (Emergency Credit)</span>
+      <span class="chip sol">✅ Fund of Funds</span>
+      <span class="chip sol">✅ Distressed MSME Fund</span>
+    </div>
+  </div>
+  <div class="pc indigo">
+    <div class="pc-label">Committees & Rural Link</div>
+    <h3>📐 Committees + KVIC</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">U.K. Sinha Committee</div><div class="vs">MSMEs credit & financial access</div></div>
+      <div class="vitem"><div class="vt">K.V. Kamath Committee</div><div class="vs">Stressed sectors resolution post-COVID</div></div>
+    </div>
+    <div style="margin-top:12px;padding:12px;border-radius:10px;background:rgba(42,26,106,.06);border:1.5px solid rgba(42,26,106,.2);">
+      <div style="font-size:11px;font-weight:800;color:var(--indigo);margin-bottom:6px;">🏺 Aatma Nirbhar Bharat Package</div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.7;">
+        Emergency Credit Line Guarantee (ECGLS)<br>
+        Fund of Funds for MSMEs<br>
+        Distressed MSME Fund
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: KVIC ══ -->
+<div class="sec-label">③ KVIC — Rural MSME Ecosystem</div>
+
+<div class="g2" style="margin-bottom:20px;">
+  <div class="pc teal">
+    <div class="pc-label">Statutory Body · Est. 1956</div>
+    <h3>🏺 Khadi & Village Industries Commission</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--teal);">1956</div>
+        <div class="stat-sub">Established</div>
+        <div class="stat-label">YEAR</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--green);">Act</div>
+        <div class="stat-sub">KVIC Act</div>
+        <div class="stat-label">LEGAL BASIS</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;">
+      <div style="font-size:11px;font-weight:800;color:var(--teal);margin-bottom:6px;">🎯 Objectives</div>
+      <span class="pill teal">Rural Employment</span>
+      <span class="pill teal">Promote Khadi</span>
+      <span class="pill teal">Village Industries</span>
+      <span class="pill teal">Self-Reliance</span>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">KVIC Functions</div>
+    <h3>⚙️ What KVIC Does</h3>
+    <div class="feat-grid">
+      <div class="feat"><div class="fi">📚</div><div class="ft">Training</div><div class="fs">Skill development</div></div>
+      <div class="feat"><div class="fi">🪵</div><div class="ft">Raw Materials</div><div class="fs">Supply chain support</div></div>
+      <div class="feat"><div class="fi">🛒</div><div class="ft">Marketing</div><div class="fs">Market linkages</div></div>
+      <div class="feat"><div class="fi">💰</div><div class="ft">Financial Aid</div><div class="fs">Subsidies & grants</div></div>
+      <div class="feat"><div class="fi">✅</div><div class="ft">Quality Standards</div><div class="fs">Certification</div></div>
+      <div class="feat"><div class="fi">🏘️</div><div class="ft">Rural Focus</div><div class="fs">Village entrepreneur</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-t">🔗 KVIC ↔ MSME Link</div>
+      <div class="callout-b">KVIC is the rural arm of the MSME ecosystem — supporting micro & village enterprises.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: IIP ══ -->
+<div class="sec-label">④ Index of Industrial Production (IIP)</div>
+
+<div class="map-card mc4">
+  <svg id="svgIIP" viewBox="0 0 1360 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc blue">
+    <div class="pc-label">Prelims Key Facts</div>
+    <h3>📈 IIP — Quick Facts</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Published by NSO</div><div class="vs">National Statistical Office — Monthly</div></div>
+      <div class="vitem"><div class="vt">Base Year: 2011–12</div><div class="vs">Current reference for calculations</div></div>
+      <div class="vitem"><div class="vt">Measures Short-term Growth</div><div class="vs">Industrial output changes month-to-month</div></div>
+    </div>
+    <div style="margin-top:12px;">
+      <div style="font-size:11px;font-weight:800;color:var(--blue);margin-bottom:8px;">📊 IIP Sector Weights</div>
+      <div class="bar-row">
+        <div class="bar-item">
+          <div class="bar-lbl">Manufacturing</div>
+          <div class="bar-track"><div class="bar-fill" style="width:77.63%;background:linear-gradient(90deg,#1a3a8a,#2a5acc);">77.63%</div></div>
+          <div class="bar-val" style="color:var(--blue);">77.63%</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-lbl">Mining</div>
+          <div class="bar-track"><div class="bar-fill" style="width:14.37%;background:linear-gradient(90deg,#5a1a8a,#7a2acc);">14.37%</div></div>
+          <div class="bar-val" style="color:var(--purple);">14.37%</div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-lbl">Electricity</div>
+          <div class="bar-track"><div class="bar-fill" style="width:7.99%;background:linear-gradient(90deg,#0a6070,#1a90a8);">7.99%</div></div>
+          <div class="bar-val" style="color:var(--teal);">7.99%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc gold">
+    <div class="pc-label">Core Industries — 40.27% of IIP</div>
+    <h3>🏭 Eight Core Industries</h3>
+    <div class="callout info" style="margin-bottom:10px;">
+      <div class="callout-t">⏱️ Data Released with 1-Month Lag</div>
+      <div class="callout-b">Core industries data comes out with ~30 day delay.</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-item"><div class="bar-lbl">Refinery</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#b87c10;">28.04%</div></div><div class="bar-val" style="color:var(--gold);">28.04%</div></div>
+      <div class="bar-item"><div class="bar-lbl">Electricity</div><div class="bar-track"><div class="bar-fill" style="width:57%;background:#d46a10;">19.85%</div></div><div class="bar-val" style="color:var(--saffron);">19.85%</div></div>
+      <div class="bar-item"><div class="bar-lbl">Steel</div><div class="bar-track"><div class="bar-fill" style="width:51%;background:#1a3a8a;">17.92%</div></div><div class="bar-val" style="color:var(--blue);">17.92%</div></div>
+      <div class="bar-item"><div class="bar-lbl">Coal</div><div class="bar-track"><div class="bar-fill" style="width:29%;background:#2a1a6a;">10.33%</div></div><div class="bar-val" style="color:var(--indigo);">10.33%</div></div>
+      <div class="bar-item"><div class="bar-lbl">Crude Oil</div><div class="bar-track"><div class="bar-fill" style="width:25%;background:#1a6a3a;">8.98%</div></div><div class="bar-val" style="color:var(--green);">8.98%</div></div>
+      <div class="bar-item"><div class="bar-lbl">Natural Gas</div><div class="bar-track"><div class="bar-fill" style="width:20%;background:#0a6070;">6.88%</div></div><div class="bar-val" style="color:var(--teal);">6.88%</div></div>
+      <div class="bar-item"><div class="bar-lbl">Cement</div><div class="bar-track"><div class="bar-fill" style="width:16%;background:#5a1a8a;">5.73%</div></div><div class="bar-val" style="color:var(--purple);">5.73%</div></div>
+      <div class="bar-item"><div class="bar-lbl">Fertilizers</div><div class="bar-track"><div class="bar-fill" style="width:7%;background:#b01a1a;">2.63%</div></div><div class="bar-val" style="color:var(--red);">2.63%</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: PLI ══ -->
+<div class="sec-label">⑤ Production Linked Incentive (PLI) Scheme</div>
+
+<div class="map-card mc5">
+  <svg id="svgPLI" viewBox="0 0 1360 240" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc saffron">
+    <div class="pc-label">How PLI Works</div>
+    <h3>⚙️ Mechanism</h3>
+    <div class="impact-chain" style="flex-direction:column;align-items:flex-start;gap:8px;">
+      <div class="ic-node" style="border-color:var(--saffron);background:rgba(212,90,16,.08);color:var(--saffron);">Company Invests in Plant & Machinery</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:30px;">↓</div>
+      <div class="ic-node" style="border-color:var(--gold);background:rgba(184,124,16,.08);color:var(--gold);">Sales Exceed Base Year Target</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:30px;">↓</div>
+      <div class="ic-node" style="border-color:var(--green);background:rgba(26,106,58,.08);color:var(--green);">Govt Gives 4–6% Incentive on Incremental Sales</div>
+      <div class="ic-arr" style="transform:rotate(90deg);margin-left:30px;">↓</div>
+      <div class="ic-node" style="border-color:var(--blue);background:rgba(26,58,138,.08);color:var(--blue);">Boost Manufacturing → Reduce Imports</div>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Goal & Focus</div>
+    <h3>🎯 PLI Objectives</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">Boost Manufacturing Output</div><div class="vs">Encourage domestic production</div></div>
+      <div class="vitem"><div class="vt">Increase Exports</div><div class="vs">Global supply chain integration</div></div>
+      <div class="vitem"><div class="vt">Sunrise Sectors Focus</div><div class="vs">Electronics, pharma, textiles, etc.</div></div>
+      <div class="vitem"><div class="vt">Reduce Import Dependence</div><div class="vs">Critical APIs, components</div></div>
+    </div>
+    <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip sol">✅ Incentive-driven</span>
+      <span class="chip info">ℹ️ 13 sectors covered</span>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Pharma Sector — Key Facts</div>
+    <h3>💊 PLI in Pharmaceuticals</h3>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--purple);">53</div>
+        <div class="stat-sub">APIs Covered</div>
+        <div class="stat-label">BULK DRUGS</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" style="color:var(--saffron);">3rd</div>
+        <div class="stat-sub">Producer (Volume)</div>
+        <div class="stat-label">INDIA GLOBALLY</div>
+      </div>
+    </div>
+    <div class="callout warn" style="margin-top:10px;">
+      <div class="callout-t">⚠️ India's Pharma Challenge</div>
+      <div class="callout-b">India = 3rd largest pharma producer by volume, but highly dependent on imported bulk drugs/APIs — largely from China.</div>
+    </div>
+    <div style="margin-top:8px;"><span class="chip sol">✅ PLI reduces China API dependency</span></div>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: COMPLETE FLOW ══ -->
+<div class="sec-label">⑥ Complete Revision Flow</div>
+
+<div class="map-card mc1">
+  <svg id="svgRevision" viewBox="0 0 1360 160" xmlns="http://www.w3.org/2000/svg" style="font-family:'Nunito',sans-serif;"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">Quick Recall — Key Numbers</div>
+    <h3>🔢 Prelims Number Sheet</h3>
+    <div class="vlist">
+      <div class="vitem"><div class="vt">MSME GDP Share</div><div class="vs">30% of GDP · 45% manufacturing · 40% exports</div></div>
+      <div class="vitem"><div class="vt">MSME Size</div><div class="vs">6.34 Cr units · 11 Cr+ employed · 90% informal</div></div>
+      <div class="vitem"><div class="vt">IIP Base Year</div><div class="vs">2011–12 · Published by NSO · Monthly</div></div>
+      <div class="vitem"><div class="vt">Core Industries</div><div class="vs">8 industries · 40.27% weight in IIP · 1-month lag</div></div>
+      <div class="vitem"><div class="vt">PLI Incentive</div><div class="vs">4–6% on incremental sales over base year</div></div>
+      <div class="vitem"><div class="vt">Pharma PLI</div><div class="vs">53 APIs · India = 3rd largest producer (volume)</div></div>
+      <div class="vitem"><div class="vt">KVIC Est.</div><div class="vs">1956 · Statutory body · KVIC Act</div></div>
+    </div>
+  </div>
+
+  <div class="pc saffron">
+    <div class="pc-label">Prelims Traps & Tricks</div>
+    <h3>⚡ Watch Out For</h3>
+    <div class="vlist">
+      <div class="vitem">
+        <div class="vt">🔴 Export ≠ Turnover for MSME</div>
+        <div class="vs">Export turnover NOT counted in classification limit</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔴 IIP ≠ GDP</div>
+        <div class="vs">IIP = Industrial output only, not overall economic growth</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔴 Core Industries ≠ IIP</div>
+        <div class="vs">Core = 40.27% of IIP, not all of it</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔴 PLI ≠ Subsidy</div>
+        <div class="vs">Incentive given on incremental sales, not upfront</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔴 KVIC ≠ MSME Ministry</div>
+        <div class="vs">KVIC is a statutory body under MSME Ministry</div>
+      </div>
+      <div class="vitem">
+        <div class="vt">🔴 Refinery = Top Core Industry</div>
+        <div class="vs">28.04% weight — highest among 8 core industries</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div class="keystone-icon">⚙️</div>
+  <div style="flex:1;">
+    <div class="keystone-title">The Core Connecting Idea</div>
+    <div class="keystone-sub">
+      MSMEs generate employment but need policy support → Govt schemes (Udyam, RAMP, CHAMPIONS) plug gaps → KVIC supports rural micro-enterprises → IIP measures industrial pulse → Core industries drive heavy output → PLI incentivises domestic manufacturing to cut import dependence.<br>
+      <strong style="color:#f5d78a;">Together: MSMEs + Policy + IIP measurement + PLI = India's Atmanirbhar Industrial Ecosystem</strong>
+    </div>
+    <div style="margin-top:10px;">
+      <span class="kpill">🏭 Job Creation</span>
+      <span class="kpill">💳 Credit Access</span>
+      <span class="kpill">📊 IIP Monitoring</span>
+      <span class="kpill">🚀 PLI Growth</span>
+      <span class="kpill">🇮🇳 Atmanirbhar</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function se(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function edge(svg,x1,y1,x2,y2,color,dashed,w){
+  const mx=(x1+x2)/2;
+  const p=se('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:color||'#aaa','stroke-width':w||2,fill:'none','stroke-dasharray':dashed?'5 4':'none',opacity:'0.65'});
+  svg.appendChild(p);
+}
+
+function node(svg,x,y,w,h,fill,lines,sub,emoji,textCol,rx){
+  textCol=textCol||'#fff';rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(se('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.08)'}));
+  g.appendChild(se('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.18)','stroke-width':'1.5'}));
+  let ty=y-((lines.length-1)*8)-(sub?5:0)-(emoji?10:0);
+  if(emoji){const em=se('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:textCol});em.textContent=emoji;g.appendChild(em);ty+=17;}
+  lines.forEach((l,i)=>{
+    const t=se('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'11','font-weight':'700','font-family':'Nunito,sans-serif',fill:textCol});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){const s=se('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle','font-size':'8.5','font-family':'DM Mono,monospace',fill:textCol==='#fff'?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.38)'});s.textContent=sub;g.appendChild(s);}
+  svg.appendChild(g);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  const steps=[
+    {x:88,  fill:'#d45a10', label:['MSMEs'],         sub:'30% GDP · 11Cr jobs', emoji:'🏭'},
+    {x:260, fill:'#b87c10', label:['Problems'],       sub:'Credit · Tech · Scale', emoji:'⚠️'},
+    {x:435, fill:'#1a3a8a', label:['Govt Schemes'],   sub:'Udyam · RAMP · CHAMPIONS', emoji:'🚀'},
+    {x:610, fill:'#0a6070', label:['KVIC'],           sub:'Rural MSME Ecosystem', emoji:'🏺'},
+    {x:790, fill:'#5a1a8a', label:['IIP'],            sub:'NSO · Base 2011-12', emoji:'📊'},
+    {x:965, fill:'#1a6a3a', label:['Core Industries'],sub:'8 sectors · 40.27% IIP', emoji:'🏗️'},
+    {x:1140,fill:'#2a1a6a', label:['PLI Scheme'],     sub:'4–6% on incr. sales', emoji:'💡'},
+    {x:1290,fill:'#1a5878', label:['Atmanirbhar'],    sub:'Manufacturing + Exports', emoji:'🇮🇳'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) edge(svg,s.x+70,65,steps[i+1].x-70,65,'#b87c1066',false,2);
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,65,135,72,s.fill,s.label,s.sub,s.emoji);
+  });
+  const t=se('text',{x:680,y:18,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3',fill:'rgba(120,100,60,0.4)'});
+  t.textContent='MSME → KVIC → IIP → CORE INDUSTRIES → PLI: THE INDUSTRIAL ECOSYSTEM FLOW';
+  svg.appendChild(t);
+})();
+
+// ── MSME MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgMSME');
+  svg.setAttribute('viewBox','0 0 1360 280');
+  node(svg,680,140,200,60,'#0f0e0d',['MSME','Backbone of Economy'],'6.34 Cr units · 11 Cr jobs','🏭');
+
+  const spokes=[
+    {x:140, y:60,  fill:'#d45a10', label:['30% GDP'], sub:'Economic share', emoji:'📈'},
+    {x:140, y:140, fill:'#b87c10', label:['45% Mfg.'], sub:'Manufacturing output', emoji:'🏭'},
+    {x:140, y:220, fill:'#1a6a3a', label:['40% Exports'], sub:'Trade contribution', emoji:'🌍'},
+    {x:390, y:50,  fill:'#5a1a8a', label:['~6.34 Cr','Units'], sub:'Total MSMEs', emoji:'🔢'},
+    {x:390, y:230, fill:'#1a3a8a', label:['11 Cr+','Employed'], sub:'Workforce', emoji:'👷'},
+    {x:960, y:50,  fill:'#b01a1a', label:['~90%','Informal'], sub:'Unregistered', emoji:'⚠️'},
+    {x:960, y:230, fill:'#0a6070', label:['Low Capital','Labour Intensive'], sub:'Key features', emoji:'⚙️'},
+    {x:1220,y:60,  fill:'#2a1a6a', label:['Ancillary','to Large Industry'], sub:'Complementary role', emoji:'🔗'},
+    {x:1220,y:140, fill:'#1a5878', label:['Micro Small','Medium'], sub:'3-tier classification', emoji:'📋'},
+    {x:1220,y:220, fill:'#7a4010', label:['MSMED Act','2006'], sub:'Legal framework', emoji:'⚖️'},
+  ];
+
+  spokes.forEach(n=>{
+    const dir=n.x<680?1:-1;
+    edge(svg,680+(dir>0?-100:100),140,n.x+(n.x<680?80:-80),n.y,'#b87c1044',true,1.8);
+    const lines=n.label;
+    node(svg,n.x,n.y,160,52,n.fill,lines,n.sub,n.emoji);
+  });
+})();
+
+// ── GOVT SCHEMES MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgGovt');
+  svg.setAttribute('viewBox','0 0 1360 300');
+  node(svg,680,150,220,60,'#1a6a3a',['Govt MSME Support','Schemes & Bodies'],'Policy Ecosystem','🚀');
+
+  const left=[
+    {x:130, y:60,  fill:'#1a6a3a', label:['Udyam','Registration'], sub:'Online · Unique ID', emoji:'🔹'},
+    {x:130, y:150, fill:'#0a6070', label:['RAMP Scheme'], sub:'Credit+Tech+Green', emoji:'🔹'},
+    {x:130, y:240, fill:'#1a3a8a', label:['ASPIRE'], sub:'Rural innovation', emoji:'🔹'},
+    {x:390, y:60,  fill:'#5a1a8a', label:['CHAMPIONS','Portal 2020'], sub:'ICT grievance · Single window', emoji:'💻'},
+    {x:390, y:240, fill:'#b87c10', label:['59-min Loan'], sub:'Fast credit approval', emoji:'⚡'},
+  ];
+  const right=[
+    {x:960, y:60,  fill:'#d45a10', label:['ECGLS'], sub:'Emergency credit guarantee', emoji:'🏦'},
+    {x:960, y:150, fill:'#b01a1a', label:['Fund of Funds'], sub:'VC for MSMEs', emoji:'💰'},
+    {x:960, y:240, fill:'#2a1a6a', label:['Distressed','MSME Fund'], sub:'COVID recovery', emoji:'🆘'},
+    {x:1220,y:90,  fill:'#1a5878', label:['U.K. Sinha','Committee'], sub:'Credit access reform', emoji:'📑'},
+    {x:1220,y:210, fill:'#006050', label:['K.V. Kamath','Committee'], sub:'Stressed sectors', emoji:'📑'},
+  ];
+
+  [...left,...right].forEach(n=>{
+    const fromX=n.x<680?590:770;
+    edge(svg,fromX,150,n.x+(n.x<680?88:-88),n.y,'#1a6a3a44',true,1.8);
+    node(svg,n.x,n.y,165,54,n.fill,n.label,n.sub,n.emoji);
+  });
+})();
+
+// ── IIP RADIAL MAP ──
+(function(){
+  const svg=document.getElementById('svgIIP');
+  svg.setAttribute('viewBox','0 0 1360 240');
+  node(svg,400,120,200,60,'#1a3a8a',['IIP — Index of','Industrial Production'],'NSO · Monthly · Base 2011-12','📊');
+
+  const iipSpokes=[
+    {x:110, y:55,  fill:'#1a3a8a', label:['Manufacturing'], sub:'77.63% weight', emoji:'🏭'},
+    {x:110, y:130, fill:'#5a1a8a', label:['Mining'], sub:'14.37% weight', emoji:'⛏️'},
+    {x:110, y:205, fill:'#0a6070', label:['Electricity'], sub:'7.99% weight', emoji:'⚡'},
+    {x:310, y:50,  fill:'#b87c10', label:['Monthly Release'], sub:'By NSO', emoji:'📅'},
+    {x:310, y:195, fill:'#1a6a3a', label:['Short-term Gauge'], sub:'Industrial growth', emoji:'📈'},
+  ];
+  iipSpokes.forEach(n=>{
+    edge(svg,400+(n.x<400?-100:100),120,n.x+(n.x<400?75:-75),n.y,'#1a3a8a44',true,1.8);
+    node(svg,n.x,n.y,165,50,n.fill,n.label,n.sub,n.emoji);
+  });
+
+  // Core 8 on right side as a tree
+  node(svg,920,50,200,50,'#b87c10',['8 Core Industries'],'40.27% of IIP · 1-month lag','🏗️');
+  const cores=[
+    {x:780, y:120, fill:'#b87c10', label:['Refinery 28.04%'], sub:'Highest weight', emoji:'🛢️'},
+    {x:780, y:175, fill:'#d45a10', label:['Electricity 19.85%'], sub:'2nd highest', emoji:'⚡'},
+    {x:780, y:230, fill:'#1a3a8a', label:['Steel 17.92%'], sub:'3rd', emoji:'🔩'},
+    {x:1080,y:120, fill:'#2a1a6a', label:['Coal 10.33%'], sub:'4th', emoji:'🪨'},
+    {x:1080,y:175, fill:'#1a6a3a', label:['Crude 8.98%'], sub:'5th', emoji:'🛢️'},
+    {x:1080,y:230, fill:'#0a6070', label:['Gas 6.88%'], sub:'6th', emoji:'💨'},
+    {x:1250,y:140, fill:'#5a1a8a', label:['Cement 5.73%'], sub:'7th', emoji:'🏗️'},
+    {x:1250,y:210, fill:'#b01a1a', label:['Fertilizers 2.63%'], sub:'8th · Lowest', emoji:'🌾'},
+  ];
+  cores.forEach(n=>{
+    edge(svg,920,74,n.x+(n.x<920?80:-75),n.y,'#b87c1055',true,1.5);
+    node(svg,n.x,n.y,155,44,n.fill,[n.label[0]],n.sub,n.emoji);
+  });
+
+  // line dividing IIP and core
+  svg.appendChild(se('line',{x1:600,y1:20,x2:600,y2:230,stroke:'rgba(200,180,140,0.18)','stroke-width':'1.5','stroke-dasharray':'5 4'}));
+  const lt=se('text',{x:400,y:228,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(26,58,138,0.4)','letter-spacing':'2'});
+  lt.textContent='IIP STRUCTURE'; svg.appendChild(lt);
+  const rt=se('text',{x:1000,y:228,'text-anchor':'middle','font-size':'8','font-family':'DM Mono,monospace',fill:'rgba(184,124,16,0.4)','letter-spacing':'2'});
+  rt.textContent='8 CORE INDUSTRIES'; svg.appendChild(rt);
+})();
+
+// ── PLI MIND MAP ──
+(function(){
+  const svg=document.getElementById('svgPLI');
+  svg.setAttribute('viewBox','0 0 1360 240');
+  node(svg,680,120,220,62,'#2a1a6a',['PLI Scheme','Production Linked Incentive'],'4–6% on Incremental Sales','💡');
+
+  const left=[
+    {x:130, y:55,  fill:'#d45a10', label:['Boost Mfg.'], sub:'Domestic production', emoji:'🏭'},
+    {x:130, y:130, fill:'#1a6a3a', label:['Increase Exports'], sub:'Global supply chain', emoji:'🌍'},
+    {x:130, y:205, fill:'#5a1a8a', label:['Sunrise Sectors'], sub:'Electronics, pharma…', emoji:'🌅'},
+    {x:390, y:60,  fill:'#b01a1a', label:['Reduce Imports'], sub:'Cut China dependence', emoji:'🔄'},
+    {x:390, y:190, fill:'#1a3a8a', label:['Must Invest in','Plant & Machinery'], sub:'Condition to qualify', emoji:'⚙️'},
+  ];
+  const right=[
+    {x:960, y:55,  fill:'#b87c10', label:['Pharma: 53 APIs'], sub:'Bulk drugs PLI', emoji:'💊'},
+    {x:960, y:130, fill:'#1a5878', label:['India = 3rd','Producer (Vol.)'], sub:'By volume globally', emoji:'🏆'},
+    {x:960, y:205, fill:'#7a4010', label:['API Import Gap'], sub:'Dependent on China', emoji:'⚠️'},
+    {x:1200,y:80,  fill:'#0a6070', label:['Incentive on','Incremental Sales'], sub:'Not upfront subsidy', emoji:'📈'},
+    {x:1200,y:185, fill:'#1a3a8a', label:['13 Sectors','Covered'], sub:'Wide sectoral scope', emoji:'🗂️'},
+  ];
+
+  [...left,...right].forEach(n=>{
+    const fromX=n.x<680?590:770;
+    edge(svg,fromX,120,n.x+(n.x<680?85:-80),n.y,'#2a1a6a44',true,1.8);
+    node(svg,n.x,n.y,168,52,n.fill,n.label,n.sub,n.emoji);
+  });
+})();
+
+// ── REVISION FLOW ──
+(function(){
+  const svg=document.getElementById('svgRevision');
+  const steps=[
+    {x:88,  fill:'#d45a10', label:['MSMEs'],       sub:'Job creators', emoji:'🏭'},
+    {x:260, fill:'#b01a1a', label:['Need Support'], sub:'Credit + tech', emoji:'⚠️'},
+    {x:430, fill:'#1a6a3a', label:['Govt Schemes'], sub:'Udyam · RAMP', emoji:'🚀'},
+    {x:600, fill:'#0a6070', label:['KVIC'],         sub:'Rural support', emoji:'🏺'},
+    {x:770, fill:'#1a3a8a', label:['IIP Measures'], sub:'Industrial pulse', emoji:'📊'},
+    {x:940, fill:'#b87c10', label:['Core Inds.'],   sub:'8 sectors', emoji:'🏗️'},
+    {x:1110,fill:'#2a1a6a', label:['PLI Scheme'],   sub:'Incentivise mfg.', emoji:'💡'},
+    {x:1280,fill:'#1a5878', label:['Atmanirbhar'],  sub:'Cut imports', emoji:'🇮🇳'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1) edge(svg,s.x+70,80,steps[i+1].x-70,80,'#b87c1066',false,2);
+  });
+  steps.forEach(s=>{
+    node(svg,s.x,80,135,68,s.fill,[s.label[0]],s.sub,s.emoji);
+  });
+  const t=se('text',{x:680,y:18,'text-anchor':'middle','font-size':'9','font-family':'DM Mono,monospace','letter-spacing':'3',fill:'rgba(120,100,60,0.4)'});
+  t.textContent='COMPLETE REVISION FLOW — MSMEs TO ATMANIRBHAR';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>

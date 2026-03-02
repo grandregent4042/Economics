@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DFI · NPA · ARC · Securitization — Mind Map</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0c0b09;--paper:#f6f2ea;--cream:#fefcf5;
+  --gold:#a86e08;--gold-lt:#f0d080;
+  --amber:#bf5210;--teal:#096068;--green:#185e30;
+  --blue:#152e78;--purple:#4e1280;--red:#9e1818;
+  --sky:#104e70;--slate:#2a3448;--brown:#5a3a10;
+  --muted:#786050;--border:#d8c8a0;--card:#fefcf5;--card2:#f0ebe0;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;
+  background:radial-gradient(ellipse 1100px 600px at 8% 5%,rgba(168,110,8,0.07) 0%,transparent 55%),
+             radial-gradient(ellipse 900px 900px at 92% 96%,rgba(21,46,120,0.05) 0%,transparent 55%);
+  pointer-events:none;z-index:0;}
+.wrap{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 28px 110px;}
+
+/* ── HEADER ── */
+.hdr{text-align:center;padding:48px 20px 26px;}
+.eyebrow{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+.hdr h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,54px);line-height:1.05;font-weight:700;}
+.hdr h1 em{font-style:italic;color:var(--amber);}
+.hdr-sub{margin-top:8px;font-size:11.5px;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:1.5px;}
+.hdr-rule{width:110px;height:4px;background:linear-gradient(90deg,var(--amber),var(--gold),var(--teal));margin:15px auto 0;border-radius:4px;}
+.hdr-pills{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:16px;}
+.hp{padding:4px 13px;border-radius:20px;font-size:9.5px;font-weight:700;font-family:'Space Mono',monospace;border:1.5px solid;}
+.hp.g{background:rgba(168,110,8,0.09);border-color:rgba(168,110,8,0.28);color:var(--gold);}
+.hp.b{background:rgba(21,46,120,0.07);border-color:rgba(21,46,120,0.2);color:var(--blue);}
+.hp.a{background:rgba(191,82,16,0.08);border-color:rgba(191,82,16,0.22);color:var(--amber);}
+.hp.gr{background:rgba(24,94,48,0.08);border-color:rgba(24,94,48,0.22);color:var(--green);}
+.hp.t{background:rgba(9,96,104,0.08);border-color:rgba(9,96,104,0.22);color:var(--teal);}
+
+/* ── SECTION LABELS ── */
+.sec{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin:34px 0 15px;display:flex;align-items:center;gap:14px;}
+.sec::before,.sec::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── GRID ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:20px;}
+.g21{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-bottom:20px;}
+.g12{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin-bottom:20px;}
+@media(max-width:960px){.g3,.g4{grid-template-columns:1fr 1fr;}.g21,.g12{grid-template-columns:1fr;}}
+@media(max-width:640px){.g2,.g3,.g4,.g21,.g12{grid-template-columns:1fr;}}
+
+/* ── CARDS ── */
+.pc{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3.5px;border-radius:16px 16px 0 0;}
+.pc.gold::before{background:linear-gradient(90deg,var(--amber),var(--gold));}
+.pc.amber::before{background:var(--amber);}
+.pc.green::before{background:var(--green);}
+.pc.blue::before{background:var(--blue);}
+.pc.purple::before{background:var(--purple);}
+.pc.teal::before{background:var(--teal);}
+.pc.red::before{background:var(--red);}
+.pc.sky::before{background:var(--sky);}
+.pc.slate::before{background:var(--slate);}
+.pc.brown::before{background:var(--brown);}
+.pc-label{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.pc h3{font-family:'Cormorant Garamond',serif;font-size:17px;margin-bottom:12px;display:flex;align-items:center;gap:7px;line-height:1.3;font-weight:700;}
+
+/* ── STAT ── */
+.stat-row{display:flex;gap:10px;margin:10px 0;}
+.stat{flex:1;padding:11px 8px;border-radius:10px;border:1.5px solid var(--border);text-align:center;background:var(--card2);}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;line-height:1;}
+.stat-s{font-size:10px;font-weight:700;margin-top:3px;}
+.stat-l{font-size:8px;font-family:'Space Mono',monospace;color:var(--muted);margin-top:2px;letter-spacing:1px;}
+
+/* ── PILLS / CHIPS ── */
+.pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:9px;font-weight:700;margin:2px;font-family:'Space Mono',monospace;}
+.pill.gold{background:rgba(168,110,8,0.11);color:var(--gold);}
+.pill.green{background:rgba(24,94,48,0.11);color:var(--green);}
+.pill.blue{background:rgba(21,46,120,0.11);color:var(--blue);}
+.pill.amber{background:rgba(191,82,16,0.11);color:var(--amber);}
+.pill.purple{background:rgba(78,18,128,0.11);color:var(--purple);}
+.pill.teal{background:rgba(9,96,104,0.11);color:var(--teal);}
+.pill.red{background:rgba(158,24,24,0.11);color:var(--red);}
+.pill.sky{background:rgba(16,78,112,0.11);color:var(--sky);}
+.chip{display:inline-block;padding:4px 10px;border-radius:7px;font-size:9px;font-weight:700;border:1.5px solid;margin:2px;font-family:'Space Mono',monospace;}
+.chip.ok{background:rgba(24,94,48,0.07);border-color:rgba(24,94,48,0.24);color:var(--green);}
+.chip.ng{background:rgba(158,24,24,0.07);border-color:rgba(158,24,24,0.24);color:var(--red);}
+.chip.warn{background:rgba(191,82,16,0.07);border-color:rgba(191,82,16,0.24);color:var(--amber);}
+.chip.neu{background:rgba(168,110,8,0.07);border-color:rgba(168,110,8,0.24);color:var(--gold);}
+
+/* ── VLIST ── */
+.vlist{display:flex;flex-direction:column;gap:6px;}
+.vi{padding:9px 12px;border-radius:8px;background:var(--card2);border:1px solid var(--border);font-size:11px;}
+.vi .vt{font-weight:700;margin-bottom:1px;}
+.vi .vs{font-size:8.5px;color:var(--muted);font-family:'Space Mono',monospace;}
+
+/* ── FLOW CHAIN ── */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:10px 0;}
+.fn{padding:6px 12px;border-radius:7px;font-size:10px;font-weight:700;border:1.5px solid;}
+.farr{font-size:16px;color:var(--muted);}
+
+/* ── MAP CARD ── */
+.mc{background:var(--card);border:1.5px solid var(--border);border-radius:20px;overflow:hidden;position:relative;margin-bottom:22px;}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;z-index:2;}
+.mc.m1::before{background:linear-gradient(90deg,var(--amber),var(--gold),var(--teal));}
+.mc.m2::before{background:linear-gradient(90deg,var(--blue),var(--purple),var(--teal));}
+.mc.m3::before{background:linear-gradient(90deg,var(--red),var(--amber),var(--gold));}
+.mc.m4::before{background:linear-gradient(90deg,var(--green),var(--teal),var(--sky));}
+.mc.m5::before{background:linear-gradient(90deg,var(--sky),var(--blue));}
+.mc svg{display:block;width:100%;}
+
+/* ── FORMULA ── */
+.formula{background:linear-gradient(135deg,rgba(21,46,120,0.06),rgba(78,18,128,0.04));border:2px solid rgba(21,46,120,0.18);border-radius:13px;padding:18px 22px;text-align:center;margin:12px 0;}
+.formula-eq{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--blue);font-weight:700;}
+.formula-label{font-size:8.5px;font-family:'Space Mono',monospace;color:var(--muted);margin-top:6px;letter-spacing:2px;}
+
+/* ── CALLOUT ── */
+.callout{padding:11px 14px;border-radius:9px;background:rgba(24,94,48,0.06);border:1.5px solid rgba(24,94,48,0.2);margin:8px 0;}
+.callout-t{font-size:10px;font-weight:700;color:var(--green);margin-bottom:2px;}
+.callout-b{font-size:10px;color:var(--muted);line-height:1.55;}
+
+/* ── PHASE ── */
+.phase-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:14px 0;}
+@media(max-width:640px){.phase-row{grid-template-columns:1fr;}}
+.pbox{padding:18px;border-radius:13px;border:2px solid;text-align:center;}
+.pnum{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;line-height:1;}
+
+/* ── TIMELINE ── */
+.timeline{position:relative;padding-left:28px;margin:14px 0;}
+.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--amber),var(--gold),var(--teal));border-radius:2px;}
+.tl-item{position:relative;margin-bottom:14px;}
+.tl-item::before{content:'';position:absolute;left:-23px;top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;background:var(--amber);border:2px solid var(--card);box-shadow:0 0 0 2px var(--amber);}
+.tl-inner{background:var(--card2);border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;}
+.tl-year{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;color:var(--amber);letter-spacing:1.5px;}
+.tl-name{font-size:12px;font-weight:700;margin-top:2px;}
+.tl-sub{font-size:9px;color:var(--muted);font-family:'Space Mono',monospace;margin-top:1px;}
+
+/* ── KEYSTONE ── */
+.keystone{background:var(--ink);color:#f0e5c0;border-radius:18px;padding:26px 32px;margin:22px 0;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.kt{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:6px;}
+.ks{font-size:11px;color:#c0a870;line-height:1.7;}
+.kpills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+.kp{padding:4px 13px;border-radius:20px;background:rgba(255,255,255,0.1);font-size:9.5px;font-family:'Space Mono',monospace;}
+
+/* ── TABLE ── */
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{background:var(--ink);color:#fff;padding:9px 12px;text-align:left;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:1.5px;}
+.ctbl td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:rgba(168,110,8,0.03);}
+.ctbl td:first-child{font-weight:700;color:var(--amber);font-size:10px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.pc,.mc{animation:fadeUp 0.45s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="eyebrow">UPSC Economy · Banking · High Yield Prelims Cluster</div>
+  <h1>DFI · NPA · ARC · <em>Securitization</em></h1>
+  <div class="hdr-sub">Development Finance · Bad Loans · Asset Reconstruction · SARFAESI 2002</div>
+  <div class="hdr-rule"></div>
+  <div class="hdr-pills">
+    <span class="hp g">DFI = Gap Filler</span>
+    <span class="hp b">IFCI 1948</span>
+    <span class="hp a">NPA > 90 Days</span>
+    <span class="hp gr">Stressed Assets</span>
+    <span class="hp t">ARC + RBI</span>
+    <span class="hp g">SARFAESI 2002</span>
+    <span class="hp b">Write-off ≠ Waiver</span>
+  </div>
+</div>
+
+<!-- ══ MASTER FLOW ══ -->
+<div class="sec">Master Flow — The Big Picture</div>
+<div class="mc m1">
+  <svg id="svgMaster" viewBox="0 0 1360 145" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- ══ SECTION 1: DFI ══ -->
+<div class="sec">① Development Financial Institutions (DFIs)</div>
+
+<div class="g2">
+  <div class="pc gold">
+    <div class="pc-label">What & Why</div>
+    <h3>🏦 DFI — The Gap Filler</h3>
+    <div class="formula" style="background:linear-gradient(135deg,rgba(168,110,8,0.06),rgba(191,82,16,0.04));border-color:rgba(168,110,8,0.2);">
+      <div class="formula-eq" style="color:var(--amber);">Private Banks Avoid Risk → DFI Steps In</div>
+      <div class="formula-label">GOVERNMENT-PROMOTED · LONG-TERM DEVELOPMENT FINANCE</div>
+    </div>
+    <div class="g2" style="margin-bottom:0;gap:10px;">
+      <div>
+        <div style="font-size:9.5px;font-weight:700;color:var(--red);margin-bottom:7px;font-family:'Space Mono',monospace;">❌ WHY PRIVATE BANKS FAIL</div>
+        <div class="vlist">
+          <div class="vi"><div class="vt">Short-term deposits only</div><div class="vs">Cannot fund 20-yr infra loans</div></div>
+          <div class="vi"><div class="vt">Risky sectors avoided</div><div class="vs">No profit motive for dev finance</div></div>
+          <div class="vi"><div class="vt">Collateral-first approach</div><div class="vs">Projects without assets left out</div></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:9.5px;font-weight:700;color:var(--green);margin-bottom:7px;font-family:'Space Mono',monospace;">✅ DFI FILLS THE GAP</div>
+        <div class="vlist">
+          <div class="vi"><div class="vt">Long-term focus</div><div class="vs">10–25 year project loans</div></div>
+          <div class="vi"><div class="vt">Viability over collateral</div><div class="vs">Project-based assessment</div></div>
+          <div class="vi"><div class="vt">Equity + guarantees</div><div class="vs">Full financial toolkit</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Key Features</div>
+    <h3>🎯 What Makes DFIs Different</h3>
+    <div class="g2" style="margin-bottom:0;gap:8px;">
+      <div style="padding:12px;border-radius:9px;background:rgba(21,46,120,0.06);border:1.5px solid rgba(21,46,120,0.18);">
+        <div style="font-size:19px;margin-bottom:5px;">🏗️</div>
+        <div style="font-size:11px;font-weight:700;">Long-term Loans</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'Space Mono',monospace;margin-top:2px;">Infrastructure · MSME · Agri</div>
+      </div>
+      <div style="padding:12px;border-radius:9px;background:rgba(21,46,120,0.06);border:1.5px solid rgba(21,46,120,0.18);">
+        <div style="font-size:19px;margin-bottom:5px;">📊</div>
+        <div style="font-size:11px;font-weight:700;">Project Approach</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'Space Mono',monospace;margin-top:2px;">Viability > Collateral</div>
+      </div>
+      <div style="padding:12px;border-radius:9px;background:rgba(21,46,120,0.06);border:1.5px solid rgba(21,46,120,0.18);">
+        <div style="font-size:19px;margin-bottom:5px;">💼</div>
+        <div style="font-size:11px;font-weight:700;">Equity + Guarantees</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'Space Mono',monospace;margin-top:2px;">Not just lending</div>
+      </div>
+      <div style="padding:12px;border-radius:9px;background:rgba(21,46,120,0.06);border:1.5px solid rgba(21,46,120,0.18);">
+        <div style="font-size:19px;margin-bottom:5px;">🤝</div>
+        <div style="font-size:11px;font-weight:700;">Dev. Partner Role</div>
+        <div style="font-size:9px;color:var(--muted);font-family:'Space Mono',monospace;margin-top:2px;">Mgmt. upgrade too</div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:10px;background:rgba(168,110,8,0.06);border-color:rgba(168,110,8,0.2);">
+      <div class="callout-t" style="color:var(--gold);">⚠️ Important for Prelims</div>
+      <div class="callout-b">"DFI" is <strong>not defined</strong> in any single statute. It's a functional category, not a legal one.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DFI Timeline -->
+<div class="sec">② History of DFIs in India — Timeline</div>
+
+<div class="mc m2">
+  <svg id="svgDFI" viewBox="0 0 1360 170" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc amber">
+    <div class="pc-label">Sectoral DFIs</div>
+    <h3>🌾 By Sector Focus</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">🌾 NABARD</div><div class="vs">Agriculture + rural development</div></div>
+      <div class="vi"><div class="vt">🏭 SIDBI</div><div class="vs">Small & medium enterprises</div></div>
+      <div class="vi"><div class="vt">🚢 EXIM Bank</div><div class="vs">Export-import finance</div></div>
+      <div class="vi"><div class="vt">🏠 NHB</div><div class="vs">National Housing Bank</div></div>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">Industrial DFIs</div>
+    <h3>🏗️ For Industry & Infra</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">🏦 IFCI (1948)</div><div class="vs">First DFI — industrial finance</div></div>
+      <div class="vi"><div class="vt">💼 ICICI (1955)</div><div class="vs">Later became commercial bank</div></div>
+      <div class="vi"><div class="vt">🏢 IDBI (1964)</div><div class="vs">Apex industrial DFI</div></div>
+      <div class="vi"><div class="vt">🏛️ LIC (1956)</div><div class="vs">Insurance + dev finance role</div></div>
+    </div>
+  </div>
+  <div class="pc green">
+    <div class="pc-label">State-Level</div>
+    <h3>🗺️ Sub-national DFIs</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">State Financial Corporations</div><div class="vs">1951 SFCs Act — state-level</div></div>
+      <div class="vi"><div class="vt">State Industrial Dev. Corps.</div><div class="vs">SIDCs across states</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;">
+      <div class="callout-t">🎯 Exam Trick</div>
+      <div class="callout-b">IFCI = 1948 = <strong>FIRST DFI</strong> in India. Always comes in MCQs.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 3: LOANS & ASSET CLASSIFICATION ══ -->
+<div class="sec">③ Bank Loans as Assets — Classification</div>
+
+<div class="mc m3">
+  <svg id="svgAssets" viewBox="0 0 1360 230" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc slate">
+    <div class="pc-label">Core Concept</div>
+    <h3>🏦 Loans = Assets for Banks</h3>
+    <div class="formula">
+      <div class="formula-eq">Bank Gives Loan → Becomes Bank's Asset</div>
+      <div class="formula-label">BORROWER'S DEBT = BANK'S ASSET ON BALANCE SHEET</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n" style="color:var(--green);">✅</div>
+        <div class="stat-s">Standard Asset</div>
+        <div class="stat-l">REPAID NORMALLY</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--red);">⚠️</div>
+        <div class="stat-s">Non-Performing</div>
+        <div class="stat-l">>90 DAYS OVERDUE</div>
+      </div>
+    </div>
+    <p style="font-size:11px;line-height:1.6;color:var(--muted);margin-top:8px;">RBI classifies every bank loan. A loan transitions from Standard → NPA → Sub-standard → Doubtful → Loss.</p>
+  </div>
+
+  <div class="pc red">
+    <div class="pc-label">The 90-Day Rule</div>
+    <h3>📉 When Does a Loan Become NPA?</h3>
+    <div style="display:flex;gap:12px;align-items:center;margin:12px 0;">
+      <div style="flex:1;padding:14px;border-radius:10px;background:rgba(24,94,48,0.07);border:1.5px solid rgba(24,94,48,0.2);text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--green);">Day 1–89</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;">Standard Asset</div>
+        <div style="font-size:8.5px;font-family:'Space Mono',monospace;color:var(--muted);">Repayment overdue but still standard</div>
+      </div>
+      <div style="font-size:24px;color:var(--muted);">→</div>
+      <div style="flex:1;padding:14px;border-radius:10px;background:rgba(158,24,24,0.07);border:1.5px solid rgba(158,24,24,0.2);text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:700;color:var(--red);">Day 90+</div>
+        <div style="font-size:10px;font-weight:700;margin-top:4px;color:var(--red);">NPA</div>
+        <div style="font-size:8.5px;font-family:'Space Mono',monospace;color:var(--muted);">Non-Performing Asset</div>
+      </div>
+    </div>
+    <div class="vlist">
+      <div class="vi" style="background:rgba(158,24,24,0.05);border-color:rgba(158,24,24,0.2);">
+        <div class="vt">🔴 Sub-standard</div><div class="vs">NPA for less than 12 months</div>
+      </div>
+      <div class="vi" style="background:rgba(191,82,16,0.05);border-color:rgba(191,82,16,0.2);">
+        <div class="vt">🟠 Doubtful</div><div class="vs">Sub-standard for >12 months</div>
+      </div>
+      <div class="vi" style="background:rgba(90,58,16,0.05);border-color:rgba(90,58,16,0.2);">
+        <div class="vt">⚫ Loss</div><div class="vs">Identified as uncollectable by auditors</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 4: STRESSED ASSETS ══ -->
+<div class="sec">④ Stressed Assets — The Complete Picture</div>
+
+<div class="mc m4">
+  <svg id="svgStressed" viewBox="0 0 1360 200" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc red">
+    <div class="pc-label">Component 1</div>
+    <h3>💥 NPA</h3>
+    <div style="padding:12px;border-radius:9px;background:rgba(158,24,24,0.07);border:1.5px solid rgba(158,24,24,0.2);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--red);">Interest/Principal</div>
+      <div style="font-size:8.5px;font-family:'Space Mono',monospace;color:var(--muted);">OVERDUE > 90 DAYS</div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Sub-standard → Doubtful → Loss</div><div class="vs">Escalating classification</div></div>
+      <div class="vi"><div class="vt">RBI mandates provisioning</div><div class="vs">Banks must set aside capital</div></div>
+    </div>
+    <span class="chip ng" style="margin-top:8px;">❌ Drags bank profitability</span>
+  </div>
+
+  <div class="pc amber">
+    <div class="pc-label">Component 2</div>
+    <h3>🔄 Restructured Loans</h3>
+    <div style="padding:12px;border-radius:9px;background:rgba(191,82,16,0.07);border:1.5px solid rgba(191,82,16,0.2);margin-bottom:10px;">
+      <div style="font-size:10px;font-weight:700;color:var(--amber);margin-bottom:6px;">Bank Gives Concessions:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;">
+        <span class="pill amber">Extended repayment</span>
+        <span class="pill amber">Reduced interest rate</span>
+        <span class="pill amber">Loan-to-equity conversion</span>
+      </div>
+    </div>
+    <div class="callout" style="background:rgba(191,82,16,0.06);border-color:rgba(191,82,16,0.2);">
+      <div class="callout-t" style="color:var(--amber);">⚠️ Prelims Trap</div>
+      <div class="callout-b">Restructured ≠ NPA. But it signals <strong>past financial stress</strong> of the borrower.</div>
+    </div>
+    <span class="chip warn" style="margin-top:8px;">⚠️ Past stress indicator</span>
+  </div>
+
+  <div class="pc brown">
+    <div class="pc-label">Component 3</div>
+    <h3>✏️ Written-Off Assets</h3>
+    <div style="padding:12px;border-radius:9px;background:rgba(90,58,16,0.07);border:1.5px solid rgba(90,58,16,0.2);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--brown);">Removed from Balance Sheet</div>
+      <div style="font-size:8.5px;font-family:'Space Mono',monospace;color:var(--muted);">BUT BORROWER STILL OWES MONEY</div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Accounting action only</div><div class="vs">Cleans bank's books</div></div>
+      <div class="vi"><div class="vt">Recovery still pursued</div><div class="vs">SARFAESI, DRT, IBC</div></div>
+    </div>
+    <div style="margin-top:10px;padding:9px 12px;border-radius:8px;background:rgba(158,24,24,0.07);border:1.5px dashed rgba(158,24,24,0.3);">
+      <span style="font-size:10px;font-weight:700;color:var(--red);">Write-off ≠ Loan Waiver</span>
+    </div>
+  </div>
+</div>
+
+<!-- Stressed Assets Formula -->
+<div class="pc slate" style="margin-bottom:20px;">
+  <div class="pc-label">The Master Formula</div>
+  <h3>📊 Stressed Assets = ?</h3>
+  <div class="formula">
+    <div class="formula-eq">Stressed Assets = NPA + Restructured Loans + Written-Off Assets</div>
+    <div class="formula-label">VERY HIGH PROBABILITY PRELIMS POINT — MEMORIZE THIS</div>
+  </div>
+  <div class="g3" style="margin-bottom:0;">
+    <div style="padding:12px;border-radius:9px;background:rgba(158,24,24,0.06);border:1.5px solid rgba(158,24,24,0.2);text-align:center;">
+      <div style="font-size:28px;">💥</div>
+      <div style="font-size:11px;font-weight:700;color:var(--red);">NPA</div>
+      <div style="font-size:8.5px;font-family:'Space Mono',monospace;color:var(--muted);">Overdue > 90 days</div>
+    </div>
+    <div style="padding:12px;border-radius:9px;background:rgba(191,82,16,0.06);border:1.5px solid rgba(191,82,16,0.2);text-align:center;">
+      <div style="font-size:28px;">🔄</div>
+      <div style="font-size:11px;font-weight:700;color:var(--amber);">Restructured</div>
+      <div style="font-size:8.5px;font-family:'Space Mono',monospace;color:var(--muted);">Concessions given</div>
+    </div>
+    <div style="padding:12px;border-radius:9px;background:rgba(90,58,16,0.06);border:1.5px solid rgba(90,58,16,0.2);text-align:center;">
+      <div style="font-size:28px;">✏️</div>
+      <div style="font-size:11px;font-weight:700;color:var(--brown);">Written-Off</div>
+      <div style="font-size:8.5px;font-family:'Space Mono',monospace;color:var(--muted);">Removed from books</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 5: SECURED DEBT ══ -->
+<div class="sec">⑤ Secured vs Unsecured — Terminology</div>
+
+<div class="g3">
+  <div class="pc teal">
+    <div class="pc-label">Security Interest</div>
+    <h3>🔐 Secured Debt</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">🏠 Secured Debt</div><div class="vs">Loan backed by collateral (house, land, shares)</div></div>
+      <div class="vi"><div class="vt">⚖️ Security Interest</div><div class="vs">Legal right of lender over the pledged asset</div></div>
+      <div class="vi"><div class="vt">🏦 Secured Creditor</div><div class="vs">Bank/FI holding that security interest</div></div>
+    </div>
+    <div class="callout" style="margin-top:10px;background:rgba(9,96,104,0.06);border-color:rgba(9,96,104,0.2);">
+      <div class="callout-t" style="color:var(--teal);">SARFAESI Power</div>
+      <div class="callout-b">Only <strong>secured creditors</strong> can use SARFAESI Act to recover without court intervention.</div>
+    </div>
+  </div>
+
+  <div class="pc purple">
+    <div class="pc-label">Default</div>
+    <h3>🚨 What is Default?</h3>
+    <div style="padding:14px;border-radius:10px;background:rgba(78,18,128,0.07);border:1.5px solid rgba(78,18,128,0.2);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--purple);">Failure to Repay When Due</div>
+      <div style="font-size:8.5px;font-family:'Space Mono',monospace;color:var(--muted);">TRIGGERS NPA CLASSIFICATION</div>
+    </div>
+    <div class="flow">
+      <div class="fn" style="border-color:var(--purple);color:var(--purple);background:rgba(78,18,128,0.07);">Default</div>
+      <div class="farr">→</div>
+      <div class="fn" style="border-color:var(--amber);color:var(--amber);background:rgba(191,82,16,0.07);">90 Days</div>
+      <div class="farr">→</div>
+      <div class="fn" style="border-color:var(--red);color:var(--red);background:rgba(158,24,24,0.07);">NPA</div>
+    </div>
+  </div>
+
+  <div class="pc sky">
+    <div class="pc-label">Quick Reference</div>
+    <h3>📋 Comparison Table</h3>
+    <table class="ctbl">
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>NPA</td><td>Overdue &gt;90 days</td></tr>
+        <tr><td>Restructured</td><td>Concessions given</td></tr>
+        <tr><td>Write-off</td><td>Removed from books</td></tr>
+        <tr><td>Default</td><td>Failed to repay</td></tr>
+        <tr><td>Stressed</td><td>NPA + Rest. + W/off</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ SECTION 6: ARC ══ -->
+<div class="sec">⑥ Asset Reconstruction Companies (ARCs)</div>
+
+<div class="mc m5">
+  <svg id="svgARC" viewBox="0 0 1360 210" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g2">
+  <div class="pc green">
+    <div class="pc-label">What Is ARC?</div>
+    <h3>🏢 Asset Reconstruction Company</h3>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n" style="color:var(--green);font-size:18px;">RBI</div>
+        <div class="stat-s">Registered With</div>
+        <div class="stat-l">REGULATORY BODY</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--teal);font-size:18px;">2002</div>
+        <div class="stat-s">SARFAESI Act</div>
+        <div class="stat-l">LEGAL FOUNDATION</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n" style="color:var(--amber);font-size:18px;">Bad</div>
+        <div class="stat-s">Loans Bought</div>
+        <div class="stat-l">FROM BANKS</div>
+      </div>
+    </div>
+    <div class="flow">
+      <div class="fn" style="border-color:var(--red);color:var(--red);background:rgba(158,24,24,0.07);">Bank has NPA</div>
+      <div class="farr">→</div>
+      <div class="fn" style="border-color:var(--amber);color:var(--amber);background:rgba(191,82,16,0.07);">Sells to ARC</div>
+      <div class="farr">→</div>
+      <div class="fn" style="border-color:var(--green);color:var(--green);background:rgba(24,94,48,0.07);">ARC Recovers</div>
+      <div class="farr">→</div>
+      <div class="fn" style="border-color:var(--blue);color:var(--blue);background:rgba(21,46,120,0.07);">Bank's Books Clean</div>
+    </div>
+    <div class="callout">
+      <div class="callout-t">🎯 Why ARCs Were Needed</div>
+      <div class="callout-b">Post-1991 reforms → NPAs rose sharply → Banks' balance sheets stressed → <strong>Narasimham Committee recommended ARCs</strong> → SARFAESI 2002 enabled them</div>
+    </div>
+  </div>
+
+  <div class="pc blue">
+    <div class="pc-label">Two Methods of ARC</div>
+    <h3>🔧 How ARC Works</h3>
+    <div class="g2" style="margin-bottom:0;gap:10px;">
+      <div style="padding:14px;border-radius:10px;background:rgba(21,46,120,0.07);border:2px solid rgba(21,46,120,0.2);">
+        <div style="font-size:20px;margin-bottom:6px;">🏗️</div>
+        <div style="font-size:12px;font-weight:800;color:var(--blue);margin-bottom:4px;">Method 1: Asset Reconstruction</div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.5;">Buys the <strong>rights/interest</strong> in the loan from the bank. Takes over as new creditor. Pursues recovery.</div>
+        <span class="pill blue" style="margin-top:6px;">Rights transfer</span>
+      </div>
+      <div style="padding:14px;border-radius:10px;background:rgba(9,96,104,0.07);border:2px solid rgba(9,96,104,0.2);">
+        <div style="font-size:20px;margin-bottom:6px;">📜</div>
+        <div style="font-size:12px;font-weight:800;color:var(--teal);margin-bottom:4px;">Method 2: Securitization</div>
+        <div style="font-size:10px;color:var(--muted);line-height:1.5;">Converts <strong>illiquid loans → marketable securities</strong>. Sells to investors. Raises liquidity.</div>
+        <span class="pill teal" style="margin-top:6px;">Illiquid → Liquid</span>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px 14px;border-radius:8px;background:rgba(168,110,8,0.06);border:1.5px solid rgba(168,110,8,0.2);">
+      <div style="font-size:10px;font-weight:700;color:var(--gold);">🔑 Key Equation</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--amber);margin-top:3px;">Illiquid Bad Loan → Marketable Security</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 7: SECURITIZATION DEEP DIVE ══ -->
+<div class="sec">⑦ Securitization — Converting Loans to Securities</div>
+
+<div class="mc m1">
+  <svg id="svgSecure" viewBox="0 0 1360 190" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="g3">
+  <div class="pc amber">
+    <div class="pc-label">What is Securitization?</div>
+    <h3>📜 Illiquid → Liquid</h3>
+    <div style="padding:13px;border-radius:10px;background:rgba(191,82,16,0.07);border:1.5px solid rgba(191,82,16,0.2);margin-bottom:10px;text-align:center;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--amber);">Pool of Loans → Tradable Securities</div>
+    </div>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Step 1: Pool loans together</div><div class="vs">Many small NPAs bundled</div></div>
+      <div class="vi"><div class="vt">Step 2: Issue securities</div><div class="vs">Backed by that loan pool</div></div>
+      <div class="vi"><div class="vt">Step 3: Sell to investors</div><div class="vs">Raises cash, transfers risk</div></div>
+    </div>
+  </div>
+
+  <div class="pc teal">
+    <div class="pc-label">Why It Matters</div>
+    <h3>💡 Benefits of Securitization</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">🏦 Bank frees up capital</div><div class="vs">Can lend again — credit flow maintained</div></div>
+      <div class="vi"><div class="vt">📊 Risk distributed</div><div class="vs">Spread across many investors</div></div>
+      <div class="vi"><div class="vt">💧 Market liquidity</div><div class="vs">Illiquid assets become tradable</div></div>
+      <div class="vi"><div class="vt">📉 Balance sheet clean</div><div class="vs">Bank's NPA ratio improves</div></div>
+    </div>
+  </div>
+
+  <div class="pc sky">
+    <div class="pc-label">SARFAESI Act 2002</div>
+    <h3>⚖️ Legal Framework</h3>
+    <div class="vlist">
+      <div class="vi"><div class="vt">Full Form</div><div class="vs">Securitisation & Reconstruction of Financial Assets & Enforcement of Security Interest Act</div></div>
+      <div class="vi"><div class="vt">Key Power</div><div class="vs">Secured creditors can seize assets WITHOUT court</div></div>
+      <div class="vi"><div class="vt">Who Benefits</div><div class="vs">Banks, FIs, ARCs — all secured creditors</div></div>
+      <div class="vi"><div class="vt">Created</div><div class="vs">Based on Narasimham Committee rec.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SECTION 8: CONNECTIONS ══ -->
+<div class="sec">⑧ Full Concept Connection Flow</div>
+
+<div class="mc m4">
+  <svg id="svgConnect" viewBox="0 0 1360 155" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<!-- ══ HIGH YIELD PRELIMS ══ -->
+<div class="sec">⑨ High-Probability Prelims Points</div>
+
+<div class="g4">
+  <div class="pc gold">
+    <div class="pc-label">DFI Facts</div>
+    <h3>📌 Must Know</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip ok">✅ IFCI = first DFI = 1948</span>
+      <span class="chip ok">✅ DFI = gap filler</span>
+      <span class="chip ok">✅ No single statute defines DFI</span>
+      <span class="chip ok">✅ Viability > Collateral</span>
+    </div>
+  </div>
+  <div class="pc red">
+    <div class="pc-label">NPA Rules</div>
+    <h3>📌 Classification</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip ng">NPA = >90 days overdue</span>
+      <span class="chip ng">Sub-std → Doubtful → Loss</span>
+      <span class="chip ok">✅ Loans = bank's assets</span>
+      <span class="chip warn">⚠️ Restructured ≠ NPA</span>
+    </div>
+  </div>
+  <div class="pc amber">
+    <div class="pc-label">Stressed Assets</div>
+    <h3>📌 Formula</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip ok">✅ NPA + Restructured + W/off</span>
+      <span class="chip ng">Write-off ≠ Waiver</span>
+      <span class="chip ok">✅ Restructured = past stress</span>
+      <span class="chip warn">⚠️ Default ≠ NPA immediately</span>
+    </div>
+  </div>
+  <div class="pc teal">
+    <div class="pc-label">ARC + SARFAESI</div>
+    <h3>📌 Key Numbers</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span class="chip ok">✅ ARC registered with RBI</span>
+      <span class="chip ok">✅ SARFAESI Act = 2002</span>
+      <span class="chip ok">✅ Securitization = illiquid→liquid</span>
+      <span class="chip ok">✅ Narasimham Committee rec.</span>
+    </div>
+  </div>
+</div>
+
+<!-- KEYSTONE -->
+<div class="keystone">
+  <div style="font-size:38px;">🏦</div>
+  <div style="flex:1;">
+    <div class="kt">The Connecting Thread</div>
+    <div class="ks">Developing countries need long-term finance → Private banks hesitate → <strong style="color:#f0d080;">DFIs created as gap-fillers.</strong> Banks lend → some loans go bad → NPAs rise → balance sheets stressed → <strong style="color:#f0d080;">ARCs buy bad loans.</strong> ARCs use two tools: asset reconstruction (takes over rights) or securitization (converts illiquid loans → tradable securities). SARFAESI 2002 is the legal backbone — empowering secured creditors to recover without courts. Financial stability = DFIs channeling credit + ARCs cleaning the system.</div>
+    <div class="kpills">
+      <span class="kp">🏦 DFI = Gap Filler</span>
+      <span class="kp">💥 NPA = 90+ Days</span>
+      <span class="kp">📊 Stressed = NPA + Restr. + W/off</span>
+      <span class="kp">🏢 ARC = Bad Loan Buyer</span>
+      <span class="kp">📜 Securitize = Illiquid → Liquid</span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const[k,v]of Object.entries(a))e.setAttribute(k,v);return e;}
+
+function curve(svg,x1,y1,x2,y2,col,dash,w){
+  const mx=(x1+x2)/2;
+  svg.appendChild(el('path',{d:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`,
+    stroke:col||'#b0a070','stroke-width':w||2,fill:'none',
+    'stroke-dasharray':dash?'5 4':'none',opacity:'0.65'}));
+}
+function straight(svg,x1,y1,x2,y2,col,w){
+  svg.appendChild(el('line',{x1,y1,x2,y2,stroke:col||'#b0a070','stroke-width':w||2,opacity:'0.7'}));
+}
+function arrow(svg,x,y,dir){
+  // dir: 'r'=right, 'd'=down
+  const d=dir==='r'?`M${x-6},${y-4} L${x},${y} L${x-6},${y+4}`:`M${x-4},${y-6} L${x},${y} L${x+4},${y-6}`;
+  svg.appendChild(el('path',{d,stroke:'rgba(168,110,8,0.5)','stroke-width':'2',fill:'none'}));
+}
+function node(svg,x,y,w,h,fill,lines,sub,emoji,rx){
+  rx=rx||10;
+  const g=document.createElementNS(NS,'g');
+  g.appendChild(el('rect',{x:x-w/2+2,y:y-h/2+3,width:w,height:h,rx,ry:rx,fill:'rgba(0,0,0,0.09)'}));
+  g.appendChild(el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx,ry:rx,fill,stroke:'rgba(255,255,255,0.16)','stroke-width':'1.5'}));
+  let ty=y-(lines.length-1)*7.2-(sub?5:0)-(emoji?11:0);
+  if(emoji){
+    const et=el('text',{x,y:ty,'text-anchor':'middle','dominant-baseline':'middle','font-size':'14',fill:'#fff'});
+    et.textContent=emoji;g.appendChild(et);ty+=18;
+  }
+  lines.forEach((l,i)=>{
+    const t=el('text',{x,y:ty+i*15,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'11','font-weight':'700','font-family':'DM Sans,sans-serif',fill:'#fff'});
+    t.textContent=l;g.appendChild(t);
+  });
+  if(sub){
+    const s=el('text',{x,y:ty+lines.length*15,'text-anchor':'middle','dominant-baseline':'middle',
+      'font-size':'8','font-family':'Space Mono,monospace',fill:'rgba(255,255,255,0.5)'});
+    s.textContent=sub;g.appendChild(s);
+  }
+  svg.appendChild(g);
+}
+
+// ── MASTER FLOW ──
+(function(){
+  const svg=document.getElementById('svgMaster');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:145,fill:'rgba(246,242,234,0.4)'}));
+  const steps=[
+    {x:80,  fill:'#5e2e08', e:'🏚️', lines:['Developing','Economy'],        sub:'Lacks long-term finance'},
+    {x:250, fill:'#a86e08', e:'🏦', lines:['DFI Created'],                  sub:'Government gap-filler'},
+    {x:420, fill:'#152e78', e:'💰', lines:['Loans Given'],                   sub:'Banks + DFIs lend'},
+    {x:590, fill:'#9e1818', e:'💥', lines:['Some → NPA'],                   sub:'>90 days overdue'},
+    {x:760, fill:'#4e1280', e:'⚠️', lines:['Stressed Assets'],              sub:'NPA+Restr+Write-off'},
+    {x:940, fill:'#185e30', e:'🏢', lines:['ARC Steps In'],                  sub:'Buys bad loans from bank'},
+    {x:1110,fill:'#096068', e:'📜', lines:['Securitization'],               sub:'Illiquid → liquid'},
+    {x:1290,fill:'#104e70', e:'✅', lines:['Banking','System Stable'],      sub:'Credit flow restored'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      svg.appendChild(el('line',{x1:s.x+72,y1:72,x2:nx-72,y2:72,stroke:'rgba(168,110,8,0.4)','stroke-width':'2.5'}));
+      svg.appendChild(el('polygon',{points:`${nx-76},68 ${nx-70},72 ${nx-76},76`,fill:'rgba(168,110,8,0.55)'}));
+    }
+  });
+  steps.forEach(s=>node(svg,s.x,72,136,74,s.fill,s.lines,s.sub,s.e));
+  const t=el('text',{x:680,y:18,'text-anchor':'middle','font-size':'9','font-family':'Space Mono,monospace','letter-spacing':'3',fill:'rgba(120,90,30,0.45)'});
+  t.textContent='MASTER FLOW: ECONOMY NEEDS → DFI FILLS → LOANS GIVEN → NPAs RISE → ARC CLEANS → STABLE';
+  svg.appendChild(t);
+})();
+
+// ── DFI TIMELINE ──
+(function(){
+  const svg=document.getElementById('svgDFI');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:170,fill:'rgba(246,242,234,0.4)'}));
+  const items=[
+    {x:80,  y:85,  fill:'#9e1818', year:'1948', name:'IFCI', sub:'First DFI in India', e:'🥇'},
+    {x:250, y:85,  fill:'#a86e08', year:'1951', name:'State FCs', sub:'SFCs Act passed', e:'🗺️'},
+    {x:420, y:85,  fill:'#152e78', year:'1955', name:'ICICI', sub:'Industrial Credit', e:'🏭'},
+    {x:590, y:85,  fill:'#5e2e08', year:'1956', name:'LIC', sub:'Insurance + Dev Finance', e:'🛡️'},
+    {x:760, y:85,  fill:'#4e1280', year:'1964', name:'IDBI', sub:'Apex industrial DFI', e:'🏢'},
+    {x:940, y:85,  fill:'#185e30', year:'Later', name:'NABARD', sub:'Agriculture + Rural', e:'🌾'},
+    {x:1110,y:85,  fill:'#096068', year:'Later', name:'SIDBI', sub:'SME Finance', e:'🔧'},
+    {x:1280,y:85,  fill:'#104e70', year:'Later', name:'EXIM + NHB', sub:'Export/Import + Housing', e:'🚢'},
+  ];
+  // timeline spine
+  svg.appendChild(el('line',{x1:80,y1:88,x2:1310,y2:88,stroke:'rgba(168,110,8,0.25)','stroke-width':'2','stroke-dasharray':'6 4'}));
+  items.forEach(n=>{
+    // dot on line
+    svg.appendChild(el('circle',{cx:n.x,cy:88,r:5,fill:n.fill}));
+    const above=n===items[0]||n===items[2]||n===items[4]||n===items[6];
+    const ny=above?44:128;
+    svg.appendChild(el('line',{x1:n.x,y1:93,x2:n.x,y2:ny+28,stroke:n.fill,'stroke-width':'1.5','stroke-dasharray':'3 2',opacity:'0.5'}));
+    node(svg,n.x,ny,148,52,n.fill,[n.name,n.year],n.sub,n.e);
+  });
+})();
+
+// ── ASSET CLASSIFICATION ──
+(function(){
+  const svg=document.getElementById('svgAssets');
+  // Root
+  node(svg,680,44,240,56,'#0c0b09',['Bank Gives Loan'],`Becomes bank's asset on balance sheet`,'🏦',12);
+  // Two branches
+  node(svg,300,140,220,56,'#185e30',['Standard Asset'],'Repaid normally, performing','✅');
+  node(svg,1060,140,220,56,'#9e1818',['Non-Performing Asset (NPA)'],'>90 days overdue','💥');
+  curve(svg,560,72,410,112,'rgba(24,94,48,0.5)',false,2.5);
+  curve(svg,800,72,950,112,'rgba(158,24,24,0.5)',false,2.5);
+  // NPA sub-types
+  const subs=[
+    {x:820,y:218,f:'#9e1818',l:['Sub-standard'],s:'NPA < 12 months',e:'🔴'},
+    {x:1060,y:218,f:'#bf5210',l:['Doubtful'],s:'Sub-std >12 months',e:'🟠'},
+    {x:1290,y:218,f:'#3a1808',l:['Loss Asset'],s:'Uncollectable',e:'⚫'},
+  ];
+  subs.forEach(n=>{
+    straight(svg,1060,168,n.x,190,`${n.f}55`,1.5);
+    node(svg,n.x,n.y,185,50,n.f,n.l,n.s,n.e);
+  });
+  // Standard sub
+  node(svg,300,218,200,50,'#185e30',['Performing Normally'],'Interest+principal on time','💚');
+  straight(svg,300,168,300,193,'#185e3055',1.5);
+  const t=el('text',{x:680,y:222,'text-anchor':'middle','font-size':'9','font-family':'Space Mono,monospace','letter-spacing':'1.5',fill:'rgba(100,80,30,0.5)'});
+  t.textContent='STANDARD → NPA (>90 DAYS) → SUB-STANDARD → DOUBTFUL → LOSS'; svg.appendChild(t);
+})();
+
+// ── STRESSED ASSETS ──
+(function(){
+  const svg=document.getElementById('svgStressed');
+  node(svg,680,44,280,56,'#0c0b09',['STRESSED ASSETS'],'NPA + Restructured + Written-Off','⚠️',12);
+  const branches=[
+    {x:220, fill:'#9e1818', l:['NPA'],s:'>90 days overdue',e:'💥'},
+    {x:680, fill:'#bf5210', l:['Restructured'],s:'Concessions given',e:'🔄'},
+    {x:1140,fill:'#5a3a10', l:['Written-Off'],s:'Removed from books',e:'✏️'},
+  ];
+  branches.forEach(n=>{
+    curve(svg,680,72,n.x,112,`${n.fill}66`,false,2.5);
+    node(svg,n.x,140,200,56,n.fill,n.l,n.s,n.e);
+  });
+  // key note
+  const t=el('text',{x:680,y:195,'text-anchor':'middle','font-size':'9','font-family':'Space Mono,monospace','letter-spacing':'2',fill:'rgba(158,24,24,0.55)'});
+  t.textContent='WRITE-OFF ≠ LOAN WAIVER — BORROWER STILL OWES MONEY'; svg.appendChild(t);
+})();
+
+// ── ARC FLOW ──
+(function(){
+  const svg=document.getElementById('svgARC');
+  // ARC at center
+  node(svg,680,105,220,60,'#185e30',['Asset Reconstruction','Company (ARC)'],'RBI Registered · SARFAESI 2002','🏢',12);
+  // Left inputs
+  const ins=[
+    {x:160,y:60,  fill:'#9e1818', l:['Bank Has NPA'],      s:'Loan>90 days overdue',e:'💥'},
+    {x:160,y:150, fill:'#bf5210', l:['Bank Sells Bad Loan'],s:'At discounted price', e:'💸'},
+  ];
+  ins.forEach(n=>{
+    curve(svg,250,105,n.x+90,n.y,'rgba(158,24,24,0.4)',false,2);
+    node(svg,n.x,n.y,170,50,n.fill,n.l,n.s,n.e);
+  });
+  // Right outputs
+  const outs=[
+    {x:1200,y:60,  fill:'#096068', l:['Method 1: Reconstruct'],s:'Takes over rights/interest',e:'🏗️'},
+    {x:1200,y:150, fill:'#152e78', l:['Method 2: Securitize'], s:'Illiquid → liquid security',e:'📜'},
+  ];
+  outs.forEach(n=>{
+    curve(svg,800,105,n.x-90,n.y,'rgba(9,96,104,0.4)',false,2);
+    node(svg,n.x,n.y,190,50,n.fill,n.l,n.s,n.e);
+  });
+  // Result at bottom
+  node(svg,680,188,280,44,'#185e30',['Bank Balance Sheet Clean','Credit Flow Restored'],'Financial Stability Maintained','✅');
+  straight(svg,680,135,680,166,'rgba(24,94,48,0.5)',2);
+})();
+
+// ── SECURITIZATION FLOW ──
+(function(){
+  const svg=document.getElementById('svgSecure');
+  const steps=[
+    {x:100, fill:'#9e1818', e:'💥', lines:['Pool of Bad','Loans (NPAs)'],   sub:'Multiple borrowers bundled'},
+    {x:300, fill:'#bf5210', e:'🔀', lines:['ARC Pools','Loans Together'],  sub:'Diversified risk pool'},
+    {x:500, fill:'#a86e08', e:'📜', lines:['Issues Securities','(SRs)'],   sub:'Security Receipts'},
+    {x:700, fill:'#4e1280', e:'📊', lines:['Rated by','Credit Agency'],    sub:'Risk assessment done'},
+    {x:900, fill:'#152e78', e:'💼', lines:['Sold to','Investors'],         sub:'Banks, FIs, HNIs buy'},
+    {x:1100,fill:'#185e30', e:'💰', lines:['ARC Gets Cash'],              sub:'Pays bank for NPAs'},
+    {x:1280,fill:'#096068', e:'✅', lines:['Bank Books','Clean + Liquid'], sub:'Can lend again'},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      svg.appendChild(el('line',{x1:s.x+82,y1:95,x2:nx-82,y2:95,stroke:'rgba(168,110,8,0.4)','stroke-width':'2'}));
+      svg.appendChild(el('polygon',{points:`${nx-86},91 ${nx-80},95 ${nx-86},99`,fill:'rgba(168,110,8,0.55)'}));
+    }
+  });
+  steps.forEach(s=>node(svg,s.x,95,156,74,s.fill,s.lines,s.sub,s.e));
+  const t=el('text',{x:680,y:186,'text-anchor':'middle','font-size':'9','font-family':'Space Mono,monospace','letter-spacing':'2',fill:'rgba(100,80,30,0.45)'});
+  t.textContent='SECURITIZATION: ILLIQUID BAD LOANS → MARKETABLE SECURITIES → CASH RAISED → BANK CLEANSED';
+  svg.appendChild(t);
+})();
+
+// ── CONCEPT CONNECT ──
+(function(){
+  const svg=document.getElementById('svgConnect');
+  svg.appendChild(el('rect',{x:0,y:0,width:1360,height:155,fill:'rgba(246,242,234,0.3)'}));
+  const steps=[
+    {x:80,  fill:'#5e2e08', e:'🏚️', lines:['Developing','Country']},
+    {x:240, fill:'#a86e08', e:'🏦', lines:['DFI Fills','Gap']},
+    {x:400, fill:'#152e78', e:'💰', lines:['Loans','Extended']},
+    {x:570, fill:'#9e1818', e:'💥', lines:['NPA','Created']},
+    {x:740, fill:'#4e1280', e:'⚠️', lines:['Stressed','Assets']},
+    {x:910, fill:'#185e30', e:'🏢', lines:['ARC','Buys Bad Loan']},
+    {x:1080,fill:'#096068', e:'📜', lines:['Securitize','It']},
+    {x:1250,fill:'#104e70', e:'✅', lines:['System','Stable']},
+  ];
+  steps.forEach((s,i)=>{
+    if(i<steps.length-1){
+      const nx=steps[i+1].x;
+      svg.appendChild(el('line',{x1:s.x+68,y1:78,x2:nx-68,y2:78,stroke:'rgba(168,110,8,0.45)','stroke-width':'2.5'}));
+      svg.appendChild(el('polygon',{points:`${nx-72},74 ${nx-66},78 ${nx-72},82`,fill:'rgba(168,110,8,0.6)'}));
+    }
+  });
+  steps.forEach(s=>node(svg,s.x,78,128,66,s.fill,s.lines,null,s.e));
+  const t=el('text',{x:680,y:20,'text-anchor':'middle','font-size':'8.5','font-family':'Space Mono,monospace','letter-spacing':'3',fill:'rgba(120,90,30,0.45)'});
+  t.textContent='HOW EVERYTHING CONNECTS: DFI → LOANS → NPAs → STRESSED ASSETS → ARC → SECURITIZATION → STABLE SYSTEM';
+  svg.appendChild(t);
+})();
+</script>
+</body>
+</html>
